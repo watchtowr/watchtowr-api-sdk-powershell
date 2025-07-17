@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientNoteListData = Initialize-PSOpenAPIToolsClientNoteListData  -VarData null `
+$ClientNoteListData = Initialize-WatchtowrAPIClientNoteListData  -VarData null `
  -Meta null
 ```
 

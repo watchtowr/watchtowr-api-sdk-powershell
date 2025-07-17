@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PaginatedClientPackageManager = Initialize-PSOpenAPIToolsPaginatedClientPackageManager  -VarData null `
+$PaginatedClientPackageManager = Initialize-WatchtowrAPIPaginatedClientPackageManager  -VarData null `
  -Meta null
 ```
 

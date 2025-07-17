@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientFindingImpactTag = Initialize-PSOpenAPIToolsClientFindingImpactTag  -Id 1 `
+$ClientFindingImpactTag = Initialize-WatchtowrAPIClientFindingImpactTag  -Id 1 `
  -Name CISA-KEV
 ```
 

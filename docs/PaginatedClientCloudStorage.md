@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PaginatedClientCloudStorage = Initialize-PSOpenAPIToolsPaginatedClientCloudStorage  -VarData null `
+$PaginatedClientCloudStorage = Initialize-WatchtowrAPIPaginatedClientCloudStorage  -VarData null `
  -Meta null
 ```
 

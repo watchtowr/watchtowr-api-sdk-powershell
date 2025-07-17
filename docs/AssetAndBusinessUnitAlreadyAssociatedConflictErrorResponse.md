@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AssetAndBusinessUnitAlreadyAssociatedConflictErrorResponse = Initialize-PSOpenAPIToolsAssetAndBusinessUnitAlreadyAssociatedConflictErrorResponse  -Message Asset is already assigned with business unit ID(s) [1, 2] `
+$AssetAndBusinessUnitAlreadyAssociatedConflictErrorResponse = Initialize-WatchtowrAPIAssetAndBusinessUnitAlreadyAssociatedConflictErrorResponse  -Message Asset is already assigned with business unit ID(s) [1, 2] `
  -StatusCode 409 `
  -VarError Conflict
 ```

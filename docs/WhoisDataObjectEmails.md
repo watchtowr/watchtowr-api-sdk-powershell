@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WhoisDataObjectEmails = Initialize-PSOpenAPIToolsWhoisDataObjectEmails 
+$WhoisDataObjectEmails = Initialize-WatchtowrAPIWhoisDataObjectEmails 
 ```
 
 - Convert the resource to JSON

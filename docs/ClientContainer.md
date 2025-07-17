@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientContainer = Initialize-PSOpenAPIToolsClientContainer  -Type container `
+$ClientContainer = Initialize-WatchtowrAPIClientContainer  -Type container `
  -Source module-adversarysight-ecr-containers-discovery `
  -Status verified `
  -CreatedAt 2022-02-13T02:10:00.000000Z `

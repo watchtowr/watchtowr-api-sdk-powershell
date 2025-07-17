@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UpdateKillSwitchData = Initialize-PSOpenAPIToolsUpdateKillSwitchData  -VarData null
+$UpdateKillSwitchData = Initialize-WatchtowrAPIUpdateKillSwitchData  -VarData null
 ```
 
 - Convert the resource to JSON

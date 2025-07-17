@@ -1,4 +1,4 @@
-# PSOpenAPITools.PSOpenAPITools\Api.CloudStorageApi
+# WatchtowrAPI.WatchtowrAPI\Api.CloudStorageApi
 
 All URIs are relative to *https://your-tenant-id.sg.client.watchtowr.io*
 

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SuspiciousDomain = Initialize-PSOpenAPIToolsSuspiciousDomain  -Id 1 `
+$SuspiciousDomain = Initialize-WatchtowrAPISuspiciousDomain  -Id 1 `
  -Name example.com `
  -DiscoveryReason Example reason `
  -Status legitimate `

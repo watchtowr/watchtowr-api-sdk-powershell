@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientIp = Initialize-PSOpenAPIToolsClientIp  -Type ip `
+$ClientIp = Initialize-WatchtowrAPIClientIp  -Type ip `
  -Source module-continuousassurance-controller `
  -Status verified `
  -CreatedAt 2022-02-13T02:10:00.000000Z `

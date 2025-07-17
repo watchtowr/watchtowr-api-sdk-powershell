@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$KillSwitchForbiddenError = Initialize-PSOpenAPIToolsKillSwitchForbiddenError  -Message Administrator or User role required to manage kill switch `
+$KillSwitchForbiddenError = Initialize-WatchtowrAPIKillSwitchForbiddenError  -Message Administrator or User role required to manage kill switch `
  -VarError KILL_SWITCH_FORBIDDEN `
  -StatusCode 403
 ```

@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientSubdomain = Initialize-PSOpenAPIToolsClientSubdomain  -Type subdomain `
+$ClientSubdomain = Initialize-WatchtowrAPIClientSubdomain  -Type subdomain `
  -Source module-adversarysight-crtsh-domain-backend `
  -Status verified `
  -CreatedAt 2022-02-13T02:10:00.000000Z `

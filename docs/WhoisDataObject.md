@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WhoisDataObject = Initialize-PSOpenAPIToolsWhoisDataObject  -Org ACME Corp `
+$WhoisDataObject = Initialize-WatchtowrAPIWhoisDataObject  -Org ACME Corp `
  -City Singapore `
  -Name John Doe `
  -State Singapore `

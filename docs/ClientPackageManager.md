@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientPackageManager = Initialize-PSOpenAPIToolsClientPackageManager  -Type packageManager `
+$ClientPackageManager = Initialize-WatchtowrAPIClientPackageManager  -Type packageManager `
  -Name example-package `
  -Source module-adversarysight-npmjs-project-discovery `
  -Status verified `

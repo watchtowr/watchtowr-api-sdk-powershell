@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Infrastructure = Initialize-PSOpenAPIToolsInfrastructure  -CDN AWS CloudFront `
+$Infrastructure = Initialize-WatchtowrAPIInfrastructure  -CDN AWS CloudFront `
  -Cloud Amazon Web Services (AWS) `
  -WAF OWASP ModSecurity
 ```

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServiceInformationAsset = Initialize-PSOpenAPIToolsServiceInformationAsset  -Id 1 `
+$ServiceInformationAsset = Initialize-WatchtowrAPIServiceInformationAsset  -Id 1 `
  -Name 123.123.123.123 `
  -Type ip `
  -BusinessUnits null

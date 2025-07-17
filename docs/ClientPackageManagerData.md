@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientPackageManagerData = Initialize-PSOpenAPIToolsClientPackageManagerData  -VarData null
+$ClientPackageManagerData = Initialize-WatchtowrAPIClientPackageManagerData  -VarData null
 ```
 
 - Convert the resource to JSON

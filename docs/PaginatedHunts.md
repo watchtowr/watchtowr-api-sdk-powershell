@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PaginatedHunts = Initialize-PSOpenAPIToolsPaginatedHunts  -VarData null `
+$PaginatedHunts = Initialize-WatchtowrAPIPaginatedHunts  -VarData null `
  -Meta null
 ```
 

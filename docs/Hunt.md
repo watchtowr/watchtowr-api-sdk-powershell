@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **TotalFindings** | **Decimal** | Total findings related to this hunt | 
 **TotalAssets** | **Decimal** | Total assets related to this hunt | 
 **HuntRequestType** | **String** | Hunt request type | 
+**RapidExposureMechanism** | **String** | Rapid exposure mechanism | [optional] 
 **Title** | **String** | Title | 
 **Status** | **String** | Status | 
 
@@ -18,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Hunt = Initialize-PSOpenAPIToolsHunt  -Id 1 `
+$Hunt = Initialize-WatchtowrAPIHunt  -Id 1 `
  -Priority high `
  -Type bespoke `
  -CreatedAt 2023-06-28T02:22:36Z `
@@ -26,6 +27,7 @@ $Hunt = Initialize-PSOpenAPIToolsHunt  -Id 1 `
  -TotalFindings 1 `
  -TotalAssets 10 `
  -HuntRequestType Others `
+ -RapidExposureMechanism impactLessPoc `
  -Title ... `
  -Status completed
 ```

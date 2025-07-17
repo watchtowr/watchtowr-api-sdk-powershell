@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientCloudAsset = Initialize-PSOpenAPIToolsClientCloudAsset  -Type cloudAsset `
+$ClientCloudAsset = Initialize-WatchtowrAPIClientCloudAsset  -Type cloudAsset `
  -Name example-aws-cloud-asset-rds-database `
  -Source test-module-controller-1-0 `
  -Provider aws `

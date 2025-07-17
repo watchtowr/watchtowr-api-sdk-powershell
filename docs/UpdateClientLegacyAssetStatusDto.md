@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UpdateClientLegacyAssetStatusDto = Initialize-PSOpenAPIToolsUpdateClientLegacyAssetStatusDto  -Status verified `
+$UpdateClientLegacyAssetStatusDto = Initialize-WatchtowrAPIUpdateClientLegacyAssetStatusDto  -Status verified `
  -StatusReason Manually verified via Client API
 ```
 

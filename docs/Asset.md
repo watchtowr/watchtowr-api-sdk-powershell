@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Asset = Initialize-PSOpenAPIToolsAsset  -Id 11 `
+$Asset = Initialize-WatchtowrAPIAsset  -Id 11 `
  -CreatedAt 2021-11-22T22:17:12Z `
  -Source module-github-enumeration-v0.1 `
  -Type repository `

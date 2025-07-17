@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientBusinessUnit = Initialize-PSOpenAPIToolsClientBusinessUnit  -Id 1 `
+$ClientBusinessUnit = Initialize-WatchtowrAPIClientBusinessUnit  -Id 1 `
  -Name Singapore Business Unit
 ```
 

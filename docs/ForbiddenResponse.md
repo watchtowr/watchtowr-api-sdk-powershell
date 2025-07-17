@@ -3,14 +3,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Message** | **String** |  | 
-**StatusCode** | **Decimal** |  | 
+**Message** | **String** | Error message | 
+**StatusCode** | **Decimal** | HTTP status code | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$ForbiddenResponse = Initialize-PSOpenAPIToolsForbiddenResponse  -Message Forbidden `
+$ForbiddenResponse = Initialize-WatchtowrAPIForbiddenResponse  -Message Insufficient permissions `
  -StatusCode 403
 ```
 

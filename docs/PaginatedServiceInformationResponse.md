@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PaginatedServiceInformationResponse = Initialize-PSOpenAPIToolsPaginatedServiceInformationResponse  -VarData null `
+$PaginatedServiceInformationResponse = Initialize-WatchtowrAPIPaginatedServiceInformationResponse  -VarData null `
  -Meta null
 ```
 

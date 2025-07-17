@@ -1,4 +1,4 @@
-# PSOpenAPITools.PSOpenAPITools\Api.ServiceDiscoveryApi
+# WatchtowrAPI.WatchtowrAPI\Api.ServiceDiscoveryApi
 
 All URIs are relative to *https://your-tenant-id.sg.client.watchtowr.io*
 

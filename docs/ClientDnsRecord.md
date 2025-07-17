@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientDnsRecord = Initialize-PSOpenAPIToolsClientDnsRecord  -Id 1 `
+$ClientDnsRecord = Initialize-WatchtowrAPIClientDnsRecord  -Id 1 `
  -Name watchtowr.com `
  -Type A `
  -Ttl 60 `

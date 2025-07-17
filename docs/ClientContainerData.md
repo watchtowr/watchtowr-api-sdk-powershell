@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientContainerData = Initialize-PSOpenAPIToolsClientContainerData  -VarData null
+$ClientContainerData = Initialize-WatchtowrAPIClientContainerData  -VarData null
 ```
 
 - Convert the resource to JSON

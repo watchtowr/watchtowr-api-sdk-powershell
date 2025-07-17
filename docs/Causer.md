@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Causer = Initialize-PSOpenAPIToolsCauser  -Id 1 `
+$Causer = Initialize-WatchtowrAPICauser  -Id 1 `
  -Name Example
 ```
 

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientBusinessUnitDetail = Initialize-PSOpenAPIToolsClientBusinessUnitDetail  -Id 1 `
+$ClientBusinessUnitDetail = Initialize-WatchtowrAPIClientBusinessUnitDetail  -Id 1 `
  -Name Singapore Business Unit `
  -Description Singapore based assets `
  -CreatedAt 2022-02-13T02:10:00.000000Z

@@ -6,11 +6,7 @@ Name | Type | Description | Notes
 **Id** | **Decimal** | ID | 
 **PortId** | **Decimal** | Port ID | 
 **Ip** | **String** | IP Address | 
-**Domain** | **String** | IP Address | 
-**Subdomain** | **String** | IP Address | 
-**AssetType** | **String** | Type of asset associated with this service | 
-**AssetId** | **Decimal** | Id of asset associated with this service | 
-**AssetName** | **String** | Name of asset associated with this service | 
+**Hostname** | **String** | Hostname | 
 **Port** | **Decimal** | Port number | [optional] 
 **Type** | **String** | Port Protocol | [optional] 
 **Country** | **String** | Country code | [optional] 
@@ -21,19 +17,16 @@ Name | Type | Description | Notes
 **Technologies** | [**Technology[]**](Technology.md) | Technology list | 
 **ServiceTypes** | [**ServiceType[]**](ServiceType.md) | Service types | 
 **BusinessUnits** | [**ClientBusinessUnit[]**](ClientBusinessUnit.md) | Business Units | 
+**IsConcerning** | **Boolean** | Whether the discovered network service is concerning | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$ServiceListing = Initialize-PSOpenAPIToolsServiceListing  -Id 1 `
+$ServiceListing = Initialize-WatchtowrAPIServiceListing  -Id 1 `
  -PortId 1 `
  -Ip 123.123.123.123 `
- -Domain example.com `
- -Subdomain sub.example.com `
- -AssetType IP `
- -AssetId 1 `
- -AssetName 1 `
+ -Hostname sub.example.com `
  -Port 80 `
  -Type TCP `
  -Country US `
@@ -43,7 +36,8 @@ $ServiceListing = Initialize-PSOpenAPIToolsServiceListing  -Id 1 `
  -LastSeen null `
  -Technologies null `
  -ServiceTypes null `
- -BusinessUnits null
+ -BusinessUnits null `
+ -IsConcerning true
 ```
 
 - Convert the resource to JSON

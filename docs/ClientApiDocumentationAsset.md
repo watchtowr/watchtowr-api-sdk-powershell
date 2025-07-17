@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientApiDocumentationAsset = Initialize-PSOpenAPIToolsClientApiDocumentationAsset  -Id 1 `
+$ClientApiDocumentationAsset = Initialize-WatchtowrAPIClientApiDocumentationAsset  -Id 1 `
  -Type apiDocumentation `
  -Name example_docs/example-swagger-hub `
  -Source module-adversarysight-swaggerhub-saas-discovery `

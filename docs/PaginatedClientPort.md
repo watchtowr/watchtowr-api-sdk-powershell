@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PaginatedClientPort = Initialize-PSOpenAPIToolsPaginatedClientPort  -VarData null `
+$PaginatedClientPort = Initialize-WatchtowrAPIPaginatedClientPort  -VarData null `
  -Meta null
 ```
 

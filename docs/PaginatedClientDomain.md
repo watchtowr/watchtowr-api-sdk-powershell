@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PaginatedClientDomain = Initialize-PSOpenAPIToolsPaginatedClientDomain  -VarData null `
+$PaginatedClientDomain = Initialize-WatchtowrAPIPaginatedClientDomain  -VarData null `
  -Meta null
 ```
 

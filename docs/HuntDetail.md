@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **TotalFindings** | **Decimal** | Total findings | 
 **TotalAssets** | **Decimal** | Total assets | 
 **HuntRequestType** | **String** | Hunt request type | 
+**RapidExposureMechanism** | **String** | Rapid exposure mechanism | [optional] 
 **Title** | **String** | Title | 
 **Description** | **String** |  | 
 **Hypothesis** | **String** | Hypothesis | 
@@ -24,7 +25,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HuntDetail = Initialize-PSOpenAPIToolsHuntDetail  -Id 1 `
+$HuntDetail = Initialize-WatchtowrAPIHuntDetail  -Id 1 `
  -Priority high `
  -Type bespoke `
  -CreatedAt 2023-06-28T02:22:36Z `
@@ -32,6 +33,7 @@ $HuntDetail = Initialize-PSOpenAPIToolsHuntDetail  -Id 1 `
  -TotalFindings 1 `
  -TotalAssets 10 `
  -HuntRequestType Others `
+ -RapidExposureMechanism impactLessPoc `
  -Title Hunt for ITW Exploited Command Injection in Palo Alto Networks GlobalProtect Gateway (CVE-2024-3400) `
  -Description &quot;watchTowr performed a PROACTIVE hunt to determine if there are any instances of Palo Alto GlobalProtect Gateway exposed externally.
 

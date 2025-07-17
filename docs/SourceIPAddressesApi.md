@@ -1,4 +1,4 @@
-# PSOpenAPITools.PSOpenAPITools\Api.SourceIPAddressesApi
+# WatchtowrAPI.WatchtowrAPI\Api.SourceIPAddressesApi
 
 All URIs are relative to *https://your-tenant-id.sg.client.watchtowr.io*
 
@@ -10,6 +10,8 @@ Method | HTTP request | Description
 <a id="Get-ListSourceIpAddresses"></a>
 # **Get-ListSourceIpAddresses**
 > ClientSourceIpsAddresses Get-ListSourceIpAddresses<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Whitelist] <System.Nullable[Boolean]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Region] <String><br>
 
 List Testing Infrastructure
 
@@ -20,10 +22,12 @@ List IP addresses and hostnames used by watchTowr for all outbound platform traf
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
+$Whitelist = $true # Boolean | Filter by whitelist status (true for whitelisted items only) (optional)
+$Region = "US" # String | Filter by region (optional)
 
 # List Testing Infrastructure
 try {
-    $Result = Get-ListSourceIpAddresses
+    $Result = Get-ListSourceIpAddresses -Whitelist $Whitelist -Region $Region
 } catch {
     Write-Host ("Exception occurred when calling Get-ListSourceIpAddresses: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -31,7 +35,11 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Whitelist** | **Boolean**| Filter by whitelist status (true for whitelisted items only) | [optional] 
+ **Region** | **String**| Filter by region | [optional] 
 
 ### Return type
 

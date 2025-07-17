@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientFindingAssignee = Initialize-PSOpenAPIToolsClientFindingAssignee  -Name John Smith
+$ClientFindingAssignee = Initialize-WatchtowrAPIClientFindingAssignee  -Name John Smith
 ```
 
 - Convert the resource to JSON

@@ -1,4 +1,4 @@
-# PSOpenAPITools.PSOpenAPITools\Api.SubdomainsApi
+# WatchtowrAPI.WatchtowrAPI\Api.SubdomainsApi
 
 All URIs are relative to *https://your-tenant-id.sg.client.watchtowr.io*
 

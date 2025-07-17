@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Retest = Initialize-PSOpenAPIToolsRetest  -RetestRemaining 1 `
+$Retest = Initialize-WatchtowrAPIRetest  -RetestRemaining 1 `
  -CurrentRetest null
 ```
 

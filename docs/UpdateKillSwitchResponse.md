@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UpdateKillSwitchResponse = Initialize-PSOpenAPIToolsUpdateKillSwitchResponse  -Enabled true `
+$UpdateKillSwitchResponse = Initialize-WatchtowrAPIUpdateKillSwitchResponse  -Enabled true `
  -Message Kill switch updated successfully
 ```
 

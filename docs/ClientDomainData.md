@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientDomainData = Initialize-PSOpenAPIToolsClientDomainData  -VarData null
+$ClientDomainData = Initialize-WatchtowrAPIClientDomainData  -VarData null
 ```
 
 - Convert the resource to JSON

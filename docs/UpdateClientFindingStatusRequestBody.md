@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UpdateClientFindingStatusRequestBody = Initialize-PSOpenAPIToolsUpdateClientFindingStatusRequestBody  -Status confirmed
+$UpdateClientFindingStatusRequestBody = Initialize-WatchtowrAPIUpdateClientFindingStatusRequestBody  -Status confirmed
 ```
 
 - Convert the resource to JSON

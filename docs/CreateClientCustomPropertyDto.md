@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CreateClientCustomPropertyDto = Initialize-PSOpenAPIToolsCreateClientCustomPropertyDto  -Key Severity `
+$CreateClientCustomPropertyDto = Initialize-WatchtowrAPICreateClientCustomPropertyDto  -Key Severity `
  -Value Low `
  -IsPreset false
 ```

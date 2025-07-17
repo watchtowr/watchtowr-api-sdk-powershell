@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Meta = Initialize-PSOpenAPIToolsMeta  -Pagination null
+$Meta = Initialize-WatchtowrAPIMeta  -Pagination null
 ```
 
 - Convert the resource to JSON

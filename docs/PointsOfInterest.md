@@ -14,12 +14,13 @@ Name | Type | Description | Notes
 **AssetType** | **String** | Asset type | 
 **BusinessUnits** | [**ClientBusinessUnit[]**](ClientBusinessUnit.md) | Business unit | 
 **LastSeen** | **System.DateTime** | Last seen at | [optional] 
+**IsConcerning** | **Boolean** | Whether the Point of Interest is concerning | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$PointsOfInterest = Initialize-PSOpenAPIToolsPointsOfInterest  -Id 1 `
+$PointsOfInterest = Initialize-WatchtowrAPIPointsOfInterest  -Id 1 `
  -Name phpMyAdmin `
  -Type admin-panel `
  -Url http://watchtowr.com/phpmyadmin `
@@ -29,7 +30,8 @@ $PointsOfInterest = Initialize-PSOpenAPIToolsPointsOfInterest  -Id 1 `
  -AssetName 123.123.123.123 `
  -AssetType ip `
  -BusinessUnits null `
- -LastSeen null
+ -LastSeen null `
+ -IsConcerning true
 ```
 
 - Convert the resource to JSON

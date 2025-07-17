@@ -1,4 +1,4 @@
-# PSOpenAPITools.PSOpenAPITools\Api.PointsOfInterestApi
+# WatchtowrAPI.WatchtowrAPI\Api.PointsOfInterestApi
 
 All URIs are relative to *https://your-tenant-id.sg.client.watchtowr.io*
 

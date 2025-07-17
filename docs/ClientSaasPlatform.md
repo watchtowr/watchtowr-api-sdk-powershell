@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientSaasPlatform = Initialize-PSOpenAPIToolsClientSaasPlatform  -Type saasPlatform `
+$ClientSaasPlatform = Initialize-WatchtowrAPIClientSaasPlatform  -Type saasPlatform `
  -Source module-adversarysight-slack-saas-discovery `
  -Status verified `
  -CreatedAt 2022-02-13T02:10:00.000000Z `

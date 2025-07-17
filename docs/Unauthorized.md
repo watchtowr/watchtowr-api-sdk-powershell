@@ -3,17 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**StatusCode** | **Decimal** |  | [optional] 
-**Message** | **String** |  | [optional] 
-**VarError** | **String** |  | 
+**Message** | **String** | Error message | 
+**StatusCode** | **Decimal** | HTTP status code | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$Unauthorized = Initialize-PSOpenAPIToolsUnauthorized  -StatusCode 401 `
- -Message Unauthorized `
- -VarError UNAUTHORIZED_REQUEST
+$Unauthorized = Initialize-WatchtowrAPIUnauthorized  -Message Unauthorized `
+ -StatusCode 401
 ```
 
 - Convert the resource to JSON

@@ -1,4 +1,4 @@
-# PSOpenAPITools.PSOpenAPITools\Api.ActivityLogApi
+# WatchtowrAPI.WatchtowrAPI\Api.ActivityLogApi
 
 All URIs are relative to *https://your-tenant-id.sg.client.watchtowr.io*
 
@@ -14,9 +14,9 @@ Method | HTTP request | Description
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreatedFrom] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreatedTo] <System.Nullable[System.DateTime]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Types] <String[]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Types] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Search] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UserIds] <String[]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UserIds] <String><br>
 
 List Activity Logs
 
@@ -31,9 +31,9 @@ $Page = 1 # Decimal | The page number for paginated results. If the page field i
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
 $CreatedFrom = (Get-Date) # System.DateTime | Filter logs created after a given date and time. (optional)
 $CreatedTo = (Get-Date) # System.DateTime | Filter logs created before a given date and time. (optional)
-$Types = "MyTypes" # String[] | Filter logs by a comma separated list of types. (optional)
+$Types = "UserInvite,UserRoleType,UserLock,ResetUser2FA,SetupSSO,UpdateUserSessionTimeout,SuccessfulLogin,PasswordResetTriggered,UserDelete,UserCreated,UserBusinessUnit,IntegrationSetUp,IntegrationUpdated,IntegrationDeleted,KillSwitch,FindingSetting,TestingInfrastructureUpdate,UpdatePriorityPort,PlatformIpWhitelist,AutomaticRetestsUpdated,ReportGenerated,ReportGenerationRequest,ReportDownloaded,AutomaticOutOfScope,PrismaCloudApigeeAccountRemoved,PrismaCloudAccountNameUpdate,ServiceAccountCreated,ServiceAccountUpdated,ServiceAccountDeleted,ServiceAccountEnabled,ServiceAccountDisabled,ServiceAccountTokenRegenerated" # String | Filter logs by a comma separated list of types. (optional)
 $Search = "requested%20to%20generate%20technical%20report" # String | Search logs across various fields such as user, or description. (optional)
-$UserIds = "MyUserIds" # String[] | Filter logs by a comma separated list of user IDs. (optional)
+$UserIds = "1,2,3" # String | Filter logs by a comma separated list of user IDs. (optional)
 
 # List Activity Logs
 try {
@@ -52,9 +52,9 @@ Name | Type | Description  | Notes
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
  **CreatedFrom** | **System.DateTime**| Filter logs created after a given date and time. | [optional] 
  **CreatedTo** | **System.DateTime**| Filter logs created before a given date and time. | [optional] 
- **Types** | [**String[]**](String.md)| Filter logs by a comma separated list of types. | [optional] 
+ **Types** | **String**| Filter logs by a comma separated list of types. | [optional] 
  **Search** | **String**| Search logs across various fields such as user, or description. | [optional] 
- **UserIds** | [**String[]**](String.md)| Filter logs by a comma separated list of user IDs. | [optional] 
+ **UserIds** | **String**| Filter logs by a comma separated list of user IDs. | [optional] 
 
 ### Return type
 

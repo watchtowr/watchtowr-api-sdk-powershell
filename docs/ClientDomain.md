@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientDomain = Initialize-PSOpenAPIToolsClientDomain  -Type domain `
+$ClientDomain = Initialize-WatchtowrAPIClientDomain  -Type domain `
  -Source watchtowr-cloud-integration-aws-hosts `
  -Status verified `
  -CreatedAt 2022-02-13T02:10:00.000000Z `

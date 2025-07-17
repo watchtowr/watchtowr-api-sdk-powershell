@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UpdateKillSwitchRequestDto = Initialize-PSOpenAPIToolsUpdateKillSwitchRequestDto  -Value true `
+$UpdateKillSwitchRequestDto = Initialize-WatchtowrAPIUpdateKillSwitchRequestDto  -Value true `
  -Reason Emergency response to security incident `
  -RequestSupport false
 ```

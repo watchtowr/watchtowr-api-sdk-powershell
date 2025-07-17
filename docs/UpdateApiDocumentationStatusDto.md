@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UpdateApiDocumentationStatusDto = Initialize-PSOpenAPIToolsUpdateApiDocumentationStatusDto  -Status verified `
+$UpdateApiDocumentationStatusDto = Initialize-WatchtowrAPIUpdateApiDocumentationStatusDto  -Status verified `
  -StatusReason Manually verified via Client API.
 ```
 

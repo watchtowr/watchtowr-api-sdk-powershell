@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HostnameBusinessUnitIDsDTO = Initialize-PSOpenAPIToolsHostnameBusinessUnitIDsDTO  -BusinessUnitIds [1,2,3] `
+$HostnameBusinessUnitIDsDTO = Initialize-WatchtowrAPIHostnameBusinessUnitIDsDTO  -BusinessUnitIds [1,2,3] `
  -CascadeSubdomain null `
  -CascadeIp null
 ```

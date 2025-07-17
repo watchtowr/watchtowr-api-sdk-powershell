@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PaginatedClientSaasPlatform = Initialize-PSOpenAPIToolsPaginatedClientSaasPlatform  -VarData null `
+$PaginatedClientSaasPlatform = Initialize-WatchtowrAPIPaginatedClientSaasPlatform  -VarData null `
  -Meta null
 ```
 

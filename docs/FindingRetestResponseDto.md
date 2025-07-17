@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$FindingRetestResponseDto = Initialize-PSOpenAPIToolsFindingRetestResponseDto  -RequestedBy Requested by user `
+$FindingRetestResponseDto = Initialize-WatchtowrAPIFindingRetestResponseDto  -RequestedBy Requested by user `
  -RequestedAt 2024-01-29T08:05:09Z `
  -RetestStatus success `
  -StatusOccurredAt 2024-01-29T08:05:09Z `

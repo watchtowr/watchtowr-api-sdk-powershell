@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientPortData = Initialize-PSOpenAPIToolsClientPortData  -VarData null
+$ClientPortData = Initialize-WatchtowrAPIClientPortData  -VarData null
 ```
 
 - Convert the resource to JSON

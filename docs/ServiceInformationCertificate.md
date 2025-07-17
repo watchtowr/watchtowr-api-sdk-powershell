@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServiceInformationCertificate = Initialize-PSOpenAPIToolsServiceInformationCertificate  -Id 1 `
+$ServiceInformationCertificate = Initialize-WatchtowrAPIServiceInformationCertificate  -Id 1 `
  -SubjectCommonName example.com `
  -SubjectOrganisation example `
  -SubjectAltNames [&quot;example.com&quot;] `

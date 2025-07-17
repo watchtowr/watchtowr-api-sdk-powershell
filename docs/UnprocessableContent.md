@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UnprocessableContent = Initialize-PSOpenAPIToolsUnprocessableContent  -Message The given data was invalid. `
+$UnprocessableContent = Initialize-WatchtowrAPIUnprocessableContent  -Message The given data was invalid. `
  -StatusCode 422 `
  -Errors {&quot;status&quot;:[&quot;The status field is required.&quot;,&quot;The selected status is invalid.&quot;],&quot;email&quot;:[&quot;The email field must be a valid email address.&quot;]}
 ```
