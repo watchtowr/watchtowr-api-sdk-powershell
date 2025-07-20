@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OpenFindingsDto = Initialize-PSOpenAPIToolsOpenFindingsDto  -Critical 5 `
+$OpenFindingsDto = Initialize-WatchtowrAPIOpenFindingsDto  -Critical 5 `
  -High 12 `
  -Medium 18 `
  -Low 8 `

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CreateClientNoteDto = Initialize-PSOpenAPIToolsCreateClientNoteDto  -Note Passed to the engineering team. Review on 01/07/2024 `
+$CreateClientNoteDto = Initialize-WatchtowrAPICreateClientNoteDto  -Note Passed to the engineering team. Review on 01/07/2024 `
  -Title Initial Review - 01/01/2024
 ```
 

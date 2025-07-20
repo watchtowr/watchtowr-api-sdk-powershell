@@ -1,4 +1,4 @@
-# PSOpenAPITools.PSOpenAPITools\Api.SuspiciousDomainsApi
+# WatchtowrAPI.WatchtowrAPI\Api.SuspiciousDomainsApi
 
 All URIs are relative to *https://your-tenant-id.sg.client.watchtowr.io*
 

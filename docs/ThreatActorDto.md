@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ThreatActorDto = Initialize-PSOpenAPIToolsThreatActorDto  -AttackerName APT29 `
+$ThreatActorDto = Initialize-WatchtowrAPIThreatActorDto  -AttackerName APT29 `
  -Country ru
 ```
 

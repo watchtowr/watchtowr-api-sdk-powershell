@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LatestExecutedHuntDto = Initialize-PSOpenAPIToolsLatestExecutedHuntDto  -Id 1 `
+$LatestExecutedHuntDto = Initialize-WatchtowrAPILatestExecutedHuntDto  -Id 1 `
  -Title CVE-2024-1234 Apache RCE `
  -Status completed `
  -TotalFindings 2 `

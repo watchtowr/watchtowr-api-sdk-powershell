@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SecurityPostureDashboardDto = Initialize-PSOpenAPIToolsSecurityPostureDashboardDto  -RequiredActions null `
+$SecurityPostureDashboardDto = Initialize-WatchtowrAPISecurityPostureDashboardDto  -RequiredActions null `
  -HuntOverview null `
  -AttackSurfaceResiliency null `
  -OrganizationSummary null

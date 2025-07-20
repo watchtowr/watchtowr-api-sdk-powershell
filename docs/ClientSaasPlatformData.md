@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientSaasPlatformData = Initialize-PSOpenAPIToolsClientSaasPlatformData  -VarData null
+$ClientSaasPlatformData = Initialize-WatchtowrAPIClientSaasPlatformData  -VarData null
 ```
 
 - Convert the resource to JSON

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientIpRelatedDnsRecordAsset = Initialize-PSOpenAPIToolsClientIpRelatedDnsRecordAsset  -Id 1 `
+$ClientIpRelatedDnsRecordAsset = Initialize-WatchtowrAPIClientIpRelatedDnsRecordAsset  -Id 1 `
  -Name watchtowr.com
 ```
 

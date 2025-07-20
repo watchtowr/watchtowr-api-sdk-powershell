@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$RequiredActionsDto = Initialize-PSOpenAPIToolsRequiredActionsDto  -ActivelyExploitedFindings 5 `
+$RequiredActionsDto = Initialize-WatchtowrAPIRequiredActionsDto  -ActivelyExploitedFindings 5 `
  -UnresolvedRapidReactionHunts 3
 ```
 

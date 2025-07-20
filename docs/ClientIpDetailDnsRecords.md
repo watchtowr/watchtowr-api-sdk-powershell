@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientIpDetailDnsRecords = Initialize-PSOpenAPIToolsClientIpDetailDnsRecords  -DnsRecordsOwned [{&quot;id&quot;:1351,&quot;name&quot;:&quot;123.123.123.123.in-addr.arpa&quot;,&quot;type&quot;:&quot;PTR&quot;,&quot;ttl&quot;:300,&quot;value&quot;:&quot;123.123.123.123.in-addr.arpa&quot;,&quot;discovered_on&quot;:&quot;2024-06-11T08:33:59.000Z&quot;}] `
+$ClientIpDetailDnsRecords = Initialize-WatchtowrAPIClientIpDetailDnsRecords  -DnsRecordsOwned [{&quot;id&quot;:1351,&quot;name&quot;:&quot;123.123.123.123.in-addr.arpa&quot;,&quot;type&quot;:&quot;PTR&quot;,&quot;ttl&quot;:300,&quot;value&quot;:&quot;123.123.123.123.in-addr.arpa&quot;,&quot;discovered_on&quot;:&quot;2024-06-11T08:33:59.000Z&quot;}] `
  -DnsRecordsPointingAt [{&quot;id&quot;:1289,&quot;name&quot;:&quot;example-dnsRecord-1289.com&quot;,&quot;type&quot;:&quot;A&quot;,&quot;ttl&quot;:3600,&quot;value&quot;:&quot;example-dnsRecord-1289.com&quot;,&quot;discovered_on&quot;:&quot;2024-06-11T06:09:09.000Z&quot;,&quot;asset&quot;:{&quot;id&quot;:102,&quot;name&quot;:&quot;example-domain-102.com&quot;}}]
 ```
 

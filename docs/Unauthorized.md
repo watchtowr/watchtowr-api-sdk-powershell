@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Unauthorized = Initialize-PSOpenAPIToolsUnauthorized  -Message Unauthorized `
+$Unauthorized = Initialize-WatchtowrAPIUnauthorized  -Message Unauthorized `
  -StatusCode 401
 ```
 

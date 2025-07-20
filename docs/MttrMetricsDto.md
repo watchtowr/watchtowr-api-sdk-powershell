@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MttrMetricsDto = Initialize-PSOpenAPIToolsMttrMetricsDto  -Mttr 48 `
+$MttrMetricsDto = Initialize-WatchtowrAPIMttrMetricsDto  -Mttr 48 `
  -Mttrae 72
 ```
 

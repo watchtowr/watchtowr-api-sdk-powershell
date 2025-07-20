@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Technology = Initialize-PSOpenAPIToolsTechnology  -Id 1 `
+$Technology = Initialize-WatchtowrAPITechnology  -Id 1 `
  -Name APACHE `
  -Version 0.1 `
  -DisplayName APACHE

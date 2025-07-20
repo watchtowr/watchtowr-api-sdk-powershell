@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$FindingsSummaryDto = Initialize-PSOpenAPIToolsFindingsSummaryDto  -TotalResolvedFindings 156 `
+$FindingsSummaryDto = Initialize-WatchtowrAPIFindingsSummaryDto  -TotalResolvedFindings 156 `
  -OldCriticalHighFindings 3 `
  -UnacknowledgedCriticalHighFindings 7
 ```

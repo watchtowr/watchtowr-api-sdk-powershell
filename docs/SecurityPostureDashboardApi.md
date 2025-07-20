@@ -1,4 +1,4 @@
-# PSOpenAPITools.PSOpenAPITools\Api.SecurityPostureDashboardApi
+# WatchtowrAPI.WatchtowrAPI\Api.SecurityPostureDashboardApi
 
 All URIs are relative to *https://your-tenant-id.sg.client.watchtowr.io*
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SecurityPostureDashboardResponse = Initialize-PSOpenAPIToolsSecurityPostureDashboardResponse  -VarData null
+$SecurityPostureDashboardResponse = Initialize-WatchtowrAPISecurityPostureDashboardResponse  -VarData null
 ```
 
 - Convert the resource to JSON

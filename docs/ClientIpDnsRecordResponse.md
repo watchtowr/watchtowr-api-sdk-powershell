@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientIpDnsRecordResponse = Initialize-PSOpenAPIToolsClientIpDnsRecordResponse  -VarData null
+$ClientIpDnsRecordResponse = Initialize-WatchtowrAPIClientIpDnsRecordResponse  -VarData null
 ```
 
 - Convert the resource to JSON

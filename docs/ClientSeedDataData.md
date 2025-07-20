@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientSeedDataData = Initialize-PSOpenAPIToolsClientSeedDataData  -VarData null
+$ClientSeedDataData = Initialize-WatchtowrAPIClientSeedDataData  -VarData null
 ```
 
 - Convert the resource to JSON

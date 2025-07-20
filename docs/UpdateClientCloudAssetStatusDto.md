@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UpdateClientCloudAssetStatusDto = Initialize-PSOpenAPIToolsUpdateClientCloudAssetStatusDto  -Status verified `
+$UpdateClientCloudAssetStatusDto = Initialize-WatchtowrAPIUpdateClientCloudAssetStatusDto  -Status verified `
  -StatusReason Manually verified via Client API
 ```
 

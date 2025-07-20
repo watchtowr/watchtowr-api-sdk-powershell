@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientNote = Initialize-PSOpenAPIToolsClientNote  -Id 1 `
+$ClientNote = Initialize-WatchtowrAPIClientNote  -Id 1 `
  -Note Passed to the engineering team. Review on 01/07/2024 `
  -NoteType Domain `
  -NoteId 2 `

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UpdateClientNextGenAssetStatusDto = Initialize-PSOpenAPIToolsUpdateClientNextGenAssetStatusDto  -Status verified `
+$UpdateClientNextGenAssetStatusDto = Initialize-WatchtowrAPIUpdateClientNextGenAssetStatusDto  -Status verified `
  -StatusReason Manually verified via Client API
 ```
 

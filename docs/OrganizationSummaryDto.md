@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$OrganizationSummaryDto = Initialize-PSOpenAPIToolsOrganizationSummaryDto  -AttackSurface null `
+$OrganizationSummaryDto = Initialize-WatchtowrAPIOrganizationSummaryDto  -AttackSurface null `
  -OpenFindings null `
  -MttrMetrics null `
  -FindingsSummary null

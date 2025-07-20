@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientServiceInformationResponseData = Initialize-PSOpenAPIToolsClientServiceInformationResponseData  -VarData null
+$ClientServiceInformationResponseData = Initialize-WatchtowrAPIClientServiceInformationResponseData  -VarData null
 ```
 
 - Convert the resource to JSON

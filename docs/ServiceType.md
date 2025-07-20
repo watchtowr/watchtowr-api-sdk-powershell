@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServiceType = Initialize-PSOpenAPIToolsServiceType  -Id 1 `
+$ServiceType = Initialize-WatchtowrAPIServiceType  -Id 1 `
  -Name APACHE
 ```
 

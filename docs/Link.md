@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Link = Initialize-PSOpenAPIToolsLink  -Previous null `
+$Link = Initialize-WatchtowrAPILink  -Previous null `
  -Next null
 ```
 

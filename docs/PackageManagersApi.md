@@ -1,4 +1,4 @@
-# PSOpenAPITools.PSOpenAPITools\Api.PackageManagersApi
+# WatchtowrAPI.WatchtowrAPI\Api.PackageManagersApi
 
 All URIs are relative to *https://your-tenant-id.sg.client.watchtowr.io*
 

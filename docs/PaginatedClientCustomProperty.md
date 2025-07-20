@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PaginatedClientCustomProperty = Initialize-PSOpenAPIToolsPaginatedClientCustomProperty  -VarData null `
+$PaginatedClientCustomProperty = Initialize-WatchtowrAPIPaginatedClientCustomProperty  -VarData null `
  -Meta null
 ```
 

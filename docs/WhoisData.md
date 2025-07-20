@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WhoisData = Initialize-PSOpenAPIToolsWhoisData  -Id 1 `
+$WhoisData = Initialize-WatchtowrAPIWhoisData  -Id 1 `
  -VarData null `
  -Raw Domain Name: example.com
 Registry Domain ID: 5066842_DOMAIN_COM-VRSN

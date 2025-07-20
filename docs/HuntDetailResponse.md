@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HuntDetailResponse = Initialize-PSOpenAPIToolsHuntDetailResponse  -VarData null
+$HuntDetailResponse = Initialize-WatchtowrAPIHuntDetailResponse  -VarData null
 ```
 
 - Convert the resource to JSON

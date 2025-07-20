@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientActivityLog = Initialize-PSOpenAPIToolsClientActivityLog  -Id 1 `
+$ClientActivityLog = Initialize-WatchtowrAPIClientActivityLog  -Id 1 `
  -Description Successful login from 123.123.123.123 `
  -Type Successful Login `
  -Properties {&quot;attributes&quot;: {&quot;ip&quot;: &quot;123.123.123.123&quot;}} `

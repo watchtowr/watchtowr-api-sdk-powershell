@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientFindingData = Initialize-PSOpenAPIToolsClientFindingData  -VarData null
+$ClientFindingData = Initialize-WatchtowrAPIClientFindingData  -VarData null
 ```
 
 - Convert the resource to JSON

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HuntOverviewDto = Initialize-PSOpenAPIToolsHuntOverviewDto  -TotalHuntsExecuted 25 `
+$HuntOverviewDto = Initialize-WatchtowrAPIHuntOverviewDto  -TotalHuntsExecuted 25 `
  -TotalUnresolvedHunts 3 `
  -LatestExecutedHunts null
 ```

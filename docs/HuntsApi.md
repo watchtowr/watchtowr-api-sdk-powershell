@@ -1,4 +1,4 @@
-# PSOpenAPITools.PSOpenAPITools\Api.HuntsApi
+# WatchtowrAPI.WatchtowrAPI\Api.HuntsApi
 
 All URIs are relative to *https://your-tenant-id.sg.client.watchtowr.io*
 
@@ -24,6 +24,8 @@ Method | HTTP request | Description
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdatedTo] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Priorities] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-General] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OnlyResolved] <System.Nullable[Boolean]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IsUnacknowledged] <System.Nullable[Boolean]><br>
 
 List Hunts
 
@@ -45,10 +47,12 @@ $UpdatedFrom = (Get-Date) # System.DateTime | Filter hunts updated after a given
 $UpdatedTo = (Get-Date) # System.DateTime | Filter hunts updated before a given date and time. (optional)
 $Priorities = "low" # String | Filter hunts by hunt priority. (optional)
 $General = "hasAffectedAssets" # String | General (optional)
+$OnlyResolved = $true # Boolean | Filter to only show resolved hunts. (optional)
+$IsUnacknowledged = $true # Boolean | Filter to only show hunts that are not acknowledged. (optional)
 
 # List Hunts
 try {
-    $Result = Get-ClientHunts -Page $Page -PageSize $PageSize -Statuses $Statuses -HuntSearch $HuntSearch -Types $Types -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -Priorities $Priorities -General $General
+    $Result = Get-ClientHunts -Page $Page -PageSize $PageSize -Statuses $Statuses -HuntSearch $HuntSearch -Types $Types -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -Priorities $Priorities -General $General -OnlyResolved $OnlyResolved -IsUnacknowledged $IsUnacknowledged
 } catch {
     Write-Host ("Exception occurred when calling Get-ClientHunts: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -70,6 +74,8 @@ Name | Type | Description  | Notes
  **UpdatedTo** | **System.DateTime**| Filter hunts updated before a given date and time. | [optional] 
  **Priorities** | **String**| Filter hunts by hunt priority. | [optional] 
  **General** | **String**| General | [optional] 
+ **OnlyResolved** | **Boolean**| Filter to only show resolved hunts. | [optional] 
+ **IsUnacknowledged** | **Boolean**| Filter to only show hunts that are not acknowledged. | [optional] 
 
 ### Return type
 

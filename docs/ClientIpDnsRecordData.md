@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientIpDnsRecordData = Initialize-PSOpenAPIToolsClientIpDnsRecordData  -DnsRecordsTotalCount null `
+$ClientIpDnsRecordData = Initialize-WatchtowrAPIClientIpDnsRecordData  -DnsRecordsTotalCount null `
  -DnsRecordsOwned null `
  -DnsRecordsPointingAt null
 ```

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientMobileAppData = Initialize-PSOpenAPIToolsClientMobileAppData  -VarData null
+$ClientMobileAppData = Initialize-WatchtowrAPIClientMobileAppData  -VarData null
 ```
 
 - Convert the resource to JSON

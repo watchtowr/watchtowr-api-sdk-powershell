@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PaginatedPointOfInterest = Initialize-PSOpenAPIToolsPaginatedPointOfInterest  -VarData null `
+$PaginatedPointOfInterest = Initialize-WatchtowrAPIPaginatedPointOfInterest  -VarData null `
  -Meta null
 ```
 

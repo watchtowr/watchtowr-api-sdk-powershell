@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AttackSurfaceDto = Initialize-PSOpenAPIToolsAttackSurfaceDto  -TotalVerifiedAssets 1250 `
+$AttackSurfaceDto = Initialize-WatchtowrAPIAttackSurfaceDto  -TotalVerifiedAssets 1250 `
  -TotalPointsOfInterest 67 `
  -TotalNetworkServices 234 `
  -TotalCertificates 45

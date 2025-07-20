@@ -1,4 +1,4 @@
-# PSOpenAPITools.PSOpenAPITools\Api.SourceIPAddressesApi
+# WatchtowrAPI.WatchtowrAPI\Api.SourceIPAddressesApi
 
 All URIs are relative to *https://your-tenant-id.sg.client.watchtowr.io*
 

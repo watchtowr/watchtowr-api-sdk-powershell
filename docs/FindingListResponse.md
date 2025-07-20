@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$FindingListResponse = Initialize-PSOpenAPIToolsFindingListResponse  -VarData null `
+$FindingListResponse = Initialize-WatchtowrAPIFindingListResponse  -VarData null `
  -Meta null
 ```
 

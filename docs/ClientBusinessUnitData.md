@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientBusinessUnitData = Initialize-PSOpenAPIToolsClientBusinessUnitData  -VarData null
+$ClientBusinessUnitData = Initialize-WatchtowrAPIClientBusinessUnitData  -VarData null
 ```
 
 - Convert the resource to JSON

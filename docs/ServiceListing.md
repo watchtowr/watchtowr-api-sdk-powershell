@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServiceListing = Initialize-PSOpenAPIToolsServiceListing  -Id 1 `
+$ServiceListing = Initialize-WatchtowrAPIServiceListing  -Id 1 `
  -PortId 1 `
  -Ip 123.123.123.123 `
  -Hostname sub.example.com `

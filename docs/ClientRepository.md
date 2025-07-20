@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientRepository = Initialize-PSOpenAPIToolsClientRepository  -Type repository `
+$ClientRepository = Initialize-WatchtowrAPIClientRepository  -Type repository `
  -Source module-adversarysight-github-domain-based-repository-discovery `
  -Status verified `
  -CreatedAt 2022-02-13T02:10:00.000000Z `

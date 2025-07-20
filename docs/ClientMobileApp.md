@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientMobileApp = Initialize-PSOpenAPIToolsClientMobileApp  -Type mobileApp `
+$ClientMobileApp = Initialize-WatchtowrAPIClientMobileApp  -Type mobileApp `
  -Source module-adversarysight-playstore-mobileapp-discovery `
  -Status verified `
  -CreatedAt 2022-02-13T02:10:00.000000Z `

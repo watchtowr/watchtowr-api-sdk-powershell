@@ -3,13 +3,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VarData** | [**ClientDnsRecord[]**](ClientDnsRecord.md) |  | 
+**VarData** | [**ClientAssetDnsRecord[]**](ClientAssetDnsRecord.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$ClientIpDnsRecordOwnedData = Initialize-PSOpenAPIToolsClientIpDnsRecordOwnedData  -VarData null
+$ClientIpDnsRecordOwnedData = Initialize-WatchtowrAPIClientIpDnsRecordOwnedData  -VarData null
 ```
 
 - Convert the resource to JSON

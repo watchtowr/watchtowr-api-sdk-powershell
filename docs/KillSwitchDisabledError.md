@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$KillSwitchDisabledError = Initialize-PSOpenAPIToolsKillSwitchDisabledError  -Message Disabling of kill switch is not allowed. Please contact your watchTowr account manager. `
+$KillSwitchDisabledError = Initialize-WatchtowrAPIKillSwitchDisabledError  -Message Disabling of kill switch is not allowed. Please contact your watchTowr account manager. `
  -VarError KILL_SWITCH_CONTROL_DISABLED `
  -StatusCode 400
 ```

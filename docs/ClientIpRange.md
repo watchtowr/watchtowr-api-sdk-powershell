@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientIpRange = Initialize-PSOpenAPIToolsClientIpRange  -Type ipRange `
+$ClientIpRange = Initialize-WatchtowrAPIClientIpRange  -Type ipRange `
  -Source module-continuousassurance-controller `
  -Status pending `
  -CreatedAt 2022-02-13T02:10:00.000000Z `

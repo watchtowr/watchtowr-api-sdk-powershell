@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientCustomProperty = Initialize-PSOpenAPIToolsClientCustomProperty  -Id 1 `
+$ClientCustomProperty = Initialize-WatchtowrAPIClientCustomProperty  -Id 1 `
  -Key Severity `
  -Value Low `
  -IsPreset false

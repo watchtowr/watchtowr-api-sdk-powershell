@@ -1,4 +1,4 @@
-# PSOpenAPITools.PSOpenAPITools\Api.FindingsApi
+# WatchtowrAPI.WatchtowrAPI\Api.FindingsApi
 
 All URIs are relative to *https://your-tenant-id.sg.client.watchtowr.io*
 
@@ -471,6 +471,9 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AssetTypes] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Assignee] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Tags] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OnlyValidatedExploitable] <System.Nullable[Boolean]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OnlyUnacknowledged] <System.Nullable[Boolean]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ExploitationRiskLevel] <String><br>
 
 List Findings
 
@@ -496,10 +499,13 @@ $AssetTitle = "www.watchTowr.com" # String | Search by findings by affected asse
 $AssetTypes = "domain" # String | Filter findings by a comma separated list of affected asset types. (optional)
 $Assignee = "John Smith" # String | Filter findings by assignee. To filter findings that don't have an assignee, please use assignee=No Assignee. (optional)
 $Tags = "CISA-KEV,Defacement,Credentials" # String | Filter findings by a comma separated list of tags. (optional)
+$OnlyValidatedExploitable = $true # Boolean | Filter to only show findings validated as exploitable. (optional)
+$OnlyUnacknowledged = $true # Boolean | Filter to only show unacknowledged findings. (optional)
+$ExploitationRiskLevel = "Unknown" # String | Filter findings by a comma separated list of exploitation risk levels. (optional)
 
 # List Findings
 try {
-    $Result = Get-ListFindings -Page $Page -PageSize $PageSize -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -Statuses $Statuses -BusinessUnitIds $BusinessUnitIds -FindingImpactThreshold $FindingImpactThreshold -FindingTitle $FindingTitle -Severities $Severities -AssetTitle $AssetTitle -AssetTypes $AssetTypes -Assignee $Assignee -Tags $Tags
+    $Result = Get-ListFindings -Page $Page -PageSize $PageSize -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -Statuses $Statuses -BusinessUnitIds $BusinessUnitIds -FindingImpactThreshold $FindingImpactThreshold -FindingTitle $FindingTitle -Severities $Severities -AssetTitle $AssetTitle -AssetTypes $AssetTypes -Assignee $Assignee -Tags $Tags -OnlyValidatedExploitable $OnlyValidatedExploitable -OnlyUnacknowledged $OnlyUnacknowledged -ExploitationRiskLevel $ExploitationRiskLevel
 } catch {
     Write-Host ("Exception occurred when calling Get-ListFindings: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -525,6 +531,9 @@ Name | Type | Description  | Notes
  **AssetTypes** | **String**| Filter findings by a comma separated list of affected asset types. | [optional] 
  **Assignee** | **String**| Filter findings by assignee. To filter findings that don&#39;t have an assignee, please use assignee&#x3D;No Assignee. | [optional] 
  **Tags** | **String**| Filter findings by a comma separated list of tags. | [optional] 
+ **OnlyValidatedExploitable** | **Boolean**| Filter to only show findings validated as exploitable. | [optional] 
+ **OnlyUnacknowledged** | **Boolean**| Filter to only show unacknowledged findings. | [optional] 
+ **ExploitationRiskLevel** | **String**| Filter findings by a comma separated list of exploitation risk levels. | [optional] 
 
 ### Return type
 

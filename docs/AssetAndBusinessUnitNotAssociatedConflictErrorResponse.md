@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AssetAndBusinessUnitNotAssociatedConflictErrorResponse = Initialize-PSOpenAPIToolsAssetAndBusinessUnitNotAssociatedConflictErrorResponse  -Message Asset is currently not assigned with business unit ID(s) [2, 3] `
+$AssetAndBusinessUnitNotAssociatedConflictErrorResponse = Initialize-WatchtowrAPIAssetAndBusinessUnitNotAssociatedConflictErrorResponse  -Message Asset is currently not assigned with business unit ID(s) [2, 3] `
  -StatusCode 409 `
  -VarError Conflict
 ```

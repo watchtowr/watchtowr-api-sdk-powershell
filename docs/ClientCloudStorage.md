@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientCloudStorage = Initialize-PSOpenAPIToolsClientCloudStorage  -Type cloudStorage `
+$ClientCloudStorage = Initialize-WatchtowrAPIClientCloudStorage  -Type cloudStorage `
  -Source module-adversarysight-cloud-integration-aws-s3-buckets `
  -Status verified `
  -CreatedAt 2022-02-13T02:10:00.000000Z `

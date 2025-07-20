@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AttackSurfaceResiliencyDto = Initialize-PSOpenAPIToolsAttackSurfaceResiliencyDto  -ConcerningServices 8 `
+$AttackSurfaceResiliencyDto = Initialize-WatchtowrAPIAttackSurfaceResiliencyDto  -ConcerningServices 8 `
  -ConcerningPointsOfInterest 12 `
  -ValidCredentials 4 `
  -OpenFindings 45

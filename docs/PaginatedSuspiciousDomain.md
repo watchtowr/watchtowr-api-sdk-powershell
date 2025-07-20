@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PaginatedSuspiciousDomain = Initialize-PSOpenAPIToolsPaginatedSuspiciousDomain  -VarData null `
+$PaginatedSuspiciousDomain = Initialize-WatchtowrAPIPaginatedSuspiciousDomain  -VarData null `
  -Meta null
 ```
 

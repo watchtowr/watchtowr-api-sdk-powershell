@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AssetBusinessUnitIdsDTO = Initialize-PSOpenAPIToolsAssetBusinessUnitIdsDTO  -BusinessUnitIds [1,2,3]
+$AssetBusinessUnitIdsDTO = Initialize-WatchtowrAPIAssetBusinessUnitIdsDTO  -BusinessUnitIds [1,2,3]
 ```
 
 - Convert the resource to JSON

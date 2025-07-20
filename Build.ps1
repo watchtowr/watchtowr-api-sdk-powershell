@@ -47,20 +47,25 @@ function Get-FunctionsToExport {
 
 $ScriptDir = Split-Path $script:MyInvocation.MyCommand.Path
 $FunctionPath = 'Api', 'Model', 'Client' | Where-Object {
-    Join-Path "$ScriptDir\src\PSOpenAPITools\" $_ | Test-Path
-} | ForEach-Object { Join-Path "$ScriptDir\src\PSOpenAPITools\" $_ }
+    Join-Path "$ScriptDir\src\WatchtowrAPI\" $_ | Test-Path
+} | ForEach-Object { Join-Path "$ScriptDir\src\WatchtowrAPI\" $_ }
 
 $Manifest = @{
-    Path = "$ScriptDir\src\PSOpenAPITools\PSOpenAPITools.psd1"
+    Path = "$ScriptDir\src\WatchtowrAPI\WatchtowrAPI.psd1"
 
     Author = 'OpenAPI Generator Team'
     CompanyName = 'openapitools.org'
-    Description = 'PSOpenAPITools - the PowerShell module for Complete watchTowr Platform API Documentation'
+    Description = 'WatchtowrAPI - the PowerShell module for Complete watchTowr Platform API Documentation'
+    Tags = @('' )
+    ProjectUri = 'https://github.com/watchtowr/watchtowr-api-sdk-powershell'
+    LicenseUri = ''
+    IconUri = ''
+    ReleaseNotes = ''
 
-    ModuleVersion = '0.1.2'
+    ModuleVersion = '1.0.0'
 
-    RootModule = 'PSOpenAPITools.psm1'
-    Guid = '{3BCFB47C-8020-477A-A984-08D594D1C9DC}' # Has to be static, otherwise each new build will be considered different module
+    RootModule = 'WatchtowrAPI.psm1'
+    Guid = '' # Has to be static, otherwise each new build will be considered different module
 
     PowerShellVersion = '6.2'
 

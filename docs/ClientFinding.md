@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientFinding = Initialize-PSOpenAPIToolsClientFinding  -Id 1 `
+$ClientFinding = Initialize-WatchtowrAPIClientFinding  -Id 1 `
  -Title Valid Credentials Discovered In Business System `
  -Description Through watchTowr&#39;s Credential Stuffing capabilities, a valid set of credentials have been identified to work to authenticate to a legitimately exposed business system. 
 

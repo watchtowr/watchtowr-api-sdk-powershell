@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PaginatedApiDocumentation = Initialize-PSOpenAPIToolsPaginatedApiDocumentation  -VarData null `
+$PaginatedApiDocumentation = Initialize-WatchtowrAPIPaginatedApiDocumentation  -VarData null `
  -Meta null
 ```
 

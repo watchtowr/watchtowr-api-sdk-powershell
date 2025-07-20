@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientSeedData = Initialize-PSOpenAPIToolsClientSeedData  -Title Main Website `
+$ClientSeedData = Initialize-WatchtowrAPIClientSeedData  -Title Main Website `
  -Type subdomain `
  -Value www.watchTowr.com
 ```

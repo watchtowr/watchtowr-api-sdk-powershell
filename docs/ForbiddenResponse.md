@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ForbiddenResponse = Initialize-PSOpenAPIToolsForbiddenResponse  -Message Insufficient permissions `
+$ForbiddenResponse = Initialize-WatchtowrAPIForbiddenResponse  -Message Insufficient permissions `
  -StatusCode 403
 ```
 

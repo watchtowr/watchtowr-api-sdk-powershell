@@ -1,4 +1,4 @@
-# PSOpenAPITools.PSOpenAPITools\Api.PortsApi
+# WatchtowrAPI.WatchtowrAPI\Api.PortsApi
 
 All URIs are relative to *https://your-tenant-id.sg.client.watchtowr.io*
 

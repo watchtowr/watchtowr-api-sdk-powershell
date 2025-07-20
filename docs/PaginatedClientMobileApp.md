@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PaginatedClientMobileApp = Initialize-PSOpenAPIToolsPaginatedClientMobileApp  -VarData null `
+$PaginatedClientMobileApp = Initialize-WatchtowrAPIPaginatedClientMobileApp  -VarData null `
  -Meta null
 ```
 

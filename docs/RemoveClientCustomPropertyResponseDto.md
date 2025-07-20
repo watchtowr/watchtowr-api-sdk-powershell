@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$RemoveClientCustomPropertyResponseDto = Initialize-PSOpenAPIToolsRemoveClientCustomPropertyResponseDto  -Message Custom property deleted successfully. `
+$RemoveClientCustomPropertyResponseDto = Initialize-WatchtowrAPIRemoveClientCustomPropertyResponseDto  -Message Custom property deleted successfully. `
  -Status 200
 ```
 

@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HuntDetail = Initialize-PSOpenAPIToolsHuntDetail  -Id 1 `
+$HuntDetail = Initialize-WatchtowrAPIHuntDetail  -Id 1 `
  -Priority high `
  -Type bespoke `
  -CreatedAt 2023-06-28T02:22:36Z `

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$KillSwitchStatusResponse = Initialize-PSOpenAPIToolsKillSwitchStatusResponse  -Enabled true `
+$KillSwitchStatusResponse = Initialize-WatchtowrAPIKillSwitchStatusResponse  -Enabled true `
  -AllowClientControl true
 ```
 

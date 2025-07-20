@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientCloudAssetData = Initialize-PSOpenAPIToolsClientCloudAssetData  -VarData null
+$ClientCloudAssetData = Initialize-WatchtowrAPIClientCloudAssetData  -VarData null
 ```
 
 - Convert the resource to JSON

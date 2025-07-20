@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServiceInformationResponse = Initialize-PSOpenAPIToolsServiceInformationResponse  -Id 1 `
+$ServiceInformationResponse = Initialize-WatchtowrAPIServiceInformationResponse  -Id 1 `
  -Response example `
  -Certificate null `
  -Asset null

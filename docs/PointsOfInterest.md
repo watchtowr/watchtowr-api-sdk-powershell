@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PointsOfInterest = Initialize-PSOpenAPIToolsPointsOfInterest  -Id 1 `
+$PointsOfInterest = Initialize-WatchtowrAPIPointsOfInterest  -Id 1 `
  -Name phpMyAdmin `
  -Type admin-panel `
  -Url http://watchtowr.com/phpmyadmin `

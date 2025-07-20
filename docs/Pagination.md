@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Pagination = Initialize-PSOpenAPIToolsPagination  -Total null `
+$Pagination = Initialize-WatchtowrAPIPagination  -Total null `
  -Count null `
  -PerPage null `
  -CurrentPage null `

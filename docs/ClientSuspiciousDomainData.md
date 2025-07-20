@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientSuspiciousDomainData = Initialize-PSOpenAPIToolsClientSuspiciousDomainData  -VarData null
+$ClientSuspiciousDomainData = Initialize-WatchtowrAPIClientSuspiciousDomainData  -VarData null
 ```
 
 - Convert the resource to JSON
