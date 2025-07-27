@@ -45,7 +45,7 @@ Filter hunts updated before a given date and time.
 .PARAMETER Priorities
 Filter hunts by hunt priority.
 
-.PARAMETER General
+.PARAMETER ResourceFilter
 General
 
 .PARAMETER OnlyResolved
@@ -99,9 +99,9 @@ function Get-ClientHunts {
         [String]
         ${Priorities},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [ValidateSet("hasAffectedAssets", "hasOnlyAffectedAssets", "hasFindings", "includeResult", "withoutResult")]
+        [ValidateSet("hasAssetsOrFindings", "hasFindings", "investigate", "notAffected")]
         [String]
-        ${General},
+        ${ResourceFilter},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Boolean]]
         ${OnlyResolved},
@@ -171,8 +171,8 @@ function Get-ClientHunts {
             $LocalVarQueryParameters['priorities'] = $Priorities
         }
 
-        if ($General) {
-            $LocalVarQueryParameters['general'] = $General
+        if ($ResourceFilter) {
+            $LocalVarQueryParameters['resourceFilter'] = $ResourceFilter
         }
 
         if ($OnlyResolved) {

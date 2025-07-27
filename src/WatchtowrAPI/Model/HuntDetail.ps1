@@ -85,7 +85,7 @@ function Initialize-HuntDetail {
         [String]
         ${HuntRequestType},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
-        [ValidateSet("impactLessPoc", "versionMetadata", "technologyMetadata", "N/A")]
+        [ValidateSet("impactLessPoc", "versionMetadata", "technologyMetadata", "indicatorOfCompromise", "N/A")]
         [String]
         ${RapidExposureMechanism},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]

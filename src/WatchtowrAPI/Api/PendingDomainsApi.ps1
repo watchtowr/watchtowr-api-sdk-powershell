@@ -28,10 +28,10 @@ Filter by domain name
 Filter by source that discovered the domain
 
 .PARAMETER StartDate
-Filter by start date (ISO format)
+Filter by start date
 
 .PARAMETER EndDate
-Filter by end date (ISO format)
+Filter by end date
 
 .PARAMETER SortBy
 Sort by field

@@ -43,10 +43,10 @@ Filter by record value
 Filter by record types (comma separated)
 
 .PARAMETER StartDate
-Filter by start date (ISO format)
+Filter by start date
 
 .PARAMETER EndDate
-Filter by end date (ISO format)
+Filter by end date
 
 .PARAMETER WithHttpInfo
 

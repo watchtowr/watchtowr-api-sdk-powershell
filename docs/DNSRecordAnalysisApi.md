@@ -40,8 +40,8 @@ $AssetName = "example.com" # String | Filter by asset name (optional)
 $RecordName = "example.com" # String | Filter by record name (optional)
 $RecordValue = "192.168.1.1" # String | Filter by record value (optional)
 $RecordTypes = "A" # String | Filter by record types (comma separated) (optional)
-$StartDate = (Get-Date) # System.DateTime | Filter by start date (ISO format) (optional)
-$EndDate = (Get-Date) # System.DateTime | Filter by end date (ISO format) (optional)
+$StartDate = (Get-Date) # System.DateTime | Filter by start date (optional)
+$EndDate = (Get-Date) # System.DateTime | Filter by end date (optional)
 
 # List DNS Records
 try {
@@ -65,8 +65,8 @@ Name | Type | Description  | Notes
  **RecordName** | **String**| Filter by record name | [optional] 
  **RecordValue** | **String**| Filter by record value | [optional] 
  **RecordTypes** | **String**| Filter by record types (comma separated) | [optional] 
- **StartDate** | **System.DateTime**| Filter by start date (ISO format) | [optional] 
- **EndDate** | **System.DateTime**| Filter by end date (ISO format) | [optional] 
+ **StartDate** | **System.DateTime**| Filter by start date | [optional] 
+ **EndDate** | **System.DateTime**| Filter by end date | [optional] 
 
 ### Return type
 

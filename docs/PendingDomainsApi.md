@@ -32,8 +32,8 @@ $Page = 1 # Decimal | The page number for paginated results. If the page field i
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100. (optional)
 $Name = "example.com" # String | Filter by domain name (optional)
 $Source = "example-source" # String | Filter by source that discovered the domain (optional)
-$StartDate = (Get-Date) # System.DateTime | Filter by start date (ISO format) (optional)
-$EndDate = (Get-Date) # System.DateTime | Filter by end date (ISO format) (optional)
+$StartDate = (Get-Date) # System.DateTime | Filter by start date (optional)
+$EndDate = (Get-Date) # System.DateTime | Filter by end date (optional)
 $SortBy = "name" # String | Sort by field (optional) (default to "created_at")
 $SortOrder = "ASC" # String | Sort order (optional) (default to "DESC")
 
@@ -54,8 +54,8 @@ Name | Type | Description  | Notes
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100. | [optional] 
  **Name** | **String**| Filter by domain name | [optional] 
  **Source** | **String**| Filter by source that discovered the domain | [optional] 
- **StartDate** | **System.DateTime**| Filter by start date (ISO format) | [optional] 
- **EndDate** | **System.DateTime**| Filter by end date (ISO format) | [optional] 
+ **StartDate** | **System.DateTime**| Filter by start date | [optional] 
+ **EndDate** | **System.DateTime**| Filter by end date | [optional] 
  **SortBy** | **String**| Sort by field | [optional] [default to &quot;created_at&quot;]
  **SortOrder** | **String**| Sort order | [optional] [default to &quot;DESC&quot;]
 

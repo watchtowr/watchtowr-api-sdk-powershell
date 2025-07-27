@@ -9,7 +9,7 @@
 Describe -tag 'WatchtowrAPI' -name 'HuntsApi' {
     Context 'Get-ClientHunts' {
         It 'Test Get-ClientHunts' {
-            #$TestResult = Get-ClientHunts -Page "TEST_VALUE" -PageSize "TEST_VALUE" -Statuses "TEST_VALUE" -HuntSearch "TEST_VALUE" -Types "TEST_VALUE" -CreatedFrom "TEST_VALUE" -CreatedTo "TEST_VALUE" -UpdatedFrom "TEST_VALUE" -UpdatedTo "TEST_VALUE" -Priorities "TEST_VALUE" -General "TEST_VALUE" -OnlyResolved "TEST_VALUE" -IsUnacknowledged "TEST_VALUE"
+            #$TestResult = Get-ClientHunts -Page "TEST_VALUE" -PageSize "TEST_VALUE" -Statuses "TEST_VALUE" -HuntSearch "TEST_VALUE" -Types "TEST_VALUE" -CreatedFrom "TEST_VALUE" -CreatedTo "TEST_VALUE" -UpdatedFrom "TEST_VALUE" -UpdatedTo "TEST_VALUE" -Priorities "TEST_VALUE" -ResourceFilter "TEST_VALUE" -OnlyResolved "TEST_VALUE" -IsUnacknowledged "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
         }
