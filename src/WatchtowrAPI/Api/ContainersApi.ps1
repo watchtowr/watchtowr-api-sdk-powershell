@@ -759,6 +759,9 @@ Filter assets by one or more comma separated asset statuses. Valid statuses are:
 .PARAMETER Source
 Filter assets by the source that discovered the asset.
 
+.PARAMETER IntegrationConnections
+Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).      Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud)
+
 .PARAMETER BusinessUnitIds
 Filter assets by a list of comma separated business unit IDs that the asset is related to.
 
@@ -802,17 +805,20 @@ function Get-ListAssetContainer {
         ${Source},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
-        ${BusinessUnitIds},
+        ${IntegrationConnections},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [System.Nullable[System.DateTime]]
-        ${CreatedFrom},
+        [String]
+        ${BusinessUnitIds},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[System.DateTime]]
-        ${CreatedTo},
+        ${CreatedFrom},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[System.DateTime]]
-        ${UpdatedFrom},
+        ${CreatedTo},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [System.Nullable[System.DateTime]]
+        ${UpdatedFrom},
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[System.DateTime]]
         ${UpdatedTo},
         [Switch]
@@ -856,6 +862,10 @@ function Get-ListAssetContainer {
 
         if ($Source) {
             $LocalVarQueryParameters['source'] = $Source
+        }
+
+        if ($IntegrationConnections) {
+            $LocalVarQueryParameters['integrationConnections'] = $IntegrationConnections
         }
 
         if ($BusinessUnitIds) {
