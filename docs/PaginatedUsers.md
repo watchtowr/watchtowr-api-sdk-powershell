@@ -1,22 +1,22 @@
-# NotFound
+# PaginatedUsers
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Message** | **String** | Error message | 
-**StatusCode** | **Decimal** | HTTP status code | 
+**VarData** | [**ClientUser[]**](ClientUser.md) | List of users | 
+**Meta** | [**Meta**](Meta.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$NotFound = Initialize-WatchtowrAPINotFound  -Message User not found `
- -StatusCode 404
+$PaginatedUsers = Initialize-WatchtowrAPIPaginatedUsers  -VarData null `
+ -Meta null
 ```
 
 - Convert the resource to JSON
 ```powershell
-$NotFound | ConvertTo-JSON
+$PaginatedUsers | ConvertTo-JSON
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

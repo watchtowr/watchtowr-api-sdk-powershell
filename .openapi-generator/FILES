@@ -75,6 +75,8 @@ docs/ClientSourceIpsAddresses.md
 docs/ClientSubdomain.md
 docs/ClientSubdomainData.md
 docs/ClientSuspiciousDomainData.md
+docs/ClientUser.md
+docs/ClientUserDetail.md
 docs/CloudIntegrationAssetsApi.md
 docs/CloudStorageApi.md
 docs/ContainersApi.md
@@ -84,6 +86,7 @@ docs/CreateClientSeedDataRequestBody.md
 docs/DNSRecordAnalysisApi.md
 docs/DeleteNoteSucces.md
 docs/DomainsApi.md
+docs/FilterByBusinessUnitInput.md
 docs/FindingListResponse.md
 docs/FindingRetestHistoryApi.md
 docs/FindingRetestResponseDto.md
@@ -139,6 +142,7 @@ docs/PaginatedPointOfInterest.md
 docs/PaginatedServiceInformationResponse.md
 docs/PaginatedServiceListing.md
 docs/PaginatedSuspiciousDomain.md
+docs/PaginatedUsers.md
 docs/Pagination.md
 docs/PendingDomainsApi.md
 docs/PointsOfInterest.md
@@ -175,6 +179,8 @@ docs/UpdateClientNextGenAssetStatusDto.md
 docs/UpdateKillSwitchData.md
 docs/UpdateKillSwitchRequestDto.md
 docs/UpdateKillSwitchResponse.md
+docs/UserDetailData.md
+docs/UserManagementApi.md
 docs/WhoisData.md
 docs/WhoisDataObject.md
 docs/WhoisDataObjectEmails.md
@@ -208,6 +214,7 @@ src/WatchtowrAPI/Api/ServiceDiscoveryApi.ps1
 src/WatchtowrAPI/Api/SourceIPAddressesApi.ps1
 src/WatchtowrAPI/Api/SubdomainsApi.ps1
 src/WatchtowrAPI/Api/SuspiciousDomainsApi.ps1
+src/WatchtowrAPI/Api/UserManagementApi.ps1
 src/WatchtowrAPI/Client/Configuration.ps1
 src/WatchtowrAPI/Model/Asset.ps1
 src/WatchtowrAPI/Model/AssetAndBusinessUnitAlreadyAssociatedConflictErrorResponse.ps1
@@ -277,10 +284,13 @@ src/WatchtowrAPI/Model/ClientSourceIpsAddresses.ps1
 src/WatchtowrAPI/Model/ClientSubdomain.ps1
 src/WatchtowrAPI/Model/ClientSubdomainData.ps1
 src/WatchtowrAPI/Model/ClientSuspiciousDomainData.ps1
+src/WatchtowrAPI/Model/ClientUser.ps1
+src/WatchtowrAPI/Model/ClientUserDetail.ps1
 src/WatchtowrAPI/Model/CreateClientCustomPropertyDto.ps1
 src/WatchtowrAPI/Model/CreateClientNoteDto.ps1
 src/WatchtowrAPI/Model/CreateClientSeedDataRequestBody.ps1
 src/WatchtowrAPI/Model/DeleteNoteSucces.ps1
+src/WatchtowrAPI/Model/FilterByBusinessUnitInput.ps1
 src/WatchtowrAPI/Model/FindingListResponse.ps1
 src/WatchtowrAPI/Model/FindingRetestResponseDto.ps1
 src/WatchtowrAPI/Model/FindingsSummaryDto.ps1
@@ -328,6 +338,7 @@ src/WatchtowrAPI/Model/PaginatedPointOfInterest.ps1
 src/WatchtowrAPI/Model/PaginatedServiceInformationResponse.ps1
 src/WatchtowrAPI/Model/PaginatedServiceListing.ps1
 src/WatchtowrAPI/Model/PaginatedSuspiciousDomain.ps1
+src/WatchtowrAPI/Model/PaginatedUsers.ps1
 src/WatchtowrAPI/Model/Pagination.ps1
 src/WatchtowrAPI/Model/PointsOfInterest.ps1
 src/WatchtowrAPI/Model/RemoveClientCustomPropertyResponseDto.ps1
@@ -354,6 +365,7 @@ src/WatchtowrAPI/Model/UpdateClientNextGenAssetStatusDto.ps1
 src/WatchtowrAPI/Model/UpdateKillSwitchData.ps1
 src/WatchtowrAPI/Model/UpdateKillSwitchRequestDto.ps1
 src/WatchtowrAPI/Model/UpdateKillSwitchResponse.ps1
+src/WatchtowrAPI/Model/UserDetailData.ps1
 src/WatchtowrAPI/Model/WhoisData.ps1
 src/WatchtowrAPI/Model/WhoisDataObject.ps1
 src/WatchtowrAPI/Model/WhoisDataObjectEmails.ps1
@@ -394,6 +406,7 @@ tests/Api/ServiceDiscoveryApi.Tests.ps1
 tests/Api/SourceIPAddressesApi.Tests.ps1
 tests/Api/SubdomainsApi.Tests.ps1
 tests/Api/SuspiciousDomainsApi.Tests.ps1
+tests/Api/UserManagementApi.Tests.ps1
 tests/Model/Asset.Tests.ps1
 tests/Model/AssetAndBusinessUnitAlreadyAssociatedConflictErrorResponse.Tests.ps1
 tests/Model/AssetAndBusinessUnitNotAssociatedConflictErrorResponse.Tests.ps1
@@ -462,10 +475,13 @@ tests/Model/ClientSourceIpsAddresses.Tests.ps1
 tests/Model/ClientSubdomain.Tests.ps1
 tests/Model/ClientSubdomainData.Tests.ps1
 tests/Model/ClientSuspiciousDomainData.Tests.ps1
+tests/Model/ClientUser.Tests.ps1
+tests/Model/ClientUserDetail.Tests.ps1
 tests/Model/CreateClientCustomPropertyDto.Tests.ps1
 tests/Model/CreateClientNoteDto.Tests.ps1
 tests/Model/CreateClientSeedDataRequestBody.Tests.ps1
 tests/Model/DeleteNoteSucces.Tests.ps1
+tests/Model/FilterByBusinessUnitInput.Tests.ps1
 tests/Model/FindingListResponse.Tests.ps1
 tests/Model/FindingRetestResponseDto.Tests.ps1
 tests/Model/FindingsSummaryDto.Tests.ps1
@@ -513,6 +529,7 @@ tests/Model/PaginatedPointOfInterest.Tests.ps1
 tests/Model/PaginatedServiceInformationResponse.Tests.ps1
 tests/Model/PaginatedServiceListing.Tests.ps1
 tests/Model/PaginatedSuspiciousDomain.Tests.ps1
+tests/Model/PaginatedUsers.Tests.ps1
 tests/Model/Pagination.Tests.ps1
 tests/Model/PointsOfInterest.Tests.ps1
 tests/Model/RemoveClientCustomPropertyResponseDto.Tests.ps1
@@ -539,6 +556,7 @@ tests/Model/UpdateClientNextGenAssetStatusDto.Tests.ps1
 tests/Model/UpdateKillSwitchData.Tests.ps1
 tests/Model/UpdateKillSwitchRequestDto.Tests.ps1
 tests/Model/UpdateKillSwitchResponse.Tests.ps1
+tests/Model/UserDetailData.Tests.ps1
 tests/Model/WhoisData.Tests.ps1
 tests/Model/WhoisDataObject.Tests.ps1
 tests/Model/WhoisDataObjectEmails.Tests.ps1

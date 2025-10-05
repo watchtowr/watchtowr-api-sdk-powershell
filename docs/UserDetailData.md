@@ -1,22 +1,20 @@
-# NotFound
+# UserDetailData
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Message** | **String** | Error message | 
-**StatusCode** | **Decimal** | HTTP status code | 
+**VarData** | [**ClientUserDetail**](ClientUserDetail.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$NotFound = Initialize-WatchtowrAPINotFound  -Message User not found `
- -StatusCode 404
+$UserDetailData = Initialize-WatchtowrAPIUserDetailData  -VarData null
 ```
 
 - Convert the resource to JSON
 ```powershell
-$NotFound | ConvertTo-JSON
+$UserDetailData | ConvertTo-JSON
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

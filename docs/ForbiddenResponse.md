@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ForbiddenResponse = Initialize-WatchtowrAPIForbiddenResponse  -Message Insufficient permissions `
+$ForbiddenResponse = Initialize-WatchtowrAPIForbiddenResponse  -Message Administrator role required to access user management `
  -StatusCode 403
 ```
 

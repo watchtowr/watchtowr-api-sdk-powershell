@@ -22,7 +22,8 @@ Submit one or more seed data assets to your attack surface for review.
 $Configuration = Get-Configuration
 
 $ClientSeedData = Initialize-ClientSeedData -Title "Main Website" -Type "subdomain" -Value "www.watchTowr.com"
-$CreateClientSeedDataRequestBody = Initialize-CreateClientSeedDataRequestBody -VarData $ClientSeedData -BusinessUnits # CreateClientSeedDataRequestBody | 
+$FilterByBusinessUnitInput = Initialize-FilterByBusinessUnitInput -Id 1 -Type "BUSINESS_UNIT" -Name "Marketing"
+$CreateClientSeedDataRequestBody = Initialize-CreateClientSeedDataRequestBody -VarData $ClientSeedData -BusinessUnits $FilterByBusinessUnitInput # CreateClientSeedDataRequestBody | 
 
 # Submit Seed Data
 try {

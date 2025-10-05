@@ -16,9 +16,9 @@ No summary available.
 No description available.
 
 .PARAMETER Message
-No description available.
+Error message
 .PARAMETER StatusCode
-No description available.
+HTTP status code
 .OUTPUTS
 
 NotFound<PSCustomObject>

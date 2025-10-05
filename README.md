@@ -260,6 +260,8 @@ Class | Method | HTTP request | Description
 *SubdomainsApi* | [**Update-NoteSubdomain**](docs/SubdomainsApi.md#Update-NoteSubdomain) | **PUT** /api/client/assets/subdomain/show/{id}/note/{noteId} | Update Subdomain Note
 *SuspiciousDomainsApi* | [**Get-ListSuspiciousDomain**](docs/SuspiciousDomainsApi.md#Get-ListSuspiciousDomain) | **GET** /api/client/suspicious-domain/list | List Suspicious Domains
 *SuspiciousDomainsApi* | [**Get-SuspiciousDomainDetails**](docs/SuspiciousDomainsApi.md#Get-SuspiciousDomainDetails) | **GET** /api/client/suspicious-domain/show/{id} | Get Suspicious Domain Details
+*UserManagementApi* | [**Get-UserDetails**](docs/UserManagementApi.md#Get-UserDetails) | **GET** /api/client/users/show/{id} | Get User Details
+*UserManagementApi* | [**Invoke-ListUsers**](docs/UserManagementApi.md#Invoke-ListUsers) | **GET** /api/client/users/list | List Users
 
 
 ## Documentation for Models
@@ -332,10 +334,13 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.ClientSubdomain](docs/ClientSubdomain.md)
  - [WatchtowrAPI\Model.ClientSubdomainData](docs/ClientSubdomainData.md)
  - [WatchtowrAPI\Model.ClientSuspiciousDomainData](docs/ClientSuspiciousDomainData.md)
+ - [WatchtowrAPI\Model.ClientUser](docs/ClientUser.md)
+ - [WatchtowrAPI\Model.ClientUserDetail](docs/ClientUserDetail.md)
  - [WatchtowrAPI\Model.CreateClientCustomPropertyDto](docs/CreateClientCustomPropertyDto.md)
  - [WatchtowrAPI\Model.CreateClientNoteDto](docs/CreateClientNoteDto.md)
  - [WatchtowrAPI\Model.CreateClientSeedDataRequestBody](docs/CreateClientSeedDataRequestBody.md)
  - [WatchtowrAPI\Model.DeleteNoteSucces](docs/DeleteNoteSucces.md)
+ - [WatchtowrAPI\Model.FilterByBusinessUnitInput](docs/FilterByBusinessUnitInput.md)
  - [WatchtowrAPI\Model.FindingListResponse](docs/FindingListResponse.md)
  - [WatchtowrAPI\Model.FindingRetestResponseDto](docs/FindingRetestResponseDto.md)
  - [WatchtowrAPI\Model.FindingsSummaryDto](docs/FindingsSummaryDto.md)
@@ -383,6 +388,7 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.PaginatedServiceInformationResponse](docs/PaginatedServiceInformationResponse.md)
  - [WatchtowrAPI\Model.PaginatedServiceListing](docs/PaginatedServiceListing.md)
  - [WatchtowrAPI\Model.PaginatedSuspiciousDomain](docs/PaginatedSuspiciousDomain.md)
+ - [WatchtowrAPI\Model.PaginatedUsers](docs/PaginatedUsers.md)
  - [WatchtowrAPI\Model.Pagination](docs/Pagination.md)
  - [WatchtowrAPI\Model.PointsOfInterest](docs/PointsOfInterest.md)
  - [WatchtowrAPI\Model.RemoveClientCustomPropertyResponseDto](docs/RemoveClientCustomPropertyResponseDto.md)
@@ -409,6 +415,7 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.UpdateKillSwitchData](docs/UpdateKillSwitchData.md)
  - [WatchtowrAPI\Model.UpdateKillSwitchRequestDto](docs/UpdateKillSwitchRequestDto.md)
  - [WatchtowrAPI\Model.UpdateKillSwitchResponse](docs/UpdateKillSwitchResponse.md)
+ - [WatchtowrAPI\Model.UserDetailData](docs/UserDetailData.md)
  - [WatchtowrAPI\Model.WhoisData](docs/WhoisData.md)
  - [WatchtowrAPI\Model.WhoisDataObject](docs/WhoisDataObject.md)
  - [WatchtowrAPI\Model.WhoisDataObjectEmails](docs/WhoisDataObjectEmails.md)

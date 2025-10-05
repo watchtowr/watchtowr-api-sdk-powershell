@@ -15,52 +15,45 @@ No summary available.
 
 No description available.
 
-.PARAMETER Title
-Descriptive title for the new asset
+.PARAMETER Id
+Business unit ID
 .PARAMETER Type
-Asset Type for the new asset. Valid asset types are: [domain, subdomain, ip, ipRange, repository, cloudStorage, container, mobileApp, saasPlatform, cloudAsset, apiDocumentation, packageManager]
-.PARAMETER Value
-Value for the asset to be added.
+Business unit type
+.PARAMETER Name
+Business unit name
 .OUTPUTS
 
-ClientSeedData<PSCustomObject>
+FilterByBusinessUnitInput<PSCustomObject>
 #>
 
-function Initialize-ClientSeedData {
+function Initialize-FilterByBusinessUnitInput {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${Title},
+        [System.Nullable[Decimal]]
+        ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
+        [ValidateSet("BUSINESS_UNIT", "UNASSIGNED")]
         [String]
         ${Type},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Value}
+        ${Name}
     )
 
     Process {
-        'Creating PSCustomObject: WatchtowrAPI => ClientSeedData' | Write-Debug
+        'Creating PSCustomObject: WatchtowrAPI => FilterByBusinessUnitInput' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
-
-        if ($null -eq $Title) {
-            throw "invalid value for 'Title', 'Title' cannot be null."
-        }
 
         if ($null -eq $Type) {
             throw "invalid value for 'Type', 'Type' cannot be null."
         }
 
-        if ($null -eq $Value) {
-            throw "invalid value for 'Value', 'Value' cannot be null."
-        }
-
 
         $PSO = [PSCustomObject]@{
-            "title" = ${Title}
+            "id" = ${Id}
             "type" = ${Type}
-            "value" = ${Value}
+            "name" = ${Name}
         }
 
 
@@ -71,11 +64,11 @@ function Initialize-ClientSeedData {
 <#
 .SYNOPSIS
 
-Convert from JSON to ClientSeedData<PSCustomObject>
+Convert from JSON to FilterByBusinessUnitInput<PSCustomObject>
 
 .DESCRIPTION
 
-Convert from JSON to ClientSeedData<PSCustomObject>
+Convert from JSON to FilterByBusinessUnitInput<PSCustomObject>
 
 .PARAMETER Json
 
@@ -83,22 +76,22 @@ Json object
 
 .OUTPUTS
 
-ClientSeedData<PSCustomObject>
+FilterByBusinessUnitInput<PSCustomObject>
 #>
-function ConvertFrom-JsonToClientSeedData {
+function ConvertFrom-JsonToFilterByBusinessUnitInput {
     Param(
         [AllowEmptyString()]
         [string]$Json
     )
 
     Process {
-        'Converting JSON to PSCustomObject: WatchtowrAPI => ClientSeedData' | Write-Debug
+        'Converting JSON to PSCustomObject: WatchtowrAPI => FilterByBusinessUnitInput' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
-        # check if Json contains properties not defined in ClientSeedData
-        $AllProperties = ("title", "type", "value")
+        # check if Json contains properties not defined in FilterByBusinessUnitInput
+        $AllProperties = ("id", "type", "name")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -106,13 +99,7 @@ function ConvertFrom-JsonToClientSeedData {
         }
 
         If ([string]::IsNullOrEmpty($Json) -or $Json -eq "{}") { # empty json
-            throw "Error! Empty JSON cannot be serialized due to the required property 'title' missing."
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "title"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'title' missing."
-        } else {
-            $Title = $JsonParameters.PSobject.Properties["title"].value
+            throw "Error! Empty JSON cannot be serialized due to the required property 'type' missing."
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "type"))) {
@@ -121,16 +108,22 @@ function ConvertFrom-JsonToClientSeedData {
             $Type = $JsonParameters.PSobject.Properties["type"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "value"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'value' missing."
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "id"))) { #optional property not found
+            $Id = $null
         } else {
-            $Value = $JsonParameters.PSobject.Properties["value"].value
+            $Id = $JsonParameters.PSobject.Properties["id"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "name"))) { #optional property not found
+            $Name = $null
+        } else {
+            $Name = $JsonParameters.PSobject.Properties["name"].value
         }
 
         $PSO = [PSCustomObject]@{
-            "title" = ${Title}
+            "id" = ${Id}
             "type" = ${Type}
-            "value" = ${Value}
+            "name" = ${Name}
         }
 
         return $PSO

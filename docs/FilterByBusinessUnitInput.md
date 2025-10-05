@@ -1,22 +1,24 @@
-# NotFound
+# FilterByBusinessUnitInput
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Message** | **String** | Error message | 
-**StatusCode** | **Decimal** | HTTP status code | 
+**Id** | **Decimal** | Business unit ID | [optional] 
+**Type** | **String** | Business unit type | 
+**Name** | **String** | Business unit name | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$NotFound = Initialize-WatchtowrAPINotFound  -Message User not found `
- -StatusCode 404
+$FilterByBusinessUnitInput = Initialize-WatchtowrAPIFilterByBusinessUnitInput  -Id 1 `
+ -Type BUSINESS_UNIT `
+ -Name Marketing
 ```
 
 - Convert the resource to JSON
 ```powershell
-$NotFound | ConvertTo-JSON
+$FilterByBusinessUnitInput | ConvertTo-JSON
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
