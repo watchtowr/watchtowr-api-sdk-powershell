@@ -428,6 +428,8 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreatedTo] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdatedFrom] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdatedTo] <System.Nullable[System.DateTime]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyKey] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyValue] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Provider] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SuperType] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SubType] <String><br>
@@ -452,13 +454,15 @@ $CreatedFrom = (Get-Date) # System.DateTime | Filter assets created after a give
 $CreatedTo = (Get-Date) # System.DateTime | Filter assets created before a given date and time. (optional)
 $UpdatedFrom = (Get-Date) # System.DateTime | Filter assets updated after a given date and time. (optional)
 $UpdatedTo = (Get-Date) # System.DateTime | Filter assets updated before a given date and time. (optional)
+$CustomPropertyKey = "environment" # String | Filter assets by custom property key. (optional)
+$CustomPropertyValue = "production" # String | Filter assets by custom property value. Must be used together with customPropertyKey. (optional)
 $Provider = "aws" # String | Filter assets by cloud asset provider. (optional)
 $SuperType = "database" # String | Filter assets by the cloud asset type. (optional)
 $SubType = "RDS" # String | Filter assets by the cloud asset sub-type. (optional)
 
 # List Cloud Assets
 try {
-    $Result = Get-ListAssetCloudAsset -Page $Page -PageSize $PageSize -AssetName $AssetName -Statuses $Statuses -Source $Source -IntegrationConnections $IntegrationConnections -BusinessUnitIds $BusinessUnitIds -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -Provider $Provider -SuperType $SuperType -SubType $SubType
+    $Result = Get-ListAssetCloudAsset -Page $Page -PageSize $PageSize -AssetName $AssetName -Statuses $Statuses -Source $Source -IntegrationConnections $IntegrationConnections -BusinessUnitIds $BusinessUnitIds -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -CustomPropertyKey $CustomPropertyKey -CustomPropertyValue $CustomPropertyValue -Provider $Provider -SuperType $SuperType -SubType $SubType
 } catch {
     Write-Host ("Exception occurred when calling Get-ListAssetCloudAsset: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -480,6 +484,8 @@ Name | Type | Description  | Notes
  **CreatedTo** | **System.DateTime**| Filter assets created before a given date and time. | [optional] 
  **UpdatedFrom** | **System.DateTime**| Filter assets updated after a given date and time. | [optional] 
  **UpdatedTo** | **System.DateTime**| Filter assets updated before a given date and time. | [optional] 
+ **CustomPropertyKey** | **String**| Filter assets by custom property key. | [optional] 
+ **CustomPropertyValue** | **String**| Filter assets by custom property value. Must be used together with customPropertyKey. | [optional] 
  **Provider** | **String**| Filter assets by cloud asset provider. | [optional] 
  **SuperType** | **String**| Filter assets by the cloud asset type. | [optional] 
  **SubType** | **String**| Filter assets by the cloud asset sub-type. | [optional] 

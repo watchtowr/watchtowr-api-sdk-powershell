@@ -67,6 +67,8 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdatedTo] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AssetName] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessUnitIds] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyKey] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyValue] <String><br>
 
 List Ports
 
@@ -87,10 +89,12 @@ $UpdatedFrom = (Get-Date) # System.DateTime | Filter ports updated after a given
 $UpdatedTo = (Get-Date) # System.DateTime | Filter ports updated before a given date and time. (optional)
 $AssetName = "80" # String | Search ports by port number. (optional)
 $BusinessUnitIds = "1,2,3" # String | Filter assets by a list of comma separated business unit IDs that the asset is related to. (optional)
+$CustomPropertyKey = "environment" # String | Filter assets by custom property key. (optional)
+$CustomPropertyValue = "production" # String | Filter assets by custom property value. Must be used together with customPropertyKey. (optional)
 
 # List Ports
 try {
-    $Result = Get-ListAssetPorts -Page $Page -PageSize $PageSize -IncludeClosedPort $IncludeClosedPort -IncludeNoService $IncludeNoService -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -AssetName $AssetName -BusinessUnitIds $BusinessUnitIds
+    $Result = Get-ListAssetPorts -Page $Page -PageSize $PageSize -IncludeClosedPort $IncludeClosedPort -IncludeNoService $IncludeNoService -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -AssetName $AssetName -BusinessUnitIds $BusinessUnitIds -CustomPropertyKey $CustomPropertyKey -CustomPropertyValue $CustomPropertyValue
 } catch {
     Write-Host ("Exception occurred when calling Get-ListAssetPorts: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -111,6 +115,8 @@ Name | Type | Description  | Notes
  **UpdatedTo** | **System.DateTime**| Filter ports updated before a given date and time. | [optional] 
  **AssetName** | **String**| Search ports by port number. | [optional] 
  **BusinessUnitIds** | **String**| Filter assets by a list of comma separated business unit IDs that the asset is related to. | [optional] 
+ **CustomPropertyKey** | **String**| Filter assets by custom property key. | [optional] 
+ **CustomPropertyValue** | **String**| Filter assets by custom property value. Must be used together with customPropertyKey. | [optional] 
 
 ### Return type
 

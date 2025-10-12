@@ -875,6 +875,12 @@ Filter assets updated after a given date and time.
 .PARAMETER UpdatedTo
 Filter assets updated before a given date and time.
 
+.PARAMETER CustomPropertyKey
+Filter assets by custom property key.
+
+.PARAMETER CustomPropertyValue
+Filter assets by custom property value. Must be used together with customPropertyKey.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -919,6 +925,12 @@ function Get-ListAssetDomains {
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[System.DateTime]]
         ${UpdatedTo},
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${CustomPropertyKey},
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${CustomPropertyValue},
         [Switch]
         $WithHttpInfo
     )
@@ -984,6 +996,14 @@ function Get-ListAssetDomains {
 
         if ($UpdatedTo) {
             $LocalVarQueryParameters['updated_to'] = $UpdatedTo
+        }
+
+        if ($CustomPropertyKey) {
+            $LocalVarQueryParameters['customPropertyKey'] = $CustomPropertyKey
+        }
+
+        if ($CustomPropertyValue) {
+            $LocalVarQueryParameters['customPropertyValue'] = $CustomPropertyValue
         }
 
         if ($Configuration["AccessToken"]) {

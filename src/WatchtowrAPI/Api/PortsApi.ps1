@@ -123,6 +123,12 @@ Search ports by port number.
 .PARAMETER BusinessUnitIds
 Filter assets by a list of comma separated business unit IDs that the asset is related to.
 
+.PARAMETER CustomPropertyKey
+Filter assets by custom property key.
+
+.PARAMETER CustomPropertyValue
+Filter assets by custom property value. Must be used together with customPropertyKey.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -164,6 +170,12 @@ function Get-ListAssetPorts {
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${BusinessUnitIds},
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${CustomPropertyKey},
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${CustomPropertyValue},
         [Switch]
         $WithHttpInfo
     )
@@ -225,6 +237,14 @@ function Get-ListAssetPorts {
 
         if ($BusinessUnitIds) {
             $LocalVarQueryParameters['businessUnitIds'] = $BusinessUnitIds
+        }
+
+        if ($CustomPropertyKey) {
+            $LocalVarQueryParameters['customPropertyKey'] = $CustomPropertyKey
+        }
+
+        if ($CustomPropertyValue) {
+            $LocalVarQueryParameters['customPropertyValue'] = $CustomPropertyValue
         }
 
         if ($Configuration["AccessToken"]) {

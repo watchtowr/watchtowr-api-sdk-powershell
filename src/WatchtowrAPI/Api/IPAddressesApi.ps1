@@ -1121,6 +1121,12 @@ Filter assets updated after a given date and time.
 .PARAMETER UpdatedTo
 Filter assets updated before a given date and time.
 
+.PARAMETER CustomPropertyKey
+Filter assets by custom property key.
+
+.PARAMETER CustomPropertyValue
+Filter assets by custom property value. Must be used together with customPropertyKey.
+
 .PARAMETER MatchType
 Match assetName searches based on exact names or partial names with contains. Valid match types are:       * contains       * exact 
 
@@ -1169,6 +1175,12 @@ function Get-ListAssetIps {
         [System.Nullable[System.DateTime]]
         ${UpdatedTo},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${CustomPropertyKey},
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${CustomPropertyValue},
+        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [ValidateSet("contains", "exact")]
         [String]
         ${MatchType},
@@ -1237,6 +1249,14 @@ function Get-ListAssetIps {
 
         if ($UpdatedTo) {
             $LocalVarQueryParameters['updated_to'] = $UpdatedTo
+        }
+
+        if ($CustomPropertyKey) {
+            $LocalVarQueryParameters['customPropertyKey'] = $CustomPropertyKey
+        }
+
+        if ($CustomPropertyValue) {
+            $LocalVarQueryParameters['customPropertyValue'] = $CustomPropertyValue
         }
 
         if ($MatchType) {

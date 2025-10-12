@@ -602,6 +602,8 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreatedTo] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdatedFrom] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdatedTo] <System.Nullable[System.DateTime]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyKey] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyValue] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MatchType] <String><br>
 
 List IP Addresses
@@ -624,11 +626,13 @@ $CreatedFrom = (Get-Date) # System.DateTime | Filter assets created after a give
 $CreatedTo = (Get-Date) # System.DateTime | Filter assets created before a given date and time. (optional)
 $UpdatedFrom = (Get-Date) # System.DateTime | Filter assets updated after a given date and time. (optional)
 $UpdatedTo = (Get-Date) # System.DateTime | Filter assets updated before a given date and time. (optional)
+$CustomPropertyKey = "environment" # String | Filter assets by custom property key. (optional)
+$CustomPropertyValue = "production" # String | Filter assets by custom property value. Must be used together with customPropertyKey. (optional)
 $MatchType = "contains" # String | Match assetName searches based on exact names or partial names with contains. Valid match types are:       * contains       * exact  (optional) (default to "contains")
 
 # List IP Addresses
 try {
-    $Result = Get-ListAssetIps -Page $Page -PageSize $PageSize -AssetName $AssetName -Statuses $Statuses -Source $Source -IntegrationConnections $IntegrationConnections -BusinessUnitIds $BusinessUnitIds -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -MatchType $MatchType
+    $Result = Get-ListAssetIps -Page $Page -PageSize $PageSize -AssetName $AssetName -Statuses $Statuses -Source $Source -IntegrationConnections $IntegrationConnections -BusinessUnitIds $BusinessUnitIds -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -CustomPropertyKey $CustomPropertyKey -CustomPropertyValue $CustomPropertyValue -MatchType $MatchType
 } catch {
     Write-Host ("Exception occurred when calling Get-ListAssetIps: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -650,6 +654,8 @@ Name | Type | Description  | Notes
  **CreatedTo** | **System.DateTime**| Filter assets created before a given date and time. | [optional] 
  **UpdatedFrom** | **System.DateTime**| Filter assets updated after a given date and time. | [optional] 
  **UpdatedTo** | **System.DateTime**| Filter assets updated before a given date and time. | [optional] 
+ **CustomPropertyKey** | **String**| Filter assets by custom property key. | [optional] 
+ **CustomPropertyValue** | **String**| Filter assets by custom property value. Must be used together with customPropertyKey. | [optional] 
  **MatchType** | **String**| Match assetName searches based on exact names or partial names with contains. Valid match types are:       * contains       * exact  | [optional] [default to &quot;contains&quot;]
 
 ### Return type

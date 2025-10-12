@@ -73,7 +73,7 @@ Describe -tag 'WatchtowrAPI' -name 'RepositoriesApi' {
 
     Context 'Get-ListAssetRepositories' {
         It 'Test Get-ListAssetRepositories' {
-            #$TestResult = Get-ListAssetRepositories -Page "TEST_VALUE" -PageSize "TEST_VALUE" -AssetName "TEST_VALUE" -Statuses "TEST_VALUE" -Source "TEST_VALUE" -IntegrationConnections "TEST_VALUE" -BusinessUnitIds "TEST_VALUE" -CreatedFrom "TEST_VALUE" -CreatedTo "TEST_VALUE" -UpdatedFrom "TEST_VALUE" -UpdatedTo "TEST_VALUE"
+            #$TestResult = Get-ListAssetRepositories -Page "TEST_VALUE" -PageSize "TEST_VALUE" -AssetName "TEST_VALUE" -Statuses "TEST_VALUE" -Source "TEST_VALUE" -IntegrationConnections "TEST_VALUE" -BusinessUnitIds "TEST_VALUE" -CreatedFrom "TEST_VALUE" -CreatedTo "TEST_VALUE" -UpdatedFrom "TEST_VALUE" -UpdatedTo "TEST_VALUE" -CustomPropertyKey "TEST_VALUE" -CustomPropertyValue "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
         }

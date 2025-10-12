@@ -73,7 +73,7 @@ Describe -tag 'WatchtowrAPI' -name 'CloudIntegrationAssetsApi' {
 
     Context 'Get-ListAssetCloudAsset' {
         It 'Test Get-ListAssetCloudAsset' {
-            #$TestResult = Get-ListAssetCloudAsset -Page "TEST_VALUE" -PageSize "TEST_VALUE" -AssetName "TEST_VALUE" -Statuses "TEST_VALUE" -Source "TEST_VALUE" -IntegrationConnections "TEST_VALUE" -BusinessUnitIds "TEST_VALUE" -CreatedFrom "TEST_VALUE" -CreatedTo "TEST_VALUE" -UpdatedFrom "TEST_VALUE" -UpdatedTo "TEST_VALUE" -Provider "TEST_VALUE" -SuperType "TEST_VALUE" -SubType "TEST_VALUE"
+            #$TestResult = Get-ListAssetCloudAsset -Page "TEST_VALUE" -PageSize "TEST_VALUE" -AssetName "TEST_VALUE" -Statuses "TEST_VALUE" -Source "TEST_VALUE" -IntegrationConnections "TEST_VALUE" -BusinessUnitIds "TEST_VALUE" -CreatedFrom "TEST_VALUE" -CreatedTo "TEST_VALUE" -UpdatedFrom "TEST_VALUE" -UpdatedTo "TEST_VALUE" -CustomPropertyKey "TEST_VALUE" -CustomPropertyValue "TEST_VALUE" -Provider "TEST_VALUE" -SuperType "TEST_VALUE" -SubType "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
         }
