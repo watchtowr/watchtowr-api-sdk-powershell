@@ -11,12 +11,14 @@ Method | HTTP request | Description
 [**Invoke-DeleteCustomPropertyIp**](IPAddressesApi.md#Invoke-DeleteCustomPropertyIp) | **DELETE** /api/client/assets/ip/show/{id}/custom-property/{customPropertyId} | Delete Custom Property
 [**Get-AssetIpDetails**](IPAddressesApi.md#Get-AssetIpDetails) | **GET** /api/client/assets/ip/show/{id} | Get IP Address Details
 [**Get-AssetIpDnsRecords**](IPAddressesApi.md#Get-AssetIpDnsRecords) | **GET** /api/client/assets/ip/show/{id}/dns-records | List DNS Records
+[**Get-AssetIpEngineSettings**](IPAddressesApi.md#Get-AssetIpEngineSettings) | **GET** /api/client/assets/ip/show/{id}/engine-settings | Get IP Engine Settings
 [**Get-AssetIpNotes**](IPAddressesApi.md#Get-AssetIpNotes) | **GET** /api/client/assets/ip/show/{id}/notes | List Notes
 [**Get-AssetIpPortDetails**](IPAddressesApi.md#Get-AssetIpPortDetails) | **GET** /api/client/assets/ip/show/{ipId}/port/show/{portId} | Get Port
 [**Get-AssetIpPorts**](IPAddressesApi.md#Get-AssetIpPorts) | **GET** /api/client/assets/ip/show/{id}/port/list | List Ports
 [**Get-CustomPropertiesIp**](IPAddressesApi.md#Get-CustomPropertiesIp) | **GET** /api/client/assets/ip/show/{id}/custom-properties | List Custom Properties
 [**Get-ListAssetIps**](IPAddressesApi.md#Get-ListAssetIps) | **GET** /api/client/assets/ip/list | List IP Addresses
 [**Invoke-UnassignIpFromBusinessUnits**](IPAddressesApi.md#Invoke-UnassignIpFromBusinessUnits) | **DELETE** /api/client/assets/ip/show/{id}/business-units | Unassign IP from Business Units
+[**Update-AssetIpEngineSettings**](IPAddressesApi.md#Update-AssetIpEngineSettings) | **PUT** /api/client/assets/ip/show/{id}/engine-settings | Update IP Engine Settings
 [**Update-AssetIpNote**](IPAddressesApi.md#Update-AssetIpNote) | **PUT** /api/client/assets/ip/show/{id}/note/{noteId} | Update Note
 [**Update-AssetIpStatus**](IPAddressesApi.md#Update-AssetIpStatus) | **PUT** /api/client/assets/ip/update-status/{id} | Update Status
 [**Update-CustomPropertyIp**](IPAddressesApi.md#Update-CustomPropertyIp) | **PUT** /api/client/assets/ip/show/{id}/custom-property/{customPropertyId} | Update Custom Property
@@ -365,6 +367,52 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="Get-AssetIpEngineSettings"></a>
+# **Get-AssetIpEngineSettings**
+> ClientEngineSettingsData Get-AssetIpEngineSettings<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+
+Get IP Engine Settings
+
+Get the engine settings for a specific IP asset.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The asset ID of the IP to retrieve engine settings for.
+
+# Get IP Engine Settings
+try {
+    $Result = Get-AssetIpEngineSettings -Id $Id
+} catch {
+    Write-Host ("Exception occurred when calling Get-AssetIpEngineSettings: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The asset ID of the IP to retrieve engine settings for. | 
+
+### Return type
+
+[**ClientEngineSettingsData**](ClientEngineSettingsData.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="Get-AssetIpNotes"></a>
 # **Get-AssetIpNotes**
 > ClientNoteListData Get-AssetIpNotes<br>
@@ -620,7 +668,7 @@ $PageSize = 10 # Decimal | The number of items to be included on each page of pa
 $AssetName = "123.123.123.123" # String | Search IP address by name (full or partial). (optional)
 $Statuses = "MyStatuses" # String[] | Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * tracked       * incorrect identification       * pending       * verifiedOutOfScope       * verifiedReducedAttack       * CDN       * hanging cloud ip       * Third Party       * VerifiedHoneypot  (optional)
 $Source = "DNS Refresh" # String | Filter assets by the source that discovered the asset. (optional)
-$IntegrationConnections = "123:aws,456:azure,789:googlecloud" # String | Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).      Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, armiscentrix, qualysvmdr  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud) (optional)
+$IntegrationConnections = "123:aws,456:azure,789:googlecloud" # String | Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).  Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, armiscentrix, qualysvmdr  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud) (optional)
 $BusinessUnitIds = "1,2,3" # String | Filter assets by a list of comma separated business unit IDs that the asset is related to. (optional)
 $CreatedFrom = (Get-Date) # System.DateTime | Filter assets created after a given date and time. (optional)
 $CreatedTo = (Get-Date) # System.DateTime | Filter assets created before a given date and time. (optional)
@@ -648,7 +696,7 @@ Name | Type | Description  | Notes
  **AssetName** | **String**| Search IP address by name (full or partial). | [optional] 
  **Statuses** | [**String[]**](String.md)| Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * tracked       * incorrect identification       * pending       * verifiedOutOfScope       * verifiedReducedAttack       * CDN       * hanging cloud ip       * Third Party       * VerifiedHoneypot  | [optional] 
  **Source** | **String**| Filter assets by the source that discovered the asset. | [optional] 
- **IntegrationConnections** | **String**| Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).      Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, armiscentrix, qualysvmdr  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud) | [optional] 
+ **IntegrationConnections** | **String**| Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).  Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, armiscentrix, qualysvmdr  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud) | [optional] 
  **BusinessUnitIds** | **String**| Filter assets by a list of comma separated business unit IDs that the asset is related to. | [optional] 
  **CreatedFrom** | **System.DateTime**| Filter assets created after a given date and time. | [optional] 
  **CreatedTo** | **System.DateTime**| Filter assets created before a given date and time. | [optional] 
@@ -718,6 +766,55 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Update-AssetIpEngineSettings"></a>
+# **Update-AssetIpEngineSettings**
+> ClientEngineSettingsData Update-AssetIpEngineSettings<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateClientEngineSettingsDto] <PSCustomObject><br>
+
+Update IP Engine Settings
+
+Update the engine settings for a specific IP asset.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The asset ID of the IP to update engine settings for.
+$UpdateClientEngineSettingsDto = Initialize-UpdateClientEngineSettingsDto -AdversarySightEnabled $true -DnsBruteforcingEnabled $false -AutomatedRedTeamingEnabled $true -CredentialStuffingEnabled $true -RapidReactionEnabled $true # UpdateClientEngineSettingsDto | 
+
+# Update IP Engine Settings
+try {
+    $Result = Update-AssetIpEngineSettings -Id $Id -UpdateClientEngineSettingsDto $UpdateClientEngineSettingsDto
+} catch {
+    Write-Host ("Exception occurred when calling Update-AssetIpEngineSettings: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The asset ID of the IP to update engine settings for. | 
+ **UpdateClientEngineSettingsDto** | [**UpdateClientEngineSettingsDto**](UpdateClientEngineSettingsDto.md)|  | 
+
+### Return type
+
+[**ClientEngineSettingsData**](ClientEngineSettingsData.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -11,10 +11,12 @@ Method | HTTP request | Description
 [**Invoke-DeleteNoteSubdomain**](SubdomainsApi.md#Invoke-DeleteNoteSubdomain) | **DELETE** /api/client/assets/subdomain/show/{id}/note/{noteId} | Delete Subdomain Note
 [**Get-AssetSubdomainDetails**](SubdomainsApi.md#Get-AssetSubdomainDetails) | **GET** /api/client/assets/subdomain/show/{id} | Get Subdomain Details
 [**Get-AssetSubdomainDnsRecords**](SubdomainsApi.md#Get-AssetSubdomainDnsRecords) | **GET** /api/client/assets/subdomain/show/{id}/dns-records | List Subdomain DNS Records
+[**Get-AssetSubdomainEngineSettings**](SubdomainsApi.md#Get-AssetSubdomainEngineSettings) | **GET** /api/client/assets/subdomain/show/{id}/engine-settings | Get Subdomain Engine Settings
 [**Get-CustomPropertiesSubdomain**](SubdomainsApi.md#Get-CustomPropertiesSubdomain) | **GET** /api/client/assets/subdomain/show/{id}/custom-properties | List Subdomain Custom Properties
 [**Get-ListAssetSubdomains**](SubdomainsApi.md#Get-ListAssetSubdomains) | **GET** /api/client/assets/subdomain/list | List Subdomains
 [**Get-NotesSubdomain**](SubdomainsApi.md#Get-NotesSubdomain) | **GET** /api/client/assets/subdomain/show/{id}/notes | List Subdomain Notes
 [**Invoke-UnassignSubomainFromBusinessUnits**](SubdomainsApi.md#Invoke-UnassignSubomainFromBusinessUnits) | **DELETE** /api/client/assets/subdomain/show/{id}/business-units | Unassign Subdomain from Business Units
+[**Update-AssetSubdomainEngineSettings**](SubdomainsApi.md#Update-AssetSubdomainEngineSettings) | **PUT** /api/client/assets/subdomain/show/{id}/engine-settings | Update Subdomain Engine Settings
 [**Update-AssetSubdomainStatus**](SubdomainsApi.md#Update-AssetSubdomainStatus) | **PUT** /api/client/assets/subdomain/update-status/{id} | Update Subdomain Status
 [**Update-CustomPropertySubdomain**](SubdomainsApi.md#Update-CustomPropertySubdomain) | **PUT** /api/client/assets/subdomain/show/{id}/custom-property/{customPropertyId} | Update Subdomain Custom Property
 [**Update-NoteSubdomain**](SubdomainsApi.md#Update-NoteSubdomain) | **PUT** /api/client/assets/subdomain/show/{id}/note/{noteId} | Update Subdomain Note
@@ -363,6 +365,52 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="Get-AssetSubdomainEngineSettings"></a>
+# **Get-AssetSubdomainEngineSettings**
+> ClientEngineSettingsData Get-AssetSubdomainEngineSettings<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+
+Get Subdomain Engine Settings
+
+Get the engine settings for a specific subdomain asset.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The asset ID of the subdomain to retrieve engine settings for.
+
+# Get Subdomain Engine Settings
+try {
+    $Result = Get-AssetSubdomainEngineSettings -Id $Id
+} catch {
+    Write-Host ("Exception occurred when calling Get-AssetSubdomainEngineSettings: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The asset ID of the subdomain to retrieve engine settings for. | 
+
+### Return type
+
+[**ClientEngineSettingsData**](ClientEngineSettingsData.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="Get-CustomPropertiesSubdomain"></a>
 # **Get-CustomPropertiesSubdomain**
 > PaginatedClientCustomProperty Get-CustomPropertiesSubdomain<br>
@@ -446,7 +494,7 @@ $PageSize = 10 # Decimal | The number of items to be included on each page of pa
 $AssetName = "blog.watchtowr.com" # String | Search subdomain assets by name. (optional)
 $Statuses = "MyStatuses" # String[] | Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * incorrect identification       * pending       * verifiedOutOfScope       * verifiedReducedAttack       * parked  (optional)
 $Source = "module-adversarysight-tls-ssl-certificate-transparency-discovery" # String | Filter assets by the source that discovered the asset. (optional)
-$IntegrationConnections = "123:aws,456:azure,789:googlecloud" # String | Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).      Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, armiscentrix, qualysvmdr  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud) (optional)
+$IntegrationConnections = "123:aws,456:azure,789:googlecloud" # String | Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).  Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, armiscentrix, qualysvmdr  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud) (optional)
 $BusinessUnitIds = "1,2,3" # String | Filter assets by a list of comma separated business unit IDs that the asset is related to. (optional)
 $CreatedFrom = (Get-Date) # System.DateTime | Filter assets created after a given date and time. (optional)
 $CreatedTo = (Get-Date) # System.DateTime | Filter assets created before a given date and time. (optional)
@@ -473,7 +521,7 @@ Name | Type | Description  | Notes
  **AssetName** | **String**| Search subdomain assets by name. | [optional] 
  **Statuses** | [**String[]**](String.md)| Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * incorrect identification       * pending       * verifiedOutOfScope       * verifiedReducedAttack       * parked  | [optional] 
  **Source** | **String**| Filter assets by the source that discovered the asset. | [optional] 
- **IntegrationConnections** | **String**| Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).      Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, armiscentrix, qualysvmdr  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud) | [optional] 
+ **IntegrationConnections** | **String**| Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).  Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, armiscentrix, qualysvmdr  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud) | [optional] 
  **BusinessUnitIds** | **String**| Filter assets by a list of comma separated business unit IDs that the asset is related to. | [optional] 
  **CreatedFrom** | **System.DateTime**| Filter assets created after a given date and time. | [optional] 
  **CreatedTo** | **System.DateTime**| Filter assets created before a given date and time. | [optional] 
@@ -600,6 +648,55 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Update-AssetSubdomainEngineSettings"></a>
+# **Update-AssetSubdomainEngineSettings**
+> ClientEngineSettingsData Update-AssetSubdomainEngineSettings<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateClientEngineSettingsDto] <PSCustomObject><br>
+
+Update Subdomain Engine Settings
+
+Update the engine settings for a specific subdomain asset.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The asset ID of the subdomain to update engine settings for.
+$UpdateClientEngineSettingsDto = Initialize-UpdateClientEngineSettingsDto -AdversarySightEnabled $true -DnsBruteforcingEnabled $false -AutomatedRedTeamingEnabled $true -CredentialStuffingEnabled $true -RapidReactionEnabled $true # UpdateClientEngineSettingsDto | 
+
+# Update Subdomain Engine Settings
+try {
+    $Result = Update-AssetSubdomainEngineSettings -Id $Id -UpdateClientEngineSettingsDto $UpdateClientEngineSettingsDto
+} catch {
+    Write-Host ("Exception occurred when calling Update-AssetSubdomainEngineSettings: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The asset ID of the subdomain to update engine settings for. | 
+ **UpdateClientEngineSettingsDto** | [**UpdateClientEngineSettingsDto**](UpdateClientEngineSettingsDto.md)|  | 
+
+### Return type
+
+[**ClientEngineSettingsData**](ClientEngineSettingsData.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

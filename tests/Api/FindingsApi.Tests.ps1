@@ -89,7 +89,7 @@ Describe -tag 'WatchtowrAPI' -name 'FindingsApi' {
 
     Context 'Start-SpecificFindingRetest' {
         It 'Test Start-SpecificFindingRetest' {
-            #$TestResult = Start-SpecificFindingRetest -FindingId "TEST_VALUE"
+            #$TestResult = Start-SpecificFindingRetest -FindingId "TEST_VALUE" -IncludeDnsConnected "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
         }

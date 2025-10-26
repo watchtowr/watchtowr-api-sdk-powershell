@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ClientSubdomain' {
     Context 'ClientSubdomain' {
         It 'Initialize-ClientSubdomain' {
             # a simple test to create an object
-            #$NewObject = Initialize-ClientSubdomain -Type "TEST_VALUE" -Source "TEST_VALUE" -Status "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE" -DeletedAt "TEST_VALUE" -Id "TEST_VALUE" -Name "TEST_VALUE" -BusinessUnits "TEST_VALUE" -Live "TEST_VALUE" -DnsRecords "TEST_VALUE" -Metadata "TEST_VALUE" -CustomProperties "TEST_VALUE" -Criticality "TEST_VALUE" -Infrastructure "TEST_VALUE"
+            #$NewObject = Initialize-ClientSubdomain -Type "TEST_VALUE" -Source "TEST_VALUE" -Status "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE" -DeletedAt "TEST_VALUE" -Id "TEST_VALUE" -Name "TEST_VALUE" -BusinessUnits "TEST_VALUE" -Live "TEST_VALUE" -DnsRecords "TEST_VALUE" -Metadata "TEST_VALUE" -CustomProperties "TEST_VALUE" -Criticality "TEST_VALUE" -Infrastructure "TEST_VALUE" -EngineSettings "TEST_VALUE"
             #$NewObject | Should -BeOfType ClientSubdomain
             #$NewObject.property | Should -Be 0
         }

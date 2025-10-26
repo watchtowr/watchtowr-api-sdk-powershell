@@ -17,8 +17,6 @@ No description available.
 
 .PARAMETER Message
 Error message
-.PARAMETER StatusCode
-HTTP status code
 .OUTPUTS
 
 ForbiddenResponse<PSCustomObject>
@@ -29,10 +27,7 @@ function Initialize-ForbiddenResponse {
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Message},
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
-        ${StatusCode}
+        ${Message}
     )
 
     Process {
@@ -43,14 +38,9 @@ function Initialize-ForbiddenResponse {
             throw "invalid value for 'Message', 'Message' cannot be null."
         }
 
-        if ($null -eq $StatusCode) {
-            throw "invalid value for 'StatusCode', 'StatusCode' cannot be null."
-        }
-
 
         $PSO = [PSCustomObject]@{
             "message" = ${Message}
-            "statusCode" = ${StatusCode}
         }
 
 
@@ -88,7 +78,7 @@ function ConvertFrom-JsonToForbiddenResponse {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ForbiddenResponse
-        $AllProperties = ("message", "statusCode")
+        $AllProperties = ("message")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -105,15 +95,8 @@ function ConvertFrom-JsonToForbiddenResponse {
             $Message = $JsonParameters.PSobject.Properties["message"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "statusCode"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'statusCode' missing."
-        } else {
-            $StatusCode = $JsonParameters.PSobject.Properties["statusCode"].value
-        }
-
         $PSO = [PSCustomObject]@{
             "message" = ${Message}
-            "statusCode" = ${StatusCode}
         }
 
         return $PSO

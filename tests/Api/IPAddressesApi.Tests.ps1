@@ -63,6 +63,14 @@ Describe -tag 'WatchtowrAPI' -name 'IPAddressesApi' {
         }
     }
 
+    Context 'Get-AssetIpEngineSettings' {
+        It 'Test Get-AssetIpEngineSettings' {
+            #$TestResult = Get-AssetIpEngineSettings -Id "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
     Context 'Get-AssetIpNotes' {
         It 'Test Get-AssetIpNotes' {
             #$TestResult = Get-AssetIpNotes -Id "TEST_VALUE" -Page "TEST_VALUE" -PageSize "TEST_VALUE"
@@ -106,6 +114,14 @@ Describe -tag 'WatchtowrAPI' -name 'IPAddressesApi' {
     Context 'Invoke-UnassignIpFromBusinessUnits' {
         It 'Test Invoke-UnassignIpFromBusinessUnits' {
             #$TestResult = Invoke-UnassignIpFromBusinessUnits -Id "TEST_VALUE" -BusinessUnitIds "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
+    Context 'Update-AssetIpEngineSettings' {
+        It 'Test Update-AssetIpEngineSettings' {
+            #$TestResult = Update-AssetIpEngineSettings -Id "TEST_VALUE" -UpdateClientEngineSettingsDto "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
         }

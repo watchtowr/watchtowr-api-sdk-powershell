@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **CustomProperties** | [**ClientCustomProperty[]**](ClientCustomProperty.md) |  | 
 **Criticality** | **String** |  | 
 **Infrastructure** | [**Infrastructure**](Infrastructure.md) |  | [optional] 
+**EngineSettings** | [**ClientEngineSettings**](ClientEngineSettings.md) |  | 
 
 ## Examples
 
@@ -37,7 +38,8 @@ $ClientDomain = Initialize-WatchtowrAPIClientDomain  -Type domain `
  -Metadata {&quot;region&quot;:&quot;us-west-1&quot;,&quot;service&quot;:&quot;AWS&quot;} `
  -CustomProperties [{&quot;id&quot;:10,&quot;key&quot;:&quot;Severity&quot;,&quot;value&quot;:&quot;normal&quot;,&quot;isPreset&quot;:false,&quot;modelType&quot;:&quot;domain&quot;,&quot;modelId&quot;:209,&quot;createdAt&quot;:&quot;2024-09-24T02:37:27.000Z&quot;,&quot;updatedAt&quot;:&quot;2024-09-24T02:38:35.000Z&quot;},{&quot;id&quot;:10,&quot;key&quot;:&quot;Vulnerability&quot;,&quot;value&quot;:&quot;low risk&quot;,&quot;isPreset&quot;:false,&quot;modelType&quot;:&quot;domain&quot;,&quot;modelId&quot;:209,&quot;createdAt&quot;:&quot;2024-09-24T02:37:27.000Z&quot;,&quot;updatedAt&quot;:&quot;2024-09-24T02:38:35.000Z&quot;}] `
  -Criticality Medium `
- -Infrastructure null
+ -Infrastructure null `
+ -EngineSettings null
 ```
 
 - Convert the resource to JSON

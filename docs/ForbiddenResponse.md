@@ -4,14 +4,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Message** | **String** | Error message | 
-**StatusCode** | **Decimal** | HTTP status code | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$ForbiddenResponse = Initialize-WatchtowrAPIForbiddenResponse  -Message Administrator role required to access user management `
- -StatusCode 403
+$ForbiddenResponse = Initialize-WatchtowrAPIForbiddenResponse  -Message Only admin users can access platform whitelisting configuration
 ```
 
 - Convert the resource to JSON

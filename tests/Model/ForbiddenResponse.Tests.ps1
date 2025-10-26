@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ForbiddenResponse' {
     Context 'ForbiddenResponse' {
         It 'Initialize-ForbiddenResponse' {
             # a simple test to create an object
-            #$NewObject = Initialize-ForbiddenResponse -Message "TEST_VALUE" -StatusCode "TEST_VALUE"
+            #$NewObject = Initialize-ForbiddenResponse -Message "TEST_VALUE"
             #$NewObject | Should -BeOfType ForbiddenResponse
             #$NewObject.property | Should -Be 0
         }

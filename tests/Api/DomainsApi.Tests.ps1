@@ -63,6 +63,14 @@ Describe -tag 'WatchtowrAPI' -name 'DomainsApi' {
         }
     }
 
+    Context 'Get-AssetDomainEngineSettings' {
+        It 'Test Get-AssetDomainEngineSettings' {
+            #$TestResult = Get-AssetDomainEngineSettings -Id "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
     Context 'Get-AssetDomainNotes' {
         It 'Test Get-AssetDomainNotes' {
             #$TestResult = Get-AssetDomainNotes -Id "TEST_VALUE" -Page "TEST_VALUE" -PageSize "TEST_VALUE"
@@ -90,6 +98,14 @@ Describe -tag 'WatchtowrAPI' -name 'DomainsApi' {
     Context 'Invoke-UnassignDomainFromBusinessUnits' {
         It 'Test Invoke-UnassignDomainFromBusinessUnits' {
             #$TestResult = Invoke-UnassignDomainFromBusinessUnits -Id "TEST_VALUE" -BusinessUnitIds "TEST_VALUE" -CascadeSubdomain "TEST_VALUE" -CascadeIp "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
+    Context 'Update-AssetDomainEngineSettings' {
+        It 'Test Update-AssetDomainEngineSettings' {
+            #$TestResult = Update-AssetDomainEngineSettings -Id "TEST_VALUE" -UpdateClientEngineSettingsDto "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
         }

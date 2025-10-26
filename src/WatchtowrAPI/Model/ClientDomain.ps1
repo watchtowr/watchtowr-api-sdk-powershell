@@ -45,6 +45,8 @@ No description available.
 No description available.
 .PARAMETER Infrastructure
 No description available.
+.PARAMETER EngineSettings
+No description available.
 .OUTPUTS
 
 ClientDomain<PSCustomObject>
@@ -98,7 +100,10 @@ function Initialize-ClientDomain {
         ${Criticality},
         [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
-        ${Infrastructure}
+        ${Infrastructure},
+        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject]
+        ${EngineSettings}
     )
 
     Process {
@@ -161,6 +166,10 @@ function Initialize-ClientDomain {
             throw "invalid value for 'Criticality', 'Criticality' cannot be null."
         }
 
+        if ($null -eq $EngineSettings) {
+            throw "invalid value for 'EngineSettings', 'EngineSettings' cannot be null."
+        }
+
 
         $PSO = [PSCustomObject]@{
             "type" = ${Type}
@@ -178,6 +187,7 @@ function Initialize-ClientDomain {
             "customProperties" = ${CustomProperties}
             "criticality" = ${Criticality}
             "infrastructure" = ${Infrastructure}
+            "engineSettings" = ${EngineSettings}
         }
 
 
@@ -215,7 +225,7 @@ function ConvertFrom-JsonToClientDomain {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientDomain
-        $AllProperties = ("type", "source", "status", "created_at", "updated_at", "deleted_at", "id", "name", "businessUnits", "live", "dns_records", "metadata", "customProperties", "criticality", "infrastructure")
+        $AllProperties = ("type", "source", "status", "created_at", "updated_at", "deleted_at", "id", "name", "businessUnits", "live", "dns_records", "metadata", "customProperties", "criticality", "infrastructure", "engineSettings")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -310,6 +320,12 @@ function ConvertFrom-JsonToClientDomain {
             $Criticality = $JsonParameters.PSobject.Properties["criticality"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "engineSettings"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'engineSettings' missing."
+        } else {
+            $EngineSettings = $JsonParameters.PSobject.Properties["engineSettings"].value
+        }
+
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "infrastructure"))) { #optional property not found
             $Infrastructure = $null
         } else {
@@ -332,6 +348,7 @@ function ConvertFrom-JsonToClientDomain {
             "customProperties" = ${CustomProperties}
             "criticality" = ${Criticality}
             "infrastructure" = ${Infrastructure}
+            "engineSettings" = ${EngineSettings}
         }
 
         return $PSO

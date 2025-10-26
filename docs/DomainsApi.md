@@ -11,10 +11,12 @@ Method | HTTP request | Description
 [**Invoke-DeleteCustomPropertyDomain**](DomainsApi.md#Invoke-DeleteCustomPropertyDomain) | **DELETE** /api/client/assets/domain/show/{id}/custom-property/{customPropertyId} | Delete Custom Property
 [**Get-AssetDomainDetails**](DomainsApi.md#Get-AssetDomainDetails) | **GET** /api/client/assets/domain/show/{id} | Get Domain Details
 [**Get-AssetDomainDnsRecords**](DomainsApi.md#Get-AssetDomainDnsRecords) | **GET** /api/client/assets/domain/show/{id}/dns-records | List DNS Records
+[**Get-AssetDomainEngineSettings**](DomainsApi.md#Get-AssetDomainEngineSettings) | **GET** /api/client/assets/domain/show/{id}/engine-settings | Get Domain Engine Settings
 [**Get-AssetDomainNotes**](DomainsApi.md#Get-AssetDomainNotes) | **GET** /api/client/assets/domain/show/{id}/notes | List Notes
 [**Get-CustomPropertiesDomain**](DomainsApi.md#Get-CustomPropertiesDomain) | **GET** /api/client/assets/domain/show/{id}/custom-properties | List Custom Properties
 [**Get-ListAssetDomains**](DomainsApi.md#Get-ListAssetDomains) | **GET** /api/client/assets/domain/list | List Domains
 [**Invoke-UnassignDomainFromBusinessUnits**](DomainsApi.md#Invoke-UnassignDomainFromBusinessUnits) | **DELETE** /api/client/assets/domain/show/{id}/business-units | Unassign Domain from Business Units
+[**Update-AssetDomainEngineSettings**](DomainsApi.md#Update-AssetDomainEngineSettings) | **PUT** /api/client/assets/domain/show/{id}/engine-settings | Update Domain Engine Settings
 [**Update-AssetDomainNote**](DomainsApi.md#Update-AssetDomainNote) | **PUT** /api/client/assets/domain/show/{id}/note/{noteId} | Update Note
 [**Update-AssetDomainStatus**](DomainsApi.md#Update-AssetDomainStatus) | **PUT** /api/client/assets/domain/update-status/{id} | Update Status
 [**Update-CustomPropertyDomain**](DomainsApi.md#Update-CustomPropertyDomain) | **PUT** /api/client/assets/domain/show/{id}/custom-property/{customPropertyId} | Update Custom Property
@@ -363,6 +365,52 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="Get-AssetDomainEngineSettings"></a>
+# **Get-AssetDomainEngineSettings**
+> ClientEngineSettingsData Get-AssetDomainEngineSettings<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+
+Get Domain Engine Settings
+
+Get the engine settings for a specific domain asset.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The asset ID of the domain to retrieve engine settings for.
+
+# Get Domain Engine Settings
+try {
+    $Result = Get-AssetDomainEngineSettings -Id $Id
+} catch {
+    Write-Host ("Exception occurred when calling Get-AssetDomainEngineSettings: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The asset ID of the domain to retrieve engine settings for. | 
+
+### Return type
+
+[**ClientEngineSettingsData**](ClientEngineSettingsData.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="Get-AssetDomainNotes"></a>
 # **Get-AssetDomainNotes**
 > ClientNoteListData Get-AssetDomainNotes<br>
@@ -498,7 +546,7 @@ $PageSize = 10 # Decimal | The number of items to be included on each page of pa
 $AssetName = "watchtowr.com" # String | Search domain assets by name. (optional)
 $Statuses = "MyStatuses" # String[] | Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * incorrect identification       * pending       * verifiedOutOfScope       * verifiedReducedAttack       * parked  (optional)
 $Source = "watchtowr-cloud-integration-aws-hosts" # String | Filter assets by the source that discovered the asset. (optional)
-$IntegrationConnections = "123:aws,456:azure,789:googlecloud" # String | Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).      Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, armiscentrix, qualysvmdr  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud) (optional)
+$IntegrationConnections = "123:aws,456:azure,789:googlecloud" # String | Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).  Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, armiscentrix, qualysvmdr  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud) (optional)
 $BusinessUnitIds = "1,2,3" # String | Filter assets by a list of comma separated business unit IDs that the asset is related to. (optional)
 $CreatedFrom = (Get-Date) # System.DateTime | Filter assets created after a given date and time. (optional)
 $CreatedTo = (Get-Date) # System.DateTime | Filter assets created before a given date and time. (optional)
@@ -525,7 +573,7 @@ Name | Type | Description  | Notes
  **AssetName** | **String**| Search domain assets by name. | [optional] 
  **Statuses** | [**String[]**](String.md)| Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * incorrect identification       * pending       * verifiedOutOfScope       * verifiedReducedAttack       * parked  | [optional] 
  **Source** | **String**| Filter assets by the source that discovered the asset. | [optional] 
- **IntegrationConnections** | **String**| Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).      Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, armiscentrix, qualysvmdr  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud) | [optional] 
+ **IntegrationConnections** | **String**| Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).  Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, armiscentrix, qualysvmdr  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud) | [optional] 
  **BusinessUnitIds** | **String**| Filter assets by a list of comma separated business unit IDs that the asset is related to. | [optional] 
  **CreatedFrom** | **System.DateTime**| Filter assets created after a given date and time. | [optional] 
  **CreatedTo** | **System.DateTime**| Filter assets created before a given date and time. | [optional] 
@@ -600,6 +648,55 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Update-AssetDomainEngineSettings"></a>
+# **Update-AssetDomainEngineSettings**
+> ClientEngineSettingsData Update-AssetDomainEngineSettings<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateClientEngineSettingsDto] <PSCustomObject><br>
+
+Update Domain Engine Settings
+
+Update the engine settings for a specific domain asset.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The asset ID of the domain to update engine settings for.
+$UpdateClientEngineSettingsDto = Initialize-UpdateClientEngineSettingsDto -AdversarySightEnabled $true -DnsBruteforcingEnabled $false -AutomatedRedTeamingEnabled $true -CredentialStuffingEnabled $true -RapidReactionEnabled $true # UpdateClientEngineSettingsDto | 
+
+# Update Domain Engine Settings
+try {
+    $Result = Update-AssetDomainEngineSettings -Id $Id -UpdateClientEngineSettingsDto $UpdateClientEngineSettingsDto
+} catch {
+    Write-Host ("Exception occurred when calling Update-AssetDomainEngineSettings: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The asset ID of the domain to update engine settings for. | 
+ **UpdateClientEngineSettingsDto** | [**UpdateClientEngineSettingsDto**](UpdateClientEngineSettingsDto.md)|  | 
+
+### Return type
+
+[**ClientEngineSettingsData**](ClientEngineSettingsData.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

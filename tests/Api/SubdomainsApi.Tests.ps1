@@ -63,6 +63,14 @@ Describe -tag 'WatchtowrAPI' -name 'SubdomainsApi' {
         }
     }
 
+    Context 'Get-AssetSubdomainEngineSettings' {
+        It 'Test Get-AssetSubdomainEngineSettings' {
+            #$TestResult = Get-AssetSubdomainEngineSettings -Id "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
     Context 'Get-CustomPropertiesSubdomain' {
         It 'Test Get-CustomPropertiesSubdomain' {
             #$TestResult = Get-CustomPropertiesSubdomain -Id "TEST_VALUE" -Page "TEST_VALUE" -PageSize "TEST_VALUE"
@@ -90,6 +98,14 @@ Describe -tag 'WatchtowrAPI' -name 'SubdomainsApi' {
     Context 'Invoke-UnassignSubomainFromBusinessUnits' {
         It 'Test Invoke-UnassignSubomainFromBusinessUnits' {
             #$TestResult = Invoke-UnassignSubomainFromBusinessUnits -Id "TEST_VALUE" -BusinessUnitIds "TEST_VALUE" -CascadeSubdomain "TEST_VALUE" -CascadeIp "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
+    Context 'Update-AssetSubdomainEngineSettings' {
+        It 'Test Update-AssetSubdomainEngineSettings' {
+            #$TestResult = Update-AssetSubdomainEngineSettings -Id "TEST_VALUE" -UpdateClientEngineSettingsDto "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
         }

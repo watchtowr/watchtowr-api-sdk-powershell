@@ -1049,6 +1049,9 @@ No description available.
 .PARAMETER FindingId
 The ID of the finding to retest.
 
+.PARAMETER IncludeDnsConnected
+Include DNS-connected findings with the same vulnerability type in the retest. When enabled, the system will identify all findings with the same KB entry on assets connected via DNS A records (up to 10 findings total) and retest them together.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -1063,6 +1066,9 @@ function Start-SpecificFindingRetest {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [Decimal]
         ${FindingId},
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [System.Nullable[Boolean]]
+        ${IncludeDnsConnected},
         [Switch]
         $WithHttpInfo
     )
@@ -1089,6 +1095,10 @@ function Start-SpecificFindingRetest {
             throw "Error! The required parameter `FindingId` missing when calling startSpecificFindingRetest."
         }
         $LocalVarUri = $LocalVarUri.replace('{finding_id}', [System.Web.HTTPUtility]::UrlEncode($FindingId))
+
+        if ($IncludeDnsConnected) {
+            $LocalVarQueryParameters['includeDnsConnected'] = $IncludeDnsConnected
+        }
 
         if ($Configuration["AccessToken"]) {
             $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]

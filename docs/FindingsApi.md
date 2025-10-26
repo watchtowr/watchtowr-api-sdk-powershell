@@ -554,6 +554,7 @@ Name | Type | Description  | Notes
 # **Start-SpecificFindingRetest**
 > ClientFinding Start-SpecificFindingRetest<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-FindingId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IncludeDnsConnected] <System.Nullable[Boolean]><br>
 
 Retest Finding
 
@@ -565,10 +566,11 @@ Initiate a retest for a specific finding.
 $Configuration = Get-Configuration
 
 $FindingId = 8.14 # Decimal | The ID of the finding to retest.
+$IncludeDnsConnected = $true # Boolean | Include DNS-connected findings with the same vulnerability type in the retest. When enabled, the system will identify all findings with the same KB entry on assets connected via DNS A records (up to 10 findings total) and retest them together. (optional)
 
 # Retest Finding
 try {
-    $Result = Start-SpecificFindingRetest -FindingId $FindingId
+    $Result = Start-SpecificFindingRetest -FindingId $FindingId -IncludeDnsConnected $IncludeDnsConnected
 } catch {
     Write-Host ("Exception occurred when calling Start-SpecificFindingRetest: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -580,6 +582,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **FindingId** | **Decimal**| The ID of the finding to retest. | 
+ **IncludeDnsConnected** | **Boolean**| Include DNS-connected findings with the same vulnerability type in the retest. When enabled, the system will identify all findings with the same KB entry on assets connected via DNS A records (up to 10 findings total) and retest them together. | [optional] 
 
 ### Return type
 
