@@ -9,13 +9,13 @@
 <#
 .SYNOPSIS
 
-Get Business Unit Details
+Create Business Unit
 
 .DESCRIPTION
 
 No description available.
 
-.PARAMETER Id
+.PARAMETER CreateClientBusinessUnitDto
 No description available.
 
 .PARAMETER WithHttpInfo
@@ -26,12 +26,200 @@ A switch when turned on will return a hash table of Response, StatusCode and Hea
 
 ClientBusinessUnitData
 #>
+function New-BusinessUnit {
+    [CmdletBinding()]
+    Param (
+        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [PSCustomObject]
+        ${CreateClientBusinessUnitDto},
+        [Switch]
+        $WithHttpInfo
+    )
+
+    Process {
+        'Calling method: New-BusinessUnit' | Write-Debug
+        $PSBoundParameters | Out-DebugParameter | Write-Debug
+
+        $LocalVarAccepts = @()
+        $LocalVarContentTypes = @()
+        $LocalVarQueryParameters = @{}
+        $LocalVarHeaderParameters = @{}
+        $LocalVarFormParameters = @{}
+        $LocalVarPathParameters = @{}
+        $LocalVarCookieParameters = @{}
+        $LocalVarBodyParameter = $null
+
+        $Configuration = Get-Configuration
+        # HTTP header 'Accept' (if needed)
+        $LocalVarAccepts = @('application/json')
+
+        # HTTP header 'Content-Type'
+        $LocalVarContentTypes = @('application/json')
+
+        $LocalVarUri = '/api/client/business-unit'
+
+        if (!$CreateClientBusinessUnitDto) {
+            throw "Error! The required parameter `CreateClientBusinessUnitDto` missing when calling createBusinessUnit."
+        }
+
+        $LocalVarBodyParameter = $CreateClientBusinessUnitDto | ConvertTo-Json -Depth 100
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
+        $LocalVarResult = Invoke-ApiClient -Method 'POST' `
+                                -Uri $LocalVarUri `
+                                -Accepts $LocalVarAccepts `
+                                -ContentTypes $LocalVarContentTypes `
+                                -Body $LocalVarBodyParameter `
+                                -HeaderParameters $LocalVarHeaderParameters `
+                                -QueryParameters $LocalVarQueryParameters `
+                                -FormParameters $LocalVarFormParameters `
+                                -CookieParameters $LocalVarCookieParameters `
+                                -ReturnType "ClientBusinessUnitData" `
+                                -IsBodyNullable $false
+
+        if ($WithHttpInfo.IsPresent) {
+            return $LocalVarResult
+        } else {
+            return $LocalVarResult["Response"]
+        }
+    }
+}
+
+<#
+.SYNOPSIS
+
+Create Business Unit Rule
+
+.DESCRIPTION
+
+No description available.
+
+.PARAMETER Id
+The ID of the business unit to create a rule for.
+
+.PARAMETER CreateClientBusinessUnitRuleDto
+No description available.
+
+.PARAMETER WithHttpInfo
+
+A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
+
+.OUTPUTS
+
+ClientBusinessUnitRuleData
+#>
+function New-BusinessUnitRule {
+    [CmdletBinding()]
+    Param (
+        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [Decimal]
+        ${Id},
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [PSCustomObject]
+        ${CreateClientBusinessUnitRuleDto},
+        [Switch]
+        $WithHttpInfo
+    )
+
+    Process {
+        'Calling method: New-BusinessUnitRule' | Write-Debug
+        $PSBoundParameters | Out-DebugParameter | Write-Debug
+
+        $LocalVarAccepts = @()
+        $LocalVarContentTypes = @()
+        $LocalVarQueryParameters = @{}
+        $LocalVarHeaderParameters = @{}
+        $LocalVarFormParameters = @{}
+        $LocalVarPathParameters = @{}
+        $LocalVarCookieParameters = @{}
+        $LocalVarBodyParameter = $null
+
+        $Configuration = Get-Configuration
+        # HTTP header 'Accept' (if needed)
+        $LocalVarAccepts = @('application/json')
+
+        # HTTP header 'Content-Type'
+        $LocalVarContentTypes = @('application/json')
+
+        $LocalVarUri = '/api/client/business-unit/show/{id}/rule'
+        if (!$Id) {
+            throw "Error! The required parameter `Id` missing when calling createBusinessUnitRule."
+        }
+        $LocalVarUri = $LocalVarUri.replace('{id}', [System.Web.HTTPUtility]::UrlEncode($Id))
+
+        if (!$CreateClientBusinessUnitRuleDto) {
+            throw "Error! The required parameter `CreateClientBusinessUnitRuleDto` missing when calling createBusinessUnitRule."
+        }
+
+        $LocalVarBodyParameter = $CreateClientBusinessUnitRuleDto | ConvertTo-Json -Depth 100
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
+        $LocalVarResult = Invoke-ApiClient -Method 'POST' `
+                                -Uri $LocalVarUri `
+                                -Accepts $LocalVarAccepts `
+                                -ContentTypes $LocalVarContentTypes `
+                                -Body $LocalVarBodyParameter `
+                                -HeaderParameters $LocalVarHeaderParameters `
+                                -QueryParameters $LocalVarQueryParameters `
+                                -FormParameters $LocalVarFormParameters `
+                                -CookieParameters $LocalVarCookieParameters `
+                                -ReturnType "ClientBusinessUnitRuleData" `
+                                -IsBodyNullable $false
+
+        if ($WithHttpInfo.IsPresent) {
+            return $LocalVarResult
+        } else {
+            return $LocalVarResult["Response"]
+        }
+    }
+}
+
+<#
+.SYNOPSIS
+
+Get Business Unit Details
+
+.DESCRIPTION
+
+No description available.
+
+.PARAMETER Id
+No description available.
+
+.PARAMETER RulePage
+Page number for rules pagination
+
+.PARAMETER RulePageSize
+Page size for rules pagination
+
+.PARAMETER WithHttpInfo
+
+A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
+
+.OUTPUTS
+
+ClientBusinessUnitDetailWithRulesData
+#>
 function Get-BusinessUnitDetails {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [Decimal]
         ${Id},
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [System.Nullable[Decimal]]
+        ${RulePage},
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [System.Nullable[Decimal]]
+        ${RulePageSize},
         [Switch]
         $WithHttpInfo
     )
@@ -59,6 +247,14 @@ function Get-BusinessUnitDetails {
         }
         $LocalVarUri = $LocalVarUri.replace('{id}', [System.Web.HTTPUtility]::UrlEncode($Id))
 
+        if ($RulePage) {
+            $LocalVarQueryParameters['rule_page'] = $RulePage
+        }
+
+        if ($RulePageSize) {
+            $LocalVarQueryParameters['rule_pageSize'] = $RulePageSize
+        }
+
         if ($Configuration["AccessToken"]) {
             $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
             Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
@@ -73,7 +269,7 @@ function Get-BusinessUnitDetails {
                                 -QueryParameters $LocalVarQueryParameters `
                                 -FormParameters $LocalVarFormParameters `
                                 -CookieParameters $LocalVarCookieParameters `
-                                -ReturnType "ClientBusinessUnitData" `
+                                -ReturnType "ClientBusinessUnitDetailWithRulesData" `
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {

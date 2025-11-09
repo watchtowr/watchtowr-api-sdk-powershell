@@ -1,32 +1,28 @@
-# ClientBusinessUnitDetail
+# CreateClientBusinessUnitDto
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | ID | 
-**Name** | **String** | Name | 
-**Description** | **String** | Description | 
+**Name** | **String** | Business unit name | 
+**Description** | **String** | Business unit description | [optional] 
 **Type** | **String** | Business unit type | 
 **ParentId** | **Decimal** | Parent business unit ID | [optional] 
-**CreatedAt** | [**SystemCollectionsHashtable**](.md) | Created At | 
-**UpdatedAt** | [**SystemCollectionsHashtable**](.md) | Updated At | 
+**UserIds** | **Decimal[]** | Array of user IDs to assign to this business unit | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$ClientBusinessUnitDetail = Initialize-WatchtowrAPIClientBusinessUnitDetail  -Id 1 `
- -Name Singapore Business Unit `
+$CreateClientBusinessUnitDto = Initialize-WatchtowrAPICreateClientBusinessUnitDto  -Name Singapore Business Unit `
  -Description Singapore based assets `
  -Type DEPARTMENT `
  -ParentId 1 `
- -CreatedAt 2022-02-13T02:10:00.000000Z `
- -UpdatedAt 2022-02-13T02:10:00.000000Z
+ -UserIds [1,2,3]
 ```
 
 - Convert the resource to JSON
 ```powershell
-$ClientBusinessUnitDetail | ConvertTo-JSON
+$CreateClientBusinessUnitDto | ConvertTo-JSON
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

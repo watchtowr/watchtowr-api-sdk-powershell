@@ -7,9 +7,25 @@
 #
 
 Describe -tag 'WatchtowrAPI' -name 'BusinessUnitApi' {
+    Context 'New-BusinessUnit' {
+        It 'Test New-BusinessUnit' {
+            #$TestResult = New-BusinessUnit -CreateClientBusinessUnitDto "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
+    Context 'New-BusinessUnitRule' {
+        It 'Test New-BusinessUnitRule' {
+            #$TestResult = New-BusinessUnitRule -Id "TEST_VALUE" -CreateClientBusinessUnitRuleDto "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
     Context 'Get-BusinessUnitDetails' {
         It 'Test Get-BusinessUnitDetails' {
-            #$TestResult = Get-BusinessUnitDetails -Id "TEST_VALUE"
+            #$TestResult = Get-BusinessUnitDetails -Id "TEST_VALUE" -RulePage "TEST_VALUE" -RulePageSize "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
         }

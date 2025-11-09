@@ -23,6 +23,10 @@ docs/ClientAssetDnsRecord.md
 docs/ClientBusinessUnit.md
 docs/ClientBusinessUnitData.md
 docs/ClientBusinessUnitDetail.md
+docs/ClientBusinessUnitDetailWithRules.md
+docs/ClientBusinessUnitDetailWithRulesData.md
+docs/ClientBusinessUnitRuleData.md
+docs/ClientBusinessUnitRuleDetail.md
 docs/ClientCloudAsset.md
 docs/ClientCloudAssetData.md
 docs/ClientCloudStorage.md
@@ -84,6 +88,8 @@ docs/ClientUserDetail.md
 docs/CloudIntegrationAssetsApi.md
 docs/CloudStorageApi.md
 docs/ContainersApi.md
+docs/CreateClientBusinessUnitDto.md
+docs/CreateClientBusinessUnitRuleDto.md
 docs/CreateClientCustomPropertyDto.md
 docs/CreateClientNoteDto.md
 docs/CreateClientSeedDataRequestBody.md
@@ -249,6 +255,10 @@ src/WatchtowrAPI/Model/ClientAssetDnsRecord.ps1
 src/WatchtowrAPI/Model/ClientBusinessUnit.ps1
 src/WatchtowrAPI/Model/ClientBusinessUnitData.ps1
 src/WatchtowrAPI/Model/ClientBusinessUnitDetail.ps1
+src/WatchtowrAPI/Model/ClientBusinessUnitDetailWithRules.ps1
+src/WatchtowrAPI/Model/ClientBusinessUnitDetailWithRulesData.ps1
+src/WatchtowrAPI/Model/ClientBusinessUnitRuleData.ps1
+src/WatchtowrAPI/Model/ClientBusinessUnitRuleDetail.ps1
 src/WatchtowrAPI/Model/ClientCloudAsset.ps1
 src/WatchtowrAPI/Model/ClientCloudAssetData.ps1
 src/WatchtowrAPI/Model/ClientCloudStorage.ps1
@@ -307,6 +317,8 @@ src/WatchtowrAPI/Model/ClientSubdomainData.ps1
 src/WatchtowrAPI/Model/ClientSuspiciousDomainData.ps1
 src/WatchtowrAPI/Model/ClientUser.ps1
 src/WatchtowrAPI/Model/ClientUserDetail.ps1
+src/WatchtowrAPI/Model/CreateClientBusinessUnitDto.ps1
+src/WatchtowrAPI/Model/CreateClientBusinessUnitRuleDto.ps1
 src/WatchtowrAPI/Model/CreateClientCustomPropertyDto.ps1
 src/WatchtowrAPI/Model/CreateClientNoteDto.ps1
 src/WatchtowrAPI/Model/CreateClientSeedDataRequestBody.ps1
@@ -456,6 +468,10 @@ tests/Model/ClientAssetDnsRecord.Tests.ps1
 tests/Model/ClientBusinessUnit.Tests.ps1
 tests/Model/ClientBusinessUnitData.Tests.ps1
 tests/Model/ClientBusinessUnitDetail.Tests.ps1
+tests/Model/ClientBusinessUnitDetailWithRules.Tests.ps1
+tests/Model/ClientBusinessUnitDetailWithRulesData.Tests.ps1
+tests/Model/ClientBusinessUnitRuleData.Tests.ps1
+tests/Model/ClientBusinessUnitRuleDetail.Tests.ps1
 tests/Model/ClientCloudAsset.Tests.ps1
 tests/Model/ClientCloudAssetData.Tests.ps1
 tests/Model/ClientCloudStorage.Tests.ps1
@@ -514,6 +530,8 @@ tests/Model/ClientSubdomainData.Tests.ps1
 tests/Model/ClientSuspiciousDomainData.Tests.ps1
 tests/Model/ClientUser.Tests.ps1
 tests/Model/ClientUserDetail.Tests.ps1
+tests/Model/CreateClientBusinessUnitDto.Tests.ps1
+tests/Model/CreateClientBusinessUnitRuleDto.Tests.ps1
 tests/Model/CreateClientCustomPropertyDto.Tests.ps1
 tests/Model/CreateClientNoteDto.Tests.ps1
 tests/Model/CreateClientSeedDataRequestBody.Tests.ps1

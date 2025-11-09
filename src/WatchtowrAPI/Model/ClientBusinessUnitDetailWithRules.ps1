@@ -29,12 +29,14 @@ Parent business unit ID
 Created At
 .PARAMETER UpdatedAt
 Updated At
+.PARAMETER Rules
+Paginated rules for this business unit
 .OUTPUTS
 
-ClientBusinessUnitDetail<PSCustomObject>
+ClientBusinessUnitDetailWithRules<PSCustomObject>
 #>
 
-function Initialize-ClientBusinessUnitDetail {
+function Initialize-ClientBusinessUnitDetailWithRules {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
@@ -57,11 +59,14 @@ function Initialize-ClientBusinessUnitDetail {
         ${CreatedAt},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
-        ${UpdatedAt}
+        ${UpdatedAt},
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject]
+        ${Rules}
     )
 
     Process {
-        'Creating PSCustomObject: WatchtowrAPI => ClientBusinessUnitDetail' | Write-Debug
+        'Creating PSCustomObject: WatchtowrAPI => ClientBusinessUnitDetailWithRules' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         if ($null -eq $Id) {
@@ -88,6 +93,10 @@ function Initialize-ClientBusinessUnitDetail {
             throw "invalid value for 'UpdatedAt', 'UpdatedAt' cannot be null."
         }
 
+        if ($null -eq $Rules) {
+            throw "invalid value for 'Rules', 'Rules' cannot be null."
+        }
+
 
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
@@ -97,6 +106,7 @@ function Initialize-ClientBusinessUnitDetail {
             "parent_id" = ${ParentId}
             "created_at" = ${CreatedAt}
             "updated_at" = ${UpdatedAt}
+            "rules" = ${Rules}
         }
 
 
@@ -107,11 +117,11 @@ function Initialize-ClientBusinessUnitDetail {
 <#
 .SYNOPSIS
 
-Convert from JSON to ClientBusinessUnitDetail<PSCustomObject>
+Convert from JSON to ClientBusinessUnitDetailWithRules<PSCustomObject>
 
 .DESCRIPTION
 
-Convert from JSON to ClientBusinessUnitDetail<PSCustomObject>
+Convert from JSON to ClientBusinessUnitDetailWithRules<PSCustomObject>
 
 .PARAMETER Json
 
@@ -119,22 +129,22 @@ Json object
 
 .OUTPUTS
 
-ClientBusinessUnitDetail<PSCustomObject>
+ClientBusinessUnitDetailWithRules<PSCustomObject>
 #>
-function ConvertFrom-JsonToClientBusinessUnitDetail {
+function ConvertFrom-JsonToClientBusinessUnitDetailWithRules {
     Param(
         [AllowEmptyString()]
         [string]$Json
     )
 
     Process {
-        'Converting JSON to PSCustomObject: WatchtowrAPI => ClientBusinessUnitDetail' | Write-Debug
+        'Converting JSON to PSCustomObject: WatchtowrAPI => ClientBusinessUnitDetailWithRules' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
-        # check if Json contains properties not defined in ClientBusinessUnitDetail
-        $AllProperties = ("id", "name", "description", "type", "parent_id", "created_at", "updated_at")
+        # check if Json contains properties not defined in ClientBusinessUnitDetailWithRules
+        $AllProperties = ("id", "name", "description", "type", "parent_id", "created_at", "updated_at", "rules")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -181,6 +191,12 @@ function ConvertFrom-JsonToClientBusinessUnitDetail {
             $UpdatedAt = $JsonParameters.PSobject.Properties["updated_at"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "rules"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'rules' missing."
+        } else {
+            $Rules = $JsonParameters.PSobject.Properties["rules"].value
+        }
+
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "parent_id"))) { #optional property not found
             $ParentId = $null
         } else {
@@ -195,6 +211,7 @@ function ConvertFrom-JsonToClientBusinessUnitDetail {
             "parent_id" = ${ParentId}
             "created_at" = ${CreatedAt}
             "updated_at" = ${UpdatedAt}
+            "rules" = ${Rules}
         }
 
         return $PSO

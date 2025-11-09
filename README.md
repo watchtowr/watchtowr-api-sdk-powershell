@@ -77,6 +77,8 @@ Class | Method | HTTP request | Description
 *APIDocumentationApi* | [**Update-CustomPropertyApiDocumentation**](docs/APIDocumentationApi.md#Update-CustomPropertyApiDocumentation) | **PUT** /api/client/assets/apiDocumentation/show/{id}/custom-property/{customPropertyId} | Update Custom Property
 *ActivityLogApi* | [**Get-ListActivityLogs**](docs/ActivityLogApi.md#Get-ListActivityLogs) | **GET** /api/client/activity-log/list | List Activity Logs
 *AddAssetApi* | [**Submit-Asset**](docs/AddAssetApi.md#Submit-Asset) | **POST** /api/client/seeddata | Submit Seed Data
+*BusinessUnitApi* | [**New-BusinessUnit**](docs/BusinessUnitApi.md#New-BusinessUnit) | **POST** /api/client/business-unit | Create Business Unit
+*BusinessUnitApi* | [**New-BusinessUnitRule**](docs/BusinessUnitApi.md#New-BusinessUnitRule) | **POST** /api/client/business-unit/show/{id}/rule | Create Business Unit Rule
 *BusinessUnitApi* | [**Get-BusinessUnitDetails**](docs/BusinessUnitApi.md#Get-BusinessUnitDetails) | **GET** /api/client/business-unit/show/{id} | Get Business Unit Details
 *BusinessUnitApi* | [**Get-ListBusinessUnit**](docs/BusinessUnitApi.md#Get-ListBusinessUnit) | **GET** /api/client/business-unit/list | List Business Units
 *CertificatesApi* | [**Get-CertificateDetails**](docs/CertificatesApi.md#Get-CertificateDetails) | **GET** /api/client/certificates/show/{id} | Get Certificate Details
@@ -300,6 +302,10 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.ClientBusinessUnit](docs/ClientBusinessUnit.md)
  - [WatchtowrAPI\Model.ClientBusinessUnitData](docs/ClientBusinessUnitData.md)
  - [WatchtowrAPI\Model.ClientBusinessUnitDetail](docs/ClientBusinessUnitDetail.md)
+ - [WatchtowrAPI\Model.ClientBusinessUnitDetailWithRules](docs/ClientBusinessUnitDetailWithRules.md)
+ - [WatchtowrAPI\Model.ClientBusinessUnitDetailWithRulesData](docs/ClientBusinessUnitDetailWithRulesData.md)
+ - [WatchtowrAPI\Model.ClientBusinessUnitRuleData](docs/ClientBusinessUnitRuleData.md)
+ - [WatchtowrAPI\Model.ClientBusinessUnitRuleDetail](docs/ClientBusinessUnitRuleDetail.md)
  - [WatchtowrAPI\Model.ClientCloudAsset](docs/ClientCloudAsset.md)
  - [WatchtowrAPI\Model.ClientCloudAssetData](docs/ClientCloudAssetData.md)
  - [WatchtowrAPI\Model.ClientCloudStorage](docs/ClientCloudStorage.md)
@@ -358,6 +364,8 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.ClientSuspiciousDomainData](docs/ClientSuspiciousDomainData.md)
  - [WatchtowrAPI\Model.ClientUser](docs/ClientUser.md)
  - [WatchtowrAPI\Model.ClientUserDetail](docs/ClientUserDetail.md)
+ - [WatchtowrAPI\Model.CreateClientBusinessUnitDto](docs/CreateClientBusinessUnitDto.md)
+ - [WatchtowrAPI\Model.CreateClientBusinessUnitRuleDto](docs/CreateClientBusinessUnitRuleDto.md)
  - [WatchtowrAPI\Model.CreateClientCustomPropertyDto](docs/CreateClientCustomPropertyDto.md)
  - [WatchtowrAPI\Model.CreateClientNoteDto](docs/CreateClientNoteDto.md)
  - [WatchtowrAPI\Model.CreateClientSeedDataRequestBody](docs/CreateClientSeedDataRequestBody.md)
