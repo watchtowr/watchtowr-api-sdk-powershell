@@ -25,6 +25,8 @@ Description
 Business unit type
 .PARAMETER ParentId
 Parent business unit ID
+.PARAMETER UserIds
+Array of user IDs assigned to this business unit
 .PARAMETER CreatedAt
 Created At
 .PARAMETER UpdatedAt
@@ -55,12 +57,15 @@ function Initialize-ClientBusinessUnitDetailWithRules {
         [System.Nullable[Decimal]]
         ${ParentId},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${CreatedAt},
+        [Decimal[]]
+        ${UserIds},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
-        ${UpdatedAt},
+        ${CreatedAt},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject]
+        ${UpdatedAt},
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${Rules}
     )
@@ -104,6 +109,7 @@ function Initialize-ClientBusinessUnitDetailWithRules {
             "description" = ${Description}
             "type" = ${Type}
             "parent_id" = ${ParentId}
+            "user_ids" = ${UserIds}
             "created_at" = ${CreatedAt}
             "updated_at" = ${UpdatedAt}
             "rules" = ${Rules}
@@ -144,7 +150,7 @@ function ConvertFrom-JsonToClientBusinessUnitDetailWithRules {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientBusinessUnitDetailWithRules
-        $AllProperties = ("id", "name", "description", "type", "parent_id", "created_at", "updated_at", "rules")
+        $AllProperties = ("id", "name", "description", "type", "parent_id", "user_ids", "created_at", "updated_at", "rules")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -203,12 +209,19 @@ function ConvertFrom-JsonToClientBusinessUnitDetailWithRules {
             $ParentId = $JsonParameters.PSobject.Properties["parent_id"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "user_ids"))) { #optional property not found
+            $UserIds = $null
+        } else {
+            $UserIds = $JsonParameters.PSobject.Properties["user_ids"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
             "name" = ${Name}
             "description" = ${Description}
             "type" = ${Type}
             "parent_id" = ${ParentId}
+            "user_ids" = ${UserIds}
             "created_at" = ${CreatedAt}
             "updated_at" = ${UpdatedAt}
             "rules" = ${Rules}

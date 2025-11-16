@@ -1,22 +1,20 @@
-# UpdateClientFindingStatusRequestBody
+# DeleteClientBusinessUnitResponseDto
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | **String** | Finding status. | 
-**StatusReason** | **String** | Reason for the status change. | [optional] 
+**Success** | **Boolean** |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$UpdateClientFindingStatusRequestBody = Initialize-WatchtowrAPIUpdateClientFindingStatusRequestBody  -Status confirmed `
- -StatusReason Reason for change
+$DeleteClientBusinessUnitResponseDto = Initialize-WatchtowrAPIDeleteClientBusinessUnitResponseDto  -Success true
 ```
 
 - Convert the resource to JSON
 ```powershell
-$UpdateClientFindingStatusRequestBody | ConvertTo-JSON
+$DeleteClientBusinessUnitResponseDto | ConvertTo-JSON
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

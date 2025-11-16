@@ -17,6 +17,8 @@ No description available.
 
 .PARAMETER Status
 Finding status.
+.PARAMETER StatusReason
+Reason for the status change.
 .OUTPUTS
 
 UpdateClientFindingStatusRequestBody<PSCustomObject>
@@ -27,7 +29,10 @@ function Initialize-UpdateClientFindingStatusRequestBody {
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Status}
+        ${Status},
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${StatusReason}
     )
 
     Process {
@@ -41,6 +46,7 @@ function Initialize-UpdateClientFindingStatusRequestBody {
 
         $PSO = [PSCustomObject]@{
             "status" = ${Status}
+            "statusReason" = ${StatusReason}
         }
 
 
@@ -78,7 +84,7 @@ function ConvertFrom-JsonToUpdateClientFindingStatusRequestBody {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in UpdateClientFindingStatusRequestBody
-        $AllProperties = ("status")
+        $AllProperties = ("status", "statusReason")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -95,8 +101,15 @@ function ConvertFrom-JsonToUpdateClientFindingStatusRequestBody {
             $Status = $JsonParameters.PSobject.Properties["status"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "statusReason"))) { #optional property not found
+            $StatusReason = $null
+        } else {
+            $StatusReason = $JsonParameters.PSobject.Properties["statusReason"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "status" = ${Status}
+            "statusReason" = ${StatusReason}
         }
 
         return $PSO

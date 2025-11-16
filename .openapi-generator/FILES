@@ -95,6 +95,8 @@ docs/CreateClientNoteDto.md
 docs/CreateClientSeedDataRequestBody.md
 docs/CreateOrganisationWhitelistIpDto.md
 docs/DNSRecordAnalysisApi.md
+docs/DeleteClientBusinessUnitResponseDto.md
+docs/DeleteClientBusinessUnitRuleResponseDto.md
 docs/DeleteNoteSucces.md
 docs/DeleteWhitelistIpData.md
 docs/DomainsApi.md
@@ -186,6 +188,7 @@ docs/Unauthorized.md
 docs/UnauthorizedResponse.md
 docs/UnprocessableContent.md
 docs/UpdateApiDocumentationStatusDto.md
+docs/UpdateClientBusinessUnitDto.md
 docs/UpdateClientCloudAssetStatusDto.md
 docs/UpdateClientCustomPropertyDto.md
 docs/UpdateClientEngineSettingsDto.md
@@ -323,6 +326,8 @@ src/WatchtowrAPI/Model/CreateClientCustomPropertyDto.ps1
 src/WatchtowrAPI/Model/CreateClientNoteDto.ps1
 src/WatchtowrAPI/Model/CreateClientSeedDataRequestBody.ps1
 src/WatchtowrAPI/Model/CreateOrganisationWhitelistIpDto.ps1
+src/WatchtowrAPI/Model/DeleteClientBusinessUnitResponseDto.ps1
+src/WatchtowrAPI/Model/DeleteClientBusinessUnitRuleResponseDto.ps1
 src/WatchtowrAPI/Model/DeleteNoteSucces.ps1
 src/WatchtowrAPI/Model/DeleteWhitelistIpData.ps1
 src/WatchtowrAPI/Model/FilterByBusinessUnitInput.ps1
@@ -394,6 +399,7 @@ src/WatchtowrAPI/Model/Unauthorized.ps1
 src/WatchtowrAPI/Model/UnauthorizedResponse.ps1
 src/WatchtowrAPI/Model/UnprocessableContent.ps1
 src/WatchtowrAPI/Model/UpdateApiDocumentationStatusDto.ps1
+src/WatchtowrAPI/Model/UpdateClientBusinessUnitDto.ps1
 src/WatchtowrAPI/Model/UpdateClientCloudAssetStatusDto.ps1
 src/WatchtowrAPI/Model/UpdateClientCustomPropertyDto.ps1
 src/WatchtowrAPI/Model/UpdateClientEngineSettingsDto.ps1
@@ -536,6 +542,8 @@ tests/Model/CreateClientCustomPropertyDto.Tests.ps1
 tests/Model/CreateClientNoteDto.Tests.ps1
 tests/Model/CreateClientSeedDataRequestBody.Tests.ps1
 tests/Model/CreateOrganisationWhitelistIpDto.Tests.ps1
+tests/Model/DeleteClientBusinessUnitResponseDto.Tests.ps1
+tests/Model/DeleteClientBusinessUnitRuleResponseDto.Tests.ps1
 tests/Model/DeleteNoteSucces.Tests.ps1
 tests/Model/DeleteWhitelistIpData.Tests.ps1
 tests/Model/FilterByBusinessUnitInput.Tests.ps1
@@ -607,6 +615,7 @@ tests/Model/Unauthorized.Tests.ps1
 tests/Model/UnauthorizedResponse.Tests.ps1
 tests/Model/UnprocessableContent.Tests.ps1
 tests/Model/UpdateApiDocumentationStatusDto.Tests.ps1
+tests/Model/UpdateClientBusinessUnitDto.Tests.ps1
 tests/Model/UpdateClientCloudAssetStatusDto.Tests.ps1
 tests/Model/UpdateClientCustomPropertyDto.Tests.ps1
 tests/Model/UpdateClientEngineSettingsDto.Tests.ps1

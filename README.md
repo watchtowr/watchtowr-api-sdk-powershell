@@ -79,8 +79,11 @@ Class | Method | HTTP request | Description
 *AddAssetApi* | [**Submit-Asset**](docs/AddAssetApi.md#Submit-Asset) | **POST** /api/client/seeddata | Submit Seed Data
 *BusinessUnitApi* | [**New-BusinessUnit**](docs/BusinessUnitApi.md#New-BusinessUnit) | **POST** /api/client/business-unit | Create Business Unit
 *BusinessUnitApi* | [**New-BusinessUnitRule**](docs/BusinessUnitApi.md#New-BusinessUnitRule) | **POST** /api/client/business-unit/show/{id}/rule | Create Business Unit Rule
+*BusinessUnitApi* | [**Invoke-DeleteBusinessUnit**](docs/BusinessUnitApi.md#Invoke-DeleteBusinessUnit) | **DELETE** /api/client/business-unit/show/{id} | Delete Business Unit
+*BusinessUnitApi* | [**Invoke-DeleteBusinessUnitRule**](docs/BusinessUnitApi.md#Invoke-DeleteBusinessUnitRule) | **DELETE** /api/client/business-unit/show/{id}/rule/{ruleId} | Delete Business Unit Rule
 *BusinessUnitApi* | [**Get-BusinessUnitDetails**](docs/BusinessUnitApi.md#Get-BusinessUnitDetails) | **GET** /api/client/business-unit/show/{id} | Get Business Unit Details
 *BusinessUnitApi* | [**Get-ListBusinessUnit**](docs/BusinessUnitApi.md#Get-ListBusinessUnit) | **GET** /api/client/business-unit/list | List Business Units
+*BusinessUnitApi* | [**Update-BusinessUnit**](docs/BusinessUnitApi.md#Update-BusinessUnit) | **PUT** /api/client/business-unit/show/{id} | Update Business Unit
 *CertificatesApi* | [**Get-CertificateDetails**](docs/CertificatesApi.md#Get-CertificateDetails) | **GET** /api/client/certificates/show/{id} | Get Certificate Details
 *CertificatesApi* | [**Get-ListCertificates**](docs/CertificatesApi.md#Get-ListCertificates) | **GET** /api/client/certificates/list | List Certificates
 *CloudIntegrationAssetsApi* | [**Add-AssetCloudAssetNote**](docs/CloudIntegrationAssetsApi.md#Add-AssetCloudAssetNote) | **POST** /api/client/assets/cloudAsset/show/{id}/note | Create Note
@@ -370,6 +373,8 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.CreateClientNoteDto](docs/CreateClientNoteDto.md)
  - [WatchtowrAPI\Model.CreateClientSeedDataRequestBody](docs/CreateClientSeedDataRequestBody.md)
  - [WatchtowrAPI\Model.CreateOrganisationWhitelistIpDto](docs/CreateOrganisationWhitelistIpDto.md)
+ - [WatchtowrAPI\Model.DeleteClientBusinessUnitResponseDto](docs/DeleteClientBusinessUnitResponseDto.md)
+ - [WatchtowrAPI\Model.DeleteClientBusinessUnitRuleResponseDto](docs/DeleteClientBusinessUnitRuleResponseDto.md)
  - [WatchtowrAPI\Model.DeleteNoteSucces](docs/DeleteNoteSucces.md)
  - [WatchtowrAPI\Model.DeleteWhitelistIpData](docs/DeleteWhitelistIpData.md)
  - [WatchtowrAPI\Model.FilterByBusinessUnitInput](docs/FilterByBusinessUnitInput.md)
@@ -441,6 +446,7 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.UnauthorizedResponse](docs/UnauthorizedResponse.md)
  - [WatchtowrAPI\Model.UnprocessableContent](docs/UnprocessableContent.md)
  - [WatchtowrAPI\Model.UpdateApiDocumentationStatusDto](docs/UpdateApiDocumentationStatusDto.md)
+ - [WatchtowrAPI\Model.UpdateClientBusinessUnitDto](docs/UpdateClientBusinessUnitDto.md)
  - [WatchtowrAPI\Model.UpdateClientCloudAssetStatusDto](docs/UpdateClientCloudAssetStatusDto.md)
  - [WatchtowrAPI\Model.UpdateClientCustomPropertyDto](docs/UpdateClientCustomPropertyDto.md)
  - [WatchtowrAPI\Model.UpdateClientEngineSettingsDto](docs/UpdateClientEngineSettingsDto.md)

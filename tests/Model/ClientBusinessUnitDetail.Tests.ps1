@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ClientBusinessUnitDetail' {
     Context 'ClientBusinessUnitDetail' {
         It 'Initialize-ClientBusinessUnitDetail' {
             # a simple test to create an object
-            #$NewObject = Initialize-ClientBusinessUnitDetail -Id "TEST_VALUE" -Name "TEST_VALUE" -Description "TEST_VALUE" -Type "TEST_VALUE" -ParentId "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE"
+            #$NewObject = Initialize-ClientBusinessUnitDetail -Id "TEST_VALUE" -Name "TEST_VALUE" -Description "TEST_VALUE" -Type "TEST_VALUE" -ParentId "TEST_VALUE" -UserIds "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE"
             #$NewObject | Should -BeOfType ClientBusinessUnitDetail
             #$NewObject.property | Should -Be 0
         }

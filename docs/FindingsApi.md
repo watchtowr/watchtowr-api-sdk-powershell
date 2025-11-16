@@ -719,7 +719,7 @@ Update the status of a specific finding.
 $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The ID of the finding to update.
-$UpdateClientFindingStatusRequestBody = Initialize-UpdateClientFindingStatusRequestBody -Status "confirmed" # UpdateClientFindingStatusRequestBody | 
+$UpdateClientFindingStatusRequestBody = Initialize-UpdateClientFindingStatusRequestBody -Status "confirmed" -StatusReason "Reason for change" # UpdateClientFindingStatusRequestBody | 
 
 # Update Finding Status
 try {

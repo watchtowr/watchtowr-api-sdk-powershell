@@ -6,8 +6,11 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**New-BusinessUnit**](BusinessUnitApi.md#New-BusinessUnit) | **POST** /api/client/business-unit | Create Business Unit
 [**New-BusinessUnitRule**](BusinessUnitApi.md#New-BusinessUnitRule) | **POST** /api/client/business-unit/show/{id}/rule | Create Business Unit Rule
+[**Invoke-DeleteBusinessUnit**](BusinessUnitApi.md#Invoke-DeleteBusinessUnit) | **DELETE** /api/client/business-unit/show/{id} | Delete Business Unit
+[**Invoke-DeleteBusinessUnitRule**](BusinessUnitApi.md#Invoke-DeleteBusinessUnitRule) | **DELETE** /api/client/business-unit/show/{id}/rule/{ruleId} | Delete Business Unit Rule
 [**Get-BusinessUnitDetails**](BusinessUnitApi.md#Get-BusinessUnitDetails) | **GET** /api/client/business-unit/show/{id} | Get Business Unit Details
 [**Get-ListBusinessUnit**](BusinessUnitApi.md#Get-ListBusinessUnit) | **GET** /api/client/business-unit/list | List Business Units
+[**Update-BusinessUnit**](BusinessUnitApi.md#Update-BusinessUnit) | **PUT** /api/client/business-unit/show/{id} | Update Business Unit
 
 
 <a id="New-BusinessUnit"></a>
@@ -101,6 +104,101 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Invoke-DeleteBusinessUnit"></a>
+# **Invoke-DeleteBusinessUnit**
+> DeleteClientBusinessUnitResponseDto Invoke-DeleteBusinessUnit<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+
+Delete Business Unit
+
+Delete an existing business unit.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The ID of the business unit to delete.
+
+# Delete Business Unit
+try {
+    $Result = Invoke-DeleteBusinessUnit -Id $Id
+} catch {
+    Write-Host ("Exception occurred when calling Invoke-DeleteBusinessUnit: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The ID of the business unit to delete. | 
+
+### Return type
+
+[**DeleteClientBusinessUnitResponseDto**](DeleteClientBusinessUnitResponseDto.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Invoke-DeleteBusinessUnitRule"></a>
+# **Invoke-DeleteBusinessUnitRule**
+> DeleteClientBusinessUnitRuleResponseDto Invoke-DeleteBusinessUnitRule<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-RuleId] <Decimal><br>
+
+Delete Business Unit Rule
+
+Delete an existing rule for a specific business unit.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The ID of the business unit.
+$RuleId = 8.14 # Decimal | The ID of the rule to delete.
+
+# Delete Business Unit Rule
+try {
+    $Result = Invoke-DeleteBusinessUnitRule -Id $Id -RuleId $RuleId
+} catch {
+    Write-Host ("Exception occurred when calling Invoke-DeleteBusinessUnitRule: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The ID of the business unit. | 
+ **RuleId** | **Decimal**| The ID of the rule to delete. | 
+
+### Return type
+
+[**DeleteClientBusinessUnitRuleResponseDto**](DeleteClientBusinessUnitRuleResponseDto.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -217,6 +315,55 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Update-BusinessUnit"></a>
+# **Update-BusinessUnit**
+> ClientBusinessUnitData Update-BusinessUnit<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateClientBusinessUnitDto] <PSCustomObject><br>
+
+Update Business Unit
+
+Update an existing business unit with name, description, type, parent, and user assignments.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The ID of the business unit to update.
+$UpdateClientBusinessUnitDto = Initialize-UpdateClientBusinessUnitDto -Name "Updated Business Unit Name" -Description "Updated description" -Type "BRAND" -ParentId 1 -UserIds 0 # UpdateClientBusinessUnitDto | 
+
+# Update Business Unit
+try {
+    $Result = Update-BusinessUnit -Id $Id -UpdateClientBusinessUnitDto $UpdateClientBusinessUnitDto
+} catch {
+    Write-Host ("Exception occurred when calling Update-BusinessUnit: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The ID of the business unit to update. | 
+ **UpdateClientBusinessUnitDto** | [**UpdateClientBusinessUnitDto**](UpdateClientBusinessUnitDto.md)|  | 
+
+### Return type
+
+[**ClientBusinessUnitData**](ClientBusinessUnitData.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

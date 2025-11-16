@@ -23,6 +23,22 @@ Describe -tag 'WatchtowrAPI' -name 'BusinessUnitApi' {
         }
     }
 
+    Context 'Invoke-DeleteBusinessUnit' {
+        It 'Test Invoke-DeleteBusinessUnit' {
+            #$TestResult = Invoke-DeleteBusinessUnit -Id "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
+    Context 'Invoke-DeleteBusinessUnitRule' {
+        It 'Test Invoke-DeleteBusinessUnitRule' {
+            #$TestResult = Invoke-DeleteBusinessUnitRule -Id "TEST_VALUE" -RuleId "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
     Context 'Get-BusinessUnitDetails' {
         It 'Test Get-BusinessUnitDetails' {
             #$TestResult = Get-BusinessUnitDetails -Id "TEST_VALUE" -RulePage "TEST_VALUE" -RulePageSize "TEST_VALUE"
@@ -34,6 +50,14 @@ Describe -tag 'WatchtowrAPI' -name 'BusinessUnitApi' {
     Context 'Get-ListBusinessUnit' {
         It 'Test Get-ListBusinessUnit' {
             #$TestResult = Get-ListBusinessUnit -Page "TEST_VALUE" -PageSize "TEST_VALUE" -CreatedFrom "TEST_VALUE" -CreatedTo "TEST_VALUE" -UpdatedFrom "TEST_VALUE" -UpdatedTo "TEST_VALUE" -Search "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
+    Context 'Update-BusinessUnit' {
+        It 'Test Update-BusinessUnit' {
+            #$TestResult = Update-BusinessUnit -Id "TEST_VALUE" -UpdateClientBusinessUnitDto "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
         }
