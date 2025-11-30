@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Decimal** | User ID | 
 **Name** | **String** | User name | 
-**Email** | **String** | User email (masked) | 
+**Email** | **String** | User email | 
 **Title** | **String** | User title | 
 **MobilePhoneNumber** | **String** | Mobile phone number (masked) | 
 **OfficePhoneNumber** | **String** | Office phone number (masked) | 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ```powershell
 $ClientUser = Initialize-WatchtowrAPIClientUser  -Id 1 `
  -Name John Doe `
- -Email jo*************@example.com `
+ -Email john.doe@example.com `
  -Title Security Manager `
  -MobilePhoneNumber +65XXXXXX89 `
  -OfficePhoneNumber +65XXXXXX12 `

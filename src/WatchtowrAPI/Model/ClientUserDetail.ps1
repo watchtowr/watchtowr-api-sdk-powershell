@@ -20,7 +20,7 @@ User ID
 .PARAMETER Name
 User name
 .PARAMETER Email
-User email (masked)
+User email
 .PARAMETER Title
 User title
 .PARAMETER MobilePhoneNumber
