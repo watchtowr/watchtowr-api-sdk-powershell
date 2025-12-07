@@ -57,6 +57,9 @@ Filter points of interest by a comma separated list of asset statuses.
 .PARAMETER BusinessUnitIds
 Filter points of interest by a comma separated list of business unit IDs.
 
+.PARAMETER SuppressionFilter
+Filter points of interest by suppression status.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -111,6 +114,10 @@ function Get-ListPointsOfInterest {
         [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${BusinessUnitIds},
+        [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [ValidateSet("non-suppressed", "suppressed", "all")]
+        [String]
+        ${SuppressionFilter},
         [Switch]
         $WithHttpInfo
     )
@@ -188,6 +195,10 @@ function Get-ListPointsOfInterest {
 
         if ($BusinessUnitIds) {
             $LocalVarQueryParameters['businessUnitIds'] = $BusinessUnitIds
+        }
+
+        if ($SuppressionFilter) {
+            $LocalVarQueryParameters['suppressionFilter'] = $SuppressionFilter
         }
 
         if ($Configuration["AccessToken"]) {

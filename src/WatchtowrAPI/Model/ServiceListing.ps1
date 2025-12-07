@@ -45,6 +45,10 @@ Service types
 Business Units
 .PARAMETER IsConcerning
 Whether the discovered network service is concerning
+.PARAMETER Suppressed
+Whether the service is suppressed
+.PARAMETER SuppressedAt
+Suppressed at timestamp
 .OUTPUTS
 
 ServiceListing<PSCustomObject>
@@ -97,7 +101,13 @@ function Initialize-ServiceListing {
         ${BusinessUnits},
         [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
         [Boolean]
-        ${IsConcerning}
+        ${IsConcerning},
+        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
+        [Boolean]
+        ${Suppressed},
+        [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[System.DateTime]]
+        ${SuppressedAt}
     )
 
     Process {
@@ -132,6 +142,10 @@ function Initialize-ServiceListing {
             throw "invalid value for 'IsConcerning', 'IsConcerning' cannot be null."
         }
 
+        if ($null -eq $Suppressed) {
+            throw "invalid value for 'Suppressed', 'Suppressed' cannot be null."
+        }
+
 
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
@@ -149,6 +163,8 @@ function Initialize-ServiceListing {
             "serviceTypes" = ${ServiceTypes}
             "businessUnits" = ${BusinessUnits}
             "isConcerning" = ${IsConcerning}
+            "suppressed" = ${Suppressed}
+            "suppressedAt" = ${SuppressedAt}
         }
 
 
@@ -186,7 +202,7 @@ function ConvertFrom-JsonToServiceListing {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ServiceListing
-        $AllProperties = ("id", "portId", "ip", "hostname", "port", "type", "country", "banner", "service", "source", "lastSeen", "technologies", "serviceTypes", "businessUnits", "isConcerning")
+        $AllProperties = ("id", "portId", "ip", "hostname", "port", "type", "country", "banner", "service", "source", "lastSeen", "technologies", "serviceTypes", "businessUnits", "isConcerning", "suppressed", "suppressedAt")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -251,6 +267,12 @@ function ConvertFrom-JsonToServiceListing {
             $IsConcerning = $JsonParameters.PSobject.Properties["isConcerning"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "suppressed"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'suppressed' missing."
+        } else {
+            $Suppressed = $JsonParameters.PSobject.Properties["suppressed"].value
+        }
+
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "port"))) { #optional property not found
             $Port = $null
         } else {
@@ -287,6 +309,12 @@ function ConvertFrom-JsonToServiceListing {
             $Source = $JsonParameters.PSobject.Properties["source"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "suppressedAt"))) { #optional property not found
+            $SuppressedAt = $null
+        } else {
+            $SuppressedAt = $JsonParameters.PSobject.Properties["suppressedAt"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
             "portId" = ${PortId}
@@ -303,6 +331,8 @@ function ConvertFrom-JsonToServiceListing {
             "serviceTypes" = ${ServiceTypes}
             "businessUnits" = ${BusinessUnits}
             "isConcerning" = ${IsConcerning}
+            "suppressed" = ${Suppressed}
+            "suppressedAt" = ${SuppressedAt}
         }
 
         return $PSO

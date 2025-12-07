@@ -39,6 +39,10 @@ Business unit
 Last seen at
 .PARAMETER IsConcerning
 Whether the Point of Interest is concerning
+.PARAMETER Suppressed
+Whether the Point of Interest is suppressed
+.PARAMETER SuppressedAt
+Suppressed at timestamp
 .OUTPUTS
 
 PointsOfInterest<PSCustomObject>
@@ -82,7 +86,13 @@ function Initialize-PointsOfInterest {
         ${LastSeen},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
         [Boolean]
-        ${IsConcerning}
+        ${IsConcerning},
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
+        [Boolean]
+        ${Suppressed},
+        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[System.DateTime]]
+        ${SuppressedAt}
     )
 
     Process {
@@ -129,6 +139,10 @@ function Initialize-PointsOfInterest {
             throw "invalid value for 'IsConcerning', 'IsConcerning' cannot be null."
         }
 
+        if ($null -eq $Suppressed) {
+            throw "invalid value for 'Suppressed', 'Suppressed' cannot be null."
+        }
+
 
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
@@ -143,6 +157,8 @@ function Initialize-PointsOfInterest {
             "businessUnits" = ${BusinessUnits}
             "lastSeen" = ${LastSeen}
             "isConcerning" = ${IsConcerning}
+            "suppressed" = ${Suppressed}
+            "suppressedAt" = ${SuppressedAt}
         }
 
 
@@ -180,7 +196,7 @@ function ConvertFrom-JsonToPointsOfInterest {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in PointsOfInterest
-        $AllProperties = ("id", "name", "type", "url", "discoveryToolId", "discoveryDate", "assetId", "assetName", "assetType", "businessUnits", "lastSeen", "isConcerning")
+        $AllProperties = ("id", "name", "type", "url", "discoveryToolId", "discoveryDate", "assetId", "assetName", "assetType", "businessUnits", "lastSeen", "isConcerning", "suppressed", "suppressedAt")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -251,6 +267,12 @@ function ConvertFrom-JsonToPointsOfInterest {
             $IsConcerning = $JsonParameters.PSobject.Properties["isConcerning"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "suppressed"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'suppressed' missing."
+        } else {
+            $Suppressed = $JsonParameters.PSobject.Properties["suppressed"].value
+        }
+
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "discoveryDate"))) { #optional property not found
             $DiscoveryDate = $null
         } else {
@@ -261,6 +283,12 @@ function ConvertFrom-JsonToPointsOfInterest {
             $LastSeen = $null
         } else {
             $LastSeen = $JsonParameters.PSobject.Properties["lastSeen"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "suppressedAt"))) { #optional property not found
+            $SuppressedAt = $null
+        } else {
+            $SuppressedAt = $JsonParameters.PSobject.Properties["suppressedAt"].value
         }
 
         $PSO = [PSCustomObject]@{
@@ -276,6 +304,8 @@ function ConvertFrom-JsonToPointsOfInterest {
             "businessUnits" = ${BusinessUnits}
             "lastSeen" = ${LastSeen}
             "isConcerning" = ${IsConcerning}
+            "suppressed" = ${Suppressed}
+            "suppressedAt" = ${SuppressedAt}
         }
 
         return $PSO

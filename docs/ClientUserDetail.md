@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **CreatedAt** | **System.DateTime** | Created at timestamp | 
 **Locked** | **Boolean** | Whether user is locked | 
 **Role** | [**SystemCollectionsHashtable**](.md) | User role information | 
+**BusinessUnits** | [**ClientUserDetailBusinessUnitsInner[]**](ClientUserDetailBusinessUnitsInner.md) | User business unit assignments | 
 
 ## Examples
 
@@ -25,7 +26,8 @@ $ClientUserDetail = Initialize-WatchtowrAPIClientUserDetail  -Id 1 `
  -OfficePhoneNumber +65XXXXXX12 `
  -CreatedAt 2023-01-01T00:00Z `
  -Locked false `
- -Role null
+ -Role null `
+ -BusinessUnits [{&quot;id&quot;:1,&quot;name&quot;:&quot;IT Department&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;Security Team&quot;}]
 ```
 
 - Convert the resource to JSON

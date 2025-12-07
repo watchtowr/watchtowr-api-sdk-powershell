@@ -77,7 +77,10 @@ docs/ClientRepositoryData.md
 docs/ClientSaasPlatform.md
 docs/ClientSaasPlatformData.md
 docs/ClientSeedData.md
+docs/ClientSeedDataBusinessUnit.md
 docs/ClientSeedDataData.md
+docs/ClientSeedDataListItem.md
+docs/ClientSeedDataUser.md
 docs/ClientServiceInformationResponseData.md
 docs/ClientSourceIpsAddresses.md
 docs/ClientSubdomain.md
@@ -85,6 +88,7 @@ docs/ClientSubdomainData.md
 docs/ClientSuspiciousDomainData.md
 docs/ClientUser.md
 docs/ClientUserDetail.md
+docs/ClientUserDetailBusinessUnitsInner.md
 docs/CloudIntegrationAssetsApi.md
 docs/CloudStorageApi.md
 docs/ContainersApi.md
@@ -151,6 +155,7 @@ docs/PaginatedClientPendingDomain.md
 docs/PaginatedClientPort.md
 docs/PaginatedClientRepository.md
 docs/PaginatedClientSaasPlatform.md
+docs/PaginatedClientSeedData.md
 docs/PaginatedClientSubdomain.md
 docs/PaginatedHunts.md
 docs/PaginatedPointOfInterest.md
@@ -192,6 +197,7 @@ docs/UpdateClientBusinessUnitDto.md
 docs/UpdateClientCloudAssetStatusDto.md
 docs/UpdateClientCustomPropertyDto.md
 docs/UpdateClientEngineSettingsDto.md
+docs/UpdateClientFindingStateRequestBody.md
 docs/UpdateClientFindingStatusRequestBody.md
 docs/UpdateClientLegacyAssetStatusDto.md
 docs/UpdateClientNextGenAssetStatusDto.md
@@ -312,7 +318,10 @@ src/WatchtowrAPI/Model/ClientRepositoryData.ps1
 src/WatchtowrAPI/Model/ClientSaasPlatform.ps1
 src/WatchtowrAPI/Model/ClientSaasPlatformData.ps1
 src/WatchtowrAPI/Model/ClientSeedData.ps1
+src/WatchtowrAPI/Model/ClientSeedDataBusinessUnit.ps1
 src/WatchtowrAPI/Model/ClientSeedDataData.ps1
+src/WatchtowrAPI/Model/ClientSeedDataListItem.ps1
+src/WatchtowrAPI/Model/ClientSeedDataUser.ps1
 src/WatchtowrAPI/Model/ClientServiceInformationResponseData.ps1
 src/WatchtowrAPI/Model/ClientSourceIpsAddresses.ps1
 src/WatchtowrAPI/Model/ClientSubdomain.ps1
@@ -320,6 +329,7 @@ src/WatchtowrAPI/Model/ClientSubdomainData.ps1
 src/WatchtowrAPI/Model/ClientSuspiciousDomainData.ps1
 src/WatchtowrAPI/Model/ClientUser.ps1
 src/WatchtowrAPI/Model/ClientUserDetail.ps1
+src/WatchtowrAPI/Model/ClientUserDetailBusinessUnitsInner.ps1
 src/WatchtowrAPI/Model/CreateClientBusinessUnitDto.ps1
 src/WatchtowrAPI/Model/CreateClientBusinessUnitRuleDto.ps1
 src/WatchtowrAPI/Model/CreateClientCustomPropertyDto.ps1
@@ -373,6 +383,7 @@ src/WatchtowrAPI/Model/PaginatedClientPendingDomain.ps1
 src/WatchtowrAPI/Model/PaginatedClientPort.ps1
 src/WatchtowrAPI/Model/PaginatedClientRepository.ps1
 src/WatchtowrAPI/Model/PaginatedClientSaasPlatform.ps1
+src/WatchtowrAPI/Model/PaginatedClientSeedData.ps1
 src/WatchtowrAPI/Model/PaginatedClientSubdomain.ps1
 src/WatchtowrAPI/Model/PaginatedHunts.ps1
 src/WatchtowrAPI/Model/PaginatedPointOfInterest.ps1
@@ -403,6 +414,7 @@ src/WatchtowrAPI/Model/UpdateClientBusinessUnitDto.ps1
 src/WatchtowrAPI/Model/UpdateClientCloudAssetStatusDto.ps1
 src/WatchtowrAPI/Model/UpdateClientCustomPropertyDto.ps1
 src/WatchtowrAPI/Model/UpdateClientEngineSettingsDto.ps1
+src/WatchtowrAPI/Model/UpdateClientFindingStateRequestBody.ps1
 src/WatchtowrAPI/Model/UpdateClientFindingStatusRequestBody.ps1
 src/WatchtowrAPI/Model/UpdateClientLegacyAssetStatusDto.ps1
 src/WatchtowrAPI/Model/UpdateClientNextGenAssetStatusDto.ps1
@@ -528,7 +540,10 @@ tests/Model/ClientRepositoryData.Tests.ps1
 tests/Model/ClientSaasPlatform.Tests.ps1
 tests/Model/ClientSaasPlatformData.Tests.ps1
 tests/Model/ClientSeedData.Tests.ps1
+tests/Model/ClientSeedDataBusinessUnit.Tests.ps1
 tests/Model/ClientSeedDataData.Tests.ps1
+tests/Model/ClientSeedDataListItem.Tests.ps1
+tests/Model/ClientSeedDataUser.Tests.ps1
 tests/Model/ClientServiceInformationResponseData.Tests.ps1
 tests/Model/ClientSourceIpsAddresses.Tests.ps1
 tests/Model/ClientSubdomain.Tests.ps1
@@ -536,6 +551,7 @@ tests/Model/ClientSubdomainData.Tests.ps1
 tests/Model/ClientSuspiciousDomainData.Tests.ps1
 tests/Model/ClientUser.Tests.ps1
 tests/Model/ClientUserDetail.Tests.ps1
+tests/Model/ClientUserDetailBusinessUnitsInner.Tests.ps1
 tests/Model/CreateClientBusinessUnitDto.Tests.ps1
 tests/Model/CreateClientBusinessUnitRuleDto.Tests.ps1
 tests/Model/CreateClientCustomPropertyDto.Tests.ps1
@@ -589,6 +605,7 @@ tests/Model/PaginatedClientPendingDomain.Tests.ps1
 tests/Model/PaginatedClientPort.Tests.ps1
 tests/Model/PaginatedClientRepository.Tests.ps1
 tests/Model/PaginatedClientSaasPlatform.Tests.ps1
+tests/Model/PaginatedClientSeedData.Tests.ps1
 tests/Model/PaginatedClientSubdomain.Tests.ps1
 tests/Model/PaginatedHunts.Tests.ps1
 tests/Model/PaginatedPointOfInterest.Tests.ps1
@@ -619,6 +636,7 @@ tests/Model/UpdateClientBusinessUnitDto.Tests.ps1
 tests/Model/UpdateClientCloudAssetStatusDto.Tests.ps1
 tests/Model/UpdateClientCustomPropertyDto.Tests.ps1
 tests/Model/UpdateClientEngineSettingsDto.Tests.ps1
+tests/Model/UpdateClientFindingStateRequestBody.Tests.ps1
 tests/Model/UpdateClientFindingStatusRequestBody.Tests.ps1
 tests/Model/UpdateClientLegacyAssetStatusDto.Tests.ps1
 tests/Model/UpdateClientNextGenAssetStatusDto.Tests.ps1

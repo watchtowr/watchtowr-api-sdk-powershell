@@ -47,6 +47,14 @@ Describe -tag 'WatchtowrAPI' -name 'MobileApplicationsApi' {
         }
     }
 
+    Context 'Get-AssetMobileAppChangelog' {
+        It 'Test Get-AssetMobileAppChangelog' {
+            #$TestResult = Get-AssetMobileAppChangelog -Id "TEST_VALUE" -Page "TEST_VALUE" -PageSize "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
     Context 'Get-AssetMobileAppDetails' {
         It 'Test Get-AssetMobileAppDetails' {
             #$TestResult = Get-AssetMobileAppDetails -Id "TEST_VALUE"
@@ -73,7 +81,7 @@ Describe -tag 'WatchtowrAPI' -name 'MobileApplicationsApi' {
 
     Context 'Get-ListAssetMobileApps' {
         It 'Test Get-ListAssetMobileApps' {
-            #$TestResult = Get-ListAssetMobileApps -Page "TEST_VALUE" -PageSize "TEST_VALUE" -AssetName "TEST_VALUE" -Statuses "TEST_VALUE" -Source "TEST_VALUE" -IntegrationConnections "TEST_VALUE" -BusinessUnitIds "TEST_VALUE" -CreatedFrom "TEST_VALUE" -CreatedTo "TEST_VALUE" -UpdatedFrom "TEST_VALUE" -UpdatedTo "TEST_VALUE" -CustomPropertyKey "TEST_VALUE" -CustomPropertyValue "TEST_VALUE"
+            #$TestResult = Get-ListAssetMobileApps -Page "TEST_VALUE" -PageSize "TEST_VALUE" -AssetName "TEST_VALUE" -Statuses "TEST_VALUE" -Source "TEST_VALUE" -IntegrationConnections "TEST_VALUE" -BusinessUnitIds "TEST_VALUE" -CreatedFrom "TEST_VALUE" -CreatedTo "TEST_VALUE" -CustomPropertyKey "TEST_VALUE" -CustomPropertyValue "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
         }

@@ -47,6 +47,14 @@ Describe -tag 'WatchtowrAPI' -name 'DomainsApi' {
         }
     }
 
+    Context 'Get-AssetDomainChangelog' {
+        It 'Test Get-AssetDomainChangelog' {
+            #$TestResult = Get-AssetDomainChangelog -Id "TEST_VALUE" -Page "TEST_VALUE" -PageSize "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
     Context 'Get-AssetDomainDetails' {
         It 'Test Get-AssetDomainDetails' {
             #$TestResult = Get-AssetDomainDetails -Id "TEST_VALUE"
@@ -89,7 +97,7 @@ Describe -tag 'WatchtowrAPI' -name 'DomainsApi' {
 
     Context 'Get-ListAssetDomains' {
         It 'Test Get-ListAssetDomains' {
-            #$TestResult = Get-ListAssetDomains -Page "TEST_VALUE" -PageSize "TEST_VALUE" -AssetName "TEST_VALUE" -Statuses "TEST_VALUE" -Source "TEST_VALUE" -IntegrationConnections "TEST_VALUE" -BusinessUnitIds "TEST_VALUE" -CreatedFrom "TEST_VALUE" -CreatedTo "TEST_VALUE" -UpdatedFrom "TEST_VALUE" -UpdatedTo "TEST_VALUE" -CustomPropertyKey "TEST_VALUE" -CustomPropertyValue "TEST_VALUE"
+            #$TestResult = Get-ListAssetDomains -Page "TEST_VALUE" -PageSize "TEST_VALUE" -AssetName "TEST_VALUE" -Statuses "TEST_VALUE" -Source "TEST_VALUE" -IntegrationConnections "TEST_VALUE" -BusinessUnitIds "TEST_VALUE" -CreatedFrom "TEST_VALUE" -CreatedTo "TEST_VALUE" -CustomPropertyKey "TEST_VALUE" -CustomPropertyValue "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
         }

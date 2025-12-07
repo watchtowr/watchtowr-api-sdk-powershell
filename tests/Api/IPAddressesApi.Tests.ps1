@@ -47,6 +47,14 @@ Describe -tag 'WatchtowrAPI' -name 'IPAddressesApi' {
         }
     }
 
+    Context 'Get-AssetIpChangelog' {
+        It 'Test Get-AssetIpChangelog' {
+            #$TestResult = Get-AssetIpChangelog -Id "TEST_VALUE" -Page "TEST_VALUE" -PageSize "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
     Context 'Get-AssetIpDetails' {
         It 'Test Get-AssetIpDetails' {
             #$TestResult = Get-AssetIpDetails -Id "TEST_VALUE"
@@ -89,7 +97,7 @@ Describe -tag 'WatchtowrAPI' -name 'IPAddressesApi' {
 
     Context 'Get-AssetIpPorts' {
         It 'Test Get-AssetIpPorts' {
-            #$TestResult = Get-AssetIpPorts -Id "TEST_VALUE" -Page "TEST_VALUE" -PageSize "TEST_VALUE" -IncludeClosedPort "TEST_VALUE" -IncludeNoService "TEST_VALUE" -CreatedFrom "TEST_VALUE" -CreatedTo "TEST_VALUE" -UpdatedFrom "TEST_VALUE" -UpdatedTo "TEST_VALUE"
+            #$TestResult = Get-AssetIpPorts -Id "TEST_VALUE" -Page "TEST_VALUE" -PageSize "TEST_VALUE" -IncludeClosedPort "TEST_VALUE" -IncludeNoService "TEST_VALUE" -CreatedFrom "TEST_VALUE" -CreatedTo "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
         }
@@ -105,7 +113,7 @@ Describe -tag 'WatchtowrAPI' -name 'IPAddressesApi' {
 
     Context 'Get-ListAssetIps' {
         It 'Test Get-ListAssetIps' {
-            #$TestResult = Get-ListAssetIps -Page "TEST_VALUE" -PageSize "TEST_VALUE" -AssetName "TEST_VALUE" -Statuses "TEST_VALUE" -Source "TEST_VALUE" -IntegrationConnections "TEST_VALUE" -BusinessUnitIds "TEST_VALUE" -CreatedFrom "TEST_VALUE" -CreatedTo "TEST_VALUE" -UpdatedFrom "TEST_VALUE" -UpdatedTo "TEST_VALUE" -CustomPropertyKey "TEST_VALUE" -CustomPropertyValue "TEST_VALUE" -MatchType "TEST_VALUE"
+            #$TestResult = Get-ListAssetIps -Page "TEST_VALUE" -PageSize "TEST_VALUE" -AssetName "TEST_VALUE" -Statuses "TEST_VALUE" -Source "TEST_VALUE" -IntegrationConnections "TEST_VALUE" -BusinessUnitIds "TEST_VALUE" -CreatedFrom "TEST_VALUE" -CreatedTo "TEST_VALUE" -CustomPropertyKey "TEST_VALUE" -CustomPropertyValue "TEST_VALUE" -MatchType "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
         }

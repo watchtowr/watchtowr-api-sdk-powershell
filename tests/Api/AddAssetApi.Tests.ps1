@@ -7,6 +7,14 @@
 #
 
 Describe -tag 'WatchtowrAPI' -name 'AddAssetApi' {
+    Context 'Invoke-ListSubmittedAssets' {
+        It 'Test Invoke-ListSubmittedAssets' {
+            #$TestResult = Invoke-ListSubmittedAssets -Page "TEST_VALUE" -PageSize "TEST_VALUE" -BusinessUnitIds "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
     Context 'Submit-Asset' {
         It 'Test Submit-Asset' {
             #$TestResult = Submit-Asset -CreateClientSeedDataRequestBody "TEST_VALUE"

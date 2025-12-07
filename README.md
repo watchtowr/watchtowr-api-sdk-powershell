@@ -67,6 +67,7 @@ Class | Method | HTTP request | Description
 *APIDocumentationApi* | [**New-CustomPropertyApiDocumentation**](docs/APIDocumentationApi.md#New-CustomPropertyApiDocumentation) | **POST** /api/client/assets/apiDocumentation/show/{id}/custom-property | Create Custom Property
 *APIDocumentationApi* | [**Invoke-DeleteAssetApiDocumentationNote**](docs/APIDocumentationApi.md#Invoke-DeleteAssetApiDocumentationNote) | **DELETE** /api/client/assets/apiDocumentation/show/{id}/note/{noteId} | Delete Note
 *APIDocumentationApi* | [**Invoke-DeleteCustomPropertyApiDocumentation**](docs/APIDocumentationApi.md#Invoke-DeleteCustomPropertyApiDocumentation) | **DELETE** /api/client/assets/apiDocumentation/show/{id}/custom-property/{customPropertyId} | Delete Custom Property
+*APIDocumentationApi* | [**Get-AssetApiDocumentationChangelog**](docs/APIDocumentationApi.md#Get-AssetApiDocumentationChangelog) | **GET** /api/client/assets/apiDocumentation/show/{id}/changelog | Get API Documentation Changelog
 *APIDocumentationApi* | [**Get-AssetApiDocumentationDetails**](docs/APIDocumentationApi.md#Get-AssetApiDocumentationDetails) | **GET** /api/client/assets/apiDocumentation/show/{id} | Get API Documentation Details
 *APIDocumentationApi* | [**Get-AssetApiDocumentationNotes**](docs/APIDocumentationApi.md#Get-AssetApiDocumentationNotes) | **GET** /api/client/assets/apiDocumentation/show/{id}/notes | List API Documentation Notes
 *APIDocumentationApi* | [**Get-CustomPropertiesApiDocumentation**](docs/APIDocumentationApi.md#Get-CustomPropertiesApiDocumentation) | **GET** /api/client/assets/apiDocumentation/show/{id}/custom-properties | List Custom Properties
@@ -76,6 +77,7 @@ Class | Method | HTTP request | Description
 *APIDocumentationApi* | [**Update-AssetApiDocumentationStatus**](docs/APIDocumentationApi.md#Update-AssetApiDocumentationStatus) | **PUT** /api/client/assets/apiDocumentation/update-status/{id} | Update API Documentation Status
 *APIDocumentationApi* | [**Update-CustomPropertyApiDocumentation**](docs/APIDocumentationApi.md#Update-CustomPropertyApiDocumentation) | **PUT** /api/client/assets/apiDocumentation/show/{id}/custom-property/{customPropertyId} | Update Custom Property
 *ActivityLogApi* | [**Get-ListActivityLogs**](docs/ActivityLogApi.md#Get-ListActivityLogs) | **GET** /api/client/activity-log/list | List Activity Logs
+*AddAssetApi* | [**Invoke-ListSubmittedAssets**](docs/AddAssetApi.md#Invoke-ListSubmittedAssets) | **GET** /api/client/seeddata/list | List Submitted Assets
 *AddAssetApi* | [**Submit-Asset**](docs/AddAssetApi.md#Submit-Asset) | **POST** /api/client/seeddata | Submit Seed Data
 *BusinessUnitApi* | [**New-BusinessUnit**](docs/BusinessUnitApi.md#New-BusinessUnit) | **POST** /api/client/business-unit | Create Business Unit
 *BusinessUnitApi* | [**New-BusinessUnitRule**](docs/BusinessUnitApi.md#New-BusinessUnitRule) | **POST** /api/client/business-unit/show/{id}/rule | Create Business Unit Rule
@@ -91,6 +93,7 @@ Class | Method | HTTP request | Description
 *CloudIntegrationAssetsApi* | [**New-CustomPropertyCloudAsset**](docs/CloudIntegrationAssetsApi.md#New-CustomPropertyCloudAsset) | **POST** /api/client/assets/cloudAsset/show/{id}/custom-property | Create Custom Property
 *CloudIntegrationAssetsApi* | [**Invoke-DeleteAssetCloudAssetNote**](docs/CloudIntegrationAssetsApi.md#Invoke-DeleteAssetCloudAssetNote) | **DELETE** /api/client/assets/cloudAsset/show/{id}/note/{noteId} | Delete Note
 *CloudIntegrationAssetsApi* | [**Invoke-DeleteCustomPropertyCloudAsset**](docs/CloudIntegrationAssetsApi.md#Invoke-DeleteCustomPropertyCloudAsset) | **DELETE** /api/client/assets/cloudAsset/show/{id}/custom-property/{customPropertyId} | Delete Custom Property
+*CloudIntegrationAssetsApi* | [**Get-AssetCloudAssetChangelog**](docs/CloudIntegrationAssetsApi.md#Get-AssetCloudAssetChangelog) | **GET** /api/client/assets/cloudAsset/show/{id}/changelog | Get Cloud Asset Changelog
 *CloudIntegrationAssetsApi* | [**Get-AssetCloudAssetDetails**](docs/CloudIntegrationAssetsApi.md#Get-AssetCloudAssetDetails) | **GET** /api/client/assets/cloudAsset/show/{id} | Get Cloud Asset Details
 *CloudIntegrationAssetsApi* | [**Get-AssetCloudAssetNotes**](docs/CloudIntegrationAssetsApi.md#Get-AssetCloudAssetNotes) | **GET** /api/client/assets/cloudAsset/show/{id}/notes | List Notes
 *CloudIntegrationAssetsApi* | [**Get-CustomPropertiesCloudAsset**](docs/CloudIntegrationAssetsApi.md#Get-CustomPropertiesCloudAsset) | **GET** /api/client/assets/cloudAsset/show/{id}/custom-properties | List Custom Properties
@@ -104,6 +107,7 @@ Class | Method | HTTP request | Description
 *CloudStorageApi* | [**New-CustomPropertyCloudStorage**](docs/CloudStorageApi.md#New-CustomPropertyCloudStorage) | **POST** /api/client/assets/cloudStorage/show/{id}/custom-property | Create Custom Property
 *CloudStorageApi* | [**Invoke-DeleteAssetCloudStorageNote**](docs/CloudStorageApi.md#Invoke-DeleteAssetCloudStorageNote) | **DELETE** /api/client/assets/cloudStorage/show/{id}/note/{noteId} | Delete Note
 *CloudStorageApi* | [**Invoke-DeleteCustomPropertyCloudStorage**](docs/CloudStorageApi.md#Invoke-DeleteCustomPropertyCloudStorage) | **DELETE** /api/client/assets/cloudStorage/show/{id}/custom-property/{customPropertyId} | Delete Custom Property
+*CloudStorageApi* | [**Get-AssetCloudStorageChangelog**](docs/CloudStorageApi.md#Get-AssetCloudStorageChangelog) | **GET** /api/client/assets/cloudStorage/show/{id}/changelog | Get Cloud Storage Changelog
 *CloudStorageApi* | [**Get-AssetCloudStorageDetails**](docs/CloudStorageApi.md#Get-AssetCloudStorageDetails) | **GET** /api/client/assets/cloudStorage/show/{id} | Get Cloud Storage
 *CloudStorageApi* | [**Get-AssetCloudStorageNotes**](docs/CloudStorageApi.md#Get-AssetCloudStorageNotes) | **GET** /api/client/assets/cloudStorage/show/{id}/notes | List Notes
 *CloudStorageApi* | [**Get-CustomPropertiesCloudStorage**](docs/CloudStorageApi.md#Get-CustomPropertiesCloudStorage) | **GET** /api/client/assets/cloudStorage/show/{id}/custom-properties | List Custom Properties
@@ -117,6 +121,7 @@ Class | Method | HTTP request | Description
 *ContainersApi* | [**New-NoteContainer**](docs/ContainersApi.md#New-NoteContainer) | **POST** /api/client/assets/container/show/{id}/note | Create Note
 *ContainersApi* | [**Invoke-DeleteCustomPropertyContainer**](docs/ContainersApi.md#Invoke-DeleteCustomPropertyContainer) | **DELETE** /api/client/assets/container/show/{id}/custom-property/{customPropertyId} | Delete Custom Property
 *ContainersApi* | [**Invoke-DeleteNoteContainer**](docs/ContainersApi.md#Invoke-DeleteNoteContainer) | **DELETE** /api/client/assets/container/show/{id}/note/{noteId} | Delete Note
+*ContainersApi* | [**Get-AssetContainerChangelog**](docs/ContainersApi.md#Get-AssetContainerChangelog) | **GET** /api/client/assets/container/show/{id}/changelog | Get Container Changelog
 *ContainersApi* | [**Get-AssetContainerDetails**](docs/ContainersApi.md#Get-AssetContainerDetails) | **GET** /api/client/assets/container/show/{id} | Get Container
 *ContainersApi* | [**Get-AssetContainerNotes**](docs/ContainersApi.md#Get-AssetContainerNotes) | **GET** /api/client/assets/container/show/{id}/notes | List Notes
 *ContainersApi* | [**Get-CustomPropertiesContainer**](docs/ContainersApi.md#Get-CustomPropertiesContainer) | **GET** /api/client/assets/container/show/{id}/custom-properties | List Custom Properties
@@ -131,6 +136,7 @@ Class | Method | HTTP request | Description
 *DomainsApi* | [**New-CustomPropertyDomain**](docs/DomainsApi.md#New-CustomPropertyDomain) | **POST** /api/client/assets/domain/show/{id}/custom-property | Create Custom Property
 *DomainsApi* | [**Invoke-DeleteAssetDomainNote**](docs/DomainsApi.md#Invoke-DeleteAssetDomainNote) | **DELETE** /api/client/assets/domain/show/{id}/note/{noteId} | Delete Note
 *DomainsApi* | [**Invoke-DeleteCustomPropertyDomain**](docs/DomainsApi.md#Invoke-DeleteCustomPropertyDomain) | **DELETE** /api/client/assets/domain/show/{id}/custom-property/{customPropertyId} | Delete Custom Property
+*DomainsApi* | [**Get-AssetDomainChangelog**](docs/DomainsApi.md#Get-AssetDomainChangelog) | **GET** /api/client/assets/domain/show/{id}/changelog | Get Domain Changelog
 *DomainsApi* | [**Get-AssetDomainDetails**](docs/DomainsApi.md#Get-AssetDomainDetails) | **GET** /api/client/assets/domain/show/{id} | Get Domain Details
 *DomainsApi* | [**Get-AssetDomainDnsRecords**](docs/DomainsApi.md#Get-AssetDomainDnsRecords) | **GET** /api/client/assets/domain/show/{id}/dns-records | List DNS Records
 *DomainsApi* | [**Get-AssetDomainEngineSettings**](docs/DomainsApi.md#Get-AssetDomainEngineSettings) | **GET** /api/client/assets/domain/show/{id}/engine-settings | Get Domain Engine Settings
@@ -156,6 +162,7 @@ Class | Method | HTTP request | Description
 *FindingsApi* | [**Start-SpecificFindingRetest**](docs/FindingsApi.md#Start-SpecificFindingRetest) | **POST** /api/client/findings/retest/{finding_id} | Retest Finding
 *FindingsApi* | [**Update-CustomPropertyFinding**](docs/FindingsApi.md#Update-CustomPropertyFinding) | **PUT** /api/client/findings/show/{id}/custom-property/{customPropertyId} | Update Custom Property
 *FindingsApi* | [**Update-FindingNote**](docs/FindingsApi.md#Update-FindingNote) | **PUT** /api/client/findings/show/{id}/note/{noteId} | Update Finding Note
+*FindingsApi* | [**Update-FindingState**](docs/FindingsApi.md#Update-FindingState) | **POST** /api/client/findings/state/{id} | Update Finding State
 *FindingsApi* | [**Update-FindingStatus**](docs/FindingsApi.md#Update-FindingStatus) | **POST** /api/client/findings/status/{id} | Update Finding Status
 *HuntsApi* | [**Get-ClientHunts**](docs/HuntsApi.md#Get-ClientHunts) | **GET** /api/client/hunts/list | List Hunts
 *HuntsApi* | [**Get-ListAssetByHunt**](docs/HuntsApi.md#Get-ListAssetByHunt) | **GET** /api/client/hunts/show/{id}/assets | List Assets
@@ -166,6 +173,7 @@ Class | Method | HTTP request | Description
 *IPAddressesApi* | [**New-CustomPropertyIp**](docs/IPAddressesApi.md#New-CustomPropertyIp) | **POST** /api/client/assets/ip/show/{id}/custom-property | Create Custom Property
 *IPAddressesApi* | [**Invoke-DeleteAssetIpNote**](docs/IPAddressesApi.md#Invoke-DeleteAssetIpNote) | **DELETE** /api/client/assets/ip/show/{id}/note/{noteId} | Delete Note
 *IPAddressesApi* | [**Invoke-DeleteCustomPropertyIp**](docs/IPAddressesApi.md#Invoke-DeleteCustomPropertyIp) | **DELETE** /api/client/assets/ip/show/{id}/custom-property/{customPropertyId} | Delete Custom Property
+*IPAddressesApi* | [**Get-AssetIpChangelog**](docs/IPAddressesApi.md#Get-AssetIpChangelog) | **GET** /api/client/assets/ip/show/{id}/changelog | Get IP Address Changelog
 *IPAddressesApi* | [**Get-AssetIpDetails**](docs/IPAddressesApi.md#Get-AssetIpDetails) | **GET** /api/client/assets/ip/show/{id} | Get IP Address Details
 *IPAddressesApi* | [**Get-AssetIpDnsRecords**](docs/IPAddressesApi.md#Get-AssetIpDnsRecords) | **GET** /api/client/assets/ip/show/{id}/dns-records | List DNS Records
 *IPAddressesApi* | [**Get-AssetIpEngineSettings**](docs/IPAddressesApi.md#Get-AssetIpEngineSettings) | **GET** /api/client/assets/ip/show/{id}/engine-settings | Get IP Engine Settings
@@ -185,6 +193,7 @@ Class | Method | HTTP request | Description
 *IPRangesApi* | [**Invoke-DeleteCustomPropertyIpRange**](docs/IPRangesApi.md#Invoke-DeleteCustomPropertyIpRange) | **DELETE** /api/client/assets/ipRange/show/{id}/custom-property/{customPropertyId} | Delete Custom Property
 *IPRangesApi* | [**Invoke-DeleteNoteIpRange**](docs/IPRangesApi.md#Invoke-DeleteNoteIpRange) | **DELETE** /api/client/assets/ipRange/show/{id}/note/{noteId} | Delete Note
 *IPRangesApi* | [**Get-AssetIpRangeNotes**](docs/IPRangesApi.md#Get-AssetIpRangeNotes) | **GET** /api/client/assets/ipRange/show/{id}/notes | List Notes
+*IPRangesApi* | [**Get-AssetIprangeChangelog**](docs/IPRangesApi.md#Get-AssetIprangeChangelog) | **GET** /api/client/assets/ipRange/show/{id}/changelog | Get IP Range Changelog
 *IPRangesApi* | [**Get-AssetIprangeDetails**](docs/IPRangesApi.md#Get-AssetIprangeDetails) | **GET** /api/client/assets/ipRange/show/{id} | Get IP Range
 *IPRangesApi* | [**Get-CustomPropertiesIpRange**](docs/IPRangesApi.md#Get-CustomPropertiesIpRange) | **GET** /api/client/assets/ipRange/show/{id}/custom-properties | List Custom Properties
 *IPRangesApi* | [**Get-ListAssetIpranges**](docs/IPRangesApi.md#Get-ListAssetIpranges) | **GET** /api/client/assets/ipRange/list | List IP Ranges
@@ -199,6 +208,7 @@ Class | Method | HTTP request | Description
 *MobileApplicationsApi* | [**New-NoteMobileApp**](docs/MobileApplicationsApi.md#New-NoteMobileApp) | **POST** /api/client/assets/mobileApp/show/{id}/note | Create Note
 *MobileApplicationsApi* | [**Invoke-DeleteCustomPropertyMobileApp**](docs/MobileApplicationsApi.md#Invoke-DeleteCustomPropertyMobileApp) | **DELETE** /api/client/assets/mobileApp/show/{id}/custom-property/{customPropertyId} | Delete Custom Property
 *MobileApplicationsApi* | [**Invoke-DeleteNoteMobileApp**](docs/MobileApplicationsApi.md#Invoke-DeleteNoteMobileApp) | **DELETE** /api/client/assets/mobileApp/show/{id}/note/{noteId} | Delete Note
+*MobileApplicationsApi* | [**Get-AssetMobileAppChangelog**](docs/MobileApplicationsApi.md#Get-AssetMobileAppChangelog) | **GET** /api/client/assets/mobileApp/show/{id}/changelog | Get Mobile App Changelog
 *MobileApplicationsApi* | [**Get-AssetMobileAppDetails**](docs/MobileApplicationsApi.md#Get-AssetMobileAppDetails) | **GET** /api/client/assets/mobileApp/show/{id} | Get Mobile Application
 *MobileApplicationsApi* | [**Get-AssetMobileAppNotes**](docs/MobileApplicationsApi.md#Get-AssetMobileAppNotes) | **GET** /api/client/assets/mobileApp/show/{id}/notes | List Notes
 *MobileApplicationsApi* | [**Get-CustomPropertiesMobileApp**](docs/MobileApplicationsApi.md#Get-CustomPropertiesMobileApp) | **GET** /api/client/assets/mobileApp/show/{id}/custom-properties | List Custom Properties
@@ -212,6 +222,7 @@ Class | Method | HTTP request | Description
 *PackageManagersApi* | [**New-CustomPropertyPackageManager**](docs/PackageManagersApi.md#New-CustomPropertyPackageManager) | **POST** /api/client/assets/packageManager/show/{id}/custom-property | Create Custom Property
 *PackageManagersApi* | [**Invoke-DeleteAssetPackageManagerNote**](docs/PackageManagersApi.md#Invoke-DeleteAssetPackageManagerNote) | **DELETE** /api/client/assets/packageManager/show/{id}/note/{noteId} | Delete Note
 *PackageManagersApi* | [**Invoke-DeleteCustomPropertyById**](docs/PackageManagersApi.md#Invoke-DeleteCustomPropertyById) | **DELETE** /api/client/assets/packageManager/show/{id}/custom-property/{customPropertyId} | Delete Custom Property
+*PackageManagersApi* | [**Get-AssetPackageManagerChangelog**](docs/PackageManagersApi.md#Get-AssetPackageManagerChangelog) | **GET** /api/client/assets/packageManager/show/{id}/changelog | Get Package Manager Changelog
 *PackageManagersApi* | [**Get-AssetPackageManagerDetails**](docs/PackageManagersApi.md#Get-AssetPackageManagerDetails) | **GET** /api/client/assets/packageManager/show/{id} | Get Package Manager
 *PackageManagersApi* | [**Get-AssetPackageManagerNotes**](docs/PackageManagersApi.md#Get-AssetPackageManagerNotes) | **GET** /api/client/assets/packageManager/show/{id}/notes | List Notes
 *PackageManagersApi* | [**Get-CustomPropertiesPackageManager**](docs/PackageManagersApi.md#Get-CustomPropertiesPackageManager) | **GET** /api/client/assets/packageManager/show/{id}/custom-properties | List Custom Properties
@@ -241,6 +252,7 @@ Class | Method | HTTP request | Description
 *RepositoriesApi* | [**New-NoteRepository**](docs/RepositoriesApi.md#New-NoteRepository) | **POST** /api/client/assets/repository/show/{id}/note | Create Note
 *RepositoriesApi* | [**Invoke-DeleteCustomPropertyRepository**](docs/RepositoriesApi.md#Invoke-DeleteCustomPropertyRepository) | **DELETE** /api/client/assets/repository/show/{id}/custom-property/{customPropertyId} | Delete Custom Property
 *RepositoriesApi* | [**Invoke-DeleteNoteRepository**](docs/RepositoriesApi.md#Invoke-DeleteNoteRepository) | **DELETE** /api/client/assets/repository/show/{id}/note/{noteId} | Delete Note
+*RepositoriesApi* | [**Get-AssetRepositoryChangelog**](docs/RepositoriesApi.md#Get-AssetRepositoryChangelog) | **GET** /api/client/assets/repository/show/{id}/changelog | Get Repository Changelog
 *RepositoriesApi* | [**Get-AssetRepositoryDetails**](docs/RepositoriesApi.md#Get-AssetRepositoryDetails) | **GET** /api/client/assets/repository/show/{id} | Get Repository
 *RepositoriesApi* | [**Get-AssetRepositoryNotes**](docs/RepositoriesApi.md#Get-AssetRepositoryNotes) | **GET** /api/client/assets/repository/show/{id}/notes | List Notes
 *RepositoriesApi* | [**Get-CustomPropertiesRepository**](docs/RepositoriesApi.md#Get-CustomPropertiesRepository) | **GET** /api/client/assets/repository/show/{id}/custom-properties | List Custom Properties
@@ -254,6 +266,7 @@ Class | Method | HTTP request | Description
 *SaaSPlatformsApi* | [**New-NoteSaasPlatform**](docs/SaaSPlatformsApi.md#New-NoteSaasPlatform) | **POST** /api/client/assets/saasPlatform/show/{id}/note | Create Note
 *SaaSPlatformsApi* | [**Invoke-DeleteCustomPropertySaasPlatform**](docs/SaaSPlatformsApi.md#Invoke-DeleteCustomPropertySaasPlatform) | **DELETE** /api/client/assets/saasPlatform/show/{id}/custom-property/{customPropertyId} | Delete Custom Property
 *SaaSPlatformsApi* | [**Invoke-DeleteNoteSaasPlatform**](docs/SaaSPlatformsApi.md#Invoke-DeleteNoteSaasPlatform) | **DELETE** /api/client/assets/saasPlatform/show/{id}/note/{noteId} | Delete Note
+*SaaSPlatformsApi* | [**Get-AssetSaasPlatformChangelog**](docs/SaaSPlatformsApi.md#Get-AssetSaasPlatformChangelog) | **GET** /api/client/assets/saasPlatform/show/{id}/changelog | Get SaaS Platform Changelog
 *SaaSPlatformsApi* | [**Get-AssetSaasPlatformDetails**](docs/SaaSPlatformsApi.md#Get-AssetSaasPlatformDetails) | **GET** /api/client/assets/saasPlatform/show/{id} | Get SaaS Platform
 *SaaSPlatformsApi* | [**Get-AssetSaasPlatformNotes**](docs/SaaSPlatformsApi.md#Get-AssetSaasPlatformNotes) | **GET** /api/client/assets/saasPlatform/show/{id}/notes | List Notes
 *SaaSPlatformsApi* | [**Get-CustomPropertiesSaasPlatform**](docs/SaaSPlatformsApi.md#Get-CustomPropertiesSaasPlatform) | **GET** /api/client/assets/saasPlatform/show/{id}/custom-properties | List Custom Properties
@@ -270,6 +283,7 @@ Class | Method | HTTP request | Description
 *SubdomainsApi* | [**New-NoteSubdomain**](docs/SubdomainsApi.md#New-NoteSubdomain) | **POST** /api/client/assets/subdomain/show/{id}/note | Create Subdomain Note
 *SubdomainsApi* | [**Invoke-DeleteCustomPropertySubdomain**](docs/SubdomainsApi.md#Invoke-DeleteCustomPropertySubdomain) | **DELETE** /api/client/assets/subdomain/show/{id}/custom-property/{customPropertyId} | Delete Subdomain Custom Property
 *SubdomainsApi* | [**Invoke-DeleteNoteSubdomain**](docs/SubdomainsApi.md#Invoke-DeleteNoteSubdomain) | **DELETE** /api/client/assets/subdomain/show/{id}/note/{noteId} | Delete Subdomain Note
+*SubdomainsApi* | [**Get-AssetSubdomainChangelog**](docs/SubdomainsApi.md#Get-AssetSubdomainChangelog) | **GET** /api/client/assets/subdomain/show/{id}/changelog | Get Subdomain Changelog
 *SubdomainsApi* | [**Get-AssetSubdomainDetails**](docs/SubdomainsApi.md#Get-AssetSubdomainDetails) | **GET** /api/client/assets/subdomain/show/{id} | Get Subdomain Details
 *SubdomainsApi* | [**Get-AssetSubdomainDnsRecords**](docs/SubdomainsApi.md#Get-AssetSubdomainDnsRecords) | **GET** /api/client/assets/subdomain/show/{id}/dns-records | List Subdomain DNS Records
 *SubdomainsApi* | [**Get-AssetSubdomainEngineSettings**](docs/SubdomainsApi.md#Get-AssetSubdomainEngineSettings) | **GET** /api/client/assets/subdomain/show/{id}/engine-settings | Get Subdomain Engine Settings
@@ -359,7 +373,10 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.ClientSaasPlatform](docs/ClientSaasPlatform.md)
  - [WatchtowrAPI\Model.ClientSaasPlatformData](docs/ClientSaasPlatformData.md)
  - [WatchtowrAPI\Model.ClientSeedData](docs/ClientSeedData.md)
+ - [WatchtowrAPI\Model.ClientSeedDataBusinessUnit](docs/ClientSeedDataBusinessUnit.md)
  - [WatchtowrAPI\Model.ClientSeedDataData](docs/ClientSeedDataData.md)
+ - [WatchtowrAPI\Model.ClientSeedDataListItem](docs/ClientSeedDataListItem.md)
+ - [WatchtowrAPI\Model.ClientSeedDataUser](docs/ClientSeedDataUser.md)
  - [WatchtowrAPI\Model.ClientServiceInformationResponseData](docs/ClientServiceInformationResponseData.md)
  - [WatchtowrAPI\Model.ClientSourceIpsAddresses](docs/ClientSourceIpsAddresses.md)
  - [WatchtowrAPI\Model.ClientSubdomain](docs/ClientSubdomain.md)
@@ -367,6 +384,7 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.ClientSuspiciousDomainData](docs/ClientSuspiciousDomainData.md)
  - [WatchtowrAPI\Model.ClientUser](docs/ClientUser.md)
  - [WatchtowrAPI\Model.ClientUserDetail](docs/ClientUserDetail.md)
+ - [WatchtowrAPI\Model.ClientUserDetailBusinessUnitsInner](docs/ClientUserDetailBusinessUnitsInner.md)
  - [WatchtowrAPI\Model.CreateClientBusinessUnitDto](docs/CreateClientBusinessUnitDto.md)
  - [WatchtowrAPI\Model.CreateClientBusinessUnitRuleDto](docs/CreateClientBusinessUnitRuleDto.md)
  - [WatchtowrAPI\Model.CreateClientCustomPropertyDto](docs/CreateClientCustomPropertyDto.md)
@@ -420,6 +438,7 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.PaginatedClientPort](docs/PaginatedClientPort.md)
  - [WatchtowrAPI\Model.PaginatedClientRepository](docs/PaginatedClientRepository.md)
  - [WatchtowrAPI\Model.PaginatedClientSaasPlatform](docs/PaginatedClientSaasPlatform.md)
+ - [WatchtowrAPI\Model.PaginatedClientSeedData](docs/PaginatedClientSeedData.md)
  - [WatchtowrAPI\Model.PaginatedClientSubdomain](docs/PaginatedClientSubdomain.md)
  - [WatchtowrAPI\Model.PaginatedHunts](docs/PaginatedHunts.md)
  - [WatchtowrAPI\Model.PaginatedPointOfInterest](docs/PaginatedPointOfInterest.md)
@@ -450,6 +469,7 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.UpdateClientCloudAssetStatusDto](docs/UpdateClientCloudAssetStatusDto.md)
  - [WatchtowrAPI\Model.UpdateClientCustomPropertyDto](docs/UpdateClientCustomPropertyDto.md)
  - [WatchtowrAPI\Model.UpdateClientEngineSettingsDto](docs/UpdateClientEngineSettingsDto.md)
+ - [WatchtowrAPI\Model.UpdateClientFindingStateRequestBody](docs/UpdateClientFindingStateRequestBody.md)
  - [WatchtowrAPI\Model.UpdateClientFindingStatusRequestBody](docs/UpdateClientFindingStatusRequestBody.md)
  - [WatchtowrAPI\Model.UpdateClientLegacyAssetStatusDto](docs/UpdateClientLegacyAssetStatusDto.md)
  - [WatchtowrAPI\Model.UpdateClientNextGenAssetStatusDto](docs/UpdateClientNextGenAssetStatusDto.md)

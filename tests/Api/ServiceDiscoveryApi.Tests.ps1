@@ -9,7 +9,7 @@
 Describe -tag 'WatchtowrAPI' -name 'ServiceDiscoveryApi' {
     Context 'Get-ListServiceListing' {
         It 'Test Get-ListServiceListing' {
-            #$TestResult = Get-ListServiceListing -Page "TEST_VALUE" -PageSize "TEST_VALUE" -IncludeClosedPort "TEST_VALUE" -IncludeNoService "TEST_VALUE" -CreatedFrom "TEST_VALUE" -CreatedTo "TEST_VALUE" -UpdatedFrom "TEST_VALUE" -UpdatedTo "TEST_VALUE" -Search "TEST_VALUE" -Countries "TEST_VALUE" -Technology "TEST_VALUE" -Ports "TEST_VALUE" -PortNumbers "TEST_VALUE" -PortTypes "TEST_VALUE" -PortServices "TEST_VALUE" -ServiceTypeIds "TEST_VALUE" -BusinessUnitIds "TEST_VALUE" -SortBy "TEST_VALUE" -OrderBy "TEST_VALUE"
+            #$TestResult = Get-ListServiceListing -Page "TEST_VALUE" -PageSize "TEST_VALUE" -IncludeClosedPort "TEST_VALUE" -IncludeNoService "TEST_VALUE" -CreatedFrom "TEST_VALUE" -CreatedTo "TEST_VALUE" -UpdatedFrom "TEST_VALUE" -UpdatedTo "TEST_VALUE" -Search "TEST_VALUE" -Countries "TEST_VALUE" -Technology "TEST_VALUE" -Ports "TEST_VALUE" -PortNumbers "TEST_VALUE" -PortTypes "TEST_VALUE" -PortServices "TEST_VALUE" -ServiceTypeIds "TEST_VALUE" -BusinessUnitIds "TEST_VALUE" -SortBy "TEST_VALUE" -OrderBy "TEST_VALUE" -SuppressionFilter "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
         }

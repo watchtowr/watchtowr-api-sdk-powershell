@@ -33,6 +33,8 @@ Created at timestamp
 Whether user is locked
 .PARAMETER Role
 User role information
+.PARAMETER BusinessUnits
+User business unit assignments
 .OUTPUTS
 
 ClientUserDetail<PSCustomObject>
@@ -67,7 +69,10 @@ function Initialize-ClientUserDetail {
         ${Locked},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
-        ${Role}
+        ${Role},
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject[]]
+        ${BusinessUnits}
     )
 
     Process {
@@ -110,6 +115,10 @@ function Initialize-ClientUserDetail {
             throw "invalid value for 'Role', 'Role' cannot be null."
         }
 
+        if ($null -eq $BusinessUnits) {
+            throw "invalid value for 'BusinessUnits', 'BusinessUnits' cannot be null."
+        }
+
 
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
@@ -121,6 +130,7 @@ function Initialize-ClientUserDetail {
             "created_at" = ${CreatedAt}
             "locked" = ${Locked}
             "role" = ${Role}
+            "businessUnits" = ${BusinessUnits}
         }
 
 
@@ -158,7 +168,7 @@ function ConvertFrom-JsonToClientUserDetail {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientUserDetail
-        $AllProperties = ("id", "name", "email", "title", "mobile_phone_number", "office_phone_number", "created_at", "locked", "role")
+        $AllProperties = ("id", "name", "email", "title", "mobile_phone_number", "office_phone_number", "created_at", "locked", "role", "businessUnits")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -223,6 +233,12 @@ function ConvertFrom-JsonToClientUserDetail {
             $Role = $JsonParameters.PSobject.Properties["role"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "businessUnits"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'businessUnits' missing."
+        } else {
+            $BusinessUnits = $JsonParameters.PSobject.Properties["businessUnits"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
             "name" = ${Name}
@@ -233,6 +249,7 @@ function ConvertFrom-JsonToClientUserDetail {
             "created_at" = ${CreatedAt}
             "locked" = ${Locked}
             "role" = ${Role}
+            "businessUnits" = ${BusinessUnits}
         }
 
         return $PSO

@@ -111,12 +111,6 @@ Filter ports created after a given date and time.
 .PARAMETER CreatedTo
 Filter ports created before a given date and time.
 
-.PARAMETER UpdatedFrom
-Filter ports updated after a given date and time.
-
-.PARAMETER UpdatedTo
-Filter ports updated before a given date and time.
-
 .PARAMETER AssetName
 Search ports by port number.
 
@@ -159,21 +153,15 @@ function Get-ListAssetPorts {
         [System.Nullable[System.DateTime]]
         ${CreatedTo},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [System.Nullable[System.DateTime]]
-        ${UpdatedFrom},
-        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [System.Nullable[System.DateTime]]
-        ${UpdatedTo},
-        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${AssetName},
-        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${BusinessUnitIds},
-        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${CustomPropertyKey},
-        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${CustomPropertyValue},
         [Switch]
@@ -221,14 +209,6 @@ function Get-ListAssetPorts {
 
         if ($CreatedTo) {
             $LocalVarQueryParameters['created_to'] = $CreatedTo
-        }
-
-        if ($UpdatedFrom) {
-            $LocalVarQueryParameters['updated_from'] = $UpdatedFrom
-        }
-
-        if ($UpdatedTo) {
-            $LocalVarQueryParameters['updated_to'] = $UpdatedTo
         }
 
         if ($AssetName) {

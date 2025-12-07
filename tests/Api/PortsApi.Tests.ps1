@@ -17,7 +17,7 @@ Describe -tag 'WatchtowrAPI' -name 'PortsApi' {
 
     Context 'Get-ListAssetPorts' {
         It 'Test Get-ListAssetPorts' {
-            #$TestResult = Get-ListAssetPorts -Page "TEST_VALUE" -PageSize "TEST_VALUE" -IncludeClosedPort "TEST_VALUE" -IncludeNoService "TEST_VALUE" -CreatedFrom "TEST_VALUE" -CreatedTo "TEST_VALUE" -UpdatedFrom "TEST_VALUE" -UpdatedTo "TEST_VALUE" -AssetName "TEST_VALUE" -BusinessUnitIds "TEST_VALUE" -CustomPropertyKey "TEST_VALUE" -CustomPropertyValue "TEST_VALUE"
+            #$TestResult = Get-ListAssetPorts -Page "TEST_VALUE" -PageSize "TEST_VALUE" -IncludeClosedPort "TEST_VALUE" -IncludeNoService "TEST_VALUE" -CreatedFrom "TEST_VALUE" -CreatedTo "TEST_VALUE" -AssetName "TEST_VALUE" -BusinessUnitIds "TEST_VALUE" -CustomPropertyKey "TEST_VALUE" -CustomPropertyValue "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
         }

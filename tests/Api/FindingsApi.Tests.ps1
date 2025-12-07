@@ -111,6 +111,14 @@ Describe -tag 'WatchtowrAPI' -name 'FindingsApi' {
         }
     }
 
+    Context 'Update-FindingState' {
+        It 'Test Update-FindingState' {
+            #$TestResult = Update-FindingState -Id "TEST_VALUE" -UpdateClientFindingStateRequestBody "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
     Context 'Update-FindingStatus' {
         It 'Test Update-FindingStatus' {
             #$TestResult = Update-FindingStatus -Id "TEST_VALUE" -UpdateClientFindingStatusRequestBody "TEST_VALUE"

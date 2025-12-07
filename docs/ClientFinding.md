@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Cvssv3Score** | **Decimal** |  | 
 **Cvssv3Metrics** | **String** |  | 
 **Status** | **String** |  | 
+**State** | **String** | Different to status, this is about tracking how the finding is being handled | 
 **CreatedAt** | [**SystemCollectionsHashtable**](.md) |  | 
 **Affected** | [**SystemCollectionsHashtable**](.md) |  | 
 **CveId** | **String** |  | [optional] 
@@ -62,6 +63,7 @@ As a long-term measure to ensure that the security impact of breach credentials 
  -Cvssv3Score 8.1 `
  -Cvssv3Metrics CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N/E:F/RL:W/RC:C `
  -Status confirmed `
+ -State Uninvestigated `
  -CreatedAt 2022-02-13T02:10:00.000000Z `
  -Affected null `
  -CveId CVE-2023-38180 `

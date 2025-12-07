@@ -80,7 +80,7 @@ function Initialize-Hunt {
         [String]
         ${Title},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
-        [ValidateSet("received", "in-progress", "completed", "not-covered")]
+        [ValidateSet("received", "in-progress", "completed", "not-covered", "outdated")]
         [String]
         ${Status}
     )

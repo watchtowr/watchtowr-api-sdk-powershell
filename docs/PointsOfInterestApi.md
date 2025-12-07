@@ -24,6 +24,7 @@ Method | HTTP request | Description
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-EndDate] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AssetStatuses] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessUnitIds] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SuppressionFilter] <String><br>
 
 List Points of Interest
 
@@ -48,10 +49,11 @@ $StartDate = (Get-Date) # System.DateTime | Filter points of interest by start d
 $EndDate = (Get-Date) # System.DateTime | Filter points of interest by end date. (optional)
 $AssetStatuses = "verified,Unregistered,Parked,Incorrect Identification,pending,VerifiedOutOfScope,VerifiedReducedAttack,Tracked,CDN,Hanging Cloud IP,VerifiedHoneypot,Third Party" # String | Filter points of interest by a comma separated list of asset statuses. (optional)
 $BusinessUnitIds = "1,2,3" # String | Filter points of interest by a comma separated list of business unit IDs. (optional)
+$SuppressionFilter = "non-suppressed" # String | Filter points of interest by suppression status. (optional)
 
 # List Points of Interest
 try {
-    $Result = Get-ListPointsOfInterest -Page $Page -PageSize $PageSize -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -DiscoveredDateOrder $DiscoveredDateOrder -Search $Search -Types $Types -HasFinding $HasFinding -StartDate $StartDate -EndDate $EndDate -AssetStatuses $AssetStatuses -BusinessUnitIds $BusinessUnitIds
+    $Result = Get-ListPointsOfInterest -Page $Page -PageSize $PageSize -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -DiscoveredDateOrder $DiscoveredDateOrder -Search $Search -Types $Types -HasFinding $HasFinding -StartDate $StartDate -EndDate $EndDate -AssetStatuses $AssetStatuses -BusinessUnitIds $BusinessUnitIds -SuppressionFilter $SuppressionFilter
 } catch {
     Write-Host ("Exception occurred when calling Get-ListPointsOfInterest: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -76,6 +78,7 @@ Name | Type | Description  | Notes
  **EndDate** | **System.DateTime**| Filter points of interest by end date. | [optional] 
  **AssetStatuses** | **String**| Filter points of interest by a comma separated list of asset statuses. | [optional] 
  **BusinessUnitIds** | **String**| Filter points of interest by a comma separated list of business unit IDs. | [optional] 
+ **SuppressionFilter** | **String**| Filter points of interest by suppression status. | [optional] 
 
 ### Return type
 

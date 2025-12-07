@@ -39,6 +39,8 @@ No description available.
 No description available.
 .PARAMETER Status
 No description available.
+.PARAMETER State
+Different to status, this is about tracking how the finding is being handled
 .PARAMETER CreatedAt
 No description available.
 .PARAMETER Affected
@@ -112,42 +114,46 @@ function Initialize-ClientFinding {
         [String]
         ${Status},
         [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${CreatedAt},
+        [ValidateSet("Uninvestigated", "In Progress", "Completed")]
+        [String]
+        ${State},
         [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
-        ${Affected},
+        ${CreatedAt},
         [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject]
+        ${Affected},
+        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${CveId},
-        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Decimal]]
         ${EpssScore},
-        [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${Retest},
-        [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 18, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
         ${FindingRetests},
-        [Parameter(Position = 18, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${AssignedUser},
         [Parameter(Position = 19, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
-        ${LastSeen},
+        ${AssignedUser},
         [Parameter(Position = 20, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
-        ${LastStatusUpdatedAt},
+        ${LastSeen},
         [Parameter(Position = 21, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject]
+        ${LastStatusUpdatedAt},
+        [Parameter(Position = 22, ValueFromPipelineByPropertyName = $true)]
         [Decimal]
         ${Age},
-        [Parameter(Position = 22, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 23, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Criticality},
-        [Parameter(Position = 23, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 24, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
         ${CustomProperties},
-        [Parameter(Position = 24, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 25, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
         ${DetectionRules}
     )
@@ -204,6 +210,10 @@ function Initialize-ClientFinding {
             throw "invalid value for 'Status', 'Status' cannot be null."
         }
 
+        if ($null -eq $State) {
+            throw "invalid value for 'State', 'State' cannot be null."
+        }
+
         if ($null -eq $CreatedAt) {
             throw "invalid value for 'CreatedAt', 'CreatedAt' cannot be null."
         }
@@ -254,6 +264,7 @@ function Initialize-ClientFinding {
             "cvssv3_score" = ${Cvssv3Score}
             "cvssv3_metrics" = ${Cvssv3Metrics}
             "status" = ${Status}
+            "state" = ${State}
             "created_at" = ${CreatedAt}
             "affected" = ${Affected}
             "cve_id" = ${CveId}
@@ -304,7 +315,7 @@ function ConvertFrom-JsonToClientFinding {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientFinding
-        $AllProperties = ("id", "title", "description", "impact", "finding_impact", "tags", "evidence", "recommendation", "severity", "cvssv3_score", "cvssv3_metrics", "status", "created_at", "affected", "cve_id", "epss_score", "retest", "finding_retests", "assigned_user", "last_seen", "last_status_updated_at", "age", "criticality", "customProperties", "detection_rules")
+        $AllProperties = ("id", "title", "description", "impact", "finding_impact", "tags", "evidence", "recommendation", "severity", "cvssv3_score", "cvssv3_metrics", "status", "state", "created_at", "affected", "cve_id", "epss_score", "retest", "finding_retests", "assigned_user", "last_seen", "last_status_updated_at", "age", "criticality", "customProperties", "detection_rules")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -385,6 +396,12 @@ function ConvertFrom-JsonToClientFinding {
             throw "Error! JSON cannot be serialized due to the required property 'status' missing."
         } else {
             $Status = $JsonParameters.PSobject.Properties["status"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "state"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'state' missing."
+        } else {
+            $State = $JsonParameters.PSobject.Properties["state"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "created_at"))) {
@@ -478,6 +495,7 @@ function ConvertFrom-JsonToClientFinding {
             "cvssv3_score" = ${Cvssv3Score}
             "cvssv3_metrics" = ${Cvssv3Metrics}
             "status" = ${Status}
+            "state" = ${State}
             "created_at" = ${CreatedAt}
             "affected" = ${Affected}
             "cve_id" = ${CveId}

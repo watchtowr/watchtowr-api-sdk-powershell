@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**Start-SpecificFindingRetest**](FindingsApi.md#Start-SpecificFindingRetest) | **POST** /api/client/findings/retest/{finding_id} | Retest Finding
 [**Update-CustomPropertyFinding**](FindingsApi.md#Update-CustomPropertyFinding) | **PUT** /api/client/findings/show/{id}/custom-property/{customPropertyId} | Update Custom Property
 [**Update-FindingNote**](FindingsApi.md#Update-FindingNote) | **PUT** /api/client/findings/show/{id}/note/{noteId} | Update Finding Note
+[**Update-FindingState**](FindingsApi.md#Update-FindingState) | **POST** /api/client/findings/state/{id} | Update Finding State
 [**Update-FindingStatus**](FindingsApi.md#Update-FindingStatus) | **POST** /api/client/findings/status/{id} | Update Finding Status
 
 
@@ -691,6 +692,55 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ClientNoteData**](ClientNoteData.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Update-FindingState"></a>
+# **Update-FindingState**
+> ClientFindingData Update-FindingState<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateClientFindingStateRequestBody] <PSCustomObject><br>
+
+Update Finding State
+
+Update the state of a specific finding.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The ID of the finding to update.
+$UpdateClientFindingStateRequestBody = Initialize-UpdateClientFindingStateRequestBody -State "Uninvestigated" # UpdateClientFindingStateRequestBody | 
+
+# Update Finding State
+try {
+    $Result = Update-FindingState -Id $Id -UpdateClientFindingStateRequestBody $UpdateClientFindingStateRequestBody
+} catch {
+    Write-Host ("Exception occurred when calling Update-FindingState: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The ID of the finding to update. | 
+ **UpdateClientFindingStateRequestBody** | [**UpdateClientFindingStateRequestBody**](UpdateClientFindingStateRequestBody.md)|  | 
+
+### Return type
+
+[**ClientFindingData**](ClientFindingData.md) (PSCustomObject)
 
 ### Authorization
 

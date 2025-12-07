@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ClientFinding' {
     Context 'ClientFinding' {
         It 'Initialize-ClientFinding' {
             # a simple test to create an object
-            #$NewObject = Initialize-ClientFinding -Id "TEST_VALUE" -Title "TEST_VALUE" -Description "TEST_VALUE" -Impact "TEST_VALUE" -FindingImpact "TEST_VALUE" -Tags "TEST_VALUE" -Evidence "TEST_VALUE" -Recommendation "TEST_VALUE" -Severity "TEST_VALUE" -Cvssv3Score "TEST_VALUE" -Cvssv3Metrics "TEST_VALUE" -Status "TEST_VALUE" -CreatedAt "TEST_VALUE" -Affected "TEST_VALUE" -CveId "TEST_VALUE" -EpssScore "TEST_VALUE" -Retest "TEST_VALUE" -FindingRetests "TEST_VALUE" -AssignedUser "TEST_VALUE" -LastSeen "TEST_VALUE" -LastStatusUpdatedAt "TEST_VALUE" -Age "TEST_VALUE" -Criticality "TEST_VALUE" -CustomProperties "TEST_VALUE" -DetectionRules "TEST_VALUE"
+            #$NewObject = Initialize-ClientFinding -Id "TEST_VALUE" -Title "TEST_VALUE" -Description "TEST_VALUE" -Impact "TEST_VALUE" -FindingImpact "TEST_VALUE" -Tags "TEST_VALUE" -Evidence "TEST_VALUE" -Recommendation "TEST_VALUE" -Severity "TEST_VALUE" -Cvssv3Score "TEST_VALUE" -Cvssv3Metrics "TEST_VALUE" -Status "TEST_VALUE" -State "TEST_VALUE" -CreatedAt "TEST_VALUE" -Affected "TEST_VALUE" -CveId "TEST_VALUE" -EpssScore "TEST_VALUE" -Retest "TEST_VALUE" -FindingRetests "TEST_VALUE" -AssignedUser "TEST_VALUE" -LastSeen "TEST_VALUE" -LastStatusUpdatedAt "TEST_VALUE" -Age "TEST_VALUE" -Criticality "TEST_VALUE" -CustomProperties "TEST_VALUE" -DetectionRules "TEST_VALUE"
             #$NewObject | Should -BeOfType ClientFinding
             #$NewObject.property | Should -Be 0
         }

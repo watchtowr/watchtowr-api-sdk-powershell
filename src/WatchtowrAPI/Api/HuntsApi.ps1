@@ -72,7 +72,7 @@ function Get-ClientHunts {
         [System.Nullable[Decimal]]
         ${PageSize},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [ValidateSet("received", "in-progress", "completed", "not-covered")]
+        [ValidateSet("received", "in-progress", "completed", "not-covered", "outdated")]
         [String]
         ${Statuses},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]

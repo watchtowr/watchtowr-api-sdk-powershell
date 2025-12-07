@@ -464,6 +464,104 @@ function Invoke-DeleteNoteContainer {
 <#
 .SYNOPSIS
 
+Get Container Changelog
+
+.DESCRIPTION
+
+No description available.
+
+.PARAMETER Id
+The asset ID of the container to retrieve changelog for.
+
+.PARAMETER Page
+The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
+
+.PARAMETER PageSize
+The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30.
+
+.PARAMETER WithHttpInfo
+
+A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
+
+.OUTPUTS
+
+PaginatedClientActivityLog
+#>
+function Get-AssetContainerChangelog {
+    [CmdletBinding()]
+    Param (
+        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [Decimal]
+        ${Id},
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [System.Nullable[Decimal]]
+        ${Page},
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [System.Nullable[Decimal]]
+        ${PageSize},
+        [Switch]
+        $WithHttpInfo
+    )
+
+    Process {
+        'Calling method: Get-AssetContainerChangelog' | Write-Debug
+        $PSBoundParameters | Out-DebugParameter | Write-Debug
+
+        $LocalVarAccepts = @()
+        $LocalVarContentTypes = @()
+        $LocalVarQueryParameters = @{}
+        $LocalVarHeaderParameters = @{}
+        $LocalVarFormParameters = @{}
+        $LocalVarPathParameters = @{}
+        $LocalVarCookieParameters = @{}
+        $LocalVarBodyParameter = $null
+
+        $Configuration = Get-Configuration
+        # HTTP header 'Accept' (if needed)
+        $LocalVarAccepts = @('application/json')
+
+        $LocalVarUri = '/api/client/assets/container/show/{id}/changelog'
+        if (!$Id) {
+            throw "Error! The required parameter `Id` missing when calling getAssetContainerChangelog."
+        }
+        $LocalVarUri = $LocalVarUri.replace('{id}', [System.Web.HTTPUtility]::UrlEncode($Id))
+
+        if ($Page) {
+            $LocalVarQueryParameters['page'] = $Page
+        }
+
+        if ($PageSize) {
+            $LocalVarQueryParameters['pageSize'] = $PageSize
+        }
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
+        $LocalVarResult = Invoke-ApiClient -Method 'GET' `
+                                -Uri $LocalVarUri `
+                                -Accepts $LocalVarAccepts `
+                                -ContentTypes $LocalVarContentTypes `
+                                -Body $LocalVarBodyParameter `
+                                -HeaderParameters $LocalVarHeaderParameters `
+                                -QueryParameters $LocalVarQueryParameters `
+                                -FormParameters $LocalVarFormParameters `
+                                -CookieParameters $LocalVarCookieParameters `
+                                -ReturnType "PaginatedClientActivityLog" `
+                                -IsBodyNullable $false
+
+        if ($WithHttpInfo.IsPresent) {
+            return $LocalVarResult
+        } else {
+            return $LocalVarResult["Response"]
+        }
+    }
+}
+
+<#
+.SYNOPSIS
+
 Get Container
 
 .DESCRIPTION
@@ -760,7 +858,7 @@ Filter assets by one or more comma separated asset statuses. Valid statuses are:
 Filter assets by the source that discovered the asset.
 
 .PARAMETER IntegrationConnections
-Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).  Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, fastly, armiscentrix, qualysvmdr, tenable, orcasecurity  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud)
+Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).  Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, fastly, armiscentrix, qualysvmdr, tenablevm, orcasecurity, crowdstrikefalconspotlight, taniumvm, rapid7insightvm  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud)
 
 .PARAMETER BusinessUnitIds
 Filter assets by a list of comma separated business unit IDs that the asset is related to.
@@ -770,12 +868,6 @@ Filter assets created after a given date and time.
 
 .PARAMETER CreatedTo
 Filter assets created before a given date and time.
-
-.PARAMETER UpdatedFrom
-Filter assets updated after a given date and time.
-
-.PARAMETER UpdatedTo
-Filter assets updated before a given date and time.
 
 .PARAMETER CustomPropertyKey
 Filter assets by custom property key.
@@ -822,15 +914,9 @@ function Get-ListAssetContainer {
         [System.Nullable[System.DateTime]]
         ${CreatedTo},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [System.Nullable[System.DateTime]]
-        ${UpdatedFrom},
-        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [System.Nullable[System.DateTime]]
-        ${UpdatedTo},
-        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${CustomPropertyKey},
-        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${CustomPropertyValue},
         [Switch]
@@ -890,14 +976,6 @@ function Get-ListAssetContainer {
 
         if ($CreatedTo) {
             $LocalVarQueryParameters['created_to'] = $CreatedTo
-        }
-
-        if ($UpdatedFrom) {
-            $LocalVarQueryParameters['updated_from'] = $UpdatedFrom
-        }
-
-        if ($UpdatedTo) {
-            $LocalVarQueryParameters['updated_to'] = $UpdatedTo
         }
 
         if ($CustomPropertyKey) {

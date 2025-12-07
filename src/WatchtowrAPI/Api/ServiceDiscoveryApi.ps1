@@ -72,6 +72,9 @@ Sort services.
 .PARAMETER OrderBy
 Order services.
 
+.PARAMETER SuppressionFilter
+Filter services by suppression status.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -142,6 +145,10 @@ function Get-ListServiceListing {
         [ValidateSet("ASC", "DESC")]
         [String]
         ${OrderBy},
+        [Parameter(Position = 19, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [ValidateSet("non-suppressed", "suppressed", "all")]
+        [String]
+        ${SuppressionFilter},
         [Switch]
         $WithHttpInfo
     )
@@ -239,6 +246,10 @@ function Get-ListServiceListing {
 
         if ($OrderBy) {
             $LocalVarQueryParameters['orderBy'] = $OrderBy
+        }
+
+        if ($SuppressionFilter) {
+            $LocalVarQueryParameters['suppressionFilter'] = $SuppressionFilter
         }
 
         if ($Configuration["AccessToken"]) {

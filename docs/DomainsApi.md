@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**New-CustomPropertyDomain**](DomainsApi.md#New-CustomPropertyDomain) | **POST** /api/client/assets/domain/show/{id}/custom-property | Create Custom Property
 [**Invoke-DeleteAssetDomainNote**](DomainsApi.md#Invoke-DeleteAssetDomainNote) | **DELETE** /api/client/assets/domain/show/{id}/note/{noteId} | Delete Note
 [**Invoke-DeleteCustomPropertyDomain**](DomainsApi.md#Invoke-DeleteCustomPropertyDomain) | **DELETE** /api/client/assets/domain/show/{id}/custom-property/{customPropertyId} | Delete Custom Property
+[**Get-AssetDomainChangelog**](DomainsApi.md#Get-AssetDomainChangelog) | **GET** /api/client/assets/domain/show/{id}/changelog | Get Domain Changelog
 [**Get-AssetDomainDetails**](DomainsApi.md#Get-AssetDomainDetails) | **GET** /api/client/assets/domain/show/{id} | Get Domain Details
 [**Get-AssetDomainDnsRecords**](DomainsApi.md#Get-AssetDomainDnsRecords) | **GET** /api/client/assets/domain/show/{id}/dns-records | List DNS Records
 [**Get-AssetDomainEngineSettings**](DomainsApi.md#Get-AssetDomainEngineSettings) | **GET** /api/client/assets/domain/show/{id}/engine-settings | Get Domain Engine Settings
@@ -255,6 +256,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RemoveClientCustomPropertyResponseDto**](RemoveClientCustomPropertyResponseDto.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Get-AssetDomainChangelog"></a>
+# **Get-AssetDomainChangelog**
+> PaginatedClientActivityLog Get-AssetDomainChangelog<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
+
+Get Domain Changelog
+
+Get paginated changelog (activity logs) for a specific domain asset.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The asset ID of the domain to retrieve changelog for.
+$Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
+
+# Get Domain Changelog
+try {
+    $Result = Get-AssetDomainChangelog -Id $Id -Page $Page -PageSize $PageSize
+} catch {
+    Write-Host ("Exception occurred when calling Get-AssetDomainChangelog: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The asset ID of the domain to retrieve changelog for. | 
+ **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
+
+### Return type
+
+[**PaginatedClientActivityLog**](PaginatedClientActivityLog.md) (PSCustomObject)
 
 ### Authorization
 
@@ -527,8 +580,6 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessUnitIds] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreatedFrom] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreatedTo] <System.Nullable[System.DateTime]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdatedFrom] <System.Nullable[System.DateTime]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdatedTo] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyKey] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyValue] <String><br>
 
@@ -546,18 +597,16 @@ $PageSize = 10 # Decimal | The number of items to be included on each page of pa
 $AssetName = "watchtowr.com" # String | Search domain assets by name. (optional)
 $Statuses = "MyStatuses" # String[] | Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * incorrect identification       * pending       * verifiedOutOfScope       * verifiedReducedAttack       * parked  (optional)
 $Source = "watchtowr-cloud-integration-aws-hosts" # String | Filter assets by the source that discovered the asset. (optional)
-$IntegrationConnections = "123:aws,456:azure,789:googlecloud" # String | Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).  Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, fastly, armiscentrix, qualysvmdr, tenable, orcasecurity  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud) (optional)
+$IntegrationConnections = "123:aws,456:azure,789:googlecloud" # String | Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).  Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, fastly, armiscentrix, qualysvmdr, tenablevm, orcasecurity, crowdstrikefalconspotlight, taniumvm, rapid7insightvm  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud) (optional)
 $BusinessUnitIds = "1,2,3" # String | Filter assets by a list of comma separated business unit IDs that the asset is related to. (optional)
 $CreatedFrom = (Get-Date) # System.DateTime | Filter assets created after a given date and time. (optional)
 $CreatedTo = (Get-Date) # System.DateTime | Filter assets created before a given date and time. (optional)
-$UpdatedFrom = (Get-Date) # System.DateTime | Filter assets updated after a given date and time. (optional)
-$UpdatedTo = (Get-Date) # System.DateTime | Filter assets updated before a given date and time. (optional)
 $CustomPropertyKey = "environment" # String | Filter assets by custom property key. (optional)
 $CustomPropertyValue = "production" # String | Filter assets by custom property value. Must be used together with customPropertyKey. (optional)
 
 # List Domains
 try {
-    $Result = Get-ListAssetDomains -Page $Page -PageSize $PageSize -AssetName $AssetName -Statuses $Statuses -Source $Source -IntegrationConnections $IntegrationConnections -BusinessUnitIds $BusinessUnitIds -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -CustomPropertyKey $CustomPropertyKey -CustomPropertyValue $CustomPropertyValue
+    $Result = Get-ListAssetDomains -Page $Page -PageSize $PageSize -AssetName $AssetName -Statuses $Statuses -Source $Source -IntegrationConnections $IntegrationConnections -BusinessUnitIds $BusinessUnitIds -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -CustomPropertyKey $CustomPropertyKey -CustomPropertyValue $CustomPropertyValue
 } catch {
     Write-Host ("Exception occurred when calling Get-ListAssetDomains: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -573,12 +622,10 @@ Name | Type | Description  | Notes
  **AssetName** | **String**| Search domain assets by name. | [optional] 
  **Statuses** | [**String[]**](String.md)| Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * incorrect identification       * pending       * verifiedOutOfScope       * verifiedReducedAttack       * parked  | [optional] 
  **Source** | **String**| Filter assets by the source that discovered the asset. | [optional] 
- **IntegrationConnections** | **String**| Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).  Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, fastly, armiscentrix, qualysvmdr, tenable, orcasecurity  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud) | [optional] 
+ **IntegrationConnections** | **String**| Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).  Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, fastly, armiscentrix, qualysvmdr, tenablevm, orcasecurity, crowdstrikefalconspotlight, taniumvm, rapid7insightvm  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud) | [optional] 
  **BusinessUnitIds** | **String**| Filter assets by a list of comma separated business unit IDs that the asset is related to. | [optional] 
  **CreatedFrom** | **System.DateTime**| Filter assets created after a given date and time. | [optional] 
  **CreatedTo** | **System.DateTime**| Filter assets created before a given date and time. | [optional] 
- **UpdatedFrom** | **System.DateTime**| Filter assets updated after a given date and time. | [optional] 
- **UpdatedTo** | **System.DateTime**| Filter assets updated before a given date and time. | [optional] 
  **CustomPropertyKey** | **String**| Filter assets by custom property key. | [optional] 
  **CustomPropertyValue** | **String**| Filter assets by custom property value. Must be used together with customPropertyKey. | [optional] 
 

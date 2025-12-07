@@ -29,6 +29,7 @@ Method | HTTP request | Description
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessUnitIds] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SortBy] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OrderBy] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SuppressionFilter] <String><br>
 
 List Services
 
@@ -58,10 +59,11 @@ $ServiceTypeIds = "1,2,3" # String | Filter services by a list of comma separate
 $BusinessUnitIds = "1,2,3" # String | Filter services by a list of comma separated business unit IDs they're related to. (optional)
 $SortBy = "last_seen" # String | Sort services. (optional)
 $OrderBy = "ASC" # String | Order services. (optional)
+$SuppressionFilter = "non-suppressed" # String | Filter services by suppression status. (optional)
 
 # List Services
 try {
-    $Result = Get-ListServiceListing -Page $Page -PageSize $PageSize -IncludeClosedPort $IncludeClosedPort -IncludeNoService $IncludeNoService -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -Search $Search -Countries $Countries -Technology $Technology -Ports $Ports -PortNumbers $PortNumbers -PortTypes $PortTypes -PortServices $PortServices -ServiceTypeIds $ServiceTypeIds -BusinessUnitIds $BusinessUnitIds -SortBy $SortBy -OrderBy $OrderBy
+    $Result = Get-ListServiceListing -Page $Page -PageSize $PageSize -IncludeClosedPort $IncludeClosedPort -IncludeNoService $IncludeNoService -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -Search $Search -Countries $Countries -Technology $Technology -Ports $Ports -PortNumbers $PortNumbers -PortTypes $PortTypes -PortServices $PortServices -ServiceTypeIds $ServiceTypeIds -BusinessUnitIds $BusinessUnitIds -SortBy $SortBy -OrderBy $OrderBy -SuppressionFilter $SuppressionFilter
 } catch {
     Write-Host ("Exception occurred when calling Get-ListServiceListing: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -91,6 +93,7 @@ Name | Type | Description  | Notes
  **BusinessUnitIds** | **String**| Filter services by a list of comma separated business unit IDs they&#39;re related to. | [optional] 
  **SortBy** | **String**| Sort services. | [optional] 
  **OrderBy** | **String**| Order services. | [optional] 
+ **SuppressionFilter** | **String**| Filter services by suppression status. | [optional] 
 
 ### Return type
 

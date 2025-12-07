@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ClientUserDetail' {
     Context 'ClientUserDetail' {
         It 'Initialize-ClientUserDetail' {
             # a simple test to create an object
-            #$NewObject = Initialize-ClientUserDetail -Id "TEST_VALUE" -Name "TEST_VALUE" -Email "TEST_VALUE" -Title "TEST_VALUE" -MobilePhoneNumber "TEST_VALUE" -OfficePhoneNumber "TEST_VALUE" -CreatedAt "TEST_VALUE" -Locked "TEST_VALUE" -Role "TEST_VALUE"
+            #$NewObject = Initialize-ClientUserDetail -Id "TEST_VALUE" -Name "TEST_VALUE" -Email "TEST_VALUE" -Title "TEST_VALUE" -MobilePhoneNumber "TEST_VALUE" -OfficePhoneNumber "TEST_VALUE" -CreatedAt "TEST_VALUE" -Locked "TEST_VALUE" -Role "TEST_VALUE" -BusinessUnits "TEST_VALUE"
             #$NewObject | Should -BeOfType ClientUserDetail
             #$NewObject.property | Should -Be 0
         }

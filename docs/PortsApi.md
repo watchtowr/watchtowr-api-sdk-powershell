@@ -63,8 +63,6 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IncludeNoService] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreatedFrom] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreatedTo] <System.Nullable[System.DateTime]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdatedFrom] <System.Nullable[System.DateTime]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdatedTo] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AssetName] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessUnitIds] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyKey] <String><br>
@@ -85,8 +83,6 @@ $IncludeClosedPort = $true # Boolean | Include listings with closed ports. (opti
 $IncludeNoService = $true # Boolean | Include listings without a service (optional)
 $CreatedFrom = (Get-Date) # System.DateTime | Filter ports created after a given date and time. (optional)
 $CreatedTo = (Get-Date) # System.DateTime | Filter ports created before a given date and time. (optional)
-$UpdatedFrom = (Get-Date) # System.DateTime | Filter ports updated after a given date and time. (optional)
-$UpdatedTo = (Get-Date) # System.DateTime | Filter ports updated before a given date and time. (optional)
 $AssetName = "80" # String | Search ports by port number. (optional)
 $BusinessUnitIds = "1,2,3" # String | Filter assets by a list of comma separated business unit IDs that the asset is related to. (optional)
 $CustomPropertyKey = "environment" # String | Filter assets by custom property key. (optional)
@@ -94,7 +90,7 @@ $CustomPropertyValue = "production" # String | Filter assets by custom property 
 
 # List Ports
 try {
-    $Result = Get-ListAssetPorts -Page $Page -PageSize $PageSize -IncludeClosedPort $IncludeClosedPort -IncludeNoService $IncludeNoService -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -AssetName $AssetName -BusinessUnitIds $BusinessUnitIds -CustomPropertyKey $CustomPropertyKey -CustomPropertyValue $CustomPropertyValue
+    $Result = Get-ListAssetPorts -Page $Page -PageSize $PageSize -IncludeClosedPort $IncludeClosedPort -IncludeNoService $IncludeNoService -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -AssetName $AssetName -BusinessUnitIds $BusinessUnitIds -CustomPropertyKey $CustomPropertyKey -CustomPropertyValue $CustomPropertyValue
 } catch {
     Write-Host ("Exception occurred when calling Get-ListAssetPorts: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -111,8 +107,6 @@ Name | Type | Description  | Notes
  **IncludeNoService** | **Boolean**| Include listings without a service | [optional] 
  **CreatedFrom** | **System.DateTime**| Filter ports created after a given date and time. | [optional] 
  **CreatedTo** | **System.DateTime**| Filter ports created before a given date and time. | [optional] 
- **UpdatedFrom** | **System.DateTime**| Filter ports updated after a given date and time. | [optional] 
- **UpdatedTo** | **System.DateTime**| Filter ports updated before a given date and time. | [optional] 
  **AssetName** | **String**| Search ports by port number. | [optional] 
  **BusinessUnitIds** | **String**| Filter assets by a list of comma separated business unit IDs that the asset is related to. | [optional] 
  **CustomPropertyKey** | **String**| Filter assets by custom property key. | [optional] 

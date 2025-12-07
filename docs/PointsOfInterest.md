@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **BusinessUnits** | [**ClientBusinessUnit[]**](ClientBusinessUnit.md) | Business unit | 
 **LastSeen** | **System.DateTime** | Last seen at | [optional] 
 **IsConcerning** | **Boolean** | Whether the Point of Interest is concerning | 
+**Suppressed** | **Boolean** | Whether the Point of Interest is suppressed | 
+**SuppressedAt** | **System.DateTime** | Suppressed at timestamp | [optional] 
 
 ## Examples
 
@@ -31,7 +33,9 @@ $PointsOfInterest = Initialize-WatchtowrAPIPointsOfInterest  -Id 1 `
  -AssetType ip `
  -BusinessUnits null `
  -LastSeen null `
- -IsConcerning true
+ -IsConcerning true `
+ -Suppressed true `
+ -SuppressedAt null
 ```
 
 - Convert the resource to JSON

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**New-CustomPropertyPackageManager**](PackageManagersApi.md#New-CustomPropertyPackageManager) | **POST** /api/client/assets/packageManager/show/{id}/custom-property | Create Custom Property
 [**Invoke-DeleteAssetPackageManagerNote**](PackageManagersApi.md#Invoke-DeleteAssetPackageManagerNote) | **DELETE** /api/client/assets/packageManager/show/{id}/note/{noteId} | Delete Note
 [**Invoke-DeleteCustomPropertyById**](PackageManagersApi.md#Invoke-DeleteCustomPropertyById) | **DELETE** /api/client/assets/packageManager/show/{id}/custom-property/{customPropertyId} | Delete Custom Property
+[**Get-AssetPackageManagerChangelog**](PackageManagersApi.md#Get-AssetPackageManagerChangelog) | **GET** /api/client/assets/packageManager/show/{id}/changelog | Get Package Manager Changelog
 [**Get-AssetPackageManagerDetails**](PackageManagersApi.md#Get-AssetPackageManagerDetails) | **GET** /api/client/assets/packageManager/show/{id} | Get Package Manager
 [**Get-AssetPackageManagerNotes**](PackageManagersApi.md#Get-AssetPackageManagerNotes) | **GET** /api/client/assets/packageManager/show/{id}/notes | List Notes
 [**Get-CustomPropertiesPackageManager**](PackageManagersApi.md#Get-CustomPropertiesPackageManager) | **GET** /api/client/assets/packageManager/show/{id}/custom-properties | List Custom Properties
@@ -264,6 +265,58 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="Get-AssetPackageManagerChangelog"></a>
+# **Get-AssetPackageManagerChangelog**
+> PaginatedClientActivityLog Get-AssetPackageManagerChangelog<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
+
+Get Package Manager Changelog
+
+Get paginated changelog (activity logs) for a specific package manager asset.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The asset ID of the package manager to retrieve changelog for.
+$Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
+
+# Get Package Manager Changelog
+try {
+    $Result = Get-AssetPackageManagerChangelog -Id $Id -Page $Page -PageSize $PageSize
+} catch {
+    Write-Host ("Exception occurred when calling Get-AssetPackageManagerChangelog: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The asset ID of the package manager to retrieve changelog for. | 
+ **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
+
+### Return type
+
+[**PaginatedClientActivityLog**](PaginatedClientActivityLog.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="Get-AssetPackageManagerDetails"></a>
 # **Get-AssetPackageManagerDetails**
 > ClientPackageManagerData Get-AssetPackageManagerDetails<br>
@@ -426,8 +479,6 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessUnitIds] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreatedFrom] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreatedTo] <System.Nullable[System.DateTime]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdatedFrom] <System.Nullable[System.DateTime]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdatedTo] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyKey] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyValue] <String><br>
 
@@ -445,18 +496,16 @@ $PageSize = 10 # Decimal | The number of items to be included on each page of pa
 $AssetName = "watchTowr/devel_repo" # String | Search package managers by asset name. (optional)
 $Statuses = "MyStatuses" # String[] | Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * tracked       * incorrect identification       * pending       * verifiedOutOfScope  (optional)
 $Source = "module-adversarysight-yarn-project-discovery" # String | Filter assets by the source that discovered the asset. (optional)
-$IntegrationConnections = "123:aws,456:azure,789:googlecloud" # String | Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).  Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, fastly, armiscentrix, qualysvmdr, tenable, orcasecurity  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud) (optional)
+$IntegrationConnections = "123:aws,456:azure,789:googlecloud" # String | Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).  Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, fastly, armiscentrix, qualysvmdr, tenablevm, orcasecurity, crowdstrikefalconspotlight, taniumvm, rapid7insightvm  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud) (optional)
 $BusinessUnitIds = "1,2,3" # String | Filter assets by a list of comma separated business unit IDs that the asset is related to. (optional)
 $CreatedFrom = (Get-Date) # System.DateTime | Filter assets created after a given date and time. (optional)
 $CreatedTo = (Get-Date) # System.DateTime | Filter assets created before a given date and time. (optional)
-$UpdatedFrom = (Get-Date) # System.DateTime | Filter assets updated after a given date and time. (optional)
-$UpdatedTo = (Get-Date) # System.DateTime | Filter assets updated before a given date and time. (optional)
 $CustomPropertyKey = "environment" # String | Filter assets by custom property key. (optional)
 $CustomPropertyValue = "production" # String | Filter assets by custom property value. Must be used together with customPropertyKey. (optional)
 
 # List Package Managers
 try {
-    $Result = Get-ListAssetPackageManagers -Page $Page -PageSize $PageSize -AssetName $AssetName -Statuses $Statuses -Source $Source -IntegrationConnections $IntegrationConnections -BusinessUnitIds $BusinessUnitIds -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -CustomPropertyKey $CustomPropertyKey -CustomPropertyValue $CustomPropertyValue
+    $Result = Get-ListAssetPackageManagers -Page $Page -PageSize $PageSize -AssetName $AssetName -Statuses $Statuses -Source $Source -IntegrationConnections $IntegrationConnections -BusinessUnitIds $BusinessUnitIds -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -CustomPropertyKey $CustomPropertyKey -CustomPropertyValue $CustomPropertyValue
 } catch {
     Write-Host ("Exception occurred when calling Get-ListAssetPackageManagers: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -472,12 +521,10 @@ Name | Type | Description  | Notes
  **AssetName** | **String**| Search package managers by asset name. | [optional] 
  **Statuses** | [**String[]**](String.md)| Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * tracked       * incorrect identification       * pending       * verifiedOutOfScope  | [optional] 
  **Source** | **String**| Filter assets by the source that discovered the asset. | [optional] 
- **IntegrationConnections** | **String**| Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).  Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, fastly, armiscentrix, qualysvmdr, tenable, orcasecurity  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud) | [optional] 
+ **IntegrationConnections** | **String**| Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).  Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, fastly, armiscentrix, qualysvmdr, tenablevm, orcasecurity, crowdstrikefalconspotlight, taniumvm, rapid7insightvm  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud) | [optional] 
  **BusinessUnitIds** | **String**| Filter assets by a list of comma separated business unit IDs that the asset is related to. | [optional] 
  **CreatedFrom** | **System.DateTime**| Filter assets created after a given date and time. | [optional] 
  **CreatedTo** | **System.DateTime**| Filter assets created before a given date and time. | [optional] 
- **UpdatedFrom** | **System.DateTime**| Filter assets updated after a given date and time. | [optional] 
- **UpdatedTo** | **System.DateTime**| Filter assets updated before a given date and time. | [optional] 
  **CustomPropertyKey** | **String**| Filter assets by custom property key. | [optional] 
  **CustomPropertyValue** | **String**| Filter assets by custom property value. Must be used together with customPropertyKey. | [optional] 
 

@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **ServiceTypes** | [**ServiceType[]**](ServiceType.md) | Service types | 
 **BusinessUnits** | [**ClientBusinessUnit[]**](ClientBusinessUnit.md) | Business Units | 
 **IsConcerning** | **Boolean** | Whether the discovered network service is concerning | 
+**Suppressed** | **Boolean** | Whether the service is suppressed | 
+**SuppressedAt** | **System.DateTime** | Suppressed at timestamp | [optional] 
 
 ## Examples
 
@@ -37,7 +39,9 @@ $ServiceListing = Initialize-WatchtowrAPIServiceListing  -Id 1 `
  -Technologies null `
  -ServiceTypes null `
  -BusinessUnits null `
- -IsConcerning true
+ -IsConcerning true `
+ -Suppressed true `
+ -SuppressedAt null
 ```
 
 - Convert the resource to JSON
