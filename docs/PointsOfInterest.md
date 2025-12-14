@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **IsConcerning** | **Boolean** | Whether the Point of Interest is concerning | 
 **Suppressed** | **Boolean** | Whether the Point of Interest is suppressed | 
 **SuppressedAt** | **System.DateTime** | Suppressed at timestamp | [optional] 
+**FindingId** | **Decimal** | Finding ID if the POI has been converted to a finding | [optional] 
 
 ## Examples
 
@@ -35,7 +36,8 @@ $PointsOfInterest = Initialize-WatchtowrAPIPointsOfInterest  -Id 1 `
  -LastSeen null `
  -IsConcerning true `
  -Suppressed true `
- -SuppressedAt null
+ -SuppressedAt null `
+ -FindingId 123
 ```
 
 - Convert the resource to JSON

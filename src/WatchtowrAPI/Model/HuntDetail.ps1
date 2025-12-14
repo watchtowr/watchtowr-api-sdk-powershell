@@ -17,8 +17,6 @@ No description available.
 
 .PARAMETER Id
 ID
-.PARAMETER Priority
-Priority
 .PARAMETER Type
 Type
 .PARAMETER CreatedAt
@@ -61,55 +59,51 @@ function Initialize-HuntDetail {
         [Decimal]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [ValidateSet("low", "normal", "medium", "high")]
-        [String]
-        ${Priority},
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("bespoke", "proactive")]
         [String]
         ${Type},
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [System.DateTime]
         ${CreatedAt},
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [System.DateTime]
         ${UpdatedAt},
-        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [Decimal]
         ${TotalFindings},
-        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [Decimal]
         ${TotalAssets},
-        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("Misconfig", "Others", "SoftwareVulnerability", "ThreatIntelligence")]
         [String]
         ${HuntRequestType},
-        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("impactLessPoc", "versionMetadata", "technologyMetadata", "indicatorOfCompromise", "N/A")]
         [String]
         ${RapidExposureMechanism},
-        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Title},
-        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Description},
-        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Hypothesis},
-        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
         [String[]]
         ${References},
-        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
         [System.DateTime]
         ${CompletedAt},
-        [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${CompletedBy},
-        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${RequestedBy},
-        [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("received", "in-progress", "completed", "not-covered", "outdated")]
         [String]
         ${Status}
@@ -121,10 +115,6 @@ function Initialize-HuntDetail {
 
         if ($null -eq $Id) {
             throw "invalid value for 'Id', 'Id' cannot be null."
-        }
-
-        if ($null -eq $Priority) {
-            throw "invalid value for 'Priority', 'Priority' cannot be null."
         }
 
         if ($null -eq $Type) {
@@ -186,7 +176,6 @@ function Initialize-HuntDetail {
 
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
-            "priority" = ${Priority}
             "type" = ${Type}
             "created_at" = ${CreatedAt}
             "updated_at" = ${UpdatedAt}
@@ -239,7 +228,7 @@ function ConvertFrom-JsonToHuntDetail {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in HuntDetail
-        $AllProperties = ("id", "priority", "type", "created_at", "updated_at", "total_findings", "total_assets", "hunt_request_type", "rapid_exposure_mechanism", "title", "description", "hypothesis", "references", "completed_at", "completed_by", "requested_by", "status")
+        $AllProperties = ("id", "type", "created_at", "updated_at", "total_findings", "total_assets", "hunt_request_type", "rapid_exposure_mechanism", "title", "description", "hypothesis", "references", "completed_at", "completed_by", "requested_by", "status")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -254,12 +243,6 @@ function ConvertFrom-JsonToHuntDetail {
             throw "Error! JSON cannot be serialized due to the required property 'id' missing."
         } else {
             $Id = $JsonParameters.PSobject.Properties["id"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "priority"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'priority' missing."
-        } else {
-            $Priority = $JsonParameters.PSobject.Properties["priority"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "type"))) {
@@ -354,7 +337,6 @@ function ConvertFrom-JsonToHuntDetail {
 
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
-            "priority" = ${Priority}
             "type" = ${Type}
             "created_at" = ${CreatedAt}
             "updated_at" = ${UpdatedAt}

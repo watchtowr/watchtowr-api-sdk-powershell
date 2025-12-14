@@ -42,9 +42,6 @@ Filter hunts updated after a given date and time.
 .PARAMETER UpdatedTo
 Filter hunts updated before a given date and time.
 
-.PARAMETER Priorities
-Filter hunts by hunt priority.
-
 .PARAMETER ResourceFilter
 General
 
@@ -95,17 +92,13 @@ function Get-ClientHunts {
         [System.Nullable[System.DateTime]]
         ${UpdatedTo},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [ValidateSet("low", "normal", "medium", "high")]
-        [String]
-        ${Priorities},
-        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [ValidateSet("hasAssetsOrFindings", "hasFindings", "investigate", "notAffected")]
         [String]
         ${ResourceFilter},
-        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Boolean]]
         ${OnlyResolved},
-        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Boolean]]
         ${IsUnacknowledged},
         [Switch]
@@ -165,10 +158,6 @@ function Get-ClientHunts {
 
         if ($UpdatedTo) {
             $LocalVarQueryParameters['updated_to'] = $UpdatedTo
-        }
-
-        if ($Priorities) {
-            $LocalVarQueryParameters['priorities'] = $Priorities
         }
 
         if ($ResourceFilter) {

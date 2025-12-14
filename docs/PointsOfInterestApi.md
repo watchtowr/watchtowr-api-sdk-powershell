@@ -4,8 +4,55 @@ All URIs are relative to *https://your-tenant-id.sg.client.watchtowr.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**Convert-PoiToFinding**](PointsOfInterestApi.md#Convert-PoiToFinding) | **POST** /api/client/points-of-interest/{id}/convert-to-finding | Convert Point of Interest to Finding
 [**Get-ListPointsOfInterest**](PointsOfInterestApi.md#Get-ListPointsOfInterest) | **GET** /api/client/points-of-interest/list | List Points of Interest
 
+
+<a id="Convert-PoiToFinding"></a>
+# **Convert-PoiToFinding**
+> PointsOfInterestData Convert-PoiToFinding<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+
+Convert Point of Interest to Finding
+
+Convert a Point of Interest to a finding. The POI must exist and not already have a finding associated with it.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The ID of the Point of Interest to convert to a finding.
+
+# Convert Point of Interest to Finding
+try {
+    $Result = Convert-PoiToFinding -Id $Id
+} catch {
+    Write-Host ("Exception occurred when calling Convert-PoiToFinding: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The ID of the Point of Interest to convert to a finding. | 
+
+### Return type
+
+[**PointsOfInterestData**](PointsOfInterestData.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="Get-ListPointsOfInterest"></a>
 # **Get-ListPointsOfInterest**

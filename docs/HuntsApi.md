@@ -22,7 +22,6 @@ Method | HTTP request | Description
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreatedTo] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdatedFrom] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdatedTo] <System.Nullable[System.DateTime]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Priorities] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ResourceFilter] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OnlyResolved] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IsUnacknowledged] <System.Nullable[Boolean]><br>
@@ -45,14 +44,13 @@ $CreatedFrom = (Get-Date) # System.DateTime | Filter hunts created after a given
 $CreatedTo = (Get-Date) # System.DateTime | Filter hunts created before a given date and time. (optional)
 $UpdatedFrom = (Get-Date) # System.DateTime | Filter hunts updated after a given date and time. (optional)
 $UpdatedTo = (Get-Date) # System.DateTime | Filter hunts updated before a given date and time. (optional)
-$Priorities = "low" # String | Filter hunts by hunt priority. (optional)
 $ResourceFilter = "hasAssetsOrFindings" # String | General (optional)
 $OnlyResolved = $true # Boolean | Filter to only show resolved hunts. (optional)
 $IsUnacknowledged = $true # Boolean | Filter to only show hunts that are not acknowledged. (optional)
 
 # List Hunts
 try {
-    $Result = Get-ClientHunts -Page $Page -PageSize $PageSize -Statuses $Statuses -HuntSearch $HuntSearch -Types $Types -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -Priorities $Priorities -ResourceFilter $ResourceFilter -OnlyResolved $OnlyResolved -IsUnacknowledged $IsUnacknowledged
+    $Result = Get-ClientHunts -Page $Page -PageSize $PageSize -Statuses $Statuses -HuntSearch $HuntSearch -Types $Types -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -ResourceFilter $ResourceFilter -OnlyResolved $OnlyResolved -IsUnacknowledged $IsUnacknowledged
 } catch {
     Write-Host ("Exception occurred when calling Get-ClientHunts: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -72,7 +70,6 @@ Name | Type | Description  | Notes
  **CreatedTo** | **System.DateTime**| Filter hunts created before a given date and time. | [optional] 
  **UpdatedFrom** | **System.DateTime**| Filter hunts updated after a given date and time. | [optional] 
  **UpdatedTo** | **System.DateTime**| Filter hunts updated before a given date and time. | [optional] 
- **Priorities** | **String**| Filter hunts by hunt priority. | [optional] 
  **ResourceFilter** | **String**| General | [optional] 
  **OnlyResolved** | **Boolean**| Filter to only show resolved hunts. | [optional] 
  **IsUnacknowledged** | **Boolean**| Filter to only show hunts that are not acknowledged. | [optional] 

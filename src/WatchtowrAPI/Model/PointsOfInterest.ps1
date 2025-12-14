@@ -43,6 +43,8 @@ Whether the Point of Interest is concerning
 Whether the Point of Interest is suppressed
 .PARAMETER SuppressedAt
 Suppressed at timestamp
+.PARAMETER FindingId
+Finding ID if the POI has been converted to a finding
 .OUTPUTS
 
 PointsOfInterest<PSCustomObject>
@@ -92,7 +94,10 @@ function Initialize-PointsOfInterest {
         ${Suppressed},
         [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[System.DateTime]]
-        ${SuppressedAt}
+        ${SuppressedAt},
+        [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Decimal]]
+        ${FindingId}
     )
 
     Process {
@@ -159,6 +164,7 @@ function Initialize-PointsOfInterest {
             "isConcerning" = ${IsConcerning}
             "suppressed" = ${Suppressed}
             "suppressedAt" = ${SuppressedAt}
+            "findingId" = ${FindingId}
         }
 
 
@@ -196,7 +202,7 @@ function ConvertFrom-JsonToPointsOfInterest {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in PointsOfInterest
-        $AllProperties = ("id", "name", "type", "url", "discoveryToolId", "discoveryDate", "assetId", "assetName", "assetType", "businessUnits", "lastSeen", "isConcerning", "suppressed", "suppressedAt")
+        $AllProperties = ("id", "name", "type", "url", "discoveryToolId", "discoveryDate", "assetId", "assetName", "assetType", "businessUnits", "lastSeen", "isConcerning", "suppressed", "suppressedAt", "findingId")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -291,6 +297,12 @@ function ConvertFrom-JsonToPointsOfInterest {
             $SuppressedAt = $JsonParameters.PSobject.Properties["suppressedAt"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "findingId"))) { #optional property not found
+            $FindingId = $null
+        } else {
+            $FindingId = $JsonParameters.PSobject.Properties["findingId"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
             "name" = ${Name}
@@ -306,6 +318,7 @@ function ConvertFrom-JsonToPointsOfInterest {
             "isConcerning" = ${IsConcerning}
             "suppressed" = ${Suppressed}
             "suppressedAt" = ${SuppressedAt}
+            "findingId" = ${FindingId}
         }
 
         return $PSO

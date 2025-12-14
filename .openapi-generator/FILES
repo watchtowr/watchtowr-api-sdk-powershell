@@ -168,6 +168,7 @@ docs/PendingDomainsApi.md
 docs/PlatformWhitelistingApi.md
 docs/PointsOfInterest.md
 docs/PointsOfInterestApi.md
+docs/PointsOfInterestData.md
 docs/PortsApi.md
 docs/RemoveClientCustomPropertyResponseDto.md
 docs/RepositoriesApi.md
@@ -393,6 +394,7 @@ src/WatchtowrAPI/Model/PaginatedSuspiciousDomain.ps1
 src/WatchtowrAPI/Model/PaginatedUsers.ps1
 src/WatchtowrAPI/Model/Pagination.ps1
 src/WatchtowrAPI/Model/PointsOfInterest.ps1
+src/WatchtowrAPI/Model/PointsOfInterestData.ps1
 src/WatchtowrAPI/Model/RemoveClientCustomPropertyResponseDto.ps1
 src/WatchtowrAPI/Model/RequiredActionsDto.ps1
 src/WatchtowrAPI/Model/Retest.ps1
@@ -615,6 +617,7 @@ tests/Model/PaginatedSuspiciousDomain.Tests.ps1
 tests/Model/PaginatedUsers.Tests.ps1
 tests/Model/Pagination.Tests.ps1
 tests/Model/PointsOfInterest.Tests.ps1
+tests/Model/PointsOfInterestData.Tests.ps1
 tests/Model/RemoveClientCustomPropertyResponseDto.Tests.ps1
 tests/Model/RequiredActionsDto.Tests.ps1
 tests/Model/Retest.Tests.ps1

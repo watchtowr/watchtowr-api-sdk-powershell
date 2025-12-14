@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'PointsOfInterest' {
     Context 'PointsOfInterest' {
         It 'Initialize-PointsOfInterest' {
             # a simple test to create an object
-            #$NewObject = Initialize-PointsOfInterest -Id "TEST_VALUE" -Name "TEST_VALUE" -Type "TEST_VALUE" -Url "TEST_VALUE" -DiscoveryToolId "TEST_VALUE" -DiscoveryDate "TEST_VALUE" -AssetId "TEST_VALUE" -AssetName "TEST_VALUE" -AssetType "TEST_VALUE" -BusinessUnits "TEST_VALUE" -LastSeen "TEST_VALUE" -IsConcerning "TEST_VALUE" -Suppressed "TEST_VALUE" -SuppressedAt "TEST_VALUE"
+            #$NewObject = Initialize-PointsOfInterest -Id "TEST_VALUE" -Name "TEST_VALUE" -Type "TEST_VALUE" -Url "TEST_VALUE" -DiscoveryToolId "TEST_VALUE" -DiscoveryDate "TEST_VALUE" -AssetId "TEST_VALUE" -AssetName "TEST_VALUE" -AssetType "TEST_VALUE" -BusinessUnits "TEST_VALUE" -LastSeen "TEST_VALUE" -IsConcerning "TEST_VALUE" -Suppressed "TEST_VALUE" -SuppressedAt "TEST_VALUE" -FindingId "TEST_VALUE"
             #$NewObject | Should -BeOfType PointsOfInterest
             #$NewObject.property | Should -Be 0
         }

@@ -4,7 +4,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Decimal** | ID | 
-**Priority** | **String** | Priority | 
 **Type** | **String** | Type | 
 **CreatedAt** | **System.DateTime** | Created at | 
 **UpdatedAt** | **System.DateTime** | Updated at | 
@@ -26,7 +25,6 @@ Name | Type | Description | Notes
 - Prepare the resource
 ```powershell
 $HuntDetail = Initialize-WatchtowrAPIHuntDetail  -Id 1 `
- -Priority high `
  -Type bespoke `
  -CreatedAt 2023-06-28T02:22:36Z `
  -UpdatedAt 2023-06-28T02:22:36Z `
@@ -37,7 +35,7 @@ $HuntDetail = Initialize-WatchtowrAPIHuntDetail  -Id 1 `
  -Title Hunt for ITW Exploited Command Injection in Palo Alto Networks GlobalProtect Gateway (CVE-2024-3400) `
  -Description &quot;watchTowr performed a PROACTIVE hunt to determine if there are any instances of Palo Alto GlobalProtect Gateway exposed externally.
 
-Successful exploitation of this vulnerability requires several prerequisites, including device telemetry being enabled on the affected instance. 
+Successful exploitation of this vulnerability requires several prerequisites, including device telemetry being enabled on the affected instance.
 
 As details of the vulnerability have been discovered, analysed and reproduced by watchTowr, impact-less proof-of-concept payload(s) will be used to determine if it is possible to abuse the vulnerabilities.
 

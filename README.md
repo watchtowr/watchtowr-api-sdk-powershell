@@ -244,6 +244,7 @@ Class | Method | HTTP request | Description
 *PlatformWhitelistingApi* | [**Update-PlatformApiWhitelistStatus**](docs/PlatformWhitelistingApi.md#Update-PlatformApiWhitelistStatus) | **PUT** /api/client/platform/whitelisting/api/status | Update API Whitelisting Status
 *PlatformWhitelistingApi* | [**Update-PlatformDashboardWhitelistIp**](docs/PlatformWhitelistingApi.md#Update-PlatformDashboardWhitelistIp) | **PUT** /api/client/platform/whitelisting/dashboard/{id} | Update Dashboard Whitelisted IP
 *PlatformWhitelistingApi* | [**Update-PlatformDashboardWhitelistStatus**](docs/PlatformWhitelistingApi.md#Update-PlatformDashboardWhitelistStatus) | **PUT** /api/client/platform/whitelisting/dashboard/status | Update Dashboard Whitelisting Status
+*PointsOfInterestApi* | [**Convert-PoiToFinding**](docs/PointsOfInterestApi.md#Convert-PoiToFinding) | **POST** /api/client/points-of-interest/{id}/convert-to-finding | Convert Point of Interest to Finding
 *PointsOfInterestApi* | [**Get-ListPointsOfInterest**](docs/PointsOfInterestApi.md#Get-ListPointsOfInterest) | **GET** /api/client/points-of-interest/list | List Points of Interest
 *PortsApi* | [**Get-AssetPortDetails**](docs/PortsApi.md#Get-AssetPortDetails) | **GET** /api/client/assets/ip/port/show/{id} | Get Port
 *PortsApi* | [**Get-ListAssetPorts**](docs/PortsApi.md#Get-ListAssetPorts) | **GET** /api/client/assets/ip/port/list | List Ports
@@ -448,6 +449,7 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.PaginatedUsers](docs/PaginatedUsers.md)
  - [WatchtowrAPI\Model.Pagination](docs/Pagination.md)
  - [WatchtowrAPI\Model.PointsOfInterest](docs/PointsOfInterest.md)
+ - [WatchtowrAPI\Model.PointsOfInterestData](docs/PointsOfInterestData.md)
  - [WatchtowrAPI\Model.RemoveClientCustomPropertyResponseDto](docs/RemoveClientCustomPropertyResponseDto.md)
  - [WatchtowrAPI\Model.RequiredActionsDto](docs/RequiredActionsDto.md)
  - [WatchtowrAPI\Model.Retest](docs/Retest.md)

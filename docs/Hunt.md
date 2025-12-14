@@ -4,7 +4,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Decimal** | ID | 
-**Priority** | **String** | Priority | 
 **Type** | **String** | Type | 
 **CreatedAt** | **System.DateTime** | Created at | 
 **UpdatedAt** | **System.DateTime** | Updated at | 
@@ -20,7 +19,6 @@ Name | Type | Description | Notes
 - Prepare the resource
 ```powershell
 $Hunt = Initialize-WatchtowrAPIHunt  -Id 1 `
- -Priority high `
  -Type bespoke `
  -CreatedAt 2023-06-28T02:22:36Z `
  -UpdatedAt 2023-06-28T02:22:36Z `
