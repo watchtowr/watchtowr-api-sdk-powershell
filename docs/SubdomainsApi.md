@@ -270,21 +270,21 @@ Name | Type | Description  | Notes
 
 <a id="Get-AssetSubdomainChangelog"></a>
 # **Get-AssetSubdomainChangelog**
-> PaginatedClientActivityLog Get-AssetSubdomainChangelog<br>
+> GetAssetSubdomainChangelog200Response Get-AssetSubdomainChangelog<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 
 Get Subdomain Changelog
 
-Get paginated changelog (activity logs) for a specific subdomain asset.
+Get paginated changelog for a specific Subdomain asset.
 
 ### Example
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the subdomain to retrieve changelog for.
+$Id = 8.14 # Decimal | The asset ID of the Subdomain to retrieve changelog for.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
 
@@ -301,13 +301,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the subdomain to retrieve changelog for. | 
+ **Id** | **Decimal**| The asset ID of the Subdomain to retrieve changelog for. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
 
 ### Return type
 
-[**PaginatedClientActivityLog**](PaginatedClientActivityLog.md) (PSCustomObject)
+[**GetAssetSubdomainChangelog200Response**](GetAssetSubdomainChangelog200Response.md) (PSCustomObject)
 
 ### Authorization
 
@@ -327,14 +327,14 @@ Name | Type | Description  | Notes
 
 Get Subdomain Details
 
-Get the details of a specific subdomain asset.
+Get the details of a specific Subdomain asset.
 
 ### Example
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the subdomain to retrieve.
+$Id = 8.14 # Decimal | The asset ID of the Subdomain to retrieve.
 
 # Get Subdomain Details
 try {
@@ -349,7 +349,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the subdomain to retrieve. | 
+ **Id** | **Decimal**| The asset ID of the Subdomain to retrieve. | 
 
 ### Return type
 
@@ -533,7 +533,7 @@ Name | Type | Description  | Notes
 
 List Subdomains
 
-List all discovered subdomain assets, ordered by date identified.
+List all discovered Subdomain assets, ordered by date identified.
 
 ### Example
 ```powershell
@@ -541,7 +541,7 @@ List all discovered subdomain assets, ordered by date identified.
 $Configuration = Get-Configuration
 
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
-$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100. (optional)
 $AssetName = "blog.watchtowr.com" # String | Search subdomain assets by name. (optional)
 $Statuses = "MyStatuses" # String[] | Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * incorrect identification       * pending       * verifiedOutOfScope       * verifiedReducedAttack       * parked  (optional)
 $Source = "module-adversarysight-tls-ssl-certificate-transparency-discovery" # String | Filter assets by the source that discovered the asset. (optional)
@@ -566,7 +566,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
- **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100. | [optional] 
  **AssetName** | **String**| Search subdomain assets by name. | [optional] 
  **Statuses** | [**String[]**](String.md)| Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * incorrect identification       * pending       * verifiedOutOfScope       * verifiedReducedAttack       * parked  | [optional] 
  **Source** | **String**| Filter assets by the source that discovered the asset. | [optional] 
@@ -715,7 +715,7 @@ Update the engine settings for a specific subdomain asset.
 $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The asset ID of the subdomain to update engine settings for.
-$UpdateClientEngineSettingsDto = Initialize-UpdateClientEngineSettingsDto -AdversarySightEnabled $true -DnsBruteforcingEnabled $false -AutomatedRedTeamingEnabled $true -CredentialStuffingEnabled $true -RapidReactionEnabled $true # UpdateClientEngineSettingsDto | 
+$UpdateClientEngineSettingsDto = Initialize-UpdateClientEngineSettingsDto -AdversarySightEnabled $true -DnsBruteforcingEnabled $false -AutomatedRedTeamingEnabled $true -IntrusiveHttpChecksEnabled $true -CredentialStuffingEnabled $true -RapidReactionEnabled $true # UpdateClientEngineSettingsDto | 
 
 # Update Subdomain Engine Settings
 try {

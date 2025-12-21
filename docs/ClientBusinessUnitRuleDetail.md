@@ -5,7 +5,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Decimal** | ID | 
 **Name** | **String** | Rule name | 
-**KeywordMatcher** | **String** | Keyword for matching domains/subdomains | [optional] 
+**KeywordMatcher** | **String** | Keyword for matching assets. Supports wildcard patterns: %.sg, %abc%, %abc.com, abc.com. Wildcards can be defined using %. | [optional] 
+**KeywordRuleType** | **String** | Keyword rule type. HOSTNAME: matches domain/subdomain names (default). CNAME: matches CNAME DNS record values. TLS_SSL: matches TLS/SSL certificate subject names. | [optional] 
 **Country** | **String** | Geographical location 2-letter country code (ISO 3166-1 alpha-2). Examples: SG, US, GB, AU | [optional] 
 **CascadeSubdomain** | **Boolean** | Whether to cascade to subdomains | 
 **CascadeIp** | **Boolean** | Whether to cascade to IPs | 
@@ -21,6 +22,7 @@ Name | Type | Description | Notes
 $ClientBusinessUnitRuleDetail = Initialize-WatchtowrAPIClientBusinessUnitRuleDetail  -Id 1 `
  -Name Singapore Assets Rule `
  -KeywordMatcher example.com `
+ -KeywordRuleType HOSTNAME `
  -Country SG `
  -CascadeSubdomain true `
  -CascadeIp true `

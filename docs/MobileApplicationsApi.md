@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**New-NoteMobileApp**](MobileApplicationsApi.md#New-NoteMobileApp) | **POST** /api/client/assets/mobileApp/show/{id}/note | Create Note
 [**Invoke-DeleteCustomPropertyMobileApp**](MobileApplicationsApi.md#Invoke-DeleteCustomPropertyMobileApp) | **DELETE** /api/client/assets/mobileApp/show/{id}/custom-property/{customPropertyId} | Delete Custom Property
 [**Invoke-DeleteNoteMobileApp**](MobileApplicationsApi.md#Invoke-DeleteNoteMobileApp) | **DELETE** /api/client/assets/mobileApp/show/{id}/note/{noteId} | Delete Note
-[**Get-AssetMobileAppChangelog**](MobileApplicationsApi.md#Get-AssetMobileAppChangelog) | **GET** /api/client/assets/mobileApp/show/{id}/changelog | Get Mobile App Changelog
+[**Get-AssetMobileAppChangelog**](MobileApplicationsApi.md#Get-AssetMobileAppChangelog) | **GET** /api/client/assets/mobileApp/show/{id}/changelog | Get Mobile Application Changelog
 [**Get-AssetMobileAppDetails**](MobileApplicationsApi.md#Get-AssetMobileAppDetails) | **GET** /api/client/assets/mobileApp/show/{id} | Get Mobile Application
 [**Get-AssetMobileAppNotes**](MobileApplicationsApi.md#Get-AssetMobileAppNotes) | **GET** /api/client/assets/mobileApp/show/{id}/notes | List Notes
 [**Get-CustomPropertiesMobileApp**](MobileApplicationsApi.md#Get-CustomPropertiesMobileApp) | **GET** /api/client/assets/mobileApp/show/{id}/custom-properties | List Custom Properties
@@ -84,7 +84,7 @@ Create a Custom Property for a specific Mobile Application asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the mobile application to create a new custom property for.
+$Id = 8.14 # Decimal | The asset ID of the Mobile Application to create a new custom property for.
 $CreateClientCustomPropertyDto = Initialize-CreateClientCustomPropertyDto -Key "Severity" -Value  -IsPreset $false # CreateClientCustomPropertyDto | 
 
 # Create Custom Property
@@ -100,7 +100,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the mobile application to create a new custom property for. | 
+ **Id** | **Decimal**| The asset ID of the Mobile Application to create a new custom property for. | 
  **CreateClientCustomPropertyDto** | [**CreateClientCustomPropertyDto**](CreateClientCustomPropertyDto.md)|  | 
 
 ### Return type
@@ -133,7 +133,7 @@ Create a Note for a specific Mobile Application asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the mobile application to create a new note for.
+$Id = 8.14 # Decimal | The asset ID of the Mobile Application to create a new note for.
 $CreateClientNoteDto = Initialize-CreateClientNoteDto -Note "Passed to the engineering team. Review on 01/07/2024" -Title "Initial Review - 01/01/2024" # CreateClientNoteDto | 
 
 # Create Note
@@ -149,7 +149,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the mobile application to create a new note for. | 
+ **Id** | **Decimal**| The asset ID of the Mobile Application to create a new note for. | 
  **CreateClientNoteDto** | [**CreateClientNoteDto**](CreateClientNoteDto.md)|  | 
 
 ### Return type
@@ -182,7 +182,7 @@ Delete a Custom Property for a specific Mobile Application asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of a mobile application with a custom property to delete.
+$Id = 8.14 # Decimal | The asset ID of a Mobile Application with a custom property to delete.
 $CustomPropertyId = 8.14 # Decimal | The ID of the custom property to delete.
 
 # Delete Custom Property
@@ -198,7 +198,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of a mobile application with a custom property to delete. | 
+ **Id** | **Decimal**| The asset ID of a Mobile Application with a custom property to delete. | 
  **CustomPropertyId** | **Decimal**| The ID of the custom property to delete. | 
 
 ### Return type
@@ -231,7 +231,7 @@ Delete a Note for a specific Mobile Application asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of a mobile application with a note to delete.
+$Id = 8.14 # Decimal | The asset ID of a Mobile Application with a note to delete.
 $NoteId = 8.14 # Decimal | The ID of the note to delete.
 
 # Delete Note
@@ -247,7 +247,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of a mobile application with a note to delete. | 
+ **Id** | **Decimal**| The asset ID of a Mobile Application with a note to delete. | 
  **NoteId** | **Decimal**| The ID of the note to delete. | 
 
 ### Return type
@@ -267,25 +267,25 @@ Name | Type | Description  | Notes
 
 <a id="Get-AssetMobileAppChangelog"></a>
 # **Get-AssetMobileAppChangelog**
-> PaginatedClientActivityLog Get-AssetMobileAppChangelog<br>
+> GetAssetMobileAppChangelog200Response Get-AssetMobileAppChangelog<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 
-Get Mobile App Changelog
+Get Mobile Application Changelog
 
-Get paginated changelog (activity logs) for a specific mobile app asset.
+Get paginated changelog for a specific Mobile Application.
 
 ### Example
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the mobile app to retrieve changelog for.
+$Id = 8.14 # Decimal | The asset ID of the Mobile Application to retrieve changelog for.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
 
-# Get Mobile App Changelog
+# Get Mobile Application Changelog
 try {
     $Result = Get-AssetMobileAppChangelog -Id $Id -Page $Page -PageSize $PageSize
 } catch {
@@ -298,13 +298,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the mobile app to retrieve changelog for. | 
+ **Id** | **Decimal**| The asset ID of the Mobile Application to retrieve changelog for. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
 
 ### Return type
 
-[**PaginatedClientActivityLog**](PaginatedClientActivityLog.md) (PSCustomObject)
+[**GetAssetMobileAppChangelog200Response**](GetAssetMobileAppChangelog200Response.md) (PSCustomObject)
 
 ### Authorization
 
@@ -331,7 +331,7 @@ Get the details of a specific Mobile Application.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the mobile application to get.
+$Id = 8.14 # Decimal | The asset ID of the Mobile Application to get.
 
 # Get Mobile Application
 try {
@@ -346,7 +346,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the mobile application to get. | 
+ **Id** | **Decimal**| The asset ID of the Mobile Application to get. | 
 
 ### Return type
 
@@ -379,7 +379,7 @@ List the Notes of a specific Mobile Application asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the mobile application to list notes of.
+$Id = 8.14 # Decimal | The asset ID of the Mobile Application to list notes of.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
 
@@ -396,7 +396,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the mobile application to list notes of. | 
+ **Id** | **Decimal**| The asset ID of the Mobile Application to list notes of. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
 
@@ -431,7 +431,7 @@ List the Custom Properties of a specific Mobile Application asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the mobile application to list custom properties of.
+$Id = 8.14 # Decimal | The asset ID of the Mobile Application to list custom properties of.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
 
@@ -448,7 +448,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the mobile application to list custom properties of. | 
+ **Id** | **Decimal**| The asset ID of the Mobile Application to list custom properties of. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
 
@@ -492,7 +492,7 @@ List all discovered Mobile Applications, ordered by date identified.
 $Configuration = Get-Configuration
 
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
-$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100. (optional)
 $AssetName = "watchTowr-Android" # String | Search Mobile Applications by assets by name. (optional)
 $Statuses = "MyStatuses" # String[] | Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * tracked       * incorrect identification       * pending       * verifiedOutOfScope  (optional)
 $Source = "module-adversarysight-playstore-mobileapp-discovery" # String | Filter assets by the source that discovered the asset. (optional)
@@ -517,7 +517,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
- **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100. | [optional] 
  **AssetName** | **String**| Search Mobile Applications by assets by name. | [optional] 
  **Statuses** | [**String[]**](String.md)| Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * tracked       * incorrect identification       * pending       * verifiedOutOfScope  | [optional] 
  **Source** | **String**| Filter assets by the source that discovered the asset. | [optional] 
@@ -607,7 +607,7 @@ Update Status of a specific Mobile Application asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the mobile application to update status of.
+$Id = 8.14 # Decimal | The asset ID of the Mobile Application to update status of.
 $UpdateClientNextGenAssetStatusDto = Initialize-UpdateClientNextGenAssetStatusDto -Status "verified" -StatusReason "Manually verified via Client API" # UpdateClientNextGenAssetStatusDto | 
 
 # Update Status
@@ -623,7 +623,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the mobile application to update status of. | 
+ **Id** | **Decimal**| The asset ID of the Mobile Application to update status of. | 
  **UpdateClientNextGenAssetStatusDto** | [**UpdateClientNextGenAssetStatusDto**](UpdateClientNextGenAssetStatusDto.md)|  | 
 
 ### Return type
@@ -657,7 +657,7 @@ Update a Custom Property for a specific Mobile Application asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of a mobile application with a custom property to update.
+$Id = 8.14 # Decimal | The asset ID of a Mobile Application with a custom property to update.
 $CustomPropertyId = 8.14 # Decimal | The ID of the custom property to update.
 $UpdateClientCustomPropertyDto = Initialize-UpdateClientCustomPropertyDto -Key "Severity" -Value "Low" # UpdateClientCustomPropertyDto | 
 
@@ -674,7 +674,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of a mobile application with a custom property to update. | 
+ **Id** | **Decimal**| The asset ID of a Mobile Application with a custom property to update. | 
  **CustomPropertyId** | **Decimal**| The ID of the custom property to update. | 
  **UpdateClientCustomPropertyDto** | [**UpdateClientCustomPropertyDto**](UpdateClientCustomPropertyDto.md)|  | 
 
@@ -709,7 +709,7 @@ Update a Note for a specific Mobile Application asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of a mobile application with a note to update.
+$Id = 8.14 # Decimal | The asset ID of a Mobile Application with a note to update.
 $NoteId = 8.14 # Decimal | The ID of the note to update.
 $CreateClientNoteDto = Initialize-CreateClientNoteDto -Note "Passed to the engineering team. Review on 01/07/2024" -Title "Initial Review - 01/01/2024" # CreateClientNoteDto | 
 
@@ -726,7 +726,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of a mobile application with a note to update. | 
+ **Id** | **Decimal**| The asset ID of a Mobile Application with a note to update. | 
  **NoteId** | **Decimal**| The ID of the note to update. | 
  **CreateClientNoteDto** | [**CreateClientNoteDto**](CreateClientNoteDto.md)|  | 
 

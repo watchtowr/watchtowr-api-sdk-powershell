@@ -75,7 +75,7 @@ Create a new rule for a specific business unit.
 $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The ID of the business unit to create a rule for.
-$CreateClientBusinessUnitRuleDto = Initialize-CreateClientBusinessUnitRuleDto -Name "Singapore Assets Rule" -Type "keyword" -KeywordMatcher "example.com" -CountryCode "SG" -IntegrationType "aws" -IntegrationId 1 -CascadeSubdomain $true -CascadeIp $true -IncludeAllIntegrations $false # CreateClientBusinessUnitRuleDto | 
+$CreateClientBusinessUnitRuleDto = Initialize-CreateClientBusinessUnitRuleDto -Name "Singapore Assets Rule" -Type "keyword" -KeywordMatcher "example.com" -KeywordRuleType "HOSTNAME" -CountryCode "SG" -IntegrationType "aws" -IntegrationId 1 -CascadeSubdomain $true -CascadeIp $true -IncludeAllIntegrations $false # CreateClientBusinessUnitRuleDto | 
 
 # Create Business Unit Rule
 try {

@@ -270,21 +270,21 @@ Name | Type | Description  | Notes
 
 <a id="Get-AssetDomainChangelog"></a>
 # **Get-AssetDomainChangelog**
-> PaginatedClientActivityLog Get-AssetDomainChangelog<br>
+> GetAssetDomainChangelog200Response Get-AssetDomainChangelog<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 
 Get Domain Changelog
 
-Get paginated changelog (activity logs) for a specific domain asset.
+Get paginated changelog for a specific Domain asset.
 
 ### Example
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the domain to retrieve changelog for.
+$Id = 8.14 # Decimal | The asset ID of the Domain to retrieve changelog for.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
 
@@ -301,13 +301,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the domain to retrieve changelog for. | 
+ **Id** | **Decimal**| The asset ID of the Domain to retrieve changelog for. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
 
 ### Return type
 
-[**PaginatedClientActivityLog**](PaginatedClientActivityLog.md) (PSCustomObject)
+[**GetAssetDomainChangelog200Response**](GetAssetDomainChangelog200Response.md) (PSCustomObject)
 
 ### Authorization
 
@@ -327,14 +327,14 @@ Name | Type | Description  | Notes
 
 Get Domain Details
 
-Get the details of a specific domain asset.
+Get the details of a specific Domain asset.
 
 ### Example
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the domain to retrieve.
+$Id = 8.14 # Decimal | The asset ID of the Domain to retrieve.
 
 # Get Domain Details
 try {
@@ -349,7 +349,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the domain to retrieve. | 
+ **Id** | **Decimal**| The asset ID of the Domain to retrieve. | 
 
 ### Return type
 
@@ -585,7 +585,7 @@ Name | Type | Description  | Notes
 
 List Domains
 
-List all discovered domain assets, ordered by date identified.
+List all discovered Domain assets, ordered by date identified.
 
 ### Example
 ```powershell
@@ -593,7 +593,7 @@ List all discovered domain assets, ordered by date identified.
 $Configuration = Get-Configuration
 
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
-$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100. (optional)
 $AssetName = "watchtowr.com" # String | Search domain assets by name. (optional)
 $Statuses = "MyStatuses" # String[] | Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * incorrect identification       * pending       * verifiedOutOfScope       * verifiedReducedAttack       * parked  (optional)
 $Source = "watchtowr-cloud-integration-aws-hosts" # String | Filter assets by the source that discovered the asset. (optional)
@@ -618,7 +618,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
- **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100. | [optional] 
  **AssetName** | **String**| Search domain assets by name. | [optional] 
  **Statuses** | [**String[]**](String.md)| Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * incorrect identification       * pending       * verifiedOutOfScope       * verifiedReducedAttack       * parked  | [optional] 
  **Source** | **String**| Filter assets by the source that discovered the asset. | [optional] 
@@ -715,7 +715,7 @@ Update the engine settings for a specific domain asset.
 $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The asset ID of the domain to update engine settings for.
-$UpdateClientEngineSettingsDto = Initialize-UpdateClientEngineSettingsDto -AdversarySightEnabled $true -DnsBruteforcingEnabled $false -AutomatedRedTeamingEnabled $true -CredentialStuffingEnabled $true -RapidReactionEnabled $true # UpdateClientEngineSettingsDto | 
+$UpdateClientEngineSettingsDto = Initialize-UpdateClientEngineSettingsDto -AdversarySightEnabled $true -DnsBruteforcingEnabled $false -AutomatedRedTeamingEnabled $true -IntrusiveHttpChecksEnabled $true -CredentialStuffingEnabled $true -RapidReactionEnabled $true # UpdateClientEngineSettingsDto | 
 
 # Update Domain Engine Settings
 try {

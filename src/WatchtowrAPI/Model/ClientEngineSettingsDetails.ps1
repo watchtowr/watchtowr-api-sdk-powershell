@@ -25,6 +25,8 @@ Indicates whether the Credential Stuffing engine coverage is enabled for the ass
 Indicates whether the DNS Bruteforcing engine coverage is enabled for the asset.
 .PARAMETER RapidReactionEnabled
 Indicates whether the Rapid Reaction engine coverage is enabled for the asset
+.PARAMETER IntrusiveHttpChecksEnabled
+Indicates whether the Intrusive HTTP Checks engine coverage is enabled for the asset.
 .PARAMETER Id
 The asset ID
 .PARAMETER Type
@@ -53,9 +55,12 @@ function Initialize-ClientEngineSettingsDetails {
         [Boolean]
         ${RapidReactionEnabled},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
+        [Boolean]
+        ${IntrusiveHttpChecksEnabled},
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [Decimal]
         ${Id},
-        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Type}
     )
@@ -84,6 +89,10 @@ function Initialize-ClientEngineSettingsDetails {
             throw "invalid value for 'RapidReactionEnabled', 'RapidReactionEnabled' cannot be null."
         }
 
+        if ($null -eq $IntrusiveHttpChecksEnabled) {
+            throw "invalid value for 'IntrusiveHttpChecksEnabled', 'IntrusiveHttpChecksEnabled' cannot be null."
+        }
+
         if ($null -eq $Id) {
             throw "invalid value for 'Id', 'Id' cannot be null."
         }
@@ -99,6 +108,7 @@ function Initialize-ClientEngineSettingsDetails {
             "credentialStuffingEnabled" = ${CredentialStuffingEnabled}
             "dnsBruteforcingEnabled" = ${DnsBruteforcingEnabled}
             "rapidReactionEnabled" = ${RapidReactionEnabled}
+            "intrusiveHttpChecksEnabled" = ${IntrusiveHttpChecksEnabled}
             "id" = ${Id}
             "type" = ${Type}
         }
@@ -138,7 +148,7 @@ function ConvertFrom-JsonToClientEngineSettingsDetails {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientEngineSettingsDetails
-        $AllProperties = ("adversarySightEnabled", "automatedRedTeamingEnabled", "credentialStuffingEnabled", "dnsBruteforcingEnabled", "rapidReactionEnabled", "id", "type")
+        $AllProperties = ("adversarySightEnabled", "automatedRedTeamingEnabled", "credentialStuffingEnabled", "dnsBruteforcingEnabled", "rapidReactionEnabled", "intrusiveHttpChecksEnabled", "id", "type")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -179,6 +189,12 @@ function ConvertFrom-JsonToClientEngineSettingsDetails {
             $RapidReactionEnabled = $JsonParameters.PSobject.Properties["rapidReactionEnabled"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "intrusiveHttpChecksEnabled"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'intrusiveHttpChecksEnabled' missing."
+        } else {
+            $IntrusiveHttpChecksEnabled = $JsonParameters.PSobject.Properties["intrusiveHttpChecksEnabled"].value
+        }
+
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "id"))) {
             throw "Error! JSON cannot be serialized due to the required property 'id' missing."
         } else {
@@ -197,6 +213,7 @@ function ConvertFrom-JsonToClientEngineSettingsDetails {
             "credentialStuffingEnabled" = ${CredentialStuffingEnabled}
             "dnsBruteforcingEnabled" = ${DnsBruteforcingEnabled}
             "rapidReactionEnabled" = ${RapidReactionEnabled}
+            "intrusiveHttpChecksEnabled" = ${IntrusiveHttpChecksEnabled}
             "id" = ${Id}
             "type" = ${Type}
         }

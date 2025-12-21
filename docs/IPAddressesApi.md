@@ -272,21 +272,21 @@ Name | Type | Description  | Notes
 
 <a id="Get-AssetIpChangelog"></a>
 # **Get-AssetIpChangelog**
-> PaginatedClientActivityLog Get-AssetIpChangelog<br>
+> GetAssetIpChangelog200Response Get-AssetIpChangelog<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 
 Get IP Address Changelog
 
-Get paginated changelog (activity logs) for a specific IP address asset.
+Get paginated changelog for a specific IP Address asset.
 
 ### Example
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the IP address to retrieve changelog for.
+$Id = 8.14 # Decimal | The asset ID of the IP Address to retrieve changelog for.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
 
@@ -303,13 +303,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the IP address to retrieve changelog for. | 
+ **Id** | **Decimal**| The asset ID of the IP Address to retrieve changelog for. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
 
 ### Return type
 
-[**PaginatedClientActivityLog**](PaginatedClientActivityLog.md) (PSCustomObject)
+[**GetAssetIpChangelog200Response**](GetAssetIpChangelog200Response.md) (PSCustomObject)
 
 ### Authorization
 
@@ -329,7 +329,7 @@ Name | Type | Description  | Notes
 
 Get IP Address Details
 
-Get the details of a specific IP address asset.
+Get the details of a specific IP Address asset.
 
 ### Example
 ```powershell
@@ -589,7 +589,7 @@ $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The asset ID of the IP address to list associated ports of.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
-$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100. (optional)
 $IncludeClosedPort = $true # Boolean | Include listings with closed ports. (optional)
 $IncludeNoService = $true # Boolean | Include listings without a service (optional)
 $CreatedFrom = (Get-Date) # System.DateTime | Filter ports created after a given date and time. (optional)
@@ -610,7 +610,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Id** | **Decimal**| The asset ID of the IP address to list associated ports of. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
- **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100. | [optional] 
  **IncludeClosedPort** | **Boolean**| Include listings with closed ports. | [optional] 
  **IncludeNoService** | **Boolean**| Include listings without a service | [optional] 
  **CreatedFrom** | **System.DateTime**| Filter ports created after a given date and time. | [optional] 
@@ -701,7 +701,7 @@ Name | Type | Description  | Notes
 
 List IP Addresses
 
-List all discovered IP address assets, ordered by date identified.
+List all discovered IP Address assets, ordered by date identified.
 
 ### Example
 ```powershell
@@ -709,7 +709,7 @@ List all discovered IP address assets, ordered by date identified.
 $Configuration = Get-Configuration
 
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
-$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100. (optional)
 $AssetName = "123.123.123.123" # String | Search IP address by name (full or partial). (optional)
 $Statuses = "MyStatuses" # String[] | Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * tracked       * incorrect identification       * pending       * verifiedOutOfScope       * verifiedReducedAttack       * CDN       * hanging cloud ip       * Third Party       * VerifiedHoneypot  (optional)
 $Source = "DNS Refresh" # String | Filter assets by the source that discovered the asset. (optional)
@@ -735,7 +735,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
- **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100. | [optional] 
  **AssetName** | **String**| Search IP address by name (full or partial). | [optional] 
  **Statuses** | [**String[]**](String.md)| Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * tracked       * incorrect identification       * pending       * verifiedOutOfScope       * verifiedReducedAttack       * CDN       * hanging cloud ip       * Third Party       * VerifiedHoneypot  | [optional] 
  **Source** | **String**| Filter assets by the source that discovered the asset. | [optional] 
@@ -827,7 +827,7 @@ Update the engine settings for a specific IP asset.
 $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The asset ID of the IP to update engine settings for.
-$UpdateClientEngineSettingsDto = Initialize-UpdateClientEngineSettingsDto -AdversarySightEnabled $true -DnsBruteforcingEnabled $false -AutomatedRedTeamingEnabled $true -CredentialStuffingEnabled $true -RapidReactionEnabled $true # UpdateClientEngineSettingsDto | 
+$UpdateClientEngineSettingsDto = Initialize-UpdateClientEngineSettingsDto -AdversarySightEnabled $true -DnsBruteforcingEnabled $false -AutomatedRedTeamingEnabled $true -IntrusiveHttpChecksEnabled $true -CredentialStuffingEnabled $true -RapidReactionEnabled $true # UpdateClientEngineSettingsDto | 
 
 # Update IP Engine Settings
 try {

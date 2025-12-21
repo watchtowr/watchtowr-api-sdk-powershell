@@ -267,14 +267,14 @@ Name | Type | Description  | Notes
 
 <a id="Get-AssetApiDocumentationChangelog"></a>
 # **Get-AssetApiDocumentationChangelog**
-> PaginatedClientActivityLog Get-AssetApiDocumentationChangelog<br>
+> GetAssetApiDocumentationChangelog200Response Get-AssetApiDocumentationChangelog<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 
 Get API Documentation Changelog
 
-Get paginated changelog (activity logs) for a specific API documentation asset.
+Get paginated changelog for a specific API Documentation asset.
 
 ### Example
 ```powershell
@@ -304,7 +304,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginatedClientActivityLog**](PaginatedClientActivityLog.md) (PSCustomObject)
+[**GetAssetApiDocumentationChangelog200Response**](GetAssetApiDocumentationChangelog200Response.md) (PSCustomObject)
 
 ### Authorization
 
@@ -324,14 +324,14 @@ Name | Type | Description  | Notes
 
 Get API Documentation Details
 
-Get the details of a specific API documentation asset.
+Get the details of a specific API Documentation asset.
 
 ### Example
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the API documentation asset to retrieve.
+$Id = 8.14 # Decimal | The asset ID of the API Documentation asset to retrieve.
 
 # Get API Documentation Details
 try {
@@ -346,7 +346,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the API documentation asset to retrieve. | 
+ **Id** | **Decimal**| The asset ID of the API Documentation asset to retrieve. | 
 
 ### Return type
 
@@ -372,14 +372,14 @@ Name | Type | Description  | Notes
 
 List API Documentation Notes
 
-List all notes for a specific API documentation asset.
+List all notes for a specific API Documentation asset.
 
 ### Example
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the API documentation asset to list notes for.
+$Id = 8.14 # Decimal | The asset ID of the API Documentation asset to list notes for.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
 
@@ -396,7 +396,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the API documentation asset to list notes for. | 
+ **Id** | **Decimal**| The asset ID of the API Documentation asset to list notes for. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
 
@@ -484,7 +484,7 @@ Name | Type | Description  | Notes
 
 List API Documentation
 
-List all discovered API documentation assets, ordered by date identified.
+List all discovered API Documentation assets, ordered by date identified.
 
 ### Example
 ```powershell
@@ -492,7 +492,7 @@ List all discovered API documentation assets, ordered by date identified.
 $Configuration = Get-Configuration
 
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
-$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100. (optional)
 $AssetName = "watchtowr_docs/watchtowr-swagger-hub" # String | Search API documentation by asset name. (optional)
 $Statuses = "MyStatuses" # String[] | Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * tracked       * incorrect identification       * pending       * verifiedOutOfScope  (optional)
 $Source = "module-adversarysight-api-discovery" # String | Filter assets by the source that discovered the asset. (optional)
@@ -517,7 +517,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
- **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100. | [optional] 
  **AssetName** | **String**| Search API documentation by asset name. | [optional] 
  **Statuses** | [**String[]**](String.md)| Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * tracked       * incorrect identification       * pending       * verifiedOutOfScope  | [optional] 
  **Source** | **String**| Filter assets by the source that discovered the asset. | [optional] 
@@ -652,14 +652,14 @@ Name | Type | Description  | Notes
 
 Update API Documentation Status
 
-Update the status of a specific API documentation asset.
+Update the status of a specific API Documentation asset.
 
 ### Example
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the API documentation asset to update.
+$Id = 8.14 # Decimal | The asset ID of the API Documentation asset to update.
 $UpdateApiDocumentationStatusDto = Initialize-UpdateApiDocumentationStatusDto -Status "verified" -StatusReason "Manually verified via Client API." # UpdateApiDocumentationStatusDto | 
 
 # Update API Documentation Status
@@ -675,7 +675,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the API documentation asset to update. | 
+ **Id** | **Decimal**| The asset ID of the API Documentation asset to update. | 
  **UpdateApiDocumentationStatusDto** | [**UpdateApiDocumentationStatusDto**](UpdateApiDocumentationStatusDto.md)|  | 
 
 ### Return type

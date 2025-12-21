@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ClientBusinessUnitRuleDetail' {
     Context 'ClientBusinessUnitRuleDetail' {
         It 'Initialize-ClientBusinessUnitRuleDetail' {
             # a simple test to create an object
-            #$NewObject = Initialize-ClientBusinessUnitRuleDetail -Id "TEST_VALUE" -Name "TEST_VALUE" -KeywordMatcher "TEST_VALUE" -Country "TEST_VALUE" -CascadeSubdomain "TEST_VALUE" -CascadeIp "TEST_VALUE" -IntegrationType "TEST_VALUE" -IntegrationId "TEST_VALUE" -IncludeAllIntegrations "TEST_VALUE" -CreatedAt "TEST_VALUE"
+            #$NewObject = Initialize-ClientBusinessUnitRuleDetail -Id "TEST_VALUE" -Name "TEST_VALUE" -KeywordMatcher "TEST_VALUE" -KeywordRuleType "TEST_VALUE" -Country "TEST_VALUE" -CascadeSubdomain "TEST_VALUE" -CascadeIp "TEST_VALUE" -IntegrationType "TEST_VALUE" -IntegrationId "TEST_VALUE" -IncludeAllIntegrations "TEST_VALUE" -CreatedAt "TEST_VALUE"
             #$NewObject | Should -BeOfType ClientBusinessUnitRuleDetail
             #$NewObject.property | Should -Be 0
         }

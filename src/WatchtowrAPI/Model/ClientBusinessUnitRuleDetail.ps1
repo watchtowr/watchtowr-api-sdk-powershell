@@ -20,7 +20,9 @@ ID
 .PARAMETER Name
 Rule name
 .PARAMETER KeywordMatcher
-Keyword for matching domains/subdomains
+Keyword for matching assets. Supports wildcard patterns: %.sg, %abc%, %abc.com, abc.com. Wildcards can be defined using %.
+.PARAMETER KeywordRuleType
+Keyword rule type. HOSTNAME: matches domain/subdomain names (default). CNAME: matches CNAME DNS record values. TLS_SSL: matches TLS/SSL certificate subject names.
 .PARAMETER Country
 Geographical location 2-letter country code (ISO 3166-1 alpha-2). Examples: SG, US, GB, AU
 .PARAMETER CascadeSubdomain
@@ -53,24 +55,28 @@ function Initialize-ClientBusinessUnitRuleDetail {
         [String]
         ${KeywordMatcher},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
+        [ValidateSet("HOSTNAME", "CNAME", "TLS_SSL")]
+        [String]
+        ${KeywordRuleType},
+        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Country},
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
-        [Boolean]
-        ${CascadeSubdomain},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [Boolean]
-        ${CascadeIp},
+        ${CascadeSubdomain},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
+        [Boolean]
+        ${CascadeIp},
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${IntegrationType},
-        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Decimal]]
         ${IntegrationId},
-        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [Boolean]
         ${IncludeAllIntegrations},
-        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${CreatedAt}
     )
@@ -108,6 +114,7 @@ function Initialize-ClientBusinessUnitRuleDetail {
             "id" = ${Id}
             "name" = ${Name}
             "keyword_matcher" = ${KeywordMatcher}
+            "keyword_rule_type" = ${KeywordRuleType}
             "country" = ${Country}
             "cascade_subdomain" = ${CascadeSubdomain}
             "cascade_ip" = ${CascadeIp}
@@ -152,7 +159,7 @@ function ConvertFrom-JsonToClientBusinessUnitRuleDetail {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientBusinessUnitRuleDetail
-        $AllProperties = ("id", "name", "keyword_matcher", "country", "cascade_subdomain", "cascade_ip", "integration_type", "integration_id", "include_all_integrations", "created_at")
+        $AllProperties = ("id", "name", "keyword_matcher", "keyword_rule_type", "country", "cascade_subdomain", "cascade_ip", "integration_type", "integration_id", "include_all_integrations", "created_at")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -205,6 +212,12 @@ function ConvertFrom-JsonToClientBusinessUnitRuleDetail {
             $KeywordMatcher = $JsonParameters.PSobject.Properties["keyword_matcher"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "keyword_rule_type"))) { #optional property not found
+            $KeywordRuleType = $null
+        } else {
+            $KeywordRuleType = $JsonParameters.PSobject.Properties["keyword_rule_type"].value
+        }
+
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "country"))) { #optional property not found
             $Country = $null
         } else {
@@ -227,6 +240,7 @@ function ConvertFrom-JsonToClientBusinessUnitRuleDetail {
             "id" = ${Id}
             "name" = ${Name}
             "keyword_matcher" = ${KeywordMatcher}
+            "keyword_rule_type" = ${KeywordRuleType}
             "country" = ${Country}
             "cascade_subdomain" = ${CascadeSubdomain}
             "cascade_ip" = ${CascadeIp}

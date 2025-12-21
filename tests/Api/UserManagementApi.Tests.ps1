@@ -7,6 +7,14 @@
 #
 
 Describe -tag 'WatchtowrAPI' -name 'UserManagementApi' {
+    Context 'Invoke-DeleteUser' {
+        It 'Test Invoke-DeleteUser' {
+            #$TestResult = Invoke-DeleteUser -Id "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
     Context 'Get-UserDetails' {
         It 'Test Get-UserDetails' {
             #$TestResult = Get-UserDetails -Id "TEST_VALUE"
@@ -15,9 +23,25 @@ Describe -tag 'WatchtowrAPI' -name 'UserManagementApi' {
         }
     }
 
+    Context 'ConvertTo-viteUsers' {
+        It 'Test ConvertTo-viteUsers' {
+            #$TestResult = ConvertTo-viteUsers -UserAgent "TEST_VALUE" -InviteClientUsersBodyDto "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
     Context 'Invoke-ListUsers' {
         It 'Test Invoke-ListUsers' {
             #$TestResult = Invoke-ListUsers -Page "TEST_VALUE" -PageSize "TEST_VALUE" -Name "TEST_VALUE" -Title "TEST_VALUE" -Status "TEST_VALUE" -RoleIds "TEST_VALUE" -CreatedFrom "TEST_VALUE" -CreatedTo "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
+    Context 'Update-User' {
+        It 'Test Update-User' {
+            #$TestResult = Update-User -Id "TEST_VALUE" -UserAgent "TEST_VALUE" -UpdateClientUserBodyDto "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
         }

@@ -25,6 +25,8 @@ Indicates whether the Credential Stuffing engine coverage is enabled for the ass
 Indicates whether the DNS Bruteforcing engine coverage is enabled for the asset.
 .PARAMETER RapidReactionEnabled
 Indicates whether the Rapid Reaction engine coverage is enabled for the asset
+.PARAMETER IntrusiveHttpChecksEnabled
+Indicates whether the Intrusive HTTP Checks engine coverage is enabled for the asset.
 .OUTPUTS
 
 ClientEngineSettings<PSCustomObject>
@@ -47,7 +49,10 @@ function Initialize-ClientEngineSettings {
         ${DnsBruteforcingEnabled},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [Boolean]
-        ${RapidReactionEnabled}
+        ${RapidReactionEnabled},
+        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
+        [Boolean]
+        ${IntrusiveHttpChecksEnabled}
     )
 
     Process {
@@ -74,6 +79,10 @@ function Initialize-ClientEngineSettings {
             throw "invalid value for 'RapidReactionEnabled', 'RapidReactionEnabled' cannot be null."
         }
 
+        if ($null -eq $IntrusiveHttpChecksEnabled) {
+            throw "invalid value for 'IntrusiveHttpChecksEnabled', 'IntrusiveHttpChecksEnabled' cannot be null."
+        }
+
 
         $PSO = [PSCustomObject]@{
             "adversarySightEnabled" = ${AdversarySightEnabled}
@@ -81,6 +90,7 @@ function Initialize-ClientEngineSettings {
             "credentialStuffingEnabled" = ${CredentialStuffingEnabled}
             "dnsBruteforcingEnabled" = ${DnsBruteforcingEnabled}
             "rapidReactionEnabled" = ${RapidReactionEnabled}
+            "intrusiveHttpChecksEnabled" = ${IntrusiveHttpChecksEnabled}
         }
 
 
@@ -118,7 +128,7 @@ function ConvertFrom-JsonToClientEngineSettings {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientEngineSettings
-        $AllProperties = ("adversarySightEnabled", "automatedRedTeamingEnabled", "credentialStuffingEnabled", "dnsBruteforcingEnabled", "rapidReactionEnabled")
+        $AllProperties = ("adversarySightEnabled", "automatedRedTeamingEnabled", "credentialStuffingEnabled", "dnsBruteforcingEnabled", "rapidReactionEnabled", "intrusiveHttpChecksEnabled")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -159,12 +169,19 @@ function ConvertFrom-JsonToClientEngineSettings {
             $RapidReactionEnabled = $JsonParameters.PSobject.Properties["rapidReactionEnabled"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "intrusiveHttpChecksEnabled"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'intrusiveHttpChecksEnabled' missing."
+        } else {
+            $IntrusiveHttpChecksEnabled = $JsonParameters.PSobject.Properties["intrusiveHttpChecksEnabled"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "adversarySightEnabled" = ${AdversarySightEnabled}
             "automatedRedTeamingEnabled" = ${AutomatedRedTeamingEnabled}
             "credentialStuffingEnabled" = ${CredentialStuffingEnabled}
             "dnsBruteforcingEnabled" = ${DnsBruteforcingEnabled}
             "rapidReactionEnabled" = ${RapidReactionEnabled}
+            "intrusiveHttpChecksEnabled" = ${IntrusiveHttpChecksEnabled}
         }
 
         return $PSO

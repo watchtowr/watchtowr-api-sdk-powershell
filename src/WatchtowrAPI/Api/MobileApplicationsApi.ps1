@@ -109,7 +109,7 @@ Create Custom Property
 No description available.
 
 .PARAMETER Id
-The asset ID of the mobile application to create a new custom property for.
+The asset ID of the Mobile Application to create a new custom property for.
 
 .PARAMETER CreateClientCustomPropertyDto
 No description available.
@@ -202,7 +202,7 @@ Create Note
 No description available.
 
 .PARAMETER Id
-The asset ID of the mobile application to create a new note for.
+The asset ID of the Mobile Application to create a new note for.
 
 .PARAMETER CreateClientNoteDto
 No description available.
@@ -295,7 +295,7 @@ Delete Custom Property
 No description available.
 
 .PARAMETER Id
-The asset ID of a mobile application with a custom property to delete.
+The asset ID of a Mobile Application with a custom property to delete.
 
 .PARAMETER CustomPropertyId
 The ID of the custom property to delete.
@@ -383,7 +383,7 @@ Delete Note
 No description available.
 
 .PARAMETER Id
-The asset ID of a mobile application with a note to delete.
+The asset ID of a Mobile Application with a note to delete.
 
 .PARAMETER NoteId
 The ID of the note to delete.
@@ -464,14 +464,14 @@ function Invoke-DeleteNoteMobileApp {
 <#
 .SYNOPSIS
 
-Get Mobile App Changelog
+Get Mobile Application Changelog
 
 .DESCRIPTION
 
 No description available.
 
 .PARAMETER Id
-The asset ID of the mobile app to retrieve changelog for.
+The asset ID of the Mobile Application to retrieve changelog for.
 
 .PARAMETER Page
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
@@ -485,7 +485,7 @@ A switch when turned on will return a hash table of Response, StatusCode and Hea
 
 .OUTPUTS
 
-PaginatedClientActivityLog
+GetAssetMobileAppChangelog200Response
 #>
 function Get-AssetMobileAppChangelog {
     [CmdletBinding()]
@@ -548,7 +548,7 @@ function Get-AssetMobileAppChangelog {
                                 -QueryParameters $LocalVarQueryParameters `
                                 -FormParameters $LocalVarFormParameters `
                                 -CookieParameters $LocalVarCookieParameters `
-                                -ReturnType "PaginatedClientActivityLog" `
+                                -ReturnType "GetAssetMobileAppChangelog200Response" `
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
@@ -569,7 +569,7 @@ Get Mobile Application
 No description available.
 
 .PARAMETER Id
-The asset ID of the mobile application to get.
+The asset ID of the Mobile Application to get.
 
 .PARAMETER WithHttpInfo
 
@@ -647,7 +647,7 @@ List Notes
 No description available.
 
 .PARAMETER Id
-The asset ID of the mobile application to list notes of.
+The asset ID of the Mobile Application to list notes of.
 
 .PARAMETER Page
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
@@ -745,7 +745,7 @@ List Custom Properties
 No description available.
 
 .PARAMETER Id
-The asset ID of the mobile application to list custom properties of.
+The asset ID of the Mobile Application to list custom properties of.
 
 .PARAMETER Page
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
@@ -846,7 +846,7 @@ No description available.
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
 
 .PARAMETER PageSize
-The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30.
+The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100.
 
 .PARAMETER AssetName
 Search Mobile Applications by assets by name.
@@ -1110,7 +1110,7 @@ Update Status
 No description available.
 
 .PARAMETER Id
-The asset ID of the mobile application to update status of.
+The asset ID of the Mobile Application to update status of.
 
 .PARAMETER UpdateClientNextGenAssetStatusDto
 No description available.
@@ -1203,7 +1203,7 @@ Update Custom Property
 No description available.
 
 .PARAMETER Id
-The asset ID of a mobile application with a custom property to update.
+The asset ID of a Mobile Application with a custom property to update.
 
 .PARAMETER CustomPropertyId
 The ID of the custom property to update.
@@ -1306,7 +1306,7 @@ Update Note
 No description available.
 
 .PARAMETER Id
-The asset ID of a mobile application with a note to update.
+The asset ID of a Mobile Application with a note to update.
 
 .PARAMETER NoteId
 The ID of the note to update.

@@ -471,7 +471,7 @@ Get IP Address Changelog
 No description available.
 
 .PARAMETER Id
-The asset ID of the IP address to retrieve changelog for.
+The asset ID of the IP Address to retrieve changelog for.
 
 .PARAMETER Page
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
@@ -485,7 +485,7 @@ A switch when turned on will return a hash table of Response, StatusCode and Hea
 
 .OUTPUTS
 
-PaginatedClientActivityLog
+GetAssetIpChangelog200Response
 #>
 function Get-AssetIpChangelog {
     [CmdletBinding()]
@@ -548,7 +548,7 @@ function Get-AssetIpChangelog {
                                 -QueryParameters $LocalVarQueryParameters `
                                 -FormParameters $LocalVarFormParameters `
                                 -CookieParameters $LocalVarCookieParameters `
-                                -ReturnType "PaginatedClientActivityLog" `
+                                -ReturnType "GetAssetIpChangelog200Response" `
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
@@ -1015,7 +1015,7 @@ The asset ID of the IP address to list associated ports of.
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
 
 .PARAMETER PageSize
-The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30.
+The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100.
 
 .PARAMETER IncludeClosedPort
 Include listings with closed ports.
@@ -1248,7 +1248,7 @@ No description available.
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
 
 .PARAMETER PageSize
-The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30.
+The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100.
 
 .PARAMETER AssetName
 Search IP address by name (full or partial).

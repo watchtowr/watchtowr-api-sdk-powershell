@@ -20,7 +20,9 @@ Rule name
 .PARAMETER Type
 Rule type
 .PARAMETER KeywordMatcher
-Keyword for matching domains/subdomains (required when type is keyword)
+Keyword for matching assets (required when type is keyword). Supports wildcard patterns: %.sg, %abc%, %abc.com, abc.com. Wildcards can be defined using %.
+.PARAMETER KeywordRuleType
+Keyword rule type (optional, defaults to HOSTNAME when keyword_matcher is provided). HOSTNAME: matches domain/subdomain names. CNAME: matches CNAME DNS record values. TLS_SSL: matches TLS/SSL certificate subject names.
 .PARAMETER CountryCode
 Geographical location 2-letter country code (ISO 3166-1 alpha-2) for matching IPs (required when type is country). Examples: SG, US, GB, AU
 .PARAMETER IntegrationType
@@ -52,22 +54,26 @@ function Initialize-CreateClientBusinessUnitRuleDto {
         [String]
         ${KeywordMatcher},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
+        [ValidateSet("HOSTNAME", "CNAME", "TLS_SSL")]
+        [String]
+        ${KeywordRuleType},
+        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${CountryCode},
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("aws", "azure", "googlecloud", "cloudflare", "alibabacloud", "prismacloud", "prismacloudapigee", "huaweicloud", "tencentcloud", "wiz", "servicenowcmdb", "akamaiedge", "armiscentrix", "qualysvmdr", "tenable")]
         [String]
         ${IntegrationType},
-        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Decimal]]
         ${IntegrationId},
-        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Boolean]]
-        ${CascadeSubdomain} = $true,
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Boolean]]
-        ${CascadeIp} = $true,
+        ${CascadeSubdomain} = $true,
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Boolean]]
+        ${CascadeIp} = $true,
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Boolean]]
         ${IncludeAllIntegrations} = $false
     )
@@ -89,6 +95,7 @@ function Initialize-CreateClientBusinessUnitRuleDto {
             "name" = ${Name}
             "type" = ${Type}
             "keyword_matcher" = ${KeywordMatcher}
+            "keyword_rule_type" = ${KeywordRuleType}
             "country_code" = ${CountryCode}
             "integration_type" = ${IntegrationType}
             "integration_id" = ${IntegrationId}
@@ -132,7 +139,7 @@ function ConvertFrom-JsonToCreateClientBusinessUnitRuleDto {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in CreateClientBusinessUnitRuleDto
-        $AllProperties = ("name", "type", "keyword_matcher", "country_code", "integration_type", "integration_id", "cascade_subdomain", "cascade_ip", "include_all_integrations")
+        $AllProperties = ("name", "type", "keyword_matcher", "keyword_rule_type", "country_code", "integration_type", "integration_id", "cascade_subdomain", "cascade_ip", "include_all_integrations")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -159,6 +166,12 @@ function ConvertFrom-JsonToCreateClientBusinessUnitRuleDto {
             $KeywordMatcher = $null
         } else {
             $KeywordMatcher = $JsonParameters.PSobject.Properties["keyword_matcher"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "keyword_rule_type"))) { #optional property not found
+            $KeywordRuleType = $null
+        } else {
+            $KeywordRuleType = $JsonParameters.PSobject.Properties["keyword_rule_type"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "country_code"))) { #optional property not found
@@ -201,6 +214,7 @@ function ConvertFrom-JsonToCreateClientBusinessUnitRuleDto {
             "name" = ${Name}
             "type" = ${Type}
             "keyword_matcher" = ${KeywordMatcher}
+            "keyword_rule_type" = ${KeywordRuleType}
             "country_code" = ${CountryCode}
             "integration_type" = ${IntegrationType}
             "integration_id" = ${IntegrationId}

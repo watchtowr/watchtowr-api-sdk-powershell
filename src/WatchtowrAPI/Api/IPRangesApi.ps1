@@ -569,7 +569,7 @@ Get IP Range Changelog
 No description available.
 
 .PARAMETER Id
-The asset ID of the IP range to retrieve changelog for.
+The asset ID of the IP Range to retrieve changelog for.
 
 .PARAMETER Page
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
@@ -583,7 +583,7 @@ A switch when turned on will return a hash table of Response, StatusCode and Hea
 
 .OUTPUTS
 
-PaginatedClientActivityLog
+GetAssetIprangeChangelog200Response
 #>
 function Get-AssetIprangeChangelog {
     [CmdletBinding()]
@@ -646,7 +646,7 @@ function Get-AssetIprangeChangelog {
                                 -QueryParameters $LocalVarQueryParameters `
                                 -FormParameters $LocalVarFormParameters `
                                 -CookieParameters $LocalVarCookieParameters `
-                                -ReturnType "PaginatedClientActivityLog" `
+                                -ReturnType "GetAssetIprangeChangelog200Response" `
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
@@ -846,7 +846,7 @@ No description available.
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
 
 .PARAMETER PageSize
-The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30.
+The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100.
 
 .PARAMETER AssetName
 Search IP Ranges by name (full or partial).

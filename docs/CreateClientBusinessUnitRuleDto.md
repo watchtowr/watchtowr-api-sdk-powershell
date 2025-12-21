@@ -5,7 +5,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **String** | Rule name | 
 **Type** | **String** | Rule type | 
-**KeywordMatcher** | **String** | Keyword for matching domains/subdomains (required when type is keyword) | [optional] 
+**KeywordMatcher** | **String** | Keyword for matching assets (required when type is keyword). Supports wildcard patterns: %.sg, %abc%, %abc.com, abc.com. Wildcards can be defined using %. | [optional] 
+**KeywordRuleType** | **String** | Keyword rule type (optional, defaults to HOSTNAME when keyword_matcher is provided). HOSTNAME: matches domain/subdomain names. CNAME: matches CNAME DNS record values. TLS_SSL: matches TLS/SSL certificate subject names. | [optional] 
 **CountryCode** | **String** | Geographical location 2-letter country code (ISO 3166-1 alpha-2) for matching IPs (required when type is country). Examples: SG, US, GB, AU | [optional] 
 **IntegrationType** | **String** | Integration type for matching cloud assets (required when type is integration). Valid values: aws, azure, googlecloud, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, armiscentrix, qualysvmdr, tenable | [optional] 
 **IntegrationId** | **Decimal** | Integration ID for matching cloud assets (required when type is integration) | [optional] 
@@ -20,6 +21,7 @@ Name | Type | Description | Notes
 $CreateClientBusinessUnitRuleDto = Initialize-WatchtowrAPICreateClientBusinessUnitRuleDto  -Name Singapore Assets Rule `
  -Type keyword `
  -KeywordMatcher example.com `
+ -KeywordRuleType HOSTNAME `
  -CountryCode SG `
  -IntegrationType aws `
  -IntegrationId 1 `

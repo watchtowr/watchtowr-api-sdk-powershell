@@ -485,7 +485,7 @@ A switch when turned on will return a hash table of Response, StatusCode and Hea
 
 .OUTPUTS
 
-PaginatedClientActivityLog
+GetAssetApiDocumentationChangelog200Response
 #>
 function Get-AssetApiDocumentationChangelog {
     [CmdletBinding()]
@@ -548,7 +548,7 @@ function Get-AssetApiDocumentationChangelog {
                                 -QueryParameters $LocalVarQueryParameters `
                                 -FormParameters $LocalVarFormParameters `
                                 -CookieParameters $LocalVarCookieParameters `
-                                -ReturnType "PaginatedClientActivityLog" `
+                                -ReturnType "GetAssetApiDocumentationChangelog200Response" `
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
@@ -569,7 +569,7 @@ Get API Documentation Details
 No description available.
 
 .PARAMETER Id
-The asset ID of the API documentation asset to retrieve.
+The asset ID of the API Documentation asset to retrieve.
 
 .PARAMETER WithHttpInfo
 
@@ -647,7 +647,7 @@ List API Documentation Notes
 No description available.
 
 .PARAMETER Id
-The asset ID of the API documentation asset to list notes for.
+The asset ID of the API Documentation asset to list notes for.
 
 .PARAMETER Page
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
@@ -846,7 +846,7 @@ No description available.
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
 
 .PARAMETER PageSize
-The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30.
+The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100.
 
 .PARAMETER AssetName
 Search API documentation by asset name.
@@ -1213,7 +1213,7 @@ Update API Documentation Status
 No description available.
 
 .PARAMETER Id
-The asset ID of the API documentation asset to update.
+The asset ID of the API Documentation asset to update.
 
 .PARAMETER UpdateApiDocumentationStatusDto
 No description available.

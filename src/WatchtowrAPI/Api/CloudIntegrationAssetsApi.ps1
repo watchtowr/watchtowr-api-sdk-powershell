@@ -471,7 +471,7 @@ Get Cloud Asset Changelog
 No description available.
 
 .PARAMETER Id
-The asset ID of the cloud asset to retrieve changelog for.
+The asset ID of the Cloud Integration Asset to retrieve changelog for.
 
 .PARAMETER Page
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
@@ -485,7 +485,7 @@ A switch when turned on will return a hash table of Response, StatusCode and Hea
 
 .OUTPUTS
 
-PaginatedClientActivityLog
+GetAssetCloudAssetChangelog200Response
 #>
 function Get-AssetCloudAssetChangelog {
     [CmdletBinding()]
@@ -548,7 +548,7 @@ function Get-AssetCloudAssetChangelog {
                                 -QueryParameters $LocalVarQueryParameters `
                                 -FormParameters $LocalVarFormParameters `
                                 -CookieParameters $LocalVarCookieParameters `
-                                -ReturnType "PaginatedClientActivityLog" `
+                                -ReturnType "GetAssetCloudAssetChangelog200Response" `
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
@@ -569,7 +569,7 @@ Get Cloud Asset Details
 No description available.
 
 .PARAMETER Id
-The asset ID of the cloud integration asset to retrieve.
+The asset ID of the Cloud Integration Asset to retrieve.
 
 .PARAMETER WithHttpInfo
 
@@ -846,7 +846,7 @@ No description available.
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
 
 .PARAMETER PageSize
-The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30.
+The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100.
 
 .PARAMETER AssetName
 Search cloud assets by name.

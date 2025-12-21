@@ -4,9 +4,58 @@ All URIs are relative to *https://your-tenant-id.sg.client.watchtowr.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**Invoke-DeleteUser**](UserManagementApi.md#Invoke-DeleteUser) | **DELETE** /api/client/users/{id} | Delete User
 [**Get-UserDetails**](UserManagementApi.md#Get-UserDetails) | **GET** /api/client/users/show/{id} | Get User Details
+[**ConvertTo-viteUsers**](UserManagementApi.md#ConvertTo-viteUsers) | **POST** /api/client/users/invite | Invite Users
 [**Invoke-ListUsers**](UserManagementApi.md#Invoke-ListUsers) | **GET** /api/client/users/list | List Users
+[**Update-User**](UserManagementApi.md#Update-User) | **PUT** /api/client/users/{id} | Update User
 
+
+<a id="Invoke-DeleteUser"></a>
+# **Invoke-DeleteUser**
+> DeleteUserResponseData Invoke-DeleteUser<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+
+Delete User
+
+Delete a user from the platform. This action is irreversible. Administrator role required.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | 
+
+# Delete User
+try {
+    $Result = Invoke-DeleteUser -Id $Id
+} catch {
+    Write-Host ("Exception occurred when calling Invoke-DeleteUser: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**|  | 
+
+### Return type
+
+[**DeleteUserResponseData**](DeleteUserResponseData.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="Get-UserDetails"></a>
 # **Get-UserDetails**
@@ -50,6 +99,56 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="ConvertTo-viteUsers"></a>
+# **ConvertTo-viteUsers**
+> InviteUserResponseData ConvertTo-viteUsers<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UserAgent] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-InviteClientUsersBodyDto] <PSCustomObject><br>
+
+Invite Users
+
+Invite new users to the platform. Sends invitation emails to the specified email addresses. Administrator role required.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$UserAgent = "MyUserAgent" # String | 
+$InviteClientUserDto = Initialize-InviteClientUserDto -Email "john.doe@example.com" -RoleType "ADMIN" -BusinessUnitIds 0
+$InviteClientUsersBodyDto = Initialize-InviteClientUsersBodyDto -Users $InviteClientUserDto # InviteClientUsersBodyDto | 
+
+# Invite Users
+try {
+    $Result = ConvertTo-viteUsers -UserAgent $UserAgent -InviteClientUsersBodyDto $InviteClientUsersBodyDto
+} catch {
+    Write-Host ("Exception occurred when calling ConvertTo-viteUsers: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **UserAgent** | **String**|  | 
+ **InviteClientUsersBodyDto** | [**InviteClientUsersBodyDto**](InviteClientUsersBodyDto.md)|  | 
+
+### Return type
+
+[**InviteUserResponseData**](InviteUserResponseData.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -117,6 +216,58 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Update-User"></a>
+# **Update-User**
+> UpdateUserResponse Update-User<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UserAgent] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateClientUserBodyDto] <PSCustomObject><br>
+
+Update User
+
+Update user details including locked status, role, and business unit assignments. Administrator role required.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | 
+$UserAgent = "MyUserAgent" # String | 
+$UpdateClientUserBodyDto = Initialize-UpdateClientUserBodyDto -RoleType "ADMIN" -BusinessUnitIds 0 -Locked $false # UpdateClientUserBodyDto | 
+
+# Update User
+try {
+    $Result = Update-User -Id $Id -UserAgent $UserAgent -UpdateClientUserBodyDto $UpdateClientUserBodyDto
+} catch {
+    Write-Host ("Exception occurred when calling Update-User: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**|  | 
+ **UserAgent** | **String**|  | 
+ **UpdateClientUserBodyDto** | [**UpdateClientUserBodyDto**](UpdateClientUserBodyDto.md)|  | 
+
+### Return type
+
+[**UpdateUserResponse**](UpdateUserResponse.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

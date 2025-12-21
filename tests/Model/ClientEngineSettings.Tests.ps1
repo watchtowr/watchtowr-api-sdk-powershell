@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ClientEngineSettings' {
     Context 'ClientEngineSettings' {
         It 'Initialize-ClientEngineSettings' {
             # a simple test to create an object
-            #$NewObject = Initialize-ClientEngineSettings -AdversarySightEnabled "TEST_VALUE" -AutomatedRedTeamingEnabled "TEST_VALUE" -CredentialStuffingEnabled "TEST_VALUE" -DnsBruteforcingEnabled "TEST_VALUE" -RapidReactionEnabled "TEST_VALUE"
+            #$NewObject = Initialize-ClientEngineSettings -AdversarySightEnabled "TEST_VALUE" -AutomatedRedTeamingEnabled "TEST_VALUE" -CredentialStuffingEnabled "TEST_VALUE" -DnsBruteforcingEnabled "TEST_VALUE" -RapidReactionEnabled "TEST_VALUE" -IntrusiveHttpChecksEnabled "TEST_VALUE"
             #$NewObject | Should -BeOfType ClientEngineSettings
             #$NewObject.property | Should -Be 0
         }

@@ -208,7 +208,7 @@ Class | Method | HTTP request | Description
 *MobileApplicationsApi* | [**New-NoteMobileApp**](docs/MobileApplicationsApi.md#New-NoteMobileApp) | **POST** /api/client/assets/mobileApp/show/{id}/note | Create Note
 *MobileApplicationsApi* | [**Invoke-DeleteCustomPropertyMobileApp**](docs/MobileApplicationsApi.md#Invoke-DeleteCustomPropertyMobileApp) | **DELETE** /api/client/assets/mobileApp/show/{id}/custom-property/{customPropertyId} | Delete Custom Property
 *MobileApplicationsApi* | [**Invoke-DeleteNoteMobileApp**](docs/MobileApplicationsApi.md#Invoke-DeleteNoteMobileApp) | **DELETE** /api/client/assets/mobileApp/show/{id}/note/{noteId} | Delete Note
-*MobileApplicationsApi* | [**Get-AssetMobileAppChangelog**](docs/MobileApplicationsApi.md#Get-AssetMobileAppChangelog) | **GET** /api/client/assets/mobileApp/show/{id}/changelog | Get Mobile App Changelog
+*MobileApplicationsApi* | [**Get-AssetMobileAppChangelog**](docs/MobileApplicationsApi.md#Get-AssetMobileAppChangelog) | **GET** /api/client/assets/mobileApp/show/{id}/changelog | Get Mobile Application Changelog
 *MobileApplicationsApi* | [**Get-AssetMobileAppDetails**](docs/MobileApplicationsApi.md#Get-AssetMobileAppDetails) | **GET** /api/client/assets/mobileApp/show/{id} | Get Mobile Application
 *MobileApplicationsApi* | [**Get-AssetMobileAppNotes**](docs/MobileApplicationsApi.md#Get-AssetMobileAppNotes) | **GET** /api/client/assets/mobileApp/show/{id}/notes | List Notes
 *MobileApplicationsApi* | [**Get-CustomPropertiesMobileApp**](docs/MobileApplicationsApi.md#Get-CustomPropertiesMobileApp) | **GET** /api/client/assets/mobileApp/show/{id}/custom-properties | List Custom Properties
@@ -298,8 +298,11 @@ Class | Method | HTTP request | Description
 *SubdomainsApi* | [**Update-NoteSubdomain**](docs/SubdomainsApi.md#Update-NoteSubdomain) | **PUT** /api/client/assets/subdomain/show/{id}/note/{noteId} | Update Subdomain Note
 *SuspiciousDomainsApi* | [**Get-ListSuspiciousDomain**](docs/SuspiciousDomainsApi.md#Get-ListSuspiciousDomain) | **GET** /api/client/suspicious-domain/list | List Suspicious Domains
 *SuspiciousDomainsApi* | [**Get-SuspiciousDomainDetails**](docs/SuspiciousDomainsApi.md#Get-SuspiciousDomainDetails) | **GET** /api/client/suspicious-domain/show/{id} | Get Suspicious Domain Details
+*UserManagementApi* | [**Invoke-DeleteUser**](docs/UserManagementApi.md#Invoke-DeleteUser) | **DELETE** /api/client/users/{id} | Delete User
 *UserManagementApi* | [**Get-UserDetails**](docs/UserManagementApi.md#Get-UserDetails) | **GET** /api/client/users/show/{id} | Get User Details
+*UserManagementApi* | [**ConvertTo-viteUsers**](docs/UserManagementApi.md#ConvertTo-viteUsers) | **POST** /api/client/users/invite | Invite Users
 *UserManagementApi* | [**Invoke-ListUsers**](docs/UserManagementApi.md#Invoke-ListUsers) | **GET** /api/client/users/list | List Users
+*UserManagementApi* | [**Update-User**](docs/UserManagementApi.md#Update-User) | **PUT** /api/client/users/{id} | Update User
 
 
 ## Documentation for Models
@@ -395,12 +398,26 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.DeleteClientBusinessUnitResponseDto](docs/DeleteClientBusinessUnitResponseDto.md)
  - [WatchtowrAPI\Model.DeleteClientBusinessUnitRuleResponseDto](docs/DeleteClientBusinessUnitRuleResponseDto.md)
  - [WatchtowrAPI\Model.DeleteNoteSucces](docs/DeleteNoteSucces.md)
+ - [WatchtowrAPI\Model.DeleteUserResponse](docs/DeleteUserResponse.md)
+ - [WatchtowrAPI\Model.DeleteUserResponseData](docs/DeleteUserResponseData.md)
  - [WatchtowrAPI\Model.DeleteWhitelistIpData](docs/DeleteWhitelistIpData.md)
  - [WatchtowrAPI\Model.FilterByBusinessUnitInput](docs/FilterByBusinessUnitInput.md)
  - [WatchtowrAPI\Model.FindingListResponse](docs/FindingListResponse.md)
  - [WatchtowrAPI\Model.FindingRetestResponseDto](docs/FindingRetestResponseDto.md)
  - [WatchtowrAPI\Model.FindingsSummaryDto](docs/FindingsSummaryDto.md)
  - [WatchtowrAPI\Model.ForbiddenResponse](docs/ForbiddenResponse.md)
+ - [WatchtowrAPI\Model.GetAssetApiDocumentationChangelog200Response](docs/GetAssetApiDocumentationChangelog200Response.md)
+ - [WatchtowrAPI\Model.GetAssetCloudAssetChangelog200Response](docs/GetAssetCloudAssetChangelog200Response.md)
+ - [WatchtowrAPI\Model.GetAssetCloudStorageChangelog200Response](docs/GetAssetCloudStorageChangelog200Response.md)
+ - [WatchtowrAPI\Model.GetAssetContainerChangelog200Response](docs/GetAssetContainerChangelog200Response.md)
+ - [WatchtowrAPI\Model.GetAssetDomainChangelog200Response](docs/GetAssetDomainChangelog200Response.md)
+ - [WatchtowrAPI\Model.GetAssetIpChangelog200Response](docs/GetAssetIpChangelog200Response.md)
+ - [WatchtowrAPI\Model.GetAssetIprangeChangelog200Response](docs/GetAssetIprangeChangelog200Response.md)
+ - [WatchtowrAPI\Model.GetAssetMobileAppChangelog200Response](docs/GetAssetMobileAppChangelog200Response.md)
+ - [WatchtowrAPI\Model.GetAssetPackageManagerChangelog200Response](docs/GetAssetPackageManagerChangelog200Response.md)
+ - [WatchtowrAPI\Model.GetAssetRepositoryChangelog200Response](docs/GetAssetRepositoryChangelog200Response.md)
+ - [WatchtowrAPI\Model.GetAssetSaasPlatformChangelog200Response](docs/GetAssetSaasPlatformChangelog200Response.md)
+ - [WatchtowrAPI\Model.GetAssetSubdomainChangelog200Response](docs/GetAssetSubdomainChangelog200Response.md)
  - [WatchtowrAPI\Model.HostnameBusinessUnitIDsDTO](docs/HostnameBusinessUnitIDsDTO.md)
  - [WatchtowrAPI\Model.Hunt](docs/Hunt.md)
  - [WatchtowrAPI\Model.HuntAcknowledgementDto](docs/HuntAcknowledgementDto.md)
@@ -408,6 +425,10 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.HuntDetailResponse](docs/HuntDetailResponse.md)
  - [WatchtowrAPI\Model.HuntOverviewDto](docs/HuntOverviewDto.md)
  - [WatchtowrAPI\Model.Infrastructure](docs/Infrastructure.md)
+ - [WatchtowrAPI\Model.InviteClientUserDto](docs/InviteClientUserDto.md)
+ - [WatchtowrAPI\Model.InviteClientUsersBodyDto](docs/InviteClientUsersBodyDto.md)
+ - [WatchtowrAPI\Model.InviteUserResponse](docs/InviteUserResponse.md)
+ - [WatchtowrAPI\Model.InviteUserResponseData](docs/InviteUserResponseData.md)
  - [WatchtowrAPI\Model.KillSwitchDisabledError](docs/KillSwitchDisabledError.md)
  - [WatchtowrAPI\Model.KillSwitchForbiddenError](docs/KillSwitchForbiddenError.md)
  - [WatchtowrAPI\Model.KillSwitchStatusData](docs/KillSwitchStatusData.md)
@@ -423,6 +444,7 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.PaginatedApiDocumentation](docs/PaginatedApiDocumentation.md)
  - [WatchtowrAPI\Model.PaginatedBusinessUnit](docs/PaginatedBusinessUnit.md)
  - [WatchtowrAPI\Model.PaginatedClientActivityLog](docs/PaginatedClientActivityLog.md)
+ - [WatchtowrAPI\Model.PaginatedClientAssetChangelog](docs/PaginatedClientAssetChangelog.md)
  - [WatchtowrAPI\Model.PaginatedClientCloudAsset](docs/PaginatedClientCloudAsset.md)
  - [WatchtowrAPI\Model.PaginatedClientCloudStorage](docs/PaginatedClientCloudStorage.md)
  - [WatchtowrAPI\Model.PaginatedClientContainer](docs/PaginatedClientContainer.md)
@@ -475,10 +497,12 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.UpdateClientFindingStatusRequestBody](docs/UpdateClientFindingStatusRequestBody.md)
  - [WatchtowrAPI\Model.UpdateClientLegacyAssetStatusDto](docs/UpdateClientLegacyAssetStatusDto.md)
  - [WatchtowrAPI\Model.UpdateClientNextGenAssetStatusDto](docs/UpdateClientNextGenAssetStatusDto.md)
+ - [WatchtowrAPI\Model.UpdateClientUserBodyDto](docs/UpdateClientUserBodyDto.md)
  - [WatchtowrAPI\Model.UpdateKillSwitchData](docs/UpdateKillSwitchData.md)
  - [WatchtowrAPI\Model.UpdateKillSwitchRequestDto](docs/UpdateKillSwitchRequestDto.md)
  - [WatchtowrAPI\Model.UpdateKillSwitchResponse](docs/UpdateKillSwitchResponse.md)
  - [WatchtowrAPI\Model.UpdateOrganisationWhitelistIpDto](docs/UpdateOrganisationWhitelistIpDto.md)
+ - [WatchtowrAPI\Model.UpdateUserResponse](docs/UpdateUserResponse.md)
  - [WatchtowrAPI\Model.UserDetailData](docs/UserDetailData.md)
  - [WatchtowrAPI\Model.WhitelistIpData](docs/WhitelistIpData.md)
  - [WatchtowrAPI\Model.WhitelistIpDataSingle](docs/WhitelistIpDataSingle.md)

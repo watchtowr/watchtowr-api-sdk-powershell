@@ -21,6 +21,8 @@ This setting manages the Adversary Sight engine coverage for the asset.
 This setting manages the DNS Bruteforcing engine coverage for the asset.
 .PARAMETER AutomatedRedTeamingEnabled
 This setting manages the Automated Red Teaming engine coverage for the asset.
+.PARAMETER IntrusiveHttpChecksEnabled
+This setting manages Intrusive HTTP Checks engine coverage for the asset.
 .PARAMETER CredentialStuffingEnabled
 This setting manages the Credential Stuffing engine coverage for the asset.
 .PARAMETER RapidReactionEnabled
@@ -44,8 +46,11 @@ function Initialize-UpdateClientEngineSettingsDto {
         ${AutomatedRedTeamingEnabled},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [Boolean]
-        ${CredentialStuffingEnabled},
+        ${IntrusiveHttpChecksEnabled},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
+        [Boolean]
+        ${CredentialStuffingEnabled},
+        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [Boolean]
         ${RapidReactionEnabled}
     )
@@ -66,6 +71,10 @@ function Initialize-UpdateClientEngineSettingsDto {
             throw "invalid value for 'AutomatedRedTeamingEnabled', 'AutomatedRedTeamingEnabled' cannot be null."
         }
 
+        if ($null -eq $IntrusiveHttpChecksEnabled) {
+            throw "invalid value for 'IntrusiveHttpChecksEnabled', 'IntrusiveHttpChecksEnabled' cannot be null."
+        }
+
         if ($null -eq $CredentialStuffingEnabled) {
             throw "invalid value for 'CredentialStuffingEnabled', 'CredentialStuffingEnabled' cannot be null."
         }
@@ -79,6 +88,7 @@ function Initialize-UpdateClientEngineSettingsDto {
             "adversarySightEnabled" = ${AdversarySightEnabled}
             "dnsBruteforcingEnabled" = ${DnsBruteforcingEnabled}
             "automatedRedTeamingEnabled" = ${AutomatedRedTeamingEnabled}
+            "intrusiveHttpChecksEnabled" = ${IntrusiveHttpChecksEnabled}
             "credentialStuffingEnabled" = ${CredentialStuffingEnabled}
             "rapidReactionEnabled" = ${RapidReactionEnabled}
         }
@@ -118,7 +128,7 @@ function ConvertFrom-JsonToUpdateClientEngineSettingsDto {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in UpdateClientEngineSettingsDto
-        $AllProperties = ("adversarySightEnabled", "dnsBruteforcingEnabled", "automatedRedTeamingEnabled", "credentialStuffingEnabled", "rapidReactionEnabled")
+        $AllProperties = ("adversarySightEnabled", "dnsBruteforcingEnabled", "automatedRedTeamingEnabled", "intrusiveHttpChecksEnabled", "credentialStuffingEnabled", "rapidReactionEnabled")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -147,6 +157,12 @@ function ConvertFrom-JsonToUpdateClientEngineSettingsDto {
             $AutomatedRedTeamingEnabled = $JsonParameters.PSobject.Properties["automatedRedTeamingEnabled"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "intrusiveHttpChecksEnabled"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'intrusiveHttpChecksEnabled' missing."
+        } else {
+            $IntrusiveHttpChecksEnabled = $JsonParameters.PSobject.Properties["intrusiveHttpChecksEnabled"].value
+        }
+
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "credentialStuffingEnabled"))) {
             throw "Error! JSON cannot be serialized due to the required property 'credentialStuffingEnabled' missing."
         } else {
@@ -163,6 +179,7 @@ function ConvertFrom-JsonToUpdateClientEngineSettingsDto {
             "adversarySightEnabled" = ${AdversarySightEnabled}
             "dnsBruteforcingEnabled" = ${DnsBruteforcingEnabled}
             "automatedRedTeamingEnabled" = ${AutomatedRedTeamingEnabled}
+            "intrusiveHttpChecksEnabled" = ${IntrusiveHttpChecksEnabled}
             "credentialStuffingEnabled" = ${CredentialStuffingEnabled}
             "rapidReactionEnabled" = ${RapidReactionEnabled}
         }
