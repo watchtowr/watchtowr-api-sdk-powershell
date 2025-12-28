@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **CredentialStuffingEnabled** | **Boolean** | Indicates whether the Credential Stuffing engine coverage is enabled for the asset. | 
 **DnsBruteforcingEnabled** | **Boolean** | Indicates whether the DNS Bruteforcing engine coverage is enabled for the asset. | 
 **RapidReactionEnabled** | **Boolean** | Indicates whether the Rapid Reaction engine coverage is enabled for the asset | 
-**IntrusiveHttpChecksEnabled** | **Boolean** | Indicates whether the Intrusive HTTP Checks engine coverage is enabled for the asset. | 
+**IntrusiveHttpChecksEnabled** | **Boolean** | Indicates whether the Intrusive HTTP Check engine coverage is enabled for the asset. | 
 **Id** | **Decimal** | The asset ID | 
 **Type** | **String** | The asset type | 
 

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **AdversarySightEnabled** | **Boolean** | This setting manages the Adversary Sight engine coverage for the asset. | 
 **DnsBruteforcingEnabled** | **Boolean** | This setting manages the DNS Bruteforcing engine coverage for the asset. | 
 **AutomatedRedTeamingEnabled** | **Boolean** | This setting manages the Automated Red Teaming engine coverage for the asset. | 
-**IntrusiveHttpChecksEnabled** | **Boolean** | This setting manages Intrusive HTTP Checks engine coverage for the asset. | 
+**IntrusiveHttpChecksEnabled** | **Boolean** | This setting manages Intrusive HTTP Check engine coverage for the asset. | 
 **CredentialStuffingEnabled** | **Boolean** | This setting manages the Credential Stuffing engine coverage for the asset. | 
 **RapidReactionEnabled** | **Boolean** |  This setting manages the Rapid Reaction engine coverage for the asset | 
 

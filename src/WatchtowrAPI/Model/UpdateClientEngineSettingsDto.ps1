@@ -22,7 +22,7 @@ This setting manages the DNS Bruteforcing engine coverage for the asset.
 .PARAMETER AutomatedRedTeamingEnabled
 This setting manages the Automated Red Teaming engine coverage for the asset.
 .PARAMETER IntrusiveHttpChecksEnabled
-This setting manages Intrusive HTTP Checks engine coverage for the asset.
+This setting manages Intrusive HTTP Check engine coverage for the asset.
 .PARAMETER CredentialStuffingEnabled
 This setting manages the Credential Stuffing engine coverage for the asset.
 .PARAMETER RapidReactionEnabled

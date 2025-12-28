@@ -26,7 +26,7 @@ Indicates whether the DNS Bruteforcing engine coverage is enabled for the asset.
 .PARAMETER RapidReactionEnabled
 Indicates whether the Rapid Reaction engine coverage is enabled for the asset
 .PARAMETER IntrusiveHttpChecksEnabled
-Indicates whether the Intrusive HTTP Checks engine coverage is enabled for the asset.
+Indicates whether the Intrusive HTTP Check engine coverage is enabled for the asset.
 .PARAMETER Id
 The asset ID
 .PARAMETER Type
