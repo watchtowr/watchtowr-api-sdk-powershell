@@ -18,9 +18,11 @@ No description available.
 .PARAMETER Title
 Descriptive title for the new asset
 .PARAMETER Type
-Asset Type for the new asset. Valid asset types are: [domain, subdomain, ip, ipRange, repository, cloudStorage, container, mobileApp, saasPlatform, cloudAsset, apiDocumentation, packageManager]
+Asset Type for the new asset. Valid asset types are: [domain, subdomain, ip, ipRange, repository, cloudStorage, container, mobileApp, saasPlatform, apiDocumentation, packageManager]
 .PARAMETER Value
 Value for the asset to be added.
+.PARAMETER Values
+Values object for ipRange asset type. Must contain both cidr and asn fields. Required when type is ipRange.
 .OUTPUTS
 
 ClientSeedData<PSCustomObject>
@@ -33,11 +35,15 @@ function Initialize-ClientSeedData {
         [String]
         ${Title},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
+        [ValidateSet("domain", "subdomain", "ip", "ipRange", "repository", "cloudStorage", "container", "mobileApp", "saasPlatform", "apiDocumentation", "packageManager")]
         [String]
         ${Type},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Value}
+        ${Value},
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject]
+        ${Values}
     )
 
     Process {
@@ -61,6 +67,7 @@ function Initialize-ClientSeedData {
             "title" = ${Title}
             "type" = ${Type}
             "value" = ${Value}
+            "values" = ${Values}
         }
 
 
@@ -98,7 +105,7 @@ function ConvertFrom-JsonToClientSeedData {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientSeedData
-        $AllProperties = ("title", "type", "value")
+        $AllProperties = ("title", "type", "value", "values")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -127,10 +134,17 @@ function ConvertFrom-JsonToClientSeedData {
             $Value = $JsonParameters.PSobject.Properties["value"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "values"))) { #optional property not found
+            $Values = $null
+        } else {
+            $Values = $JsonParameters.PSobject.Properties["values"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "title" = ${Title}
             "type" = ${Type}
             "value" = ${Value}
+            "values" = ${Values}
         }
 
         return $PSO

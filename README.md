@@ -429,6 +429,7 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.InviteClientUsersBodyDto](docs/InviteClientUsersBodyDto.md)
  - [WatchtowrAPI\Model.InviteUserResponse](docs/InviteUserResponse.md)
  - [WatchtowrAPI\Model.InviteUserResponseData](docs/InviteUserResponseData.md)
+ - [WatchtowrAPI\Model.IpRangeValues](docs/IpRangeValues.md)
  - [WatchtowrAPI\Model.KillSwitchDisabledError](docs/KillSwitchDisabledError.md)
  - [WatchtowrAPI\Model.KillSwitchForbiddenError](docs/KillSwitchForbiddenError.md)
  - [WatchtowrAPI\Model.KillSwitchStatusData](docs/KillSwitchStatusData.md)

@@ -139,6 +139,7 @@ docs/InviteClientUserDto.md
 docs/InviteClientUsersBodyDto.md
 docs/InviteUserResponse.md
 docs/InviteUserResponseData.md
+docs/IpRangeValues.md
 docs/KillSwitchApi.md
 docs/KillSwitchDisabledError.md
 docs/KillSwitchForbiddenError.md
@@ -392,6 +393,7 @@ src/WatchtowrAPI/Model/InviteClientUserDto.ps1
 src/WatchtowrAPI/Model/InviteClientUsersBodyDto.ps1
 src/WatchtowrAPI/Model/InviteUserResponse.ps1
 src/WatchtowrAPI/Model/InviteUserResponseData.ps1
+src/WatchtowrAPI/Model/IpRangeValues.ps1
 src/WatchtowrAPI/Model/KillSwitchDisabledError.ps1
 src/WatchtowrAPI/Model/KillSwitchForbiddenError.ps1
 src/WatchtowrAPI/Model/KillSwitchStatusData.ps1
@@ -636,6 +638,7 @@ tests/Model/InviteClientUserDto.Tests.ps1
 tests/Model/InviteClientUsersBodyDto.Tests.ps1
 tests/Model/InviteUserResponse.Tests.ps1
 tests/Model/InviteUserResponseData.Tests.ps1
+tests/Model/IpRangeValues.Tests.ps1
 tests/Model/KillSwitchDisabledError.Tests.ps1
 tests/Model/KillSwitchForbiddenError.Tests.ps1
 tests/Model/KillSwitchStatusData.Tests.ps1

@@ -74,7 +74,9 @@ Submit one or more seed data assets to your attack surface for review.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$ClientSeedData = Initialize-ClientSeedData -Title "Main Website" -Type "subdomain" -Value "www.watchTowr.com"
+$IpRangeValues = Initialize-IpRangeValues -Cidr "192.168.1.0/24" -Asn "AS16509"
+$ClientSeedData = Initialize-ClientSeedData -Title "Main Website" -Type "domain" -Value "www.watchTowr.com" -Values $IpRangeValues
+
 $FilterByBusinessUnitInput = Initialize-FilterByBusinessUnitInput -Id 1 -Type "BUSINESS_UNIT" -Name "Marketing"
 $CreateClientSeedDataRequestBody = Initialize-CreateClientSeedDataRequestBody -VarData $ClientSeedData -BusinessUnits $FilterByBusinessUnitInput # CreateClientSeedDataRequestBody | 
 
