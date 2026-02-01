@@ -49,6 +49,8 @@ Whether the discovered network service is concerning
 Whether the service is suppressed
 .PARAMETER SuppressedAt
 Suppressed at timestamp
+.PARAMETER IsPermanentSuppression
+Whether the service is permanently suppressed
 .OUTPUTS
 
 ServiceListing<PSCustomObject>
@@ -107,7 +109,10 @@ function Initialize-ServiceListing {
         ${Suppressed},
         [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[System.DateTime]]
-        ${SuppressedAt}
+        ${SuppressedAt},
+        [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Boolean]]
+        ${IsPermanentSuppression}
     )
 
     Process {
@@ -165,6 +170,7 @@ function Initialize-ServiceListing {
             "isConcerning" = ${IsConcerning}
             "suppressed" = ${Suppressed}
             "suppressedAt" = ${SuppressedAt}
+            "isPermanentSuppression" = ${IsPermanentSuppression}
         }
 
 
@@ -202,7 +208,7 @@ function ConvertFrom-JsonToServiceListing {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ServiceListing
-        $AllProperties = ("id", "portId", "ip", "hostname", "port", "type", "country", "banner", "service", "source", "lastSeen", "technologies", "serviceTypes", "businessUnits", "isConcerning", "suppressed", "suppressedAt")
+        $AllProperties = ("id", "portId", "ip", "hostname", "port", "type", "country", "banner", "service", "source", "lastSeen", "technologies", "serviceTypes", "businessUnits", "isConcerning", "suppressed", "suppressedAt", "isPermanentSuppression")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -315,6 +321,12 @@ function ConvertFrom-JsonToServiceListing {
             $SuppressedAt = $JsonParameters.PSobject.Properties["suppressedAt"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "isPermanentSuppression"))) { #optional property not found
+            $IsPermanentSuppression = $null
+        } else {
+            $IsPermanentSuppression = $JsonParameters.PSobject.Properties["isPermanentSuppression"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
             "portId" = ${PortId}
@@ -333,6 +345,7 @@ function ConvertFrom-JsonToServiceListing {
             "isConcerning" = ${IsConcerning}
             "suppressed" = ${Suppressed}
             "suppressedAt" = ${SuppressedAt}
+            "isPermanentSuppression" = ${IsPermanentSuppression}
         }
 
         return $PSO

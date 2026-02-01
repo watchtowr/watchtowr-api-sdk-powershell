@@ -43,6 +43,8 @@ Whether the Point of Interest is concerning
 Whether the Point of Interest is suppressed
 .PARAMETER SuppressedAt
 Suppressed at timestamp
+.PARAMETER IsPermanentSuppression
+Whether the Point of Interest is permanently suppressed
 .PARAMETER FindingId
 Finding ID if the POI has been converted to a finding
 .OUTPUTS
@@ -96,6 +98,9 @@ function Initialize-PointsOfInterest {
         [System.Nullable[System.DateTime]]
         ${SuppressedAt},
         [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Boolean]]
+        ${IsPermanentSuppression},
+        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Decimal]]
         ${FindingId}
     )
@@ -164,6 +169,7 @@ function Initialize-PointsOfInterest {
             "isConcerning" = ${IsConcerning}
             "suppressed" = ${Suppressed}
             "suppressedAt" = ${SuppressedAt}
+            "isPermanentSuppression" = ${IsPermanentSuppression}
             "findingId" = ${FindingId}
         }
 
@@ -202,7 +208,7 @@ function ConvertFrom-JsonToPointsOfInterest {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in PointsOfInterest
-        $AllProperties = ("id", "name", "type", "url", "discoveryToolId", "discoveryDate", "assetId", "assetName", "assetType", "businessUnits", "lastSeen", "isConcerning", "suppressed", "suppressedAt", "findingId")
+        $AllProperties = ("id", "name", "type", "url", "discoveryToolId", "discoveryDate", "assetId", "assetName", "assetType", "businessUnits", "lastSeen", "isConcerning", "suppressed", "suppressedAt", "isPermanentSuppression", "findingId")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -297,6 +303,12 @@ function ConvertFrom-JsonToPointsOfInterest {
             $SuppressedAt = $JsonParameters.PSobject.Properties["suppressedAt"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "isPermanentSuppression"))) { #optional property not found
+            $IsPermanentSuppression = $null
+        } else {
+            $IsPermanentSuppression = $JsonParameters.PSobject.Properties["isPermanentSuppression"].value
+        }
+
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "findingId"))) { #optional property not found
             $FindingId = $null
         } else {
@@ -318,6 +330,7 @@ function ConvertFrom-JsonToPointsOfInterest {
             "isConcerning" = ${IsConcerning}
             "suppressed" = ${Suppressed}
             "suppressedAt" = ${SuppressedAt}
+            "isPermanentSuppression" = ${IsPermanentSuppression}
             "findingId" = ${FindingId}
         }
 

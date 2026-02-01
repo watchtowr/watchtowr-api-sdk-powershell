@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **IsConcerning** | **Boolean** | Whether the Point of Interest is concerning | 
 **Suppressed** | **Boolean** | Whether the Point of Interest is suppressed | 
 **SuppressedAt** | **System.DateTime** | Suppressed at timestamp | [optional] 
+**IsPermanentSuppression** | **Boolean** | Whether the Point of Interest is permanently suppressed | [optional] 
 **FindingId** | **Decimal** | Finding ID if the POI has been converted to a finding | [optional] 
 
 ## Examples
@@ -37,6 +38,7 @@ $PointsOfInterest = Initialize-WatchtowrAPIPointsOfInterest  -Id 1 `
  -IsConcerning true `
  -Suppressed true `
  -SuppressedAt null `
+ -IsPermanentSuppression true `
  -FindingId 123
 ```
 

@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **IsConcerning** | **Boolean** | Whether the discovered network service is concerning | 
 **Suppressed** | **Boolean** | Whether the service is suppressed | 
 **SuppressedAt** | **System.DateTime** | Suppressed at timestamp | [optional] 
+**IsPermanentSuppression** | **Boolean** | Whether the service is permanently suppressed | [optional] 
 
 ## Examples
 
@@ -41,7 +42,8 @@ $ServiceListing = Initialize-WatchtowrAPIServiceListing  -Id 1 `
  -BusinessUnits null `
  -IsConcerning true `
  -Suppressed true `
- -SuppressedAt null
+ -SuppressedAt null `
+ -IsPermanentSuppression true
 ```
 
 - Convert the resource to JSON

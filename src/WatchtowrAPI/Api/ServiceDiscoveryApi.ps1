@@ -138,7 +138,7 @@ function Get-ListServiceListing {
         [String]
         ${BusinessUnitIds},
         [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [ValidateSet("last_seen")]
+        [ValidateSet("last_seen", "suppressed_at")]
         [String]
         ${SortBy},
         [Parameter(Position = 18, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
