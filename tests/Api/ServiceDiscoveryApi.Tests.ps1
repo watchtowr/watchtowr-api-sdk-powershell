@@ -15,4 +15,12 @@ Describe -tag 'WatchtowrAPI' -name 'ServiceDiscoveryApi' {
         }
     }
 
+    Context 'Get-TechnologyStatistics' {
+        It 'Test Get-TechnologyStatistics' {
+            #$TestResult = Get-TechnologyStatistics -Page "TEST_VALUE" -PageSize "TEST_VALUE" -Search "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
 }

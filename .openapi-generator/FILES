@@ -182,6 +182,7 @@ docs/PaginatedPointOfInterest.md
 docs/PaginatedServiceInformationResponse.md
 docs/PaginatedServiceListing.md
 docs/PaginatedSuspiciousDomain.md
+docs/PaginatedTechnologyStatistics.md
 docs/PaginatedUsers.md
 docs/Pagination.md
 docs/PendingDomainsApi.md
@@ -209,6 +210,7 @@ docs/SubdomainsApi.md
 docs/SuspiciousDomain.md
 docs/SuspiciousDomainsApi.md
 docs/Technology.md
+docs/TechnologyStatistic.md
 docs/ThreatActorDto.md
 docs/Unauthorized.md
 docs/UnauthorizedResponse.md
@@ -433,6 +435,7 @@ src/WatchtowrAPI/Model/PaginatedPointOfInterest.ps1
 src/WatchtowrAPI/Model/PaginatedServiceInformationResponse.ps1
 src/WatchtowrAPI/Model/PaginatedServiceListing.ps1
 src/WatchtowrAPI/Model/PaginatedSuspiciousDomain.ps1
+src/WatchtowrAPI/Model/PaginatedTechnologyStatistics.ps1
 src/WatchtowrAPI/Model/PaginatedUsers.ps1
 src/WatchtowrAPI/Model/Pagination.ps1
 src/WatchtowrAPI/Model/PointsOfInterest.ps1
@@ -449,6 +452,7 @@ src/WatchtowrAPI/Model/ServiceListing.ps1
 src/WatchtowrAPI/Model/ServiceType.ps1
 src/WatchtowrAPI/Model/SuspiciousDomain.ps1
 src/WatchtowrAPI/Model/Technology.ps1
+src/WatchtowrAPI/Model/TechnologyStatistic.ps1
 src/WatchtowrAPI/Model/ThreatActorDto.ps1
 src/WatchtowrAPI/Model/Unauthorized.ps1
 src/WatchtowrAPI/Model/UnauthorizedResponse.ps1
@@ -678,6 +682,7 @@ tests/Model/PaginatedPointOfInterest.Tests.ps1
 tests/Model/PaginatedServiceInformationResponse.Tests.ps1
 tests/Model/PaginatedServiceListing.Tests.ps1
 tests/Model/PaginatedSuspiciousDomain.Tests.ps1
+tests/Model/PaginatedTechnologyStatistics.Tests.ps1
 tests/Model/PaginatedUsers.Tests.ps1
 tests/Model/Pagination.Tests.ps1
 tests/Model/PointsOfInterest.Tests.ps1
@@ -694,6 +699,7 @@ tests/Model/ServiceListing.Tests.ps1
 tests/Model/ServiceType.Tests.ps1
 tests/Model/SuspiciousDomain.Tests.ps1
 tests/Model/Technology.Tests.ps1
+tests/Model/TechnologyStatistic.Tests.ps1
 tests/Model/ThreatActorDto.Tests.ps1
 tests/Model/Unauthorized.Tests.ps1
 tests/Model/UnauthorizedResponse.Tests.ps1

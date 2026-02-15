@@ -278,6 +278,7 @@ Class | Method | HTTP request | Description
 *SaaSPlatformsApi* | [**Update-NoteSaasPlatform**](docs/SaaSPlatformsApi.md#Update-NoteSaasPlatform) | **PUT** /api/client/assets/saasPlatform/show/{id}/note/{noteId} | Update Note
 *SecurityPostureDashboardApi* | [**Get-SecurityPostureDashboard**](docs/SecurityPostureDashboardApi.md#Get-SecurityPostureDashboard) | **GET** /api/client/dashboard/security-posture | Get Security Posture Dashboard
 *ServiceDiscoveryApi* | [**Get-ListServiceListing**](docs/ServiceDiscoveryApi.md#Get-ListServiceListing) | **GET** /api/client/service-listing/list | List Services
+*ServiceDiscoveryApi* | [**Get-TechnologyStatistics**](docs/ServiceDiscoveryApi.md#Get-TechnologyStatistics) | **GET** /api/client/service-listing/technology-statistics | List Technology Statistics
 *SourceIPAddressesApi* | [**Get-ListSourceIpAddresses**](docs/SourceIPAddressesApi.md#Get-ListSourceIpAddresses) | **GET** /api/client/testing-infrastructure | List Testing Infrastructure
 *SubdomainsApi* | [**Set-SubomainToBusinessUnits**](docs/SubdomainsApi.md#Set-SubomainToBusinessUnits) | **POST** /api/client/assets/subdomain/show/{id}/business-units | Assign Subdomain to Business Units
 *SubdomainsApi* | [**New-CustomPropertySubdomain**](docs/SubdomainsApi.md#New-CustomPropertySubdomain) | **POST** /api/client/assets/subdomain/show/{id}/custom-property | Create Subdomain Custom Property
@@ -469,6 +470,7 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.PaginatedServiceInformationResponse](docs/PaginatedServiceInformationResponse.md)
  - [WatchtowrAPI\Model.PaginatedServiceListing](docs/PaginatedServiceListing.md)
  - [WatchtowrAPI\Model.PaginatedSuspiciousDomain](docs/PaginatedSuspiciousDomain.md)
+ - [WatchtowrAPI\Model.PaginatedTechnologyStatistics](docs/PaginatedTechnologyStatistics.md)
  - [WatchtowrAPI\Model.PaginatedUsers](docs/PaginatedUsers.md)
  - [WatchtowrAPI\Model.Pagination](docs/Pagination.md)
  - [WatchtowrAPI\Model.PointsOfInterest](docs/PointsOfInterest.md)
@@ -485,6 +487,7 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.ServiceType](docs/ServiceType.md)
  - [WatchtowrAPI\Model.SuspiciousDomain](docs/SuspiciousDomain.md)
  - [WatchtowrAPI\Model.Technology](docs/Technology.md)
+ - [WatchtowrAPI\Model.TechnologyStatistic](docs/TechnologyStatistic.md)
  - [WatchtowrAPI\Model.ThreatActorDto](docs/ThreatActorDto.md)
  - [WatchtowrAPI\Model.Unauthorized](docs/Unauthorized.md)
  - [WatchtowrAPI\Model.UnauthorizedResponse](docs/UnauthorizedResponse.md)
