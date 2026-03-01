@@ -40,7 +40,7 @@ function Initialize-UpdateClientBusinessUnitDto {
         [String]
         ${Description},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
-        [ValidateSet("BRAND", "DEPARTMENT", "LEGAL_ENTITY", "LEGAL_ENTITY_ORG_STRUCTURE", "M_A", "THIRD_PARTY", "USER_DEFINED")]
+        [ValidateSet("BRAND", "DEPARTMENT", "LEGAL_ENTITY", "LEGAL_ENTITY_ORG_STRUCTURE", "M_A", "THIRD_PARTY", "USER_DEFINED", "SYSTEM_FAVORITE_ASSET")]
         [String]
         ${Type},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]

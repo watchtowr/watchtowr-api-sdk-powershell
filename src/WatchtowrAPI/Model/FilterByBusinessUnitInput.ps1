@@ -33,7 +33,7 @@ function Initialize-FilterByBusinessUnitInput {
         [System.Nullable[Decimal]]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [ValidateSet("BUSINESS_UNIT", "UNASSIGNED")]
+        [ValidateSet("BUSINESS_UNIT", "UNASSIGNED", "SYSTEM_FAVORITE_ASSET")]
         [String]
         ${Type},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
