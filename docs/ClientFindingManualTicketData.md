@@ -1,20 +1,20 @@
-# NotFoundResponse
+# ClientFindingManualTicketData
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Message** | **String** | Error message | 
+**VarData** | [**ClientFindingManualTicket**](ClientFindingManualTicket.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$NotFoundResponse = Initialize-WatchtowrAPINotFoundResponse  -Message Organization white list ip not found
+$ClientFindingManualTicketData = Initialize-WatchtowrAPIClientFindingManualTicketData  -VarData null
 ```
 
 - Convert the resource to JSON
 ```powershell
-$NotFoundResponse | ConvertTo-JSON
+$ClientFindingManualTicketData | ConvertTo-JSON
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

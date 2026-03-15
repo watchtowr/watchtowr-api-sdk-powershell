@@ -102,6 +102,99 @@ function New-CustomPropertyFinding {
 <#
 .SYNOPSIS
 
+Create Finding Manual Ticket
+
+.DESCRIPTION
+
+No description available.
+
+.PARAMETER Id
+The ID of the finding to create a manual ticket for.
+
+.PARAMETER CreateClientFindingManualTicketRequestBody
+No description available.
+
+.PARAMETER WithHttpInfo
+
+A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
+
+.OUTPUTS
+
+ClientFindingManualTicketData
+#>
+function New-FindingManualTicket {
+    [CmdletBinding()]
+    Param (
+        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [Decimal]
+        ${Id},
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [PSCustomObject]
+        ${CreateClientFindingManualTicketRequestBody},
+        [Switch]
+        $WithHttpInfo
+    )
+
+    Process {
+        'Calling method: New-FindingManualTicket' | Write-Debug
+        $PSBoundParameters | Out-DebugParameter | Write-Debug
+
+        $LocalVarAccepts = @()
+        $LocalVarContentTypes = @()
+        $LocalVarQueryParameters = @{}
+        $LocalVarHeaderParameters = @{}
+        $LocalVarFormParameters = @{}
+        $LocalVarPathParameters = @{}
+        $LocalVarCookieParameters = @{}
+        $LocalVarBodyParameter = $null
+
+        $Configuration = Get-Configuration
+        # HTTP header 'Accept' (if needed)
+        $LocalVarAccepts = @('application/json')
+
+        # HTTP header 'Content-Type'
+        $LocalVarContentTypes = @('application/json')
+
+        $LocalVarUri = '/api/client/findings/show/{id}/manual-ticket'
+        if (!$Id) {
+            throw "Error! The required parameter `Id` missing when calling createFindingManualTicket."
+        }
+        $LocalVarUri = $LocalVarUri.replace('{id}', [System.Web.HTTPUtility]::UrlEncode($Id))
+
+        if (!$CreateClientFindingManualTicketRequestBody) {
+            throw "Error! The required parameter `CreateClientFindingManualTicketRequestBody` missing when calling createFindingManualTicket."
+        }
+
+        $LocalVarBodyParameter = $CreateClientFindingManualTicketRequestBody | ConvertTo-Json -Depth 100
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
+        $LocalVarResult = Invoke-ApiClient -Method 'POST' `
+                                -Uri $LocalVarUri `
+                                -Accepts $LocalVarAccepts `
+                                -ContentTypes $LocalVarContentTypes `
+                                -Body $LocalVarBodyParameter `
+                                -HeaderParameters $LocalVarHeaderParameters `
+                                -QueryParameters $LocalVarQueryParameters `
+                                -FormParameters $LocalVarFormParameters `
+                                -CookieParameters $LocalVarCookieParameters `
+                                -ReturnType "ClientFindingManualTicketData" `
+                                -IsBodyNullable $false
+
+        if ($WithHttpInfo.IsPresent) {
+            return $LocalVarResult
+        } else {
+            return $LocalVarResult["Response"]
+        }
+    }
+}
+
+<#
+.SYNOPSIS
+
 Create Finding Note
 
 .DESCRIPTION
@@ -819,7 +912,7 @@ Filter findings by a list of comma separated statuses they're tagged with.
 Filter findings by a list of comma separated business unit IDs that they're related to.
 
 .PARAMETER FindingImpactThreshold
-Impact Setting: * High - Prioritised Findings (vulnerabilities, misconfigurations and weaknesses) that could have an immediate, direct impact on your organisation's security posture. * All - All Findings, a broader range of findings that may not directly impact your organisation's security posture, but may represent deviations from best practices.
+Impact Setting: * High - Prioritized Findings (vulnerabilities, misconfigurations and weaknesses) that could have an immediate, direct impact on your organization's security posture. * All - All Findings, a broader range of findings that may not directly impact your organization's security posture, but may represent deviations from best practices.
 
 .PARAMETER FindingTitle
 Search findings by title contents.

@@ -15,6 +15,14 @@ Describe -tag 'WatchtowrAPI' -name 'FindingsApi' {
         }
     }
 
+    Context 'New-FindingManualTicket' {
+        It 'Test New-FindingManualTicket' {
+            #$TestResult = New-FindingManualTicket -Id "TEST_VALUE" -CreateClientFindingManualTicketRequestBody "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
     Context 'New-FindingNote' {
         It 'Test New-FindingNote' {
             #$TestResult = New-FindingNote -Id "TEST_VALUE" -CreateClientNoteDto "TEST_VALUE"

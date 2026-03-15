@@ -5,6 +5,7 @@ All URIs are relative to *https://your-tenant-id.sg.client.watchtowr.io*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**New-CustomPropertyFinding**](FindingsApi.md#New-CustomPropertyFinding) | **POST** /api/client/findings/show/{id}/custom-property | Create Custom Property
+[**New-FindingManualTicket**](FindingsApi.md#New-FindingManualTicket) | **POST** /api/client/findings/show/{id}/manual-ticket | Create Finding Manual Ticket
 [**New-FindingNote**](FindingsApi.md#New-FindingNote) | **POST** /api/client/findings/show/{id}/note | Create Finding Note
 [**Invoke-DeleteCustomPropertyFinding**](FindingsApi.md#Invoke-DeleteCustomPropertyFinding) | **DELETE** /api/client/findings/show/{id}/custom-property/{customPropertyId} | Delete Custom Property
 [**Invoke-DeleteFindingNote**](FindingsApi.md#Invoke-DeleteFindingNote) | **DELETE** /api/client/findings/show/{id}/note/{noteId} | Delete Finding Note
@@ -58,6 +59,55 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ClientCustomProperty**](ClientCustomProperty.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="New-FindingManualTicket"></a>
+# **New-FindingManualTicket**
+> ClientFindingManualTicketData New-FindingManualTicket<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreateClientFindingManualTicketRequestBody] <PSCustomObject><br>
+
+Create Finding Manual Ticket
+
+Create a manual ticket reference for a specific finding.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The ID of the finding to create a manual ticket for.
+$CreateClientFindingManualTicketRequestBody = Initialize-CreateClientFindingManualTicketRequestBody -BoardName "Acme Jira Board" -IssueLink "https://example.atlassian.net/browse/ABC-123" # CreateClientFindingManualTicketRequestBody | 
+
+# Create Finding Manual Ticket
+try {
+    $Result = New-FindingManualTicket -Id $Id -CreateClientFindingManualTicketRequestBody $CreateClientFindingManualTicketRequestBody
+} catch {
+    Write-Host ("Exception occurred when calling New-FindingManualTicket: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The ID of the finding to create a manual ticket for. | 
+ **CreateClientFindingManualTicketRequestBody** | [**CreateClientFindingManualTicketRequestBody**](CreateClientFindingManualTicketRequestBody.md)|  | 
+
+### Return type
+
+[**ClientFindingManualTicketData**](ClientFindingManualTicketData.md) (PSCustomObject)
 
 ### Authorization
 
@@ -493,7 +543,7 @@ $UpdatedFrom = (Get-Date) # System.DateTime | Filter findings updated after a gi
 $UpdatedTo = (Get-Date) # System.DateTime | Filter findings updated before a given date and time. (optional)
 $Statuses = "confirmed,unconfirmed,remediated,risk-accepted,closed,asset-no-longer-tracked" # String | Filter findings by a list of comma separated statuses they're tagged with. (optional)
 $BusinessUnitIds = "1,2,3" # String | Filter findings by a list of comma separated business unit IDs that they're related to. (optional)
-$FindingImpactThreshold = "All" # String | Impact Setting: * High - Prioritised Findings (vulnerabilities, misconfigurations and weaknesses) that could have an immediate, direct impact on your organisation's security posture. * All - All Findings, a broader range of findings that may not directly impact your organisation's security posture, but may represent deviations from best practices. (optional)
+$FindingImpactThreshold = "All" # String | Impact Setting: * High - Prioritized Findings (vulnerabilities, misconfigurations and weaknesses) that could have an immediate, direct impact on your organization's security posture. * All - All Findings, a broader range of findings that may not directly impact your organization's security posture, but may represent deviations from best practices. (optional)
 $FindingTitle = "Valid%20Credentials%20Discovered" # String | Search findings by title contents. (optional)
 $Severities = "critical" # String | Filter findings by a list of comma separated severities they're tagged with. (optional)
 $AssetTitle = "www.watchTowr.com" # String | Search by findings by affected asset. (optional)
@@ -525,7 +575,7 @@ Name | Type | Description  | Notes
  **UpdatedTo** | **System.DateTime**| Filter findings updated before a given date and time. | [optional] 
  **Statuses** | **String**| Filter findings by a list of comma separated statuses they&#39;re tagged with. | [optional] 
  **BusinessUnitIds** | **String**| Filter findings by a list of comma separated business unit IDs that they&#39;re related to. | [optional] 
- **FindingImpactThreshold** | **String**| Impact Setting: * High - Prioritised Findings (vulnerabilities, misconfigurations and weaknesses) that could have an immediate, direct impact on your organisation&#39;s security posture. * All - All Findings, a broader range of findings that may not directly impact your organisation&#39;s security posture, but may represent deviations from best practices. | [optional] 
+ **FindingImpactThreshold** | **String**| Impact Setting: * High - Prioritized Findings (vulnerabilities, misconfigurations and weaknesses) that could have an immediate, direct impact on your organization&#39;s security posture. * All - All Findings, a broader range of findings that may not directly impact your organization&#39;s security posture, but may represent deviations from best practices. | [optional] 
  **FindingTitle** | **String**| Search findings by title contents. | [optional] 
  **Severities** | **String**| Filter findings by a list of comma separated severities they&#39;re tagged with. | [optional] 
  **AssetTitle** | **String**| Search by findings by affected asset. | [optional] 

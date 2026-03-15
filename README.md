@@ -150,6 +150,7 @@ Class | Method | HTTP request | Description
 *DomainsApi* | [**Update-CustomPropertyDomain**](docs/DomainsApi.md#Update-CustomPropertyDomain) | **PUT** /api/client/assets/domain/show/{id}/custom-property/{customPropertyId} | Update Custom Property
 *FindingRetestHistoryApi* | [**Get-ListFindingRetestHistory**](docs/FindingRetestHistoryApi.md#Get-ListFindingRetestHistory) | **GET** /api/client/finding-retest-history/list | List Finding Retest History
 *FindingsApi* | [**New-CustomPropertyFinding**](docs/FindingsApi.md#New-CustomPropertyFinding) | **POST** /api/client/findings/show/{id}/custom-property | Create Custom Property
+*FindingsApi* | [**New-FindingManualTicket**](docs/FindingsApi.md#New-FindingManualTicket) | **POST** /api/client/findings/show/{id}/manual-ticket | Create Finding Manual Ticket
 *FindingsApi* | [**New-FindingNote**](docs/FindingsApi.md#New-FindingNote) | **POST** /api/client/findings/show/{id}/note | Create Finding Note
 *FindingsApi* | [**Invoke-DeleteCustomPropertyFinding**](docs/FindingsApi.md#Invoke-DeleteCustomPropertyFinding) | **DELETE** /api/client/findings/show/{id}/custom-property/{customPropertyId} | Delete Custom Property
 *FindingsApi* | [**Invoke-DeleteFindingNote**](docs/FindingsApi.md#Invoke-DeleteFindingNote) | **DELETE** /api/client/findings/show/{id}/note/{noteId} | Delete Finding Note
@@ -347,6 +348,8 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.ClientFindingAssignee](docs/ClientFindingAssignee.md)
  - [WatchtowrAPI\Model.ClientFindingData](docs/ClientFindingData.md)
  - [WatchtowrAPI\Model.ClientFindingImpactTag](docs/ClientFindingImpactTag.md)
+ - [WatchtowrAPI\Model.ClientFindingManualTicket](docs/ClientFindingManualTicket.md)
+ - [WatchtowrAPI\Model.ClientFindingManualTicketData](docs/ClientFindingManualTicketData.md)
  - [WatchtowrAPI\Model.ClientFindingRetestHistory](docs/ClientFindingRetestHistory.md)
  - [WatchtowrAPI\Model.ClientFindingRetestHistoryAsset](docs/ClientFindingRetestHistoryAsset.md)
  - [WatchtowrAPI\Model.ClientFindingRetestHistoryFinding](docs/ClientFindingRetestHistoryFinding.md)
@@ -393,6 +396,7 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.CreateClientBusinessUnitDto](docs/CreateClientBusinessUnitDto.md)
  - [WatchtowrAPI\Model.CreateClientBusinessUnitRuleDto](docs/CreateClientBusinessUnitRuleDto.md)
  - [WatchtowrAPI\Model.CreateClientCustomPropertyDto](docs/CreateClientCustomPropertyDto.md)
+ - [WatchtowrAPI\Model.CreateClientFindingManualTicketRequestBody](docs/CreateClientFindingManualTicketRequestBody.md)
  - [WatchtowrAPI\Model.CreateClientNoteDto](docs/CreateClientNoteDto.md)
  - [WatchtowrAPI\Model.CreateClientSeedDataRequestBody](docs/CreateClientSeedDataRequestBody.md)
  - [WatchtowrAPI\Model.CreateOrganisationWhitelistIpDto](docs/CreateOrganisationWhitelistIpDto.md)

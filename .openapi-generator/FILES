@@ -46,6 +46,8 @@ docs/ClientFinding.md
 docs/ClientFindingAssignee.md
 docs/ClientFindingData.md
 docs/ClientFindingImpactTag.md
+docs/ClientFindingManualTicket.md
+docs/ClientFindingManualTicketData.md
 docs/ClientFindingRetestHistory.md
 docs/ClientFindingRetestHistoryAsset.md
 docs/ClientFindingRetestHistoryFinding.md
@@ -95,6 +97,7 @@ docs/ContainersApi.md
 docs/CreateClientBusinessUnitDto.md
 docs/CreateClientBusinessUnitRuleDto.md
 docs/CreateClientCustomPropertyDto.md
+docs/CreateClientFindingManualTicketRequestBody.md
 docs/CreateClientNoteDto.md
 docs/CreateClientSeedDataRequestBody.md
 docs/CreateOrganisationWhitelistIpDto.md
@@ -312,6 +315,8 @@ src/WatchtowrAPI/Model/ClientFinding.ps1
 src/WatchtowrAPI/Model/ClientFindingAssignee.ps1
 src/WatchtowrAPI/Model/ClientFindingData.ps1
 src/WatchtowrAPI/Model/ClientFindingImpactTag.ps1
+src/WatchtowrAPI/Model/ClientFindingManualTicket.ps1
+src/WatchtowrAPI/Model/ClientFindingManualTicketData.ps1
 src/WatchtowrAPI/Model/ClientFindingRetestHistory.ps1
 src/WatchtowrAPI/Model/ClientFindingRetestHistoryAsset.ps1
 src/WatchtowrAPI/Model/ClientFindingRetestHistoryFinding.ps1
@@ -358,6 +363,7 @@ src/WatchtowrAPI/Model/ClientUserDetailBusinessUnitsInner.ps1
 src/WatchtowrAPI/Model/CreateClientBusinessUnitDto.ps1
 src/WatchtowrAPI/Model/CreateClientBusinessUnitRuleDto.ps1
 src/WatchtowrAPI/Model/CreateClientCustomPropertyDto.ps1
+src/WatchtowrAPI/Model/CreateClientFindingManualTicketRequestBody.ps1
 src/WatchtowrAPI/Model/CreateClientNoteDto.ps1
 src/WatchtowrAPI/Model/CreateClientSeedDataRequestBody.ps1
 src/WatchtowrAPI/Model/CreateOrganisationWhitelistIpDto.ps1
@@ -559,6 +565,8 @@ tests/Model/ClientFinding.Tests.ps1
 tests/Model/ClientFindingAssignee.Tests.ps1
 tests/Model/ClientFindingData.Tests.ps1
 tests/Model/ClientFindingImpactTag.Tests.ps1
+tests/Model/ClientFindingManualTicket.Tests.ps1
+tests/Model/ClientFindingManualTicketData.Tests.ps1
 tests/Model/ClientFindingRetestHistory.Tests.ps1
 tests/Model/ClientFindingRetestHistoryAsset.Tests.ps1
 tests/Model/ClientFindingRetestHistoryFinding.Tests.ps1
@@ -605,6 +613,7 @@ tests/Model/ClientUserDetailBusinessUnitsInner.Tests.ps1
 tests/Model/CreateClientBusinessUnitDto.Tests.ps1
 tests/Model/CreateClientBusinessUnitRuleDto.Tests.ps1
 tests/Model/CreateClientCustomPropertyDto.Tests.ps1
+tests/Model/CreateClientFindingManualTicketRequestBody.Tests.ps1
 tests/Model/CreateClientNoteDto.Tests.ps1
 tests/Model/CreateClientSeedDataRequestBody.Tests.ps1
 tests/Model/CreateOrganisationWhitelistIpDto.Tests.ps1
