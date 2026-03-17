@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$NotFoundResponse = Initialize-WatchtowrAPINotFoundResponse  -Message Organization white list ip not found
+$NotFoundResponse = Initialize-WatchtowrAPINotFoundResponse  -Message Organization whitelist IP not found
 ```
 
 - Convert the resource to JSON

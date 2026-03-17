@@ -39,10 +39,6 @@ function Initialize-Retest {
         'Creating PSCustomObject: WatchtowrAPI => Retest' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        if ($null -eq $CurrentRetest) {
-            throw "invalid value for 'CurrentRetest', 'CurrentRetest' cannot be null."
-        }
-
 
         $PSO = [PSCustomObject]@{
             "retest_remaining" = ${RetestRemaining}
@@ -91,20 +87,16 @@ function ConvertFrom-JsonToRetest {
             }
         }
 
-        If ([string]::IsNullOrEmpty($Json) -or $Json -eq "{}") { # empty json
-            throw "Error! Empty JSON cannot be serialized due to the required property 'current_retest' missing."
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "current_retest"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'current_retest' missing."
-        } else {
-            $CurrentRetest = $JsonParameters.PSobject.Properties["current_retest"].value
-        }
-
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "retest_remaining"))) { #optional property not found
             $RetestRemaining = $null
         } else {
             $RetestRemaining = $JsonParameters.PSobject.Properties["retest_remaining"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "current_retest"))) { #optional property not found
+            $CurrentRetest = $null
+        } else {
+            $CurrentRetest = $JsonParameters.PSobject.Properties["current_retest"].value
         }
 
         $PSO = [PSCustomObject]@{

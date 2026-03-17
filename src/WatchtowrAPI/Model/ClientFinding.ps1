@@ -118,7 +118,7 @@ function Initialize-ClientFinding {
         [String]
         ${State},
         [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
+        [String]
         ${CreatedAt},
         [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
@@ -220,14 +220,6 @@ function Initialize-ClientFinding {
 
         if ($null -eq $Affected) {
             throw "invalid value for 'Affected', 'Affected' cannot be null."
-        }
-
-        if ($null -eq $FindingRetests) {
-            throw "invalid value for 'FindingRetests', 'FindingRetests' cannot be null."
-        }
-
-        if ($null -eq $AssignedUser) {
-            throw "invalid value for 'AssignedUser', 'AssignedUser' cannot be null."
         }
 
         if ($null -eq $LastStatusUpdatedAt) {
@@ -416,18 +408,6 @@ function ConvertFrom-JsonToClientFinding {
             $Affected = $JsonParameters.PSobject.Properties["affected"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "finding_retests"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'finding_retests' missing."
-        } else {
-            $FindingRetests = $JsonParameters.PSobject.Properties["finding_retests"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "assigned_user"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'assigned_user' missing."
-        } else {
-            $AssignedUser = $JsonParameters.PSobject.Properties["assigned_user"].value
-        }
-
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "last_status_updated_at"))) {
             throw "Error! JSON cannot be serialized due to the required property 'last_status_updated_at' missing."
         } else {
@@ -474,6 +454,18 @@ function ConvertFrom-JsonToClientFinding {
             $Retest = $null
         } else {
             $Retest = $JsonParameters.PSobject.Properties["retest"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "finding_retests"))) { #optional property not found
+            $FindingRetests = $null
+        } else {
+            $FindingRetests = $JsonParameters.PSobject.Properties["finding_retests"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "assigned_user"))) { #optional property not found
+            $AssignedUser = $null
+        } else {
+            $AssignedUser = $JsonParameters.PSobject.Properties["assigned_user"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "last_seen"))) { #optional property not found

@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 **RequestedBy** | **String** |  | 
 **RequestedAt** | **System.DateTime** |  | 
 **RetestStatus** | **String** |  | 
-**StatusOccurredAt** | **System.DateTime** |  | 
-**CompletedAt** | **System.DateTime** |  | 
-**Evidence** | **String** |  | 
+**StatusOccurredAt** | **System.DateTime** |  | [optional] 
+**CompletedAt** | **System.DateTime** |  | [optional] 
+**Evidence** | **String** |  | [optional] 
 
 ## Examples
 

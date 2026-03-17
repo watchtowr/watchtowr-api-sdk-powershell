@@ -46,10 +46,10 @@ function Initialize-FindingRetestResponseDto {
         [String]
         ${RetestStatus},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
-        [System.DateTime]
+        [System.Nullable[System.DateTime]]
         ${StatusOccurredAt},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
-        [System.DateTime]
+        [System.Nullable[System.DateTime]]
         ${CompletedAt},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -70,18 +70,6 @@ function Initialize-FindingRetestResponseDto {
 
         if ($null -eq $RetestStatus) {
             throw "invalid value for 'RetestStatus', 'RetestStatus' cannot be null."
-        }
-
-        if ($null -eq $StatusOccurredAt) {
-            throw "invalid value for 'StatusOccurredAt', 'StatusOccurredAt' cannot be null."
-        }
-
-        if ($null -eq $CompletedAt) {
-            throw "invalid value for 'CompletedAt', 'CompletedAt' cannot be null."
-        }
-
-        if ($null -eq $Evidence) {
-            throw "invalid value for 'Evidence', 'Evidence' cannot be null."
         }
 
 
@@ -158,20 +146,20 @@ function ConvertFrom-JsonToFindingRetestResponseDto {
             $RetestStatus = $JsonParameters.PSobject.Properties["retest_status"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "status_occurred_at"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'status_occurred_at' missing."
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "status_occurred_at"))) { #optional property not found
+            $StatusOccurredAt = $null
         } else {
             $StatusOccurredAt = $JsonParameters.PSobject.Properties["status_occurred_at"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "completed_at"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'completed_at' missing."
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "completed_at"))) { #optional property not found
+            $CompletedAt = $null
         } else {
             $CompletedAt = $JsonParameters.PSobject.Properties["completed_at"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "evidence"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'evidence' missing."
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "evidence"))) { #optional property not found
+            $Evidence = $null
         } else {
             $Evidence = $JsonParameters.PSobject.Properties["evidence"].value
         }

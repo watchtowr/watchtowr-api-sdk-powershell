@@ -20,7 +20,7 @@ ID
 .PARAMETER SubjectCommonName
 Subject Common Name
 .PARAMETER SubjectOrganisation
-Subject Organisation
+Subject Organization
 .PARAMETER SubjectAltNames
 Subject Alt Names
 .PARAMETER SubjectCountry
@@ -28,7 +28,7 @@ Subject Country
 .PARAMETER IssuerCommonName
 Issuer CommonName
 .PARAMETER IssuerOrganisation
-Issuer Organisation
+Issuer Organization
 .PARAMETER IssuerCountry
 Issuer Country
 .PARAMETER Fingerprint

@@ -3,8 +3,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Previous** | **String** |  | 
-**Next** | **String** |  | 
+**Previous** | **String** |  | [optional] 
+**Next** | **String** |  | [optional] 
 
 ## Examples
 

@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RetestRemaining** | **Decimal** | The number of remaining test cases  | [optional] 
-**CurrentRetest** | [**FindingRetestResponseDto**](FindingRetestResponseDto.md) |  | 
+**CurrentRetest** | [**FindingRetestResponseDto**](FindingRetestResponseDto.md) |  | [optional] 
 
 ## Examples
 

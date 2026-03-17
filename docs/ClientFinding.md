@@ -16,13 +16,13 @@ Name | Type | Description | Notes
 **Cvssv3Metrics** | **String** |  | 
 **Status** | **String** |  | 
 **State** | **String** | Different to status, this is about tracking how the finding is being handled | 
-**CreatedAt** | [**SystemCollectionsHashtable**](.md) |  | 
+**CreatedAt** | **String** |  | 
 **Affected** | [**SystemCollectionsHashtable**](.md) |  | 
 **CveId** | **String** |  | [optional] 
 **EpssScore** | **Decimal** |  | [optional] 
 **Retest** | [**Retest**](Retest.md) |  | [optional] 
-**FindingRetests** | [**FindingRetestResponseDto[]**](FindingRetestResponseDto.md) |  | 
-**AssignedUser** | [**ClientFindingAssignee**](ClientFindingAssignee.md) |  | 
+**FindingRetests** | [**FindingRetestResponseDto[]**](FindingRetestResponseDto.md) |  | [optional] 
+**AssignedUser** | [**ClientFindingAssignee**](ClientFindingAssignee.md) |  | [optional] 
 **LastSeen** | [**SystemCollectionsHashtable**](.md) |  | [optional] 
 **LastStatusUpdatedAt** | [**SystemCollectionsHashtable**](.md) |  | 
 **Age** | **Decimal** |  | 

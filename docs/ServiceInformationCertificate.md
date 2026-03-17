@@ -5,11 +5,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Decimal** | ID | 
 **SubjectCommonName** | **String** | Subject Common Name | 
-**SubjectOrganisation** | **String** | Subject Organisation | 
+**SubjectOrganisation** | **String** | Subject Organization | 
 **SubjectAltNames** | **String[]** | Subject Alt Names | 
 **SubjectCountry** | **String** | Subject Country | 
 **IssuerCommonName** | **String** | Issuer CommonName | 
-**IssuerOrganisation** | **String** | Issuer Organisation | 
+**IssuerOrganisation** | **String** | Issuer Organization | 
 **IssuerCountry** | **String** | Issuer Country | 
 **Fingerprint** | **String** | Fingerprint | 
 **PublicKeyInfoAlg** | **String** | PublicKeyInfoAlg | 

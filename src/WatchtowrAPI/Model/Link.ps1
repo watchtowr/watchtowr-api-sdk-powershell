@@ -39,14 +39,6 @@ function Initialize-Link {
         'Creating PSCustomObject: WatchtowrAPI => Link' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        if ($null -eq $Previous) {
-            throw "invalid value for 'Previous', 'Previous' cannot be null."
-        }
-
-        if ($null -eq $Next) {
-            throw "invalid value for 'Next', 'Next' cannot be null."
-        }
-
 
         $PSO = [PSCustomObject]@{
             "previous" = ${Previous}
@@ -95,18 +87,14 @@ function ConvertFrom-JsonToLink {
             }
         }
 
-        If ([string]::IsNullOrEmpty($Json) -or $Json -eq "{}") { # empty json
-            throw "Error! Empty JSON cannot be serialized due to the required property 'previous' missing."
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "previous"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'previous' missing."
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "previous"))) { #optional property not found
+            $Previous = $null
         } else {
             $Previous = $JsonParameters.PSobject.Properties["previous"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "next"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'next' missing."
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "next"))) { #optional property not found
+            $Next = $null
         } else {
             $Next = $JsonParameters.PSobject.Properties["next"].value
         }
