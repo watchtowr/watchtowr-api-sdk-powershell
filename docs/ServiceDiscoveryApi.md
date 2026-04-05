@@ -51,7 +51,7 @@ $UpdatedFrom = (Get-Date) # System.DateTime | Filter services updated after a gi
 $UpdatedTo = (Get-Date) # System.DateTime | Filter services updated before a given date and time. (optional)
 $Search = "1.2.3.4" # String | Search services by IP address. (optional)
 $Countries = "US,UK" # String | Filter services by a list of comma separated subject countries that they're related to. (optional)
-$Technology = "react" # String | Filter services by technology name. (optional)
+$Technology = "aws,nginx,cloudfront" # String | Filter services by technology name. Supports comma-separated values for multiple technologies (max 10). (optional)
 $Ports = "22/TCP,443/TCP,3389/UDP" # String | Filter services by a list of comma separated port/protocols. (optional)
 $PortNumbers = "80,443" # String | Filter services by a list of comma separated ports. (optional)
 $PortTypes = "TCP,UDP" # String | Filter services by a list of comma separated transport layer protocols (e.g. UDP/TCP). (optional)
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
  **UpdatedTo** | **System.DateTime**| Filter services updated before a given date and time. | [optional] 
  **Search** | **String**| Search services by IP address. | [optional] 
  **Countries** | **String**| Filter services by a list of comma separated subject countries that they&#39;re related to. | [optional] 
- **Technology** | **String**| Filter services by technology name. | [optional] 
+ **Technology** | **String**| Filter services by technology name. Supports comma-separated values for multiple technologies (max 10). | [optional] 
  **Ports** | **String**| Filter services by a list of comma separated port/protocols. | [optional] 
  **PortNumbers** | **String**| Filter services by a list of comma separated ports. | [optional] 
  **PortTypes** | **String**| Filter services by a list of comma separated transport layer protocols (e.g. UDP/TCP). | [optional] 

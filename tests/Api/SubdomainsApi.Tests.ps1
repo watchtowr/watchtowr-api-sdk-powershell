@@ -103,6 +103,14 @@ Describe -tag 'WatchtowrAPI' -name 'SubdomainsApi' {
         }
     }
 
+    Context 'Set-CriticalitySubdomain' {
+        It 'Test Set-CriticalitySubdomain' {
+            #$TestResult = Set-CriticalitySubdomain -Id "TEST_VALUE" -SetCriticalityDto "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
     Context 'Invoke-UnassignSubomainFromBusinessUnits' {
         It 'Test Invoke-UnassignSubomainFromBusinessUnits' {
             #$TestResult = Invoke-UnassignSubomainFromBusinessUnits -Id "TEST_VALUE" -BusinessUnitIds "TEST_VALUE" -CascadeSubdomain "TEST_VALUE" -CascadeIp "TEST_VALUE"

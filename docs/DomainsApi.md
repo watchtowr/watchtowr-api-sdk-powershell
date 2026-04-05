@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**Get-AssetDomainNotes**](DomainsApi.md#Get-AssetDomainNotes) | **GET** /api/client/assets/domain/show/{id}/notes | List Notes
 [**Get-CustomPropertiesDomain**](DomainsApi.md#Get-CustomPropertiesDomain) | **GET** /api/client/assets/domain/show/{id}/custom-properties | List Custom Properties
 [**Get-ListAssetDomains**](DomainsApi.md#Get-ListAssetDomains) | **GET** /api/client/assets/domain/list | List Domains
+[**Set-CriticalityDomain**](DomainsApi.md#Set-CriticalityDomain) | **PUT** /api/client/assets/domain/show/{id}/criticality | Set Criticality
 [**Invoke-UnassignDomainFromBusinessUnits**](DomainsApi.md#Invoke-UnassignDomainFromBusinessUnits) | **DELETE** /api/client/assets/domain/show/{id}/business-units | Unassign Domain from Business Units
 [**Update-AssetDomainEngineSettings**](DomainsApi.md#Update-AssetDomainEngineSettings) | **PUT** /api/client/assets/domain/show/{id}/engine-settings | Update Domain Engine Settings
 [**Update-AssetDomainNote**](DomainsApi.md#Update-AssetDomainNote) | **PUT** /api/client/assets/domain/show/{id}/note/{noteId} | Update Note
@@ -640,6 +641,55 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Set-CriticalityDomain"></a>
+# **Set-CriticalityDomain**
+> SetCriticalityDataResponseDto Set-CriticalityDomain<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SetCriticalityDto] <PSCustomObject><br>
+
+Set Criticality
+
+Set or update the criticality level of a specific Domain asset.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The asset ID of the Domain to set criticality for.
+$SetCriticalityDto = Initialize-SetCriticalityDto -Criticality "High" # SetCriticalityDto | 
+
+# Set Criticality
+try {
+    $Result = Set-CriticalityDomain -Id $Id -SetCriticalityDto $SetCriticalityDto
+} catch {
+    Write-Host ("Exception occurred when calling Set-CriticalityDomain: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The asset ID of the Domain to set criticality for. | 
+ **SetCriticalityDto** | [**SetCriticalityDto**](SetCriticalityDto.md)|  | 
+
+### Return type
+
+[**SetCriticalityDataResponseDto**](SetCriticalityDataResponseDto.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

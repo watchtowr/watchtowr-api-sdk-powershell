@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**Get-AssetApiDocumentationNotes**](APIDocumentationApi.md#Get-AssetApiDocumentationNotes) | **GET** /api/client/assets/apiDocumentation/show/{id}/notes | List API Documentation Notes
 [**Get-CustomPropertiesApiDocumentation**](APIDocumentationApi.md#Get-CustomPropertiesApiDocumentation) | **GET** /api/client/assets/apiDocumentation/show/{id}/custom-properties | List Custom Properties
 [**Get-ListAssetApiDocumentation**](APIDocumentationApi.md#Get-ListAssetApiDocumentation) | **GET** /api/client/assets/apiDocumentation/list | List API Documentation
+[**Set-CriticalityApiDocumentation**](APIDocumentationApi.md#Set-CriticalityApiDocumentation) | **PUT** /api/client/assets/apiDocumentation/show/{id}/criticality | Set Criticality
 [**Invoke-UnassignApiDocumentationFromBusinessUnits**](APIDocumentationApi.md#Invoke-UnassignApiDocumentationFromBusinessUnits) | **DELETE** /api/client/assets/apiDocumentation/show/{id}/business-units | Unassign API Documentation from Business Units
 [**Update-AssetApiDocumentationNote**](APIDocumentationApi.md#Update-AssetApiDocumentationNote) | **PUT** /api/client/assets/apiDocumentation/show/{id}/note/{noteId} | Update Note
 [**Update-AssetApiDocumentationStatus**](APIDocumentationApi.md#Update-AssetApiDocumentationStatus) | **PUT** /api/client/assets/apiDocumentation/update-status/{id} | Update API Documentation Status
@@ -539,6 +540,55 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Set-CriticalityApiDocumentation"></a>
+# **Set-CriticalityApiDocumentation**
+> SetCriticalityDataResponseDto Set-CriticalityApiDocumentation<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SetCriticalityDto] <PSCustomObject><br>
+
+Set Criticality
+
+Set or update the criticality level of a specific API Documentation asset.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The asset ID of the API Documentation to set criticality for.
+$SetCriticalityDto = Initialize-SetCriticalityDto -Criticality "High" # SetCriticalityDto | 
+
+# Set Criticality
+try {
+    $Result = Set-CriticalityApiDocumentation -Id $Id -SetCriticalityDto $SetCriticalityDto
+} catch {
+    Write-Host ("Exception occurred when calling Set-CriticalityApiDocumentation: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The asset ID of the API Documentation to set criticality for. | 
+ **SetCriticalityDto** | [**SetCriticalityDto**](SetCriticalityDto.md)|  | 
+
+### Return type
+
+[**SetCriticalityDataResponseDto**](SetCriticalityDataResponseDto.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

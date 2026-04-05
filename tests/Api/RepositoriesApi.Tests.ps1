@@ -87,6 +87,14 @@ Describe -tag 'WatchtowrAPI' -name 'RepositoriesApi' {
         }
     }
 
+    Context 'Set-CriticalityRepository' {
+        It 'Test Set-CriticalityRepository' {
+            #$TestResult = Set-CriticalityRepository -Id "TEST_VALUE" -SetCriticalityDto "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
     Context 'Invoke-UnassignRepositoryFromBusinessUnits' {
         It 'Test Invoke-UnassignRepositoryFromBusinessUnits' {
             #$TestResult = Invoke-UnassignRepositoryFromBusinessUnits -Id "TEST_VALUE" -BusinessUnitIds "TEST_VALUE"

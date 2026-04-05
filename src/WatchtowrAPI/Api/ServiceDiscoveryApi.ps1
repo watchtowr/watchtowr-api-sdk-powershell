@@ -46,7 +46,7 @@ Search services by IP address.
 Filter services by a list of comma separated subject countries that they're related to.
 
 .PARAMETER Technology
-Filter services by technology name.
+Filter services by technology name. Supports comma-separated values for multiple technologies (max 10).
 
 .PARAMETER Ports
 Filter services by a list of comma separated port/protocols.

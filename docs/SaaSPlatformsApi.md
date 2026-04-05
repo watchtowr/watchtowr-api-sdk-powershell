@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**Get-AssetSaasPlatformNotes**](SaaSPlatformsApi.md#Get-AssetSaasPlatformNotes) | **GET** /api/client/assets/saasPlatform/show/{id}/notes | List Notes
 [**Get-CustomPropertiesSaasPlatform**](SaaSPlatformsApi.md#Get-CustomPropertiesSaasPlatform) | **GET** /api/client/assets/saasPlatform/show/{id}/custom-properties | List Custom Properties
 [**Get-ListAssetSaasPlatforms**](SaaSPlatformsApi.md#Get-ListAssetSaasPlatforms) | **GET** /api/client/assets/saasPlatform/list | List SaaS Platforms
+[**Set-CriticalitySaasPlatform**](SaaSPlatformsApi.md#Set-CriticalitySaasPlatform) | **PUT** /api/client/assets/saasPlatform/show/{id}/criticality | Set Criticality
 [**Invoke-UnassignSaasPlatformFromBusinessUnits**](SaaSPlatformsApi.md#Invoke-UnassignSaasPlatformFromBusinessUnits) | **DELETE** /api/client/assets/saasPlatform/show/{id}/business-units | Unassign SaaS Platform from Business Units
 [**Update-AssetSaasPlatformStatus**](SaaSPlatformsApi.md#Update-AssetSaasPlatformStatus) | **PUT** /api/client/assets/saasPlatform/update-status/{id} | Update Status
 [**Update-CustomPropertySaasPlatform**](SaaSPlatformsApi.md#Update-CustomPropertySaasPlatform) | **PUT** /api/client/assets/saasPlatform/show/{id}/custom-property/{customPropertyId} | Update Custom Property
@@ -539,6 +540,55 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Set-CriticalitySaasPlatform"></a>
+# **Set-CriticalitySaasPlatform**
+> SetCriticalityDataResponseDto Set-CriticalitySaasPlatform<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SetCriticalityDto] <PSCustomObject><br>
+
+Set Criticality
+
+Set or update the criticality level of a specific SaaS Platform asset.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The asset ID of the SaaS Platform to set criticality for.
+$SetCriticalityDto = Initialize-SetCriticalityDto -Criticality "High" # SetCriticalityDto | 
+
+# Set Criticality
+try {
+    $Result = Set-CriticalitySaasPlatform -Id $Id -SetCriticalityDto $SetCriticalityDto
+} catch {
+    Write-Host ("Exception occurred when calling Set-CriticalitySaasPlatform: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The asset ID of the SaaS Platform to set criticality for. | 
+ **SetCriticalityDto** | [**SetCriticalityDto**](SetCriticalityDto.md)|  | 
+
+### Return type
+
+[**SetCriticalityDataResponseDto**](SetCriticalityDataResponseDto.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

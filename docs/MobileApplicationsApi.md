@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**Get-AssetMobileAppNotes**](MobileApplicationsApi.md#Get-AssetMobileAppNotes) | **GET** /api/client/assets/mobileApp/show/{id}/notes | List Notes
 [**Get-CustomPropertiesMobileApp**](MobileApplicationsApi.md#Get-CustomPropertiesMobileApp) | **GET** /api/client/assets/mobileApp/show/{id}/custom-properties | List Custom Properties
 [**Get-ListAssetMobileApps**](MobileApplicationsApi.md#Get-ListAssetMobileApps) | **GET** /api/client/assets/mobileApp/list | List Mobile Applications
+[**Set-CriticalityMobileApp**](MobileApplicationsApi.md#Set-CriticalityMobileApp) | **PUT** /api/client/assets/mobileApp/show/{id}/criticality | Set Criticality
 [**Invoke-UnassignMobileAppFromBusinessUnits**](MobileApplicationsApi.md#Invoke-UnassignMobileAppFromBusinessUnits) | **DELETE** /api/client/assets/mobileApp/show/{id}/business-units | Unassign Mobile App from Business Units
 [**Update-AssetMobileAppStatus**](MobileApplicationsApi.md#Update-AssetMobileAppStatus) | **PUT** /api/client/assets/mobileApp/update-status/{id} | Update Status
 [**Update-CustomPropertyMobileApp**](MobileApplicationsApi.md#Update-CustomPropertyMobileApp) | **PUT** /api/client/assets/mobileApp/show/{id}/custom-property/{customPropertyId} | Update Custom Property
@@ -539,6 +540,55 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Set-CriticalityMobileApp"></a>
+# **Set-CriticalityMobileApp**
+> SetCriticalityDataResponseDto Set-CriticalityMobileApp<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SetCriticalityDto] <PSCustomObject><br>
+
+Set Criticality
+
+Set or update the criticality level of a specific Mobile App asset.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The asset ID of the Mobile App to set criticality for.
+$SetCriticalityDto = Initialize-SetCriticalityDto -Criticality "High" # SetCriticalityDto | 
+
+# Set Criticality
+try {
+    $Result = Set-CriticalityMobileApp -Id $Id -SetCriticalityDto $SetCriticalityDto
+} catch {
+    Write-Host ("Exception occurred when calling Set-CriticalityMobileApp: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The asset ID of the Mobile App to set criticality for. | 
+ **SetCriticalityDto** | [**SetCriticalityDto**](SetCriticalityDto.md)|  | 
+
+### Return type
+
+[**SetCriticalityDataResponseDto**](SetCriticalityDataResponseDto.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

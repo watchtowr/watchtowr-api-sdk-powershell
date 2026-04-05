@@ -87,6 +87,14 @@ Describe -tag 'WatchtowrAPI' -name 'CloudIntegrationAssetsApi' {
         }
     }
 
+    Context 'Set-CriticalityCloudAsset' {
+        It 'Test Set-CriticalityCloudAsset' {
+            #$TestResult = Set-CriticalityCloudAsset -Id "TEST_VALUE" -SetCriticalityDto "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
     Context 'Invoke-UnassignCloudAssetFromBusinessUnits' {
         It 'Test Invoke-UnassignCloudAssetFromBusinessUnits' {
             #$TestResult = Invoke-UnassignCloudAssetFromBusinessUnits -Id "TEST_VALUE" -BusinessUnitIds "TEST_VALUE"

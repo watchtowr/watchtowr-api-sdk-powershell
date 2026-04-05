@@ -87,6 +87,14 @@ Describe -tag 'WatchtowrAPI' -name 'ContainersApi' {
         }
     }
 
+    Context 'Set-CriticalityContainer' {
+        It 'Test Set-CriticalityContainer' {
+            #$TestResult = Set-CriticalityContainer -Id "TEST_VALUE" -SetCriticalityDto "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
     Context 'Invoke-UnassignContainerFromBusinessUnits' {
         It 'Test Invoke-UnassignContainerFromBusinessUnits' {
             #$TestResult = Invoke-UnassignContainerFromBusinessUnits -Id "TEST_VALUE" -BusinessUnitIds "TEST_VALUE"

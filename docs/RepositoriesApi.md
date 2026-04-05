@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**Get-AssetRepositoryNotes**](RepositoriesApi.md#Get-AssetRepositoryNotes) | **GET** /api/client/assets/repository/show/{id}/notes | List Notes
 [**Get-CustomPropertiesRepository**](RepositoriesApi.md#Get-CustomPropertiesRepository) | **GET** /api/client/assets/repository/show/{id}/custom-properties | List Custom Properties
 [**Get-ListAssetRepositories**](RepositoriesApi.md#Get-ListAssetRepositories) | **GET** /api/client/assets/repository/list | List Repositories
+[**Set-CriticalityRepository**](RepositoriesApi.md#Set-CriticalityRepository) | **PUT** /api/client/assets/repository/show/{id}/criticality | Set Criticality
 [**Invoke-UnassignRepositoryFromBusinessUnits**](RepositoriesApi.md#Invoke-UnassignRepositoryFromBusinessUnits) | **DELETE** /api/client/assets/repository/show/{id}/business-units | Unassign Repository from Business Units
 [**Update-AssetRepositoryStatus**](RepositoriesApi.md#Update-AssetRepositoryStatus) | **PUT** /api/client/assets/repository/update-status/{id} | Update Status
 [**Update-CustomPropertyRepository**](RepositoriesApi.md#Update-CustomPropertyRepository) | **PUT** /api/client/assets/repository/show/{id}/custom-property/{customPropertyId} | Update Custom Property
@@ -539,6 +540,55 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Set-CriticalityRepository"></a>
+# **Set-CriticalityRepository**
+> SetCriticalityDataResponseDto Set-CriticalityRepository<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SetCriticalityDto] <PSCustomObject><br>
+
+Set Criticality
+
+Set or update the criticality level of a specific Repository asset.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The asset ID of the Repository to set criticality for.
+$SetCriticalityDto = Initialize-SetCriticalityDto -Criticality "High" # SetCriticalityDto | 
+
+# Set Criticality
+try {
+    $Result = Set-CriticalityRepository -Id $Id -SetCriticalityDto $SetCriticalityDto
+} catch {
+    Write-Host ("Exception occurred when calling Set-CriticalityRepository: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The asset ID of the Repository to set criticality for. | 
+ **SetCriticalityDto** | [**SetCriticalityDto**](SetCriticalityDto.md)|  | 
+
+### Return type
+
+[**SetCriticalityDataResponseDto**](SetCriticalityDataResponseDto.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -87,6 +87,14 @@ Describe -tag 'WatchtowrAPI' -name 'PackageManagersApi' {
         }
     }
 
+    Context 'Set-CriticalityPackageManager' {
+        It 'Test Set-CriticalityPackageManager' {
+            #$TestResult = Set-CriticalityPackageManager -Id "TEST_VALUE" -SetCriticalityDto "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
     Context 'Invoke-UnassignPackageManagerFromBusinessUnits' {
         It 'Test Invoke-UnassignPackageManagerFromBusinessUnits' {
             #$TestResult = Invoke-UnassignPackageManagerFromBusinessUnits -Id "TEST_VALUE" -BusinessUnitIds "TEST_VALUE"

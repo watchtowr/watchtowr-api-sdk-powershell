@@ -1014,6 +1014,99 @@ function Get-ListAssetCloudStorages {
 <#
 .SYNOPSIS
 
+Set Criticality
+
+.DESCRIPTION
+
+No description available.
+
+.PARAMETER Id
+The asset ID of the Cloud Storage to set criticality for.
+
+.PARAMETER SetCriticalityDto
+No description available.
+
+.PARAMETER WithHttpInfo
+
+A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
+
+.OUTPUTS
+
+SetCriticalityDataResponseDto
+#>
+function Set-CriticalityCloudStorage {
+    [CmdletBinding()]
+    Param (
+        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [Decimal]
+        ${Id},
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [PSCustomObject]
+        ${SetCriticalityDto},
+        [Switch]
+        $WithHttpInfo
+    )
+
+    Process {
+        'Calling method: Set-CriticalityCloudStorage' | Write-Debug
+        $PSBoundParameters | Out-DebugParameter | Write-Debug
+
+        $LocalVarAccepts = @()
+        $LocalVarContentTypes = @()
+        $LocalVarQueryParameters = @{}
+        $LocalVarHeaderParameters = @{}
+        $LocalVarFormParameters = @{}
+        $LocalVarPathParameters = @{}
+        $LocalVarCookieParameters = @{}
+        $LocalVarBodyParameter = $null
+
+        $Configuration = Get-Configuration
+        # HTTP header 'Accept' (if needed)
+        $LocalVarAccepts = @('application/json')
+
+        # HTTP header 'Content-Type'
+        $LocalVarContentTypes = @('application/json')
+
+        $LocalVarUri = '/api/client/assets/cloudStorage/show/{id}/criticality'
+        if (!$Id) {
+            throw "Error! The required parameter `Id` missing when calling setCriticalityCloudStorage."
+        }
+        $LocalVarUri = $LocalVarUri.replace('{id}', [System.Web.HTTPUtility]::UrlEncode($Id))
+
+        if (!$SetCriticalityDto) {
+            throw "Error! The required parameter `SetCriticalityDto` missing when calling setCriticalityCloudStorage."
+        }
+
+        $LocalVarBodyParameter = $SetCriticalityDto | ConvertTo-Json -Depth 100
+
+        if ($Configuration["AccessToken"]) {
+            $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
+            Write-Verbose ("Using Bearer authentication in {0}" -f $MyInvocation.MyCommand)
+        }
+
+        $LocalVarResult = Invoke-ApiClient -Method 'PUT' `
+                                -Uri $LocalVarUri `
+                                -Accepts $LocalVarAccepts `
+                                -ContentTypes $LocalVarContentTypes `
+                                -Body $LocalVarBodyParameter `
+                                -HeaderParameters $LocalVarHeaderParameters `
+                                -QueryParameters $LocalVarQueryParameters `
+                                -FormParameters $LocalVarFormParameters `
+                                -CookieParameters $LocalVarCookieParameters `
+                                -ReturnType "SetCriticalityDataResponseDto" `
+                                -IsBodyNullable $false
+
+        if ($WithHttpInfo.IsPresent) {
+            return $LocalVarResult
+        } else {
+            return $LocalVarResult["Response"]
+        }
+    }
+}
+
+<#
+.SYNOPSIS
+
 Unassign Cloud Storage from Business Units
 
 .DESCRIPTION

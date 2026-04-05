@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**Get-AssetContainerNotes**](ContainersApi.md#Get-AssetContainerNotes) | **GET** /api/client/assets/container/show/{id}/notes | List Notes
 [**Get-CustomPropertiesContainer**](ContainersApi.md#Get-CustomPropertiesContainer) | **GET** /api/client/assets/container/show/{id}/custom-properties | List Custom Properties
 [**Get-ListAssetContainer**](ContainersApi.md#Get-ListAssetContainer) | **GET** /api/client/assets/container/list | List Containers
+[**Set-CriticalityContainer**](ContainersApi.md#Set-CriticalityContainer) | **PUT** /api/client/assets/container/show/{id}/criticality | Set Criticality
 [**Invoke-UnassignContainerFromBusinessUnits**](ContainersApi.md#Invoke-UnassignContainerFromBusinessUnits) | **DELETE** /api/client/assets/container/show/{id}/business-units | Unassign Container from Business Units
 [**Update-AssetContainerStatus**](ContainersApi.md#Update-AssetContainerStatus) | **PUT** /api/client/assets/container/update-status/{id} | Update Status
 [**Update-CustomPropertyContainer**](ContainersApi.md#Update-CustomPropertyContainer) | **PUT** /api/client/assets/container/show/{id}/custom-property/{customPropertyId} | Update Custom Property
@@ -539,6 +540,55 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Set-CriticalityContainer"></a>
+# **Set-CriticalityContainer**
+> SetCriticalityDataResponseDto Set-CriticalityContainer<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SetCriticalityDto] <PSCustomObject><br>
+
+Set Criticality
+
+Set or update the criticality level of a specific Container asset.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The asset ID of the Container to set criticality for.
+$SetCriticalityDto = Initialize-SetCriticalityDto -Criticality "High" # SetCriticalityDto | 
+
+# Set Criticality
+try {
+    $Result = Set-CriticalityContainer -Id $Id -SetCriticalityDto $SetCriticalityDto
+} catch {
+    Write-Host ("Exception occurred when calling Set-CriticalityContainer: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The asset ID of the Container to set criticality for. | 
+ **SetCriticalityDto** | [**SetCriticalityDto**](SetCriticalityDto.md)|  | 
+
+### Return type
+
+[**SetCriticalityDataResponseDto**](SetCriticalityDataResponseDto.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

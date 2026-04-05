@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**Get-AssetIprangeDetails**](IPRangesApi.md#Get-AssetIprangeDetails) | **GET** /api/client/assets/ipRange/show/{id} | Get IP Range
 [**Get-CustomPropertiesIpRange**](IPRangesApi.md#Get-CustomPropertiesIpRange) | **GET** /api/client/assets/ipRange/show/{id}/custom-properties | List Custom Properties
 [**Get-ListAssetIpranges**](IPRangesApi.md#Get-ListAssetIpranges) | **GET** /api/client/assets/ipRange/list | List IP Ranges
+[**Set-CriticalityIpRange**](IPRangesApi.md#Set-CriticalityIpRange) | **PUT** /api/client/assets/ipRange/show/{id}/criticality | Set Criticality
 [**Invoke-UnassignIpRangeFromBusinessUnits**](IPRangesApi.md#Invoke-UnassignIpRangeFromBusinessUnits) | **DELETE** /api/client/assets/ipRange/show/{id}/business-units | Unassign IP Range from Business Units
 [**Update-AssetIpRangeStatus**](IPRangesApi.md#Update-AssetIpRangeStatus) | **PUT** /api/client/assets/ipRange/update-status/{id} | Update Status
 [**Update-CustomPropertyIpRange**](IPRangesApi.md#Update-CustomPropertyIpRange) | **PUT** /api/client/assets/ipRange/show/{id}/custom-property/{customPropertyId} | Update Custom Property
@@ -539,6 +540,55 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Set-CriticalityIpRange"></a>
+# **Set-CriticalityIpRange**
+> SetCriticalityDataResponseDto Set-CriticalityIpRange<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SetCriticalityDto] <PSCustomObject><br>
+
+Set Criticality
+
+Set or update the criticality level of a specific IP Range asset.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The asset ID of the IP Range to set criticality for.
+$SetCriticalityDto = Initialize-SetCriticalityDto -Criticality "High" # SetCriticalityDto | 
+
+# Set Criticality
+try {
+    $Result = Set-CriticalityIpRange -Id $Id -SetCriticalityDto $SetCriticalityDto
+} catch {
+    Write-Host ("Exception occurred when calling Set-CriticalityIpRange: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The asset ID of the IP Range to set criticality for. | 
+ **SetCriticalityDto** | [**SetCriticalityDto**](SetCriticalityDto.md)|  | 
+
+### Return type
+
+[**SetCriticalityDataResponseDto**](SetCriticalityDataResponseDto.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

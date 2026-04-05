@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**Get-AssetCloudStorageNotes**](CloudStorageApi.md#Get-AssetCloudStorageNotes) | **GET** /api/client/assets/cloudStorage/show/{id}/notes | List Notes
 [**Get-CustomPropertiesCloudStorage**](CloudStorageApi.md#Get-CustomPropertiesCloudStorage) | **GET** /api/client/assets/cloudStorage/show/{id}/custom-properties | List Custom Properties
 [**Get-ListAssetCloudStorages**](CloudStorageApi.md#Get-ListAssetCloudStorages) | **GET** /api/client/assets/cloudStorage/list | List Cloud Storage
+[**Set-CriticalityCloudStorage**](CloudStorageApi.md#Set-CriticalityCloudStorage) | **PUT** /api/client/assets/cloudStorage/show/{id}/criticality | Set Criticality
 [**Invoke-UnassignCloudStorageFromBusinessUnits**](CloudStorageApi.md#Invoke-UnassignCloudStorageFromBusinessUnits) | **DELETE** /api/client/assets/cloudStorage/show/{id}/business-units | Unassign Cloud Storage from Business Units
 [**Update-AssetCloudStorageNote**](CloudStorageApi.md#Update-AssetCloudStorageNote) | **PUT** /api/client/assets/cloudStorage/show/{id}/note/{noteId} | Update Note
 [**Update-AssetCloudStorageStatus**](CloudStorageApi.md#Update-AssetCloudStorageStatus) | **PUT** /api/client/assets/cloudStorage/update-status/{id} | Update Status
@@ -539,6 +540,55 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Set-CriticalityCloudStorage"></a>
+# **Set-CriticalityCloudStorage**
+> SetCriticalityDataResponseDto Set-CriticalityCloudStorage<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SetCriticalityDto] <PSCustomObject><br>
+
+Set Criticality
+
+Set or update the criticality level of a specific Cloud Storage asset.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The asset ID of the Cloud Storage to set criticality for.
+$SetCriticalityDto = Initialize-SetCriticalityDto -Criticality "High" # SetCriticalityDto | 
+
+# Set Criticality
+try {
+    $Result = Set-CriticalityCloudStorage -Id $Id -SetCriticalityDto $SetCriticalityDto
+} catch {
+    Write-Host ("Exception occurred when calling Set-CriticalityCloudStorage: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The asset ID of the Cloud Storage to set criticality for. | 
+ **SetCriticalityDto** | [**SetCriticalityDto**](SetCriticalityDto.md)|  | 
+
+### Return type
+
+[**SetCriticalityDataResponseDto**](SetCriticalityDataResponseDto.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

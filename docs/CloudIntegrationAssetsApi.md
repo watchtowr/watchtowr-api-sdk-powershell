@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**Get-AssetCloudAssetNotes**](CloudIntegrationAssetsApi.md#Get-AssetCloudAssetNotes) | **GET** /api/client/assets/cloudAsset/show/{id}/notes | List Notes
 [**Get-CustomPropertiesCloudAsset**](CloudIntegrationAssetsApi.md#Get-CustomPropertiesCloudAsset) | **GET** /api/client/assets/cloudAsset/show/{id}/custom-properties | List Custom Properties
 [**Get-ListAssetCloudAsset**](CloudIntegrationAssetsApi.md#Get-ListAssetCloudAsset) | **GET** /api/client/assets/cloudAsset/list | List Cloud Assets
+[**Set-CriticalityCloudAsset**](CloudIntegrationAssetsApi.md#Set-CriticalityCloudAsset) | **PUT** /api/client/assets/cloudAsset/show/{id}/criticality | Set Criticality
 [**Invoke-UnassignCloudAssetFromBusinessUnits**](CloudIntegrationAssetsApi.md#Invoke-UnassignCloudAssetFromBusinessUnits) | **DELETE** /api/client/assets/cloudAsset/show/{id}/business-units | Unassign Cloud Integration Asset from Business Units
 [**Update-AssetCloudAssetNote**](CloudIntegrationAssetsApi.md#Update-AssetCloudAssetNote) | **PUT** /api/client/assets/cloudAsset/show/{id}/note/{noteId} | Update Note
 [**Update-AssetCloudAssetStatus**](CloudIntegrationAssetsApi.md#Update-AssetCloudAssetStatus) | **PUT** /api/client/assets/cloudAsset/update-status/{id} | Update Cloud Asset Status
@@ -548,6 +549,55 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Set-CriticalityCloudAsset"></a>
+# **Set-CriticalityCloudAsset**
+> SetCriticalityDataResponseDto Set-CriticalityCloudAsset<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SetCriticalityDto] <PSCustomObject><br>
+
+Set Criticality
+
+Set or update the criticality level of a specific Cloud Asset asset.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The asset ID of the Cloud Asset to set criticality for.
+$SetCriticalityDto = Initialize-SetCriticalityDto -Criticality "High" # SetCriticalityDto | 
+
+# Set Criticality
+try {
+    $Result = Set-CriticalityCloudAsset -Id $Id -SetCriticalityDto $SetCriticalityDto
+} catch {
+    Write-Host ("Exception occurred when calling Set-CriticalityCloudAsset: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The asset ID of the Cloud Asset to set criticality for. | 
+ **SetCriticalityDto** | [**SetCriticalityDto**](SetCriticalityDto.md)|  | 
+
+### Return type
+
+[**SetCriticalityDataResponseDto**](SetCriticalityDataResponseDto.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

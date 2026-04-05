@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**Get-CustomPropertiesSubdomain**](SubdomainsApi.md#Get-CustomPropertiesSubdomain) | **GET** /api/client/assets/subdomain/show/{id}/custom-properties | List Subdomain Custom Properties
 [**Get-ListAssetSubdomains**](SubdomainsApi.md#Get-ListAssetSubdomains) | **GET** /api/client/assets/subdomain/list | List Subdomains
 [**Get-NotesSubdomain**](SubdomainsApi.md#Get-NotesSubdomain) | **GET** /api/client/assets/subdomain/show/{id}/notes | List Subdomain Notes
+[**Set-CriticalitySubdomain**](SubdomainsApi.md#Set-CriticalitySubdomain) | **PUT** /api/client/assets/subdomain/show/{id}/criticality | Set Criticality
 [**Invoke-UnassignSubomainFromBusinessUnits**](SubdomainsApi.md#Invoke-UnassignSubomainFromBusinessUnits) | **DELETE** /api/client/assets/subdomain/show/{id}/business-units | Unassign Subdomain from Business Units
 [**Update-AssetSubdomainEngineSettings**](SubdomainsApi.md#Update-AssetSubdomainEngineSettings) | **PUT** /api/client/assets/subdomain/show/{id}/engine-settings | Update Subdomain Engine Settings
 [**Update-AssetSubdomainStatus**](SubdomainsApi.md#Update-AssetSubdomainStatus) | **PUT** /api/client/assets/subdomain/update-status/{id} | Update Subdomain Status
@@ -640,6 +641,55 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Set-CriticalitySubdomain"></a>
+# **Set-CriticalitySubdomain**
+> SetCriticalityDataResponseDto Set-CriticalitySubdomain<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SetCriticalityDto] <PSCustomObject><br>
+
+Set Criticality
+
+Set or update the criticality level of a specific Subdomain asset.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The asset ID of the Subdomain to set criticality for.
+$SetCriticalityDto = Initialize-SetCriticalityDto -Criticality "High" # SetCriticalityDto | 
+
+# Set Criticality
+try {
+    $Result = Set-CriticalitySubdomain -Id $Id -SetCriticalityDto $SetCriticalityDto
+} catch {
+    Write-Host ("Exception occurred when calling Set-CriticalitySubdomain: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The asset ID of the Subdomain to set criticality for. | 
+ **SetCriticalityDto** | [**SetCriticalityDto**](SetCriticalityDto.md)|  | 
+
+### Return type
+
+[**SetCriticalityDataResponseDto**](SetCriticalityDataResponseDto.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

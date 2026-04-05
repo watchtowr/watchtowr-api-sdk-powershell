@@ -87,6 +87,14 @@ Describe -tag 'WatchtowrAPI' -name 'APIDocumentationApi' {
         }
     }
 
+    Context 'Set-CriticalityApiDocumentation' {
+        It 'Test Set-CriticalityApiDocumentation' {
+            #$TestResult = Set-CriticalityApiDocumentation -Id "TEST_VALUE" -SetCriticalityDto "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
     Context 'Invoke-UnassignApiDocumentationFromBusinessUnits' {
         It 'Test Invoke-UnassignApiDocumentationFromBusinessUnits' {
             #$TestResult = Invoke-UnassignApiDocumentationFromBusinessUnits -Id "TEST_VALUE" -BusinessUnitIds "TEST_VALUE"

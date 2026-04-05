@@ -18,6 +18,7 @@ Method | HTTP request | Description
 [**Get-AssetIpPorts**](IPAddressesApi.md#Get-AssetIpPorts) | **GET** /api/client/assets/ip/show/{id}/port/list | List Ports
 [**Get-CustomPropertiesIp**](IPAddressesApi.md#Get-CustomPropertiesIp) | **GET** /api/client/assets/ip/show/{id}/custom-properties | List Custom Properties
 [**Get-ListAssetIps**](IPAddressesApi.md#Get-ListAssetIps) | **GET** /api/client/assets/ip/list | List IP Addresses
+[**Set-CriticalityIp**](IPAddressesApi.md#Set-CriticalityIp) | **PUT** /api/client/assets/ip/show/{id}/criticality | Set Criticality
 [**Invoke-UnassignIpFromBusinessUnits**](IPAddressesApi.md#Invoke-UnassignIpFromBusinessUnits) | **DELETE** /api/client/assets/ip/show/{id}/business-units | Unassign IP from Business Units
 [**Update-AssetIpEngineSettings**](IPAddressesApi.md#Update-AssetIpEngineSettings) | **PUT** /api/client/assets/ip/show/{id}/engine-settings | Update IP Engine Settings
 [**Update-AssetIpNote**](IPAddressesApi.md#Update-AssetIpNote) | **PUT** /api/client/assets/ip/show/{id}/note/{noteId} | Update Note
@@ -758,6 +759,55 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="Set-CriticalityIp"></a>
+# **Set-CriticalityIp**
+> SetCriticalityDataResponseDto Set-CriticalityIp<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SetCriticalityDto] <PSCustomObject><br>
+
+Set Criticality
+
+Set or update the criticality level of a specific IP asset.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+
+$Id = 8.14 # Decimal | The asset ID of the IP to set criticality for.
+$SetCriticalityDto = Initialize-SetCriticalityDto -Criticality "High" # SetCriticalityDto | 
+
+# Set Criticality
+try {
+    $Result = Set-CriticalityIp -Id $Id -SetCriticalityDto $SetCriticalityDto
+} catch {
+    Write-Host ("Exception occurred when calling Set-CriticalityIp: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Decimal**| The asset ID of the IP to set criticality for. | 
+ **SetCriticalityDto** | [**SetCriticalityDto**](SetCriticalityDto.md)|  | 
+
+### Return type
+
+[**SetCriticalityDataResponseDto**](SetCriticalityDataResponseDto.md) (PSCustomObject)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

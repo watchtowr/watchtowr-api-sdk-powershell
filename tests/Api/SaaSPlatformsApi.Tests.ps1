@@ -87,6 +87,14 @@ Describe -tag 'WatchtowrAPI' -name 'SaaSPlatformsApi' {
         }
     }
 
+    Context 'Set-CriticalitySaasPlatform' {
+        It 'Test Set-CriticalitySaasPlatform' {
+            #$TestResult = Set-CriticalitySaasPlatform -Id "TEST_VALUE" -SetCriticalityDto "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
     Context 'Invoke-UnassignSaasPlatformFromBusinessUnits' {
         It 'Test Invoke-UnassignSaasPlatformFromBusinessUnits' {
             #$TestResult = Invoke-UnassignSaasPlatformFromBusinessUnits -Id "TEST_VALUE" -BusinessUnitIds "TEST_VALUE"

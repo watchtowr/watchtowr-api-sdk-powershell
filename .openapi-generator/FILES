@@ -208,6 +208,9 @@ docs/ServiceInformationCertificate.md
 docs/ServiceInformationResponse.md
 docs/ServiceListing.md
 docs/ServiceType.md
+docs/SetCriticalityDataResponseDto.md
+docs/SetCriticalityDto.md
+docs/SetCriticalityResponseDto.md
 docs/SourceIPAddressesApi.md
 docs/SubdomainsApi.md
 docs/SuspiciousDomain.md
@@ -456,6 +459,9 @@ src/WatchtowrAPI/Model/ServiceInformationCertificate.ps1
 src/WatchtowrAPI/Model/ServiceInformationResponse.ps1
 src/WatchtowrAPI/Model/ServiceListing.ps1
 src/WatchtowrAPI/Model/ServiceType.ps1
+src/WatchtowrAPI/Model/SetCriticalityDataResponseDto.ps1
+src/WatchtowrAPI/Model/SetCriticalityDto.ps1
+src/WatchtowrAPI/Model/SetCriticalityResponseDto.ps1
 src/WatchtowrAPI/Model/SuspiciousDomain.ps1
 src/WatchtowrAPI/Model/Technology.ps1
 src/WatchtowrAPI/Model/TechnologyStatistic.ps1
@@ -706,6 +712,9 @@ tests/Model/ServiceInformationCertificate.Tests.ps1
 tests/Model/ServiceInformationResponse.Tests.ps1
 tests/Model/ServiceListing.Tests.ps1
 tests/Model/ServiceType.Tests.ps1
+tests/Model/SetCriticalityDataResponseDto.Tests.ps1
+tests/Model/SetCriticalityDto.Tests.ps1
+tests/Model/SetCriticalityResponseDto.Tests.ps1
 tests/Model/SuspiciousDomain.Tests.ps1
 tests/Model/Technology.Tests.ps1
 tests/Model/TechnologyStatistic.Tests.ps1

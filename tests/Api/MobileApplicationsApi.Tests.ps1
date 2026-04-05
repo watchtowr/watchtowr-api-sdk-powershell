@@ -87,6 +87,14 @@ Describe -tag 'WatchtowrAPI' -name 'MobileApplicationsApi' {
         }
     }
 
+    Context 'Set-CriticalityMobileApp' {
+        It 'Test Set-CriticalityMobileApp' {
+            #$TestResult = Set-CriticalityMobileApp -Id "TEST_VALUE" -SetCriticalityDto "TEST_VALUE"
+            #$TestResult | Should -BeOfType TODO
+            #$TestResult.property | Should -Be 0
+        }
+    }
+
     Context 'Invoke-UnassignMobileAppFromBusinessUnits' {
         It 'Test Invoke-UnassignMobileAppFromBusinessUnits' {
             #$TestResult = Invoke-UnassignMobileAppFromBusinessUnits -Id "TEST_VALUE" -BusinessUnitIds "TEST_VALUE"
