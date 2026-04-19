@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ClientCloudAsset' {
     Context 'ClientCloudAsset' {
         It 'Initialize-ClientCloudAsset' {
             # a simple test to create an object
-            #$NewObject = Initialize-ClientCloudAsset -Type "TEST_VALUE" -Name "TEST_VALUE" -Source "TEST_VALUE" -Provider "TEST_VALUE" -SuperType "TEST_VALUE" -SubType "TEST_VALUE" -Hostname "TEST_VALUE" -CloudResourceId "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE" -DeletedAt "TEST_VALUE" -Metadata "TEST_VALUE" -CustomProperties "TEST_VALUE" -Criticality "TEST_VALUE"
+            #$NewObject = Initialize-ClientCloudAsset -Type "TEST_VALUE" -Name "TEST_VALUE" -Source "TEST_VALUE" -Provider "TEST_VALUE" -SuperType "TEST_VALUE" -SubType "TEST_VALUE" -Hostname "TEST_VALUE" -CloudResourceId "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE" -Metadata "TEST_VALUE" -CustomProperties "TEST_VALUE" -Criticality "TEST_VALUE"
             #$NewObject | Should -BeOfType ClientCloudAsset
             #$NewObject.property | Should -Be 0
         }

@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **Status** | **String** |  | 
 **CreatedAt** | [**DatetimeDate**](DatetimeDate.md) |  | 
 **UpdatedAt** | [**DatetimeDate**](DatetimeDate.md) |  | 
-**DeletedAt** | [**DatetimeDate**](DatetimeDate.md) |  | 
 **Id** | **Decimal** |  | 
 **Name** | **String** |  | 
 **BusinessUnits** | [**ClientBusinessUnit[]**](ClientBusinessUnit.md) |  | 
@@ -30,7 +29,6 @@ $ClientIp = Initialize-WatchtowrAPIClientIp  -Type ip `
  -Status verified `
  -CreatedAt 2022-02-13T02:10:00.000000Z `
  -UpdatedAt 2022-02-13T02:10:00.000000Z `
- -DeletedAt 2022-02-13T02:10:00.000000Z `
  -Id 123 `
  -Name 123.123.123.123 `
  -BusinessUnits null `

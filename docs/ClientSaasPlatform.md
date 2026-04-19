@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **Status** | **String** |  | 
 **CreatedAt** | [**DatetimeDate**](DatetimeDate.md) |  | 
 **UpdatedAt** | [**DatetimeDate**](DatetimeDate.md) |  | 
-**DeletedAt** | [**DatetimeDate**](DatetimeDate.md) |  | 
 **Id** | **Decimal** |  | 
 **Url** | **String** |  | 
 **Provider** | **String** |  | 
@@ -25,7 +24,6 @@ $ClientSaasPlatform = Initialize-WatchtowrAPIClientSaasPlatform  -Type saasPlatf
  -Status verified `
  -CreatedAt 2022-02-13T02:10:00.000000Z `
  -UpdatedAt 2022-02-13T02:10:00.000000Z `
- -DeletedAt 2022-02-13T02:10:00.000000Z `
  -Id 123 `
  -Url https://example.slack.com `
  -Provider Slack `

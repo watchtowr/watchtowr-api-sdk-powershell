@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ClientSaasPlatform' {
     Context 'ClientSaasPlatform' {
         It 'Initialize-ClientSaasPlatform' {
             # a simple test to create an object
-            #$NewObject = Initialize-ClientSaasPlatform -Type "TEST_VALUE" -Source "TEST_VALUE" -Status "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE" -DeletedAt "TEST_VALUE" -Id "TEST_VALUE" -Url "TEST_VALUE" -Provider "TEST_VALUE" -BusinessUnits "TEST_VALUE" -CustomProperties "TEST_VALUE" -Criticality "TEST_VALUE"
+            #$NewObject = Initialize-ClientSaasPlatform -Type "TEST_VALUE" -Source "TEST_VALUE" -Status "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE" -Id "TEST_VALUE" -Url "TEST_VALUE" -Provider "TEST_VALUE" -BusinessUnits "TEST_VALUE" -CustomProperties "TEST_VALUE" -Criticality "TEST_VALUE"
             #$NewObject | Should -BeOfType ClientSaasPlatform
             #$NewObject.property | Should -Be 0
         }

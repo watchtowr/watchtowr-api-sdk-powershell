@@ -25,8 +25,6 @@ No description available.
 No description available.
 .PARAMETER UpdatedAt
 No description available.
-.PARAMETER DeletedAt
-No description available.
 .PARAMETER Id
 No description available.
 .PARAMETER Name
@@ -72,36 +70,33 @@ function Initialize-ClientSubdomain {
         [PSCustomObject]
         ${UpdatedAt},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${DeletedAt},
-        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [Decimal]
         ${Id},
-        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Name},
-        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
         ${BusinessUnits},
-        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [Boolean]
         ${Live},
-        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [String[]]
         ${DnsRecords},
-        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${Metadata},
-        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
         ${CustomProperties},
-        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Criticality},
-        [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${Infrastructure},
-        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${EngineSettings}
     )
@@ -128,10 +123,6 @@ function Initialize-ClientSubdomain {
 
         if ($null -eq $UpdatedAt) {
             throw "invalid value for 'UpdatedAt', 'UpdatedAt' cannot be null."
-        }
-
-        if ($null -eq $DeletedAt) {
-            throw "invalid value for 'DeletedAt', 'DeletedAt' cannot be null."
         }
 
         if ($null -eq $Id) {
@@ -177,7 +168,6 @@ function Initialize-ClientSubdomain {
             "status" = ${Status}
             "created_at" = ${CreatedAt}
             "updated_at" = ${UpdatedAt}
-            "deleted_at" = ${DeletedAt}
             "id" = ${Id}
             "name" = ${Name}
             "businessUnits" = ${BusinessUnits}
@@ -225,7 +215,7 @@ function ConvertFrom-JsonToClientSubdomain {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientSubdomain
-        $AllProperties = ("type", "source", "status", "created_at", "updated_at", "deleted_at", "id", "name", "businessUnits", "live", "dns_records", "metadata", "customProperties", "criticality", "infrastructure", "engineSettings")
+        $AllProperties = ("type", "source", "status", "created_at", "updated_at", "id", "name", "businessUnits", "live", "dns_records", "metadata", "customProperties", "criticality", "infrastructure", "engineSettings")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -264,12 +254,6 @@ function ConvertFrom-JsonToClientSubdomain {
             throw "Error! JSON cannot be serialized due to the required property 'updated_at' missing."
         } else {
             $UpdatedAt = $JsonParameters.PSobject.Properties["updated_at"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "deleted_at"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'deleted_at' missing."
-        } else {
-            $DeletedAt = $JsonParameters.PSobject.Properties["deleted_at"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "id"))) {
@@ -338,7 +322,6 @@ function ConvertFrom-JsonToClientSubdomain {
             "status" = ${Status}
             "created_at" = ${CreatedAt}
             "updated_at" = ${UpdatedAt}
-            "deleted_at" = ${DeletedAt}
             "id" = ${Id}
             "name" = ${Name}
             "businessUnits" = ${BusinessUnits}

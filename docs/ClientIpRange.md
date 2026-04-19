@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **Status** | **String** |  | 
 **CreatedAt** | [**DatetimeDate**](DatetimeDate.md) |  | 
 **UpdatedAt** | [**DatetimeDate**](DatetimeDate.md) |  | 
-**DeletedAt** | [**DatetimeDate**](DatetimeDate.md) |  | 
 **Id** | **Decimal** |  | 
 **Iprange** | **String** |  | 
 **Asn** | **String** |  | 
@@ -27,7 +26,6 @@ $ClientIpRange = Initialize-WatchtowrAPIClientIpRange  -Type ipRange `
  -Status pending `
  -CreatedAt 2022-02-13T02:10:00.000000Z `
  -UpdatedAt 2022-02-13T02:10:00.000000Z `
- -DeletedAt 2022-02-13T02:10:00.000000Z `
  -Id 123 `
  -Iprange 123.123.123.123/32 `
  -Asn AS4676 `

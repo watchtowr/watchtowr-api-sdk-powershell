@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ClientIpRange' {
     Context 'ClientIpRange' {
         It 'Initialize-ClientIpRange' {
             # a simple test to create an object
-            #$NewObject = Initialize-ClientIpRange -Type "TEST_VALUE" -Source "TEST_VALUE" -Status "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE" -DeletedAt "TEST_VALUE" -Id "TEST_VALUE" -Iprange "TEST_VALUE" -Asn "TEST_VALUE" -Desc "TEST_VALUE" -Country "TEST_VALUE" -BusinessUnits "TEST_VALUE" -CustomProperties "TEST_VALUE" -Criticality "TEST_VALUE"
+            #$NewObject = Initialize-ClientIpRange -Type "TEST_VALUE" -Source "TEST_VALUE" -Status "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE" -Id "TEST_VALUE" -Iprange "TEST_VALUE" -Asn "TEST_VALUE" -Desc "TEST_VALUE" -Country "TEST_VALUE" -BusinessUnits "TEST_VALUE" -CustomProperties "TEST_VALUE" -Criticality "TEST_VALUE"
             #$NewObject | Should -BeOfType ClientIpRange
             #$NewObject.property | Should -Be 0
         }

@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ClientCloudStorage' {
     Context 'ClientCloudStorage' {
         It 'Initialize-ClientCloudStorage' {
             # a simple test to create an object
-            #$NewObject = Initialize-ClientCloudStorage -Type "TEST_VALUE" -Source "TEST_VALUE" -Status "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE" -DeletedAt "TEST_VALUE" -Id "TEST_VALUE" -Name "TEST_VALUE" -Platform "TEST_VALUE" -Url "TEST_VALUE" -BusinessUnits "TEST_VALUE" -CustomProperties "TEST_VALUE" -Criticality "TEST_VALUE"
+            #$NewObject = Initialize-ClientCloudStorage -Type "TEST_VALUE" -Source "TEST_VALUE" -Status "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE" -Id "TEST_VALUE" -Name "TEST_VALUE" -Platform "TEST_VALUE" -Url "TEST_VALUE" -BusinessUnits "TEST_VALUE" -CustomProperties "TEST_VALUE" -Criticality "TEST_VALUE"
             #$NewObject | Should -BeOfType ClientCloudStorage
             #$NewObject.property | Should -Be 0
         }

@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **CreatedAt** | [**DatetimeDate**](DatetimeDate.md) |  | 
 **UpdatedAt** | [**DatetimeDate**](DatetimeDate.md) |  | 
 **LastSeenAt** | [**DatetimeDate**](DatetimeDate.md) |  | 
-**DeletedAt** | [**DatetimeDate**](DatetimeDate.md) |  | 
 **Id** | **Decimal** |  | 
 **Ip** | **String** |  | 
 **IpId** | **Decimal** |  | 
@@ -26,7 +25,6 @@ $ClientPort = Initialize-WatchtowrAPIClientPort  -Type TCP `
  -CreatedAt 2022-02-13T02:10:00.000000Z `
  -UpdatedAt 2022-02-13T02:10:00.000000Z `
  -LastSeenAt 2022-02-13T02:10:00.000000Z `
- -DeletedAt 2022-02-13T02:10:00.000000Z `
  -Id 123 `
  -Ip 123.123.123.123 `
  -IpId 333 `

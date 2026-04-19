@@ -87,6 +87,7 @@ Class | Method | HTTP request | Description
 *BusinessUnitApi* | [**Get-BusinessUnitDetails**](docs/BusinessUnitApi.md#Get-BusinessUnitDetails) | **GET** /api/client/business-unit/show/{id} | Get Business Unit Details
 *BusinessUnitApi* | [**Get-ListBusinessUnit**](docs/BusinessUnitApi.md#Get-ListBusinessUnit) | **GET** /api/client/business-unit/list | List Business Units
 *BusinessUnitApi* | [**Update-BusinessUnit**](docs/BusinessUnitApi.md#Update-BusinessUnit) | **PUT** /api/client/business-unit/show/{id} | Update Business Unit
+*CapabilitySearchApi* | [**Invoke-CapabilitySearch**](docs/CapabilitySearchApi.md#Invoke-CapabilitySearch) | **GET** /api/client/capability-search | Capability Search
 *CertificatesApi* | [**Get-CertificateDetails**](docs/CertificatesApi.md#Get-CertificateDetails) | **GET** /api/client/certificates/show/{id} | Get Certificate Details
 *CertificatesApi* | [**Get-ListCertificates**](docs/CertificatesApi.md#Get-ListCertificates) | **GET** /api/client/certificates/list | List Certificates
 *CloudIntegrationAssetsApi* | [**Add-AssetCloudAssetNote**](docs/CloudIntegrationAssetsApi.md#Add-AssetCloudAssetNote) | **POST** /api/client/assets/cloudAsset/show/{id}/note | Create Note
@@ -329,6 +330,9 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.AttackSurfaceDto](docs/AttackSurfaceDto.md)
  - [WatchtowrAPI\Model.AttackSurfaceResiliencyDto](docs/AttackSurfaceResiliencyDto.md)
  - [WatchtowrAPI\Model.BadRequestResponse](docs/BadRequestResponse.md)
+ - [WatchtowrAPI\Model.CapabilitySearchData](docs/CapabilitySearchData.md)
+ - [WatchtowrAPI\Model.CapabilitySearchHuntItem](docs/CapabilitySearchHuntItem.md)
+ - [WatchtowrAPI\Model.CapabilitySearchResponse](docs/CapabilitySearchResponse.md)
  - [WatchtowrAPI\Model.Causer](docs/Causer.md)
  - [WatchtowrAPI\Model.ClientActivityLog](docs/ClientActivityLog.md)
  - [WatchtowrAPI\Model.ClientApiDocumentation](docs/ClientApiDocumentation.md)
@@ -508,6 +512,8 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.Technology](docs/Technology.md)
  - [WatchtowrAPI\Model.TechnologyStatistic](docs/TechnologyStatistic.md)
  - [WatchtowrAPI\Model.ThreatActorDto](docs/ThreatActorDto.md)
+ - [WatchtowrAPI\Model.TtpLibraryCategoryItem](docs/TtpLibraryCategoryItem.md)
+ - [WatchtowrAPI\Model.TtpLibraryItem](docs/TtpLibraryItem.md)
  - [WatchtowrAPI\Model.Unauthorized](docs/Unauthorized.md)
  - [WatchtowrAPI\Model.UnauthorizedResponse](docs/UnauthorizedResponse.md)
  - [WatchtowrAPI\Model.UnprocessableContent](docs/UnprocessableContent.md)

@@ -25,8 +25,6 @@ No description available.
 No description available.
 .PARAMETER LastSeenAt
 No description available.
-.PARAMETER DeletedAt
-No description available.
 .PARAMETER Id
 No description available.
 .PARAMETER Ip
@@ -66,27 +64,24 @@ function Initialize-ClientPort {
         [PSCustomObject]
         ${LastSeenAt},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${DeletedAt},
-        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [Decimal]
         ${Id},
-        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Ip},
-        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [Decimal]
         ${IpId},
-        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [Decimal]
         ${Port},
-        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Banner},
-        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Service},
-        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
         ${BusinessUnits}
     )
@@ -113,10 +108,6 @@ function Initialize-ClientPort {
 
         if ($null -eq $LastSeenAt) {
             throw "invalid value for 'LastSeenAt', 'LastSeenAt' cannot be null."
-        }
-
-        if ($null -eq $DeletedAt) {
-            throw "invalid value for 'DeletedAt', 'DeletedAt' cannot be null."
         }
 
         if ($null -eq $Id) {
@@ -154,7 +145,6 @@ function Initialize-ClientPort {
             "created_at" = ${CreatedAt}
             "updated_at" = ${UpdatedAt}
             "last_seen_at" = ${LastSeenAt}
-            "deleted_at" = ${DeletedAt}
             "id" = ${Id}
             "ip" = ${Ip}
             "ip_id" = ${IpId}
@@ -199,7 +189,7 @@ function ConvertFrom-JsonToClientPort {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientPort
-        $AllProperties = ("type", "status", "created_at", "updated_at", "last_seen_at", "deleted_at", "id", "ip", "ip_id", "port", "banner", "service", "businessUnits")
+        $AllProperties = ("type", "status", "created_at", "updated_at", "last_seen_at", "id", "ip", "ip_id", "port", "banner", "service", "businessUnits")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -238,12 +228,6 @@ function ConvertFrom-JsonToClientPort {
             throw "Error! JSON cannot be serialized due to the required property 'last_seen_at' missing."
         } else {
             $LastSeenAt = $JsonParameters.PSobject.Properties["last_seen_at"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "deleted_at"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'deleted_at' missing."
-        } else {
-            $DeletedAt = $JsonParameters.PSobject.Properties["deleted_at"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "id"))) {
@@ -294,7 +278,6 @@ function ConvertFrom-JsonToClientPort {
             "created_at" = ${CreatedAt}
             "updated_at" = ${UpdatedAt}
             "last_seen_at" = ${LastSeenAt}
-            "deleted_at" = ${DeletedAt}
             "id" = ${Id}
             "ip" = ${Ip}
             "ip_id" = ${IpId}

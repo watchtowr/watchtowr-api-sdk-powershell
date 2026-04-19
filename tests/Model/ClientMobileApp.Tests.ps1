@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ClientMobileApp' {
     Context 'ClientMobileApp' {
         It 'Initialize-ClientMobileApp' {
             # a simple test to create an object
-            #$NewObject = Initialize-ClientMobileApp -Type "TEST_VALUE" -Source "TEST_VALUE" -Status "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE" -DeletedAt "TEST_VALUE" -Id "TEST_VALUE" -Name "TEST_VALUE" -Publisher "TEST_VALUE" -Platform "TEST_VALUE" -AppId "TEST_VALUE" -Url "TEST_VALUE" -S3path "TEST_VALUE" -BusinessUnits "TEST_VALUE" -CustomProperties "TEST_VALUE" -Criticality "TEST_VALUE"
+            #$NewObject = Initialize-ClientMobileApp -Type "TEST_VALUE" -Source "TEST_VALUE" -Status "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE" -Id "TEST_VALUE" -Name "TEST_VALUE" -Publisher "TEST_VALUE" -Platform "TEST_VALUE" -AppId "TEST_VALUE" -Url "TEST_VALUE" -S3path "TEST_VALUE" -BusinessUnits "TEST_VALUE" -CustomProperties "TEST_VALUE" -Criticality "TEST_VALUE"
             #$NewObject | Should -BeOfType ClientMobileApp
             #$NewObject.property | Should -Be 0
         }

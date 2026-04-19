@@ -35,8 +35,6 @@ No description available.
 No description available.
 .PARAMETER UpdatedAt
 No description available.
-.PARAMETER DeletedAt
-No description available.
 .PARAMETER Metadata
 No description available.
 .PARAMETER CustomProperties
@@ -83,14 +81,11 @@ function Initialize-ClientCloudAsset {
         ${UpdatedAt},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
-        ${DeletedAt},
-        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
         ${Metadata},
-        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
         ${CustomProperties},
-        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Criticality}
     )
@@ -139,10 +134,6 @@ function Initialize-ClientCloudAsset {
             throw "invalid value for 'UpdatedAt', 'UpdatedAt' cannot be null."
         }
 
-        if ($null -eq $DeletedAt) {
-            throw "invalid value for 'DeletedAt', 'DeletedAt' cannot be null."
-        }
-
         if ($null -eq $Metadata) {
             throw "invalid value for 'Metadata', 'Metadata' cannot be null."
         }
@@ -167,7 +158,6 @@ function Initialize-ClientCloudAsset {
             "cloud_resource_id" = ${CloudResourceId}
             "created_at" = ${CreatedAt}
             "updated_at" = ${UpdatedAt}
-            "deleted_at" = ${DeletedAt}
             "metadata" = ${Metadata}
             "customProperties" = ${CustomProperties}
             "criticality" = ${Criticality}
@@ -208,7 +198,7 @@ function ConvertFrom-JsonToClientCloudAsset {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientCloudAsset
-        $AllProperties = ("type", "name", "source", "provider", "super_type", "sub_type", "hostname", "cloud_resource_id", "created_at", "updated_at", "deleted_at", "metadata", "customProperties", "criticality")
+        $AllProperties = ("type", "name", "source", "provider", "super_type", "sub_type", "hostname", "cloud_resource_id", "created_at", "updated_at", "metadata", "customProperties", "criticality")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -279,12 +269,6 @@ function ConvertFrom-JsonToClientCloudAsset {
             $UpdatedAt = $JsonParameters.PSobject.Properties["updated_at"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "deleted_at"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'deleted_at' missing."
-        } else {
-            $DeletedAt = $JsonParameters.PSobject.Properties["deleted_at"].value
-        }
-
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "metadata"))) {
             throw "Error! JSON cannot be serialized due to the required property 'metadata' missing."
         } else {
@@ -314,7 +298,6 @@ function ConvertFrom-JsonToClientCloudAsset {
             "cloud_resource_id" = ${CloudResourceId}
             "created_at" = ${CreatedAt}
             "updated_at" = ${UpdatedAt}
-            "deleted_at" = ${DeletedAt}
             "metadata" = ${Metadata}
             "customProperties" = ${CustomProperties}
             "criticality" = ${Criticality}

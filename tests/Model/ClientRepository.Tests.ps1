@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ClientRepository' {
     Context 'ClientRepository' {
         It 'Initialize-ClientRepository' {
             # a simple test to create an object
-            #$NewObject = Initialize-ClientRepository -Type "TEST_VALUE" -Source "TEST_VALUE" -Status "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE" -DeletedAt "TEST_VALUE" -Id "TEST_VALUE" -Name "TEST_VALUE" -Owner "TEST_VALUE" -Provider "TEST_VALUE" -BusinessUnits "TEST_VALUE" -CustomProperties "TEST_VALUE" -Criticality "TEST_VALUE"
+            #$NewObject = Initialize-ClientRepository -Type "TEST_VALUE" -Source "TEST_VALUE" -Status "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE" -Id "TEST_VALUE" -Name "TEST_VALUE" -Owner "TEST_VALUE" -Provider "TEST_VALUE" -BusinessUnits "TEST_VALUE" -CustomProperties "TEST_VALUE" -Criticality "TEST_VALUE"
             #$NewObject | Should -BeOfType ClientRepository
             #$NewObject.property | Should -Be 0
         }

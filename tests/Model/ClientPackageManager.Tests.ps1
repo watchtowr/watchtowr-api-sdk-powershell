@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ClientPackageManager' {
     Context 'ClientPackageManager' {
         It 'Initialize-ClientPackageManager' {
             # a simple test to create an object
-            #$NewObject = Initialize-ClientPackageManager -Type "TEST_VALUE" -Name "TEST_VALUE" -Source "TEST_VALUE" -Status "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE" -DeletedAt "TEST_VALUE" -Id "TEST_VALUE" -Url "TEST_VALUE" -Platform "TEST_VALUE" -BusinessUnits "TEST_VALUE" -CustomProperties "TEST_VALUE" -Criticality "TEST_VALUE"
+            #$NewObject = Initialize-ClientPackageManager -Type "TEST_VALUE" -Name "TEST_VALUE" -Source "TEST_VALUE" -Status "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE" -Id "TEST_VALUE" -Url "TEST_VALUE" -Platform "TEST_VALUE" -BusinessUnits "TEST_VALUE" -CustomProperties "TEST_VALUE" -Criticality "TEST_VALUE"
             #$NewObject | Should -BeOfType ClientPackageManager
             #$NewObject.property | Should -Be 0
         }

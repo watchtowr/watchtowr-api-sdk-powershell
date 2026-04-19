@@ -14,6 +14,10 @@ docs/AttackSurfaceDto.md
 docs/AttackSurfaceResiliencyDto.md
 docs/BadRequestResponse.md
 docs/BusinessUnitApi.md
+docs/CapabilitySearchApi.md
+docs/CapabilitySearchData.md
+docs/CapabilitySearchHuntItem.md
+docs/CapabilitySearchResponse.md
 docs/Causer.md
 docs/CertificatesApi.md
 docs/ClientActivityLog.md
@@ -218,6 +222,8 @@ docs/SuspiciousDomainsApi.md
 docs/Technology.md
 docs/TechnologyStatistic.md
 docs/ThreatActorDto.md
+docs/TtpLibraryCategoryItem.md
+docs/TtpLibraryItem.md
 docs/Unauthorized.md
 docs/UnauthorizedResponse.md
 docs/UnprocessableContent.md
@@ -252,6 +258,7 @@ src/WatchtowrAPI/Api/APIDocumentationApi.ps1
 src/WatchtowrAPI/Api/ActivityLogApi.ps1
 src/WatchtowrAPI/Api/AddAssetApi.ps1
 src/WatchtowrAPI/Api/BusinessUnitApi.ps1
+src/WatchtowrAPI/Api/CapabilitySearchApi.ps1
 src/WatchtowrAPI/Api/CertificatesApi.ps1
 src/WatchtowrAPI/Api/CloudIntegrationAssetsApi.ps1
 src/WatchtowrAPI/Api/CloudStorageApi.ps1
@@ -287,6 +294,9 @@ src/WatchtowrAPI/Model/AssetsListResponse.ps1
 src/WatchtowrAPI/Model/AttackSurfaceDto.ps1
 src/WatchtowrAPI/Model/AttackSurfaceResiliencyDto.ps1
 src/WatchtowrAPI/Model/BadRequestResponse.ps1
+src/WatchtowrAPI/Model/CapabilitySearchData.ps1
+src/WatchtowrAPI/Model/CapabilitySearchHuntItem.ps1
+src/WatchtowrAPI/Model/CapabilitySearchResponse.ps1
 src/WatchtowrAPI/Model/Causer.ps1
 src/WatchtowrAPI/Model/ClientActivityLog.ps1
 src/WatchtowrAPI/Model/ClientApiDocumentation.ps1
@@ -466,6 +476,8 @@ src/WatchtowrAPI/Model/SuspiciousDomain.ps1
 src/WatchtowrAPI/Model/Technology.ps1
 src/WatchtowrAPI/Model/TechnologyStatistic.ps1
 src/WatchtowrAPI/Model/ThreatActorDto.ps1
+src/WatchtowrAPI/Model/TtpLibraryCategoryItem.ps1
+src/WatchtowrAPI/Model/TtpLibraryItem.ps1
 src/WatchtowrAPI/Model/Unauthorized.ps1
 src/WatchtowrAPI/Model/UnauthorizedResponse.ps1
 src/WatchtowrAPI/Model/UnprocessableContent.ps1
@@ -506,6 +518,7 @@ tests/Api/APIDocumentationApi.Tests.ps1
 tests/Api/ActivityLogApi.Tests.ps1
 tests/Api/AddAssetApi.Tests.ps1
 tests/Api/BusinessUnitApi.Tests.ps1
+tests/Api/CapabilitySearchApi.Tests.ps1
 tests/Api/CertificatesApi.Tests.ps1
 tests/Api/CloudIntegrationAssetsApi.Tests.ps1
 tests/Api/CloudStorageApi.Tests.ps1
@@ -540,6 +553,9 @@ tests/Model/AssetsListResponse.Tests.ps1
 tests/Model/AttackSurfaceDto.Tests.ps1
 tests/Model/AttackSurfaceResiliencyDto.Tests.ps1
 tests/Model/BadRequestResponse.Tests.ps1
+tests/Model/CapabilitySearchData.Tests.ps1
+tests/Model/CapabilitySearchHuntItem.Tests.ps1
+tests/Model/CapabilitySearchResponse.Tests.ps1
 tests/Model/Causer.Tests.ps1
 tests/Model/ClientActivityLog.Tests.ps1
 tests/Model/ClientApiDocumentation.Tests.ps1
@@ -719,6 +735,8 @@ tests/Model/SuspiciousDomain.Tests.ps1
 tests/Model/Technology.Tests.ps1
 tests/Model/TechnologyStatistic.Tests.ps1
 tests/Model/ThreatActorDto.Tests.ps1
+tests/Model/TtpLibraryCategoryItem.Tests.ps1
+tests/Model/TtpLibraryItem.Tests.ps1
 tests/Model/Unauthorized.Tests.ps1
 tests/Model/UnauthorizedResponse.Tests.ps1
 tests/Model/UnprocessableContent.Tests.ps1
