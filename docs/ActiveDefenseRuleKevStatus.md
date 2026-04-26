@@ -1,0 +1,25 @@
+# ActiveDefenseRuleKevStatus
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Cisa** | **Boolean** |  | 
+**Vulncheck** | **Boolean** |  | 
+**Watchtowr** | **Boolean** |  | 
+
+## Examples
+
+- Prepare the resource
+```powershell
+$ActiveDefenseRuleKevStatus = Initialize-WatchtowrAPIActiveDefenseRuleKevStatus  -Cisa true `
+ -Vulncheck false `
+ -Watchtowr false
+```
+
+- Convert the resource to JSON
+```powershell
+$ActiveDefenseRuleKevStatus | ConvertTo-JSON
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

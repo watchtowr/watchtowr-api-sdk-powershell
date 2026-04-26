@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **Name** | **String** | Name | 
 **Type** | **String** | Type | 
 **Url** | **String** | Url | 
-**DiscoveryToolId** | **String** | Discovery tool ID | 
 **DiscoveryDate** | **System.DateTime** | Discovery date | [optional] 
 **AssetId** | **Decimal** | Asset ID | 
 **AssetName** | **String** | Asset name | 
@@ -28,7 +27,6 @@ $PointsOfInterest = Initialize-WatchtowrAPIPointsOfInterest  -Id 1 `
  -Name phpMyAdmin `
  -Type admin-panel `
  -Url http://watchtowr.com/phpmyadmin `
- -DiscoveryToolId test-id `
  -DiscoveryDate null `
  -AssetId 1 `
  -AssetName 123.123.123.123 `

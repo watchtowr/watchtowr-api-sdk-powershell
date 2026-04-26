@@ -4,6 +4,7 @@ The watchTowr Client API combining all watchTowr Platform APIs into a single com
       * Automated Red Teaming API
       * Adversary Sight API
       * Intelligence API
+      * Active Defense API
       * Platform API
 
 
@@ -77,9 +78,14 @@ Class | Method | HTTP request | Description
 *APIDocumentationApi* | [**Update-AssetApiDocumentationNote**](docs/APIDocumentationApi.md#Update-AssetApiDocumentationNote) | **PUT** /api/client/assets/apiDocumentation/show/{id}/note/{noteId} | Update Note
 *APIDocumentationApi* | [**Update-AssetApiDocumentationStatus**](docs/APIDocumentationApi.md#Update-AssetApiDocumentationStatus) | **PUT** /api/client/assets/apiDocumentation/update-status/{id} | Update API Documentation Status
 *APIDocumentationApi* | [**Update-CustomPropertyApiDocumentation**](docs/APIDocumentationApi.md#Update-CustomPropertyApiDocumentation) | **PUT** /api/client/assets/apiDocumentation/show/{id}/custom-property/{customPropertyId} | Update Custom Property
+*ActiveDefenseLibraryApi* | [**Get-ActiveDefenseLibraryRuleDetails**](docs/ActiveDefenseLibraryApi.md#Get-ActiveDefenseLibraryRuleDetails) | **GET** /api/client/active-defense-library/show/{ruleId} | Get Active Defense Rule Details
+*ActiveDefenseLibraryApi* | [**Get-ActiveDefenseLibraryRuleProviderTemplate**](docs/ActiveDefenseLibraryApi.md#Get-ActiveDefenseLibraryRuleProviderTemplate) | **GET** /api/client/active-defense-library/show/{ruleId}/provider/show/{provider} | Get Active Defense Rule Provider Template
+*ActiveDefenseLibraryApi* | [**Get-ListActiveDefenseLibraryRules**](docs/ActiveDefenseLibraryApi.md#Get-ListActiveDefenseLibraryRules) | **GET** /api/client/active-defense-library/list | List Active Defense Rules
 *ActivityLogApi* | [**Get-ListActivityLogs**](docs/ActivityLogApi.md#Get-ListActivityLogs) | **GET** /api/client/activity-log/list | List Activity Logs
 *AddAssetApi* | [**Invoke-ListSubmittedAssets**](docs/AddAssetApi.md#Invoke-ListSubmittedAssets) | **GET** /api/client/seeddata/list | List Submitted Assets
 *AddAssetApi* | [**Submit-Asset**](docs/AddAssetApi.md#Submit-Asset) | **POST** /api/client/seeddata | Submit Seed Data
+*AdversaryIntelligenceApi* | [**Get-AdversaryIntelligenceDetails**](docs/AdversaryIntelligenceApi.md#Get-AdversaryIntelligenceDetails) | **GET** /api/client/adversary-intelligence/show/{attackerId} | Get Adversary Details
+*AdversaryIntelligenceApi* | [**Get-ListAdversaryIntelligence**](docs/AdversaryIntelligenceApi.md#Get-ListAdversaryIntelligence) | **GET** /api/client/adversary-intelligence/list | List Adversaries
 *BusinessUnitApi* | [**New-BusinessUnit**](docs/BusinessUnitApi.md#New-BusinessUnit) | **POST** /api/client/business-unit | Create Business Unit
 *BusinessUnitApi* | [**New-BusinessUnitRule**](docs/BusinessUnitApi.md#New-BusinessUnitRule) | **POST** /api/client/business-unit/show/{id}/rule | Create Business Unit Rule
 *BusinessUnitApi* | [**Invoke-DeleteBusinessUnit**](docs/BusinessUnitApi.md#Invoke-DeleteBusinessUnit) | **DELETE** /api/client/business-unit/show/{id} | Delete Business Unit
@@ -172,7 +178,7 @@ Class | Method | HTTP request | Description
 *FindingsApi* | [**Update-FindingState**](docs/FindingsApi.md#Update-FindingState) | **POST** /api/client/findings/state/{id} | Update Finding State
 *FindingsApi* | [**Update-FindingStatus**](docs/FindingsApi.md#Update-FindingStatus) | **POST** /api/client/findings/status/{id} | Update Finding Status
 *HuntsApi* | [**Get-ClientHunts**](docs/HuntsApi.md#Get-ClientHunts) | **GET** /api/client/hunts/list | List Hunts
-*HuntsApi* | [**Get-ListAssetByHunt**](docs/HuntsApi.md#Get-ListAssetByHunt) | **GET** /api/client/hunts/show/{id}/assets | List Assets
+*HuntsApi* | [**Get-ListAssetByHunt**](docs/HuntsApi.md#Get-ListAssetByHunt) | **GET** /api/client/hunts/show/{id}/assets | List Hunt Assets
 *HuntsApi* | [**Get-ListFindingByHunt**](docs/HuntsApi.md#Get-ListFindingByHunt) | **GET** /api/client/hunts/show/{id}/findings | List Hunt Findings
 *HuntsApi* | [**Show-TheDetailHunt**](docs/HuntsApi.md#Show-TheDetailHunt) | **GET** /api/client/hunts/show/{id} | Get Hunt Details
 *IPAddressesApi* | [**Set-IpToBusinessUnits**](docs/IPAddressesApi.md#Set-IpToBusinessUnits) | **POST** /api/client/assets/ip/show/{id}/business-units | Assign IP to Business Units
@@ -318,10 +324,19 @@ Class | Method | HTTP request | Description
 *UserManagementApi* | [**ConvertTo-viteUsers**](docs/UserManagementApi.md#ConvertTo-viteUsers) | **POST** /api/client/users/invite | Invite Users
 *UserManagementApi* | [**Invoke-ListUsers**](docs/UserManagementApi.md#Invoke-ListUsers) | **GET** /api/client/users/list | List Users
 *UserManagementApi* | [**Update-User**](docs/UserManagementApi.md#Update-User) | **PUT** /api/client/users/{id} | Update User
+*VulnerabilityIntelligenceApi* | [**Get-ListVulnerabilityIntelligence**](docs/VulnerabilityIntelligenceApi.md#Get-ListVulnerabilityIntelligence) | **GET** /api/client/vulnerability-intelligence/list | List Vulnerabilities
+*VulnerabilityIntelligenceApi* | [**Get-VulnerabilityIntelligenceDetails**](docs/VulnerabilityIntelligenceApi.md#Get-VulnerabilityIntelligenceDetails) | **GET** /api/client/vulnerability-intelligence/show/{identifier} | Get Vulnerability Details
 
 
 ## Documentation for Models
 
+ - [WatchtowrAPI\Model.ActiveDefenseRule](docs/ActiveDefenseRule.md)
+ - [WatchtowrAPI\Model.ActiveDefenseRuleDetails](docs/ActiveDefenseRuleDetails.md)
+ - [WatchtowrAPI\Model.ActiveDefenseRuleKevStatus](docs/ActiveDefenseRuleKevStatus.md)
+ - [WatchtowrAPI\Model.ActiveDefenseRuleTemplate](docs/ActiveDefenseRuleTemplate.md)
+ - [WatchtowrAPI\Model.ActiveDefenseRuleVulnerability](docs/ActiveDefenseRuleVulnerability.md)
+ - [WatchtowrAPI\Model.AdversaryIntel](docs/AdversaryIntel.md)
+ - [WatchtowrAPI\Model.AdversaryIntelDetails](docs/AdversaryIntelDetails.md)
  - [WatchtowrAPI\Model.Asset](docs/Asset.md)
  - [WatchtowrAPI\Model.AssetAndBusinessUnitAlreadyAssociatedConflictErrorResponse](docs/AssetAndBusinessUnitAlreadyAssociatedConflictErrorResponse.md)
  - [WatchtowrAPI\Model.AssetAndBusinessUnitNotAssociatedConflictErrorResponse](docs/AssetAndBusinessUnitNotAssociatedConflictErrorResponse.md)
@@ -329,12 +344,17 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.AssetsListResponse](docs/AssetsListResponse.md)
  - [WatchtowrAPI\Model.AttackSurfaceDto](docs/AttackSurfaceDto.md)
  - [WatchtowrAPI\Model.AttackSurfaceResiliencyDto](docs/AttackSurfaceResiliencyDto.md)
+ - [WatchtowrAPI\Model.AttackerTypes](docs/AttackerTypes.md)
  - [WatchtowrAPI\Model.BadRequestResponse](docs/BadRequestResponse.md)
  - [WatchtowrAPI\Model.CapabilitySearchData](docs/CapabilitySearchData.md)
  - [WatchtowrAPI\Model.CapabilitySearchHuntItem](docs/CapabilitySearchHuntItem.md)
  - [WatchtowrAPI\Model.CapabilitySearchResponse](docs/CapabilitySearchResponse.md)
+ - [WatchtowrAPI\Model.CapecPattern](docs/CapecPattern.md)
  - [WatchtowrAPI\Model.Causer](docs/Causer.md)
+ - [WatchtowrAPI\Model.ClientActiveDefenseRuleData](docs/ClientActiveDefenseRuleData.md)
+ - [WatchtowrAPI\Model.ClientActiveDefenseRuleProviderData](docs/ClientActiveDefenseRuleProviderData.md)
  - [WatchtowrAPI\Model.ClientActivityLog](docs/ClientActivityLog.md)
+ - [WatchtowrAPI\Model.ClientAdversaryIntelData](docs/ClientAdversaryIntelData.md)
  - [WatchtowrAPI\Model.ClientApiDocumentation](docs/ClientApiDocumentation.md)
  - [WatchtowrAPI\Model.ClientApiDocumentationAsset](docs/ClientApiDocumentationAsset.md)
  - [WatchtowrAPI\Model.ClientAssetDnsRecord](docs/ClientAssetDnsRecord.md)
@@ -409,6 +429,7 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.ClientUser](docs/ClientUser.md)
  - [WatchtowrAPI\Model.ClientUserDetail](docs/ClientUserDetail.md)
  - [WatchtowrAPI\Model.ClientUserDetailBusinessUnitsInner](docs/ClientUserDetailBusinessUnitsInner.md)
+ - [WatchtowrAPI\Model.ClientVulnerabilityIntelData](docs/ClientVulnerabilityIntelData.md)
  - [WatchtowrAPI\Model.CreateClientBusinessUnitDto](docs/CreateClientBusinessUnitDto.md)
  - [WatchtowrAPI\Model.CreateClientBusinessUnitRuleDto](docs/CreateClientBusinessUnitRuleDto.md)
  - [WatchtowrAPI\Model.CreateClientCustomPropertyDto](docs/CreateClientCustomPropertyDto.md)
@@ -426,6 +447,7 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.FindingListResponse](docs/FindingListResponse.md)
  - [WatchtowrAPI\Model.FindingRetestResponseDto](docs/FindingRetestResponseDto.md)
  - [WatchtowrAPI\Model.FindingsSummaryDto](docs/FindingsSummaryDto.md)
+ - [WatchtowrAPI\Model.FirstReportedByAttackerSummary](docs/FirstReportedByAttackerSummary.md)
  - [WatchtowrAPI\Model.ForbiddenResponse](docs/ForbiddenResponse.md)
  - [WatchtowrAPI\Model.GetAssetApiDocumentationChangelog200Response](docs/GetAssetApiDocumentationChangelog200Response.md)
  - [WatchtowrAPI\Model.GetAssetCloudAssetChangelog200Response](docs/GetAssetCloudAssetChangelog200Response.md)
@@ -451,18 +473,23 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.InviteUserResponse](docs/InviteUserResponse.md)
  - [WatchtowrAPI\Model.InviteUserResponseData](docs/InviteUserResponseData.md)
  - [WatchtowrAPI\Model.IpRangeValues](docs/IpRangeValues.md)
+ - [WatchtowrAPI\Model.KbEntryCwe](docs/KbEntryCwe.md)
+ - [WatchtowrAPI\Model.KevTypes](docs/KevTypes.md)
  - [WatchtowrAPI\Model.KillSwitchDisabledError](docs/KillSwitchDisabledError.md)
  - [WatchtowrAPI\Model.KillSwitchForbiddenError](docs/KillSwitchForbiddenError.md)
  - [WatchtowrAPI\Model.KillSwitchStatusData](docs/KillSwitchStatusData.md)
  - [WatchtowrAPI\Model.KillSwitchStatusResponse](docs/KillSwitchStatusResponse.md)
  - [WatchtowrAPI\Model.LatestExecutedHuntDto](docs/LatestExecutedHuntDto.md)
  - [WatchtowrAPI\Model.Link](docs/Link.md)
+ - [WatchtowrAPI\Model.Media](docs/Media.md)
  - [WatchtowrAPI\Model.Meta](docs/Meta.md)
  - [WatchtowrAPI\Model.MttrMetricsDto](docs/MttrMetricsDto.md)
  - [WatchtowrAPI\Model.NotFound](docs/NotFound.md)
  - [WatchtowrAPI\Model.NotFoundResponse](docs/NotFoundResponse.md)
  - [WatchtowrAPI\Model.OpenFindingsDto](docs/OpenFindingsDto.md)
  - [WatchtowrAPI\Model.OrganizationSummaryDto](docs/OrganizationSummaryDto.md)
+ - [WatchtowrAPI\Model.PaginatedActiveDefenseRules](docs/PaginatedActiveDefenseRules.md)
+ - [WatchtowrAPI\Model.PaginatedAdversaryIntel](docs/PaginatedAdversaryIntel.md)
  - [WatchtowrAPI\Model.PaginatedApiDocumentation](docs/PaginatedApiDocumentation.md)
  - [WatchtowrAPI\Model.PaginatedBusinessUnit](docs/PaginatedBusinessUnit.md)
  - [WatchtowrAPI\Model.PaginatedClientActivityLog](docs/PaginatedClientActivityLog.md)
@@ -492,6 +519,7 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.PaginatedSuspiciousDomain](docs/PaginatedSuspiciousDomain.md)
  - [WatchtowrAPI\Model.PaginatedTechnologyStatistics](docs/PaginatedTechnologyStatistics.md)
  - [WatchtowrAPI\Model.PaginatedUsers](docs/PaginatedUsers.md)
+ - [WatchtowrAPI\Model.PaginatedVulnerabilityIntel](docs/PaginatedVulnerabilityIntel.md)
  - [WatchtowrAPI\Model.Pagination](docs/Pagination.md)
  - [WatchtowrAPI\Model.PointsOfInterest](docs/PointsOfInterest.md)
  - [WatchtowrAPI\Model.PointsOfInterestData](docs/PointsOfInterestData.md)
@@ -509,6 +537,8 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.SetCriticalityDto](docs/SetCriticalityDto.md)
  - [WatchtowrAPI\Model.SetCriticalityResponseDto](docs/SetCriticalityResponseDto.md)
  - [WatchtowrAPI\Model.SuspiciousDomain](docs/SuspiciousDomain.md)
+ - [WatchtowrAPI\Model.TargetIndustry](docs/TargetIndustry.md)
+ - [WatchtowrAPI\Model.TargetIndustrySummary](docs/TargetIndustrySummary.md)
  - [WatchtowrAPI\Model.Technology](docs/Technology.md)
  - [WatchtowrAPI\Model.TechnologyStatistic](docs/TechnologyStatistic.md)
  - [WatchtowrAPI\Model.ThreatActorDto](docs/ThreatActorDto.md)
@@ -533,6 +563,13 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.UpdateOrganisationWhitelistIpDto](docs/UpdateOrganisationWhitelistIpDto.md)
  - [WatchtowrAPI\Model.UpdateUserResponse](docs/UpdateUserResponse.md)
  - [WatchtowrAPI\Model.UserDetailData](docs/UserDetailData.md)
+ - [WatchtowrAPI\Model.VictimCountry](docs/VictimCountry.md)
+ - [WatchtowrAPI\Model.VictimCountrySummary](docs/VictimCountrySummary.md)
+ - [WatchtowrAPI\Model.VulnCvssV3XMetrics](docs/VulnCvssV3XMetrics.md)
+ - [WatchtowrAPI\Model.VulnDetailKev](docs/VulnDetailKev.md)
+ - [WatchtowrAPI\Model.VulnEpss](docs/VulnEpss.md)
+ - [WatchtowrAPI\Model.VulnerabilityIntel](docs/VulnerabilityIntel.md)
+ - [WatchtowrAPI\Model.VulnerabilityIntelDetails](docs/VulnerabilityIntelDetails.md)
  - [WatchtowrAPI\Model.WhitelistIpData](docs/WhitelistIpData.md)
  - [WatchtowrAPI\Model.WhitelistIpDataSingle](docs/WhitelistIpDataSingle.md)
  - [WatchtowrAPI\Model.WhitelistIpListData](docs/WhitelistIpListData.md)

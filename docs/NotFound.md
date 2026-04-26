@@ -3,14 +3,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Message** | **String** | Error message | 
-**StatusCode** | **Decimal** | HTTP status code | 
+**Message** | **String** |  | 
+**StatusCode** | **Decimal** |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$NotFound = Initialize-WatchtowrAPINotFound  -Message User not found `
+$NotFound = Initialize-WatchtowrAPINotFound  -Message Not Found `
  -StatusCode 404
 ```
 

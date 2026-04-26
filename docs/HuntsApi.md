@@ -5,7 +5,7 @@ All URIs are relative to *https://your-tenant-id.sg.client.watchtowr.io*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Get-ClientHunts**](HuntsApi.md#Get-ClientHunts) | **GET** /api/client/hunts/list | List Hunts
-[**Get-ListAssetByHunt**](HuntsApi.md#Get-ListAssetByHunt) | **GET** /api/client/hunts/show/{id}/assets | List Assets
+[**Get-ListAssetByHunt**](HuntsApi.md#Get-ListAssetByHunt) | **GET** /api/client/hunts/show/{id}/assets | List Hunt Assets
 [**Get-ListFindingByHunt**](HuntsApi.md#Get-ListFindingByHunt) | **GET** /api/client/hunts/show/{id}/findings | List Hunt Findings
 [**Show-TheDetailHunt**](HuntsApi.md#Show-TheDetailHunt) | **GET** /api/client/hunts/show/{id} | Get Hunt Details
 
@@ -96,9 +96,9 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 
-List Assets
+List Hunt Assets
 
-Get a list of Assets for a specific Hunt.
+Get a list of Hunt Assets for a specific Hunt.
 
 ### Example
 ```powershell
@@ -109,7 +109,7 @@ $Id = 8.14 # Decimal | Hunt ID of the hunt to retrieve assets from.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
 
-# List Assets
+# List Hunt Assets
 try {
     $Result = Get-ListAssetByHunt -Id $Id -Page $Page -PageSize $PageSize
 } catch {
