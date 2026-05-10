@@ -30,6 +30,33 @@ Sort by field
 .PARAMETER SortOrder
 Sort order
 
+.PARAMETER Severities
+Filter retests by a list of comma separated severities they're tagged with.
+
+.PARAMETER Attempts
+Filter retests by a list of comma separated attempt types.
+
+.PARAMETER RetestStatuses
+Filter retests by a list of comma separated retest statuses.
+
+.PARAMETER FindingTitle
+Filter retests by finding title.
+
+.PARAMETER AssetName
+Filter retests by asset name.
+
+.PARAMETER FindingId
+Filter retests by finding ID (e.g. CORE-1234 or 1234).
+
+.PARAMETER TriggeredBy
+Filter retests by a list of comma separated users who triggered them.
+
+.PARAMETER RetestStartDateFrom
+Filter retests started after a given date and time.
+
+.PARAMETER RetestStartDateTo
+Filter retests started before a given date and time.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -58,6 +85,36 @@ function Get-ListFindingRetestHistory {
         [ValidateSet("ASC", "DESC")]
         [String]
         ${SortOrder},
+        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [ValidateSet("critical", "high", "medium", "low", "info")]
+        [String]
+        ${Severities},
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [ValidateSet("oneAttempt", "multipleAttempts")]
+        [String]
+        ${Attempts},
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [ValidateSet("remediated", "unresolved")]
+        [String]
+        ${RetestStatuses},
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${FindingTitle},
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${AssetName},
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${FindingId},
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String[]]
+        ${TriggeredBy},
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [System.Nullable[System.DateTime]]
+        ${RetestStartDateFrom},
+        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [System.Nullable[System.DateTime]]
+        ${RetestStartDateTo},
         [Switch]
         $WithHttpInfo
     )
@@ -99,6 +156,42 @@ function Get-ListFindingRetestHistory {
 
         if ($SortOrder) {
             $LocalVarQueryParameters['sortOrder'] = $SortOrder
+        }
+
+        if ($Severities) {
+            $LocalVarQueryParameters['severities'] = $Severities
+        }
+
+        if ($Attempts) {
+            $LocalVarQueryParameters['attempts'] = $Attempts
+        }
+
+        if ($RetestStatuses) {
+            $LocalVarQueryParameters['retestStatuses'] = $RetestStatuses
+        }
+
+        if ($FindingTitle) {
+            $LocalVarQueryParameters['findingTitle'] = $FindingTitle
+        }
+
+        if ($AssetName) {
+            $LocalVarQueryParameters['assetName'] = $AssetName
+        }
+
+        if ($FindingId) {
+            $LocalVarQueryParameters['findingId'] = $FindingId
+        }
+
+        if ($TriggeredBy) {
+            $LocalVarQueryParameters['triggeredBy'] = $TriggeredBy
+        }
+
+        if ($RetestStartDateFrom) {
+            $LocalVarQueryParameters['retestStartDateFrom'] = $RetestStartDateFrom
+        }
+
+        if ($RetestStartDateTo) {
+            $LocalVarQueryParameters['retestStartDateTo'] = $RetestStartDateTo
         }
 
         if ($Configuration["AccessToken"]) {

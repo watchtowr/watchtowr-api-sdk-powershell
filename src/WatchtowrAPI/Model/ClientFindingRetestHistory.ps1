@@ -33,6 +33,10 @@ Date and time when the retest was completed
 Date and time when the retest was last updated
 .PARAMETER CreatedAt
 Creation date
+.PARAMETER AttemptNumber
+Retest attempt number for this finding
+.PARAMETER DaysOpenBeforeRetest
+Number of days the finding was open before this retest was triggered
 .OUTPUTS
 
 ClientFindingRetestHistory<PSCustomObject>
@@ -68,7 +72,13 @@ function Initialize-ClientFindingRetestHistory {
         ${UpdatedAt},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [System.DateTime]
-        ${CreatedAt}
+        ${CreatedAt},
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Decimal]]
+        ${AttemptNumber},
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Decimal]]
+        ${DaysOpenBeforeRetest}
     )
 
     Process {
@@ -106,6 +116,8 @@ function Initialize-ClientFindingRetestHistory {
             "completedAt" = ${CompletedAt}
             "updatedAt" = ${UpdatedAt}
             "createdAt" = ${CreatedAt}
+            "attemptNumber" = ${AttemptNumber}
+            "daysOpenBeforeRetest" = ${DaysOpenBeforeRetest}
         }
 
 
@@ -143,7 +155,7 @@ function ConvertFrom-JsonToClientFindingRetestHistory {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientFindingRetestHistory
-        $AllProperties = ("id", "finding", "asset", "triggeredBy", "currentRetestStatus", "startedAt", "completedAt", "updatedAt", "createdAt")
+        $AllProperties = ("id", "finding", "asset", "triggeredBy", "currentRetestStatus", "startedAt", "completedAt", "updatedAt", "createdAt", "attemptNumber", "daysOpenBeforeRetest")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -208,6 +220,18 @@ function ConvertFrom-JsonToClientFindingRetestHistory {
             $CreatedAt = $JsonParameters.PSobject.Properties["createdAt"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "attemptNumber"))) { #optional property not found
+            $AttemptNumber = $null
+        } else {
+            $AttemptNumber = $JsonParameters.PSobject.Properties["attemptNumber"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "daysOpenBeforeRetest"))) { #optional property not found
+            $DaysOpenBeforeRetest = $null
+        } else {
+            $DaysOpenBeforeRetest = $JsonParameters.PSobject.Properties["daysOpenBeforeRetest"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
             "finding" = ${Finding}
@@ -218,6 +242,8 @@ function ConvertFrom-JsonToClientFindingRetestHistory {
             "completedAt" = ${CompletedAt}
             "updatedAt" = ${UpdatedAt}
             "createdAt" = ${CreatedAt}
+            "attemptNumber" = ${AttemptNumber}
+            "daysOpenBeforeRetest" = ${DaysOpenBeforeRetest}
         }
 
         return $PSO

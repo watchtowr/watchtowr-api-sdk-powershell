@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **CompletedAt** | [**SystemCollectionsHashtable**](.md) | Date and time when the retest was completed | 
 **UpdatedAt** | **System.DateTime** | Date and time when the retest was last updated | 
 **CreatedAt** | **System.DateTime** | Creation date | 
+**AttemptNumber** | **Decimal** | Retest attempt number for this finding | [optional] 
+**DaysOpenBeforeRetest** | **Decimal** | Number of days the finding was open before this retest was triggered | [optional] 
 
 ## Examples
 
@@ -25,7 +27,9 @@ $ClientFindingRetestHistory = Initialize-WatchtowrAPIClientFindingRetestHistory 
  -StartedAt 2023-01-01T12:00Z `
  -CompletedAt 2023-01-01T13:00:00.000Z `
  -UpdatedAt 2023-01-01T12:30Z `
- -CreatedAt 2023-01-01T12:00Z
+ -CreatedAt 2023-01-01T12:00Z `
+ -AttemptNumber 2 `
+ -DaysOpenBeforeRetest 14
 ```
 
 - Convert the resource to JSON

@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 ```powershell
 $ClientFindingRetestHistoryFinding = Initialize-WatchtowrAPIClientFindingRetestHistoryFinding  -Id 123 `
  -Title SQL Injection Vulnerability `
- -Severity High `
- -Status Confirmed
+ -Severity high `
+ -Status confirmed
 ```
 
 - Convert the resource to JSON

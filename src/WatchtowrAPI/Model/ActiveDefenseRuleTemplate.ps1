@@ -28,7 +28,7 @@ function Initialize-ActiveDefenseRuleTemplate {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [ValidateSet("cloudflare", "aws_cfn", "fastly", "akamai_waf", "google_cloud_armor", "mod_security", "microsoft_azure_waf")]
+        [ValidateSet("cloudflare", "aws_cfn", "fastly", "akamai_waf", "google_cloud_armor", "mod_security", "azure_appgw")]
         [String]
         ${Type},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
