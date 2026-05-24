@@ -17,7 +17,7 @@ Method | HTTP request | Description
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SortOrder] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Severities] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Attempts] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-RetestStatuses] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-RetestRunStatuses] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-FindingTitle] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AssetName] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-FindingId] <String><br>
@@ -41,7 +41,7 @@ $SortBy = "updated_at" # String | Sort by field (optional) (default to "created_
 $SortOrder = "ASC" # String | Sort order (optional) (default to "DESC")
 $Severities = "critical" # String | Filter retests by a list of comma separated severities they're tagged with. (optional)
 $Attempts = "oneAttempt" # String | Filter retests by a list of comma separated attempt types. (optional)
-$RetestStatuses = "remediated" # String | Filter retests by a list of comma separated retest statuses. (optional)
+$RetestRunStatuses = "success" # String | Filter retests by a list of comma separated retest run statuses. (optional)
 $FindingTitle = "SQL Injection" # String | Filter retests by finding title. (optional)
 $AssetName = "example.com" # String | Filter retests by asset name. (optional)
 $FindingId = "CORE-1234" # String | Filter retests by finding ID (e.g. CORE-1234 or 1234). (optional)
@@ -51,7 +51,7 @@ $RetestStartDateTo = (Get-Date) # System.DateTime | Filter retests started befor
 
 # List Finding Retest History
 try {
-    $Result = Get-ListFindingRetestHistory -Page $Page -PageSize $PageSize -BusinessUnitIds $BusinessUnitIds -SortBy $SortBy -SortOrder $SortOrder -Severities $Severities -Attempts $Attempts -RetestStatuses $RetestStatuses -FindingTitle $FindingTitle -AssetName $AssetName -FindingId $FindingId -TriggeredBy $TriggeredBy -RetestStartDateFrom $RetestStartDateFrom -RetestStartDateTo $RetestStartDateTo
+    $Result = Get-ListFindingRetestHistory -Page $Page -PageSize $PageSize -BusinessUnitIds $BusinessUnitIds -SortBy $SortBy -SortOrder $SortOrder -Severities $Severities -Attempts $Attempts -RetestRunStatuses $RetestRunStatuses -FindingTitle $FindingTitle -AssetName $AssetName -FindingId $FindingId -TriggeredBy $TriggeredBy -RetestStartDateFrom $RetestStartDateFrom -RetestStartDateTo $RetestStartDateTo
 } catch {
     Write-Host ("Exception occurred when calling Get-ListFindingRetestHistory: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
  **SortOrder** | **String**| Sort order | [optional] [default to &quot;DESC&quot;]
  **Severities** | **String**| Filter retests by a list of comma separated severities they&#39;re tagged with. | [optional] 
  **Attempts** | **String**| Filter retests by a list of comma separated attempt types. | [optional] 
- **RetestStatuses** | **String**| Filter retests by a list of comma separated retest statuses. | [optional] 
+ **RetestRunStatuses** | **String**| Filter retests by a list of comma separated retest run statuses. | [optional] 
  **FindingTitle** | **String**| Filter retests by finding title. | [optional] 
  **AssetName** | **String**| Filter retests by asset name. | [optional] 
  **FindingId** | **String**| Filter retests by finding ID (e.g. CORE-1234 or 1234). | [optional] 

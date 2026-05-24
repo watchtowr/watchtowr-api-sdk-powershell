@@ -36,8 +36,8 @@ Filter retests by a list of comma separated severities they're tagged with.
 .PARAMETER Attempts
 Filter retests by a list of comma separated attempt types.
 
-.PARAMETER RetestStatuses
-Filter retests by a list of comma separated retest statuses.
+.PARAMETER RetestRunStatuses
+Filter retests by a list of comma separated retest run statuses.
 
 .PARAMETER FindingTitle
 Filter retests by finding title.
@@ -94,9 +94,9 @@ function Get-ListFindingRetestHistory {
         [String]
         ${Attempts},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [ValidateSet("remediated", "unresolved")]
+        [ValidateSet("success", "error", "inProgress")]
         [String]
-        ${RetestStatuses},
+        ${RetestRunStatuses},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${FindingTitle},
@@ -166,8 +166,8 @@ function Get-ListFindingRetestHistory {
             $LocalVarQueryParameters['attempts'] = $Attempts
         }
 
-        if ($RetestStatuses) {
-            $LocalVarQueryParameters['retestStatuses'] = $RetestStatuses
+        if ($RetestRunStatuses) {
+            $LocalVarQueryParameters['retestRunStatuses'] = $RetestRunStatuses
         }
 
         if ($FindingTitle) {

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Asset** | [**ClientFindingRetestHistoryAsset**](ClientFindingRetestHistoryAsset.md) | Affected asset information | 
 **TriggeredBy** | [**ClientFindingRetestHistoryTriggeredBy**](ClientFindingRetestHistoryTriggeredBy.md) | User who triggered the retest | 
 **CurrentRetestStatus** | **String** | Current retest status | 
+**Result** | **String** | Finding status verdict snapshot at the time this retest completed. Independent of the live &#x60;findings.status_name&#x60;, which may change later. | 
 **StartedAt** | **System.DateTime** | Date and time when the retest was started | 
 **CompletedAt** | [**SystemCollectionsHashtable**](.md) | Date and time when the retest was completed | 
 **UpdatedAt** | **System.DateTime** | Date and time when the retest was last updated | 
@@ -24,6 +25,7 @@ $ClientFindingRetestHistory = Initialize-WatchtowrAPIClientFindingRetestHistory 
  -Asset null `
  -TriggeredBy null `
  -CurrentRetestStatus in-progress `
+ -Result remediated `
  -StartedAt 2023-01-01T12:00Z `
  -CompletedAt 2023-01-01T13:00:00.000Z `
  -UpdatedAt 2023-01-01T12:30Z `

@@ -25,6 +25,8 @@ Affected asset information
 User who triggered the retest
 .PARAMETER CurrentRetestStatus
 Current retest status
+.PARAMETER Result
+Finding status verdict snapshot at the time this retest completed. Independent of the live `findings.status_name`, which may change later.
 .PARAMETER StartedAt
 Date and time when the retest was started
 .PARAMETER CompletedAt
@@ -62,21 +64,25 @@ function Initialize-ClientFindingRetestHistory {
         [String]
         ${CurrentRetestStatus},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
+        [ValidateSet("confirmed", "unconfirmed", "remediated", "risk-accepted", "closed", "asset-no-longer-tracked")]
+        [String]
+        ${Result},
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [System.DateTime]
         ${StartedAt},
-        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${CompletedAt},
-        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
-        [System.DateTime]
-        ${UpdatedAt},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [System.DateTime]
-        ${CreatedAt},
+        ${UpdatedAt},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
+        [System.DateTime]
+        ${CreatedAt},
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Decimal]]
         ${AttemptNumber},
-        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Decimal]]
         ${DaysOpenBeforeRetest}
     )
@@ -112,6 +118,7 @@ function Initialize-ClientFindingRetestHistory {
             "asset" = ${Asset}
             "triggeredBy" = ${TriggeredBy}
             "currentRetestStatus" = ${CurrentRetestStatus}
+            "result" = ${Result}
             "startedAt" = ${StartedAt}
             "completedAt" = ${CompletedAt}
             "updatedAt" = ${UpdatedAt}
@@ -155,7 +162,7 @@ function ConvertFrom-JsonToClientFindingRetestHistory {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientFindingRetestHistory
-        $AllProperties = ("id", "finding", "asset", "triggeredBy", "currentRetestStatus", "startedAt", "completedAt", "updatedAt", "createdAt", "attemptNumber", "daysOpenBeforeRetest")
+        $AllProperties = ("id", "finding", "asset", "triggeredBy", "currentRetestStatus", "result", "startedAt", "completedAt", "updatedAt", "createdAt", "attemptNumber", "daysOpenBeforeRetest")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -194,6 +201,12 @@ function ConvertFrom-JsonToClientFindingRetestHistory {
             throw "Error! JSON cannot be serialized due to the required property 'currentRetestStatus' missing."
         } else {
             $CurrentRetestStatus = $JsonParameters.PSobject.Properties["currentRetestStatus"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "result"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'result' missing."
+        } else {
+            $Result = $JsonParameters.PSobject.Properties["result"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "startedAt"))) {
@@ -238,6 +251,7 @@ function ConvertFrom-JsonToClientFindingRetestHistory {
             "asset" = ${Asset}
             "triggeredBy" = ${TriggeredBy}
             "currentRetestStatus" = ${CurrentRetestStatus}
+            "result" = ${Result}
             "startedAt" = ${StartedAt}
             "completedAt" = ${CompletedAt}
             "updatedAt" = ${UpdatedAt}
