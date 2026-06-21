@@ -15,13 +15,19 @@ No summary available.
 
 No description available.
 
+.PARAMETER DiscoveryReason
+No description available.
 .PARAMETER Type
+No description available.
+.PARAMETER Id
 No description available.
 .PARAMETER Name
 No description available.
 .PARAMETER Source
 No description available.
 .PARAMETER Provider
+No description available.
+.PARAMETER Status
 No description available.
 .PARAMETER SuperType
 No description available.
@@ -33,9 +39,9 @@ No description available.
 No description available.
 .PARAMETER CreatedAt
 No description available.
-.PARAMETER UpdatedAt
-No description available.
 .PARAMETER Metadata
+No description available.
+.PARAMETER BusinessUnits
 No description available.
 .PARAMETER CustomProperties
 No description available.
@@ -51,41 +57,50 @@ function Initialize-ClientCloudAsset {
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Type},
+        ${DiscoveryReason},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Name},
+        ${Type},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Source},
+        ${Id},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Provider},
+        ${Name},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${SuperType},
+        ${Source},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${SubType},
+        ${Provider},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Hostname},
+        ${Status},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${CloudResourceId},
+        ${SuperType},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${CreatedAt},
+        [String]
+        ${SubType},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${UpdatedAt},
+        [String]
+        ${Hostname},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${CloudResourceId},
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
+        [System.DateTime]
+        ${CreatedAt},
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${Metadata},
-        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject[]]
+        ${BusinessUnits},
+        [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
         ${CustomProperties},
-        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Criticality}
     )
@@ -96,6 +111,10 @@ function Initialize-ClientCloudAsset {
 
         if ($null -eq $Type) {
             throw "invalid value for 'Type', 'Type' cannot be null."
+        }
+
+        if ($null -eq $Id) {
+            throw "invalid value for 'Id', 'Id' cannot be null."
         }
 
         if ($null -eq $Name) {
@@ -110,18 +129,6 @@ function Initialize-ClientCloudAsset {
             throw "invalid value for 'Provider', 'Provider' cannot be null."
         }
 
-        if ($null -eq $SuperType) {
-            throw "invalid value for 'SuperType', 'SuperType' cannot be null."
-        }
-
-        if ($null -eq $SubType) {
-            throw "invalid value for 'SubType', 'SubType' cannot be null."
-        }
-
-        if ($null -eq $Hostname) {
-            throw "invalid value for 'Hostname', 'Hostname' cannot be null."
-        }
-
         if ($null -eq $CloudResourceId) {
             throw "invalid value for 'CloudResourceId', 'CloudResourceId' cannot be null."
         }
@@ -130,35 +137,34 @@ function Initialize-ClientCloudAsset {
             throw "invalid value for 'CreatedAt', 'CreatedAt' cannot be null."
         }
 
-        if ($null -eq $UpdatedAt) {
-            throw "invalid value for 'UpdatedAt', 'UpdatedAt' cannot be null."
-        }
-
         if ($null -eq $Metadata) {
             throw "invalid value for 'Metadata', 'Metadata' cannot be null."
+        }
+
+        if ($null -eq $BusinessUnits) {
+            throw "invalid value for 'BusinessUnits', 'BusinessUnits' cannot be null."
         }
 
         if ($null -eq $CustomProperties) {
             throw "invalid value for 'CustomProperties', 'CustomProperties' cannot be null."
         }
 
-        if ($null -eq $Criticality) {
-            throw "invalid value for 'Criticality', 'Criticality' cannot be null."
-        }
-
 
         $PSO = [PSCustomObject]@{
+            "discovery_reason" = ${DiscoveryReason}
             "type" = ${Type}
+            "id" = ${Id}
             "name" = ${Name}
             "source" = ${Source}
             "provider" = ${Provider}
+            "status" = ${Status}
             "super_type" = ${SuperType}
             "sub_type" = ${SubType}
             "hostname" = ${Hostname}
             "cloud_resource_id" = ${CloudResourceId}
             "created_at" = ${CreatedAt}
-            "updated_at" = ${UpdatedAt}
             "metadata" = ${Metadata}
+            "businessUnits" = ${BusinessUnits}
             "customProperties" = ${CustomProperties}
             "criticality" = ${Criticality}
         }
@@ -198,7 +204,7 @@ function ConvertFrom-JsonToClientCloudAsset {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientCloudAsset
-        $AllProperties = ("type", "name", "source", "provider", "super_type", "sub_type", "hostname", "cloud_resource_id", "created_at", "updated_at", "metadata", "customProperties", "criticality")
+        $AllProperties = ("discovery_reason", "type", "id", "name", "source", "provider", "status", "super_type", "sub_type", "hostname", "cloud_resource_id", "created_at", "metadata", "businessUnits", "customProperties", "criticality")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -213,6 +219,12 @@ function ConvertFrom-JsonToClientCloudAsset {
             throw "Error! JSON cannot be serialized due to the required property 'type' missing."
         } else {
             $Type = $JsonParameters.PSobject.Properties["type"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "id"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'id' missing."
+        } else {
+            $Id = $JsonParameters.PSobject.Properties["id"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "name"))) {
@@ -233,24 +245,6 @@ function ConvertFrom-JsonToClientCloudAsset {
             $Provider = $JsonParameters.PSobject.Properties["provider"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "super_type"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'super_type' missing."
-        } else {
-            $SuperType = $JsonParameters.PSobject.Properties["super_type"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "sub_type"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'sub_type' missing."
-        } else {
-            $SubType = $JsonParameters.PSobject.Properties["sub_type"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "hostname"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'hostname' missing."
-        } else {
-            $Hostname = $JsonParameters.PSobject.Properties["hostname"].value
-        }
-
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "cloud_resource_id"))) {
             throw "Error! JSON cannot be serialized due to the required property 'cloud_resource_id' missing."
         } else {
@@ -263,16 +257,16 @@ function ConvertFrom-JsonToClientCloudAsset {
             $CreatedAt = $JsonParameters.PSobject.Properties["created_at"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "updated_at"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'updated_at' missing."
-        } else {
-            $UpdatedAt = $JsonParameters.PSobject.Properties["updated_at"].value
-        }
-
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "metadata"))) {
             throw "Error! JSON cannot be serialized due to the required property 'metadata' missing."
         } else {
             $Metadata = $JsonParameters.PSobject.Properties["metadata"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "businessUnits"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'businessUnits' missing."
+        } else {
+            $BusinessUnits = $JsonParameters.PSobject.Properties["businessUnits"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "customProperties"))) {
@@ -281,24 +275,57 @@ function ConvertFrom-JsonToClientCloudAsset {
             $CustomProperties = $JsonParameters.PSobject.Properties["customProperties"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "criticality"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'criticality' missing."
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "discovery_reason"))) { #optional property not found
+            $DiscoveryReason = $null
+        } else {
+            $DiscoveryReason = $JsonParameters.PSobject.Properties["discovery_reason"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "status"))) { #optional property not found
+            $Status = $null
+        } else {
+            $Status = $JsonParameters.PSobject.Properties["status"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "super_type"))) { #optional property not found
+            $SuperType = $null
+        } else {
+            $SuperType = $JsonParameters.PSobject.Properties["super_type"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "sub_type"))) { #optional property not found
+            $SubType = $null
+        } else {
+            $SubType = $JsonParameters.PSobject.Properties["sub_type"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "hostname"))) { #optional property not found
+            $Hostname = $null
+        } else {
+            $Hostname = $JsonParameters.PSobject.Properties["hostname"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "criticality"))) { #optional property not found
+            $Criticality = $null
         } else {
             $Criticality = $JsonParameters.PSobject.Properties["criticality"].value
         }
 
         $PSO = [PSCustomObject]@{
+            "discovery_reason" = ${DiscoveryReason}
             "type" = ${Type}
+            "id" = ${Id}
             "name" = ${Name}
             "source" = ${Source}
             "provider" = ${Provider}
+            "status" = ${Status}
             "super_type" = ${SuperType}
             "sub_type" = ${SubType}
             "hostname" = ${Hostname}
             "cloud_resource_id" = ${CloudResourceId}
             "created_at" = ${CreatedAt}
-            "updated_at" = ${UpdatedAt}
             "metadata" = ${Metadata}
+            "businessUnits" = ${BusinessUnits}
             "customProperties" = ${CustomProperties}
             "criticality" = ${Criticality}
         }

@@ -4,13 +4,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Decimal** | Retest ID | 
-**Finding** | [**ClientFindingRetestHistoryFinding**](ClientFindingRetestHistoryFinding.md) | Finding information | 
-**Asset** | [**ClientFindingRetestHistoryAsset**](ClientFindingRetestHistoryAsset.md) | Affected asset information | 
-**TriggeredBy** | [**ClientFindingRetestHistoryTriggeredBy**](ClientFindingRetestHistoryTriggeredBy.md) | User who triggered the retest | 
+**Finding** | [**ClientFindingRetestHistoryFinding**](ClientFindingRetestHistoryFinding.md) | Finding information | [optional] 
+**Asset** | [**ClientFindingRetestHistoryAsset**](ClientFindingRetestHistoryAsset.md) | Affected asset information | [optional] 
+**TriggeredBy** | [**ClientFindingRetestHistoryTriggeredBy**](ClientFindingRetestHistoryTriggeredBy.md) | User who triggered the retest | [optional] 
 **CurrentRetestStatus** | **String** | Current retest status | 
-**Result** | **String** | Finding status verdict snapshot at the time this retest completed. Independent of the live &#x60;findings.status_name&#x60;, which may change later. | 
+**Result** | **String** | Retest result status at the time this retest completed. | 
 **StartedAt** | **System.DateTime** | Date and time when the retest was started | 
-**CompletedAt** | [**SystemCollectionsHashtable**](.md) | Date and time when the retest was completed | 
+**CompletedAt** | **System.DateTime** | Date and time when the retest was completed | [optional] 
 **UpdatedAt** | **System.DateTime** | Date and time when the retest was last updated | 
 **CreatedAt** | **System.DateTime** | Creation date | 
 **AttemptNumber** | **Decimal** | Retest attempt number for this finding | [optional] 
@@ -25,9 +25,9 @@ $ClientFindingRetestHistory = Initialize-WatchtowrAPIClientFindingRetestHistory 
  -Asset null `
  -TriggeredBy null `
  -CurrentRetestStatus in-progress `
- -Result remediated `
+ -Result resolved `
  -StartedAt 2023-01-01T12:00Z `
- -CompletedAt 2023-01-01T13:00:00.000Z `
+ -CompletedAt 2023-01-01T13:00Z `
  -UpdatedAt 2023-01-01T12:30Z `
  -CreatedAt 2023-01-01T12:00Z `
  -AttemptNumber 2 `

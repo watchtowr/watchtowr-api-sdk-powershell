@@ -3,14 +3,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VarData** | [**TargetIndustry[]**](TargetIndustry.md) |  | [optional] 
+**VarData** | **String[]** |  | [optional] 
 **TotalCount** | **Decimal** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$TargetIndustrySummary = Initialize-WatchtowrAPITargetIndustrySummary  -VarData null `
+$TargetIndustrySummary = Initialize-WatchtowrAPITargetIndustrySummary  -VarData [&quot;Financial Services&quot;,&quot;Technology&quot;] `
  -TotalCount 12
 ```
 

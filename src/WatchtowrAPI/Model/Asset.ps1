@@ -16,7 +16,7 @@ No summary available.
 No description available.
 
 .PARAMETER Id
-ID
+No description available.
 .PARAMETER CreatedAt
 Created at
 .PARAMETER Source
@@ -49,6 +49,8 @@ Sub type
 Super type
 .PARAMETER Metadata
 Metadata
+.PARAMETER EngineSettings
+Engine coverage settings. Present on domain, container, and IP hunt assets; omitted for other asset types.
 .OUTPUTS
 
 Asset<PSCustomObject>
@@ -58,7 +60,7 @@ function Initialize-Asset {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [String]
+        [PSCustomObject]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [System.DateTime]
@@ -89,7 +91,7 @@ function Initialize-Asset {
         [String]
         ${Url},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
-        [String[]]
+        [PSCustomObject[]]
         ${BusinessUnits},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -98,7 +100,7 @@ function Initialize-Asset {
         [String]
         ${Owner},
         [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
-        [Boolean]
+        [System.Nullable[Boolean]]
         ${Live},
         [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -108,7 +110,10 @@ function Initialize-Asset {
         ${SuperType},
         [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
-        ${Metadata}
+        ${Metadata},
+        [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject]
+        ${EngineSettings}
     )
 
     Process {
@@ -123,10 +128,6 @@ function Initialize-Asset {
             throw "invalid value for 'CreatedAt', 'CreatedAt' cannot be null."
         }
 
-        if ($null -eq $Source) {
-            throw "invalid value for 'Source', 'Source' cannot be null."
-        }
-
         if ($null -eq $Type) {
             throw "invalid value for 'Type', 'Type' cannot be null."
         }
@@ -139,44 +140,8 @@ function Initialize-Asset {
             throw "invalid value for 'Name', 'Name' cannot be null."
         }
 
-        if ($null -eq $Country) {
-            throw "invalid value for 'Country', 'Country' cannot be null."
-        }
-
-        if ($null -eq $Platform) {
-            throw "invalid value for 'Platform', 'Platform' cannot be null."
-        }
-
-        if ($null -eq $Provider) {
-            throw "invalid value for 'Provider', 'Provider' cannot be null."
-        }
-
-        if ($null -eq $Url) {
-            throw "invalid value for 'Url', 'Url' cannot be null."
-        }
-
         if ($null -eq $BusinessUnits) {
             throw "invalid value for 'BusinessUnits', 'BusinessUnits' cannot be null."
-        }
-
-        if ($null -eq $DiscoveryReason) {
-            throw "invalid value for 'DiscoveryReason', 'DiscoveryReason' cannot be null."
-        }
-
-        if ($null -eq $Owner) {
-            throw "invalid value for 'Owner', 'Owner' cannot be null."
-        }
-
-        if ($null -eq $Live) {
-            throw "invalid value for 'Live', 'Live' cannot be null."
-        }
-
-        if ($null -eq $SubType) {
-            throw "invalid value for 'SubType', 'SubType' cannot be null."
-        }
-
-        if ($null -eq $SuperType) {
-            throw "invalid value for 'SuperType', 'SuperType' cannot be null."
         }
 
         if ($null -eq $Metadata) {
@@ -202,6 +167,7 @@ function Initialize-Asset {
             "sub_type" = ${SubType}
             "super_type" = ${SuperType}
             "metadata" = ${Metadata}
+            "engineSettings" = ${EngineSettings}
         }
 
 
@@ -239,7 +205,7 @@ function ConvertFrom-JsonToAsset {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in Asset
-        $AllProperties = ("id", "created_at", "source", "type", "status", "name", "country", "platform", "provider", "url", "businessUnits", "discovery_reason", "owner", "live", "sub_type", "super_type", "metadata")
+        $AllProperties = ("id", "created_at", "source", "type", "status", "name", "country", "platform", "provider", "url", "businessUnits", "discovery_reason", "owner", "live", "sub_type", "super_type", "metadata", "engineSettings")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -352,6 +318,12 @@ function ConvertFrom-JsonToAsset {
             $Metadata = $JsonParameters.PSobject.Properties["metadata"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "engineSettings"))) { #optional property not found
+            $EngineSettings = $null
+        } else {
+            $EngineSettings = $JsonParameters.PSobject.Properties["engineSettings"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
             "created_at" = ${CreatedAt}
@@ -370,6 +342,7 @@ function ConvertFrom-JsonToAsset {
             "sub_type" = ${SubType}
             "super_type" = ${SuperType}
             "metadata" = ${Metadata}
+            "engineSettings" = ${EngineSettings}
         }
 
         return $PSO

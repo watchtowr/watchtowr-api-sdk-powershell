@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BusinessUnitIds** | **String[]** | List of business unit IDs to assign the asset to. | 
+**BusinessUnitIds** | **Decimal[]** | List of business unit IDs to assign the asset to. | 
 
 ## Examples
 

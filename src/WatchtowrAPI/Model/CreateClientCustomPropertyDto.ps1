@@ -33,7 +33,7 @@ function Initialize-CreateClientCustomPropertyDto {
         [String]
         ${Key},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
+        [String]
         ${Value},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Boolean]]

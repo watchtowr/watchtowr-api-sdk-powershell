@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ServiceInformationCertificate' {
     Context 'ServiceInformationCertificate' {
         It 'Initialize-ServiceInformationCertificate' {
             # a simple test to create an object
-            #$NewObject = Initialize-ServiceInformationCertificate -Id "TEST_VALUE" -SubjectCommonName "TEST_VALUE" -SubjectOrganisation "TEST_VALUE" -SubjectAltNames "TEST_VALUE" -SubjectCountry "TEST_VALUE" -IssuerCommonName "TEST_VALUE" -IssuerOrganisation "TEST_VALUE" -IssuerCountry "TEST_VALUE" -Fingerprint "TEST_VALUE" -PublicKeyInfoAlg "TEST_VALUE" -PublicKeyInfoSize "TEST_VALUE" -Status "TEST_VALUE" -CreatedAt "TEST_VALUE"
+            #$NewObject = Initialize-ServiceInformationCertificate -Id "TEST_VALUE" -SubjectCommonName "TEST_VALUE" -SubjectOrganisation "TEST_VALUE" -SubjectAltNames "TEST_VALUE" -SubjectCountry "TEST_VALUE" -IssuerCommonName "TEST_VALUE" -IssuerOrganisation "TEST_VALUE" -IssuerCountry "TEST_VALUE" -Fingerprint "TEST_VALUE" -SerialNumber "TEST_VALUE" -PublicKeyInfoAlg "TEST_VALUE" -PublicKeyInfoSize "TEST_VALUE" -Status "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE" -NotBefore "TEST_VALUE" -NotAfter "TEST_VALUE" -LastSeenAt "TEST_VALUE"
             #$NewObject | Should -BeOfType ServiceInformationCertificate
             #$NewObject.property | Should -Be 0
         }

@@ -56,10 +56,10 @@ function Initialize-ActiveDefenseRuleDetails {
         [Boolean]
         ${ZeroDay},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
-        [String]
+        [System.DateTime]
         ${CreatedAt},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
-        [String]
+        [System.DateTime]
         ${UpdatedAt},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]

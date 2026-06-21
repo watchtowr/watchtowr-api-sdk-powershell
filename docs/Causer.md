@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Decimal** | ID | 
-**Name** | [**SystemCollectionsHashtable**](.md) | User name | 
+**Name** | **String** | User name | 
 
 ## Examples
 

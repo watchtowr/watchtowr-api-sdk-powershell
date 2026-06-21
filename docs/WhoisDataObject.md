@@ -18,8 +18,8 @@ Name | Type | Description | Notes
 **NameServers** | [**WhoisDataObjectNameServers**](WhoisDataObjectNameServers.md) |  | [optional] 
 **ReferralUrl** | **String** | referral_url | [optional] 
 **WhoisServer** | **String** | whois_server | [optional] 
-**CreationDate** | **String** | creation_date | [optional] 
-**ExpirationDate** | **String** | expiration_date | [optional] 
+**CreationDate** | [**WhoisDataObjectCreationDate**](WhoisDataObjectCreationDate.md) |  | [optional] 
+**ExpirationDate** | [**WhoisDataObjectExpirationDate**](WhoisDataObjectExpirationDate.md) |  | [optional] 
 
 ## Examples
 
@@ -40,8 +40,8 @@ $WhoisDataObject = Initialize-WatchtowrAPIWhoisDataObject  -Org ACME Corp `
  -NameServers null `
  -ReferralUrl  `
  -WhoisServer whois.godaddy.com `
- -CreationDate 1989-07-15T04:00:00 `
- -ExpirationDate 2030-07-15T04:00:00
+ -CreationDate null `
+ -ExpirationDate null
 ```
 
 - Convert the resource to JSON

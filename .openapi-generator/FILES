@@ -17,7 +17,9 @@ docs/AdversaryIntelligenceApi.md
 docs/Asset.md
 docs/AssetAndBusinessUnitAlreadyAssociatedConflictErrorResponse.md
 docs/AssetAndBusinessUnitNotAssociatedConflictErrorResponse.md
+docs/AssetBusinessUnitDto.md
 docs/AssetBusinessUnitIdsDTO.md
+docs/AssetId.md
 docs/AssetsListResponse.md
 docs/AttackSurfaceDto.md
 docs/AttackSurfaceResiliencyDto.md
@@ -61,6 +63,7 @@ docs/ClientEngineSettings.md
 docs/ClientEngineSettingsData.md
 docs/ClientEngineSettingsDetails.md
 docs/ClientFinding.md
+docs/ClientFindingAffected.md
 docs/ClientFindingAssignee.md
 docs/ClientFindingData.md
 docs/ClientFindingImpactTag.md
@@ -70,6 +73,7 @@ docs/ClientFindingRetestHistory.md
 docs/ClientFindingRetestHistoryAsset.md
 docs/ClientFindingRetestHistoryFinding.md
 docs/ClientFindingRetestHistoryTriggeredBy.md
+docs/ClientFindingRetestResponse.md
 docs/ClientIp.md
 docs/ClientIpData.md
 docs/ClientIpDetailDnsRecords.md
@@ -84,7 +88,9 @@ docs/ClientIpRelatedDnsRecordAsset.md
 docs/ClientMobileApp.md
 docs/ClientMobileAppData.md
 docs/ClientNote.md
+docs/ClientNoteAuthor.md
 docs/ClientNoteData.md
+docs/ClientNoteLastModified.md
 docs/ClientNoteListData.md
 docs/ClientPackageManager.md
 docs/ClientPackageManagerData.md
@@ -98,7 +104,7 @@ docs/ClientSaasPlatform.md
 docs/ClientSaasPlatformData.md
 docs/ClientSeedData.md
 docs/ClientSeedDataBusinessUnit.md
-docs/ClientSeedDataData.md
+docs/ClientSeedDataDto.md
 docs/ClientSeedDataListItem.md
 docs/ClientSeedDataUser.md
 docs/ClientServiceInformationResponseData.md
@@ -106,6 +112,7 @@ docs/ClientSourceIpsAddresses.md
 docs/ClientSubdomain.md
 docs/ClientSubdomainData.md
 docs/ClientSuspiciousDomainData.md
+docs/ClientTestingInfrastructure.md
 docs/ClientUser.md
 docs/ClientUserDetail.md
 docs/ClientUserDetailBusinessUnitsInner.md
@@ -132,6 +139,7 @@ docs/FilterByBusinessUnitInput.md
 docs/FindingListResponse.md
 docs/FindingRetestHistoryApi.md
 docs/FindingRetestResponseDto.md
+docs/FindingStatusesResponse.md
 docs/FindingsApi.md
 docs/FindingsSummaryDto.md
 docs/FirstReportedByAttackerSummary.md
@@ -241,7 +249,6 @@ docs/SourceIPAddressesApi.md
 docs/SubdomainsApi.md
 docs/SuspiciousDomain.md
 docs/SuspiciousDomainsApi.md
-docs/TargetIndustry.md
 docs/TargetIndustrySummary.md
 docs/Technology.md
 docs/TechnologyStatistic.md
@@ -268,7 +275,6 @@ docs/UpdateOrganisationWhitelistIpDto.md
 docs/UpdateUserResponse.md
 docs/UserDetailData.md
 docs/UserManagementApi.md
-docs/VictimCountry.md
 docs/VictimCountrySummary.md
 docs/VulnCvssV3XMetrics.md
 docs/VulnDetailKev.md
@@ -283,7 +289,9 @@ docs/WhitelistStatusData.md
 docs/WhitelistStatusDto.md
 docs/WhoisData.md
 docs/WhoisDataObject.md
+docs/WhoisDataObjectCreationDate.md
 docs/WhoisDataObjectEmails.md
+docs/WhoisDataObjectExpirationDate.md
 docs/WhoisDataObjectNameServers.md
 docs/WhoisDataObjectStatus.md
 src/WatchtowrAPI/Api/APIDocumentationApi.ps1
@@ -331,7 +339,9 @@ src/WatchtowrAPI/Model/AdversaryIntelDetails.ps1
 src/WatchtowrAPI/Model/Asset.ps1
 src/WatchtowrAPI/Model/AssetAndBusinessUnitAlreadyAssociatedConflictErrorResponse.ps1
 src/WatchtowrAPI/Model/AssetAndBusinessUnitNotAssociatedConflictErrorResponse.ps1
+src/WatchtowrAPI/Model/AssetBusinessUnitDto.ps1
 src/WatchtowrAPI/Model/AssetBusinessUnitIdsDTO.ps1
+src/WatchtowrAPI/Model/AssetId.ps1
 src/WatchtowrAPI/Model/AssetsListResponse.ps1
 src/WatchtowrAPI/Model/AttackSurfaceDto.ps1
 src/WatchtowrAPI/Model/AttackSurfaceResiliencyDto.ps1
@@ -372,6 +382,7 @@ src/WatchtowrAPI/Model/ClientEngineSettings.ps1
 src/WatchtowrAPI/Model/ClientEngineSettingsData.ps1
 src/WatchtowrAPI/Model/ClientEngineSettingsDetails.ps1
 src/WatchtowrAPI/Model/ClientFinding.ps1
+src/WatchtowrAPI/Model/ClientFindingAffected.ps1
 src/WatchtowrAPI/Model/ClientFindingAssignee.ps1
 src/WatchtowrAPI/Model/ClientFindingData.ps1
 src/WatchtowrAPI/Model/ClientFindingImpactTag.ps1
@@ -381,6 +392,7 @@ src/WatchtowrAPI/Model/ClientFindingRetestHistory.ps1
 src/WatchtowrAPI/Model/ClientFindingRetestHistoryAsset.ps1
 src/WatchtowrAPI/Model/ClientFindingRetestHistoryFinding.ps1
 src/WatchtowrAPI/Model/ClientFindingRetestHistoryTriggeredBy.ps1
+src/WatchtowrAPI/Model/ClientFindingRetestResponse.ps1
 src/WatchtowrAPI/Model/ClientIp.ps1
 src/WatchtowrAPI/Model/ClientIpData.ps1
 src/WatchtowrAPI/Model/ClientIpDetailDnsRecords.ps1
@@ -395,7 +407,9 @@ src/WatchtowrAPI/Model/ClientIpRelatedDnsRecordAsset.ps1
 src/WatchtowrAPI/Model/ClientMobileApp.ps1
 src/WatchtowrAPI/Model/ClientMobileAppData.ps1
 src/WatchtowrAPI/Model/ClientNote.ps1
+src/WatchtowrAPI/Model/ClientNoteAuthor.ps1
 src/WatchtowrAPI/Model/ClientNoteData.ps1
+src/WatchtowrAPI/Model/ClientNoteLastModified.ps1
 src/WatchtowrAPI/Model/ClientNoteListData.ps1
 src/WatchtowrAPI/Model/ClientPackageManager.ps1
 src/WatchtowrAPI/Model/ClientPackageManagerData.ps1
@@ -409,7 +423,7 @@ src/WatchtowrAPI/Model/ClientSaasPlatform.ps1
 src/WatchtowrAPI/Model/ClientSaasPlatformData.ps1
 src/WatchtowrAPI/Model/ClientSeedData.ps1
 src/WatchtowrAPI/Model/ClientSeedDataBusinessUnit.ps1
-src/WatchtowrAPI/Model/ClientSeedDataData.ps1
+src/WatchtowrAPI/Model/ClientSeedDataDto.ps1
 src/WatchtowrAPI/Model/ClientSeedDataListItem.ps1
 src/WatchtowrAPI/Model/ClientSeedDataUser.ps1
 src/WatchtowrAPI/Model/ClientServiceInformationResponseData.ps1
@@ -417,6 +431,7 @@ src/WatchtowrAPI/Model/ClientSourceIpsAddresses.ps1
 src/WatchtowrAPI/Model/ClientSubdomain.ps1
 src/WatchtowrAPI/Model/ClientSubdomainData.ps1
 src/WatchtowrAPI/Model/ClientSuspiciousDomainData.ps1
+src/WatchtowrAPI/Model/ClientTestingInfrastructure.ps1
 src/WatchtowrAPI/Model/ClientUser.ps1
 src/WatchtowrAPI/Model/ClientUserDetail.ps1
 src/WatchtowrAPI/Model/ClientUserDetailBusinessUnitsInner.ps1
@@ -437,6 +452,7 @@ src/WatchtowrAPI/Model/DeleteWhitelistIpData.ps1
 src/WatchtowrAPI/Model/FilterByBusinessUnitInput.ps1
 src/WatchtowrAPI/Model/FindingListResponse.ps1
 src/WatchtowrAPI/Model/FindingRetestResponseDto.ps1
+src/WatchtowrAPI/Model/FindingStatusesResponse.ps1
 src/WatchtowrAPI/Model/FindingsSummaryDto.ps1
 src/WatchtowrAPI/Model/FirstReportedByAttackerSummary.ps1
 src/WatchtowrAPI/Model/ForbiddenResponse.ps1
@@ -528,7 +544,6 @@ src/WatchtowrAPI/Model/SetCriticalityDataResponseDto.ps1
 src/WatchtowrAPI/Model/SetCriticalityDto.ps1
 src/WatchtowrAPI/Model/SetCriticalityResponseDto.ps1
 src/WatchtowrAPI/Model/SuspiciousDomain.ps1
-src/WatchtowrAPI/Model/TargetIndustry.ps1
 src/WatchtowrAPI/Model/TargetIndustrySummary.ps1
 src/WatchtowrAPI/Model/Technology.ps1
 src/WatchtowrAPI/Model/TechnologyStatistic.ps1
@@ -554,7 +569,6 @@ src/WatchtowrAPI/Model/UpdateKillSwitchResponse.ps1
 src/WatchtowrAPI/Model/UpdateOrganisationWhitelistIpDto.ps1
 src/WatchtowrAPI/Model/UpdateUserResponse.ps1
 src/WatchtowrAPI/Model/UserDetailData.ps1
-src/WatchtowrAPI/Model/VictimCountry.ps1
 src/WatchtowrAPI/Model/VictimCountrySummary.ps1
 src/WatchtowrAPI/Model/VulnCvssV3XMetrics.ps1
 src/WatchtowrAPI/Model/VulnDetailKev.ps1
@@ -568,7 +582,9 @@ src/WatchtowrAPI/Model/WhitelistStatusData.ps1
 src/WatchtowrAPI/Model/WhitelistStatusDto.ps1
 src/WatchtowrAPI/Model/WhoisData.ps1
 src/WatchtowrAPI/Model/WhoisDataObject.ps1
+src/WatchtowrAPI/Model/WhoisDataObjectCreationDate.ps1
 src/WatchtowrAPI/Model/WhoisDataObjectEmails.ps1
+src/WatchtowrAPI/Model/WhoisDataObjectExpirationDate.ps1
 src/WatchtowrAPI/Model/WhoisDataObjectNameServers.ps1
 src/WatchtowrAPI/Model/WhoisDataObjectStatus.ps1
 src/WatchtowrAPI/Private/ApiClient.ps1
@@ -622,7 +638,9 @@ tests/Model/AdversaryIntelDetails.Tests.ps1
 tests/Model/Asset.Tests.ps1
 tests/Model/AssetAndBusinessUnitAlreadyAssociatedConflictErrorResponse.Tests.ps1
 tests/Model/AssetAndBusinessUnitNotAssociatedConflictErrorResponse.Tests.ps1
+tests/Model/AssetBusinessUnitDto.Tests.ps1
 tests/Model/AssetBusinessUnitIdsDTO.Tests.ps1
+tests/Model/AssetId.Tests.ps1
 tests/Model/AssetsListResponse.Tests.ps1
 tests/Model/AttackSurfaceDto.Tests.ps1
 tests/Model/AttackSurfaceResiliencyDto.Tests.ps1
@@ -663,6 +681,7 @@ tests/Model/ClientEngineSettings.Tests.ps1
 tests/Model/ClientEngineSettingsData.Tests.ps1
 tests/Model/ClientEngineSettingsDetails.Tests.ps1
 tests/Model/ClientFinding.Tests.ps1
+tests/Model/ClientFindingAffected.Tests.ps1
 tests/Model/ClientFindingAssignee.Tests.ps1
 tests/Model/ClientFindingData.Tests.ps1
 tests/Model/ClientFindingImpactTag.Tests.ps1
@@ -672,6 +691,7 @@ tests/Model/ClientFindingRetestHistory.Tests.ps1
 tests/Model/ClientFindingRetestHistoryAsset.Tests.ps1
 tests/Model/ClientFindingRetestHistoryFinding.Tests.ps1
 tests/Model/ClientFindingRetestHistoryTriggeredBy.Tests.ps1
+tests/Model/ClientFindingRetestResponse.Tests.ps1
 tests/Model/ClientIp.Tests.ps1
 tests/Model/ClientIpData.Tests.ps1
 tests/Model/ClientIpDetailDnsRecords.Tests.ps1
@@ -686,7 +706,9 @@ tests/Model/ClientIpRelatedDnsRecordAsset.Tests.ps1
 tests/Model/ClientMobileApp.Tests.ps1
 tests/Model/ClientMobileAppData.Tests.ps1
 tests/Model/ClientNote.Tests.ps1
+tests/Model/ClientNoteAuthor.Tests.ps1
 tests/Model/ClientNoteData.Tests.ps1
+tests/Model/ClientNoteLastModified.Tests.ps1
 tests/Model/ClientNoteListData.Tests.ps1
 tests/Model/ClientPackageManager.Tests.ps1
 tests/Model/ClientPackageManagerData.Tests.ps1
@@ -700,7 +722,7 @@ tests/Model/ClientSaasPlatform.Tests.ps1
 tests/Model/ClientSaasPlatformData.Tests.ps1
 tests/Model/ClientSeedData.Tests.ps1
 tests/Model/ClientSeedDataBusinessUnit.Tests.ps1
-tests/Model/ClientSeedDataData.Tests.ps1
+tests/Model/ClientSeedDataDto.Tests.ps1
 tests/Model/ClientSeedDataListItem.Tests.ps1
 tests/Model/ClientSeedDataUser.Tests.ps1
 tests/Model/ClientServiceInformationResponseData.Tests.ps1
@@ -708,6 +730,7 @@ tests/Model/ClientSourceIpsAddresses.Tests.ps1
 tests/Model/ClientSubdomain.Tests.ps1
 tests/Model/ClientSubdomainData.Tests.ps1
 tests/Model/ClientSuspiciousDomainData.Tests.ps1
+tests/Model/ClientTestingInfrastructure.Tests.ps1
 tests/Model/ClientUser.Tests.ps1
 tests/Model/ClientUserDetail.Tests.ps1
 tests/Model/ClientUserDetailBusinessUnitsInner.Tests.ps1
@@ -728,6 +751,7 @@ tests/Model/DeleteWhitelistIpData.Tests.ps1
 tests/Model/FilterByBusinessUnitInput.Tests.ps1
 tests/Model/FindingListResponse.Tests.ps1
 tests/Model/FindingRetestResponseDto.Tests.ps1
+tests/Model/FindingStatusesResponse.Tests.ps1
 tests/Model/FindingsSummaryDto.Tests.ps1
 tests/Model/FirstReportedByAttackerSummary.Tests.ps1
 tests/Model/ForbiddenResponse.Tests.ps1
@@ -819,7 +843,6 @@ tests/Model/SetCriticalityDataResponseDto.Tests.ps1
 tests/Model/SetCriticalityDto.Tests.ps1
 tests/Model/SetCriticalityResponseDto.Tests.ps1
 tests/Model/SuspiciousDomain.Tests.ps1
-tests/Model/TargetIndustry.Tests.ps1
 tests/Model/TargetIndustrySummary.Tests.ps1
 tests/Model/Technology.Tests.ps1
 tests/Model/TechnologyStatistic.Tests.ps1
@@ -845,7 +868,6 @@ tests/Model/UpdateKillSwitchResponse.Tests.ps1
 tests/Model/UpdateOrganisationWhitelistIpDto.Tests.ps1
 tests/Model/UpdateUserResponse.Tests.ps1
 tests/Model/UserDetailData.Tests.ps1
-tests/Model/VictimCountry.Tests.ps1
 tests/Model/VictimCountrySummary.Tests.ps1
 tests/Model/VulnCvssV3XMetrics.Tests.ps1
 tests/Model/VulnDetailKev.Tests.ps1
@@ -859,6 +881,8 @@ tests/Model/WhitelistStatusData.Tests.ps1
 tests/Model/WhitelistStatusDto.Tests.ps1
 tests/Model/WhoisData.Tests.ps1
 tests/Model/WhoisDataObject.Tests.ps1
+tests/Model/WhoisDataObjectCreationDate.Tests.ps1
 tests/Model/WhoisDataObjectEmails.Tests.ps1
+tests/Model/WhoisDataObjectExpirationDate.Tests.ps1
 tests/Model/WhoisDataObjectNameServers.Tests.ps1
 tests/Model/WhoisDataObjectStatus.Tests.ps1

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Name** | **String** | Tactic name | 
 **Identifier** | **String** | Tactic identifier | 
 **Type** | **String** | Tactic type | 
-**Category** | [**TtpLibraryCategoryItem**](TtpLibraryCategoryItem.md) | Parent category | 
+**Category** | [**TtpLibraryCategoryItem**](TtpLibraryCategoryItem.md) |  | [optional] 
 **Module** | **String** | Module name | [optional] 
 **EnabledOn** | **System.DateTime** | Date the tactic was enabled | [optional] 
 

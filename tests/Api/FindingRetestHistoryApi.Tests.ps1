@@ -9,7 +9,7 @@
 Describe -tag 'WatchtowrAPI' -name 'FindingRetestHistoryApi' {
     Context 'Get-ListFindingRetestHistory' {
         It 'Test Get-ListFindingRetestHistory' {
-            #$TestResult = Get-ListFindingRetestHistory -Page "TEST_VALUE" -PageSize "TEST_VALUE" -BusinessUnitIds "TEST_VALUE" -SortBy "TEST_VALUE" -SortOrder "TEST_VALUE" -Severities "TEST_VALUE" -Attempts "TEST_VALUE" -RetestRunStatuses "TEST_VALUE" -FindingTitle "TEST_VALUE" -AssetName "TEST_VALUE" -FindingId "TEST_VALUE" -TriggeredBy "TEST_VALUE" -RetestStartDateFrom "TEST_VALUE" -RetestStartDateTo "TEST_VALUE"
+            #$TestResult = Get-ListFindingRetestHistory -Page "TEST_VALUE" -PageSize "TEST_VALUE" -BusinessUnitIds "TEST_VALUE" -SortBy "TEST_VALUE" -SortOrder "TEST_VALUE" -Severities "TEST_VALUE" -Attempts "TEST_VALUE" -RetestRunStatuses "TEST_VALUE" -RetestResultStatuses "TEST_VALUE" -FindingTitle "TEST_VALUE" -AssetName "TEST_VALUE" -FindingId "TEST_VALUE" -TriggeredBy "TEST_VALUE" -RetestStartDateFrom "TEST_VALUE" -RetestStartDateTo "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
         }

@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Name** | **String** |  | 
 **Description** | **String** |  | 
 **ZeroDay** | **Boolean** |  | 
-**CreatedAt** | **String** |  | 
-**UpdatedAt** | **String** |  | 
+**CreatedAt** | **System.DateTime** |  | 
+**UpdatedAt** | **System.DateTime** |  | 
 **Rules** | [**ActiveDefenseRuleTemplate[]**](ActiveDefenseRuleTemplate.md) |  | 
 **Vulnerability** | [**ActiveDefenseRuleVulnerability**](ActiveDefenseRuleVulnerability.md) |  | [optional] 
 **FindingsCount** | **Decimal** | Count of confirmed open findings against the rule&#39;s vulnerability. Scoped to the requesting user&#39;s business units and the organization&#39;s finding impact threshold. | 
@@ -22,8 +22,8 @@ $ActiveDefenseRuleDetails = Initialize-WatchtowrAPIActiveDefenseRuleDetails  -Id
  -Name SQL Injection in MOVEit Transfer (CVE-2023-34362) `
  -Description Mitigates exploitation attempts against CVE-2023-34362. `
  -ZeroDay false `
- -CreatedAt 2023-12-01T00:00:00.000Z `
- -UpdatedAt 2023-12-02T00:00:00.000Z `
+ -CreatedAt 2023-12-01T00:00Z `
+ -UpdatedAt 2023-12-02T00:00Z `
  -Rules null `
  -Vulnerability null `
  -FindingsCount 7 `

@@ -30,7 +30,7 @@ function Initialize-HostnameBusinessUnitIDsDTO {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [String[]]
+        [Decimal[]]
         ${BusinessUnitIds},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [Boolean]

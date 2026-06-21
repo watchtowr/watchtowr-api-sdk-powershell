@@ -19,7 +19,7 @@ $SuspiciousDomain = Initialize-WatchtowrAPISuspiciousDomain  -Id 1 `
  -DiscoveryReason Example reason `
  -Status legitimate `
  -WhoisData null `
- -CreatedAt null
+ -CreatedAt 2022-02-22T22:00Z
 ```
 
 - Convert the resource to JSON

@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'KbEntryCwe' {
     Context 'KbEntryCwe' {
         It 'Initialize-KbEntryCwe' {
             # a simple test to create an object
-            #$NewObject = Initialize-KbEntryCwe -CweId "TEST_VALUE" -Name "TEST_VALUE"
+            #$NewObject = Initialize-KbEntryCwe -CweId "TEST_VALUE" -Name "TEST_VALUE" -CweUrl "TEST_VALUE"
             #$NewObject | Should -BeOfType KbEntryCwe
             #$NewObject.property | Should -Be 0
         }

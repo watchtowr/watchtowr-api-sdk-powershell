@@ -15,14 +15,15 @@ Method | HTTP request | Description
 > PaginatedHunts Get-ClientHunts<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Statuses] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Statuses] <String[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-HuntSearch] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Types] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Types] <String[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreatedFrom] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreatedTo] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdatedFrom] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdatedTo] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ResourceFilter] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Resolved] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OnlyResolved] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IsUnacknowledged] <System.Nullable[Boolean]><br>
 
@@ -37,20 +38,21 @@ $Configuration = Get-Configuration
 
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
-$Statuses = "received" # String | Filter hunts by hunt status. (optional)
+$Statuses = "received" # String[] | Filter hunts by a comma separated list of hunt statuses. Values are case-sensitive — pass the canonical lowercase form (e.g. `received,in-progress`). (optional)
 $HuntSearch = "remote%20code%20execution" # String | Search for hunts by text in hunt name. (optional)
-$Types = "bespoke" # String | Filter hunts by hunt types. (optional)
+$Types = "bespoke" # String[] | Filter hunts by a comma separated list of hunt types. Values are case-sensitive — pass the canonical lowercase form (e.g. `bespoke,proactive`). (optional)
 $CreatedFrom = (Get-Date) # System.DateTime | Filter hunts created after a given date and time. (optional)
 $CreatedTo = (Get-Date) # System.DateTime | Filter hunts created before a given date and time. (optional)
 $UpdatedFrom = (Get-Date) # System.DateTime | Filter hunts updated after a given date and time. (optional)
 $UpdatedTo = (Get-Date) # System.DateTime | Filter hunts updated before a given date and time. (optional)
 $ResourceFilter = "hasAssetsOrFindings" # String | General (optional)
-$OnlyResolved = $true # Boolean | Filter to only show resolved hunts. (optional)
+$Resolved = $true # Boolean | Filter hunts by resolution status. `true` returns resolved hunts, `false` returns unresolved hunts. (optional)
+$OnlyResolved = $true # Boolean | Deprecated — use `resolved` instead. This is kept for backward compatibility and will be removed in a future release. (optional)
 $IsUnacknowledged = $true # Boolean | Filter to only show hunts that are not acknowledged. (optional)
 
 # List Hunts
 try {
-    $Result = Get-ClientHunts -Page $Page -PageSize $PageSize -Statuses $Statuses -HuntSearch $HuntSearch -Types $Types -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -ResourceFilter $ResourceFilter -OnlyResolved $OnlyResolved -IsUnacknowledged $IsUnacknowledged
+    $Result = Get-ClientHunts -Page $Page -PageSize $PageSize -Statuses $Statuses -HuntSearch $HuntSearch -Types $Types -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -ResourceFilter $ResourceFilter -Resolved $Resolved -OnlyResolved $OnlyResolved -IsUnacknowledged $IsUnacknowledged
 } catch {
     Write-Host ("Exception occurred when calling Get-ClientHunts: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -63,15 +65,16 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
- **Statuses** | **String**| Filter hunts by hunt status. | [optional] 
+ **Statuses** | [**String[]**](String.md)| Filter hunts by a comma separated list of hunt statuses. Values are case-sensitive — pass the canonical lowercase form (e.g. &#x60;received,in-progress&#x60;). | [optional] 
  **HuntSearch** | **String**| Search for hunts by text in hunt name. | [optional] 
- **Types** | **String**| Filter hunts by hunt types. | [optional] 
+ **Types** | [**String[]**](String.md)| Filter hunts by a comma separated list of hunt types. Values are case-sensitive — pass the canonical lowercase form (e.g. &#x60;bespoke,proactive&#x60;). | [optional] 
  **CreatedFrom** | **System.DateTime**| Filter hunts created after a given date and time. | [optional] 
  **CreatedTo** | **System.DateTime**| Filter hunts created before a given date and time. | [optional] 
  **UpdatedFrom** | **System.DateTime**| Filter hunts updated after a given date and time. | [optional] 
  **UpdatedTo** | **System.DateTime**| Filter hunts updated before a given date and time. | [optional] 
  **ResourceFilter** | **String**| General | [optional] 
- **OnlyResolved** | **Boolean**| Filter to only show resolved hunts. | [optional] 
+ **Resolved** | **Boolean**| Filter hunts by resolution status. &#x60;true&#x60; returns resolved hunts, &#x60;false&#x60; returns unresolved hunts. | [optional] 
+ **OnlyResolved** | **Boolean**| Deprecated — use &#x60;resolved&#x60; instead. This is kept for backward compatibility and will be removed in a future release. | [optional] 
  **IsUnacknowledged** | **Boolean**| Filter to only show hunts that are not acknowledged. | [optional] 
 
 ### Return type

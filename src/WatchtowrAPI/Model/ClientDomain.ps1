@@ -15,6 +15,8 @@ No summary available.
 
 No description available.
 
+.PARAMETER DiscoveryReason
+No description available.
 .PARAMETER Type
 No description available.
 .PARAMETER Source
@@ -22,8 +24,6 @@ No description available.
 .PARAMETER Status
 No description available.
 .PARAMETER CreatedAt
-No description available.
-.PARAMETER UpdatedAt
 No description available.
 .PARAMETER Id
 No description available.
@@ -33,10 +33,12 @@ No description available.
 No description available.
 .PARAMETER Live
 No description available.
+.PARAMETER WhoisData
+WHOIS data for the domain
 .PARAMETER DnsRecords
-No description available.
+DNS records for the domain. In list responses, always present: an empty array by default, populated with up to 5 records per asset when `includeDnsRecords=true`. Always populated on the detail endpoints (`GET /assets/domain/show/{id}` and `GET /assets/domain/show/{id}/dns-records`). Not included in finding `affected` objects.
 .PARAMETER Metadata
-No description available.
+Cloud/IaaS integration metadata where available; defaults to an empty object.
 .PARAMETER CustomProperties
 No description available.
 .PARAMETER Criticality
@@ -55,22 +57,21 @@ function Initialize-ClientDomain {
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Type},
+        ${DiscoveryReason},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Source},
+        ${Type},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
-        [ValidateSet("verified", "Unregistered", "Incorrect Identification", "pending", "VerifiedOutOfScope", "VerifiedReducedAttack", "Parked")]
+        [String]
+        ${Source},
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Status},
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${CreatedAt},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${UpdatedAt},
+        [System.DateTime]
+        ${CreatedAt},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [String]
         ${Id},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -82,21 +83,24 @@ function Initialize-ClientDomain {
         [Boolean]
         ${Live},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
-        [String[]]
-        ${DnsRecords},
+        [PSCustomObject[]]
+        ${WhoisData},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject[]]
+        ${DnsRecords},
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${Metadata},
-        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
         ${CustomProperties},
-        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Criticality},
-        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${Infrastructure},
-        [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${EngineSettings}
     )
@@ -113,16 +117,8 @@ function Initialize-ClientDomain {
             throw "invalid value for 'Source', 'Source' cannot be null."
         }
 
-        if ($null -eq $Status) {
-            throw "invalid value for 'Status', 'Status' cannot be null."
-        }
-
         if ($null -eq $CreatedAt) {
             throw "invalid value for 'CreatedAt', 'CreatedAt' cannot be null."
-        }
-
-        if ($null -eq $UpdatedAt) {
-            throw "invalid value for 'UpdatedAt', 'UpdatedAt' cannot be null."
         }
 
         if ($null -eq $Id) {
@@ -141,10 +137,6 @@ function Initialize-ClientDomain {
             throw "invalid value for 'Live', 'Live' cannot be null."
         }
 
-        if ($null -eq $DnsRecords) {
-            throw "invalid value for 'DnsRecords', 'DnsRecords' cannot be null."
-        }
-
         if ($null -eq $Metadata) {
             throw "invalid value for 'Metadata', 'Metadata' cannot be null."
         }
@@ -153,25 +145,22 @@ function Initialize-ClientDomain {
             throw "invalid value for 'CustomProperties', 'CustomProperties' cannot be null."
         }
 
-        if ($null -eq $Criticality) {
-            throw "invalid value for 'Criticality', 'Criticality' cannot be null."
-        }
-
         if ($null -eq $EngineSettings) {
             throw "invalid value for 'EngineSettings', 'EngineSettings' cannot be null."
         }
 
 
         $PSO = [PSCustomObject]@{
+            "discovery_reason" = ${DiscoveryReason}
             "type" = ${Type}
             "source" = ${Source}
             "status" = ${Status}
             "created_at" = ${CreatedAt}
-            "updated_at" = ${UpdatedAt}
             "id" = ${Id}
             "name" = ${Name}
             "businessUnits" = ${BusinessUnits}
             "live" = ${Live}
+            "whoisData" = ${WhoisData}
             "dns_records" = ${DnsRecords}
             "metadata" = ${Metadata}
             "customProperties" = ${CustomProperties}
@@ -215,7 +204,7 @@ function ConvertFrom-JsonToClientDomain {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientDomain
-        $AllProperties = ("type", "source", "status", "created_at", "updated_at", "id", "name", "businessUnits", "live", "dns_records", "metadata", "customProperties", "criticality", "infrastructure", "engineSettings")
+        $AllProperties = ("discovery_reason", "type", "source", "status", "created_at", "id", "name", "businessUnits", "live", "whoisData", "dns_records", "metadata", "customProperties", "criticality", "infrastructure", "engineSettings")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -238,22 +227,10 @@ function ConvertFrom-JsonToClientDomain {
             $Source = $JsonParameters.PSobject.Properties["source"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "status"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'status' missing."
-        } else {
-            $Status = $JsonParameters.PSobject.Properties["status"].value
-        }
-
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "created_at"))) {
             throw "Error! JSON cannot be serialized due to the required property 'created_at' missing."
         } else {
             $CreatedAt = $JsonParameters.PSobject.Properties["created_at"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "updated_at"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'updated_at' missing."
-        } else {
-            $UpdatedAt = $JsonParameters.PSobject.Properties["updated_at"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "id"))) {
@@ -280,12 +257,6 @@ function ConvertFrom-JsonToClientDomain {
             $Live = $JsonParameters.PSobject.Properties["live"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "dns_records"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'dns_records' missing."
-        } else {
-            $DnsRecords = $JsonParameters.PSobject.Properties["dns_records"].value
-        }
-
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "metadata"))) {
             throw "Error! JSON cannot be serialized due to the required property 'metadata' missing."
         } else {
@@ -298,16 +269,40 @@ function ConvertFrom-JsonToClientDomain {
             $CustomProperties = $JsonParameters.PSobject.Properties["customProperties"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "criticality"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'criticality' missing."
-        } else {
-            $Criticality = $JsonParameters.PSobject.Properties["criticality"].value
-        }
-
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "engineSettings"))) {
             throw "Error! JSON cannot be serialized due to the required property 'engineSettings' missing."
         } else {
             $EngineSettings = $JsonParameters.PSobject.Properties["engineSettings"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "discovery_reason"))) { #optional property not found
+            $DiscoveryReason = $null
+        } else {
+            $DiscoveryReason = $JsonParameters.PSobject.Properties["discovery_reason"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "status"))) { #optional property not found
+            $Status = $null
+        } else {
+            $Status = $JsonParameters.PSobject.Properties["status"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "whoisData"))) { #optional property not found
+            $WhoisData = $null
+        } else {
+            $WhoisData = $JsonParameters.PSobject.Properties["whoisData"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "dns_records"))) { #optional property not found
+            $DnsRecords = $null
+        } else {
+            $DnsRecords = $JsonParameters.PSobject.Properties["dns_records"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "criticality"))) { #optional property not found
+            $Criticality = $null
+        } else {
+            $Criticality = $JsonParameters.PSobject.Properties["criticality"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "infrastructure"))) { #optional property not found
@@ -317,15 +312,16 @@ function ConvertFrom-JsonToClientDomain {
         }
 
         $PSO = [PSCustomObject]@{
+            "discovery_reason" = ${DiscoveryReason}
             "type" = ${Type}
             "source" = ${Source}
             "status" = ${Status}
             "created_at" = ${CreatedAt}
-            "updated_at" = ${UpdatedAt}
             "id" = ${Id}
             "name" = ${Name}
             "businessUnits" = ${BusinessUnits}
             "live" = ${Live}
+            "whoisData" = ${WhoisData}
             "dns_records" = ${DnsRecords}
             "metadata" = ${Metadata}
             "customProperties" = ${CustomProperties}

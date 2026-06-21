@@ -28,10 +28,10 @@ function Initialize-ClientIpDetailDnsRecords {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [String[]]
+        [PSCustomObject[]]
         ${DnsRecordsOwned},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [String[]]
+        [PSCustomObject[]]
         ${DnsRecordsPointingAt}
     )
 

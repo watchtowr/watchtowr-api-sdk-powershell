@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Decimal** | ID | 
 **Name** | **String** | Name | 
-**Version** | **String** | Version | 
+**Version** | **String** | Version | [optional] 
 **DisplayName** | **String** | Display name | 
 
 ## Examples

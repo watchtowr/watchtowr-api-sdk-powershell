@@ -14,19 +14,20 @@ Name | Type | Description | Notes
 **Severity** | **String** |  | 
 **Cvssv3Score** | **Decimal** |  | 
 **Cvssv3Metrics** | **String** |  | 
+**References** | **String** | Finding references from the knowledge base entry, or &#x60;&quot;&quot;No references.&quot;&quot;&#x60; when none exist. | 
 **Status** | **String** |  | 
-**State** | **String** | Different to status, this is about tracking how the finding is being handled | 
-**CreatedAt** | **String** |  | 
-**Affected** | [**SystemCollectionsHashtable**](.md) |  | 
+**State** | **String** | Different to status, this is about tracking how the finding is being handled | [optional] 
+**CreatedAt** | **System.DateTime** |  | 
+**Affected** | [**ClientFindingAffected**](ClientFindingAffected.md) | Affected asset envelope. The asset object is nested under &#x60;data&#x60;; shape varies by asset type. | 
 **CveId** | **String** |  | [optional] 
 **EpssScore** | **Decimal** |  | [optional] 
 **Retest** | [**Retest**](Retest.md) |  | [optional] 
-**FindingRetests** | [**FindingRetestResponseDto[]**](FindingRetestResponseDto.md) |  | [optional] 
+**RetestHistory** | [**FindingRetestResponseDto[]**](FindingRetestResponseDto.md) |  | [optional] 
 **AssignedUser** | [**ClientFindingAssignee**](ClientFindingAssignee.md) |  | [optional] 
-**LastSeen** | [**SystemCollectionsHashtable**](.md) |  | [optional] 
-**LastStatusUpdatedAt** | [**SystemCollectionsHashtable**](.md) |  | 
-**Age** | **Decimal** |  | 
-**Criticality** | **String** |  | 
+**LastSeen** | **System.DateTime** |  | [optional] 
+**LastStatusUpdatedAt** | **System.DateTime** |  | 
+**Age** | **Decimal** |  | [optional] 
+**Criticality** | **String** |  | [optional] 
 **CustomProperties** | [**ClientCustomProperty[]**](ClientCustomProperty.md) |  | 
 **DetectionRules** | [**SystemCollectionsHashtable[]**](SystemCollectionsHashtable.md) |  | 
 
@@ -62,20 +63,21 @@ As a long-term measure to ensure that the security impact of breach credentials 
  -Severity high `
  -Cvssv3Score 8.1 `
  -Cvssv3Metrics CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N/E:F/RL:W/RC:C `
+ -References CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N/E:F/RL:W/RC:C `
  -Status confirmed `
  -State Uninvestigated `
- -CreatedAt 2022-02-13T02:10:00.000000Z `
+ -CreatedAt 2022-02-13T02:10Z `
  -Affected null `
  -CveId CVE-2023-38180 `
  -EpssScore 0.97521 `
  -Retest null `
- -FindingRetests null `
+ -RetestHistory null `
  -AssignedUser null `
- -LastSeen 2022-02-13T02:10:00.000000Z `
- -LastStatusUpdatedAt 2022-02-13T02:10:00.000000Z `
+ -LastSeen 2022-02-13T02:10Z `
+ -LastStatusUpdatedAt 2022-02-13T02:10Z `
  -Age 30 `
  -Criticality Medium `
- -CustomProperties [{&quot;id&quot;:10,&quot;key&quot;:&quot;Severity&quot;,&quot;value&quot;:&quot;normal&quot;,&quot;isPreset&quot;:false,&quot;modelType&quot;:&quot;finding&quot;,&quot;modelId&quot;:209,&quot;createdAt&quot;:&quot;2024-09-24T02:37:27.000Z&quot;,&quot;updatedAt&quot;:&quot;2024-09-24T02:38:35.000Z&quot;},{&quot;id&quot;:11,&quot;key&quot;:&quot;Vulnerability&quot;,&quot;value&quot;:&quot;low risk&quot;,&quot;isPreset&quot;:false,&quot;modelType&quot;:&quot;finding&quot;,&quot;modelId&quot;:209,&quot;createdAt&quot;:&quot;2024-09-24T02:37:27.000Z&quot;,&quot;updatedAt&quot;:&quot;2024-09-24T02:38:35.000Z&quot;}] `
+ -CustomProperties [{&quot;id&quot;:10,&quot;key&quot;:&quot;Severity&quot;,&quot;value&quot;:&quot;normal&quot;,&quot;isPreset&quot;:false,&quot;modelType&quot;:&quot;finding&quot;,&quot;modelId&quot;:209,&quot;created_at&quot;:&quot;2024-09-24T02:37:27.000Z&quot;,&quot;updated_at&quot;:&quot;2024-09-24T02:38:35.000Z&quot;},{&quot;id&quot;:11,&quot;key&quot;:&quot;Vulnerability&quot;,&quot;value&quot;:&quot;low risk&quot;,&quot;isPreset&quot;:false,&quot;modelType&quot;:&quot;finding&quot;,&quot;modelId&quot;:209,&quot;created_at&quot;:&quot;2024-09-24T02:37:27.000Z&quot;,&quot;updated_at&quot;:&quot;2024-09-24T02:38:35.000Z&quot;}] `
  -DetectionRules [{&quot;type&quot;:&quot;sigma&quot;,&quot;id&quot;:155,&quot;tags&quot;:[&quot;attack.initial-access&quot;,&quot;attack.t1190&quot;,&quot;cve.2021-44228&quot;,&quot;detection.emerging-threats&quot;],&quot;title&quot;:&quot;Potential CVE-2021-44228 Exploitation Attempt - VMware Horizon&quot;,&quot;url&quot;:&quot;https://github.com/SigmaHQ/sigma/blob/master/rules-emerging-threats/2021/Exploits/CVE-2021-44228/proc_creation_win_exploit_cve_2021_44228_vmware_horizon_log4j.yml&quot;}]
 ```
 

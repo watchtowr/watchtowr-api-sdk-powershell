@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **KevStatus** | [**ActiveDefenseRuleKevStatus**](ActiveDefenseRuleKevStatus.md) |  | 
 **ZeroDay** | **Boolean** |  | 
 **Providers** | **String[]** |  | 
-**CreatedAt** | **String** |  | 
-**UpdatedAt** | **String** |  | 
+**CreatedAt** | **System.DateTime** |  | 
+**UpdatedAt** | **System.DateTime** |  | 
 
 ## Examples
 
@@ -26,8 +26,8 @@ $ActiveDefenseRule = Initialize-WatchtowrAPIActiveDefenseRule  -Id 9001 `
  -KevStatus null `
  -ZeroDay false `
  -Providers [&quot;cloudflare&quot;] `
- -CreatedAt 2023-12-01T00:00:00.000Z `
- -UpdatedAt 2023-12-02T00:00:00.000Z
+ -CreatedAt 2023-12-01T00:00Z `
+ -UpdatedAt 2023-12-02T00:00Z
 ```
 
 - Convert the resource to JSON

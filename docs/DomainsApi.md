@@ -40,7 +40,7 @@ Assign a specific Domain asset to a list of Business Units
 $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The Domain asset's ID.
-$HostnameBusinessUnitIDsDTO = Initialize-HostnameBusinessUnitIDsDTO -BusinessUnitIds "MyBusinessUnitIds" -CascadeSubdomain $false -CascadeIp $false # HostnameBusinessUnitIDsDTO | 
+$HostnameBusinessUnitIDsDTO = Initialize-HostnameBusinessUnitIDsDTO -BusinessUnitIds 0 -CascadeSubdomain $false -CascadeIp $false # HostnameBusinessUnitIDsDTO | 
 
 # Assign Domain to Business Units
 try {
@@ -138,7 +138,7 @@ Create a Custom Property for a specific Domain asset.
 $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The asset ID of the Domain to create a new custom property for.
-$CreateClientCustomPropertyDto = Initialize-CreateClientCustomPropertyDto -Key "Severity" -Value  -IsPreset $false # CreateClientCustomPropertyDto | 
+$CreateClientCustomPropertyDto = Initialize-CreateClientCustomPropertyDto -Key "Severity" -Value "Low" -IsPreset $false # CreateClientCustomPropertyDto | 
 
 # Create Custom Property
 try {
@@ -583,6 +583,7 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreatedTo] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyKey] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyValue] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IncludeDnsRecords] <System.Nullable[Boolean]><br>
 
 List Domains
 
@@ -604,10 +605,11 @@ $CreatedFrom = (Get-Date) # System.DateTime | Filter assets created after a give
 $CreatedTo = (Get-Date) # System.DateTime | Filter assets created before a given date and time. (optional)
 $CustomPropertyKey = "environment" # String | Filter assets by custom property key. (optional)
 $CustomPropertyValue = "production" # String | Filter assets by custom property value. Must be used together with customPropertyKey. (optional)
+$IncludeDnsRecords = $true # Boolean | When `true`, include up to 5 DNS records per asset inline in each item's `dns_records` field. Defaults to `false` to keep list responses fast; use `GET /assets/domain/show/{id}/dns-records` for the full paginated set. (optional)
 
 # List Domains
 try {
-    $Result = Get-ListAssetDomains -Page $Page -PageSize $PageSize -AssetName $AssetName -Statuses $Statuses -Source $Source -IntegrationConnections $IntegrationConnections -BusinessUnitIds $BusinessUnitIds -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -CustomPropertyKey $CustomPropertyKey -CustomPropertyValue $CustomPropertyValue
+    $Result = Get-ListAssetDomains -Page $Page -PageSize $PageSize -AssetName $AssetName -Statuses $Statuses -Source $Source -IntegrationConnections $IntegrationConnections -BusinessUnitIds $BusinessUnitIds -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -CustomPropertyKey $CustomPropertyKey -CustomPropertyValue $CustomPropertyValue -IncludeDnsRecords $IncludeDnsRecords
 } catch {
     Write-Host ("Exception occurred when calling Get-ListAssetDomains: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -629,6 +631,7 @@ Name | Type | Description  | Notes
  **CreatedTo** | **System.DateTime**| Filter assets created before a given date and time. | [optional] 
  **CustomPropertyKey** | **String**| Filter assets by custom property key. | [optional] 
  **CustomPropertyValue** | **String**| Filter assets by custom property value. Must be used together with customPropertyKey. | [optional] 
+ **IncludeDnsRecords** | **Boolean**| When &#x60;true&#x60;, include up to 5 DNS records per asset inline in each item&#39;s &#x60;dns_records&#x60; field. Defaults to &#x60;false&#x60; to keep list responses fast; use &#x60;GET /assets/domain/show/{id}/dns-records&#x60; for the full paginated set. | [optional] 
 
 ### Return type
 

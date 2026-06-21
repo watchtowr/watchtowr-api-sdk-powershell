@@ -26,7 +26,7 @@ User who triggered the retest
 .PARAMETER CurrentRetestStatus
 Current retest status
 .PARAMETER Result
-Finding status verdict snapshot at the time this retest completed. Independent of the live `findings.status_name`, which may change later.
+Retest result status at the time this retest completed.
 .PARAMETER StartedAt
 Date and time when the retest was started
 .PARAMETER CompletedAt
@@ -60,18 +60,17 @@ function Initialize-ClientFindingRetestHistory {
         [PSCustomObject]
         ${TriggeredBy},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
-        [ValidateSet("started", "in-progress", "success", "error")]
         [String]
         ${CurrentRetestStatus},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
-        [ValidateSet("confirmed", "unconfirmed", "remediated", "risk-accepted", "closed", "asset-no-longer-tracked")]
+        [ValidateSet("resolved", "unresolved")]
         [String]
         ${Result},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [System.DateTime]
         ${StartedAt},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
+        [System.Nullable[System.DateTime]]
         ${CompletedAt},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [System.DateTime]
@@ -179,24 +178,6 @@ function ConvertFrom-JsonToClientFindingRetestHistory {
             $Id = $JsonParameters.PSobject.Properties["id"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "finding"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'finding' missing."
-        } else {
-            $Finding = $JsonParameters.PSobject.Properties["finding"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "asset"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'asset' missing."
-        } else {
-            $Asset = $JsonParameters.PSobject.Properties["asset"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "triggeredBy"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'triggeredBy' missing."
-        } else {
-            $TriggeredBy = $JsonParameters.PSobject.Properties["triggeredBy"].value
-        }
-
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "currentRetestStatus"))) {
             throw "Error! JSON cannot be serialized due to the required property 'currentRetestStatus' missing."
         } else {
@@ -215,12 +196,6 @@ function ConvertFrom-JsonToClientFindingRetestHistory {
             $StartedAt = $JsonParameters.PSobject.Properties["startedAt"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "completedAt"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'completedAt' missing."
-        } else {
-            $CompletedAt = $JsonParameters.PSobject.Properties["completedAt"].value
-        }
-
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "updatedAt"))) {
             throw "Error! JSON cannot be serialized due to the required property 'updatedAt' missing."
         } else {
@@ -231,6 +206,30 @@ function ConvertFrom-JsonToClientFindingRetestHistory {
             throw "Error! JSON cannot be serialized due to the required property 'createdAt' missing."
         } else {
             $CreatedAt = $JsonParameters.PSobject.Properties["createdAt"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "finding"))) { #optional property not found
+            $Finding = $null
+        } else {
+            $Finding = $JsonParameters.PSobject.Properties["finding"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "asset"))) { #optional property not found
+            $Asset = $null
+        } else {
+            $Asset = $JsonParameters.PSobject.Properties["asset"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "triggeredBy"))) { #optional property not found
+            $TriggeredBy = $null
+        } else {
+            $TriggeredBy = $JsonParameters.PSobject.Properties["triggeredBy"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "completedAt"))) { #optional property not found
+            $CompletedAt = $null
+        } else {
+            $CompletedAt = $JsonParameters.PSobject.Properties["completedAt"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "attemptNumber"))) { #optional property not found

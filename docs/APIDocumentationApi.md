@@ -86,7 +86,7 @@ Assign a specific API Documentation asset to a list of Business Units
 $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The API Documentation asset's ID.
-$AssetBusinessUnitIdsDTO = Initialize-AssetBusinessUnitIdsDTO -BusinessUnitIds "MyBusinessUnitIds" # AssetBusinessUnitIdsDTO | 
+$AssetBusinessUnitIdsDTO = Initialize-AssetBusinessUnitIdsDTO -BusinessUnitIds 0 # AssetBusinessUnitIdsDTO | 
 
 # Assign API Documentation to Business Units
 try {
@@ -135,7 +135,7 @@ Create Custom Property for a specific API Documentation asset.
 $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The asset ID of the API Documentation asset to create a new custom property for.
-$CreateClientCustomPropertyDto = Initialize-CreateClientCustomPropertyDto -Key "Severity" -Value  -IsPreset $false # CreateClientCustomPropertyDto | 
+$CreateClientCustomPropertyDto = Initialize-CreateClientCustomPropertyDto -Key "Severity" -Value "Low" -IsPreset $false # CreateClientCustomPropertyDto | 
 
 # Create Custom Property
 try {

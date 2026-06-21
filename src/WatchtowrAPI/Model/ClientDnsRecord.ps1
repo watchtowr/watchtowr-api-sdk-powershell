@@ -50,7 +50,7 @@ function Initialize-ClientDnsRecord {
         [String]
         ${Type},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [System.Nullable[Decimal]]
         ${Ttl},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -74,10 +74,6 @@ function Initialize-ClientDnsRecord {
 
         if ($null -eq $Type) {
             throw "invalid value for 'Type', 'Type' cannot be null."
-        }
-
-        if ($null -eq $Ttl) {
-            throw "invalid value for 'Ttl', 'Ttl' cannot be null."
         }
 
         if ($null -eq $Value) {
@@ -151,12 +147,6 @@ function ConvertFrom-JsonToClientDnsRecord {
             $Id = $JsonParameters.PSobject.Properties["id"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "asset"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'asset' missing."
-        } else {
-            $Asset = $JsonParameters.PSobject.Properties["asset"].value
-        }
-
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "recordName"))) {
             throw "Error! JSON cannot be serialized due to the required property 'recordName' missing."
         } else {
@@ -169,12 +159,6 @@ function ConvertFrom-JsonToClientDnsRecord {
             $Type = $JsonParameters.PSobject.Properties["type"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "ttl"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'ttl' missing."
-        } else {
-            $Ttl = $JsonParameters.PSobject.Properties["ttl"].value
-        }
-
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "value"))) {
             throw "Error! JSON cannot be serialized due to the required property 'value' missing."
         } else {
@@ -185,6 +169,18 @@ function ConvertFrom-JsonToClientDnsRecord {
             throw "Error! JSON cannot be serialized due to the required property 'createdAt' missing."
         } else {
             $CreatedAt = $JsonParameters.PSobject.Properties["createdAt"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "asset"))) { #optional property not found
+            $Asset = $null
+        } else {
+            $Asset = $JsonParameters.PSobject.Properties["asset"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "ttl"))) { #optional property not found
+            $Ttl = $null
+        } else {
+            $Ttl = $JsonParameters.PSobject.Properties["ttl"].value
         }
 
         $PSO = [PSCustomObject]@{

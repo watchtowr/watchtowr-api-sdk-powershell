@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VarData** | [**ClientSeedData[]**](ClientSeedData.md) | JSON array listing seed data assets to submit for review. | 
+**VarData** | [**ClientSeedDataDto[]**](ClientSeedDataDto.md) | JSON array listing seed data assets to submit for review. | 
 **BusinessUnits** | [**FilterByBusinessUnitInput[]**](FilterByBusinessUnitInput.md) | List of business units to allocate new assets to. -1 indicates UNASSIGNED business unit | [optional] 
 
 ## Examples

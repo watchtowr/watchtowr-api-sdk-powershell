@@ -1,20 +1,22 @@
-# ClientSeedDataData
+# AssetBusinessUnitDto
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VarData** | [**ClientSeedData[]**](ClientSeedData.md) |  | 
+**Id** | **Decimal** | Business Unit ID | 
+**Name** | **String** | Business Unit Name | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$ClientSeedDataData = Initialize-WatchtowrAPIClientSeedDataData  -VarData null
+$AssetBusinessUnitDto = Initialize-WatchtowrAPIAssetBusinessUnitDto  -Id 153 `
+ -Name local bu child
 ```
 
 - Convert the resource to JSON
 ```powershell
-$ClientSeedDataData | ConvertTo-JSON
+$AssetBusinessUnitDto | ConvertTo-JSON
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

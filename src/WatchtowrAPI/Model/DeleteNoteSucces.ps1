@@ -15,9 +15,11 @@ No summary available.
 
 No description available.
 
-.PARAMETER StatusCode
-No description available.
 .PARAMETER Message
+No description available.
+.PARAMETER Status
+No description available.
+.PARAMETER StatusCode
 No description available.
 .OUTPUTS
 
@@ -28,29 +30,37 @@ function Initialize-DeleteNoteSucces {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
-        ${StatusCode},
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Message}
+        ${Message},
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
+        [Decimal]
+        ${Status},
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
+        [Decimal]
+        ${StatusCode}
     )
 
     Process {
         'Creating PSCustomObject: WatchtowrAPI => DeleteNoteSucces' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        if ($null -eq $StatusCode) {
-            throw "invalid value for 'StatusCode', 'StatusCode' cannot be null."
-        }
-
         if ($null -eq $Message) {
             throw "invalid value for 'Message', 'Message' cannot be null."
         }
 
+        if ($null -eq $Status) {
+            throw "invalid value for 'Status', 'Status' cannot be null."
+        }
+
+        if ($null -eq $StatusCode) {
+            throw "invalid value for 'StatusCode', 'StatusCode' cannot be null."
+        }
+
 
         $PSO = [PSCustomObject]@{
-            "statusCode" = ${StatusCode}
             "message" = ${Message}
+            "status" = ${Status}
+            "statusCode" = ${StatusCode}
         }
 
 
@@ -88,7 +98,7 @@ function ConvertFrom-JsonToDeleteNoteSucces {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in DeleteNoteSucces
-        $AllProperties = ("statusCode", "message")
+        $AllProperties = ("message", "status", "statusCode")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -96,13 +106,7 @@ function ConvertFrom-JsonToDeleteNoteSucces {
         }
 
         If ([string]::IsNullOrEmpty($Json) -or $Json -eq "{}") { # empty json
-            throw "Error! Empty JSON cannot be serialized due to the required property 'statusCode' missing."
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "statusCode"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'statusCode' missing."
-        } else {
-            $StatusCode = $JsonParameters.PSobject.Properties["statusCode"].value
+            throw "Error! Empty JSON cannot be serialized due to the required property 'message' missing."
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "message"))) {
@@ -111,9 +115,22 @@ function ConvertFrom-JsonToDeleteNoteSucces {
             $Message = $JsonParameters.PSobject.Properties["message"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "status"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'status' missing."
+        } else {
+            $Status = $JsonParameters.PSobject.Properties["status"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "statusCode"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'statusCode' missing."
+        } else {
+            $StatusCode = $JsonParameters.PSobject.Properties["statusCode"].value
+        }
+
         $PSO = [PSCustomObject]@{
-            "statusCode" = ${StatusCode}
             "message" = ${Message}
+            "status" = ${Status}
+            "statusCode" = ${StatusCode}
         }
 
         return $PSO

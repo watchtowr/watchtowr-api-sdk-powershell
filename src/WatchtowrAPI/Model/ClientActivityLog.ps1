@@ -39,16 +39,16 @@ function Initialize-ClientActivityLog {
         [Decimal]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
+        [String]
         ${Description},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
+        [String]
         ${Type},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${Properties},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
+        [System.Nullable[System.DateTime]]
         ${CreatedAt},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]

@@ -39,6 +39,9 @@ Filter retests by a list of comma separated attempt types.
 .PARAMETER RetestRunStatuses
 Filter retests by a list of comma separated retest run statuses.
 
+.PARAMETER RetestResultStatuses
+Filter retests by a list of comma separated result statuses.
+
 .PARAMETER FindingTitle
 Filter retests by finding title.
 
@@ -98,21 +101,25 @@ function Get-ListFindingRetestHistory {
         [String]
         ${RetestRunStatuses},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [ValidateSet("resolved", "unresolved")]
         [String]
-        ${FindingTitle},
+        ${RetestResultStatuses},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
-        ${AssetName},
+        ${FindingTitle},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
-        ${FindingId},
+        ${AssetName},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${FindingId},
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String[]]
         ${TriggeredBy},
-        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[System.DateTime]]
         ${RetestStartDateFrom},
-        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[System.DateTime]]
         ${RetestStartDateTo},
         [Switch]
@@ -168,6 +175,10 @@ function Get-ListFindingRetestHistory {
 
         if ($RetestRunStatuses) {
             $LocalVarQueryParameters['retestRunStatuses'] = $RetestRunStatuses
+        }
+
+        if ($RetestResultStatuses) {
+            $LocalVarQueryParameters['retestResultStatuses'] = $RetestResultStatuses
         }
 
         if ($FindingTitle) {

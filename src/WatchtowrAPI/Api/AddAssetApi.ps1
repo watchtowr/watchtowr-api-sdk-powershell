@@ -122,7 +122,7 @@ A switch when turned on will return a hash table of Response, StatusCode and Hea
 
 .OUTPUTS
 
-ClientSeedDataData
+ClientSeedData[]
 #>
 function Submit-Asset {
     [CmdletBinding()]
@@ -176,7 +176,7 @@ function Submit-Asset {
                                 -QueryParameters $LocalVarQueryParameters `
                                 -FormParameters $LocalVarFormParameters `
                                 -CookieParameters $LocalVarCookieParameters `
-                                -ReturnType "ClientSeedDataData" `
+                                -ReturnType "ClientSeedData[]" `
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {

@@ -938,10 +938,10 @@ function Get-AssetIpPortDetails {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [String]
+        [Decimal]
         ${IpId},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [String]
+        [Decimal]
         ${PortId},
         [Switch]
         $WithHttpInfo
@@ -1277,6 +1277,9 @@ Filter assets by custom property key.
 .PARAMETER CustomPropertyValue
 Filter assets by custom property value. Must be used together with customPropertyKey.
 
+.PARAMETER IncludeDnsRecords
+When `true`, include up to 5 owned (PTR) and 5 pointing-at (A) DNS records per IP inline in the `dns_records` field. Defaults to `false` to keep list responses fast; use `GET /assets/ip/show/{id}/dns-records` for the full paginated set.
+
 .PARAMETER MatchType
 Match assetName searches based on exact names or partial names with contains. Valid match types are:       * contains       * exact 
 
@@ -1325,6 +1328,9 @@ function Get-ListAssetIps {
         [String]
         ${CustomPropertyValue},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [System.Nullable[Boolean]]
+        ${IncludeDnsRecords},
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [ValidateSet("contains", "exact")]
         [String]
         ${MatchType},
@@ -1393,6 +1399,10 @@ function Get-ListAssetIps {
 
         if ($CustomPropertyValue) {
             $LocalVarQueryParameters['customPropertyValue'] = $CustomPropertyValue
+        }
+
+        if ($IncludeDnsRecords) {
+            $LocalVarQueryParameters['includeDnsRecords'] = $IncludeDnsRecords
         }
 
         if ($MatchType) {

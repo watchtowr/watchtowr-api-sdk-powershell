@@ -37,7 +37,7 @@ Assign a specific Container asset to a list of Business Units
 $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The Container asset's ID.
-$AssetBusinessUnitIdsDTO = Initialize-AssetBusinessUnitIdsDTO -BusinessUnitIds "MyBusinessUnitIds" # AssetBusinessUnitIdsDTO | 
+$AssetBusinessUnitIdsDTO = Initialize-AssetBusinessUnitIdsDTO -BusinessUnitIds 0 # AssetBusinessUnitIdsDTO | 
 
 # Assign Container to Business Units
 try {
@@ -86,7 +86,7 @@ Create a Custom Property for a specific Container asset.
 $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The asset ID of a Container asset to create a new custom property for.
-$CreateClientCustomPropertyDto = Initialize-CreateClientCustomPropertyDto -Key "Severity" -Value  -IsPreset $false # CreateClientCustomPropertyDto | 
+$CreateClientCustomPropertyDto = Initialize-CreateClientCustomPropertyDto -Key "Severity" -Value "Low" -IsPreset $false # CreateClientCustomPropertyDto | 
 
 # Create Custom Property
 try {

@@ -47,13 +47,13 @@ function Initialize-ClientIpRelatedDnsRecord {
         [String]
         ${Type},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [System.Nullable[Decimal]]
         ${Ttl},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Value},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
+        [System.DateTime]
         ${DiscoveredOn},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
@@ -74,10 +74,6 @@ function Initialize-ClientIpRelatedDnsRecord {
 
         if ($null -eq $Type) {
             throw "invalid value for 'Type', 'Type' cannot be null."
-        }
-
-        if ($null -eq $Ttl) {
-            throw "invalid value for 'Ttl', 'Ttl' cannot be null."
         }
 
         if ($null -eq $Value) {
@@ -167,12 +163,6 @@ function ConvertFrom-JsonToClientIpRelatedDnsRecord {
             $Type = $JsonParameters.PSobject.Properties["type"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "ttl"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'ttl' missing."
-        } else {
-            $Ttl = $JsonParameters.PSobject.Properties["ttl"].value
-        }
-
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "value"))) {
             throw "Error! JSON cannot be serialized due to the required property 'value' missing."
         } else {
@@ -189,6 +179,12 @@ function ConvertFrom-JsonToClientIpRelatedDnsRecord {
             throw "Error! JSON cannot be serialized due to the required property 'asset' missing."
         } else {
             $Asset = $JsonParameters.PSobject.Properties["asset"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "ttl"))) { #optional property not found
+            $Ttl = $null
+        } else {
+            $Ttl = $JsonParameters.PSobject.Properties["ttl"].value
         }
 
         $PSO = [PSCustomObject]@{

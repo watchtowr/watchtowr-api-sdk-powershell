@@ -28,7 +28,7 @@ function Initialize-VictimCountrySummary {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject[]]
+        [String[]]
         ${VarData},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Decimal]]

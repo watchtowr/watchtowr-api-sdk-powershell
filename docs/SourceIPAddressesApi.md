@@ -10,8 +10,8 @@ Method | HTTP request | Description
 <a id="Get-ListSourceIpAddresses"></a>
 # **Get-ListSourceIpAddresses**
 > ClientSourceIpsAddresses Get-ListSourceIpAddresses<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Whitelist] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Region] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Whitelist] <System.Nullable[Boolean]><br>
 
 List Testing Infrastructure
 
@@ -22,12 +22,12 @@ List IP addresses and hostnames used by watchTowr for all outbound platform traf
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Whitelist = $true # Boolean | Filter by whitelist status (true for whitelisted items only) (optional)
 $Region = "US" # String | Filter by region (optional)
+$Whitelist = $true # Boolean | Filter by whitelist status (true for whitelisted items only). (optional)
 
 # List Testing Infrastructure
 try {
-    $Result = Get-ListSourceIpAddresses -Whitelist $Whitelist -Region $Region
+    $Result = Get-ListSourceIpAddresses -Region $Region -Whitelist $Whitelist
 } catch {
     Write-Host ("Exception occurred when calling Get-ListSourceIpAddresses: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -38,8 +38,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Whitelist** | **Boolean**| Filter by whitelist status (true for whitelisted items only) | [optional] 
  **Region** | **String**| Filter by region | [optional] 
+ **Whitelist** | **Boolean**| Filter by whitelist status (true for whitelisted items only). | [optional] 
 
 ### Return type
 

@@ -3,19 +3,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DiscoveryReason** | **String** |  | [optional] 
 **Type** | **String** |  | 
 **Source** | **String** |  | 
-**Status** | **String** |  | 
-**CreatedAt** | [**DatetimeDate**](DatetimeDate.md) |  | 
-**UpdatedAt** | [**DatetimeDate**](DatetimeDate.md) |  | 
-**Id** | **Decimal** |  | 
+**Status** | **String** |  | [optional] 
+**CreatedAt** | **System.DateTime** |  | 
+**Id** | **String** |  | 
 **Name** | **String** |  | 
 **BusinessUnits** | [**ClientBusinessUnit[]**](ClientBusinessUnit.md) |  | 
 **Live** | **Boolean** |  | 
-**DnsRecords** | **String[]** |  | 
-**Metadata** | [**SystemCollectionsHashtable**](.md) |  | 
+**WhoisData** | [**WhoisData[]**](WhoisData.md) | WHOIS data for the domain | [optional] 
+**DnsRecords** | [**ClientAssetDnsRecord[]**](ClientAssetDnsRecord.md) | DNS records for the domain. In list responses, always present: an empty array by default, populated with up to 5 records per asset when &#x60;includeDnsRecords&#x3D;true&#x60;. Always populated on the detail endpoints (&#x60;GET /assets/domain/show/{id}&#x60; and &#x60;GET /assets/domain/show/{id}/dns-records&#x60;). Not included in finding &#x60;affected&#x60; objects. | [optional] 
+**Metadata** | [**SystemCollectionsHashtable**](.md) | Cloud/IaaS integration metadata where available; defaults to an empty object. | 
 **CustomProperties** | [**ClientCustomProperty[]**](ClientCustomProperty.md) |  | 
-**Criticality** | **String** |  | 
+**Criticality** | **String** |  | [optional] 
 **Infrastructure** | [**Infrastructure**](Infrastructure.md) |  | [optional] 
 **EngineSettings** | [**ClientEngineSettings**](ClientEngineSettings.md) |  | 
 
@@ -23,18 +24,19 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ClientDomain = Initialize-WatchtowrAPIClientDomain  -Type domain `
+$ClientDomain = Initialize-WatchtowrAPIClientDomain  -DiscoveryReason dns-discovery `
+ -Type domain `
  -Source watchtowr-cloud-integration-aws-hosts `
  -Status verified `
- -CreatedAt 2022-02-13T02:10:00.000000Z `
- -UpdatedAt 2022-02-13T02:10:00.000000Z `
+ -CreatedAt 2022-02-13T02:10Z `
  -Id 123 `
  -Name watchtowr.com `
  -BusinessUnits null `
  -Live true `
+ -WhoisData null `
  -DnsRecords [{&quot;id&quot;:1690,&quot;name&quot;:&quot;example.com&quot;,&quot;type&quot;:&quot;A&quot;,&quot;ttl&quot;:922,&quot;value&quot;:&quot;123.123.123.123&quot;,&quot;discovered_on&quot;:&quot;2024-08-19T08:58:26.000Z&quot;},{&quot;id&quot;:1685,&quot;name&quot;:&quot;example.com&quot;,&quot;type&quot;:&quot;AAAA&quot;,&quot;ttl&quot;:2687,&quot;value&quot;:&quot;0000:0000:0000:0000:0000:ffff:7b7b:7b7b&quot;,&quot;discovered_on&quot;:&quot;2024-08-19T08:58:26.000Z&quot;}] `
  -Metadata {&quot;region&quot;:&quot;us-west-1&quot;,&quot;service&quot;:&quot;AWS&quot;} `
- -CustomProperties [{&quot;id&quot;:10,&quot;key&quot;:&quot;Severity&quot;,&quot;value&quot;:&quot;normal&quot;,&quot;isPreset&quot;:false,&quot;modelType&quot;:&quot;domain&quot;,&quot;modelId&quot;:209,&quot;createdAt&quot;:&quot;2024-09-24T02:37:27.000Z&quot;,&quot;updatedAt&quot;:&quot;2024-09-24T02:38:35.000Z&quot;},{&quot;id&quot;:10,&quot;key&quot;:&quot;Vulnerability&quot;,&quot;value&quot;:&quot;low risk&quot;,&quot;isPreset&quot;:false,&quot;modelType&quot;:&quot;domain&quot;,&quot;modelId&quot;:209,&quot;createdAt&quot;:&quot;2024-09-24T02:37:27.000Z&quot;,&quot;updatedAt&quot;:&quot;2024-09-24T02:38:35.000Z&quot;}] `
+ -CustomProperties [{&quot;id&quot;:10,&quot;key&quot;:&quot;Severity&quot;,&quot;value&quot;:&quot;normal&quot;,&quot;isPreset&quot;:false,&quot;modelType&quot;:&quot;domain&quot;,&quot;modelId&quot;:209,&quot;created_at&quot;:&quot;2024-09-24T02:37:27.000Z&quot;,&quot;updated_at&quot;:&quot;2024-09-24T02:38:35.000Z&quot;},{&quot;id&quot;:11,&quot;key&quot;:&quot;Vulnerability&quot;,&quot;value&quot;:&quot;low risk&quot;,&quot;isPreset&quot;:false,&quot;modelType&quot;:&quot;domain&quot;,&quot;modelId&quot;:209,&quot;created_at&quot;:&quot;2024-09-24T02:37:27.000Z&quot;,&quot;updated_at&quot;:&quot;2024-09-24T02:38:35.000Z&quot;}] `
  -Criticality Medium `
  -Infrastructure null `
  -EngineSettings null

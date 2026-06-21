@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'UpdateOrganisationWhitelistIpDto' {
     Context 'UpdateOrganisationWhitelistIpDto' {
         It 'Initialize-UpdateOrganisationWhitelistIpDto' {
             # a simple test to create an object
-            #$NewObject = Initialize-UpdateOrganisationWhitelistIpDto -Id "TEST_VALUE" -Ip "TEST_VALUE" -Description "TEST_VALUE"
+            #$NewObject = Initialize-UpdateOrganisationWhitelistIpDto -Ip "TEST_VALUE" -Description "TEST_VALUE"
             #$NewObject | Should -BeOfType UpdateOrganisationWhitelistIpDto
             #$NewObject.property | Should -Be 0
         }

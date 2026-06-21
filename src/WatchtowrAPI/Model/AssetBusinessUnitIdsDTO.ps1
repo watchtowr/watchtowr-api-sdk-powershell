@@ -26,7 +26,7 @@ function Initialize-AssetBusinessUnitIdsDTO {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [String[]]
+        [Decimal[]]
         ${BusinessUnitIds}
     )
 

@@ -340,11 +340,11 @@ function Invoke-DeleteCustomPropertyIpRange {
 
         $LocalVarUri = '/api/client/assets/ipRange/show/{id}/custom-property/{customPropertyId}'
         if (!$Id) {
-            throw "Error! The required parameter `Id` missing when calling deleteCustomPropertyIpRange_."
+            throw "Error! The required parameter `Id` missing when calling deleteCustomPropertyIpRange."
         }
         $LocalVarUri = $LocalVarUri.replace('{id}', [System.Web.HTTPUtility]::UrlEncode($Id))
         if (!$CustomPropertyId) {
-            throw "Error! The required parameter `CustomPropertyId` missing when calling deleteCustomPropertyIpRange_."
+            throw "Error! The required parameter `CustomPropertyId` missing when calling deleteCustomPropertyIpRange."
         }
         $LocalVarUri = $LocalVarUri.replace('{customPropertyId}', [System.Web.HTTPUtility]::UrlEncode($CustomPropertyId))
 

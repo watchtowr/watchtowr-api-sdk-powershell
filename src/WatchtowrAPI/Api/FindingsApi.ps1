@@ -554,7 +554,7 @@ A switch when turned on will return a hash table of Response, StatusCode and Hea
 
 .OUTPUTS
 
-None
+FindingStatusesResponse
 #>
 function Get-AvailableFindingStatuses {
     [CmdletBinding()]
@@ -577,6 +577,9 @@ function Get-AvailableFindingStatuses {
         $LocalVarBodyParameter = $null
 
         $Configuration = Get-Configuration
+        # HTTP header 'Accept' (if needed)
+        $LocalVarAccepts = @('application/json')
+
         $LocalVarUri = '/api/client/findings/statuses'
 
         if ($Configuration["AccessToken"]) {
@@ -593,7 +596,7 @@ function Get-AvailableFindingStatuses {
                                 -QueryParameters $LocalVarQueryParameters `
                                 -FormParameters $LocalVarFormParameters `
                                 -CookieParameters $LocalVarCookieParameters `
-                                -ReturnType "" `
+                                -ReturnType "FindingStatusesResponse" `
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {
@@ -1151,7 +1154,7 @@ A switch when turned on will return a hash table of Response, StatusCode and Hea
 
 .OUTPUTS
 
-ClientFinding
+ClientFindingRetestResponse
 #>
 function Start-SpecificFindingRetest {
     [CmdletBinding()]
@@ -1207,7 +1210,7 @@ function Start-SpecificFindingRetest {
                                 -QueryParameters $LocalVarQueryParameters `
                                 -FormParameters $LocalVarFormParameters `
                                 -CookieParameters $LocalVarCookieParameters `
-                                -ReturnType "ClientFinding" `
+                                -ReturnType "ClientFindingRetestResponse" `
                                 -IsBodyNullable $false
 
         if ($WithHttpInfo.IsPresent) {

@@ -66,7 +66,7 @@ function Get-ListActivityLogs {
         [String]
         ${Search},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [String]
+        [System.Nullable[Decimal][]]
         ${UserIds},
         [Switch]
         $WithHttpInfo

@@ -4,10 +4,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Decimal** | ID | 
-**Description** | [**SystemCollectionsHashtable**](.md) | Description | 
-**Type** | [**SystemCollectionsHashtable**](.md) | Subject | 
+**Description** | **String** | Description | 
+**Type** | **String** | Subject | 
 **Properties** | [**SystemCollectionsHashtable**](.md) | Log properties | [optional] 
-**CreatedAt** | [**SystemCollectionsHashtable**](.md) | Timestamp | [optional] 
+**CreatedAt** | **System.DateTime** | Timestamp | [optional] 
 **CausedBy** | [**Causer**](Causer.md) |  | 
 
 ## Examples
@@ -18,7 +18,7 @@ $ClientActivityLog = Initialize-WatchtowrAPIClientActivityLog  -Id 1 `
  -Description Successful login from 123.123.123.123 `
  -Type Successful Login `
  -Properties {&quot;attributes&quot;: {&quot;ip&quot;: &quot;123.123.123.123&quot;}} `
- -CreatedAt 2022-02-22 22:00:00 `
+ -CreatedAt 2022-02-22T22:00Z `
  -CausedBy null
 ```
 

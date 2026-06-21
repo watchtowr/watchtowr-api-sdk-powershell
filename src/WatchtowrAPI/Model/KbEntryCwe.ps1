@@ -19,6 +19,8 @@ No description available.
 No description available.
 .PARAMETER Name
 No description available.
+.PARAMETER CweUrl
+MITRE CWE definition URL for the entry.
 .OUTPUTS
 
 KbEntryCwe<PSCustomObject>
@@ -32,7 +34,10 @@ function Initialize-KbEntryCwe {
         ${CweId},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Name}
+        ${Name},
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${CweUrl}
     )
 
     Process {
@@ -43,6 +48,7 @@ function Initialize-KbEntryCwe {
         $PSO = [PSCustomObject]@{
             "cweId" = ${CweId}
             "name" = ${Name}
+            "cweUrl" = ${CweUrl}
         }
 
 
@@ -80,7 +86,7 @@ function ConvertFrom-JsonToKbEntryCwe {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in KbEntryCwe
-        $AllProperties = ("cweId", "name")
+        $AllProperties = ("cweId", "name", "cweUrl")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -99,9 +105,16 @@ function ConvertFrom-JsonToKbEntryCwe {
             $Name = $JsonParameters.PSobject.Properties["name"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "cweUrl"))) { #optional property not found
+            $CweUrl = $null
+        } else {
+            $CweUrl = $JsonParameters.PSobject.Properties["cweUrl"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "cweId" = ${CweId}
             "name" = ${Name}
+            "cweUrl" = ${CweUrl}
         }
 
         return $PSO

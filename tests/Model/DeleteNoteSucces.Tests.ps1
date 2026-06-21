@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'DeleteNoteSucces' {
     Context 'DeleteNoteSucces' {
         It 'Initialize-DeleteNoteSucces' {
             # a simple test to create an object
-            #$NewObject = Initialize-DeleteNoteSucces -StatusCode "TEST_VALUE" -Message "TEST_VALUE"
+            #$NewObject = Initialize-DeleteNoteSucces -Message "TEST_VALUE" -Status "TEST_VALUE" -StatusCode "TEST_VALUE"
             #$NewObject | Should -BeOfType DeleteNoteSucces
             #$NewObject.property | Should -Be 0
         }

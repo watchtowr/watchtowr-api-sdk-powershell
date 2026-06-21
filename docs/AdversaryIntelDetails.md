@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **MitreLastUpdated** | **System.DateTime** |  | [optional] 
 **VictimCountries** | [**VictimCountrySummary**](VictimCountrySummary.md) |  | [optional] 
 **TargetIndustries** | [**TargetIndustrySummary**](TargetIndustrySummary.md) |  | [optional] 
-**LatestMedia** | [**Media[]**](Media.md) |  | [optional] 
+**LatestMedia** | [**Media[]**](Media.md) | Recent media references for this adversary. Not currently populated — returns an empty array. | [optional] 
 **IsAffected** | **Boolean** | Whether the user has confirmed open findings against vulnerabilities exploited by this adversary. Scoped to the requesting user&#39;s business units and the organization&#39;s finding impact threshold. | 
 **AffectedKbEntryIds** | **Decimal[]** | KB entry IDs that drive the &#x60;isAffected&#x60; flag, scoped to the requesting user&#39;s business units. | 
 

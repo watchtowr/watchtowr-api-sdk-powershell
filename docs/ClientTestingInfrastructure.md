@@ -1,24 +1,26 @@
-# VictimCountry
+# ClientTestingInfrastructure
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CountryCode** | **String** |  | [optional] 
-**CountryName** | **String** |  | [optional] 
-**Count** | **Decimal** |  | [optional] 
+**Name** | **String** |  | 
+**Description** | **String** |  | 
+**Region** | **String** |  | [optional] 
+**Whitelist** | **Boolean** |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$VictimCountry = Initialize-WatchtowrAPIVictimCountry  -CountryCode US `
- -CountryName United States `
- -Count 12
+$ClientTestingInfrastructure = Initialize-WatchtowrAPIClientTestingInfrastructure  -Name null `
+ -Description null `
+ -Region null `
+ -Whitelist null
 ```
 
 - Convert the resource to JSON
 ```powershell
-$VictimCountry | ConvertTo-JSON
+$ClientTestingInfrastructure | ConvertTo-JSON
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

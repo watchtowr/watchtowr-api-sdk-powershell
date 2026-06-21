@@ -1051,6 +1051,9 @@ Filter assets by custom property key.
 .PARAMETER CustomPropertyValue
 Filter assets by custom property value. Must be used together with customPropertyKey.
 
+.PARAMETER IncludeDnsRecords
+When `true`, include up to 5 DNS records per asset inline in each item's `dns_records` field. Defaults to `false` to keep list responses fast; use `GET /assets/domain/show/{id}/dns-records` for the full paginated set.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -1095,6 +1098,9 @@ function Get-ListAssetDomains {
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${CustomPropertyValue},
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [System.Nullable[Boolean]]
+        ${IncludeDnsRecords},
         [Switch]
         $WithHttpInfo
     )
@@ -1160,6 +1166,10 @@ function Get-ListAssetDomains {
 
         if ($CustomPropertyValue) {
             $LocalVarQueryParameters['customPropertyValue'] = $CustomPropertyValue
+        }
+
+        if ($IncludeDnsRecords) {
+            $LocalVarQueryParameters['includeDnsRecords'] = $IncludeDnsRecords
         }
 
         if ($Configuration["AccessToken"]) {

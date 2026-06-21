@@ -15,11 +15,11 @@ List Testing Infrastructure
 
 No description available.
 
-.PARAMETER Whitelist
-Filter by whitelist status (true for whitelisted items only)
-
 .PARAMETER Region
 Filter by region
+
+.PARAMETER Whitelist
+Filter by whitelist status (true for whitelisted items only).
 
 .PARAMETER WithHttpInfo
 
@@ -33,12 +33,12 @@ function Get-ListSourceIpAddresses {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [System.Nullable[Boolean]]
-        ${Whitelist},
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [ValidateSet("US", "SG", "AU", "EU")]
         [String]
         ${Region},
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [System.Nullable[Boolean]]
+        ${Whitelist},
         [Switch]
         $WithHttpInfo
     )
@@ -62,12 +62,12 @@ function Get-ListSourceIpAddresses {
 
         $LocalVarUri = '/api/client/testing-infrastructure'
 
-        if ($Whitelist) {
-            $LocalVarQueryParameters['whitelist'] = $Whitelist
-        }
-
         if ($Region) {
             $LocalVarQueryParameters['region'] = $Region
+        }
+
+        if ($Whitelist) {
+            $LocalVarQueryParameters['whitelist'] = $Whitelist
         }
 
         if ($Configuration["AccessToken"]) {

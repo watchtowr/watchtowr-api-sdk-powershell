@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VarData** | **String[]** |  | 
+**VarData** | [**ClientTestingInfrastructure[]**](ClientTestingInfrastructure.md) |  | 
 
 ## Examples
 

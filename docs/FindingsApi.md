@@ -38,7 +38,7 @@ Create a Custom Property for a specific Finding.
 $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The ID of the finding to create a new custom property for.
-$CreateClientCustomPropertyDto = Initialize-CreateClientCustomPropertyDto -Key "Severity" -Value  -IsPreset $false # CreateClientCustomPropertyDto | 
+$CreateClientCustomPropertyDto = Initialize-CreateClientCustomPropertyDto -Key "Severity" -Value "Low" -IsPreset $false # CreateClientCustomPropertyDto | 
 
 # Create Custom Property
 try {
@@ -315,7 +315,7 @@ void (empty response body)
 
 <a id="Get-AvailableFindingStatuses"></a>
 # **Get-AvailableFindingStatuses**
-> void Get-AvailableFindingStatuses<br>
+> FindingStatusesResponse Get-AvailableFindingStatuses<br>
 
 List Finding Statuses
 
@@ -341,7 +341,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**FindingStatusesResponse**](FindingStatusesResponse.md) (PSCustomObject)
 
 ### Authorization
 
@@ -350,7 +350,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -603,7 +603,7 @@ Name | Type | Description  | Notes
 
 <a id="Start-SpecificFindingRetest"></a>
 # **Start-SpecificFindingRetest**
-> ClientFinding Start-SpecificFindingRetest<br>
+> ClientFindingRetestResponse Start-SpecificFindingRetest<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-FindingId] <Decimal><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IncludeDnsConnected] <System.Nullable[Boolean]><br>
 
@@ -637,7 +637,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClientFinding**](ClientFinding.md) (PSCustomObject)
+[**ClientFindingRetestResponse**](ClientFindingRetestResponse.md) (PSCustomObject)
 
 ### Authorization
 

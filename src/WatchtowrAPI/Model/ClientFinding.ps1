@@ -37,6 +37,8 @@ No description available.
 No description available.
 .PARAMETER Cvssv3Metrics
 No description available.
+.PARAMETER References
+Finding references from the knowledge base entry, or `""No references.""` when none exist.
 .PARAMETER Status
 No description available.
 .PARAMETER State
@@ -44,14 +46,14 @@ Different to status, this is about tracking how the finding is being handled
 .PARAMETER CreatedAt
 No description available.
 .PARAMETER Affected
-No description available.
+Affected asset envelope. The asset object is nested under `data`; shape varies by asset type.
 .PARAMETER CveId
 No description available.
 .PARAMETER EpssScore
 No description available.
 .PARAMETER Retest
 No description available.
-.PARAMETER FindingRetests
+.PARAMETER RetestHistory
 No description available.
 .PARAMETER AssignedUser
 No description available.
@@ -110,50 +112,53 @@ function Initialize-ClientFinding {
         [String]
         ${Cvssv3Metrics},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${References},
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("confirmed", "unconfirmed", "remediated", "risk-accepted", "closed", "asset-no-longer-tracked")]
         [String]
         ${Status},
-        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("Uninvestigated", "In Progress", "Completed")]
         [String]
         ${State},
-        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${CreatedAt},
         [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
+        [System.DateTime]
+        ${CreatedAt},
+        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${Affected},
-        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${CveId},
-        [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Decimal]]
         ${EpssScore},
-        [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 18, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${Retest},
-        [Parameter(Position = 18, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject[]]
-        ${FindingRetests},
         [Parameter(Position = 19, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${AssignedUser},
+        [PSCustomObject[]]
+        ${RetestHistory},
         [Parameter(Position = 20, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
-        ${LastSeen},
+        ${AssignedUser},
         [Parameter(Position = 21, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${LastStatusUpdatedAt},
+        [System.Nullable[System.DateTime]]
+        ${LastSeen},
         [Parameter(Position = 22, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
-        ${Age},
+        [System.DateTime]
+        ${LastStatusUpdatedAt},
         [Parameter(Position = 23, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Decimal]]
+        ${Age},
+        [Parameter(Position = 24, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Criticality},
-        [Parameter(Position = 24, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 25, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
         ${CustomProperties},
-        [Parameter(Position = 25, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 26, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
         ${DetectionRules}
     )
@@ -206,12 +211,12 @@ function Initialize-ClientFinding {
             throw "invalid value for 'Cvssv3Metrics', 'Cvssv3Metrics' cannot be null."
         }
 
-        if ($null -eq $Status) {
-            throw "invalid value for 'Status', 'Status' cannot be null."
+        if ($null -eq $References) {
+            throw "invalid value for 'References', 'References' cannot be null."
         }
 
-        if ($null -eq $State) {
-            throw "invalid value for 'State', 'State' cannot be null."
+        if ($null -eq $Status) {
+            throw "invalid value for 'Status', 'Status' cannot be null."
         }
 
         if ($null -eq $CreatedAt) {
@@ -224,14 +229,6 @@ function Initialize-ClientFinding {
 
         if ($null -eq $LastStatusUpdatedAt) {
             throw "invalid value for 'LastStatusUpdatedAt', 'LastStatusUpdatedAt' cannot be null."
-        }
-
-        if ($null -eq $Age) {
-            throw "invalid value for 'Age', 'Age' cannot be null."
-        }
-
-        if ($null -eq $Criticality) {
-            throw "invalid value for 'Criticality', 'Criticality' cannot be null."
         }
 
         if ($null -eq $CustomProperties) {
@@ -255,6 +252,7 @@ function Initialize-ClientFinding {
             "severity" = ${Severity}
             "cvssv3_score" = ${Cvssv3Score}
             "cvssv3_metrics" = ${Cvssv3Metrics}
+            "references" = ${References}
             "status" = ${Status}
             "state" = ${State}
             "created_at" = ${CreatedAt}
@@ -262,7 +260,7 @@ function Initialize-ClientFinding {
             "cve_id" = ${CveId}
             "epss_score" = ${EpssScore}
             "retest" = ${Retest}
-            "finding_retests" = ${FindingRetests}
+            "retest_history" = ${RetestHistory}
             "assigned_user" = ${AssignedUser}
             "last_seen" = ${LastSeen}
             "last_status_updated_at" = ${LastStatusUpdatedAt}
@@ -307,7 +305,7 @@ function ConvertFrom-JsonToClientFinding {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientFinding
-        $AllProperties = ("id", "title", "description", "impact", "finding_impact", "tags", "evidence", "recommendation", "severity", "cvssv3_score", "cvssv3_metrics", "status", "state", "created_at", "affected", "cve_id", "epss_score", "retest", "finding_retests", "assigned_user", "last_seen", "last_status_updated_at", "age", "criticality", "customProperties", "detection_rules")
+        $AllProperties = ("id", "title", "description", "impact", "finding_impact", "tags", "evidence", "recommendation", "severity", "cvssv3_score", "cvssv3_metrics", "references", "status", "state", "created_at", "affected", "cve_id", "epss_score", "retest", "retest_history", "assigned_user", "last_seen", "last_status_updated_at", "age", "criticality", "customProperties", "detection_rules")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -384,16 +382,16 @@ function ConvertFrom-JsonToClientFinding {
             $Cvssv3Metrics = $JsonParameters.PSobject.Properties["cvssv3_metrics"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "references"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'references' missing."
+        } else {
+            $References = $JsonParameters.PSobject.Properties["references"].value
+        }
+
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "status"))) {
             throw "Error! JSON cannot be serialized due to the required property 'status' missing."
         } else {
             $Status = $JsonParameters.PSobject.Properties["status"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "state"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'state' missing."
-        } else {
-            $State = $JsonParameters.PSobject.Properties["state"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "created_at"))) {
@@ -414,18 +412,6 @@ function ConvertFrom-JsonToClientFinding {
             $LastStatusUpdatedAt = $JsonParameters.PSobject.Properties["last_status_updated_at"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "age"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'age' missing."
-        } else {
-            $Age = $JsonParameters.PSobject.Properties["age"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "criticality"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'criticality' missing."
-        } else {
-            $Criticality = $JsonParameters.PSobject.Properties["criticality"].value
-        }
-
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "customProperties"))) {
             throw "Error! JSON cannot be serialized due to the required property 'customProperties' missing."
         } else {
@@ -436,6 +422,12 @@ function ConvertFrom-JsonToClientFinding {
             throw "Error! JSON cannot be serialized due to the required property 'detection_rules' missing."
         } else {
             $DetectionRules = $JsonParameters.PSobject.Properties["detection_rules"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "state"))) { #optional property not found
+            $State = $null
+        } else {
+            $State = $JsonParameters.PSobject.Properties["state"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "cve_id"))) { #optional property not found
@@ -456,10 +448,10 @@ function ConvertFrom-JsonToClientFinding {
             $Retest = $JsonParameters.PSobject.Properties["retest"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "finding_retests"))) { #optional property not found
-            $FindingRetests = $null
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "retest_history"))) { #optional property not found
+            $RetestHistory = $null
         } else {
-            $FindingRetests = $JsonParameters.PSobject.Properties["finding_retests"].value
+            $RetestHistory = $JsonParameters.PSobject.Properties["retest_history"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "assigned_user"))) { #optional property not found
@@ -474,6 +466,18 @@ function ConvertFrom-JsonToClientFinding {
             $LastSeen = $JsonParameters.PSobject.Properties["last_seen"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "age"))) { #optional property not found
+            $Age = $null
+        } else {
+            $Age = $JsonParameters.PSobject.Properties["age"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "criticality"))) { #optional property not found
+            $Criticality = $null
+        } else {
+            $Criticality = $JsonParameters.PSobject.Properties["criticality"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
             "title" = ${Title}
@@ -486,6 +490,7 @@ function ConvertFrom-JsonToClientFinding {
             "severity" = ${Severity}
             "cvssv3_score" = ${Cvssv3Score}
             "cvssv3_metrics" = ${Cvssv3Metrics}
+            "references" = ${References}
             "status" = ${Status}
             "state" = ${State}
             "created_at" = ${CreatedAt}
@@ -493,7 +498,7 @@ function ConvertFrom-JsonToClientFinding {
             "cve_id" = ${CveId}
             "epss_score" = ${EpssScore}
             "retest" = ${Retest}
-            "finding_retests" = ${FindingRetests}
+            "retest_history" = ${RetestHistory}
             "assigned_user" = ${AssignedUser}
             "last_seen" = ${LastSeen}
             "last_status_updated_at" = ${LastStatusUpdatedAt}

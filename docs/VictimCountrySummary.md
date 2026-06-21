@@ -3,14 +3,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VarData** | [**VictimCountry[]**](VictimCountry.md) |  | [optional] 
+**VarData** | **String[]** |  | [optional] 
 **TotalCount** | **Decimal** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$VictimCountrySummary = Initialize-WatchtowrAPIVictimCountrySummary  -VarData null `
+$VictimCountrySummary = Initialize-WatchtowrAPIVictimCountrySummary  -VarData [&quot;SG&quot;,&quot;US&quot;] `
  -TotalCount 25
 ```
 

@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **String** | ID | 
+**Id** | [**AssetId**](AssetId.md) |  | 
 **CreatedAt** | **System.DateTime** | Created at | 
 **Source** | **String** | Source | 
 **Type** | **String** | Type | 
@@ -13,19 +13,20 @@ Name | Type | Description | Notes
 **Platform** | **String** | Platform | 
 **Provider** | **String** | Provider | 
 **Url** | **String** | URL | 
-**BusinessUnits** | **String[]** | Business units | 
+**BusinessUnits** | [**AssetBusinessUnitDto[]**](AssetBusinessUnitDto.md) | Business units | 
 **DiscoveryReason** | **String** | Discovery reason | 
 **Owner** | **String** | Owner | 
 **Live** | **Boolean** | Live | 
 **SubType** | **String** | Sub type | 
 **SuperType** | **String** | Super type | 
 **Metadata** | [**SystemCollectionsHashtable**](.md) | Metadata | 
+**EngineSettings** | [**ClientEngineSettings**](ClientEngineSettings.md) | Engine coverage settings. Present on domain, container, and IP hunt assets; omitted for other asset types. | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$Asset = Initialize-WatchtowrAPIAsset  -Id 11 `
+$Asset = Initialize-WatchtowrAPIAsset  -Id null `
  -CreatedAt 2021-11-22T22:17:12Z `
  -Source module-github-enumeration-v0.1 `
  -Type repository `
@@ -35,13 +36,14 @@ $Asset = Initialize-WatchtowrAPIAsset  -Id 11 `
  -Platform null `
  -Provider github `
  -Url https://example.com `
- -BusinessUnits [] `
+ -BusinessUnits [{&quot;id&quot;:153,&quot;name&quot;:&quot;BU SG-01&quot;}] `
  -DiscoveryReason null `
  -Owner example_user `
  -Live null `
  -SubType Amazon RDS `
  -SuperType Databases `
- -Metadata {}
+ -Metadata {} `
+ -EngineSettings null
 ```
 
 - Convert the resource to JSON

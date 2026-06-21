@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'WhitelistIpData' {
     Context 'WhitelistIpData' {
         It 'Initialize-WhitelistIpData' {
             # a simple test to create an object
-            #$NewObject = Initialize-WhitelistIpData -Id "TEST_VALUE" -Ip "TEST_VALUE" -Description "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE"
+            #$NewObject = Initialize-WhitelistIpData -Id "TEST_VALUE" -Ip "TEST_VALUE" -Description "TEST_VALUE" -EnabledFor "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE"
             #$NewObject | Should -BeOfType WhitelistIpData
             #$NewObject.property | Should -Be 0
         }

@@ -3,32 +3,34 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DiscoveryReason** | **String** |  | [optional] 
 **Type** | **String** |  | 
 **Source** | **String** |  | 
-**Status** | **String** |  | 
-**CreatedAt** | [**DatetimeDate**](DatetimeDate.md) |  | 
-**UpdatedAt** | [**DatetimeDate**](DatetimeDate.md) |  | 
-**Id** | **Decimal** |  | 
-**Url** | **String** |  | 
+**Status** | **String** |  | [optional] 
+**CreatedAt** | **System.DateTime** |  | 
+**Id** | **String** |  | 
+**Url** | **String** |  | [optional] 
 **Provider** | **String** |  | 
 **BusinessUnits** | [**ClientBusinessUnit[]**](ClientBusinessUnit.md) |  | 
+**Metadata** | [**SystemCollectionsHashtable**](.md) | Additional asset metadata; shape varies by asset type. Defaults to an empty object. | 
 **CustomProperties** | [**ClientCustomProperty[]**](ClientCustomProperty.md) |  | 
-**Criticality** | **String** |  | 
+**Criticality** | **String** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$ClientSaasPlatform = Initialize-WatchtowrAPIClientSaasPlatform  -Type saasPlatform `
+$ClientSaasPlatform = Initialize-WatchtowrAPIClientSaasPlatform  -DiscoveryReason dns-discovery `
+ -Type saasPlatform `
  -Source module-adversarysight-slack-saas-discovery `
  -Status verified `
- -CreatedAt 2022-02-13T02:10:00.000000Z `
- -UpdatedAt 2022-02-13T02:10:00.000000Z `
+ -CreatedAt 2022-02-13T02:10Z `
  -Id 123 `
  -Url https://example.slack.com `
  -Provider Slack `
  -BusinessUnits null `
- -CustomProperties [{&quot;id&quot;:10,&quot;key&quot;:&quot;Severity&quot;,&quot;value&quot;:&quot;normal&quot;,&quot;isPreset&quot;:false,&quot;modelType&quot;:&quot;saasPlatform&quot;,&quot;modelId&quot;:209,&quot;createdAt&quot;:&quot;2024-09-24T02:37:27.000Z&quot;,&quot;updatedAt&quot;:&quot;2024-09-24T02:38:35.000Z&quot;},{&quot;id&quot;:11,&quot;key&quot;:&quot;Vulnerability&quot;,&quot;value&quot;:&quot;low risk&quot;,&quot;isPreset&quot;:false,&quot;modelType&quot;:&quot;saasPlatform&quot;,&quot;modelId&quot;:209,&quot;createdAt&quot;:&quot;2024-09-24T02:37:27.000Z&quot;,&quot;updatedAt&quot;:&quot;2024-09-24T02:38:35.000Z&quot;}] `
+ -Metadata {} `
+ -CustomProperties [{&quot;id&quot;:10,&quot;key&quot;:&quot;Severity&quot;,&quot;value&quot;:&quot;normal&quot;,&quot;isPreset&quot;:false,&quot;modelType&quot;:&quot;saasPlatform&quot;,&quot;modelId&quot;:209,&quot;created_at&quot;:&quot;2024-09-24T02:37:27.000Z&quot;,&quot;updated_at&quot;:&quot;2024-09-24T02:38:35.000Z&quot;},{&quot;id&quot;:11,&quot;key&quot;:&quot;Vulnerability&quot;,&quot;value&quot;:&quot;low risk&quot;,&quot;isPreset&quot;:false,&quot;modelType&quot;:&quot;saasPlatform&quot;,&quot;modelId&quot;:209,&quot;created_at&quot;:&quot;2024-09-24T02:37:27.000Z&quot;,&quot;updated_at&quot;:&quot;2024-09-24T02:38:35.000Z&quot;}] `
  -Criticality Medium
 ```
 

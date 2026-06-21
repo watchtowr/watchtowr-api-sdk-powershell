@@ -26,7 +26,7 @@ function Initialize-ClientSourceIpsAddresses {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [String[]]
+        [PSCustomObject[]]
         ${VarData}
     )
 

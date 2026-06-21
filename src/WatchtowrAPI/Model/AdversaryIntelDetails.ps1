@@ -38,7 +38,7 @@ No description available.
 .PARAMETER TargetIndustries
 No description available.
 .PARAMETER LatestMedia
-No description available.
+Recent media references for this adversary. Not currently populated — returns an empty array.
 .PARAMETER IsAffected
 Whether the user has confirmed open findings against vulnerabilities exploited by this adversary. Scoped to the requesting user's business units and the organization's finding impact threshold.
 .PARAMETER AffectedKbEntryIds

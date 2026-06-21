@@ -21,8 +21,16 @@ No description available.
 The key of the custom property. Key provided must not be empty and must be unique for the model type. If is_preset is true, key must belong to one of watchTowr's preset custom properties. Accepted preset keys include: 'Criticality'.
 .PARAMETER Value
 The value of the custom property. Any string value is accepted if preset is false. If existing custom property's preset is true, the value supplied must belong to one of the valid watchTowr preset values. Accepted values are 'Low', 'Medium', 'High', 'Unknown' for key: 'Criticality'.
+.PARAMETER ModelType
+The model type that the custom property is attached to.
+.PARAMETER ModelId
+The ID of the model type that the custom property is attached to.
 .PARAMETER IsPreset
 Indicates whether this is a watchTowr preset custom property.
+.PARAMETER CreatedAt
+No description available.
+.PARAMETER UpdatedAt
+No description available.
 .OUTPUTS
 
 ClientCustomProperty<PSCustomObject>
@@ -41,8 +49,21 @@ function Initialize-ClientCustomProperty {
         [String]
         ${Value},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
+        [ValidateSet("finding", "domain", "subdomain", "ip", "ipRange", "repository", "saasPlatform", "mobileApp", "cloudStorage", "container", "cloudAsset", "packageManager", "apiDocumentation")]
+        [String]
+        ${ModelType},
+        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
+        [Decimal]
+        ${ModelId},
+        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [Boolean]
-        ${IsPreset}
+        ${IsPreset},
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[System.DateTime]]
+        ${CreatedAt},
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[System.DateTime]]
+        ${UpdatedAt}
     )
 
     Process {
@@ -61,6 +82,14 @@ function Initialize-ClientCustomProperty {
             throw "invalid value for 'Value', 'Value' cannot be null."
         }
 
+        if ($null -eq $ModelType) {
+            throw "invalid value for 'ModelType', 'ModelType' cannot be null."
+        }
+
+        if ($null -eq $ModelId) {
+            throw "invalid value for 'ModelId', 'ModelId' cannot be null."
+        }
+
         if ($null -eq $IsPreset) {
             throw "invalid value for 'IsPreset', 'IsPreset' cannot be null."
         }
@@ -70,7 +99,11 @@ function Initialize-ClientCustomProperty {
             "id" = ${Id}
             "key" = ${Key}
             "value" = ${Value}
+            "modelType" = ${ModelType}
+            "modelId" = ${ModelId}
             "isPreset" = ${IsPreset}
+            "created_at" = ${CreatedAt}
+            "updated_at" = ${UpdatedAt}
         }
 
 
@@ -108,7 +141,7 @@ function ConvertFrom-JsonToClientCustomProperty {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientCustomProperty
-        $AllProperties = ("id", "key", "value", "isPreset")
+        $AllProperties = ("id", "key", "value", "modelType", "modelId", "isPreset", "created_at", "updated_at")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -137,17 +170,45 @@ function ConvertFrom-JsonToClientCustomProperty {
             $Value = $JsonParameters.PSobject.Properties["value"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "modelType"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'modelType' missing."
+        } else {
+            $ModelType = $JsonParameters.PSobject.Properties["modelType"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "modelId"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'modelId' missing."
+        } else {
+            $ModelId = $JsonParameters.PSobject.Properties["modelId"].value
+        }
+
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "isPreset"))) {
             throw "Error! JSON cannot be serialized due to the required property 'isPreset' missing."
         } else {
             $IsPreset = $JsonParameters.PSobject.Properties["isPreset"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "created_at"))) { #optional property not found
+            $CreatedAt = $null
+        } else {
+            $CreatedAt = $JsonParameters.PSobject.Properties["created_at"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "updated_at"))) { #optional property not found
+            $UpdatedAt = $null
+        } else {
+            $UpdatedAt = $JsonParameters.PSobject.Properties["updated_at"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
             "key" = ${Key}
             "value" = ${Value}
+            "modelType" = ${ModelType}
+            "modelId" = ${ModelId}
             "isPreset" = ${IsPreset}
+            "created_at" = ${CreatedAt}
+            "updated_at" = ${UpdatedAt}
         }
 
         return $PSO

@@ -9,7 +9,7 @@
 Describe -tag 'WatchtowrAPI' -name 'SourceIPAddressesApi' {
     Context 'Get-ListSourceIpAddresses' {
         It 'Test Get-ListSourceIpAddresses' {
-            #$TestResult = Get-ListSourceIpAddresses -Whitelist "TEST_VALUE" -Region "TEST_VALUE"
+            #$TestResult = Get-ListSourceIpAddresses -Region "TEST_VALUE" -Whitelist "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
         }

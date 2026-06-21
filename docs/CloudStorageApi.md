@@ -86,7 +86,7 @@ Assign a specific Cloud Storage asset to a list of Business Units
 $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The Cloud Storage asset's ID.
-$AssetBusinessUnitIdsDTO = Initialize-AssetBusinessUnitIdsDTO -BusinessUnitIds "MyBusinessUnitIds" # AssetBusinessUnitIdsDTO | 
+$AssetBusinessUnitIdsDTO = Initialize-AssetBusinessUnitIdsDTO -BusinessUnitIds 0 # AssetBusinessUnitIdsDTO | 
 
 # Assign Cloud Storage to Business Units
 try {
@@ -135,7 +135,7 @@ Create a Custom Property for a specific Cloud Storage.
 $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The asset ID of a Cloud Storage asset to create a custom property for.
-$CreateClientCustomPropertyDto = Initialize-CreateClientCustomPropertyDto -Key "Severity" -Value  -IsPreset $false # CreateClientCustomPropertyDto | 
+$CreateClientCustomPropertyDto = Initialize-CreateClientCustomPropertyDto -Key "Severity" -Value "Low" -IsPreset $false # CreateClientCustomPropertyDto | 
 
 # Create Custom Property
 try {

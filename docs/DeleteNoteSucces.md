@@ -3,15 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**StatusCode** | **Decimal** |  | 
 **Message** | **String** |  | 
+**Status** | **Decimal** |  | 
+**StatusCode** | **Decimal** |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$DeleteNoteSucces = Initialize-WatchtowrAPIDeleteNoteSucces  -StatusCode 200 `
- -Message Note deleted successfully
+$DeleteNoteSucces = Initialize-WatchtowrAPIDeleteNoteSucces  -Message Note deleted successfully `
+ -Status 200 `
+ -StatusCode 200
 ```
 
 - Convert the resource to JSON

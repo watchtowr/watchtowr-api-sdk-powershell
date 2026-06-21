@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **IntegrationType** | **String** | Integration type. Valid values: aws, azure, googlecloud, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, armiscentrix, qualysvmdr, tenable | [optional] 
 **IntegrationId** | **Decimal** | Integration ID | [optional] 
 **IncludeAllIntegrations** | **Boolean** | Whether to include all integrations | 
-**CreatedAt** | [**SystemCollectionsHashtable**](.md) | Created At | 
+**CreatedAt** | **System.DateTime** | Created At | 
 
 ## Examples
 
@@ -29,7 +29,7 @@ $ClientBusinessUnitRuleDetail = Initialize-WatchtowrAPIClientBusinessUnitRuleDet
  -IntegrationType aws `
  -IntegrationId 1 `
  -IncludeAllIntegrations false `
- -CreatedAt 2022-02-13T02:10:00.000000Z
+ -CreatedAt 2022-02-13T02:10Z
 ```
 
 - Convert the resource to JSON

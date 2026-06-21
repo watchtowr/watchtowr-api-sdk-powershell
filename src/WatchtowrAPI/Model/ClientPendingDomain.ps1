@@ -165,8 +165,8 @@ function ConvertFrom-JsonToClientPendingDomain {
             $CreatedAt = $JsonParameters.PSobject.Properties["created_at"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "whoisData"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'whoisData' missing."
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "whoisData"))) { #optional property not found
+            $WhoisData = $null
         } else {
             $WhoisData = $JsonParameters.PSobject.Properties["whoisData"].value
         }

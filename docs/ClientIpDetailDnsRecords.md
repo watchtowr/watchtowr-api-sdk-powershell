@@ -3,8 +3,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DnsRecordsOwned** | **String[]** |  | 
-**DnsRecordsPointingAt** | **String[]** |  | 
+**DnsRecordsOwned** | [**ClientAssetDnsRecord[]**](ClientAssetDnsRecord.md) |  | 
+**DnsRecordsPointingAt** | [**ClientIpRelatedDnsRecord[]**](ClientIpRelatedDnsRecord.md) |  | 
 
 ## Examples
 

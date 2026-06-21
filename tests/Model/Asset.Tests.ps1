@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'Asset' {
     Context 'Asset' {
         It 'Initialize-Asset' {
             # a simple test to create an object
-            #$NewObject = Initialize-Asset -Id "TEST_VALUE" -CreatedAt "TEST_VALUE" -Source "TEST_VALUE" -Type "TEST_VALUE" -Status "TEST_VALUE" -Name "TEST_VALUE" -Country "TEST_VALUE" -Platform "TEST_VALUE" -Provider "TEST_VALUE" -Url "TEST_VALUE" -BusinessUnits "TEST_VALUE" -DiscoveryReason "TEST_VALUE" -Owner "TEST_VALUE" -Live "TEST_VALUE" -SubType "TEST_VALUE" -SuperType "TEST_VALUE" -Metadata "TEST_VALUE"
+            #$NewObject = Initialize-Asset -Id "TEST_VALUE" -CreatedAt "TEST_VALUE" -Source "TEST_VALUE" -Type "TEST_VALUE" -Status "TEST_VALUE" -Name "TEST_VALUE" -Country "TEST_VALUE" -Platform "TEST_VALUE" -Provider "TEST_VALUE" -Url "TEST_VALUE" -BusinessUnits "TEST_VALUE" -DiscoveryReason "TEST_VALUE" -Owner "TEST_VALUE" -Live "TEST_VALUE" -SubType "TEST_VALUE" -SuperType "TEST_VALUE" -Metadata "TEST_VALUE" -EngineSettings "TEST_VALUE"
             #$NewObject | Should -BeOfType Asset
             #$NewObject.property | Should -Be 0
         }

@@ -77,7 +77,7 @@ function Initialize-ClientBusinessUnitRuleDetail {
         [Boolean]
         ${IncludeAllIntegrations},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
+        [System.DateTime]
         ${CreatedAt}
     )
 

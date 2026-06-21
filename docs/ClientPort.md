@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **String** |  | 
-**Status** | **String** |  | 
-**CreatedAt** | [**DatetimeDate**](DatetimeDate.md) |  | 
-**UpdatedAt** | [**DatetimeDate**](DatetimeDate.md) |  | 
-**LastSeenAt** | [**DatetimeDate**](DatetimeDate.md) |  | 
-**Id** | **Decimal** |  | 
-**Ip** | **String** |  | 
-**IpId** | **Decimal** |  | 
+**Type** | **String** | Port protocol, always uppercased (e.g. &#x60;TCP&#x60;, &#x60;UDP&#x60;). | 
+**Status** | **String** |  | [optional] 
+**CreatedAt** | **System.DateTime** |  | 
+**LastSeenAt** | **System.DateTime** |  | 
+**Id** | **String** |  | 
+**Ip** | **String** |  | [optional] 
+**IpId** | **Decimal** |  | [optional] 
 **Port** | **Decimal** |  | 
-**Banner** | **String** |  | 
+**Banner** | **String** |  | [optional] 
 **Service** | **String** |  | 
+**State** | **String** | Port state (e.g. &#x60;open&#x60;, &#x60;closed&#x60;, &#x60;filtered&#x60;). | [optional] 
 **BusinessUnits** | [**ClientBusinessUnit[]**](ClientBusinessUnit.md) |  | 
 
 ## Examples
@@ -22,15 +22,15 @@ Name | Type | Description | Notes
 ```powershell
 $ClientPort = Initialize-WatchtowrAPIClientPort  -Type TCP `
  -Status verified `
- -CreatedAt 2022-02-13T02:10:00.000000Z `
- -UpdatedAt 2022-02-13T02:10:00.000000Z `
- -LastSeenAt 2022-02-13T02:10:00.000000Z `
+ -CreatedAt 2022-02-13T02:10Z `
+ -LastSeenAt 2022-02-13T02:10Z `
  -Id 123 `
  -Ip 123.123.123.123 `
  -IpId 333 `
  -Port 22 `
  -Banner OpenSSH6.6.1p1 Ubuntu 2ubuntu2.13Ubuntu Linux; protocol 2.0 `
  -Service ssh `
+ -State open `
  -BusinessUnits null
 ```
 

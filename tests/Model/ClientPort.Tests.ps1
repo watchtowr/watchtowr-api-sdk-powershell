@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ClientPort' {
     Context 'ClientPort' {
         It 'Initialize-ClientPort' {
             # a simple test to create an object
-            #$NewObject = Initialize-ClientPort -Type "TEST_VALUE" -Status "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE" -LastSeenAt "TEST_VALUE" -Id "TEST_VALUE" -Ip "TEST_VALUE" -IpId "TEST_VALUE" -Port "TEST_VALUE" -Banner "TEST_VALUE" -Service "TEST_VALUE" -BusinessUnits "TEST_VALUE"
+            #$NewObject = Initialize-ClientPort -Type "TEST_VALUE" -Status "TEST_VALUE" -CreatedAt "TEST_VALUE" -LastSeenAt "TEST_VALUE" -Id "TEST_VALUE" -Ip "TEST_VALUE" -IpId "TEST_VALUE" -Port "TEST_VALUE" -Banner "TEST_VALUE" -Service "TEST_VALUE" -State "TEST_VALUE" -BusinessUnits "TEST_VALUE"
             #$NewObject | Should -BeOfType ClientPort
             #$NewObject.property | Should -Be 0
         }

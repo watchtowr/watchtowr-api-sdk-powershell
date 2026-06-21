@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **Type** | **String** | Business unit type | 
 **ParentId** | **Decimal** | Parent business unit ID | [optional] 
 **UserIds** | **Decimal[]** | Array of user IDs assigned to this business unit | [optional] 
-**CreatedAt** | [**SystemCollectionsHashtable**](.md) | Created At | 
-**UpdatedAt** | [**SystemCollectionsHashtable**](.md) | Updated At | 
+**CreatedAt** | **System.DateTime** | Created At | 
+**UpdatedAt** | **System.DateTime** | Updated At | 
 
 ## Examples
 
@@ -22,8 +22,8 @@ $ClientBusinessUnitDetail = Initialize-WatchtowrAPIClientBusinessUnitDetail  -Id
  -Type DEPARTMENT `
  -ParentId 1 `
  -UserIds [1,2,3] `
- -CreatedAt 2022-02-13T02:10:00.000000Z `
- -UpdatedAt 2022-02-13T02:10:00.000000Z
+ -CreatedAt 2022-02-13T02:10Z `
+ -UpdatedAt 2022-02-13T02:10Z
 ```
 
 - Convert the resource to JSON

@@ -58,10 +58,10 @@ function Initialize-ClientBusinessUnitDetail {
         [Decimal[]]
         ${UserIds},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
+        [System.DateTime]
         ${CreatedAt},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
+        [System.DateTime]
         ${UpdatedAt}
     )
 

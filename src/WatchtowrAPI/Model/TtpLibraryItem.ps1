@@ -24,7 +24,7 @@ Tactic identifier
 .PARAMETER Type
 Tactic type
 .PARAMETER Category
-Parent category
+No description available.
 .PARAMETER Module
 Module name
 .PARAMETER EnabledOn
@@ -78,10 +78,6 @@ function Initialize-TtpLibraryItem {
 
         if ($null -eq $Type) {
             throw "invalid value for 'Type', 'Type' cannot be null."
-        }
-
-        if ($null -eq $Category) {
-            throw "invalid value for 'Category', 'Category' cannot be null."
         }
 
 
@@ -165,8 +161,8 @@ function ConvertFrom-JsonToTtpLibraryItem {
             $Type = $JsonParameters.PSobject.Properties["type"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "category"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'category' missing."
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "category"))) { #optional property not found
+            $Category = $null
         } else {
             $Category = $JsonParameters.PSobject.Properties["category"].value
         }

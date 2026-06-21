@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ClientSeedData' {
     Context 'ClientSeedData' {
         It 'Initialize-ClientSeedData' {
             # a simple test to create an object
-            #$NewObject = Initialize-ClientSeedData -Title "TEST_VALUE" -Type "TEST_VALUE" -Value "TEST_VALUE" -Values "TEST_VALUE"
+            #$NewObject = Initialize-ClientSeedData -Title "TEST_VALUE" -Type "TEST_VALUE" -Value "TEST_VALUE" -Values "TEST_VALUE" -BusinessUnits "TEST_VALUE"
             #$NewObject | Should -BeOfType ClientSeedData
             #$NewObject.property | Should -Be 0
         }

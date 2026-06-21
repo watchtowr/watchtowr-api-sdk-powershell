@@ -21,6 +21,8 @@ IP address ID
 IP address or CIDR range
 .PARAMETER Description
 Description of the IP address
+.PARAMETER EnabledFor
+Whitelisting scope this IP applies to
 .PARAMETER CreatedAt
 Creation timestamp
 .PARAMETER UpdatedAt
@@ -43,9 +45,13 @@ function Initialize-WhitelistIpData {
         [String]
         ${Description},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
+        [ValidateSet("Client API")]
+        [String]
+        ${EnabledFor},
+        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [System.DateTime]
         ${CreatedAt},
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [System.DateTime]
         ${UpdatedAt}
     )
@@ -62,6 +68,10 @@ function Initialize-WhitelistIpData {
             throw "invalid value for 'Ip', 'Ip' cannot be null."
         }
 
+        if ($null -eq $EnabledFor) {
+            throw "invalid value for 'EnabledFor', 'EnabledFor' cannot be null."
+        }
+
         if ($null -eq $CreatedAt) {
             throw "invalid value for 'CreatedAt', 'CreatedAt' cannot be null."
         }
@@ -75,6 +85,7 @@ function Initialize-WhitelistIpData {
             "id" = ${Id}
             "ip" = ${Ip}
             "description" = ${Description}
+            "enabled_for" = ${EnabledFor}
             "created_at" = ${CreatedAt}
             "updated_at" = ${UpdatedAt}
         }
@@ -114,7 +125,7 @@ function ConvertFrom-JsonToWhitelistIpData {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in WhitelistIpData
-        $AllProperties = ("id", "ip", "description", "created_at", "updated_at")
+        $AllProperties = ("id", "ip", "description", "enabled_for", "created_at", "updated_at")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -137,10 +148,10 @@ function ConvertFrom-JsonToWhitelistIpData {
             $Ip = $JsonParameters.PSobject.Properties["ip"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "description"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'description' missing."
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "enabled_for"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'enabled_for' missing."
         } else {
-            $Description = $JsonParameters.PSobject.Properties["description"].value
+            $EnabledFor = $JsonParameters.PSobject.Properties["enabled_for"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "created_at"))) {
@@ -155,10 +166,17 @@ function ConvertFrom-JsonToWhitelistIpData {
             $UpdatedAt = $JsonParameters.PSobject.Properties["updated_at"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "description"))) { #optional property not found
+            $Description = $null
+        } else {
+            $Description = $JsonParameters.PSobject.Properties["description"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
             "ip" = ${Ip}
             "description" = ${Description}
+            "enabled_for" = ${EnabledFor}
             "created_at" = ${CreatedAt}
             "updated_at" = ${UpdatedAt}
         }

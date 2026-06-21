@@ -15,6 +15,8 @@ No summary available.
 
 No description available.
 
+.PARAMETER DiscoveryReason
+No description available.
 .PARAMETER Id
 No description available.
 .PARAMETER Type
@@ -31,6 +33,10 @@ No description available.
 No description available.
 .PARAMETER Url
 No description available.
+.PARAMETER BusinessUnits
+No description available.
+.PARAMETER Metadata
+Additional asset metadata; shape varies by asset type. Defaults to an empty object.
 .PARAMETER CustomProperties
 No description available.
 .PARAMETER Criticality
@@ -44,34 +50,42 @@ function Initialize-ClientApiDocumentationAsset {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
-        ${Id},
+        [String]
+        ${DiscoveryReason},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Type},
+        ${Id},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Name},
+        ${Type},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Source},
+        ${Name},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Platform},
+        ${Source},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
-        [ValidateSet("verified", "Unregistered", "Incorrect Identification", "pending", "VerifiedOutOfScope", "VerifiedReducedAttack", "Tracked")]
+        [String]
+        ${Platform},
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Status},
-        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${CreatedAt},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
+        [System.DateTime]
+        ${CreatedAt},
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Url},
-        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject[]]
+        ${BusinessUnits},
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject]
+        ${Metadata},
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
         ${CustomProperties},
-        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Criticality}
     )
@@ -100,10 +114,6 @@ function Initialize-ClientApiDocumentationAsset {
             throw "invalid value for 'Platform', 'Platform' cannot be null."
         }
 
-        if ($null -eq $Status) {
-            throw "invalid value for 'Status', 'Status' cannot be null."
-        }
-
         if ($null -eq $CreatedAt) {
             throw "invalid value for 'CreatedAt', 'CreatedAt' cannot be null."
         }
@@ -112,16 +122,21 @@ function Initialize-ClientApiDocumentationAsset {
             throw "invalid value for 'Url', 'Url' cannot be null."
         }
 
+        if ($null -eq $BusinessUnits) {
+            throw "invalid value for 'BusinessUnits', 'BusinessUnits' cannot be null."
+        }
+
+        if ($null -eq $Metadata) {
+            throw "invalid value for 'Metadata', 'Metadata' cannot be null."
+        }
+
         if ($null -eq $CustomProperties) {
             throw "invalid value for 'CustomProperties', 'CustomProperties' cannot be null."
         }
 
-        if ($null -eq $Criticality) {
-            throw "invalid value for 'Criticality', 'Criticality' cannot be null."
-        }
-
 
         $PSO = [PSCustomObject]@{
+            "discovery_reason" = ${DiscoveryReason}
             "id" = ${Id}
             "type" = ${Type}
             "name" = ${Name}
@@ -130,6 +145,8 @@ function Initialize-ClientApiDocumentationAsset {
             "status" = ${Status}
             "created_at" = ${CreatedAt}
             "url" = ${Url}
+            "businessUnits" = ${BusinessUnits}
+            "metadata" = ${Metadata}
             "customProperties" = ${CustomProperties}
             "criticality" = ${Criticality}
         }
@@ -169,7 +186,7 @@ function ConvertFrom-JsonToClientApiDocumentationAsset {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientApiDocumentationAsset
-        $AllProperties = ("id", "type", "name", "source", "platform", "status", "created_at", "url", "customProperties", "criticality")
+        $AllProperties = ("discovery_reason", "id", "type", "name", "source", "platform", "status", "created_at", "url", "businessUnits", "metadata", "customProperties", "criticality")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -210,12 +227,6 @@ function ConvertFrom-JsonToClientApiDocumentationAsset {
             $Platform = $JsonParameters.PSobject.Properties["platform"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "status"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'status' missing."
-        } else {
-            $Status = $JsonParameters.PSobject.Properties["status"].value
-        }
-
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "created_at"))) {
             throw "Error! JSON cannot be serialized due to the required property 'created_at' missing."
         } else {
@@ -228,19 +239,44 @@ function ConvertFrom-JsonToClientApiDocumentationAsset {
             $Url = $JsonParameters.PSobject.Properties["url"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "businessUnits"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'businessUnits' missing."
+        } else {
+            $BusinessUnits = $JsonParameters.PSobject.Properties["businessUnits"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "metadata"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'metadata' missing."
+        } else {
+            $Metadata = $JsonParameters.PSobject.Properties["metadata"].value
+        }
+
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "customProperties"))) {
             throw "Error! JSON cannot be serialized due to the required property 'customProperties' missing."
         } else {
             $CustomProperties = $JsonParameters.PSobject.Properties["customProperties"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "criticality"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'criticality' missing."
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "discovery_reason"))) { #optional property not found
+            $DiscoveryReason = $null
+        } else {
+            $DiscoveryReason = $JsonParameters.PSobject.Properties["discovery_reason"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "status"))) { #optional property not found
+            $Status = $null
+        } else {
+            $Status = $JsonParameters.PSobject.Properties["status"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "criticality"))) { #optional property not found
+            $Criticality = $null
         } else {
             $Criticality = $JsonParameters.PSobject.Properties["criticality"].value
         }
 
         $PSO = [PSCustomObject]@{
+            "discovery_reason" = ${DiscoveryReason}
             "id" = ${Id}
             "type" = ${Type}
             "name" = ${Name}
@@ -249,6 +285,8 @@ function ConvertFrom-JsonToClientApiDocumentationAsset {
             "status" = ${Status}
             "created_at" = ${CreatedAt}
             "url" = ${Url}
+            "businessUnits" = ${BusinessUnits}
+            "metadata" = ${Metadata}
             "customProperties" = ${CustomProperties}
             "criticality" = ${Criticality}
         }

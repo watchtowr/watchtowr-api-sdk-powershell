@@ -16,12 +16,10 @@ No summary available.
 No description available.
 
 .PARAMETER Type
-No description available.
+Port protocol, always uppercased (e.g. `TCP`, `UDP`).
 .PARAMETER Status
 No description available.
 .PARAMETER CreatedAt
-No description available.
-.PARAMETER UpdatedAt
 No description available.
 .PARAMETER LastSeenAt
 No description available.
@@ -37,6 +35,8 @@ No description available.
 No description available.
 .PARAMETER Service
 No description available.
+.PARAMETER State
+Port state (e.g. `open`, `closed`, `filtered`).
 .PARAMETER BusinessUnits
 No description available.
 .OUTPUTS
@@ -51,36 +51,35 @@ function Initialize-ClientPort {
         [String]
         ${Type},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [ValidateSet("verified", "Unregistered", "Incorrect Identification", "pending", "VerifiedOutOfScope", "VerifiedReducedAttack", "Tracked")]
         [String]
         ${Status},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
+        [System.DateTime]
         ${CreatedAt},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${UpdatedAt},
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
+        [System.DateTime]
         ${LastSeenAt},
-        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
+        [String]
         ${Id},
-        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Ip},
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Decimal]]
+        ${IpId},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [Decimal]
-        ${IpId},
-        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
         ${Port},
-        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Banner},
-        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Service},
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${State},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
         ${BusinessUnits}
@@ -94,16 +93,8 @@ function Initialize-ClientPort {
             throw "invalid value for 'Type', 'Type' cannot be null."
         }
 
-        if ($null -eq $Status) {
-            throw "invalid value for 'Status', 'Status' cannot be null."
-        }
-
         if ($null -eq $CreatedAt) {
             throw "invalid value for 'CreatedAt', 'CreatedAt' cannot be null."
-        }
-
-        if ($null -eq $UpdatedAt) {
-            throw "invalid value for 'UpdatedAt', 'UpdatedAt' cannot be null."
         }
 
         if ($null -eq $LastSeenAt) {
@@ -114,20 +105,8 @@ function Initialize-ClientPort {
             throw "invalid value for 'Id', 'Id' cannot be null."
         }
 
-        if ($null -eq $Ip) {
-            throw "invalid value for 'Ip', 'Ip' cannot be null."
-        }
-
-        if ($null -eq $IpId) {
-            throw "invalid value for 'IpId', 'IpId' cannot be null."
-        }
-
         if ($null -eq $Port) {
             throw "invalid value for 'Port', 'Port' cannot be null."
-        }
-
-        if ($null -eq $Banner) {
-            throw "invalid value for 'Banner', 'Banner' cannot be null."
         }
 
         if ($null -eq $Service) {
@@ -143,7 +122,6 @@ function Initialize-ClientPort {
             "type" = ${Type}
             "status" = ${Status}
             "created_at" = ${CreatedAt}
-            "updated_at" = ${UpdatedAt}
             "last_seen_at" = ${LastSeenAt}
             "id" = ${Id}
             "ip" = ${Ip}
@@ -151,6 +129,7 @@ function Initialize-ClientPort {
             "port" = ${Port}
             "banner" = ${Banner}
             "service" = ${Service}
+            "state" = ${State}
             "businessUnits" = ${BusinessUnits}
         }
 
@@ -189,7 +168,7 @@ function ConvertFrom-JsonToClientPort {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientPort
-        $AllProperties = ("type", "status", "created_at", "updated_at", "last_seen_at", "id", "ip", "ip_id", "port", "banner", "service", "businessUnits")
+        $AllProperties = ("type", "status", "created_at", "last_seen_at", "id", "ip", "ip_id", "port", "banner", "service", "state", "businessUnits")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -206,22 +185,10 @@ function ConvertFrom-JsonToClientPort {
             $Type = $JsonParameters.PSobject.Properties["type"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "status"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'status' missing."
-        } else {
-            $Status = $JsonParameters.PSobject.Properties["status"].value
-        }
-
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "created_at"))) {
             throw "Error! JSON cannot be serialized due to the required property 'created_at' missing."
         } else {
             $CreatedAt = $JsonParameters.PSobject.Properties["created_at"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "updated_at"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'updated_at' missing."
-        } else {
-            $UpdatedAt = $JsonParameters.PSobject.Properties["updated_at"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "last_seen_at"))) {
@@ -236,28 +203,10 @@ function ConvertFrom-JsonToClientPort {
             $Id = $JsonParameters.PSobject.Properties["id"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "ip"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'ip' missing."
-        } else {
-            $Ip = $JsonParameters.PSobject.Properties["ip"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "ip_id"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'ip_id' missing."
-        } else {
-            $IpId = $JsonParameters.PSobject.Properties["ip_id"].value
-        }
-
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "port"))) {
             throw "Error! JSON cannot be serialized due to the required property 'port' missing."
         } else {
             $Port = $JsonParameters.PSobject.Properties["port"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "banner"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'banner' missing."
-        } else {
-            $Banner = $JsonParameters.PSobject.Properties["banner"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "service"))) {
@@ -272,11 +221,40 @@ function ConvertFrom-JsonToClientPort {
             $BusinessUnits = $JsonParameters.PSobject.Properties["businessUnits"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "status"))) { #optional property not found
+            $Status = $null
+        } else {
+            $Status = $JsonParameters.PSobject.Properties["status"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "ip"))) { #optional property not found
+            $Ip = $null
+        } else {
+            $Ip = $JsonParameters.PSobject.Properties["ip"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "ip_id"))) { #optional property not found
+            $IpId = $null
+        } else {
+            $IpId = $JsonParameters.PSobject.Properties["ip_id"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "banner"))) { #optional property not found
+            $Banner = $null
+        } else {
+            $Banner = $JsonParameters.PSobject.Properties["banner"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "state"))) { #optional property not found
+            $State = $null
+        } else {
+            $State = $JsonParameters.PSobject.Properties["state"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "type" = ${Type}
             "status" = ${Status}
             "created_at" = ${CreatedAt}
-            "updated_at" = ${UpdatedAt}
             "last_seen_at" = ${LastSeenAt}
             "id" = ${Id}
             "ip" = ${Ip}
@@ -284,6 +262,7 @@ function ConvertFrom-JsonToClientPort {
             "port" = ${Port}
             "banner" = ${Banner}
             "service" = ${Service}
+            "state" = ${State}
             "businessUnits" = ${BusinessUnits}
         }
 

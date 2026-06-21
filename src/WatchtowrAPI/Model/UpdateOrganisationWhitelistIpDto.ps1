@@ -15,8 +15,6 @@ No summary available.
 
 No description available.
 
-.PARAMETER Id
-IP address ID
 .PARAMETER Ip
 IP address or CIDR range to whitelist
 .PARAMETER Description
@@ -30,12 +28,9 @@ function Initialize-UpdateOrganisationWhitelistIpDto {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
-        ${Id},
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Ip},
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Description}
     )
@@ -44,17 +39,12 @@ function Initialize-UpdateOrganisationWhitelistIpDto {
         'Creating PSCustomObject: WatchtowrAPI => UpdateOrganisationWhitelistIpDto' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        if ($null -eq $Id) {
-            throw "invalid value for 'Id', 'Id' cannot be null."
-        }
-
         if ($null -eq $Ip) {
             throw "invalid value for 'Ip', 'Ip' cannot be null."
         }
 
 
         $PSO = [PSCustomObject]@{
-            "id" = ${Id}
             "ip" = ${Ip}
             "description" = ${Description}
         }
@@ -94,7 +84,7 @@ function ConvertFrom-JsonToUpdateOrganisationWhitelistIpDto {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in UpdateOrganisationWhitelistIpDto
-        $AllProperties = ("id", "ip", "description")
+        $AllProperties = ("ip", "description")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -102,13 +92,7 @@ function ConvertFrom-JsonToUpdateOrganisationWhitelistIpDto {
         }
 
         If ([string]::IsNullOrEmpty($Json) -or $Json -eq "{}") { # empty json
-            throw "Error! Empty JSON cannot be serialized due to the required property 'id' missing."
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "id"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'id' missing."
-        } else {
-            $Id = $JsonParameters.PSobject.Properties["id"].value
+            throw "Error! Empty JSON cannot be serialized due to the required property 'ip' missing."
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "ip"))) {
@@ -124,7 +108,6 @@ function ConvertFrom-JsonToUpdateOrganisationWhitelistIpDto {
         }
 
         $PSO = [PSCustomObject]@{
-            "id" = ${Id}
             "ip" = ${Ip}
             "description" = ${Description}
         }

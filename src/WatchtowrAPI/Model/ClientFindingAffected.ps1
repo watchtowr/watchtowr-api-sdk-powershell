@@ -16,27 +16,23 @@ No summary available.
 No description available.
 
 .PARAMETER VarData
-No description available.
+The affected asset object. Shape varies by asset type (domain, subdomain, ip, port, etc.).
 .OUTPUTS
 
-ClientSeedDataData<PSCustomObject>
+ClientFindingAffected<PSCustomObject>
 #>
 
-function Initialize-ClientSeedDataData {
+function Initialize-ClientFindingAffected {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject[]]
+        [PSCustomObject]
         ${VarData}
     )
 
     Process {
-        'Creating PSCustomObject: WatchtowrAPI => ClientSeedDataData' | Write-Debug
+        'Creating PSCustomObject: WatchtowrAPI => ClientFindingAffected' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
-
-        if ($null -eq $VarData) {
-            throw "invalid value for 'VarData', 'VarData' cannot be null."
-        }
 
 
         $PSO = [PSCustomObject]@{
@@ -51,11 +47,11 @@ function Initialize-ClientSeedDataData {
 <#
 .SYNOPSIS
 
-Convert from JSON to ClientSeedDataData<PSCustomObject>
+Convert from JSON to ClientFindingAffected<PSCustomObject>
 
 .DESCRIPTION
 
-Convert from JSON to ClientSeedDataData<PSCustomObject>
+Convert from JSON to ClientFindingAffected<PSCustomObject>
 
 .PARAMETER Json
 
@@ -63,21 +59,21 @@ Json object
 
 .OUTPUTS
 
-ClientSeedDataData<PSCustomObject>
+ClientFindingAffected<PSCustomObject>
 #>
-function ConvertFrom-JsonToClientSeedDataData {
+function ConvertFrom-JsonToClientFindingAffected {
     Param(
         [AllowEmptyString()]
         [string]$Json
     )
 
     Process {
-        'Converting JSON to PSCustomObject: WatchtowrAPI => ClientSeedDataData' | Write-Debug
+        'Converting JSON to PSCustomObject: WatchtowrAPI => ClientFindingAffected' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
-        # check if Json contains properties not defined in ClientSeedDataData
+        # check if Json contains properties not defined in ClientFindingAffected
         $AllProperties = ("data")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
@@ -85,12 +81,8 @@ function ConvertFrom-JsonToClientSeedDataData {
             }
         }
 
-        If ([string]::IsNullOrEmpty($Json) -or $Json -eq "{}") { # empty json
-            throw "Error! Empty JSON cannot be serialized due to the required property 'data' missing."
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "data"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'data' missing."
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "data"))) { #optional property not found
+            $VarData = $null
         } else {
             $VarData = $JsonParameters.PSobject.Properties["data"].value
         }

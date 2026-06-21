@@ -86,7 +86,7 @@ Assign a specific Cloud Integration Asset to a list of Business Units
 $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The Cloud Integration Asset's ID.
-$AssetBusinessUnitIdsDTO = Initialize-AssetBusinessUnitIdsDTO -BusinessUnitIds "MyBusinessUnitIds" # AssetBusinessUnitIdsDTO | 
+$AssetBusinessUnitIdsDTO = Initialize-AssetBusinessUnitIdsDTO -BusinessUnitIds 0 # AssetBusinessUnitIdsDTO | 
 
 # Assign Cloud Integration Asset to Business Units
 try {
@@ -135,7 +135,7 @@ Create Custom Property for a specific Cloud Integration Asset.
 $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The asset ID of a Cloud Integration Asset to create a new custom property for.
-$CreateClientCustomPropertyDto = Initialize-CreateClientCustomPropertyDto -Key "Severity" -Value  -IsPreset $false # CreateClientCustomPropertyDto | 
+$CreateClientCustomPropertyDto = Initialize-CreateClientCustomPropertyDto -Key "Severity" -Value "Low" -IsPreset $false # CreateClientCustomPropertyDto | 
 
 # Create Custom Property
 try {

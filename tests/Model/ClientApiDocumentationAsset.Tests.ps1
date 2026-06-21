@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ClientApiDocumentationAsset' {
     Context 'ClientApiDocumentationAsset' {
         It 'Initialize-ClientApiDocumentationAsset' {
             # a simple test to create an object
-            #$NewObject = Initialize-ClientApiDocumentationAsset -Id "TEST_VALUE" -Type "TEST_VALUE" -Name "TEST_VALUE" -Source "TEST_VALUE" -Platform "TEST_VALUE" -Status "TEST_VALUE" -CreatedAt "TEST_VALUE" -Url "TEST_VALUE" -CustomProperties "TEST_VALUE" -Criticality "TEST_VALUE"
+            #$NewObject = Initialize-ClientApiDocumentationAsset -DiscoveryReason "TEST_VALUE" -Id "TEST_VALUE" -Type "TEST_VALUE" -Name "TEST_VALUE" -Source "TEST_VALUE" -Platform "TEST_VALUE" -Status "TEST_VALUE" -CreatedAt "TEST_VALUE" -Url "TEST_VALUE" -BusinessUnits "TEST_VALUE" -Metadata "TEST_VALUE" -CustomProperties "TEST_VALUE" -Criticality "TEST_VALUE"
             #$NewObject | Should -BeOfType ClientApiDocumentationAsset
             #$NewObject.property | Should -Be 0
         }

@@ -31,7 +31,7 @@ function Initialize-Causer {
         [Decimal]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
+        [String]
         ${Name}
     )
 

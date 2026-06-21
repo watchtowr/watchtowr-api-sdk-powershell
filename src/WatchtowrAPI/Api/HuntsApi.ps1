@@ -22,13 +22,13 @@ The page number for paginated results. If the page field is not provided in the 
 The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30.
 
 .PARAMETER Statuses
-Filter hunts by hunt status.
+Filter hunts by a comma separated list of hunt statuses. Values are case-sensitive — pass the canonical lowercase form (e.g. `received,in-progress`).
 
 .PARAMETER HuntSearch
 Search for hunts by text in hunt name.
 
 .PARAMETER Types
-Filter hunts by hunt types.
+Filter hunts by a comma separated list of hunt types. Values are case-sensitive — pass the canonical lowercase form (e.g. `bespoke,proactive`).
 
 .PARAMETER CreatedFrom
 Filter hunts created after a given date and time.
@@ -45,8 +45,11 @@ Filter hunts updated before a given date and time.
 .PARAMETER ResourceFilter
 General
 
+.PARAMETER Resolved
+Filter hunts by resolution status. `true` returns resolved hunts, `false` returns unresolved hunts.
+
 .PARAMETER OnlyResolved
-Filter to only show resolved hunts.
+Deprecated — use `resolved` instead. This is kept for backward compatibility and will be removed in a future release.
 
 .PARAMETER IsUnacknowledged
 Filter to only show hunts that are not acknowledged.
@@ -70,14 +73,14 @@ function Get-ClientHunts {
         ${PageSize},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [ValidateSet("received", "in-progress", "completed", "not-covered", "outdated")]
-        [String]
+        [String[]]
         ${Statuses},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${HuntSearch},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [ValidateSet("bespoke", "proactive")]
-        [String]
+        [String[]]
         ${Types},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[System.DateTime]]
@@ -97,8 +100,11 @@ function Get-ClientHunts {
         ${ResourceFilter},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Boolean]]
-        ${OnlyResolved},
+        ${Resolved},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [System.Nullable[Boolean]]
+        ${OnlyResolved},
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Boolean]]
         ${IsUnacknowledged},
         [Switch]
@@ -162,6 +168,10 @@ function Get-ClientHunts {
 
         if ($ResourceFilter) {
             $LocalVarQueryParameters['resourceFilter'] = $ResourceFilter
+        }
+
+        if ($Resolved) {
+            $LocalVarQueryParameters['resolved'] = $Resolved
         }
 
         if ($OnlyResolved) {

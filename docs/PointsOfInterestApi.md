@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdatedTo] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-DiscoveredDateOrder] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Search] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Types] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Types] <String[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-HasFinding] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-StartDate] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-EndDate] <System.Nullable[System.DateTime]><br>
@@ -90,7 +90,7 @@ $UpdatedFrom = (Get-Date) # System.DateTime | Filter points of interest updated 
 $UpdatedTo = (Get-Date) # System.DateTime | Filter points of interest updated before a given date and time. (optional)
 $DiscoveredDateOrder = "ASC" # String | Order points of interest by their discovery date. (optional)
 $Search = "Apache%20Airflow%20Admin%20Login" # String | Search Points of Interest by name or URL. (optional)
-$Types = "admin-panel,open-directory" # String | Filter by a comma separated list of types. (optional)
+$Types = "admin-panel" # String[] | Filter by a comma separated list of types. Values are case-sensitive — pass the canonical lowercase form (e.g. `admin-panel,open-directory`). (optional)
 $HasFinding = $false # Boolean | Filter points of interest that have findings. (optional)
 $StartDate = (Get-Date) # System.DateTime | Filter points of interest by start date. (optional)
 $EndDate = (Get-Date) # System.DateTime | Filter points of interest by end date. (optional)
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
  **UpdatedTo** | **System.DateTime**| Filter points of interest updated before a given date and time. | [optional] 
  **DiscoveredDateOrder** | **String**| Order points of interest by their discovery date. | [optional] 
  **Search** | **String**| Search Points of Interest by name or URL. | [optional] 
- **Types** | **String**| Filter by a comma separated list of types. | [optional] 
+ **Types** | [**String[]**](String.md)| Filter by a comma separated list of types. Values are case-sensitive — pass the canonical lowercase form (e.g. &#x60;admin-panel,open-directory&#x60;). | [optional] 
  **HasFinding** | **Boolean**| Filter points of interest that have findings. | [optional] 
  **StartDate** | **System.DateTime**| Filter points of interest by start date. | [optional] 
  **EndDate** | **System.DateTime**| Filter points of interest by end date. | [optional] 

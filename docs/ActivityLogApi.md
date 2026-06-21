@@ -16,7 +16,7 @@ Method | HTTP request | Description
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreatedTo] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Types] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Search] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UserIds] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UserIds] <System.Nullable[Decimal][]><br>
 
 List Activity Logs
 
@@ -33,7 +33,7 @@ $CreatedFrom = (Get-Date) # System.DateTime | Filter logs created after a given 
 $CreatedTo = (Get-Date) # System.DateTime | Filter logs created before a given date and time. (optional)
 $Types = "UserInvite,UserRoleType,UserLock,ResetUser2FA,SetupSSO,DisableSSO,UpdateUserSessionTimeout,SuccessfulLogin,PasswordResetTriggered,UserDelete,UserCreated,UserBusinessUnit,IntegrationSetUp,IntegrationUpdated,IntegrationDeleted,KillSwitch,FindingSetting,TestingInfrastructureUpdate,UpdatePriorityPort,PlatformIpWhitelist,AutomaticRetestsUpdated,ReportGenerated,ReportGenerationRequest,ReportDownloaded,AutomaticOutOfScope,PrismaCloudApigeeAccountRemoved,PrismaCloudAccountNameUpdate,ServiceAccountCreated,ServiceAccountUpdated,ServiceAccountDeleted,ServiceAccountEnabled,ServiceAccountDisabled,ServiceAccountTokenRegenerated,PlatformSchedulerGlobalConfigUpdated,PlatformSchedulerDayConfigUpdated,PlatformSchedulerEnabled,PlatformSchedulerDisabled,AssetFavoriteAdded,AssetFavoriteRemoved,ActiveDefenseRuleCreated,ActiveDefenseRuleUpdated,ActiveDefenseRuleDeployed,ActiveDefenseRuleApplyExpired" # String | Filter logs by a comma separated list of types. (optional)
 $Search = "requested%20to%20generate%20technical%20report" # String | Search logs across various fields such as user, or description. (optional)
-$UserIds = "1,2,3" # String | Filter logs by a comma separated list of user IDs. (optional)
+$UserIds = 0 # Decimal[] | Filter logs by a comma separated list of user IDs. (optional)
 
 # List Activity Logs
 try {
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
  **CreatedTo** | **System.DateTime**| Filter logs created before a given date and time. | [optional] 
  **Types** | **String**| Filter logs by a comma separated list of types. | [optional] 
  **Search** | **String**| Search logs across various fields such as user, or description. | [optional] 
- **UserIds** | **String**| Filter logs by a comma separated list of user IDs. | [optional] 
+ **UserIds** | [**Decimal[]**](Decimal.md)| Filter logs by a comma separated list of user IDs. | [optional] 
 
 ### Return type
 

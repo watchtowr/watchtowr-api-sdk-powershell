@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ClientCustomProperty' {
     Context 'ClientCustomProperty' {
         It 'Initialize-ClientCustomProperty' {
             # a simple test to create an object
-            #$NewObject = Initialize-ClientCustomProperty -Id "TEST_VALUE" -Key "TEST_VALUE" -Value "TEST_VALUE" -IsPreset "TEST_VALUE"
+            #$NewObject = Initialize-ClientCustomProperty -Id "TEST_VALUE" -Key "TEST_VALUE" -Value "TEST_VALUE" -ModelType "TEST_VALUE" -ModelId "TEST_VALUE" -IsPreset "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE"
             #$NewObject | Should -BeOfType ClientCustomProperty
             #$NewObject.property | Should -Be 0
         }

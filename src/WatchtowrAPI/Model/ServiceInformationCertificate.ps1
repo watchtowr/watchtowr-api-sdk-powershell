@@ -33,6 +33,8 @@ Issuer Organization
 Issuer Country
 .PARAMETER Fingerprint
 Fingerprint
+.PARAMETER SerialNumber
+Certificate serial number
 .PARAMETER PublicKeyInfoAlg
 PublicKeyInfoAlg
 .PARAMETER PublicKeyInfoSize
@@ -41,6 +43,14 @@ PublicKeyInfoSize
 No description available.
 .PARAMETER CreatedAt
 Discovery date
+.PARAMETER UpdatedAt
+Last update timestamp
+.PARAMETER NotBefore
+Certificate validity start
+.PARAMETER NotAfter
+Certificate expiry
+.PARAMETER LastSeenAt
+Last time the certificate was observed on the linked port
 .OUTPUTS
 
 ServiceInformationCertificate<PSCustomObject>
@@ -78,17 +88,32 @@ function Initialize-ServiceInformationCertificate {
         ${Fingerprint},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${PublicKeyInfoAlg},
+        ${SerialNumber},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${PublicKeyInfoSize},
+        ${PublicKeyInfoAlg},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
+        [Decimal]
+        ${PublicKeyInfoSize},
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("Expired", "Expiring Within 30 Days", "Valid")]
         [String]
         ${Status},
-        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[System.DateTime]]
-        ${CreatedAt}
+        ${CreatedAt},
+        [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[System.DateTime]]
+        ${UpdatedAt},
+        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
+        [System.DateTime]
+        ${NotBefore},
+        [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
+        [System.DateTime]
+        ${NotAfter},
+        [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true)]
+        [System.DateTime]
+        ${LastSeenAt}
     )
 
     Process {
@@ -99,36 +124,12 @@ function Initialize-ServiceInformationCertificate {
             throw "invalid value for 'Id', 'Id' cannot be null."
         }
 
-        if ($null -eq $SubjectCommonName) {
-            throw "invalid value for 'SubjectCommonName', 'SubjectCommonName' cannot be null."
-        }
-
-        if ($null -eq $SubjectOrganisation) {
-            throw "invalid value for 'SubjectOrganisation', 'SubjectOrganisation' cannot be null."
-        }
-
-        if ($null -eq $SubjectAltNames) {
-            throw "invalid value for 'SubjectAltNames', 'SubjectAltNames' cannot be null."
-        }
-
-        if ($null -eq $SubjectCountry) {
-            throw "invalid value for 'SubjectCountry', 'SubjectCountry' cannot be null."
-        }
-
-        if ($null -eq $IssuerCommonName) {
-            throw "invalid value for 'IssuerCommonName', 'IssuerCommonName' cannot be null."
-        }
-
-        if ($null -eq $IssuerOrganisation) {
-            throw "invalid value for 'IssuerOrganisation', 'IssuerOrganisation' cannot be null."
-        }
-
-        if ($null -eq $IssuerCountry) {
-            throw "invalid value for 'IssuerCountry', 'IssuerCountry' cannot be null."
-        }
-
         if ($null -eq $Fingerprint) {
             throw "invalid value for 'Fingerprint', 'Fingerprint' cannot be null."
+        }
+
+        if ($null -eq $SerialNumber) {
+            throw "invalid value for 'SerialNumber', 'SerialNumber' cannot be null."
         }
 
         if ($null -eq $PublicKeyInfoAlg) {
@@ -143,6 +144,18 @@ function Initialize-ServiceInformationCertificate {
             throw "invalid value for 'Status', 'Status' cannot be null."
         }
 
+        if ($null -eq $NotBefore) {
+            throw "invalid value for 'NotBefore', 'NotBefore' cannot be null."
+        }
+
+        if ($null -eq $NotAfter) {
+            throw "invalid value for 'NotAfter', 'NotAfter' cannot be null."
+        }
+
+        if ($null -eq $LastSeenAt) {
+            throw "invalid value for 'LastSeenAt', 'LastSeenAt' cannot be null."
+        }
+
 
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
@@ -154,10 +167,15 @@ function Initialize-ServiceInformationCertificate {
             "issuerOrganisation" = ${IssuerOrganisation}
             "issuerCountry" = ${IssuerCountry}
             "fingerprint" = ${Fingerprint}
+            "serialNumber" = ${SerialNumber}
             "publicKeyInfoAlg" = ${PublicKeyInfoAlg}
             "publicKeyInfoSize" = ${PublicKeyInfoSize}
             "status" = ${Status}
             "createdAt" = ${CreatedAt}
+            "updatedAt" = ${UpdatedAt}
+            "notBefore" = ${NotBefore}
+            "notAfter" = ${NotAfter}
+            "lastSeenAt" = ${LastSeenAt}
         }
 
 
@@ -195,7 +213,7 @@ function ConvertFrom-JsonToServiceInformationCertificate {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ServiceInformationCertificate
-        $AllProperties = ("id", "subjectCommonName", "subjectOrganisation", "subjectAltNames", "subjectCountry", "issuerCommonName", "issuerOrganisation", "issuerCountry", "fingerprint", "publicKeyInfoAlg", "publicKeyInfoSize", "status", "createdAt")
+        $AllProperties = ("id", "subjectCommonName", "subjectOrganisation", "subjectAltNames", "subjectCountry", "issuerCommonName", "issuerOrganisation", "issuerCountry", "fingerprint", "serialNumber", "publicKeyInfoAlg", "publicKeyInfoSize", "status", "createdAt", "updatedAt", "notBefore", "notAfter", "lastSeenAt")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -260,6 +278,12 @@ function ConvertFrom-JsonToServiceInformationCertificate {
             $Fingerprint = $JsonParameters.PSobject.Properties["fingerprint"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "serialNumber"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'serialNumber' missing."
+        } else {
+            $SerialNumber = $JsonParameters.PSobject.Properties["serialNumber"].value
+        }
+
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "publicKeyInfoAlg"))) {
             throw "Error! JSON cannot be serialized due to the required property 'publicKeyInfoAlg' missing."
         } else {
@@ -278,10 +302,34 @@ function ConvertFrom-JsonToServiceInformationCertificate {
             $Status = $JsonParameters.PSobject.Properties["status"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "notBefore"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'notBefore' missing."
+        } else {
+            $NotBefore = $JsonParameters.PSobject.Properties["notBefore"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "notAfter"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'notAfter' missing."
+        } else {
+            $NotAfter = $JsonParameters.PSobject.Properties["notAfter"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "lastSeenAt"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'lastSeenAt' missing."
+        } else {
+            $LastSeenAt = $JsonParameters.PSobject.Properties["lastSeenAt"].value
+        }
+
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "createdAt"))) { #optional property not found
             $CreatedAt = $null
         } else {
             $CreatedAt = $JsonParameters.PSobject.Properties["createdAt"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "updatedAt"))) { #optional property not found
+            $UpdatedAt = $null
+        } else {
+            $UpdatedAt = $JsonParameters.PSobject.Properties["updatedAt"].value
         }
 
         $PSO = [PSCustomObject]@{
@@ -294,10 +342,15 @@ function ConvertFrom-JsonToServiceInformationCertificate {
             "issuerOrganisation" = ${IssuerOrganisation}
             "issuerCountry" = ${IssuerCountry}
             "fingerprint" = ${Fingerprint}
+            "serialNumber" = ${SerialNumber}
             "publicKeyInfoAlg" = ${PublicKeyInfoAlg}
             "publicKeyInfoSize" = ${PublicKeyInfoSize}
             "status" = ${Status}
             "createdAt" = ${CreatedAt}
+            "updatedAt" = ${UpdatedAt}
+            "notBefore" = ${NotBefore}
+            "notAfter" = ${NotAfter}
+            "lastSeenAt" = ${LastSeenAt}
         }
 
         return $PSO

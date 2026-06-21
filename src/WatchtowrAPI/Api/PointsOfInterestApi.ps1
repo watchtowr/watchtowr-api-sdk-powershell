@@ -118,7 +118,7 @@ Order points of interest by their discovery date.
 Search Points of Interest by name or URL.
 
 .PARAMETER Types
-Filter by a comma separated list of types.
+Filter by a comma separated list of types. Values are case-sensitive — pass the canonical lowercase form (e.g. `admin-panel,open-directory`).
 
 .PARAMETER HasFinding
 Filter points of interest that have findings.
@@ -175,7 +175,8 @@ function Get-ListPointsOfInterest {
         [String]
         ${Search},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [String]
+        [ValidateSet("admin-panel", "open-directory", "installer-page", "api", "status-page", "login-page")]
+        [String[]]
         ${Types},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Boolean]]

@@ -27,15 +27,15 @@ $PointsOfInterest = Initialize-WatchtowrAPIPointsOfInterest  -Id 1 `
  -Name phpMyAdmin `
  -Type admin-panel `
  -Url http://watchtowr.com/phpmyadmin `
- -DiscoveryDate null `
+ -DiscoveryDate 2022-02-22T22:00Z `
  -AssetId 1 `
  -AssetName 123.123.123.123 `
  -AssetType ip `
  -BusinessUnits null `
- -LastSeen null `
+ -LastSeen 2022-02-22T22:00Z `
  -IsConcerning true `
  -Suppressed true `
- -SuppressedAt null `
+ -SuppressedAt 2022-02-22T22:00Z `
  -IsPermanentSuppression true `
  -FindingId 123
 ```

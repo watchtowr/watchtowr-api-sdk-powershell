@@ -51,6 +51,14 @@ Whether the service is suppressed
 Suppressed at timestamp
 .PARAMETER IsPermanentSuppression
 Whether the service is permanently suppressed
+.PARAMETER IpId
+IP ID
+.PARAMETER State
+Port State
+.PARAMETER FindingId
+Finding ID associated with the service
+.PARAMETER SuppressedById
+ID of the user who suppressed the service
 .OUTPUTS
 
 ServiceListing<PSCustomObject>
@@ -90,7 +98,7 @@ function Initialize-ServiceListing {
         [String]
         ${Source},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
-        [System.DateTime]
+        [System.Nullable[System.DateTime]]
         ${LastSeen},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
@@ -112,7 +120,19 @@ function Initialize-ServiceListing {
         ${SuppressedAt},
         [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Boolean]]
-        ${IsPermanentSuppression}
+        ${IsPermanentSuppression},
+        [Parameter(Position = 18, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Decimal]]
+        ${IpId},
+        [Parameter(Position = 19, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${State},
+        [Parameter(Position = 20, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Decimal]]
+        ${FindingId},
+        [Parameter(Position = 21, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Decimal]]
+        ${SuppressedById}
     )
 
     Process {
@@ -125,10 +145,6 @@ function Initialize-ServiceListing {
 
         if ($null -eq $PortId) {
             throw "invalid value for 'PortId', 'PortId' cannot be null."
-        }
-
-        if ($null -eq $LastSeen) {
-            throw "invalid value for 'LastSeen', 'LastSeen' cannot be null."
         }
 
         if ($null -eq $Technologies) {
@@ -171,6 +187,10 @@ function Initialize-ServiceListing {
             "suppressed" = ${Suppressed}
             "suppressedAt" = ${SuppressedAt}
             "isPermanentSuppression" = ${IsPermanentSuppression}
+            "ipId" = ${IpId}
+            "state" = ${State}
+            "findingId" = ${FindingId}
+            "suppressedById" = ${SuppressedById}
         }
 
 
@@ -208,7 +228,7 @@ function ConvertFrom-JsonToServiceListing {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ServiceListing
-        $AllProperties = ("id", "portId", "ip", "hostname", "port", "type", "country", "banner", "service", "source", "lastSeen", "technologies", "serviceTypes", "businessUnits", "isConcerning", "suppressed", "suppressedAt", "isPermanentSuppression")
+        $AllProperties = ("id", "portId", "ip", "hostname", "port", "type", "country", "banner", "service", "source", "lastSeen", "technologies", "serviceTypes", "businessUnits", "isConcerning", "suppressed", "suppressedAt", "isPermanentSuppression", "ipId", "state", "findingId", "suppressedById")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -229,24 +249,6 @@ function ConvertFrom-JsonToServiceListing {
             throw "Error! JSON cannot be serialized due to the required property 'portId' missing."
         } else {
             $PortId = $JsonParameters.PSobject.Properties["portId"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "ip"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'ip' missing."
-        } else {
-            $Ip = $JsonParameters.PSobject.Properties["ip"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "hostname"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'hostname' missing."
-        } else {
-            $Hostname = $JsonParameters.PSobject.Properties["hostname"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "lastSeen"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'lastSeen' missing."
-        } else {
-            $LastSeen = $JsonParameters.PSobject.Properties["lastSeen"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "technologies"))) {
@@ -277,6 +279,18 @@ function ConvertFrom-JsonToServiceListing {
             throw "Error! JSON cannot be serialized due to the required property 'suppressed' missing."
         } else {
             $Suppressed = $JsonParameters.PSobject.Properties["suppressed"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "ip"))) { #optional property not found
+            $Ip = $null
+        } else {
+            $Ip = $JsonParameters.PSobject.Properties["ip"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "hostname"))) { #optional property not found
+            $Hostname = $null
+        } else {
+            $Hostname = $JsonParameters.PSobject.Properties["hostname"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "port"))) { #optional property not found
@@ -315,6 +329,12 @@ function ConvertFrom-JsonToServiceListing {
             $Source = $JsonParameters.PSobject.Properties["source"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "lastSeen"))) { #optional property not found
+            $LastSeen = $null
+        } else {
+            $LastSeen = $JsonParameters.PSobject.Properties["lastSeen"].value
+        }
+
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "suppressedAt"))) { #optional property not found
             $SuppressedAt = $null
         } else {
@@ -325,6 +345,30 @@ function ConvertFrom-JsonToServiceListing {
             $IsPermanentSuppression = $null
         } else {
             $IsPermanentSuppression = $JsonParameters.PSobject.Properties["isPermanentSuppression"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "ipId"))) { #optional property not found
+            $IpId = $null
+        } else {
+            $IpId = $JsonParameters.PSobject.Properties["ipId"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "state"))) { #optional property not found
+            $State = $null
+        } else {
+            $State = $JsonParameters.PSobject.Properties["state"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "findingId"))) { #optional property not found
+            $FindingId = $null
+        } else {
+            $FindingId = $JsonParameters.PSobject.Properties["findingId"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "suppressedById"))) { #optional property not found
+            $SuppressedById = $null
+        } else {
+            $SuppressedById = $JsonParameters.PSobject.Properties["suppressedById"].value
         }
 
         $PSO = [PSCustomObject]@{
@@ -346,6 +390,10 @@ function ConvertFrom-JsonToServiceListing {
             "suppressed" = ${Suppressed}
             "suppressedAt" = ${SuppressedAt}
             "isPermanentSuppression" = ${IsPermanentSuppression}
+            "ipId" = ${IpId}
+            "state" = ${State}
+            "findingId" = ${FindingId}
+            "suppressedById" = ${SuppressedById}
         }
 
         return $PSO

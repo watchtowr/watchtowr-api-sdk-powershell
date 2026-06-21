@@ -4,10 +4,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Decimal** | DNS Record ID | 
-**Asset** | [**ClientDnsRecordAsset**](ClientDnsRecordAsset.md) | Asset information | 
+**Asset** | [**ClientDnsRecordAsset**](ClientDnsRecordAsset.md) | Asset information | [optional] 
 **RecordName** | **String** | Identifies the resource this record resolves to. | 
 **Type** | **String** | The DNS record type defines the purpose or function of the record, such as domain name resolution, email routing, and more. | 
-**Ttl** | **Decimal** | Time to live (TTL) controls how long each record is cached by resolvers. | 
+**Ttl** | **Decimal** | Time to live (TTL) controls how long each record is cached by resolvers. | [optional] 
 **Value** | **String** | The value of a DNS record, depending on the record type. For example, the IP address of the origin server that hosts the web content served by an A or AAAA record. | 
 **CreatedAt** | **System.DateTime** | Creation date | 
 

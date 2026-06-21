@@ -15,6 +15,8 @@ No summary available.
 
 No description available.
 
+.PARAMETER DiscoveryReason
+No description available.
 .PARAMETER Type
 No description available.
 .PARAMETER Source
@@ -22,8 +24,6 @@ No description available.
 .PARAMETER Status
 No description available.
 .PARAMETER CreatedAt
-No description available.
-.PARAMETER UpdatedAt
 No description available.
 .PARAMETER Id
 No description available.
@@ -35,6 +35,8 @@ No description available.
 No description available.
 .PARAMETER BusinessUnits
 No description available.
+.PARAMETER Metadata
+Additional asset metadata; shape varies by asset type. Defaults to an empty object.
 .PARAMETER CustomProperties
 No description available.
 .PARAMETER Criticality
@@ -49,22 +51,21 @@ function Initialize-ClientRepository {
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Type},
+        ${DiscoveryReason},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Source},
+        ${Type},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
-        [ValidateSet("verified", "Unregistered", "Incorrect Identification", "pending", "VerifiedOutOfScope", "VerifiedReducedAttack", "Tracked")]
+        [String]
+        ${Source},
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Status},
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${CreatedAt},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${UpdatedAt},
+        [System.DateTime]
+        ${CreatedAt},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [String]
         ${Id},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -79,9 +80,12 @@ function Initialize-ClientRepository {
         [PSCustomObject[]]
         ${BusinessUnits},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject]
+        ${Metadata},
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
         ${CustomProperties},
-        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Criticality}
     )
@@ -98,16 +102,8 @@ function Initialize-ClientRepository {
             throw "invalid value for 'Source', 'Source' cannot be null."
         }
 
-        if ($null -eq $Status) {
-            throw "invalid value for 'Status', 'Status' cannot be null."
-        }
-
         if ($null -eq $CreatedAt) {
             throw "invalid value for 'CreatedAt', 'CreatedAt' cannot be null."
-        }
-
-        if ($null -eq $UpdatedAt) {
-            throw "invalid value for 'UpdatedAt', 'UpdatedAt' cannot be null."
         }
 
         if ($null -eq $Id) {
@@ -130,26 +126,27 @@ function Initialize-ClientRepository {
             throw "invalid value for 'BusinessUnits', 'BusinessUnits' cannot be null."
         }
 
+        if ($null -eq $Metadata) {
+            throw "invalid value for 'Metadata', 'Metadata' cannot be null."
+        }
+
         if ($null -eq $CustomProperties) {
             throw "invalid value for 'CustomProperties', 'CustomProperties' cannot be null."
         }
 
-        if ($null -eq $Criticality) {
-            throw "invalid value for 'Criticality', 'Criticality' cannot be null."
-        }
-
 
         $PSO = [PSCustomObject]@{
+            "discovery_reason" = ${DiscoveryReason}
             "type" = ${Type}
             "source" = ${Source}
             "status" = ${Status}
             "created_at" = ${CreatedAt}
-            "updated_at" = ${UpdatedAt}
             "id" = ${Id}
             "name" = ${Name}
             "owner" = ${Owner}
             "provider" = ${Provider}
             "businessUnits" = ${BusinessUnits}
+            "metadata" = ${Metadata}
             "customProperties" = ${CustomProperties}
             "criticality" = ${Criticality}
         }
@@ -189,7 +186,7 @@ function ConvertFrom-JsonToClientRepository {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientRepository
-        $AllProperties = ("type", "source", "status", "created_at", "updated_at", "id", "name", "owner", "provider", "businessUnits", "customProperties", "criticality")
+        $AllProperties = ("discovery_reason", "type", "source", "status", "created_at", "id", "name", "owner", "provider", "businessUnits", "metadata", "customProperties", "criticality")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -212,22 +209,10 @@ function ConvertFrom-JsonToClientRepository {
             $Source = $JsonParameters.PSobject.Properties["source"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "status"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'status' missing."
-        } else {
-            $Status = $JsonParameters.PSobject.Properties["status"].value
-        }
-
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "created_at"))) {
             throw "Error! JSON cannot be serialized due to the required property 'created_at' missing."
         } else {
             $CreatedAt = $JsonParameters.PSobject.Properties["created_at"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "updated_at"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'updated_at' missing."
-        } else {
-            $UpdatedAt = $JsonParameters.PSobject.Properties["updated_at"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "id"))) {
@@ -260,29 +245,48 @@ function ConvertFrom-JsonToClientRepository {
             $BusinessUnits = $JsonParameters.PSobject.Properties["businessUnits"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "metadata"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'metadata' missing."
+        } else {
+            $Metadata = $JsonParameters.PSobject.Properties["metadata"].value
+        }
+
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "customProperties"))) {
             throw "Error! JSON cannot be serialized due to the required property 'customProperties' missing."
         } else {
             $CustomProperties = $JsonParameters.PSobject.Properties["customProperties"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "criticality"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'criticality' missing."
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "discovery_reason"))) { #optional property not found
+            $DiscoveryReason = $null
+        } else {
+            $DiscoveryReason = $JsonParameters.PSobject.Properties["discovery_reason"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "status"))) { #optional property not found
+            $Status = $null
+        } else {
+            $Status = $JsonParameters.PSobject.Properties["status"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "criticality"))) { #optional property not found
+            $Criticality = $null
         } else {
             $Criticality = $JsonParameters.PSobject.Properties["criticality"].value
         }
 
         $PSO = [PSCustomObject]@{
+            "discovery_reason" = ${DiscoveryReason}
             "type" = ${Type}
             "source" = ${Source}
             "status" = ${Status}
             "created_at" = ${CreatedAt}
-            "updated_at" = ${UpdatedAt}
             "id" = ${Id}
             "name" = ${Name}
             "owner" = ${Owner}
             "provider" = ${Provider}
             "businessUnits" = ${BusinessUnits}
+            "metadata" = ${Metadata}
             "customProperties" = ${CustomProperties}
             "criticality" = ${Criticality}
         }

@@ -12,10 +12,15 @@ Name | Type | Description | Notes
 **IssuerOrganisation** | **String** | Issuer Organization | 
 **IssuerCountry** | **String** | Issuer Country | 
 **Fingerprint** | **String** | Fingerprint | 
+**SerialNumber** | **String** | Certificate serial number | 
 **PublicKeyInfoAlg** | **String** | PublicKeyInfoAlg | 
-**PublicKeyInfoSize** | **String** | PublicKeyInfoSize | 
+**PublicKeyInfoSize** | **Decimal** | PublicKeyInfoSize | 
 **Status** | **String** |  | 
 **CreatedAt** | **System.DateTime** | Discovery date | [optional] 
+**UpdatedAt** | **System.DateTime** | Last update timestamp | [optional] 
+**NotBefore** | **System.DateTime** | Certificate validity start | 
+**NotAfter** | **System.DateTime** | Certificate expiry | 
+**LastSeenAt** | **System.DateTime** | Last time the certificate was observed on the linked port | 
 
 ## Examples
 
@@ -30,10 +35,15 @@ $ServiceInformationCertificate = Initialize-WatchtowrAPIServiceInformationCertif
  -IssuerOrganisation example `
  -IssuerCountry SG `
  -Fingerprint example `
+ -SerialNumber 03:e5:6f:... `
  -PublicKeyInfoAlg example `
- -PublicKeyInfoSize example `
+ -PublicKeyInfoSize 2048 `
  -Status Expired `
- -CreatedAt null
+ -CreatedAt 2022-02-22T22:00Z `
+ -UpdatedAt 2022-02-22T22:00Z `
+ -NotBefore 2022-01-01T00:00Z `
+ -NotAfter 2026-04-01T00:00Z `
+ -LastSeenAt 2022-02-22T22:00Z
 ```
 
 - Convert the resource to JSON

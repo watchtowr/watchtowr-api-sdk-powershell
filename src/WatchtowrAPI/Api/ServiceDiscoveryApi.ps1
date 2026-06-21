@@ -132,10 +132,10 @@ function Get-ListServiceListing {
         [String]
         ${PortServices},
         [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [String]
+        [System.Nullable[Decimal][]]
         ${ServiceTypeIds},
         [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [String]
+        [System.Nullable[Decimal][]]
         ${BusinessUnitIds},
         [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [ValidateSet("last_seen", "suppressed_at")]

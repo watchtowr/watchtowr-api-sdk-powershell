@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | **String** | Domain name | 
 **Source** | **String** | Source that discovered the domain | 
 **CreatedAt** | **System.DateTime** | Creation date | 
-**WhoisData** | [**ClientPendingDomainWhoisData**](ClientPendingDomainWhoisData.md) | WHOIS data for the domain | 
+**WhoisData** | [**ClientPendingDomainWhoisData**](ClientPendingDomainWhoisData.md) | WHOIS data for the domain | [optional] 
 
 ## Examples
 

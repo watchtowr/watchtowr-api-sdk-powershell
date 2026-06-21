@@ -66,14 +66,14 @@ function Initialize-ActiveDefenseRule {
         [Boolean]
         ${ZeroDay},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
-        [ValidateSet("cloudflare", "aws_cfn", "fastly", "akamai_waf", "google_cloud_armor", "mod_security", "azure_appgw")]
+        [ValidateSet("cloudflare", "aws_cfn", "fastly", "akamai_waf", "google_cloud_armor", "mod_security", "azure_appgw", "imperva")]
         [String[]]
         ${Providers},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
-        [String]
+        [System.DateTime]
         ${CreatedAt},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
-        [String]
+        [System.DateTime]
         ${UpdatedAt}
     )
 

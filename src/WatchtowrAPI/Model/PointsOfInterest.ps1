@@ -69,7 +69,7 @@ function Initialize-PointsOfInterest {
         [System.Nullable[System.DateTime]]
         ${DiscoveryDate},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [System.Nullable[Decimal]]
         ${AssetId},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -118,18 +118,6 @@ function Initialize-PointsOfInterest {
 
         if ($null -eq $Url) {
             throw "invalid value for 'Url', 'Url' cannot be null."
-        }
-
-        if ($null -eq $AssetId) {
-            throw "invalid value for 'AssetId', 'AssetId' cannot be null."
-        }
-
-        if ($null -eq $AssetName) {
-            throw "invalid value for 'AssetName', 'AssetName' cannot be null."
-        }
-
-        if ($null -eq $AssetType) {
-            throw "invalid value for 'AssetType', 'AssetType' cannot be null."
         }
 
         if ($null -eq $BusinessUnits) {

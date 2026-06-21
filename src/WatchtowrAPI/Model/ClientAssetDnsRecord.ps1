@@ -45,13 +45,13 @@ function Initialize-ClientAssetDnsRecord {
         [String]
         ${Type},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [System.Nullable[Decimal]]
         ${Ttl},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Value},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
+        [System.DateTime]
         ${DiscoveredOn}
     )
 
@@ -69,10 +69,6 @@ function Initialize-ClientAssetDnsRecord {
 
         if ($null -eq $Type) {
             throw "invalid value for 'Type', 'Type' cannot be null."
-        }
-
-        if ($null -eq $Ttl) {
-            throw "invalid value for 'Ttl', 'Ttl' cannot be null."
         }
 
         if ($null -eq $Value) {
@@ -157,12 +153,6 @@ function ConvertFrom-JsonToClientAssetDnsRecord {
             $Type = $JsonParameters.PSobject.Properties["type"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "ttl"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'ttl' missing."
-        } else {
-            $Ttl = $JsonParameters.PSobject.Properties["ttl"].value
-        }
-
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "value"))) {
             throw "Error! JSON cannot be serialized due to the required property 'value' missing."
         } else {
@@ -173,6 +163,12 @@ function ConvertFrom-JsonToClientAssetDnsRecord {
             throw "Error! JSON cannot be serialized due to the required property 'discovered_on' missing."
         } else {
             $DiscoveredOn = $JsonParameters.PSobject.Properties["discovered_on"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "ttl"))) { #optional property not found
+            $Ttl = $null
+        } else {
+            $Ttl = $JsonParameters.PSobject.Properties["ttl"].value
         }
 
         $PSO = [PSCustomObject]@{

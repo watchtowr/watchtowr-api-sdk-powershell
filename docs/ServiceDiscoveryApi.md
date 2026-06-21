@@ -26,8 +26,8 @@ Method | HTTP request | Description
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PortNumbers] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PortTypes] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PortServices] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ServiceTypeIds] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessUnitIds] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ServiceTypeIds] <System.Nullable[Decimal][]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessUnitIds] <System.Nullable[Decimal][]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SortBy] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OrderBy] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SuppressionFilter] <String><br>
@@ -56,8 +56,8 @@ $Ports = "22/TCP,443/TCP,3389/UDP" # String | Filter services by a list of comma
 $PortNumbers = "80,443" # String | Filter services by a list of comma separated ports. (optional)
 $PortTypes = "TCP,UDP" # String | Filter services by a list of comma separated transport layer protocols (e.g. UDP/TCP). (optional)
 $PortServices = "SSH,HTTP" # String | Filter services by a list of comma separated services. (optional)
-$ServiceTypeIds = "1,2,3" # String | Filter services by a list of comma separated service type IDs. (optional)
-$BusinessUnitIds = "1,2,3" # String | Filter services by a list of comma separated business unit IDs they're related to. (optional)
+$ServiceTypeIds = 0 # Decimal[] | Filter services by a list of comma separated service type IDs. (optional)
+$BusinessUnitIds = 0 # Decimal[] | Filter services by a list of comma separated business unit IDs they're related to. (optional)
 $SortBy = "last_seen" # String | Sort services. (optional)
 $OrderBy = "ASC" # String | Order services. (optional)
 $SuppressionFilter = "non-suppressed" # String | Filter services by suppression status. (optional)
@@ -90,8 +90,8 @@ Name | Type | Description  | Notes
  **PortNumbers** | **String**| Filter services by a list of comma separated ports. | [optional] 
  **PortTypes** | **String**| Filter services by a list of comma separated transport layer protocols (e.g. UDP/TCP). | [optional] 
  **PortServices** | **String**| Filter services by a list of comma separated services. | [optional] 
- **ServiceTypeIds** | **String**| Filter services by a list of comma separated service type IDs. | [optional] 
- **BusinessUnitIds** | **String**| Filter services by a list of comma separated business unit IDs they&#39;re related to. | [optional] 
+ **ServiceTypeIds** | [**Decimal[]**](Decimal.md)| Filter services by a list of comma separated service type IDs. | [optional] 
+ **BusinessUnitIds** | [**Decimal[]**](Decimal.md)| Filter services by a list of comma separated business unit IDs they&#39;re related to. | [optional] 
  **SortBy** | **String**| Sort services. | [optional] 
  **OrderBy** | **String**| Order services. | [optional] 
  **SuppressionFilter** | **String**| Filter services by suppression status. | [optional] 

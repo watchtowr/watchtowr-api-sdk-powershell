@@ -46,9 +46,9 @@ referral_url
 .PARAMETER WhoisServer
 whois_server
 .PARAMETER CreationDate
-creation_date
+No description available.
 .PARAMETER ExpirationDate
-expiration_date
+No description available.
 .OUTPUTS
 
 WhoisDataObject<PSCustomObject>
@@ -103,10 +103,10 @@ function Initialize-WhoisDataObject {
         [String]
         ${WhoisServer},
         [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
-        [String]
+        [PSCustomObject]
         ${CreationDate},
         [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
-        [String]
+        [PSCustomObject]
         ${ExpirationDate}
     )
 

@@ -382,7 +382,7 @@ Update an existing API whitelisted IP address. Admin role required.
 $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | 
-$UpdateOrganisationWhitelistIpDto = Initialize-UpdateOrganisationWhitelistIpDto -Id 1 -Ip "192.168.1.1" -Description "Office network" # UpdateOrganisationWhitelistIpDto | 
+$UpdateOrganisationWhitelistIpDto = Initialize-UpdateOrganisationWhitelistIpDto -Ip "192.168.1.1" -Description "Office network" # UpdateOrganisationWhitelistIpDto | 
 
 # Update API Whitelisted IP
 try {
@@ -477,7 +477,7 @@ Update an existing dashboard whitelisted IP address. Admin role required.
 $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | 
-$UpdateOrganisationWhitelistIpDto = Initialize-UpdateOrganisationWhitelistIpDto -Id 1 -Ip "192.168.1.1" -Description "Office network" # UpdateOrganisationWhitelistIpDto | 
+$UpdateOrganisationWhitelistIpDto = Initialize-UpdateOrganisationWhitelistIpDto -Ip "192.168.1.1" -Description "Office network" # UpdateOrganisationWhitelistIpDto | 
 
 # Update Dashboard Whitelisted IP
 try {

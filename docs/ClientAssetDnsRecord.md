@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 **Id** | **Decimal** |  | 
 **Name** | **String** |  | 
 **Type** | **String** |  | 
-**Ttl** | **Decimal** | Time To Live | 
+**Ttl** | **Decimal** | Time To Live | [optional] 
 **Value** | **String** |  | 
-**DiscoveredOn** | [**DatetimeDate**](DatetimeDate.md) |  | 
+**DiscoveredOn** | **System.DateTime** |  | 
 
 ## Examples
 
@@ -19,7 +19,7 @@ $ClientAssetDnsRecord = Initialize-WatchtowrAPIClientAssetDnsRecord  -Id 1 `
  -Type A `
  -Ttl 60 `
  -Value 123.123.123.123 `
- -DiscoveredOn 2022-02-13T02:10:00.000000Z
+ -DiscoveredOn 2022-02-13T02:10Z
 ```
 
 - Convert the resource to JSON

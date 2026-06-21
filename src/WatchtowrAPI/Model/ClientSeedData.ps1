@@ -16,13 +16,15 @@ No summary available.
 No description available.
 
 .PARAMETER Title
-Descriptive title for the new asset
+No description available.
 .PARAMETER Type
-Asset Type for the new asset. Valid asset types are: [domain, subdomain, ip, ipRange, repository, cloudStorage, container, mobileApp, saasPlatform, apiDocumentation, packageManager]
+No description available.
 .PARAMETER Value
-Value for the asset to be added.
+No description available.
 .PARAMETER Values
-Values object for ipRange asset type. Must contain both cidr and asn fields. Required when type is ipRange.
+No description available.
+.PARAMETER BusinessUnits
+Business units associated with the seed data
 .OUTPUTS
 
 ClientSeedData<PSCustomObject>
@@ -35,7 +37,6 @@ function Initialize-ClientSeedData {
         [String]
         ${Title},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [ValidateSet("domain", "subdomain", "ip", "ipRange", "repository", "cloudStorage", "container", "mobileApp", "saasPlatform", "apiDocumentation", "packageManager")]
         [String]
         ${Type},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
@@ -43,7 +44,10 @@ function Initialize-ClientSeedData {
         ${Value},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
-        ${Values}
+        ${Values},
+        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject[]]
+        ${BusinessUnits}
     )
 
     Process {
@@ -58,8 +62,8 @@ function Initialize-ClientSeedData {
             throw "invalid value for 'Type', 'Type' cannot be null."
         }
 
-        if ($null -eq $Value) {
-            throw "invalid value for 'Value', 'Value' cannot be null."
+        if ($null -eq $BusinessUnits) {
+            throw "invalid value for 'BusinessUnits', 'BusinessUnits' cannot be null."
         }
 
 
@@ -68,6 +72,7 @@ function Initialize-ClientSeedData {
             "type" = ${Type}
             "value" = ${Value}
             "values" = ${Values}
+            "businessUnits" = ${BusinessUnits}
         }
 
 
@@ -105,7 +110,7 @@ function ConvertFrom-JsonToClientSeedData {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientSeedData
-        $AllProperties = ("title", "type", "value", "values")
+        $AllProperties = ("title", "type", "value", "values", "businessUnits")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -128,8 +133,14 @@ function ConvertFrom-JsonToClientSeedData {
             $Type = $JsonParameters.PSobject.Properties["type"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "value"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'value' missing."
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "businessUnits"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'businessUnits' missing."
+        } else {
+            $BusinessUnits = $JsonParameters.PSobject.Properties["businessUnits"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "value"))) { #optional property not found
+            $Value = $null
         } else {
             $Value = $JsonParameters.PSobject.Properties["value"].value
         }
@@ -145,6 +156,7 @@ function ConvertFrom-JsonToClientSeedData {
             "type" = ${Type}
             "value" = ${Value}
             "values" = ${Values}
+            "businessUnits" = ${BusinessUnits}
         }
 
         return $PSO

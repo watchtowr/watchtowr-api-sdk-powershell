@@ -57,10 +57,6 @@ function Initialize-Technology {
             throw "invalid value for 'Name', 'Name' cannot be null."
         }
 
-        if ($null -eq $Version) {
-            throw "invalid value for 'Version', 'Version' cannot be null."
-        }
-
         if ($null -eq $DisplayName) {
             throw "invalid value for 'DisplayName', 'DisplayName' cannot be null."
         }
@@ -131,16 +127,16 @@ function ConvertFrom-JsonToTechnology {
             $Name = $JsonParameters.PSobject.Properties["name"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "version"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'version' missing."
-        } else {
-            $Version = $JsonParameters.PSobject.Properties["version"].value
-        }
-
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "displayName"))) {
             throw "Error! JSON cannot be serialized due to the required property 'displayName' missing."
         } else {
             $DisplayName = $JsonParameters.PSobject.Properties["displayName"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "version"))) { #optional property not found
+            $Version = $null
+        } else {
+            $Version = $JsonParameters.PSobject.Properties["version"].value
         }
 
         $PSO = [PSCustomObject]@{

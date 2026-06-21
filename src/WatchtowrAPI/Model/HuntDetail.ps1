@@ -95,7 +95,7 @@ function Initialize-HuntDetail {
         [String[]]
         ${References},
         [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
-        [System.DateTime]
+        [System.Nullable[System.DateTime]]
         ${CompletedAt},
         [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -143,30 +143,6 @@ function Initialize-HuntDetail {
 
         if ($null -eq $Title) {
             throw "invalid value for 'Title', 'Title' cannot be null."
-        }
-
-        if ($null -eq $Description) {
-            throw "invalid value for 'Description', 'Description' cannot be null."
-        }
-
-        if ($null -eq $Hypothesis) {
-            throw "invalid value for 'Hypothesis', 'Hypothesis' cannot be null."
-        }
-
-        if ($null -eq $References) {
-            throw "invalid value for 'References', 'References' cannot be null."
-        }
-
-        if ($null -eq $CompletedAt) {
-            throw "invalid value for 'CompletedAt', 'CompletedAt' cannot be null."
-        }
-
-        if ($null -eq $CompletedBy) {
-            throw "invalid value for 'CompletedBy', 'CompletedBy' cannot be null."
-        }
-
-        if ($null -eq $RequestedBy) {
-            throw "invalid value for 'RequestedBy', 'RequestedBy' cannot be null."
         }
 
         if ($null -eq $Status) {

@@ -43,7 +43,7 @@ Search suspicious domains by discovery reason.
 Search suspicious domains by contents of Whois data.
 
 .PARAMETER Statuses
-Filter suspicious domains by a list of comma separated statuses that asset is tagged with.
+Filter suspicious domains by a list of comma separated statuses that asset is tagged with. Values are case-sensitive — pass the canonical lowercase form (e.g. `pending,malicious`).
 
 .PARAMETER WithHttpInfo
 
@@ -84,7 +84,8 @@ function Get-ListSuspiciousDomain {
         [String]
         ${WhoisSearch},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [String]
+        [ValidateSet("pending", "malicious", "legitimate", "benign")]
+        [String[]]
         ${Statuses},
         [Switch]
         $WithHttpInfo

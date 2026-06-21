@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 <a id="Submit-Asset"></a>
 # **Submit-Asset**
-> ClientSeedDataData Submit-Asset<br>
+> ClientSeedData[] Submit-Asset<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreateClientSeedDataRequestBody] <PSCustomObject><br>
 
 Submit Seed Data
@@ -75,10 +75,10 @@ Submit one or more seed data assets to your attack surface for review.
 $Configuration = Get-Configuration
 
 $IpRangeValues = Initialize-IpRangeValues -Cidr "192.168.1.0/24" -Asn "AS16509"
-$ClientSeedData = Initialize-ClientSeedData -Title "Main Website" -Type "domain" -Value "www.watchTowr.com" -Values $IpRangeValues
+$ClientSeedDataDto = Initialize-ClientSeedDataDto -Title "Main Website" -Type "domain" -Value "www.watchTowr.com" -Values $IpRangeValues
 
 $FilterByBusinessUnitInput = Initialize-FilterByBusinessUnitInput -Id 1 -Type "BUSINESS_UNIT" -Name "Marketing"
-$CreateClientSeedDataRequestBody = Initialize-CreateClientSeedDataRequestBody -VarData $ClientSeedData -BusinessUnits $FilterByBusinessUnitInput # CreateClientSeedDataRequestBody | 
+$CreateClientSeedDataRequestBody = Initialize-CreateClientSeedDataRequestBody -VarData $ClientSeedDataDto -BusinessUnits $FilterByBusinessUnitInput # CreateClientSeedDataRequestBody | 
 
 # Submit Seed Data
 try {
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClientSeedDataData**](ClientSeedDataData.md) (PSCustomObject)
+[**ClientSeedData[]**](ClientSeedData.md) (PSCustomObject)
 
 ### Authorization
 

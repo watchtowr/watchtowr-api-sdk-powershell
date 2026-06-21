@@ -3,19 +3,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Title** | **String** | Descriptive title for the new asset | 
-**Type** | **String** | Asset Type for the new asset. Valid asset types are: [domain, subdomain, ip, ipRange, repository, cloudStorage, container, mobileApp, saasPlatform, apiDocumentation, packageManager] | 
-**Value** | **String** | Value for the asset to be added. | 
-**Values** | [**IpRangeValues**](IpRangeValues.md) | Values object for ipRange asset type. Must contain both cidr and asn fields. Required when type is ipRange. | [optional] 
+**Title** | **String** |  | 
+**Type** | **String** |  | 
+**Value** | **String** |  | [optional] 
+**Values** | [**SystemCollectionsHashtable**](.md) |  | [optional] 
+**BusinessUnits** | [**ClientSeedDataBusinessUnit[]**](ClientSeedDataBusinessUnit.md) | Business units associated with the seed data | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$ClientSeedData = Initialize-WatchtowrAPIClientSeedData  -Title Main Website `
- -Type subdomain `
- -Value www.watchTowr.com `
- -Values null
+$ClientSeedData = Initialize-WatchtowrAPIClientSeedData  -Title breitenberg.net `
+ -Type domain `
+ -Value www.example.com `
+ -Values {&quot;cidr&quot;:&quot;192.168.1.0/24&quot;,&quot;asn&quot;:&quot;AS16509&quot;} `
+ -BusinessUnits null
 ```
 
 - Convert the resource to JSON

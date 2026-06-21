@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **NoteType** | **String** |  | 
 **NoteId** | **Decimal** |  | 
 **Title** | **String** |  | 
-**Author** | [**SystemCollectionsHashtable**](.md) |  | 
-**LastModified** | [**DatetimeDate**](DatetimeDate.md) |  | 
+**Author** | [**ClientNoteAuthor**](ClientNoteAuthor.md) |  | 
+**LastModified** | [**ClientNoteLastModified**](ClientNoteLastModified.md) |  | 
 
 ## Examples
 
@@ -20,8 +20,8 @@ $ClientNote = Initialize-WatchtowrAPIClientNote  -Id 1 `
  -NoteType Domain `
  -NoteId 2 `
  -Title Initial Review - 01/01/2024 `
- -Author {&quot;id&quot;:1,&quot;name&quot;:&quot;Steve&quot;} `
- -LastModified 2022-02-13T02:10:00.000000Z
+ -Author null `
+ -LastModified null
 ```
 
 - Convert the resource to JSON

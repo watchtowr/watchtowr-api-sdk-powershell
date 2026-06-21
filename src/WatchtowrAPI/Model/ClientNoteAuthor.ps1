@@ -15,34 +15,42 @@ No summary available.
 
 No description available.
 
-.PARAMETER Name
+.PARAMETER Id
 No description available.
-.PARAMETER Count
+.PARAMETER Name
 No description available.
 .OUTPUTS
 
-TargetIndustry<PSCustomObject>
+ClientNoteAuthor<PSCustomObject>
 #>
 
-function Initialize-TargetIndustry {
+function Initialize-ClientNoteAuthor {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${Name},
+        [Decimal]
+        ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
-        ${Count}
+        [String]
+        ${Name}
     )
 
     Process {
-        'Creating PSCustomObject: WatchtowrAPI => TargetIndustry' | Write-Debug
+        'Creating PSCustomObject: WatchtowrAPI => ClientNoteAuthor' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
+
+        if ($null -eq $Id) {
+            throw "invalid value for 'Id', 'Id' cannot be null."
+        }
+
+        if ($null -eq $Name) {
+            throw "invalid value for 'Name', 'Name' cannot be null."
+        }
 
 
         $PSO = [PSCustomObject]@{
+            "id" = ${Id}
             "name" = ${Name}
-            "count" = ${Count}
         }
 
 
@@ -53,11 +61,11 @@ function Initialize-TargetIndustry {
 <#
 .SYNOPSIS
 
-Convert from JSON to TargetIndustry<PSCustomObject>
+Convert from JSON to ClientNoteAuthor<PSCustomObject>
 
 .DESCRIPTION
 
-Convert from JSON to TargetIndustry<PSCustomObject>
+Convert from JSON to ClientNoteAuthor<PSCustomObject>
 
 .PARAMETER Json
 
@@ -65,43 +73,47 @@ Json object
 
 .OUTPUTS
 
-TargetIndustry<PSCustomObject>
+ClientNoteAuthor<PSCustomObject>
 #>
-function ConvertFrom-JsonToTargetIndustry {
+function ConvertFrom-JsonToClientNoteAuthor {
     Param(
         [AllowEmptyString()]
         [string]$Json
     )
 
     Process {
-        'Converting JSON to PSCustomObject: WatchtowrAPI => TargetIndustry' | Write-Debug
+        'Converting JSON to PSCustomObject: WatchtowrAPI => ClientNoteAuthor' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
-        # check if Json contains properties not defined in TargetIndustry
-        $AllProperties = ("name", "count")
+        # check if Json contains properties not defined in ClientNoteAuthor
+        $AllProperties = ("id", "name")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
             }
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "name"))) { #optional property not found
-            $Name = $null
+        If ([string]::IsNullOrEmpty($Json) -or $Json -eq "{}") { # empty json
+            throw "Error! Empty JSON cannot be serialized due to the required property 'id' missing."
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "id"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'id' missing."
+        } else {
+            $Id = $JsonParameters.PSobject.Properties["id"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "name"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'name' missing."
         } else {
             $Name = $JsonParameters.PSobject.Properties["name"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "count"))) { #optional property not found
-            $Count = $null
-        } else {
-            $Count = $JsonParameters.PSobject.Properties["count"].value
-        }
-
         $PSO = [PSCustomObject]@{
+            "id" = ${Id}
             "name" = ${Name}
-            "count" = ${Count}
         }
 
         return $PSO
