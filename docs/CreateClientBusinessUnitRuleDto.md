@@ -8,8 +8,7 @@ Name | Type | Description | Notes
 **KeywordMatcher** | **String** | Keyword for matching assets (required when type is keyword). Supports wildcard patterns: %.sg, %abc%, %abc.com, abc.com. Wildcards can be defined using %. | [optional] 
 **KeywordRuleType** | **String** | Keyword rule type (optional, defaults to HOSTNAME when keyword_matcher is provided). HOSTNAME: matches domain/subdomain names. CNAME: matches CNAME DNS record values. TLS_SSL: matches TLS/SSL certificate subject names. | [optional] 
 **CountryCode** | **String** | Geographical location 2-letter country code (ISO 3166-1 alpha-2) for matching IPs (required when type is country). Examples: SG, US, GB, AU | [optional] 
-**IntegrationType** | **String** | Integration type for matching cloud assets (required when type is integration). Valid values: aws, azure, googlecloud, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, armiscentrix, qualysvmdr, tenable | [optional] 
-**IntegrationId** | **Decimal** | Integration ID for matching cloud assets (required when type is integration) | [optional] 
+**Integrations** | [**ClientIntegrationItemDto[]**](ClientIntegrationItemDto.md) | List of integrations for matching cloud assets (required when type is integration) | [optional] 
 **CascadeSubdomain** | **Boolean** | Whether to cascade rule to subdomains | [optional] [default to $true]
 **CascadeIp** | **Boolean** | Whether to cascade rule to IPs | [optional] [default to $true]
 **IncludeAllIntegrations** | **Boolean** | Whether to include all integrations | [optional] [default to $false]
@@ -23,8 +22,7 @@ $CreateClientBusinessUnitRuleDto = Initialize-WatchtowrAPICreateClientBusinessUn
  -KeywordMatcher example.com `
  -KeywordRuleType HOSTNAME `
  -CountryCode SG `
- -IntegrationType aws `
- -IntegrationId 1 `
+ -Integrations null `
  -CascadeSubdomain true `
  -CascadeIp true `
  -IncludeAllIntegrations false

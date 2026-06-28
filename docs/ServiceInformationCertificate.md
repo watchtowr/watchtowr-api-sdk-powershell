@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **PublicKeyInfoAlg** | **String** | PublicKeyInfoAlg | 
 **PublicKeyInfoSize** | **Decimal** | PublicKeyInfoSize | 
 **Status** | **String** |  | 
+**IssuedByStatus** | **String** | Trust provenance of the certificate issuer as classified upstream | 
 **CreatedAt** | **System.DateTime** | Discovery date | [optional] 
 **UpdatedAt** | **System.DateTime** | Last update timestamp | [optional] 
 **NotBefore** | **System.DateTime** | Certificate validity start | 
@@ -39,6 +40,7 @@ $ServiceInformationCertificate = Initialize-WatchtowrAPIServiceInformationCertif
  -PublicKeyInfoAlg example `
  -PublicKeyInfoSize 2048 `
  -Status Expired `
+ -IssuedByStatus self_signed `
  -CreatedAt 2022-02-22T22:00Z `
  -UpdatedAt 2022-02-22T22:00Z `
  -NotBefore 2022-01-01T00:00Z `

@@ -25,10 +25,8 @@ Keyword for matching assets (required when type is keyword). Supports wildcard p
 Keyword rule type (optional, defaults to HOSTNAME when keyword_matcher is provided). HOSTNAME: matches domain/subdomain names. CNAME: matches CNAME DNS record values. TLS_SSL: matches TLS/SSL certificate subject names.
 .PARAMETER CountryCode
 Geographical location 2-letter country code (ISO 3166-1 alpha-2) for matching IPs (required when type is country). Examples: SG, US, GB, AU
-.PARAMETER IntegrationType
-Integration type for matching cloud assets (required when type is integration). Valid values: aws, azure, googlecloud, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, armiscentrix, qualysvmdr, tenable
-.PARAMETER IntegrationId
-Integration ID for matching cloud assets (required when type is integration)
+.PARAMETER Integrations
+List of integrations for matching cloud assets (required when type is integration)
 .PARAMETER CascadeSubdomain
 Whether to cascade rule to subdomains
 .PARAMETER CascadeIp
@@ -61,19 +59,15 @@ function Initialize-CreateClientBusinessUnitRuleDto {
         [String]
         ${CountryCode},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
-        [ValidateSet("aws", "azure", "googlecloud", "cloudflare", "alibabacloud", "prismacloud", "prismacloudapigee", "huaweicloud", "tencentcloud", "wiz", "servicenowcmdb", "akamaiedge", "armiscentrix", "qualysvmdr", "tenable")]
-        [String]
-        ${IntegrationType},
+        [PSCustomObject[]]
+        ${Integrations},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
-        ${IntegrationId},
-        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Boolean]]
         ${CascadeSubdomain} = $true,
-        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Boolean]]
         ${CascadeIp} = $true,
-        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Boolean]]
         ${IncludeAllIntegrations} = $false
     )
@@ -97,8 +91,7 @@ function Initialize-CreateClientBusinessUnitRuleDto {
             "keyword_matcher" = ${KeywordMatcher}
             "keyword_rule_type" = ${KeywordRuleType}
             "country_code" = ${CountryCode}
-            "integration_type" = ${IntegrationType}
-            "integration_id" = ${IntegrationId}
+            "integrations" = ${Integrations}
             "cascade_subdomain" = ${CascadeSubdomain}
             "cascade_ip" = ${CascadeIp}
             "include_all_integrations" = ${IncludeAllIntegrations}
@@ -139,7 +132,7 @@ function ConvertFrom-JsonToCreateClientBusinessUnitRuleDto {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in CreateClientBusinessUnitRuleDto
-        $AllProperties = ("name", "type", "keyword_matcher", "keyword_rule_type", "country_code", "integration_type", "integration_id", "cascade_subdomain", "cascade_ip", "include_all_integrations")
+        $AllProperties = ("name", "type", "keyword_matcher", "keyword_rule_type", "country_code", "integrations", "cascade_subdomain", "cascade_ip", "include_all_integrations")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -180,16 +173,10 @@ function ConvertFrom-JsonToCreateClientBusinessUnitRuleDto {
             $CountryCode = $JsonParameters.PSobject.Properties["country_code"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "integration_type"))) { #optional property not found
-            $IntegrationType = $null
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "integrations"))) { #optional property not found
+            $Integrations = $null
         } else {
-            $IntegrationType = $JsonParameters.PSobject.Properties["integration_type"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "integration_id"))) { #optional property not found
-            $IntegrationId = $null
-        } else {
-            $IntegrationId = $JsonParameters.PSobject.Properties["integration_id"].value
+            $Integrations = $JsonParameters.PSobject.Properties["integrations"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "cascade_subdomain"))) { #optional property not found
@@ -216,8 +203,7 @@ function ConvertFrom-JsonToCreateClientBusinessUnitRuleDto {
             "keyword_matcher" = ${KeywordMatcher}
             "keyword_rule_type" = ${KeywordRuleType}
             "country_code" = ${CountryCode}
-            "integration_type" = ${IntegrationType}
-            "integration_id" = ${IntegrationId}
+            "integrations" = ${Integrations}
             "cascade_subdomain" = ${CascadeSubdomain}
             "cascade_ip" = ${CascadeIp}
             "include_all_integrations" = ${IncludeAllIntegrations}

@@ -41,6 +41,8 @@ PublicKeyInfoAlg
 PublicKeyInfoSize
 .PARAMETER Status
 No description available.
+.PARAMETER IssuedByStatus
+Trust provenance of the certificate issuer as classified upstream
 .PARAMETER CreatedAt
 Discovery date
 .PARAMETER UpdatedAt
@@ -100,18 +102,22 @@ function Initialize-ServiceInformationCertificate {
         [String]
         ${Status},
         [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[System.DateTime]]
-        ${CreatedAt},
+        [ValidateSet("self_signed", "untrusted", "trusted_ca")]
+        [String]
+        ${IssuedByStatus},
         [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[System.DateTime]]
-        ${UpdatedAt},
+        ${CreatedAt},
         [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
-        [System.DateTime]
-        ${NotBefore},
+        [System.Nullable[System.DateTime]]
+        ${UpdatedAt},
         [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
         [System.DateTime]
-        ${NotAfter},
+        ${NotBefore},
         [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true)]
+        [System.DateTime]
+        ${NotAfter},
+        [Parameter(Position = 18, ValueFromPipelineByPropertyName = $true)]
         [System.DateTime]
         ${LastSeenAt}
     )
@@ -171,6 +177,7 @@ function Initialize-ServiceInformationCertificate {
             "publicKeyInfoAlg" = ${PublicKeyInfoAlg}
             "publicKeyInfoSize" = ${PublicKeyInfoSize}
             "status" = ${Status}
+            "issuedByStatus" = ${IssuedByStatus}
             "createdAt" = ${CreatedAt}
             "updatedAt" = ${UpdatedAt}
             "notBefore" = ${NotBefore}
@@ -213,7 +220,7 @@ function ConvertFrom-JsonToServiceInformationCertificate {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ServiceInformationCertificate
-        $AllProperties = ("id", "subjectCommonName", "subjectOrganisation", "subjectAltNames", "subjectCountry", "issuerCommonName", "issuerOrganisation", "issuerCountry", "fingerprint", "serialNumber", "publicKeyInfoAlg", "publicKeyInfoSize", "status", "createdAt", "updatedAt", "notBefore", "notAfter", "lastSeenAt")
+        $AllProperties = ("id", "subjectCommonName", "subjectOrganisation", "subjectAltNames", "subjectCountry", "issuerCommonName", "issuerOrganisation", "issuerCountry", "fingerprint", "serialNumber", "publicKeyInfoAlg", "publicKeyInfoSize", "status", "issuedByStatus", "createdAt", "updatedAt", "notBefore", "notAfter", "lastSeenAt")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -302,6 +309,12 @@ function ConvertFrom-JsonToServiceInformationCertificate {
             $Status = $JsonParameters.PSobject.Properties["status"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "issuedByStatus"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'issuedByStatus' missing."
+        } else {
+            $IssuedByStatus = $JsonParameters.PSobject.Properties["issuedByStatus"].value
+        }
+
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "notBefore"))) {
             throw "Error! JSON cannot be serialized due to the required property 'notBefore' missing."
         } else {
@@ -346,6 +359,7 @@ function ConvertFrom-JsonToServiceInformationCertificate {
             "publicKeyInfoAlg" = ${PublicKeyInfoAlg}
             "publicKeyInfoSize" = ${PublicKeyInfoSize}
             "status" = ${Status}
+            "issuedByStatus" = ${IssuedByStatus}
             "createdAt" = ${CreatedAt}
             "updatedAt" = ${UpdatedAt}
             "notBefore" = ${NotBefore}

@@ -17,6 +17,8 @@ No description available.
 
 .PARAMETER VarData
 No description available.
+.PARAMETER Rules
+All rules created by this request (use this for multi-rule responses)
 .OUTPUTS
 
 ClientBusinessUnitRuleData<PSCustomObject>
@@ -27,7 +29,10 @@ function Initialize-ClientBusinessUnitRuleData {
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
-        ${VarData}
+        ${VarData},
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject[]]
+        ${Rules}
     )
 
     Process {
@@ -38,9 +43,14 @@ function Initialize-ClientBusinessUnitRuleData {
             throw "invalid value for 'VarData', 'VarData' cannot be null."
         }
 
+        if ($null -eq $Rules) {
+            throw "invalid value for 'Rules', 'Rules' cannot be null."
+        }
+
 
         $PSO = [PSCustomObject]@{
             "data" = ${VarData}
+            "rules" = ${Rules}
         }
 
 
@@ -78,7 +88,7 @@ function ConvertFrom-JsonToClientBusinessUnitRuleData {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientBusinessUnitRuleData
-        $AllProperties = ("data")
+        $AllProperties = ("data", "rules")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -95,8 +105,15 @@ function ConvertFrom-JsonToClientBusinessUnitRuleData {
             $VarData = $JsonParameters.PSobject.Properties["data"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "rules"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'rules' missing."
+        } else {
+            $Rules = $JsonParameters.PSobject.Properties["rules"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "data" = ${VarData}
+            "rules" = ${Rules}
         }
 
         return $PSO

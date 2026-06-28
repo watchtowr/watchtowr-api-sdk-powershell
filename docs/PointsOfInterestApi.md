@@ -91,7 +91,7 @@ $UpdatedTo = (Get-Date) # System.DateTime | Filter points of interest updated be
 $DiscoveredDateOrder = "ASC" # String | Order points of interest by their discovery date. (optional)
 $Search = "Apache%20Airflow%20Admin%20Login" # String | Search Points of Interest by name or URL. (optional)
 $Types = "admin-panel" # String[] | Filter by a comma separated list of types. Values are case-sensitive — pass the canonical lowercase form (e.g. `admin-panel,open-directory`). (optional)
-$HasFinding = $false # Boolean | Filter points of interest that have findings. (optional)
+$HasFinding = $true # Boolean | Filter points of interest by finding association. `true` returns only POIs that have findings, `false` returns only POIs without findings, and omitting the parameter returns all POIs. (optional)
 $StartDate = (Get-Date) # System.DateTime | Filter points of interest by start date. (optional)
 $EndDate = (Get-Date) # System.DateTime | Filter points of interest by end date. (optional)
 $AssetStatuses = "verified,Unregistered,Parked,Incorrect Identification,pending,VerifiedOutOfScope,VerifiedReducedAttack,Tracked,CDN,Hanging Cloud IP,VerifiedHoneypot,Third Party" # String | Filter points of interest by a comma separated list of asset statuses. (optional)
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
  **DiscoveredDateOrder** | **String**| Order points of interest by their discovery date. | [optional] 
  **Search** | **String**| Search Points of Interest by name or URL. | [optional] 
  **Types** | [**String[]**](String.md)| Filter by a comma separated list of types. Values are case-sensitive — pass the canonical lowercase form (e.g. &#x60;admin-panel,open-directory&#x60;). | [optional] 
- **HasFinding** | **Boolean**| Filter points of interest that have findings. | [optional] 
+ **HasFinding** | **Boolean**| Filter points of interest by finding association. &#x60;true&#x60; returns only POIs that have findings, &#x60;false&#x60; returns only POIs without findings, and omitting the parameter returns all POIs. | [optional] 
  **StartDate** | **System.DateTime**| Filter points of interest by start date. | [optional] 
  **EndDate** | **System.DateTime**| Filter points of interest by end date. | [optional] 
  **AssetStatuses** | **String**| Filter points of interest by a comma separated list of asset statuses. | [optional] 

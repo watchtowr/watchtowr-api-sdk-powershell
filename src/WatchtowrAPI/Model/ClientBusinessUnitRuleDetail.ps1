@@ -30,9 +30,11 @@ Whether to cascade to subdomains
 .PARAMETER CascadeIp
 Whether to cascade to IPs
 .PARAMETER IntegrationType
-Integration type. Valid values: aws, azure, googlecloud, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, armiscentrix, qualysvmdr, tenable
+Integration type (deprecated — use integrations[0].integration_type instead)
 .PARAMETER IntegrationId
-Integration ID
+Integration ID (deprecated — use integrations[0].integration_id instead)
+.PARAMETER Integrations
+List of integrations matched by this rule
 .PARAMETER IncludeAllIntegrations
 Whether to include all integrations
 .PARAMETER CreatedAt
@@ -74,9 +76,12 @@ function Initialize-ClientBusinessUnitRuleDetail {
         [System.Nullable[Decimal]]
         ${IntegrationId},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject[]]
+        ${Integrations},
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
         [Boolean]
         ${IncludeAllIntegrations},
-        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
         [System.DateTime]
         ${CreatedAt}
     )
@@ -120,6 +125,7 @@ function Initialize-ClientBusinessUnitRuleDetail {
             "cascade_ip" = ${CascadeIp}
             "integration_type" = ${IntegrationType}
             "integration_id" = ${IntegrationId}
+            "integrations" = ${Integrations}
             "include_all_integrations" = ${IncludeAllIntegrations}
             "created_at" = ${CreatedAt}
         }
@@ -159,7 +165,7 @@ function ConvertFrom-JsonToClientBusinessUnitRuleDetail {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientBusinessUnitRuleDetail
-        $AllProperties = ("id", "name", "keyword_matcher", "keyword_rule_type", "country", "cascade_subdomain", "cascade_ip", "integration_type", "integration_id", "include_all_integrations", "created_at")
+        $AllProperties = ("id", "name", "keyword_matcher", "keyword_rule_type", "country", "cascade_subdomain", "cascade_ip", "integration_type", "integration_id", "integrations", "include_all_integrations", "created_at")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -236,6 +242,12 @@ function ConvertFrom-JsonToClientBusinessUnitRuleDetail {
             $IntegrationId = $JsonParameters.PSobject.Properties["integration_id"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "integrations"))) { #optional property not found
+            $Integrations = $null
+        } else {
+            $Integrations = $JsonParameters.PSobject.Properties["integrations"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
             "name" = ${Name}
@@ -246,6 +258,7 @@ function ConvertFrom-JsonToClientBusinessUnitRuleDetail {
             "cascade_ip" = ${CascadeIp}
             "integration_type" = ${IntegrationType}
             "integration_id" = ${IntegrationId}
+            "integrations" = ${Integrations}
             "include_all_integrations" = ${IncludeAllIntegrations}
             "created_at" = ${CreatedAt}
         }

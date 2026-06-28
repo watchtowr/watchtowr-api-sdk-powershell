@@ -74,6 +74,7 @@ docs/ClientFindingRetestHistoryAsset.md
 docs/ClientFindingRetestHistoryFinding.md
 docs/ClientFindingRetestHistoryTriggeredBy.md
 docs/ClientFindingRetestResponse.md
+docs/ClientIntegrationItemDto.md
 docs/ClientIp.md
 docs/ClientIpData.md
 docs/ClientIpDetailDnsRecords.md
@@ -393,6 +394,7 @@ src/WatchtowrAPI/Model/ClientFindingRetestHistoryAsset.ps1
 src/WatchtowrAPI/Model/ClientFindingRetestHistoryFinding.ps1
 src/WatchtowrAPI/Model/ClientFindingRetestHistoryTriggeredBy.ps1
 src/WatchtowrAPI/Model/ClientFindingRetestResponse.ps1
+src/WatchtowrAPI/Model/ClientIntegrationItemDto.ps1
 src/WatchtowrAPI/Model/ClientIp.ps1
 src/WatchtowrAPI/Model/ClientIpData.ps1
 src/WatchtowrAPI/Model/ClientIpDetailDnsRecords.ps1
@@ -692,6 +694,7 @@ tests/Model/ClientFindingRetestHistoryAsset.Tests.ps1
 tests/Model/ClientFindingRetestHistoryFinding.Tests.ps1
 tests/Model/ClientFindingRetestHistoryTriggeredBy.Tests.ps1
 tests/Model/ClientFindingRetestResponse.Tests.ps1
+tests/Model/ClientIntegrationItemDto.Tests.ps1
 tests/Model/ClientIp.Tests.ps1
 tests/Model/ClientIpData.Tests.ps1
 tests/Model/ClientIpDetailDnsRecords.Tests.ps1

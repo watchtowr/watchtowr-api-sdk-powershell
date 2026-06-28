@@ -394,6 +394,7 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.ClientFindingRetestHistoryFinding](docs/ClientFindingRetestHistoryFinding.md)
  - [WatchtowrAPI\Model.ClientFindingRetestHistoryTriggeredBy](docs/ClientFindingRetestHistoryTriggeredBy.md)
  - [WatchtowrAPI\Model.ClientFindingRetestResponse](docs/ClientFindingRetestResponse.md)
+ - [WatchtowrAPI\Model.ClientIntegrationItemDto](docs/ClientIntegrationItemDto.md)
  - [WatchtowrAPI\Model.ClientIp](docs/ClientIp.md)
  - [WatchtowrAPI\Model.ClientIpData](docs/ClientIpData.md)
  - [WatchtowrAPI\Model.ClientIpDetailDnsRecords](docs/ClientIpDetailDnsRecords.md)

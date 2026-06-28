@@ -10,8 +10,9 @@ Name | Type | Description | Notes
 **Country** | **String** | Geographical location 2-letter country code (ISO 3166-1 alpha-2). Examples: SG, US, GB, AU | [optional] 
 **CascadeSubdomain** | **Boolean** | Whether to cascade to subdomains | 
 **CascadeIp** | **Boolean** | Whether to cascade to IPs | 
-**IntegrationType** | **String** | Integration type. Valid values: aws, azure, googlecloud, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, armiscentrix, qualysvmdr, tenable | [optional] 
-**IntegrationId** | **Decimal** | Integration ID | [optional] 
+**IntegrationType** | **String** | Integration type (deprecated — use integrations[0].integration_type instead) | [optional] 
+**IntegrationId** | **Decimal** | Integration ID (deprecated — use integrations[0].integration_id instead) | [optional] 
+**Integrations** | [**ClientIntegrationItemDto[]**](ClientIntegrationItemDto.md) | List of integrations matched by this rule | [optional] 
 **IncludeAllIntegrations** | **Boolean** | Whether to include all integrations | 
 **CreatedAt** | **System.DateTime** | Created At | 
 
@@ -28,6 +29,7 @@ $ClientBusinessUnitRuleDetail = Initialize-WatchtowrAPIClientBusinessUnitRuleDet
  -CascadeIp true `
  -IntegrationType aws `
  -IntegrationId 1 `
+ -Integrations null `
  -IncludeAllIntegrations false `
  -CreatedAt 2022-02-13T02:10Z
 ```

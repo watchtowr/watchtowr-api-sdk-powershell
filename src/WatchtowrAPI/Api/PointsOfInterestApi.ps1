@@ -121,7 +121,7 @@ Search Points of Interest by name or URL.
 Filter by a comma separated list of types. Values are case-sensitive — pass the canonical lowercase form (e.g. `admin-panel,open-directory`).
 
 .PARAMETER HasFinding
-Filter points of interest that have findings.
+Filter points of interest by finding association. `true` returns only POIs that have findings, `false` returns only POIs without findings, and omitting the parameter returns all POIs.
 
 .PARAMETER StartDate
 Filter points of interest by start date.

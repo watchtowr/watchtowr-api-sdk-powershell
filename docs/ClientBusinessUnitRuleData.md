@@ -4,12 +4,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **VarData** | [**ClientBusinessUnitRuleDetail**](ClientBusinessUnitRuleDetail.md) |  | 
+**Rules** | [**ClientBusinessUnitRuleDetail[]**](ClientBusinessUnitRuleDetail.md) | All rules created by this request (use this for multi-rule responses) | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$ClientBusinessUnitRuleData = Initialize-WatchtowrAPIClientBusinessUnitRuleData  -VarData null
+$ClientBusinessUnitRuleData = Initialize-WatchtowrAPIClientBusinessUnitRuleData  -VarData null `
+ -Rules null
 ```
 
 - Convert the resource to JSON
