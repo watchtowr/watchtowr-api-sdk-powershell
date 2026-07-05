@@ -66,7 +66,7 @@ function Initialize-ActiveDefenseRule {
         [Boolean]
         ${ZeroDay},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
-        [ValidateSet("cloudflare", "aws_cfn", "fastly", "akamai_waf", "google_cloud_armor", "mod_security", "azure_appgw", "imperva")]
+        [ValidateSet("cloudflare", "aws_cfn", "fastly", "akamai", "google_cloud_armor", "mod_security", "azure_appgw", "imperva")]
         [String[]]
         ${Providers},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]

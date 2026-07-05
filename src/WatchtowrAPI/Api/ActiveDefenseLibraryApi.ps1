@@ -114,7 +114,7 @@ function Get-ActiveDefenseLibraryRuleProviderTemplate {
         [Decimal]
         ${RuleId},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [ValidateSet("cloudflare", "aws_cfn", "fastly", "akamai_waf", "google_cloud_armor", "mod_security", "azure_appgw", "imperva")]
+        [ValidateSet("cloudflare", "aws_cfn", "fastly", "akamai", "google_cloud_armor", "mod_security", "azure_appgw", "imperva")]
         [String]
         ${Provider},
         [Switch]
