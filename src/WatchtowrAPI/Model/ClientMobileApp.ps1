@@ -137,10 +137,6 @@ function Initialize-ClientMobileApp {
             throw "invalid value for 'Platform', 'Platform' cannot be null."
         }
 
-        if ($null -eq $AppId) {
-            throw "invalid value for 'AppId', 'AppId' cannot be null."
-        }
-
         if ($null -eq $BusinessUnits) {
             throw "invalid value for 'BusinessUnits', 'BusinessUnits' cannot be null."
         }

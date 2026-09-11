@@ -3,14 +3,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IsAcknowledged** | **Boolean** | Whether the hunt has been acknowledged | 
+**IsAcknowledged** | **Boolean** | Deprecated. Always returns false. Retained for backward compatibility. | 
 **NumberOfSeen** | **Decimal** | Number of users who have seen the hunt | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$HuntAcknowledgementDto = Initialize-WatchtowrAPIHuntAcknowledgementDto  -IsAcknowledged true `
+$HuntAcknowledgementDto = Initialize-WatchtowrAPIHuntAcknowledgementDto  -IsAcknowledged false `
  -NumberOfSeen 3
 ```
 

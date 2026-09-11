@@ -29,6 +29,8 @@ JSON values for the asset
 Status name of the seed data
 .PARAMETER StatusReason
 Status reason for the seed data
+.PARAMETER Asset
+Asset this seed data resolves to, when applicable — either the asset it was converted into, or the pre-existing asset that caused it to be auto-rejected as ""already exists"". Null when no matching asset can be found.
 .PARAMETER CreatedAt
 Creation date
 .PARAMETER User
@@ -65,12 +67,15 @@ function Initialize-ClientSeedDataListItem {
         [String]
         ${StatusReason},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject]
+        ${Asset},
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [System.DateTime]
         ${CreatedAt},
-        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${User},
-        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
         ${BusinessUnits}
     )
@@ -116,6 +121,7 @@ function Initialize-ClientSeedDataListItem {
             "values" = ${Values}
             "status_name" = ${StatusName}
             "status_reason" = ${StatusReason}
+            "asset" = ${Asset}
             "created_at" = ${CreatedAt}
             "user" = ${User}
             "businessUnits" = ${BusinessUnits}
@@ -156,7 +162,7 @@ function ConvertFrom-JsonToClientSeedDataListItem {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientSeedDataListItem
-        $AllProperties = ("id", "title", "type", "value", "values", "status_name", "status_reason", "created_at", "user", "businessUnits")
+        $AllProperties = ("id", "title", "type", "value", "values", "status_name", "status_reason", "asset", "created_at", "user", "businessUnits")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -227,6 +233,12 @@ function ConvertFrom-JsonToClientSeedDataListItem {
             $StatusReason = $JsonParameters.PSobject.Properties["status_reason"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "asset"))) { #optional property not found
+            $Asset = $null
+        } else {
+            $Asset = $JsonParameters.PSobject.Properties["asset"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
             "title" = ${Title}
@@ -235,6 +247,7 @@ function ConvertFrom-JsonToClientSeedDataListItem {
             "values" = ${Values}
             "status_name" = ${StatusName}
             "status_reason" = ${StatusReason}
+            "asset" = ${Asset}
             "created_at" = ${CreatedAt}
             "user" = ${User}
             "businessUnits" = ${BusinessUnits}

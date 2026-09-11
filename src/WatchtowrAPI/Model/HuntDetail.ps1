@@ -287,12 +287,6 @@ function ConvertFrom-JsonToHuntDetail {
             $CompletedAt = $JsonParameters.PSobject.Properties["completed_at"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "completed_by"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'completed_by' missing."
-        } else {
-            $CompletedBy = $JsonParameters.PSobject.Properties["completed_by"].value
-        }
-
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "requested_by"))) {
             throw "Error! JSON cannot be serialized due to the required property 'requested_by' missing."
         } else {
@@ -309,6 +303,12 @@ function ConvertFrom-JsonToHuntDetail {
             $RapidExposureMechanism = $null
         } else {
             $RapidExposureMechanism = $JsonParameters.PSobject.Properties["rapid_exposure_mechanism"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "completed_by"))) { #optional property not found
+            $CompletedBy = $null
+        } else {
+            $CompletedBy = $JsonParameters.PSobject.Properties["completed_by"].value
         }
 
         $PSO = [PSCustomObject]@{

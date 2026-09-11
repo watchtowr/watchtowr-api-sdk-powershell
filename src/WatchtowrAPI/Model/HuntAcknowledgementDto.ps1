@@ -16,7 +16,7 @@ No summary available.
 No description available.
 
 .PARAMETER IsAcknowledged
-Whether the hunt has been acknowledged
+Deprecated. Always returns false. Retained for backward compatibility.
 .PARAMETER NumberOfSeen
 Number of users who have seen the hunt
 .OUTPUTS

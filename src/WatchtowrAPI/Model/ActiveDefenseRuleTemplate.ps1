@@ -18,7 +18,9 @@ No description available.
 .PARAMETER Type
 No description available.
 .PARAMETER Content
-Provider-specific rule content (shape varies by provider).
+Provider-specific rule content (shape varies by provider). Deprecated: use rules for structured per-variant content.
+.PARAMETER Rules
+Structured rule variants for this provider. Null when the upstream content is not in the expected vendorised format.
 .OUTPUTS
 
 ActiveDefenseRuleTemplate<PSCustomObject>
@@ -28,12 +30,15 @@ function Initialize-ActiveDefenseRuleTemplate {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [ValidateSet("cloudflare", "aws_cfn", "fastly", "akamai", "google_cloud_armor", "mod_security", "azure_appgw", "imperva")]
+        [ValidateSet("cloudflare", "aws_cfn", "fastly", "akamai", "google_cloud_armor", "mod_security", "azure_appgw", "imperva", "fastly_ngwaf", "alibaba_cloud_waf", "huawei_cloud_waf", "tencent_cloud_waf", "oci_waf", "f5_bigip_advanced_waf", "f5_nginx_waf_v5", "f5_nginx_waf_v4", "fortiweb_v6", "fortiweb_v7_0", "fortiweb_v7_6", "checkpoint_cloudguard", "checkpoint_appsec_v1beta1", "checkpoint_appsec_v1beta2", "netscaler_snort", "netscaler_native_xml", "sigma", "yara", "snort_v3", "progress_kemp_loadmaster", "mod_security_v2", "imperva_waf_gateway")]
         [String]
         ${Type},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [System.Collections.Hashtable]
-        ${Content}
+        ${Content},
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject[]]
+        ${Rules}
     )
 
     Process {
@@ -52,6 +57,7 @@ function Initialize-ActiveDefenseRuleTemplate {
         $PSO = [PSCustomObject]@{
             "type" = ${Type}
             "content" = ${Content}
+            "rules" = ${Rules}
         }
 
 
@@ -89,7 +95,7 @@ function ConvertFrom-JsonToActiveDefenseRuleTemplate {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ActiveDefenseRuleTemplate
-        $AllProperties = ("type", "content")
+        $AllProperties = ("type", "content", "rules")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -112,9 +118,16 @@ function ConvertFrom-JsonToActiveDefenseRuleTemplate {
             $Content = $JsonParameters.PSobject.Properties["content"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "rules"))) { #optional property not found
+            $Rules = $null
+        } else {
+            $Rules = $JsonParameters.PSobject.Properties["rules"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "type" = ${Type}
             "content" = ${Content}
+            "rules" = ${Rules}
         }
 
         return $PSO

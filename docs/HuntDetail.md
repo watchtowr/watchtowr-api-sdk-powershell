@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **Hypothesis** | **String** | Hypothesis | 
 **References** | **String[]** | references | 
 **CompletedAt** | **System.DateTime** | Completed at | 
-**CompletedBy** | **String** | Completed by | 
+**CompletedBy** | **String** | Completed by | [optional] 
 **RequestedBy** | **String** | Request by | 
 **Status** | **String** | Status | 
 

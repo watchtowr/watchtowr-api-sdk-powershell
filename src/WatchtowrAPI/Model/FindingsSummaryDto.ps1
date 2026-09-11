@@ -20,7 +20,7 @@ Total count of resolved findings
 .PARAMETER OldCriticalHighFindings
 Count of critical/high findings older than 30 days
 .PARAMETER UnacknowledgedCriticalHighFindings
-Count of unacknowledged critical/high findings
+Deprecated. Always returns 0. Retained for backward compatibility.
 .OUTPUTS
 
 FindingsSummaryDto<PSCustomObject>

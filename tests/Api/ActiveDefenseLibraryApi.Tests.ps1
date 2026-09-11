@@ -9,7 +9,7 @@
 Describe -tag 'WatchtowrAPI' -name 'ActiveDefenseLibraryApi' {
     Context 'Get-ActiveDefenseLibraryRuleDetails' {
         It 'Test Get-ActiveDefenseLibraryRuleDetails' {
-            #$TestResult = Get-ActiveDefenseLibraryRuleDetails -RuleId "TEST_VALUE"
+            #$TestResult = Get-ActiveDefenseLibraryRuleDetails -RuleId "TEST_VALUE" -Mode "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
         }
@@ -17,7 +17,7 @@ Describe -tag 'WatchtowrAPI' -name 'ActiveDefenseLibraryApi' {
 
     Context 'Get-ActiveDefenseLibraryRuleProviderTemplate' {
         It 'Test Get-ActiveDefenseLibraryRuleProviderTemplate' {
-            #$TestResult = Get-ActiveDefenseLibraryRuleProviderTemplate -RuleId "TEST_VALUE" -Provider "TEST_VALUE"
+            #$TestResult = Get-ActiveDefenseLibraryRuleProviderTemplate -RuleId "TEST_VALUE" -Provider "TEST_VALUE" -Mode "TEST_VALUE"
             #$TestResult | Should -BeOfType TODO
             #$TestResult.property | Should -Be 0
         }

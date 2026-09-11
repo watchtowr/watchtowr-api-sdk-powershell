@@ -16,7 +16,9 @@ No summary available.
 No description available.
 
 .PARAMETER VarData
-No description available.
+First matching rule template. Kept for backward compatibility — multi-variant rules have more than one template; use `templates` for the complete set.
+.PARAMETER Templates
+All rule templates for the requested provider. A rule may carry several variants (e.g. alternate trigger endpoints) — apply every template for a complete mitigation.
 .OUTPUTS
 
 ClientActiveDefenseRuleProviderData<PSCustomObject>
@@ -27,7 +29,10 @@ function Initialize-ClientActiveDefenseRuleProviderData {
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
-        ${VarData}
+        ${VarData},
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject[]]
+        ${Templates}
     )
 
     Process {
@@ -38,9 +43,14 @@ function Initialize-ClientActiveDefenseRuleProviderData {
             throw "invalid value for 'VarData', 'VarData' cannot be null."
         }
 
+        if ($null -eq $Templates) {
+            throw "invalid value for 'Templates', 'Templates' cannot be null."
+        }
+
 
         $PSO = [PSCustomObject]@{
             "data" = ${VarData}
+            "templates" = ${Templates}
         }
 
 
@@ -78,7 +88,7 @@ function ConvertFrom-JsonToClientActiveDefenseRuleProviderData {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientActiveDefenseRuleProviderData
-        $AllProperties = ("data")
+        $AllProperties = ("data", "templates")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -95,8 +105,15 @@ function ConvertFrom-JsonToClientActiveDefenseRuleProviderData {
             $VarData = $JsonParameters.PSobject.Properties["data"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "templates"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'templates' missing."
+        } else {
+            $Templates = $JsonParameters.PSobject.Properties["templates"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "data" = ${VarData}
+            "templates" = ${Templates}
         }
 
         return $PSO

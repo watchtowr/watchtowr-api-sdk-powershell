@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TotalResolvedFindings** | **Decimal** | Total count of resolved findings | 
 **OldCriticalHighFindings** | **Decimal** | Count of critical/high findings older than 30 days | 
-**UnacknowledgedCriticalHighFindings** | **Decimal** | Count of unacknowledged critical/high findings | 
+**UnacknowledgedCriticalHighFindings** | **Decimal** | Deprecated. Always returns 0. Retained for backward compatibility. | 
 
 ## Examples
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ```powershell
 $FindingsSummaryDto = Initialize-WatchtowrAPIFindingsSummaryDto  -TotalResolvedFindings 156 `
  -OldCriticalHighFindings 3 `
- -UnacknowledgedCriticalHighFindings 7
+ -UnacknowledgedCriticalHighFindings 0
 ```
 
 - Convert the resource to JSON

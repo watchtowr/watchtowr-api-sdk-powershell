@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ClientActiveDefenseRuleProviderData' {
     Context 'ClientActiveDefenseRuleProviderData' {
         It 'Initialize-ClientActiveDefenseRuleProviderData' {
             # a simple test to create an object
-            #$NewObject = Initialize-ClientActiveDefenseRuleProviderData -VarData "TEST_VALUE"
+            #$NewObject = Initialize-ClientActiveDefenseRuleProviderData -VarData "TEST_VALUE" -Templates "TEST_VALUE"
             #$NewObject | Should -BeOfType ClientActiveDefenseRuleProviderData
             #$NewObject.property | Should -Be 0
         }

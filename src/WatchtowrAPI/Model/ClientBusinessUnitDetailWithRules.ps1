@@ -82,10 +82,6 @@ function Initialize-ClientBusinessUnitDetailWithRules {
             throw "invalid value for 'Name', 'Name' cannot be null."
         }
 
-        if ($null -eq $Description) {
-            throw "invalid value for 'Description', 'Description' cannot be null."
-        }
-
         if ($null -eq $Type) {
             throw "invalid value for 'Type', 'Type' cannot be null."
         }

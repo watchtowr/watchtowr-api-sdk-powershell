@@ -65,7 +65,7 @@ function Initialize-ClientUserDetail {
         [System.DateTime]
         ${CreatedAt},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
-        [Boolean]
+        [System.Nullable[Boolean]]
         ${Locked},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
@@ -95,20 +95,8 @@ function Initialize-ClientUserDetail {
             throw "invalid value for 'Title', 'Title' cannot be null."
         }
 
-        if ($null -eq $MobilePhoneNumber) {
-            throw "invalid value for 'MobilePhoneNumber', 'MobilePhoneNumber' cannot be null."
-        }
-
-        if ($null -eq $OfficePhoneNumber) {
-            throw "invalid value for 'OfficePhoneNumber', 'OfficePhoneNumber' cannot be null."
-        }
-
         if ($null -eq $CreatedAt) {
             throw "invalid value for 'CreatedAt', 'CreatedAt' cannot be null."
-        }
-
-        if ($null -eq $Locked) {
-            throw "invalid value for 'Locked', 'Locked' cannot be null."
         }
 
         if ($null -eq $Role) {

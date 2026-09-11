@@ -18,6 +18,9 @@ No description available.
 .PARAMETER RuleId
 The numeric rule ID of the Active Defense Library rule to retrieve.
 
+.PARAMETER Mode
+Enforcement mode for the returned rule payloads. `block` (default) returns block-enforcing rules; `alert` returns the same rules transformed to a monitor-only action.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -32,6 +35,10 @@ function Get-ActiveDefenseLibraryRuleDetails {
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [Decimal]
         ${RuleId},
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [ValidateSet("block", "alert")]
+        [String]
+        ${Mode},
         [Switch]
         $WithHttpInfo
     )
@@ -58,6 +65,10 @@ function Get-ActiveDefenseLibraryRuleDetails {
             throw "Error! The required parameter `RuleId` missing when calling getActiveDefenseLibraryRuleDetails."
         }
         $LocalVarUri = $LocalVarUri.replace('{ruleId}', [System.Web.HTTPUtility]::UrlEncode($RuleId))
+
+        if ($Mode) {
+            $LocalVarQueryParameters['mode'] = $Mode
+        }
 
         if ($Configuration["AccessToken"]) {
             $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]
@@ -99,6 +110,9 @@ The numeric rule ID of the Active Defense Library rule.
 .PARAMETER Provider
 The WAF provider whose rule template should be returned.
 
+.PARAMETER Mode
+Enforcement mode for the returned rule payloads. `block` (default) returns block-enforcing rules; `alert` returns the same rules transformed to a monitor-only action.
+
 .PARAMETER WithHttpInfo
 
 A switch when turned on will return a hash table of Response, StatusCode and Headers instead of just the Response
@@ -114,9 +128,13 @@ function Get-ActiveDefenseLibraryRuleProviderTemplate {
         [Decimal]
         ${RuleId},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [ValidateSet("cloudflare", "aws_cfn", "fastly", "akamai", "google_cloud_armor", "mod_security", "azure_appgw", "imperva")]
+        [ValidateSet("cloudflare", "aws_cfn", "fastly", "akamai", "google_cloud_armor", "mod_security", "azure_appgw", "imperva", "fastly_ngwaf", "alibaba_cloud_waf", "huawei_cloud_waf", "tencent_cloud_waf", "oci_waf", "f5_bigip_advanced_waf", "f5_nginx_waf_v5", "f5_nginx_waf_v4", "fortiweb_v6", "fortiweb_v7_0", "fortiweb_v7_6", "checkpoint_cloudguard", "checkpoint_appsec_v1beta1", "checkpoint_appsec_v1beta2", "netscaler_snort", "netscaler_native_xml", "sigma", "yara", "snort_v3", "progress_kemp_loadmaster", "mod_security_v2", "imperva_waf_gateway")]
         [String]
         ${Provider},
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [ValidateSet("block", "alert")]
+        [String]
+        ${Mode},
         [Switch]
         $WithHttpInfo
     )
@@ -147,6 +165,10 @@ function Get-ActiveDefenseLibraryRuleProviderTemplate {
             throw "Error! The required parameter `Provider` missing when calling getActiveDefenseLibraryRuleProviderTemplate."
         }
         $LocalVarUri = $LocalVarUri.replace('{provider}', [System.Web.HTTPUtility]::UrlEncode($Provider))
+
+        if ($Mode) {
+            $LocalVarQueryParameters['mode'] = $Mode
+        }
 
         if ($Configuration["AccessToken"]) {
             $LocalVarHeaderParameters['Authorization'] = "Bearer " + $Configuration["AccessToken"]

@@ -54,10 +54,6 @@ function Initialize-ClientTestingInfrastructure {
             throw "invalid value for 'Name', 'Name' cannot be null."
         }
 
-        if ($null -eq $Description) {
-            throw "invalid value for 'Description', 'Description' cannot be null."
-        }
-
         if ($null -eq $Whitelist) {
             throw "invalid value for 'Whitelist', 'Whitelist' cannot be null."
         }

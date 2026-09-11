@@ -9,6 +9,8 @@ docs/ActiveDefenseRuleDetails.md
 docs/ActiveDefenseRuleKevStatus.md
 docs/ActiveDefenseRuleTemplate.md
 docs/ActiveDefenseRuleVulnerability.md
+docs/ActiveDefenseWafRule.md
+docs/ActiveDefenseWafRuleCondition.md
 docs/ActivityLogApi.md
 docs/AddAssetApi.md
 docs/AdversaryIntel.md
@@ -104,6 +106,7 @@ docs/ClientRepositoryData.md
 docs/ClientSaasPlatform.md
 docs/ClientSaasPlatformData.md
 docs/ClientSeedData.md
+docs/ClientSeedDataAssetLink.md
 docs/ClientSeedDataBusinessUnit.md
 docs/ClientSeedDataDto.md
 docs/ClientSeedDataListItem.md
@@ -335,6 +338,8 @@ src/WatchtowrAPI/Model/ActiveDefenseRuleDetails.ps1
 src/WatchtowrAPI/Model/ActiveDefenseRuleKevStatus.ps1
 src/WatchtowrAPI/Model/ActiveDefenseRuleTemplate.ps1
 src/WatchtowrAPI/Model/ActiveDefenseRuleVulnerability.ps1
+src/WatchtowrAPI/Model/ActiveDefenseWafRule.ps1
+src/WatchtowrAPI/Model/ActiveDefenseWafRuleCondition.ps1
 src/WatchtowrAPI/Model/AdversaryIntel.ps1
 src/WatchtowrAPI/Model/AdversaryIntelDetails.ps1
 src/WatchtowrAPI/Model/Asset.ps1
@@ -424,6 +429,7 @@ src/WatchtowrAPI/Model/ClientRepositoryData.ps1
 src/WatchtowrAPI/Model/ClientSaasPlatform.ps1
 src/WatchtowrAPI/Model/ClientSaasPlatformData.ps1
 src/WatchtowrAPI/Model/ClientSeedData.ps1
+src/WatchtowrAPI/Model/ClientSeedDataAssetLink.ps1
 src/WatchtowrAPI/Model/ClientSeedDataBusinessUnit.ps1
 src/WatchtowrAPI/Model/ClientSeedDataDto.ps1
 src/WatchtowrAPI/Model/ClientSeedDataListItem.ps1
@@ -635,6 +641,8 @@ tests/Model/ActiveDefenseRuleDetails.Tests.ps1
 tests/Model/ActiveDefenseRuleKevStatus.Tests.ps1
 tests/Model/ActiveDefenseRuleTemplate.Tests.ps1
 tests/Model/ActiveDefenseRuleVulnerability.Tests.ps1
+tests/Model/ActiveDefenseWafRule.Tests.ps1
+tests/Model/ActiveDefenseWafRuleCondition.Tests.ps1
 tests/Model/AdversaryIntel.Tests.ps1
 tests/Model/AdversaryIntelDetails.Tests.ps1
 tests/Model/Asset.Tests.ps1
@@ -724,6 +732,7 @@ tests/Model/ClientRepositoryData.Tests.ps1
 tests/Model/ClientSaasPlatform.Tests.ps1
 tests/Model/ClientSaasPlatformData.Tests.ps1
 tests/Model/ClientSeedData.Tests.ps1
+tests/Model/ClientSeedDataAssetLink.Tests.ps1
 tests/Model/ClientSeedDataBusinessUnit.Tests.ps1
 tests/Model/ClientSeedDataDto.Tests.ps1
 tests/Model/ClientSeedDataListItem.Tests.ps1

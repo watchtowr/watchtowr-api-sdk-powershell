@@ -938,8 +938,11 @@ Filter findings by a comma separated list of tags.
 .PARAMETER OnlyValidatedExploitable
 Filter to only show findings validated as exploitable.
 
+.PARAMETER OnlyAiDiscovered
+Filter to only show findings discovered by AI.
+
 .PARAMETER OnlyUnacknowledged
-Filter to only show unacknowledged findings.
+Deprecated. This parameter has no effect and is ignored.
 
 .PARAMETER ExploitationRiskLevel
 Filter findings by a comma separated list of exploitation risk levels.
@@ -1008,8 +1011,11 @@ function Get-ListFindings {
         ${OnlyValidatedExploitable},
         [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Boolean]]
-        ${OnlyUnacknowledged},
+        ${OnlyAiDiscovered},
         [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [System.Nullable[Boolean]]
+        ${OnlyUnacknowledged},
+        [Parameter(Position = 18, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [ValidateSet("Unknown", "Moderate", "High")]
         [String]
         ${ExploitationRiskLevel},
@@ -1098,6 +1104,10 @@ function Get-ListFindings {
 
         if ($OnlyValidatedExploitable) {
             $LocalVarQueryParameters['onlyValidatedExploitable'] = $OnlyValidatedExploitable
+        }
+
+        if ($OnlyAiDiscovered) {
+            $LocalVarQueryParameters['onlyAiDiscovered'] = $OnlyAiDiscovered
         }
 
         if ($OnlyUnacknowledged) {

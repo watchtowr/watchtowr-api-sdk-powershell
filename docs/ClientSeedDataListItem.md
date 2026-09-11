@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Values** | [**SystemCollectionsHashtable**](.md) | JSON values for the asset | [optional] 
 **StatusName** | **String** | Status name of the seed data | 
 **StatusReason** | **String** | Status reason for the seed data | [optional] 
+**Asset** | [**ClientSeedDataAssetLink**](ClientSeedDataAssetLink.md) | Asset this seed data resolves to, when applicable — either the asset it was converted into, or the pre-existing asset that caused it to be auto-rejected as &quot;&quot;already exists&quot;&quot;. Null when no matching asset can be found. | [optional] 
 **CreatedAt** | **System.DateTime** | Creation date | 
 **User** | [**ClientSeedDataUser**](ClientSeedDataUser.md) | User who submitted the seed data | 
 **BusinessUnits** | [**ClientSeedDataBusinessUnit[]**](ClientSeedDataBusinessUnit.md) | Business units associated with the seed data | 
@@ -24,7 +25,8 @@ $ClientSeedDataListItem = Initialize-WatchtowrAPIClientSeedDataListItem  -Id 123
  -Value www.watchTowr.com `
  -Values {&quot;value&quot;:&quot;www.watchTowr.com&quot;} `
  -StatusName pending `
- -StatusReason needs verification `
+ -StatusReason This asset requires verification before it will be included and tracked within your attack surface. `
+ -Asset null `
  -CreatedAt 2023-01-01T12:00Z `
  -User null `
  -BusinessUnits null

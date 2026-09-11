@@ -39,6 +39,8 @@ No description available.
 Port state (e.g. `open`, `closed`, `filtered`).
 .PARAMETER BusinessUnits
 No description available.
+.PARAMETER Metadata
+Asset-type-specific metadata. Always empty for ports.
 .OUTPUTS
 
 ClientPort<PSCustomObject>
@@ -82,7 +84,10 @@ function Initialize-ClientPort {
         ${State},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
-        ${BusinessUnits}
+        ${BusinessUnits},
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
+        [System.Collections.Hashtable]
+        ${Metadata}
     )
 
     Process {
@@ -117,6 +122,10 @@ function Initialize-ClientPort {
             throw "invalid value for 'BusinessUnits', 'BusinessUnits' cannot be null."
         }
 
+        if ($null -eq $Metadata) {
+            throw "invalid value for 'Metadata', 'Metadata' cannot be null."
+        }
+
 
         $PSO = [PSCustomObject]@{
             "type" = ${Type}
@@ -131,6 +140,7 @@ function Initialize-ClientPort {
             "service" = ${Service}
             "state" = ${State}
             "businessUnits" = ${BusinessUnits}
+            "metadata" = ${Metadata}
         }
 
 
@@ -168,7 +178,7 @@ function ConvertFrom-JsonToClientPort {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientPort
-        $AllProperties = ("type", "status", "created_at", "last_seen_at", "id", "ip", "ip_id", "port", "banner", "service", "state", "businessUnits")
+        $AllProperties = ("type", "status", "created_at", "last_seen_at", "id", "ip", "ip_id", "port", "banner", "service", "state", "businessUnits", "metadata")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -221,6 +231,12 @@ function ConvertFrom-JsonToClientPort {
             $BusinessUnits = $JsonParameters.PSobject.Properties["businessUnits"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "metadata"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'metadata' missing."
+        } else {
+            $Metadata = $JsonParameters.PSobject.Properties["metadata"].value
+        }
+
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "status"))) { #optional property not found
             $Status = $null
         } else {
@@ -264,6 +280,7 @@ function ConvertFrom-JsonToClientPort {
             "service" = ${Service}
             "state" = ${State}
             "businessUnits" = ${BusinessUnits}
+            "metadata" = ${Metadata}
         }
 
         return $PSO

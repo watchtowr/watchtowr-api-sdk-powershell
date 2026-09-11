@@ -48,11 +48,8 @@ General
 .PARAMETER Resolved
 Filter hunts by resolution status. `true` returns resolved hunts, `false` returns unresolved hunts.
 
-.PARAMETER OnlyResolved
-Deprecated — use `resolved` instead. This is kept for backward compatibility and will be removed in a future release.
-
 .PARAMETER IsUnacknowledged
-Filter to only show hunts that are not acknowledged.
+Deprecated. This parameter has no effect and is ignored.
 
 .PARAMETER WithHttpInfo
 
@@ -102,9 +99,6 @@ function Get-ClientHunts {
         [System.Nullable[Boolean]]
         ${Resolved},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [System.Nullable[Boolean]]
-        ${OnlyResolved},
-        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [System.Nullable[Boolean]]
         ${IsUnacknowledged},
         [Switch]
@@ -172,10 +166,6 @@ function Get-ClientHunts {
 
         if ($Resolved) {
             $LocalVarQueryParameters['resolved'] = $Resolved
-        }
-
-        if ($OnlyResolved) {
-            $LocalVarQueryParameters['onlyResolved'] = $OnlyResolved
         }
 
         if ($IsUnacknowledged) {

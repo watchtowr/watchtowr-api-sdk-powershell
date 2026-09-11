@@ -24,7 +24,6 @@ Method | HTTP request | Description
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdatedTo] <System.Nullable[System.DateTime]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ResourceFilter] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Resolved] <System.Nullable[Boolean]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OnlyResolved] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IsUnacknowledged] <System.Nullable[Boolean]><br>
 
 List Hunts
@@ -47,12 +46,11 @@ $UpdatedFrom = (Get-Date) # System.DateTime | Filter hunts updated after a given
 $UpdatedTo = (Get-Date) # System.DateTime | Filter hunts updated before a given date and time. (optional)
 $ResourceFilter = "hasAssetsOrFindings" # String | General (optional)
 $Resolved = $true # Boolean | Filter hunts by resolution status. `true` returns resolved hunts, `false` returns unresolved hunts. (optional)
-$OnlyResolved = $true # Boolean | Deprecated — use `resolved` instead. This is kept for backward compatibility and will be removed in a future release. (optional)
-$IsUnacknowledged = $true # Boolean | Filter to only show hunts that are not acknowledged. (optional)
+$IsUnacknowledged = $true # Boolean | Deprecated. This parameter has no effect and is ignored. (optional)
 
 # List Hunts
 try {
-    $Result = Get-ClientHunts -Page $Page -PageSize $PageSize -Statuses $Statuses -HuntSearch $HuntSearch -Types $Types -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -ResourceFilter $ResourceFilter -Resolved $Resolved -OnlyResolved $OnlyResolved -IsUnacknowledged $IsUnacknowledged
+    $Result = Get-ClientHunts -Page $Page -PageSize $PageSize -Statuses $Statuses -HuntSearch $HuntSearch -Types $Types -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -ResourceFilter $ResourceFilter -Resolved $Resolved -IsUnacknowledged $IsUnacknowledged
 } catch {
     Write-Host ("Exception occurred when calling Get-ClientHunts: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -74,8 +72,7 @@ Name | Type | Description  | Notes
  **UpdatedTo** | **System.DateTime**| Filter hunts updated before a given date and time. | [optional] 
  **ResourceFilter** | **String**| General | [optional] 
  **Resolved** | **Boolean**| Filter hunts by resolution status. &#x60;true&#x60; returns resolved hunts, &#x60;false&#x60; returns unresolved hunts. | [optional] 
- **OnlyResolved** | **Boolean**| Deprecated — use &#x60;resolved&#x60; instead. This is kept for backward compatibility and will be removed in a future release. | [optional] 
- **IsUnacknowledged** | **Boolean**| Filter to only show hunts that are not acknowledged. | [optional] 
+ **IsUnacknowledged** | **Boolean**| Deprecated. This parameter has no effect and is ignored. | [optional] 
 
 ### Return type
 

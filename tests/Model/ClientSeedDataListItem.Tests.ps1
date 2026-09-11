@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ClientSeedDataListItem' {
     Context 'ClientSeedDataListItem' {
         It 'Initialize-ClientSeedDataListItem' {
             # a simple test to create an object
-            #$NewObject = Initialize-ClientSeedDataListItem -Id "TEST_VALUE" -Title "TEST_VALUE" -Type "TEST_VALUE" -Value "TEST_VALUE" -Values "TEST_VALUE" -StatusName "TEST_VALUE" -StatusReason "TEST_VALUE" -CreatedAt "TEST_VALUE" -User "TEST_VALUE" -BusinessUnits "TEST_VALUE"
+            #$NewObject = Initialize-ClientSeedDataListItem -Id "TEST_VALUE" -Title "TEST_VALUE" -Type "TEST_VALUE" -Value "TEST_VALUE" -Values "TEST_VALUE" -StatusName "TEST_VALUE" -StatusReason "TEST_VALUE" -Asset "TEST_VALUE" -CreatedAt "TEST_VALUE" -User "TEST_VALUE" -BusinessUnits "TEST_VALUE"
             #$NewObject | Should -BeOfType ClientSeedDataListItem
             #$NewObject.property | Should -Be 0
         }

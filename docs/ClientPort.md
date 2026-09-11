@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Service** | **String** |  | 
 **State** | **String** | Port state (e.g. &#x60;open&#x60;, &#x60;closed&#x60;, &#x60;filtered&#x60;). | [optional] 
 **BusinessUnits** | [**ClientBusinessUnit[]**](ClientBusinessUnit.md) |  | 
+**Metadata** | [**System.Collections.Hashtable**](AnyType.md) | Asset-type-specific metadata. Always empty for ports. | 
 
 ## Examples
 
@@ -31,7 +32,8 @@ $ClientPort = Initialize-WatchtowrAPIClientPort  -Type TCP `
  -Banner OpenSSH6.6.1p1 Ubuntu 2ubuntu2.13Ubuntu Linux; protocol 2.0 `
  -Service ssh `
  -State open `
- -BusinessUnits null
+ -BusinessUnits null `
+ -Metadata {}
 ```
 
 - Convert the resource to JSON

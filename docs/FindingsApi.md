@@ -523,6 +523,7 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Assignee] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Tags] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OnlyValidatedExploitable] <System.Nullable[Boolean]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OnlyAiDiscovered] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OnlyUnacknowledged] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ExploitationRiskLevel] <String><br>
 
@@ -551,12 +552,13 @@ $AssetTypes = "domain" # String | Filter findings by a comma separated list of a
 $Assignee = "John Smith" # String | Filter findings by assignee. To filter findings that don't have an assignee, please use assignee=No Assignee. (optional)
 $Tags = "CISA-KEV,Defacement,Credentials" # String | Filter findings by a comma separated list of tags. (optional)
 $OnlyValidatedExploitable = $true # Boolean | Filter to only show findings validated as exploitable. (optional)
-$OnlyUnacknowledged = $true # Boolean | Filter to only show unacknowledged findings. (optional)
+$OnlyAiDiscovered = $true # Boolean | Filter to only show findings discovered by AI. (optional)
+$OnlyUnacknowledged = $true # Boolean | Deprecated. This parameter has no effect and is ignored. (optional)
 $ExploitationRiskLevel = "Unknown" # String | Filter findings by a comma separated list of exploitation risk levels. (optional)
 
 # List Findings
 try {
-    $Result = Get-ListFindings -Page $Page -PageSize $PageSize -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -Statuses $Statuses -BusinessUnitIds $BusinessUnitIds -FindingImpactThreshold $FindingImpactThreshold -FindingTitle $FindingTitle -Severities $Severities -AssetTitle $AssetTitle -AssetTypes $AssetTypes -Assignee $Assignee -Tags $Tags -OnlyValidatedExploitable $OnlyValidatedExploitable -OnlyUnacknowledged $OnlyUnacknowledged -ExploitationRiskLevel $ExploitationRiskLevel
+    $Result = Get-ListFindings -Page $Page -PageSize $PageSize -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -Statuses $Statuses -BusinessUnitIds $BusinessUnitIds -FindingImpactThreshold $FindingImpactThreshold -FindingTitle $FindingTitle -Severities $Severities -AssetTitle $AssetTitle -AssetTypes $AssetTypes -Assignee $Assignee -Tags $Tags -OnlyValidatedExploitable $OnlyValidatedExploitable -OnlyAiDiscovered $OnlyAiDiscovered -OnlyUnacknowledged $OnlyUnacknowledged -ExploitationRiskLevel $ExploitationRiskLevel
 } catch {
     Write-Host ("Exception occurred when calling Get-ListFindings: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -583,7 +585,8 @@ Name | Type | Description  | Notes
  **Assignee** | **String**| Filter findings by assignee. To filter findings that don&#39;t have an assignee, please use assignee&#x3D;No Assignee. | [optional] 
  **Tags** | **String**| Filter findings by a comma separated list of tags. | [optional] 
  **OnlyValidatedExploitable** | **Boolean**| Filter to only show findings validated as exploitable. | [optional] 
- **OnlyUnacknowledged** | **Boolean**| Filter to only show unacknowledged findings. | [optional] 
+ **OnlyAiDiscovered** | **Boolean**| Filter to only show findings discovered by AI. | [optional] 
+ **OnlyUnacknowledged** | **Boolean**| Deprecated. This parameter has no effect and is ignored. | [optional] 
  **ExploitationRiskLevel** | **String**| Filter findings by a comma separated list of exploitation risk levels. | [optional] 
 
 ### Return type

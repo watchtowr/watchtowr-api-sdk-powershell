@@ -13,6 +13,7 @@ Method | HTTP request | Description
 # **Get-ActiveDefenseLibraryRuleDetails**
 > ClientActiveDefenseRuleData Get-ActiveDefenseLibraryRuleDetails<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-RuleId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Mode] <String><br>
 
 Get Active Defense Rule Details
 
@@ -24,10 +25,11 @@ Get the details of a specific Active Defense Library rule by rule ID. The `findi
 $Configuration = Get-Configuration
 
 $RuleId = 8.14 # Decimal | The numeric rule ID of the Active Defense Library rule to retrieve.
+$Mode = "block" # String | Enforcement mode for the returned rule payloads. `block` (default) returns block-enforcing rules; `alert` returns the same rules transformed to a monitor-only action. (optional)
 
 # Get Active Defense Rule Details
 try {
-    $Result = Get-ActiveDefenseLibraryRuleDetails -RuleId $RuleId
+    $Result = Get-ActiveDefenseLibraryRuleDetails -RuleId $RuleId -Mode $Mode
 } catch {
     Write-Host ("Exception occurred when calling Get-ActiveDefenseLibraryRuleDetails: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -39,6 +41,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **RuleId** | **Decimal**| The numeric rule ID of the Active Defense Library rule to retrieve. | 
+ **Mode** | **String**| Enforcement mode for the returned rule payloads. &#x60;block&#x60; (default) returns block-enforcing rules; &#x60;alert&#x60; returns the same rules transformed to a monitor-only action. | [optional] 
 
 ### Return type
 
@@ -60,6 +63,7 @@ Name | Type | Description  | Notes
 > ClientActiveDefenseRuleProviderData Get-ActiveDefenseLibraryRuleProviderTemplate<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-RuleId] <Decimal><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Provider] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Mode] <String><br>
 
 Get Active Defense Rule Provider Template
 
@@ -72,10 +76,11 @@ $Configuration = Get-Configuration
 
 $RuleId = 8.14 # Decimal | The numeric rule ID of the Active Defense Library rule.
 $Provider = "cloudflare" # String | The WAF provider whose rule template should be returned.
+$Mode = "block" # String | Enforcement mode for the returned rule payloads. `block` (default) returns block-enforcing rules; `alert` returns the same rules transformed to a monitor-only action. (optional)
 
 # Get Active Defense Rule Provider Template
 try {
-    $Result = Get-ActiveDefenseLibraryRuleProviderTemplate -RuleId $RuleId -Provider $Provider
+    $Result = Get-ActiveDefenseLibraryRuleProviderTemplate -RuleId $RuleId -Provider $Provider -Mode $Mode
 } catch {
     Write-Host ("Exception occurred when calling Get-ActiveDefenseLibraryRuleProviderTemplate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -88,6 +93,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **RuleId** | **Decimal**| The numeric rule ID of the Active Defense Library rule. | 
  **Provider** | **String**| The WAF provider whose rule template should be returned. | 
+ **Mode** | **String**| Enforcement mode for the returned rule payloads. &#x60;block&#x60; (default) returns block-enforcing rules; &#x60;alert&#x60; returns the same rules transformed to a monitor-only action. | [optional] 
 
 ### Return type
 
