@@ -126,6 +126,8 @@ Class | Method | HTTP request | Description
 *CloudStorageApi* | [**Update-AssetCloudStorageNote**](docs/CloudStorageApi.md#Update-AssetCloudStorageNote) | **PUT** /api/client/assets/cloudStorage/show/{id}/note/{noteId} | Update Note
 *CloudStorageApi* | [**Update-AssetCloudStorageStatus**](docs/CloudStorageApi.md#Update-AssetCloudStorageStatus) | **PUT** /api/client/assets/cloudStorage/update-status/{id} | Update Status
 *CloudStorageApi* | [**Update-CustomPropertyCloudStorage**](docs/CloudStorageApi.md#Update-CustomPropertyCloudStorage) | **PUT** /api/client/assets/cloudStorage/show/{id}/custom-property/{customPropertyId} | Update Custom Property
+*CompromisedEndpointsApi* | [**Get-ListCompromisedEndpointHarvestedCredentials**](docs/CompromisedEndpointsApi.md#Get-ListCompromisedEndpointHarvestedCredentials) | **GET** /api/client/compromised-endpoints/show/{id}/harvested-credentials | List Harvested Credentials
+*CompromisedEndpointsApi* | [**Get-ListCompromisedEndpoints**](docs/CompromisedEndpointsApi.md#Get-ListCompromisedEndpoints) | **GET** /api/client/compromised-endpoints/list | List Compromised Endpoints
 *ContainersApi* | [**Set-ContainerToBusinessUnits**](docs/ContainersApi.md#Set-ContainerToBusinessUnits) | **POST** /api/client/assets/container/show/{id}/business-units | Assign Container to Business Units
 *ContainersApi* | [**New-CustomPropertyContainer**](docs/ContainersApi.md#New-CustomPropertyContainer) | **POST** /api/client/assets/container/show/{id}/custom-property | Create Custom Property
 *ContainersApi* | [**New-NoteContainer**](docs/ContainersApi.md#New-NoteContainer) | **POST** /api/client/assets/container/show/{id}/note | Create Note
@@ -141,6 +143,7 @@ Class | Method | HTTP request | Description
 *ContainersApi* | [**Update-AssetContainerStatus**](docs/ContainersApi.md#Update-AssetContainerStatus) | **PUT** /api/client/assets/container/update-status/{id} | Update Status
 *ContainersApi* | [**Update-CustomPropertyContainer**](docs/ContainersApi.md#Update-CustomPropertyContainer) | **PUT** /api/client/assets/container/show/{id}/custom-property/{customPropertyId} | Update Custom Property
 *ContainersApi* | [**Update-NoteContainer**](docs/ContainersApi.md#Update-NoteContainer) | **PUT** /api/client/assets/container/show/{id}/note/{noteId} | Update Note
+*CredentialAttemptLogsApi* | [**Get-ListCredentialAttemptLogs**](docs/CredentialAttemptLogsApi.md#Get-ListCredentialAttemptLogs) | **GET** /api/client/credential-attempt-logs/list | List Credential Attempt Logs
 *DNSRecordAnalysisApi* | [**Get-ListDnsRecords**](docs/DNSRecordAnalysisApi.md#Get-ListDnsRecords) | **GET** /api/client/dns-records/list | List DNS Records
 *DomainsApi* | [**Set-DomainToBusinessUnits**](docs/DomainsApi.md#Set-DomainToBusinessUnits) | **POST** /api/client/assets/domain/show/{id}/business-units | Assign Domain to Business Units
 *DomainsApi* | [**New-AssetDomainNote**](docs/DomainsApi.md#New-AssetDomainNote) | **POST** /api/client/assets/domain/show/{id}/note | Create Note
@@ -373,8 +376,13 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.ClientCloudAssetData](docs/ClientCloudAssetData.md)
  - [WatchtowrAPI\Model.ClientCloudStorage](docs/ClientCloudStorage.md)
  - [WatchtowrAPI\Model.ClientCloudStorageData](docs/ClientCloudStorageData.md)
+ - [WatchtowrAPI\Model.ClientCompromisedEndpoint](docs/ClientCompromisedEndpoint.md)
+ - [WatchtowrAPI\Model.ClientCompromisedEndpointHarvestedCredential](docs/ClientCompromisedEndpointHarvestedCredential.md)
  - [WatchtowrAPI\Model.ClientContainer](docs/ClientContainer.md)
  - [WatchtowrAPI\Model.ClientContainerData](docs/ClientContainerData.md)
+ - [WatchtowrAPI\Model.ClientCredentialsLog](docs/ClientCredentialsLog.md)
+ - [WatchtowrAPI\Model.ClientCredentialsLogAffectedAsset](docs/ClientCredentialsLogAffectedAsset.md)
+ - [WatchtowrAPI\Model.ClientCredentialsLogCredentials](docs/ClientCredentialsLogCredentials.md)
  - [WatchtowrAPI\Model.ClientCustomProperty](docs/ClientCustomProperty.md)
  - [WatchtowrAPI\Model.ClientDnsRecord](docs/ClientDnsRecord.md)
  - [WatchtowrAPI\Model.ClientDnsRecordAsset](docs/ClientDnsRecordAsset.md)
@@ -508,7 +516,10 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.PaginatedClientAssetChangelog](docs/PaginatedClientAssetChangelog.md)
  - [WatchtowrAPI\Model.PaginatedClientCloudAsset](docs/PaginatedClientCloudAsset.md)
  - [WatchtowrAPI\Model.PaginatedClientCloudStorage](docs/PaginatedClientCloudStorage.md)
+ - [WatchtowrAPI\Model.PaginatedClientCompromisedEndpoint](docs/PaginatedClientCompromisedEndpoint.md)
+ - [WatchtowrAPI\Model.PaginatedClientCompromisedEndpointHarvestedCredentials](docs/PaginatedClientCompromisedEndpointHarvestedCredentials.md)
  - [WatchtowrAPI\Model.PaginatedClientContainer](docs/PaginatedClientContainer.md)
+ - [WatchtowrAPI\Model.PaginatedClientCredentialsLog](docs/PaginatedClientCredentialsLog.md)
  - [WatchtowrAPI\Model.PaginatedClientCustomProperty](docs/PaginatedClientCustomProperty.md)
  - [WatchtowrAPI\Model.PaginatedClientDnsRecord](docs/PaginatedClientDnsRecord.md)
  - [WatchtowrAPI\Model.PaginatedClientDomain](docs/PaginatedClientDomain.md)
