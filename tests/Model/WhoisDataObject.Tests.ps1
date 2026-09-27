@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'WhoisDataObject' {
     Context 'WhoisDataObject' {
         It 'Initialize-WhoisDataObject' {
             # a simple test to create an object
-            #$NewObject = Initialize-WhoisDataObject -Org "TEST_VALUE" -City "TEST_VALUE" -Name "TEST_VALUE" -State "TEST_VALUE" -Dnssec "TEST_VALUE" -Emails "TEST_VALUE" -Status "TEST_VALUE" -Address "TEST_VALUE" -Country "TEST_VALUE" -Zipcode "TEST_VALUE" -Registrar "TEST_VALUE" -DomainName "TEST_VALUE" -NameServers "TEST_VALUE" -ReferralUrl "TEST_VALUE" -WhoisServer "TEST_VALUE" -CreationDate "TEST_VALUE" -ExpirationDate "TEST_VALUE"
+            #$NewObject = Initialize-WhoisDataObject -Org "TEST_VALUE" -City "TEST_VALUE" -Name "TEST_VALUE" -State "TEST_VALUE" -Dnssec "TEST_VALUE" -Emails "TEST_VALUE" -Status "TEST_VALUE" -Address "TEST_VALUE" -Country "TEST_VALUE" -Zipcode "TEST_VALUE" -Registrar "TEST_VALUE" -DomainName "TEST_VALUE" -NameServers "TEST_VALUE" -ReferralUrl "TEST_VALUE" -WhoisServer "TEST_VALUE" -CreationDate "TEST_VALUE" -ExpirationDate "TEST_VALUE" -Message "TEST_VALUE"
             #$NewObject | Should -BeOfType WhoisDataObject
             #$NewObject.property | Should -Be 0
         }

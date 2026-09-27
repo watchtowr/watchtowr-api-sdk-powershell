@@ -19,7 +19,7 @@ No description available.
 The numeric rule ID of the Active Defense Library rule to retrieve.
 
 .PARAMETER Mode
-Enforcement mode for the returned rule payloads. `block` (default) returns block-enforcing rules; `alert` returns the same rules transformed to a monitor-only action.
+Enforcement mode for the returned rule payloads. `block` (default) returns block-enforcing rules; `alert` returns the same rules transformed to a monitor-only action. Not every rule/provider combination has an alert-mode equivalent; those return 422.
 
 .PARAMETER WithHttpInfo
 
@@ -111,7 +111,7 @@ The numeric rule ID of the Active Defense Library rule.
 The WAF provider whose rule template should be returned.
 
 .PARAMETER Mode
-Enforcement mode for the returned rule payloads. `block` (default) returns block-enforcing rules; `alert` returns the same rules transformed to a monitor-only action.
+Enforcement mode for the returned rule payloads. `block` (default) returns block-enforcing rules; `alert` returns the same rules transformed to a monitor-only action. Not every rule/provider combination has an alert-mode equivalent; those return 422.
 
 .PARAMETER WithHttpInfo
 

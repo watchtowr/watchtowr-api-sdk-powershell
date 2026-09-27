@@ -16,7 +16,21 @@ No summary available.
 No description available.
 
 .PARAMETER Type
+Condition type, where the provider uses one.
+.PARAMETER Category
+Category (e.g. huawei, imperva).
+.PARAMETER Contents
+Match contents.
+.PARAMETER LogicOperation
+Logic operation joining contents.
+.PARAMETER Key
+Match key.
+.PARAMETER OpValue
+Comparison operator.
+.PARAMETER Values
 No description available.
+.PARAMETER GroupOperator
+Operator joining a nested condition group.
 .PARAMETER PositiveMatch
 No description available.
 .PARAMETER Name
@@ -25,6 +39,12 @@ No description available.
 No description available.
 .PARAMETER ValueWildcard
 No description available.
+.PARAMETER SubKey
+Secondary match key (akamai).
+.PARAMETER Index
+Condition position within its group.
+.PARAMETER Conditions
+Nested condition group — same shape as this object, one level deeper.
 .OUTPUTS
 
 ActiveDefenseWafRuleCondition<PSCustomObject>
@@ -37,34 +57,70 @@ function Initialize-ActiveDefenseWafRuleCondition {
         [String]
         ${Type},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Category},
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
+        [String[]]
+        ${Contents},
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${LogicOperation},
+        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Key},
+        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${OpValue},
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject]
+        ${Values},
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${GroupOperator},
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Boolean]]
         ${PositiveMatch},
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Name},
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
         [String[]]
         ${Value},
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Boolean]]
-        ${ValueWildcard}
+        ${ValueWildcard},
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${SubKey},
+        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Index},
+        [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
+        [System.Collections.Hashtable[]]
+        ${Conditions}
     )
 
     Process {
         'Creating PSCustomObject: WatchtowrAPI => ActiveDefenseWafRuleCondition' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        if ($null -eq $Type) {
-            throw "invalid value for 'Type', 'Type' cannot be null."
-        }
-
 
         $PSO = [PSCustomObject]@{
             "type" = ${Type}
+            "category" = ${Category}
+            "contents" = ${Contents}
+            "logic_operation" = ${LogicOperation}
+            "key" = ${Key}
+            "opValue" = ${OpValue}
+            "values" = ${Values}
+            "group_operator" = ${GroupOperator}
             "positiveMatch" = ${PositiveMatch}
             "name" = ${Name}
             "value" = ${Value}
             "valueWildcard" = ${ValueWildcard}
+            "subKey" = ${SubKey}
+            "index" = ${Index}
+            "conditions" = ${Conditions}
         }
 
 
@@ -102,21 +158,59 @@ function ConvertFrom-JsonToActiveDefenseWafRuleCondition {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ActiveDefenseWafRuleCondition
-        $AllProperties = ("type", "positiveMatch", "name", "value", "valueWildcard")
+        $AllProperties = ("type", "category", "contents", "logic_operation", "key", "opValue", "values", "group_operator", "positiveMatch", "name", "value", "valueWildcard", "subKey", "index", "conditions")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
             }
         }
 
-        If ([string]::IsNullOrEmpty($Json) -or $Json -eq "{}") { # empty json
-            throw "Error! Empty JSON cannot be serialized due to the required property 'type' missing."
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "type"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'type' missing."
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "type"))) { #optional property not found
+            $Type = $null
         } else {
             $Type = $JsonParameters.PSobject.Properties["type"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "category"))) { #optional property not found
+            $Category = $null
+        } else {
+            $Category = $JsonParameters.PSobject.Properties["category"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "contents"))) { #optional property not found
+            $Contents = $null
+        } else {
+            $Contents = $JsonParameters.PSobject.Properties["contents"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "logic_operation"))) { #optional property not found
+            $LogicOperation = $null
+        } else {
+            $LogicOperation = $JsonParameters.PSobject.Properties["logic_operation"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "key"))) { #optional property not found
+            $Key = $null
+        } else {
+            $Key = $JsonParameters.PSobject.Properties["key"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "opValue"))) { #optional property not found
+            $OpValue = $null
+        } else {
+            $OpValue = $JsonParameters.PSobject.Properties["opValue"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "values"))) { #optional property not found
+            $Values = $null
+        } else {
+            $Values = $JsonParameters.PSobject.Properties["values"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "group_operator"))) { #optional property not found
+            $GroupOperator = $null
+        } else {
+            $GroupOperator = $JsonParameters.PSobject.Properties["group_operator"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "positiveMatch"))) { #optional property not found
@@ -143,12 +237,40 @@ function ConvertFrom-JsonToActiveDefenseWafRuleCondition {
             $ValueWildcard = $JsonParameters.PSobject.Properties["valueWildcard"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "subKey"))) { #optional property not found
+            $SubKey = $null
+        } else {
+            $SubKey = $JsonParameters.PSobject.Properties["subKey"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "index"))) { #optional property not found
+            $Index = $null
+        } else {
+            $Index = $JsonParameters.PSobject.Properties["index"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "conditions"))) { #optional property not found
+            $Conditions = $null
+        } else {
+            $Conditions = $JsonParameters.PSobject.Properties["conditions"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "type" = ${Type}
+            "category" = ${Category}
+            "contents" = ${Contents}
+            "logic_operation" = ${LogicOperation}
+            "key" = ${Key}
+            "opValue" = ${OpValue}
+            "values" = ${Values}
+            "group_operator" = ${GroupOperator}
             "positiveMatch" = ${PositiveMatch}
             "name" = ${Name}
             "value" = ${Value}
             "valueWildcard" = ${ValueWildcard}
+            "subKey" = ${SubKey}
+            "index" = ${Index}
+            "conditions" = ${Conditions}
         }
 
         return $PSO

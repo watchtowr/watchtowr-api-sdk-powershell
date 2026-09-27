@@ -35,6 +35,15 @@ function ConvertFrom-JsonToWhoisDataObjectStatus {
         $matchType = $null
         $matchInstance = $null
 
+        # nullable check
+        if ([string]::IsNullOrEmpty($Json) -or $Json -eq "{}") {
+            return [PSCustomObject]@{
+                "ActualType" = $null
+                "ActualInstance" = $null
+                "OneOfSchemas" = @("String", "String[]")
+            }
+        }
+
         # try to match String defined in the oneOf schemas
         try {
             $matchInstance = ConvertFrom-JsonToString $Json

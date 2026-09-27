@@ -58,7 +58,7 @@ function Initialize-ClientUser {
         [String]
         ${OfficePhoneNumber},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
-        [System.DateTime]
+        [System.Nullable[System.DateTime]]
         ${CreatedAt},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Boolean]]
@@ -83,10 +83,6 @@ function Initialize-ClientUser {
 
         if ($null -eq $Title) {
             throw "invalid value for 'Title', 'Title' cannot be null."
-        }
-
-        if ($null -eq $CreatedAt) {
-            throw "invalid value for 'CreatedAt', 'CreatedAt' cannot be null."
         }
 
 

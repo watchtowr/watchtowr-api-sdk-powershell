@@ -121,10 +121,6 @@ function Initialize-ClientCloudAsset {
             throw "invalid value for 'Name', 'Name' cannot be null."
         }
 
-        if ($null -eq $Source) {
-            throw "invalid value for 'Source', 'Source' cannot be null."
-        }
-
         if ($null -eq $Provider) {
             throw "invalid value for 'Provider', 'Provider' cannot be null."
         }

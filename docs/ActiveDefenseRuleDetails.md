@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Vulnerability** | [**ActiveDefenseRuleVulnerability**](ActiveDefenseRuleVulnerability.md) |  | [optional] 
 **FindingsCount** | **Decimal** | Count of confirmed open findings against the rule&#39;s vulnerability. Scoped to the requesting user&#39;s business units and the organization&#39;s finding impact threshold. | 
 **AffectedKbEntryIds** | **Decimal[]** | KB entry IDs covered by this rule that have confirmed open findings, scoped to the requesting user&#39;s business units. | 
+**Findings** | [**ActiveDefenseRuleFinding[]**](ActiveDefenseRuleFinding.md) | Confirmed open findings against the rule&#39;s vulnerability, scoped the same way as findingsCount. Empty when there are none. | 
 
 ## Examples
 
@@ -27,7 +28,8 @@ $ActiveDefenseRuleDetails = Initialize-WatchtowrAPIActiveDefenseRuleDetails  -Id
  -Rules null `
  -Vulnerability null `
  -FindingsCount 7 `
- -AffectedKbEntryIds [42,87]
+ -AffectedKbEntryIds [42,87] `
+ -Findings null
 ```
 
 - Convert the resource to JSON

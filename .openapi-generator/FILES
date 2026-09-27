@@ -6,11 +6,13 @@ docs/APIDocumentationApi.md
 docs/ActiveDefenseLibraryApi.md
 docs/ActiveDefenseRule.md
 docs/ActiveDefenseRuleDetails.md
+docs/ActiveDefenseRuleFinding.md
 docs/ActiveDefenseRuleKevStatus.md
 docs/ActiveDefenseRuleTemplate.md
 docs/ActiveDefenseRuleVulnerability.md
 docs/ActiveDefenseWafRule.md
 docs/ActiveDefenseWafRuleCondition.md
+docs/ActiveDefenseWafRuleConditionValues.md
 docs/ActivityLogApi.md
 docs/AddAssetApi.md
 docs/AdversaryIntel.md
@@ -21,6 +23,7 @@ docs/AssetAndBusinessUnitAlreadyAssociatedConflictErrorResponse.md
 docs/AssetAndBusinessUnitNotAssociatedConflictErrorResponse.md
 docs/AssetBusinessUnitDto.md
 docs/AssetBusinessUnitIdsDTO.md
+docs/AssetCriticalityAlreadySetConflictErrorResponse.md
 docs/AssetId.md
 docs/AssetsListResponse.md
 docs/AttackSurfaceDto.md
@@ -304,6 +307,7 @@ docs/WhitelistStatusDto.md
 docs/WhoisData.md
 docs/WhoisDataObject.md
 docs/WhoisDataObjectCreationDate.md
+docs/WhoisDataObjectDnssec.md
 docs/WhoisDataObjectEmails.md
 docs/WhoisDataObjectExpirationDate.md
 docs/WhoisDataObjectNameServers.md
@@ -347,11 +351,13 @@ src/WatchtowrAPI/Api/VulnerabilityIntelligenceApi.ps1
 src/WatchtowrAPI/Client/Configuration.ps1
 src/WatchtowrAPI/Model/ActiveDefenseRule.ps1
 src/WatchtowrAPI/Model/ActiveDefenseRuleDetails.ps1
+src/WatchtowrAPI/Model/ActiveDefenseRuleFinding.ps1
 src/WatchtowrAPI/Model/ActiveDefenseRuleKevStatus.ps1
 src/WatchtowrAPI/Model/ActiveDefenseRuleTemplate.ps1
 src/WatchtowrAPI/Model/ActiveDefenseRuleVulnerability.ps1
 src/WatchtowrAPI/Model/ActiveDefenseWafRule.ps1
 src/WatchtowrAPI/Model/ActiveDefenseWafRuleCondition.ps1
+src/WatchtowrAPI/Model/ActiveDefenseWafRuleConditionValues.ps1
 src/WatchtowrAPI/Model/AdversaryIntel.ps1
 src/WatchtowrAPI/Model/AdversaryIntelDetails.ps1
 src/WatchtowrAPI/Model/Asset.ps1
@@ -359,6 +365,7 @@ src/WatchtowrAPI/Model/AssetAndBusinessUnitAlreadyAssociatedConflictErrorRespons
 src/WatchtowrAPI/Model/AssetAndBusinessUnitNotAssociatedConflictErrorResponse.ps1
 src/WatchtowrAPI/Model/AssetBusinessUnitDto.ps1
 src/WatchtowrAPI/Model/AssetBusinessUnitIdsDTO.ps1
+src/WatchtowrAPI/Model/AssetCriticalityAlreadySetConflictErrorResponse.ps1
 src/WatchtowrAPI/Model/AssetId.ps1
 src/WatchtowrAPI/Model/AssetsListResponse.ps1
 src/WatchtowrAPI/Model/AttackSurfaceDto.ps1
@@ -611,6 +618,7 @@ src/WatchtowrAPI/Model/WhitelistStatusDto.ps1
 src/WatchtowrAPI/Model/WhoisData.ps1
 src/WatchtowrAPI/Model/WhoisDataObject.ps1
 src/WatchtowrAPI/Model/WhoisDataObjectCreationDate.ps1
+src/WatchtowrAPI/Model/WhoisDataObjectDnssec.ps1
 src/WatchtowrAPI/Model/WhoisDataObjectEmails.ps1
 src/WatchtowrAPI/Model/WhoisDataObjectExpirationDate.ps1
 src/WatchtowrAPI/Model/WhoisDataObjectNameServers.ps1
@@ -660,11 +668,13 @@ tests/Api/UserManagementApi.Tests.ps1
 tests/Api/VulnerabilityIntelligenceApi.Tests.ps1
 tests/Model/ActiveDefenseRule.Tests.ps1
 tests/Model/ActiveDefenseRuleDetails.Tests.ps1
+tests/Model/ActiveDefenseRuleFinding.Tests.ps1
 tests/Model/ActiveDefenseRuleKevStatus.Tests.ps1
 tests/Model/ActiveDefenseRuleTemplate.Tests.ps1
 tests/Model/ActiveDefenseRuleVulnerability.Tests.ps1
 tests/Model/ActiveDefenseWafRule.Tests.ps1
 tests/Model/ActiveDefenseWafRuleCondition.Tests.ps1
+tests/Model/ActiveDefenseWafRuleConditionValues.Tests.ps1
 tests/Model/AdversaryIntel.Tests.ps1
 tests/Model/AdversaryIntelDetails.Tests.ps1
 tests/Model/Asset.Tests.ps1
@@ -672,6 +682,7 @@ tests/Model/AssetAndBusinessUnitAlreadyAssociatedConflictErrorResponse.Tests.ps1
 tests/Model/AssetAndBusinessUnitNotAssociatedConflictErrorResponse.Tests.ps1
 tests/Model/AssetBusinessUnitDto.Tests.ps1
 tests/Model/AssetBusinessUnitIdsDTO.Tests.ps1
+tests/Model/AssetCriticalityAlreadySetConflictErrorResponse.Tests.ps1
 tests/Model/AssetId.Tests.ps1
 tests/Model/AssetsListResponse.Tests.ps1
 tests/Model/AttackSurfaceDto.Tests.ps1
@@ -924,6 +935,7 @@ tests/Model/WhitelistStatusDto.Tests.ps1
 tests/Model/WhoisData.Tests.ps1
 tests/Model/WhoisDataObject.Tests.ps1
 tests/Model/WhoisDataObjectCreationDate.Tests.ps1
+tests/Model/WhoisDataObjectDnssec.Tests.ps1
 tests/Model/WhoisDataObjectEmails.Tests.ps1
 tests/Model/WhoisDataObjectExpirationDate.Tests.ps1
 tests/Model/WhoisDataObjectNameServers.Tests.ps1

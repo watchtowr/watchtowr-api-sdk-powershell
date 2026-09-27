@@ -112,10 +112,6 @@ function Initialize-CapabilitySearchHuntItem {
             throw "invalid value for 'TotalAssets', 'TotalAssets' cannot be null."
         }
 
-        if ($null -eq $HuntRequestType) {
-            throw "invalid value for 'HuntRequestType', 'HuntRequestType' cannot be null."
-        }
-
         if ($null -eq $Title) {
             throw "invalid value for 'Title', 'Title' cannot be null."
         }

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **City** | **String** | city | [optional] 
 **Name** | **String** | name | [optional] 
 **State** | **String** | state | [optional] 
-**Dnssec** | **String** | dnssec | [optional] 
+**Dnssec** | [**WhoisDataObjectDnssec**](WhoisDataObjectDnssec.md) |  | [optional] 
 **Emails** | [**WhoisDataObjectEmails**](WhoisDataObjectEmails.md) |  | [optional] 
 **Status** | [**WhoisDataObjectStatus**](WhoisDataObjectStatus.md) |  | [optional] 
 **Address** | **String** | address | [optional] 
@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **WhoisServer** | **String** | whois_server | [optional] 
 **CreationDate** | [**WhoisDataObjectCreationDate**](WhoisDataObjectCreationDate.md) |  | [optional] 
 **ExpirationDate** | [**WhoisDataObjectExpirationDate**](WhoisDataObjectExpirationDate.md) |  | [optional] 
+**Message** | **String** | Explains why no whois record is present. When set, it is the only field returned. | [optional] 
 
 ## Examples
 
@@ -29,7 +30,7 @@ $WhoisDataObject = Initialize-WatchtowrAPIWhoisDataObject  -Org ACME Corp `
  -City Singapore `
  -Name John Doe `
  -State Singapore `
- -Dnssec unsigned `
+ -Dnssec null `
  -Emails null `
  -Status null `
  -Address Singapore 123456 `
@@ -41,7 +42,8 @@ $WhoisDataObject = Initialize-WatchtowrAPIWhoisDataObject  -Org ACME Corp `
  -ReferralUrl  `
  -WhoisServer whois.godaddy.com `
  -CreationDate null `
- -ExpirationDate null
+ -ExpirationDate null `
+ -Message This is a private ip address
 ```
 
 - Convert the resource to JSON

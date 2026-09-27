@@ -178,8 +178,8 @@ $Page = 1 # Decimal | The page number for paginated results. If the page field i
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
 $Name = "John Doe" # String | Search by user name (optional)
 $Title = "Security Manager" # String | Search by user title (optional)
-$Status = "Active" # String[] | Filter by user status (optional)
-$RoleIds = 0 # Decimal[] | Filter by role IDs (optional)
+$Status = "Active" # String[] | Filter by user status. Accepts a comma-separated list (`status=Active,Locked`) or repeated keys (optional)
+$RoleIds = 0 # Decimal[] | Filter by role IDs. Accepts a comma-separated list (`roleIds=1,2`) or repeated keys (`roleIds=1&roleIds=2`). (optional)
 $CreatedFrom = "2023-01-01T00:00:00Z" # String | Filter by creation date start (optional)
 $CreatedTo = "2023-12-31T23:59:59Z" # String | Filter by creation date end (optional)
 
@@ -200,8 +200,8 @@ Name | Type | Description  | Notes
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
  **Name** | **String**| Search by user name | [optional] 
  **Title** | **String**| Search by user title | [optional] 
- **Status** | [**String[]**](String.md)| Filter by user status | [optional] 
- **RoleIds** | [**Decimal[]**](Decimal.md)| Filter by role IDs | [optional] 
+ **Status** | [**String[]**](String.md)| Filter by user status. Accepts a comma-separated list (&#x60;status&#x3D;Active,Locked&#x60;) or repeated keys | [optional] 
+ **RoleIds** | [**Decimal[]**](Decimal.md)| Filter by role IDs. Accepts a comma-separated list (&#x60;roleIds&#x3D;1,2&#x60;) or repeated keys (&#x60;roleIds&#x3D;1&amp;roleIds&#x3D;2&#x60;). | [optional] 
  **CreatedFrom** | **String**| Filter by creation date start | [optional] 
  **CreatedTo** | **String**| Filter by creation date end | [optional] 
 

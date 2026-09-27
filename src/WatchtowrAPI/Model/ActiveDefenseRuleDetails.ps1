@@ -35,6 +35,8 @@ No description available.
 Count of confirmed open findings against the rule's vulnerability. Scoped to the requesting user's business units and the organization's finding impact threshold.
 .PARAMETER AffectedKbEntryIds
 KB entry IDs covered by this rule that have confirmed open findings, scoped to the requesting user's business units.
+.PARAMETER Findings
+Confirmed open findings against the rule's vulnerability, scoped the same way as findingsCount. Empty when there are none.
 .OUTPUTS
 
 ActiveDefenseRuleDetails<PSCustomObject>
@@ -72,7 +74,10 @@ function Initialize-ActiveDefenseRuleDetails {
         ${FindingsCount},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [Decimal[]]
-        ${AffectedKbEntryIds}
+        ${AffectedKbEntryIds},
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject[]]
+        ${Findings}
     )
 
     Process {
@@ -115,6 +120,10 @@ function Initialize-ActiveDefenseRuleDetails {
             throw "invalid value for 'AffectedKbEntryIds', 'AffectedKbEntryIds' cannot be null."
         }
 
+        if ($null -eq $Findings) {
+            throw "invalid value for 'Findings', 'Findings' cannot be null."
+        }
+
 
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
@@ -127,6 +136,7 @@ function Initialize-ActiveDefenseRuleDetails {
             "vulnerability" = ${Vulnerability}
             "findingsCount" = ${FindingsCount}
             "affectedKbEntryIds" = ${AffectedKbEntryIds}
+            "findings" = ${Findings}
         }
 
 
@@ -164,7 +174,7 @@ function ConvertFrom-JsonToActiveDefenseRuleDetails {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ActiveDefenseRuleDetails
-        $AllProperties = ("id", "name", "description", "zeroDay", "createdAt", "updatedAt", "rules", "vulnerability", "findingsCount", "affectedKbEntryIds")
+        $AllProperties = ("id", "name", "description", "zeroDay", "createdAt", "updatedAt", "rules", "vulnerability", "findingsCount", "affectedKbEntryIds", "findings")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -229,6 +239,12 @@ function ConvertFrom-JsonToActiveDefenseRuleDetails {
             $AffectedKbEntryIds = $JsonParameters.PSobject.Properties["affectedKbEntryIds"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "findings"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'findings' missing."
+        } else {
+            $Findings = $JsonParameters.PSobject.Properties["findings"].value
+        }
+
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "vulnerability"))) { #optional property not found
             $Vulnerability = $null
         } else {
@@ -246,6 +262,7 @@ function ConvertFrom-JsonToActiveDefenseRuleDetails {
             "vulnerability" = ${Vulnerability}
             "findingsCount" = ${FindingsCount}
             "affectedKbEntryIds" = ${AffectedKbEntryIds}
+            "findings" = ${Findings}
         }
 
         return $PSO

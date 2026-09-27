@@ -24,7 +24,7 @@ name
 .PARAMETER State
 state
 .PARAMETER Dnssec
-dnssec
+No description available.
 .PARAMETER Emails
 No description available.
 .PARAMETER Status
@@ -49,6 +49,8 @@ whois_server
 No description available.
 .PARAMETER ExpirationDate
 No description available.
+.PARAMETER Message
+Explains why no whois record is present. When set, it is the only field returned.
 .OUTPUTS
 
 WhoisDataObject<PSCustomObject>
@@ -70,7 +72,7 @@ function Initialize-WhoisDataObject {
         [String]
         ${State},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
-        [String]
+        [PSCustomObject]
         ${Dnssec},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
@@ -107,7 +109,10 @@ function Initialize-WhoisDataObject {
         ${CreationDate},
         [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
-        ${ExpirationDate}
+        ${ExpirationDate},
+        [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Message}
     )
 
     Process {
@@ -133,6 +138,7 @@ function Initialize-WhoisDataObject {
             "whois_server" = ${WhoisServer}
             "creation_date" = ${CreationDate}
             "expiration_date" = ${ExpirationDate}
+            "message" = ${Message}
         }
 
 
@@ -170,7 +176,7 @@ function ConvertFrom-JsonToWhoisDataObject {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in WhoisDataObject
-        $AllProperties = ("org", "city", "name", "state", "dnssec", "emails", "status", "address", "country", "zipcode", "registrar", "domain_name", "name_servers", "referral_url", "whois_server", "creation_date", "expiration_date")
+        $AllProperties = ("org", "city", "name", "state", "dnssec", "emails", "status", "address", "country", "zipcode", "registrar", "domain_name", "name_servers", "referral_url", "whois_server", "creation_date", "expiration_date", "message")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -279,6 +285,12 @@ function ConvertFrom-JsonToWhoisDataObject {
             $ExpirationDate = $JsonParameters.PSobject.Properties["expiration_date"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "message"))) { #optional property not found
+            $Message = $null
+        } else {
+            $Message = $JsonParameters.PSobject.Properties["message"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "org" = ${Org}
             "city" = ${City}
@@ -297,6 +309,7 @@ function ConvertFrom-JsonToWhoisDataObject {
             "whois_server" = ${WhoisServer}
             "creation_date" = ${CreationDate}
             "expiration_date" = ${ExpirationDate}
+            "message" = ${Message}
         }
 
         return $PSO

@@ -67,10 +67,6 @@ function Initialize-ClientActivityLog {
             throw "invalid value for 'Description', 'Description' cannot be null."
         }
 
-        if ($null -eq $Type) {
-            throw "invalid value for 'Type', 'Type' cannot be null."
-        }
-
         if ($null -eq $CausedBy) {
             throw "invalid value for 'CausedBy', 'CausedBy' cannot be null."
         }

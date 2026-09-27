@@ -35,6 +35,15 @@ function ConvertFrom-JsonToWhoisDataObjectExpirationDate {
         $matchType = $null
         $matchInstance = $null
 
+        # nullable check
+        if ([string]::IsNullOrEmpty($Json) -or $Json -eq "{}") {
+            return [PSCustomObject]@{
+                "ActualType" = $null
+                "ActualInstance" = $null
+                "OneOfSchemas" = @("System.DateTime", "System.DateTime[]")
+            }
+        }
+
         # try to match System.DateTime defined in the oneOf schemas
         try {
             $matchInstance = ConvertFrom-JsonToSystem.DateTime $Json

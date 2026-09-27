@@ -25,7 +25,7 @@ Get the details of a specific Active Defense Library rule by rule ID. The `findi
 $Configuration = Get-Configuration
 
 $RuleId = 8.14 # Decimal | The numeric rule ID of the Active Defense Library rule to retrieve.
-$Mode = "block" # String | Enforcement mode for the returned rule payloads. `block` (default) returns block-enforcing rules; `alert` returns the same rules transformed to a monitor-only action. (optional)
+$Mode = "block" # String | Enforcement mode for the returned rule payloads. `block` (default) returns block-enforcing rules; `alert` returns the same rules transformed to a monitor-only action. Not every rule/provider combination has an alert-mode equivalent; those return 422. (optional)
 
 # Get Active Defense Rule Details
 try {
@@ -41,7 +41,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **RuleId** | **Decimal**| The numeric rule ID of the Active Defense Library rule to retrieve. | 
- **Mode** | **String**| Enforcement mode for the returned rule payloads. &#x60;block&#x60; (default) returns block-enforcing rules; &#x60;alert&#x60; returns the same rules transformed to a monitor-only action. | [optional] 
+ **Mode** | **String**| Enforcement mode for the returned rule payloads. &#x60;block&#x60; (default) returns block-enforcing rules; &#x60;alert&#x60; returns the same rules transformed to a monitor-only action. Not every rule/provider combination has an alert-mode equivalent; those return 422. | [optional] 
 
 ### Return type
 
@@ -76,7 +76,7 @@ $Configuration = Get-Configuration
 
 $RuleId = 8.14 # Decimal | The numeric rule ID of the Active Defense Library rule.
 $Provider = "cloudflare" # String | The WAF provider whose rule template should be returned.
-$Mode = "block" # String | Enforcement mode for the returned rule payloads. `block` (default) returns block-enforcing rules; `alert` returns the same rules transformed to a monitor-only action. (optional)
+$Mode = "block" # String | Enforcement mode for the returned rule payloads. `block` (default) returns block-enforcing rules; `alert` returns the same rules transformed to a monitor-only action. Not every rule/provider combination has an alert-mode equivalent; those return 422. (optional)
 
 # Get Active Defense Rule Provider Template
 try {
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **RuleId** | **Decimal**| The numeric rule ID of the Active Defense Library rule. | 
  **Provider** | **String**| The WAF provider whose rule template should be returned. | 
- **Mode** | **String**| Enforcement mode for the returned rule payloads. &#x60;block&#x60; (default) returns block-enforcing rules; &#x60;alert&#x60; returns the same rules transformed to a monitor-only action. | [optional] 
+ **Mode** | **String**| Enforcement mode for the returned rule payloads. &#x60;block&#x60; (default) returns block-enforcing rules; &#x60;alert&#x60; returns the same rules transformed to a monitor-only action. Not every rule/provider combination has an alert-mode equivalent; those return 422. | [optional] 
 
 ### Return type
 

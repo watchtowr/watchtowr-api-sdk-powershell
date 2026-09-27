@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ActiveDefenseWafRuleCondition' {
     Context 'ActiveDefenseWafRuleCondition' {
         It 'Initialize-ActiveDefenseWafRuleCondition' {
             # a simple test to create an object
-            #$NewObject = Initialize-ActiveDefenseWafRuleCondition -Type "TEST_VALUE" -PositiveMatch "TEST_VALUE" -Name "TEST_VALUE" -Value "TEST_VALUE" -ValueWildcard "TEST_VALUE"
+            #$NewObject = Initialize-ActiveDefenseWafRuleCondition -Type "TEST_VALUE" -Category "TEST_VALUE" -Contents "TEST_VALUE" -LogicOperation "TEST_VALUE" -Key "TEST_VALUE" -OpValue "TEST_VALUE" -Values "TEST_VALUE" -GroupOperator "TEST_VALUE" -PositiveMatch "TEST_VALUE" -Name "TEST_VALUE" -Value "TEST_VALUE" -ValueWildcard "TEST_VALUE" -SubKey "TEST_VALUE" -Index "TEST_VALUE" -Conditions "TEST_VALUE"
             #$NewObject | Should -BeOfType ActiveDefenseWafRuleCondition
             #$NewObject.property | Should -Be 0
         }

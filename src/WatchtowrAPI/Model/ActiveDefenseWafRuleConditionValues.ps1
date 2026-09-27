@@ -13,7 +13,7 @@ No summary available.
 
 .DESCRIPTION
 
-No description available.
+Match values — some providers emit a single string rather than a list.
 
 .PARAMETER Json
 
@@ -21,9 +21,9 @@ JSON object
 
 .OUTPUTS
 
-WhoisDataObjectCreationDate<PSCustomObject>
+ActiveDefenseWafRuleConditionValues<PSCustomObject>
 #>
-function ConvertFrom-JsonToWhoisDataObjectCreationDate {
+function ConvertFrom-JsonToActiveDefenseWafRuleConditionValues {
     [CmdletBinding()]
     Param (
         [AllowEmptyString()]
@@ -35,57 +35,48 @@ function ConvertFrom-JsonToWhoisDataObjectCreationDate {
         $matchType = $null
         $matchInstance = $null
 
-        # nullable check
-        if ([string]::IsNullOrEmpty($Json) -or $Json -eq "{}") {
-            return [PSCustomObject]@{
-                "ActualType" = $null
-                "ActualInstance" = $null
-                "OneOfSchemas" = @("System.DateTime", "System.DateTime[]")
-            }
-        }
-
-        # try to match System.DateTime defined in the oneOf schemas
+        # try to match String defined in the oneOf schemas
         try {
-            $matchInstance = ConvertFrom-JsonToSystem.DateTime $Json
+            $matchInstance = ConvertFrom-JsonToString $Json
 
             foreach($property in $matchInstance.PsObject.Properties) {
                 if ($null -ne $property.Value) {
-                    $matchType = "System.DateTime"
+                    $matchType = "String"
                     $match++
                     break
                 }
             }
         } catch {
             # fail to match the schema defined in oneOf, proceed to the next one
-            Write-Debug "Failed to match 'System.DateTime' defined in oneOf (WhoisDataObjectCreationDate). Proceeding to the next one if any."
+            Write-Debug "Failed to match 'String' defined in oneOf (ActiveDefenseWafRuleConditionValues). Proceeding to the next one if any."
         }
 
-        # try to match System.DateTime[] defined in the oneOf schemas
+        # try to match String[] defined in the oneOf schemas
         try {
-            $matchInstance = ConvertFrom-JsonToSystem.DateTime[] $Json
+            $matchInstance = ConvertFrom-JsonToString[] $Json
 
             foreach($property in $matchInstance.PsObject.Properties) {
                 if ($null -ne $property.Value) {
-                    $matchType = "System.DateTime[]"
+                    $matchType = "String[]"
                     $match++
                     break
                 }
             }
         } catch {
             # fail to match the schema defined in oneOf, proceed to the next one
-            Write-Debug "Failed to match 'System.DateTime[]' defined in oneOf (WhoisDataObjectCreationDate). Proceeding to the next one if any."
+            Write-Debug "Failed to match 'String[]' defined in oneOf (ActiveDefenseWafRuleConditionValues). Proceeding to the next one if any."
         }
 
         if ($match -gt 1) {
-            throw "Error! The JSON payload matches more than one type defined in oneOf schemas ([System.DateTime, System.DateTime[]]). JSON Payload: $($Json)"
+            throw "Error! The JSON payload matches more than one type defined in oneOf schemas ([String, String[]]). JSON Payload: $($Json)"
         } elseif ($match -eq 1) {
             return [PSCustomObject]@{
                 "ActualType" = ${matchType}
                 "ActualInstance" = ${matchInstance}
-                "OneOfSchemas" = @("System.DateTime", "System.DateTime[]")
+                "OneOfSchemas" = @("String", "String[]")
             }
         } else {
-            throw "Error! The JSON payload doesn't matches any type defined in oneOf schemas ([System.DateTime, System.DateTime[]]). JSON Payload: $($Json)"
+            throw "Error! The JSON payload doesn't matches any type defined in oneOf schemas ([String, String[]]). JSON Payload: $($Json)"
         }
     }
 }

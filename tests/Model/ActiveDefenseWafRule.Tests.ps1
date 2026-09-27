@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ActiveDefenseWafRule' {
     Context 'ActiveDefenseWafRule' {
         It 'Initialize-ActiveDefenseWafRule' {
             # a simple test to create an object
-            #$NewObject = Initialize-ActiveDefenseWafRule -Type "TEST_VALUE" -Name "TEST_VALUE" -Template "TEST_VALUE" -Description "TEST_VALUE" -Expression "TEST_VALUE" -VarFilter "TEST_VALUE" -Vcl "TEST_VALUE" -Action "TEST_VALUE" -Tag "TEST_VALUE" -Operation "TEST_VALUE" -Structured "TEST_VALUE" -Conditions "TEST_VALUE"
+            #$NewObject = Initialize-ActiveDefenseWafRule -Type "TEST_VALUE" -ActionCategory "TEST_VALUE" -ActionType "TEST_VALUE" -AttackType "TEST_VALUE" -Condition "TEST_VALUE" -Enabled "TEST_VALUE" -GroupOperator "TEST_VALUE" -Message "TEST_VALUE" -Msg "TEST_VALUE" -ResponseCode "TEST_VALUE" -Risk "TEST_VALUE" -Rule "TEST_VALUE" -Secrule "TEST_VALUE" -Severity "TEST_VALUE" -Signature "TEST_VALUE" -SoftwareVersion "TEST_VALUE" -Strategies "TEST_VALUE" -MatchCriteria "TEST_VALUE" -DisplayResponsePage "TEST_VALUE" -OneAlertPerSession "TEST_VALUE" -Preview "TEST_VALUE" -Name "TEST_VALUE" -Template "TEST_VALUE" -Description "TEST_VALUE" -Expression "TEST_VALUE" -VarFilter "TEST_VALUE" -Vcl "TEST_VALUE" -Action "TEST_VALUE" -Tag "TEST_VALUE" -Operation "TEST_VALUE" -Structured "TEST_VALUE" -Conditions "TEST_VALUE"
             #$NewObject | Should -BeOfType ActiveDefenseWafRule
             #$NewObject.property | Should -Be 0
         }

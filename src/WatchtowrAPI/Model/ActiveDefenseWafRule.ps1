@@ -17,6 +17,46 @@ No description available.
 
 .PARAMETER Type
 No description available.
+.PARAMETER ActionCategory
+Action category (mod_security).
+.PARAMETER ActionType
+Action type (oci_waf).
+.PARAMETER AttackType
+Attack classification (f5_bigip_advanced_waf).
+.PARAMETER Condition
+Single-condition expression (oci_waf, mod_security).
+.PARAMETER Enabled
+Whether the rule is enabled (imperva).
+.PARAMETER GroupOperator
+Operator joining conditions.
+.PARAMETER Message
+Rule message.
+.PARAMETER Msg
+Short rule message (mod_security `msg`).
+.PARAMETER ResponseCode
+HTTP status returned (oci_waf).
+.PARAMETER Risk
+Risk score (f5_bigip_advanced_waf).
+.PARAMETER Rule
+Raw rule body (snort, yara, sigma).
+.PARAMETER Secrule
+ModSecurity SecRule body.
+.PARAMETER Severity
+Severity (fortiweb, imperva).
+.PARAMETER Signature
+Signature body (f5_bigip_advanced_waf).
+.PARAMETER SoftwareVersion
+Target software version.
+.PARAMETER Strategies
+Provider-specific match strategies (tencent_cloud_waf).
+.PARAMETER MatchCriteria
+Provider-specific match criteria (imperva_waf_gateway).
+.PARAMETER DisplayResponsePage
+Imperva: show a response page.
+.PARAMETER OneAlertPerSession
+Imperva: alert once per session.
+.PARAMETER Preview
+Whether the rule is a preview/monitor-only variant (google_cloud_armor).
 .PARAMETER Name
 No description available.
 .PARAMETER Template
@@ -53,35 +93,95 @@ function Initialize-ActiveDefenseWafRule {
         ${Type},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Name},
+        ${ActionCategory},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Template},
+        ${ActionType},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Description},
+        ${AttackType},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Expression},
+        ${Condition},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${VarFilter},
+        [System.Nullable[Boolean]]
+        ${Enabled},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Vcl},
+        ${GroupOperator},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Action},
+        ${Message},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Msg},
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Decimal]]
+        ${ResponseCode},
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Decimal]]
+        ${Risk},
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Rule},
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Secrule},
+        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Severity},
+        [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Signature},
+        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${SoftwareVersion},
+        [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
+        [System.Collections.Hashtable[]]
+        ${Strategies},
+        [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true)]
+        [System.Collections.Hashtable[]]
+        ${MatchCriteria},
+        [Parameter(Position = 18, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Boolean]]
+        ${DisplayResponsePage},
+        [Parameter(Position = 19, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Boolean]]
+        ${OneAlertPerSession},
+        [Parameter(Position = 20, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Boolean]]
+        ${Preview},
+        [Parameter(Position = 21, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Name},
+        [Parameter(Position = 22, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Template},
+        [Parameter(Position = 23, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Description},
+        [Parameter(Position = 24, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Expression},
+        [Parameter(Position = 25, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${VarFilter},
+        [Parameter(Position = 26, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Vcl},
+        [Parameter(Position = 27, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Action},
+        [Parameter(Position = 28, ValueFromPipelineByPropertyName = $true)]
         [String[]]
         ${Tag},
-        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 29, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Operation},
-        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 30, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Boolean]]
         ${Structured},
-        [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 31, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
         ${Conditions}
     )
@@ -97,6 +197,26 @@ function Initialize-ActiveDefenseWafRule {
 
         $PSO = [PSCustomObject]@{
             "type" = ${Type}
+            "action_category" = ${ActionCategory}
+            "action_type" = ${ActionType}
+            "attack_type" = ${AttackType}
+            "condition" = ${Condition}
+            "enabled" = ${Enabled}
+            "group_operator" = ${GroupOperator}
+            "message" = ${Message}
+            "msg" = ${Msg}
+            "response_code" = ${ResponseCode}
+            "risk" = ${Risk}
+            "rule" = ${Rule}
+            "secrule" = ${Secrule}
+            "severity" = ${Severity}
+            "signature" = ${Signature}
+            "software_version" = ${SoftwareVersion}
+            "strategies" = ${Strategies}
+            "matchCriteria" = ${MatchCriteria}
+            "displayResponsePage" = ${DisplayResponsePage}
+            "oneAlertPerSession" = ${OneAlertPerSession}
+            "preview" = ${Preview}
             "name" = ${Name}
             "template" = ${Template}
             "description" = ${Description}
@@ -145,7 +265,7 @@ function ConvertFrom-JsonToActiveDefenseWafRule {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ActiveDefenseWafRule
-        $AllProperties = ("type", "name", "template", "description", "expression", "filter", "vcl", "action", "tag", "operation", "structured", "conditions")
+        $AllProperties = ("type", "action_category", "action_type", "attack_type", "condition", "enabled", "group_operator", "message", "msg", "response_code", "risk", "rule", "secrule", "severity", "signature", "software_version", "strategies", "matchCriteria", "displayResponsePage", "oneAlertPerSession", "preview", "name", "template", "description", "expression", "filter", "vcl", "action", "tag", "operation", "structured", "conditions")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -160,6 +280,126 @@ function ConvertFrom-JsonToActiveDefenseWafRule {
             throw "Error! JSON cannot be serialized due to the required property 'type' missing."
         } else {
             $Type = $JsonParameters.PSobject.Properties["type"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "action_category"))) { #optional property not found
+            $ActionCategory = $null
+        } else {
+            $ActionCategory = $JsonParameters.PSobject.Properties["action_category"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "action_type"))) { #optional property not found
+            $ActionType = $null
+        } else {
+            $ActionType = $JsonParameters.PSobject.Properties["action_type"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "attack_type"))) { #optional property not found
+            $AttackType = $null
+        } else {
+            $AttackType = $JsonParameters.PSobject.Properties["attack_type"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "condition"))) { #optional property not found
+            $Condition = $null
+        } else {
+            $Condition = $JsonParameters.PSobject.Properties["condition"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "enabled"))) { #optional property not found
+            $Enabled = $null
+        } else {
+            $Enabled = $JsonParameters.PSobject.Properties["enabled"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "group_operator"))) { #optional property not found
+            $GroupOperator = $null
+        } else {
+            $GroupOperator = $JsonParameters.PSobject.Properties["group_operator"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "message"))) { #optional property not found
+            $Message = $null
+        } else {
+            $Message = $JsonParameters.PSobject.Properties["message"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "msg"))) { #optional property not found
+            $Msg = $null
+        } else {
+            $Msg = $JsonParameters.PSobject.Properties["msg"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "response_code"))) { #optional property not found
+            $ResponseCode = $null
+        } else {
+            $ResponseCode = $JsonParameters.PSobject.Properties["response_code"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "risk"))) { #optional property not found
+            $Risk = $null
+        } else {
+            $Risk = $JsonParameters.PSobject.Properties["risk"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "rule"))) { #optional property not found
+            $Rule = $null
+        } else {
+            $Rule = $JsonParameters.PSobject.Properties["rule"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "secrule"))) { #optional property not found
+            $Secrule = $null
+        } else {
+            $Secrule = $JsonParameters.PSobject.Properties["secrule"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "severity"))) { #optional property not found
+            $Severity = $null
+        } else {
+            $Severity = $JsonParameters.PSobject.Properties["severity"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "signature"))) { #optional property not found
+            $Signature = $null
+        } else {
+            $Signature = $JsonParameters.PSobject.Properties["signature"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "software_version"))) { #optional property not found
+            $SoftwareVersion = $null
+        } else {
+            $SoftwareVersion = $JsonParameters.PSobject.Properties["software_version"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "strategies"))) { #optional property not found
+            $Strategies = $null
+        } else {
+            $Strategies = $JsonParameters.PSobject.Properties["strategies"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "matchCriteria"))) { #optional property not found
+            $MatchCriteria = $null
+        } else {
+            $MatchCriteria = $JsonParameters.PSobject.Properties["matchCriteria"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "displayResponsePage"))) { #optional property not found
+            $DisplayResponsePage = $null
+        } else {
+            $DisplayResponsePage = $JsonParameters.PSobject.Properties["displayResponsePage"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "oneAlertPerSession"))) { #optional property not found
+            $OneAlertPerSession = $null
+        } else {
+            $OneAlertPerSession = $JsonParameters.PSobject.Properties["oneAlertPerSession"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "preview"))) { #optional property not found
+            $Preview = $null
+        } else {
+            $Preview = $JsonParameters.PSobject.Properties["preview"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "name"))) { #optional property not found
@@ -230,6 +470,26 @@ function ConvertFrom-JsonToActiveDefenseWafRule {
 
         $PSO = [PSCustomObject]@{
             "type" = ${Type}
+            "action_category" = ${ActionCategory}
+            "action_type" = ${ActionType}
+            "attack_type" = ${AttackType}
+            "condition" = ${Condition}
+            "enabled" = ${Enabled}
+            "group_operator" = ${GroupOperator}
+            "message" = ${Message}
+            "msg" = ${Msg}
+            "response_code" = ${ResponseCode}
+            "risk" = ${Risk}
+            "rule" = ${Rule}
+            "secrule" = ${Secrule}
+            "severity" = ${Severity}
+            "signature" = ${Signature}
+            "software_version" = ${SoftwareVersion}
+            "strategies" = ${Strategies}
+            "matchCriteria" = ${MatchCriteria}
+            "displayResponsePage" = ${DisplayResponsePage}
+            "oneAlertPerSession" = ${OneAlertPerSession}
+            "preview" = ${Preview}
             "name" = ${Name}
             "template" = ${Template}
             "description" = ${Description}

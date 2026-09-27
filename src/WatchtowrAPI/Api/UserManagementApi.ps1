@@ -278,10 +278,10 @@ Search by user name
 Search by user title
 
 .PARAMETER Status
-Filter by user status
+Filter by user status. Accepts a comma-separated list (`status=Active,Locked`) or repeated keys
 
 .PARAMETER RoleIds
-Filter by role IDs
+Filter by role IDs. Accepts a comma-separated list (`roleIds=1,2`) or repeated keys (`roleIds=1&roleIds=2`).
 
 .PARAMETER CreatedFrom
 Filter by creation date start
