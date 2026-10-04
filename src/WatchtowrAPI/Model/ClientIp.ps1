@@ -35,6 +35,8 @@ No description available.
 No description available.
 .PARAMETER Live
 No description available.
+.PARAMETER WhoisData
+WHOIS records of the IP, newest first. For an IP inside an IP range, these are always the range's records, even when the IP has records of its own. The IP's WHOIS tab in the platform shows the IP's own records first, so for such an IP the two can differ. In list responses, included only when `includeWhoisData=true`. Always included on `GET /assets/ip/show/{id}`. Not included in finding `affected` objects.
 .PARAMETER DnsRecords
 DNS records for the IP (owned PTR + pointing-at A records). In list responses, included only when `includeDnsRecords=true` (capped at 5 each per IP). Always populated on the detail endpoints (`GET /assets/ip/show/{id}` and `GET /assets/ip/show/{id}/dns-records`). Not included in finding `affected` objects.
 .PARAMETER Metadata
@@ -86,21 +88,24 @@ function Initialize-ClientIp {
         [Boolean]
         ${Live},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${DnsRecords},
+        [PSCustomObject[]]
+        ${WhoisData},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
-        ${Metadata},
+        ${DnsRecords},
         [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject]
+        ${Metadata},
+        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
         ${CustomProperties},
-        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Criticality},
-        [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${Infrastructure},
-        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${EngineSettings}
     )
@@ -165,6 +170,7 @@ function Initialize-ClientIp {
             "businessUnits" = ${BusinessUnits}
             "country" = ${Country}
             "live" = ${Live}
+            "whoisData" = ${WhoisData}
             "dns_records" = ${DnsRecords}
             "metadata" = ${Metadata}
             "customProperties" = ${CustomProperties}
@@ -208,7 +214,7 @@ function ConvertFrom-JsonToClientIp {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientIp
-        $AllProperties = ("discovery_reason", "type", "source", "status", "created_at", "id", "name", "businessUnits", "country", "live", "dns_records", "metadata", "customProperties", "criticality", "infrastructure", "engineSettings")
+        $AllProperties = ("discovery_reason", "type", "source", "status", "created_at", "id", "name", "businessUnits", "country", "live", "whoisData", "dns_records", "metadata", "customProperties", "criticality", "infrastructure", "engineSettings")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -297,6 +303,12 @@ function ConvertFrom-JsonToClientIp {
             $Status = $JsonParameters.PSobject.Properties["status"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "whoisData"))) { #optional property not found
+            $WhoisData = $null
+        } else {
+            $WhoisData = $JsonParameters.PSobject.Properties["whoisData"].value
+        }
+
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "dns_records"))) { #optional property not found
             $DnsRecords = $null
         } else {
@@ -326,6 +338,7 @@ function ConvertFrom-JsonToClientIp {
             "businessUnits" = ${BusinessUnits}
             "country" = ${Country}
             "live" = ${Live}
+            "whoisData" = ${WhoisData}
             "dns_records" = ${DnsRecords}
             "metadata" = ${Metadata}
             "customProperties" = ${CustomProperties}

@@ -699,6 +699,7 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyKey] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyValue] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IncludeDnsRecords] <System.Nullable[Boolean]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IncludeWhoisData] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MatchType] <String><br>
 
 List IP Addresses
@@ -722,11 +723,12 @@ $CreatedTo = (Get-Date) # System.DateTime | Filter assets created before a given
 $CustomPropertyKey = "environment" # String | Filter assets by custom property key. (optional)
 $CustomPropertyValue = "production" # String | Filter assets by custom property value. Must be used together with customPropertyKey. (optional)
 $IncludeDnsRecords = $true # Boolean | When `true`, include up to 5 owned (PTR) and 5 pointing-at (A) DNS records per IP inline in the `dns_records` field. Defaults to `false` to keep list responses fast; use `GET /assets/ip/show/{id}/dns-records` for the full paginated set. (optional)
+$IncludeWhoisData = $true # Boolean | When `true`, include each IP's WHOIS records inline in the `whoisData` field. Defaults to `false` to keep list responses fast; `GET /assets/ip/show/{id}` always includes them. (optional)
 $MatchType = "contains" # String | Match assetName searches based on exact names or partial names with contains. Valid match types are:       * contains       * exact  (optional) (default to "contains")
 
 # List IP Addresses
 try {
-    $Result = Get-ListAssetIps -Page $Page -PageSize $PageSize -AssetName $AssetName -Statuses $Statuses -Source $Source -IntegrationConnections $IntegrationConnections -BusinessUnitIds $BusinessUnitIds -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -CustomPropertyKey $CustomPropertyKey -CustomPropertyValue $CustomPropertyValue -IncludeDnsRecords $IncludeDnsRecords -MatchType $MatchType
+    $Result = Get-ListAssetIps -Page $Page -PageSize $PageSize -AssetName $AssetName -Statuses $Statuses -Source $Source -IntegrationConnections $IntegrationConnections -BusinessUnitIds $BusinessUnitIds -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -CustomPropertyKey $CustomPropertyKey -CustomPropertyValue $CustomPropertyValue -IncludeDnsRecords $IncludeDnsRecords -IncludeWhoisData $IncludeWhoisData -MatchType $MatchType
 } catch {
     Write-Host ("Exception occurred when calling Get-ListAssetIps: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -749,6 +751,7 @@ Name | Type | Description  | Notes
  **CustomPropertyKey** | **String**| Filter assets by custom property key. | [optional] 
  **CustomPropertyValue** | **String**| Filter assets by custom property value. Must be used together with customPropertyKey. | [optional] 
  **IncludeDnsRecords** | **Boolean**| When &#x60;true&#x60;, include up to 5 owned (PTR) and 5 pointing-at (A) DNS records per IP inline in the &#x60;dns_records&#x60; field. Defaults to &#x60;false&#x60; to keep list responses fast; use &#x60;GET /assets/ip/show/{id}/dns-records&#x60; for the full paginated set. | [optional] 
+ **IncludeWhoisData** | **Boolean**| When &#x60;true&#x60;, include each IP&#39;s WHOIS records inline in the &#x60;whoisData&#x60; field. Defaults to &#x60;false&#x60; to keep list responses fast; &#x60;GET /assets/ip/show/{id}&#x60; always includes them. | [optional] 
  **MatchType** | **String**| Match assetName searches based on exact names or partial names with contains. Valid match types are:       * contains       * exact  | [optional] [default to &quot;contains&quot;]
 
 ### Return type

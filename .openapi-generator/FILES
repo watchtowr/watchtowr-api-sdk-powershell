@@ -185,6 +185,9 @@ docs/InviteClientUsersBodyDto.md
 docs/InviteUserResponse.md
 docs/InviteUserResponseData.md
 docs/IpRangeValues.md
+docs/IpWhoisData.md
+docs/IpWhoisDataObject.md
+docs/IpWhoisNet.md
 docs/KbEntryCwe.md
 docs/KevTypes.md
 docs/KillSwitchApi.md
@@ -512,6 +515,9 @@ src/WatchtowrAPI/Model/InviteClientUsersBodyDto.ps1
 src/WatchtowrAPI/Model/InviteUserResponse.ps1
 src/WatchtowrAPI/Model/InviteUserResponseData.ps1
 src/WatchtowrAPI/Model/IpRangeValues.ps1
+src/WatchtowrAPI/Model/IpWhoisData.ps1
+src/WatchtowrAPI/Model/IpWhoisDataObject.ps1
+src/WatchtowrAPI/Model/IpWhoisNet.ps1
 src/WatchtowrAPI/Model/KbEntryCwe.ps1
 src/WatchtowrAPI/Model/KevTypes.ps1
 src/WatchtowrAPI/Model/KillSwitchDisabledError.ps1
@@ -829,6 +835,9 @@ tests/Model/InviteClientUsersBodyDto.Tests.ps1
 tests/Model/InviteUserResponse.Tests.ps1
 tests/Model/InviteUserResponseData.Tests.ps1
 tests/Model/IpRangeValues.Tests.ps1
+tests/Model/IpWhoisData.Tests.ps1
+tests/Model/IpWhoisDataObject.Tests.ps1
+tests/Model/IpWhoisNet.Tests.ps1
 tests/Model/KbEntryCwe.Tests.ps1
 tests/Model/KevTypes.Tests.ps1
 tests/Model/KillSwitchDisabledError.Tests.ps1

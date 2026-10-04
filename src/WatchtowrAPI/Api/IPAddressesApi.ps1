@@ -1280,6 +1280,9 @@ Filter assets by custom property value. Must be used together with customPropert
 .PARAMETER IncludeDnsRecords
 When `true`, include up to 5 owned (PTR) and 5 pointing-at (A) DNS records per IP inline in the `dns_records` field. Defaults to `false` to keep list responses fast; use `GET /assets/ip/show/{id}/dns-records` for the full paginated set.
 
+.PARAMETER IncludeWhoisData
+When `true`, include each IP's WHOIS records inline in the `whoisData` field. Defaults to `false` to keep list responses fast; `GET /assets/ip/show/{id}` always includes them.
+
 .PARAMETER MatchType
 Match assetName searches based on exact names or partial names with contains. Valid match types are:       * contains       * exact 
 
@@ -1331,6 +1334,9 @@ function Get-ListAssetIps {
         [System.Nullable[Boolean]]
         ${IncludeDnsRecords},
         [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [System.Nullable[Boolean]]
+        ${IncludeWhoisData},
+        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [ValidateSet("contains", "exact")]
         [String]
         ${MatchType},
@@ -1403,6 +1409,10 @@ function Get-ListAssetIps {
 
         if ($IncludeDnsRecords) {
             $LocalVarQueryParameters['includeDnsRecords'] = $IncludeDnsRecords
+        }
+
+        if ($IncludeWhoisData) {
+            $LocalVarQueryParameters['includeWhoisData'] = $IncludeWhoisData
         }
 
         if ($MatchType) {
