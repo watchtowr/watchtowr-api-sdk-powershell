@@ -22,7 +22,7 @@ The page number for paginated results. If the page field is not provided in the 
 The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 20. The maximum for pageSize is 100.
 
 .PARAMETER BusinessUnitIds
-Filter by a list of comma separated business unit IDs that the seed data is related to.
+Filter by a list of comma separated business unit IDs that the seed data is related to. Each ID must be a positive integer.
 
 .PARAMETER WithHttpInfo
 

@@ -287,7 +287,7 @@ $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The asset ID of the Domain to retrieve changelog for.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
-$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
 # Get Domain Changelog
 try {
@@ -304,7 +304,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Id** | **Decimal**| The asset ID of the Domain to retrieve changelog for. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
- **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
 ### Return type
 
@@ -385,7 +385,7 @@ $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The asset ID of the Domain to list DNS records of.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
-$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
 # List DNS Records
 try {
@@ -402,7 +402,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Id** | **Decimal**| The asset ID of the Domain to list DNS records of. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
- **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
 ### Return type
 
@@ -483,7 +483,7 @@ $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The asset ID of the Domain to list notes of.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
-$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
 # List Notes
 try {
@@ -500,7 +500,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Id** | **Decimal**| The asset ID of the Domain to list notes of. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
- **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
 ### Return type
 
@@ -535,7 +535,7 @@ $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The asset ID of the Domain to list custom properties of.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
-$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
 # List Custom Properties
 try {
@@ -552,7 +552,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Id** | **Decimal**| The asset ID of the Domain to list custom properties of. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
- **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
 ### Return type
 
@@ -595,12 +595,12 @@ List all discovered Domain assets, ordered by date identified.
 $Configuration = Get-Configuration
 
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
-$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 100. (optional)
 $AssetName = "watchtowr.com" # String | Search domain assets by name. (optional)
 $Statuses = "MyStatuses" # String[] | Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * incorrect identification       * pending       * verifiedOutOfScope       * verifiedReducedAttack       * parked  (optional)
 $Source = "watchtowr-cloud-integration-aws-hosts" # String | Filter assets by the source that discovered the asset. (optional)
 $IntegrationConnections = "123:aws,456:azure,789:googlecloud" # String | Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).  Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, fastly, markmonitor, csc, armiscentrix, qualysvmdr, tenablevm, orcasecurity, crowdstrikefalconspotlight, taniumvm, rapid7insightvm, fastlywaf, cloudflarewaf, awswaf, impervawaf, azurewaf, gcpwaf, akamaiwaf, alibabacloudwaf, tencentcloudwaf, huaweicloudwaf, fastlyngwaf, ociwaf  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud) (optional)
-$BusinessUnitIds = "1,2,3" # String | Filter assets by a list of comma separated business unit IDs that the asset is related to. (optional)
+$BusinessUnitIds = "1,2,3" # String | Filter assets by a list of comma separated business unit IDs that the asset is related to. Each ID must be a positive integer. (optional)
 $CreatedFrom = (Get-Date) # System.DateTime | Filter assets created after a given date and time. (optional)
 $CreatedTo = (Get-Date) # System.DateTime | Filter assets created before a given date and time. (optional)
 $CustomPropertyKey = "environment" # String | Filter assets by custom property key. (optional)
@@ -621,12 +621,12 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
- **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 100. | [optional] 
  **AssetName** | **String**| Search domain assets by name. | [optional] 
  **Statuses** | [**String[]**](String.md)| Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * incorrect identification       * pending       * verifiedOutOfScope       * verifiedReducedAttack       * parked  | [optional] 
  **Source** | **String**| Filter assets by the source that discovered the asset. | [optional] 
  **IntegrationConnections** | **String**| Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).  Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, fastly, markmonitor, csc, armiscentrix, qualysvmdr, tenablevm, orcasecurity, crowdstrikefalconspotlight, taniumvm, rapid7insightvm, fastlywaf, cloudflarewaf, awswaf, impervawaf, azurewaf, gcpwaf, akamaiwaf, alibabacloudwaf, tencentcloudwaf, huaweicloudwaf, fastlyngwaf, ociwaf  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud) | [optional] 
- **BusinessUnitIds** | **String**| Filter assets by a list of comma separated business unit IDs that the asset is related to. | [optional] 
+ **BusinessUnitIds** | **String**| Filter assets by a list of comma separated business unit IDs that the asset is related to. Each ID must be a positive integer. | [optional] 
  **CreatedFrom** | **System.DateTime**| Filter assets created after a given date and time. | [optional] 
  **CreatedTo** | **System.DateTime**| Filter assets created before a given date and time. | [optional] 
  **CustomPropertyKey** | **String**| Filter assets by custom property key. | [optional] 

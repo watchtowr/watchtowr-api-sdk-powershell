@@ -16,7 +16,7 @@ No summary available.
 No description available.
 
 .PARAMETER RequestedBy
-No description available.
+Name of the user or service account that requested the retest. Empty when it is not known.
 .PARAMETER RequestedAt
 No description available.
 .PARAMETER RetestStatus

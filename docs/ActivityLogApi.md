@@ -28,7 +28,7 @@ List all activity log entries, ordered by creation date.
 $Configuration = Get-Configuration
 
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
-$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 $CreatedFrom = (Get-Date) # System.DateTime | Filter logs created after a given date and time. (optional)
 $CreatedTo = (Get-Date) # System.DateTime | Filter logs created before a given date and time. (optional)
 $Types = "UserInvite,UserRoleType,UserLock,ResetUser2FA,SetupSSO,DisableSSO,UpdateUserSessionTimeout,SuccessfulLogin,PasswordResetTriggered,UserDelete,UserCreated,PasskeyAdded,PasskeyRemoved,UserBusinessUnit,RolePermissionsUpdated,IntegrationSetUp,IntegrationUpdated,IntegrationDeleted,IntegrationTested,KillSwitch,FindingSetting,TestingInfrastructureUpdate,UpdatePriorityPort,PlatformIpWhitelist,AutomaticRetestsUpdated,ReportGenerated,ReportGenerationRequest,ReportDownloaded,AutomaticOutOfScope,PrismaCloudApigeeAccountRemoved,PrismaCloudAccountNameUpdate,ServiceAccountCreated,ServiceAccountUpdated,ServiceAccountDeleted,ServiceAccountEnabled,ServiceAccountDisabled,ServiceAccountTokenRegenerated,PlatformSchedulerGlobalConfigUpdated,PlatformSchedulerDayConfigUpdated,PlatformSchedulerEnabled,PlatformSchedulerDisabled,AssetFavoriteAdded,AssetFavoriteRemoved,ActiveDefenseRuleDeployed,ActiveDefenseRuleApplyExpired,ActiveDefenseRuleApplySucceeded,ActiveDefenseRuleApplyFailed,ActiveDefenseRuleApplyRejected,ActiveDefenseRuleResultIgnored,ActiveDefenseDeploymentModeChanged,ActiveDefenseWafRuleModeChanged,ActiveDefenseAutoDeploymentConnectionAdded,ActiveDefenseAutoDeploymentConnectionRemoved,ActiveDefenseRegistrantContactChanged" # String | Filter logs by a comma separated list of types. (optional)
@@ -49,7 +49,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
- **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
  **CreatedFrom** | **System.DateTime**| Filter logs created after a given date and time. | [optional] 
  **CreatedTo** | **System.DateTime**| Filter logs created before a given date and time. | [optional] 
  **Types** | **String**| Filter logs by a comma separated list of types. | [optional] 

@@ -252,6 +252,7 @@ docs/RemoveClientCustomPropertyResponseDto.md
 docs/RepositoriesApi.md
 docs/RequiredActionsDto.md
 docs/Retest.md
+docs/RetestRequesterType.md
 docs/SaaSPlatformsApi.md
 docs/SecurityPostureDashboardApi.md
 docs/SecurityPostureDashboardDto.md
@@ -574,6 +575,7 @@ src/WatchtowrAPI/Model/PointsOfInterestData.ps1
 src/WatchtowrAPI/Model/RemoveClientCustomPropertyResponseDto.ps1
 src/WatchtowrAPI/Model/RequiredActionsDto.ps1
 src/WatchtowrAPI/Model/Retest.ps1
+src/WatchtowrAPI/Model/RetestRequesterType.ps1
 src/WatchtowrAPI/Model/SecurityPostureDashboardDto.ps1
 src/WatchtowrAPI/Model/SecurityPostureDashboardResponse.ps1
 src/WatchtowrAPI/Model/ServiceInformationAsset.ps1
@@ -894,6 +896,7 @@ tests/Model/PointsOfInterestData.Tests.ps1
 tests/Model/RemoveClientCustomPropertyResponseDto.Tests.ps1
 tests/Model/RequiredActionsDto.Tests.ps1
 tests/Model/Retest.Tests.ps1
+tests/Model/RetestRequesterType.Tests.ps1
 tests/Model/SecurityPostureDashboardDto.Tests.ps1
 tests/Model/SecurityPostureDashboardResponse.Tests.ps1
 tests/Model/ServiceInformationAsset.Tests.ps1

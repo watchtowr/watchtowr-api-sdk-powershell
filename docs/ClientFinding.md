@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Decimal** |  | 
 **Title** | **String** |  | 
+**PlatformUrl** | **String** | Link to this finding in the watchTowr platform. | 
 **Description** | **String** |  | 
 **Impact** | **String** |  | 
 **FindingImpact** | **String** |  | 
@@ -37,6 +38,7 @@ Name | Type | Description | Notes
 ```powershell
 $ClientFinding = Initialize-WatchtowrAPIClientFinding  -Id 1 `
  -Title Valid Credentials Discovered In Business System `
+ -PlatformUrl https://tenant.client.watchtowr.io/findings/1 `
  -Description Through watchTowr&#39;s Credential Stuffing capabilities, a valid set of credentials have been identified to work to authenticate to a legitimately exposed business system. 
 
 These credentials have been confirmed as valid against the identified system, and are publicly available. `

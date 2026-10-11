@@ -36,8 +36,8 @@ List all finding retest history entries, ordered by creation date.
 $Configuration = Get-Configuration
 
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
-$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
-$BusinessUnitIds = "1,2,3" # String | Filter assets by a list of comma separated business unit IDs that the asset is related to. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
+$BusinessUnitIds = "1,2,3" # String | Filter assets by a list of comma separated business unit IDs that the asset is related to. Each ID must be a positive integer. (optional)
 $SortBy = "updated_at" # String | Sort by field (optional) (default to "created_at")
 $SortOrder = "ASC" # String | Sort order (optional) (default to "DESC")
 $Severities = "critical" # String | Filter retests by a list of comma separated severities they're tagged with. (optional)
@@ -47,7 +47,7 @@ $RetestResultStatuses = "resolved" # String | Filter retests by a list of comma 
 $FindingTitle = "SQL Injection" # String | Filter retests by finding title. (optional)
 $AssetName = "example.com" # String | Filter retests by asset name. (optional)
 $FindingId = "CORE-1234" # String | Filter retests by finding ID (e.g. CORE-1234 or 1234). (optional)
-$TriggeredBy = "MyTriggeredBy" # String[] | Filter retests by a list of comma separated users who triggered them. (optional)
+$TriggeredBy = "MyTriggeredBy" # String[] | Filter retests by a comma-separated list of names of the users or service accounts that triggered them. (optional)
 $RetestStartDateFrom = (Get-Date) # System.DateTime | Filter retests started after a given date and time. (optional)
 $RetestStartDateTo = (Get-Date) # System.DateTime | Filter retests started before a given date and time. (optional)
 
@@ -65,8 +65,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
- **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
- **BusinessUnitIds** | **String**| Filter assets by a list of comma separated business unit IDs that the asset is related to. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
+ **BusinessUnitIds** | **String**| Filter assets by a list of comma separated business unit IDs that the asset is related to. Each ID must be a positive integer. | [optional] 
  **SortBy** | **String**| Sort by field | [optional] [default to &quot;created_at&quot;]
  **SortOrder** | **String**| Sort order | [optional] [default to &quot;DESC&quot;]
  **Severities** | **String**| Filter retests by a list of comma separated severities they&#39;re tagged with. | [optional] 
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
  **FindingTitle** | **String**| Filter retests by finding title. | [optional] 
  **AssetName** | **String**| Filter retests by asset name. | [optional] 
  **FindingId** | **String**| Filter retests by finding ID (e.g. CORE-1234 or 1234). | [optional] 
- **TriggeredBy** | [**String[]**](String.md)| Filter retests by a list of comma separated users who triggered them. | [optional] 
+ **TriggeredBy** | [**String[]**](String.md)| Filter retests by a comma-separated list of names of the users or service accounts that triggered them. | [optional] 
  **RetestStartDateFrom** | **System.DateTime**| Filter retests started after a given date and time. | [optional] 
  **RetestStartDateTo** | **System.DateTime**| Filter retests started before a given date and time. | [optional] 
 

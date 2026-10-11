@@ -372,7 +372,7 @@ $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The ID of the finding to list custom properties of.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
-$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
 # List Custom Properties
 try {
@@ -389,7 +389,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Id** | **Decimal**| The ID of the finding to list custom properties of. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
- **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
 ### Return type
 
@@ -470,7 +470,7 @@ $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The ID of the finding to list notes for.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
-$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
 # List Finding Notes
 try {
@@ -487,7 +487,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Id** | **Decimal**| The ID of the finding to list notes for. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
- **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
 ### Return type
 
@@ -526,10 +526,13 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OnlyAiDiscovered] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OnlyUnacknowledged] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ExploitationRiskLevel] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Cve] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SortBy] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SortOrder] <String><br>
 
 List Findings
 
-List all discovered findings, ordered by date identified.
+List all discovered findings, newest first by default. Use `sortBy` and `sortOrder` to order them by another date.
 
 ### Example
 ```powershell
@@ -537,13 +540,13 @@ List all discovered findings, ordered by date identified.
 $Configuration = Get-Configuration
 
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
-$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 $CreatedFrom = (Get-Date) # System.DateTime | Filter findings created after a given date and time. (optional)
 $CreatedTo = (Get-Date) # System.DateTime | Filter findings created before a given date and time. (optional)
 $UpdatedFrom = (Get-Date) # System.DateTime | Filter findings updated after a given date and time. (optional)
 $UpdatedTo = (Get-Date) # System.DateTime | Filter findings updated before a given date and time. (optional)
-$Statuses = "confirmed,remediated,risk-accepted,closed,asset-no-longer-tracked" # String | Filter findings by a list of comma separated statuses they're tagged with. (optional)
-$BusinessUnitIds = "1,2,3" # String | Filter findings by a list of comma separated business unit IDs that they're related to. (optional)
+$Statuses = "confirmed,remediated,risk-accepted,closed,asset-no-longer-tracked" # String | Filter findings by a list of comma separated statuses they're tagged with. Defaults to `confirmed`, or to every status except `unconfirmed` when `cve` is set. (optional)
+$BusinessUnitIds = "1,2,3" # String | Filter findings by a list of comma separated business unit IDs that they're related to. Each ID must be a positive integer. (optional)
 $FindingImpactThreshold = "All" # String | Impact Setting: * High - Prioritized Findings (vulnerabilities, misconfigurations and weaknesses) that could have an immediate, direct impact on your organization's security posture. * All - All Findings, a broader range of findings that may not directly impact your organization's security posture, but may represent deviations from best practices. (optional)
 $FindingTitle = "Valid%20Credentials%20Discovered" # String | Search findings by title contents. (optional)
 $Severities = "critical" # String | Filter findings by a list of comma separated severities they're tagged with. (optional)
@@ -555,10 +558,13 @@ $OnlyValidatedExploitable = $true # Boolean | Filter to only show findings valid
 $OnlyAiDiscovered = $true # Boolean | Filter to only show findings discovered by AI. (optional)
 $OnlyUnacknowledged = $true # Boolean | Deprecated. This parameter has no effect and is ignored. (optional)
 $ExploitationRiskLevel = "Unknown" # String | Filter findings by a comma separated list of exploitation risk levels. (optional)
+$Cve = "CVE-2023-34362" # String | Filter findings by a CVE ID in the form `CVE-YYYY-NNNN`. Returns the findings whose watchTowr knowledge-base entry maps to that CVE, the same mapping vulnerability intelligence's `isAffected` uses for CVE rows. A watchTowr vulnerability ID (`wT-…`) is rejected. Returns findings of every status except `unconfirmed` unless `statuses` is set. (optional)
+$SortBy = "id" # String | Sort findings by ID, creation date, last update or last seen date. Defaults to `id`. Findings with no `last_seen` sort first in ascending order and last in descending order. (optional) (default to "id")
+$SortOrder = "ASC" # String | The direction to sort findings in. Defaults to `DESC`. (optional) (default to "DESC")
 
 # List Findings
 try {
-    $Result = Get-ListFindings -Page $Page -PageSize $PageSize -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -Statuses $Statuses -BusinessUnitIds $BusinessUnitIds -FindingImpactThreshold $FindingImpactThreshold -FindingTitle $FindingTitle -Severities $Severities -AssetTitle $AssetTitle -AssetTypes $AssetTypes -Assignee $Assignee -Tags $Tags -OnlyValidatedExploitable $OnlyValidatedExploitable -OnlyAiDiscovered $OnlyAiDiscovered -OnlyUnacknowledged $OnlyUnacknowledged -ExploitationRiskLevel $ExploitationRiskLevel
+    $Result = Get-ListFindings -Page $Page -PageSize $PageSize -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -Statuses $Statuses -BusinessUnitIds $BusinessUnitIds -FindingImpactThreshold $FindingImpactThreshold -FindingTitle $FindingTitle -Severities $Severities -AssetTitle $AssetTitle -AssetTypes $AssetTypes -Assignee $Assignee -Tags $Tags -OnlyValidatedExploitable $OnlyValidatedExploitable -OnlyAiDiscovered $OnlyAiDiscovered -OnlyUnacknowledged $OnlyUnacknowledged -ExploitationRiskLevel $ExploitationRiskLevel -Cve $Cve -SortBy $SortBy -SortOrder $SortOrder
 } catch {
     Write-Host ("Exception occurred when calling Get-ListFindings: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -570,13 +576,13 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
- **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
  **CreatedFrom** | **System.DateTime**| Filter findings created after a given date and time. | [optional] 
  **CreatedTo** | **System.DateTime**| Filter findings created before a given date and time. | [optional] 
  **UpdatedFrom** | **System.DateTime**| Filter findings updated after a given date and time. | [optional] 
  **UpdatedTo** | **System.DateTime**| Filter findings updated before a given date and time. | [optional] 
- **Statuses** | **String**| Filter findings by a list of comma separated statuses they&#39;re tagged with. | [optional] 
- **BusinessUnitIds** | **String**| Filter findings by a list of comma separated business unit IDs that they&#39;re related to. | [optional] 
+ **Statuses** | **String**| Filter findings by a list of comma separated statuses they&#39;re tagged with. Defaults to &#x60;confirmed&#x60;, or to every status except &#x60;unconfirmed&#x60; when &#x60;cve&#x60; is set. | [optional] 
+ **BusinessUnitIds** | **String**| Filter findings by a list of comma separated business unit IDs that they&#39;re related to. Each ID must be a positive integer. | [optional] 
  **FindingImpactThreshold** | **String**| Impact Setting: * High - Prioritized Findings (vulnerabilities, misconfigurations and weaknesses) that could have an immediate, direct impact on your organization&#39;s security posture. * All - All Findings, a broader range of findings that may not directly impact your organization&#39;s security posture, but may represent deviations from best practices. | [optional] 
  **FindingTitle** | **String**| Search findings by title contents. | [optional] 
  **Severities** | **String**| Filter findings by a list of comma separated severities they&#39;re tagged with. | [optional] 
@@ -588,6 +594,9 @@ Name | Type | Description  | Notes
  **OnlyAiDiscovered** | **Boolean**| Filter to only show findings discovered by AI. | [optional] 
  **OnlyUnacknowledged** | **Boolean**| Deprecated. This parameter has no effect and is ignored. | [optional] 
  **ExploitationRiskLevel** | **String**| Filter findings by a comma separated list of exploitation risk levels. | [optional] 
+ **Cve** | **String**| Filter findings by a CVE ID in the form &#x60;CVE-YYYY-NNNN&#x60;. Returns the findings whose watchTowr knowledge-base entry maps to that CVE, the same mapping vulnerability intelligence&#39;s &#x60;isAffected&#x60; uses for CVE rows. A watchTowr vulnerability ID (&#x60;wT-…&#x60;) is rejected. Returns findings of every status except &#x60;unconfirmed&#x60; unless &#x60;statuses&#x60; is set. | [optional] 
+ **SortBy** | **String**| Sort findings by ID, creation date, last update or last seen date. Defaults to &#x60;id&#x60;. Findings with no &#x60;last_seen&#x60; sort first in ascending order and last in descending order. | [optional] [default to &quot;id&quot;]
+ **SortOrder** | **String**| The direction to sort findings in. Defaults to &#x60;DESC&#x60;. | [optional] [default to &quot;DESC&quot;]
 
 ### Return type
 

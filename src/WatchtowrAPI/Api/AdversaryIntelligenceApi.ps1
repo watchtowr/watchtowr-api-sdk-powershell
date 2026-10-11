@@ -97,7 +97,7 @@ No description available.
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
 
 .PARAMETER PageSize
-The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30.
+The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30.
 
 .PARAMETER Search
 Search adversaries by name or alias.

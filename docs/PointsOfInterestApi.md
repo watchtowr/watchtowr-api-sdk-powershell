@@ -83,7 +83,7 @@ List all discovered Points of Interest assets, ordered by discovery date.
 $Configuration = Get-Configuration
 
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
-$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 $CreatedFrom = (Get-Date) # System.DateTime | Filter points of interest created after a given date and time. (optional)
 $CreatedTo = (Get-Date) # System.DateTime | Filter points of interest created before a given date and time. (optional)
 $UpdatedFrom = (Get-Date) # System.DateTime | Filter points of interest updated after a given date and time. (optional)
@@ -95,7 +95,7 @@ $HasFinding = $true # Boolean | Filter points of interest by finding association
 $StartDate = (Get-Date) # System.DateTime | Filter points of interest by start date. (optional)
 $EndDate = (Get-Date) # System.DateTime | Filter points of interest by end date. (optional)
 $AssetStatuses = "verified,Unregistered,Parked,Incorrect Identification,pending,VerifiedOutOfScope,VerifiedReducedAttack,Tracked,CDN,Hanging Cloud IP,VerifiedHoneypot,Third Party" # String | Filter points of interest by a comma separated list of asset statuses. (optional)
-$BusinessUnitIds = "1,2,3" # String | Filter points of interest by a comma separated list of business unit IDs. (optional)
+$BusinessUnitIds = "1,2,3" # String | Filter points of interest by a comma separated list of business unit IDs. Each ID must be a positive integer. (optional)
 $SuppressionFilter = "non-suppressed" # String | Filter points of interest by suppression status. (optional)
 
 # List Points of Interest
@@ -112,7 +112,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
- **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
  **CreatedFrom** | **System.DateTime**| Filter points of interest created after a given date and time. | [optional] 
  **CreatedTo** | **System.DateTime**| Filter points of interest created before a given date and time. | [optional] 
  **UpdatedFrom** | **System.DateTime**| Filter points of interest updated after a given date and time. | [optional] 
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
  **StartDate** | **System.DateTime**| Filter points of interest by start date. | [optional] 
  **EndDate** | **System.DateTime**| Filter points of interest by end date. | [optional] 
  **AssetStatuses** | **String**| Filter points of interest by a comma separated list of asset statuses. | [optional] 
- **BusinessUnitIds** | **String**| Filter points of interest by a comma separated list of business unit IDs. | [optional] 
+ **BusinessUnitIds** | **String**| Filter points of interest by a comma separated list of business unit IDs. Each ID must be a positive integer. | [optional] 
  **SuppressionFilter** | **String**| Filter points of interest by suppression status. | [optional] 
 
 ### Return type

@@ -40,7 +40,7 @@ No description available.
 .PARAMETER LatestMedia
 Recent media references for this adversary. Not currently populated — returns an empty array.
 .PARAMETER IsAffected
-Whether the user has confirmed open findings against vulnerabilities exploited by this adversary. Scoped to the requesting user's business units and the organization's finding impact threshold.
+Whether the user has confirmed open findings against vulnerabilities exploited by this adversary. Scoped to the requesting user's business units and the organization's finding impact threshold. `null` when the check could not be completed.
 .PARAMETER AffectedKbEntryIds
 KB entry IDs that drive the `isAffected` flag, scoped to the requesting user's business units.
 .OUTPUTS
@@ -88,7 +88,7 @@ function Initialize-AdversaryIntelDetails {
         [PSCustomObject[]]
         ${LatestMedia},
         [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
-        [Boolean]
+        [System.Nullable[Boolean]]
         ${IsAffected},
         [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
         [Decimal[]]
@@ -105,10 +105,6 @@ function Initialize-AdversaryIntelDetails {
 
         if ($null -eq $Name) {
             throw "invalid value for 'Name', 'Name' cannot be null."
-        }
-
-        if ($null -eq $IsAffected) {
-            throw "invalid value for 'IsAffected', 'IsAffected' cannot be null."
         }
 
         if ($null -eq $AffectedKbEntryIds) {

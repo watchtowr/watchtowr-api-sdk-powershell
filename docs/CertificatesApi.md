@@ -83,7 +83,7 @@ List all discovered TLS/SSL certificate assets, ordered by discovery date.  Note
 $Configuration = Get-Configuration
 
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
-$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 $CreatedFrom = (Get-Date) # System.DateTime | Filter certificates created after a given date and time. (optional)
 $CreatedTo = (Get-Date) # System.DateTime | Filter certificates created before a given date and time. (optional)
 $UpdatedFrom = (Get-Date) # System.DateTime | Filter certificates updated after a given date and time. (optional)
@@ -96,7 +96,7 @@ $SubjectOrganisationSearch = "example" # String | Search by subject organization
 $SubjectCountries = "MySubjectCountries" # String[] | Filter certificates by a list of comma separated subject countries that they're related to. (optional)
 $AssetNameSearch = "example.watchTowr.com" # String | Search Certificates by the name of the associated asset. (optional)
 $Statuses = "Expired,Expiring Within 30 Days,Valid" # String | Filter certificates by a list of comma separated statuses that they're tagged with. (optional)
-$BusinessUnitIds = "1,2,3" # String | Filter certificates by a list of comma separated business unit IDs they're related to. (optional)
+$BusinessUnitIds = "1,2,3" # String | Filter certificates by a list of comma separated business unit IDs they're related to. Each ID must be a positive integer. (optional)
 
 # List Certificates
 try {
@@ -112,7 +112,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
- **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
  **CreatedFrom** | **System.DateTime**| Filter certificates created after a given date and time. | [optional] 
  **CreatedTo** | **System.DateTime**| Filter certificates created before a given date and time. | [optional] 
  **UpdatedFrom** | **System.DateTime**| Filter certificates updated after a given date and time. | [optional] 
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
  **SubjectCountries** | [**String[]**](String.md)| Filter certificates by a list of comma separated subject countries that they&#39;re related to. | [optional] 
  **AssetNameSearch** | **String**| Search Certificates by the name of the associated asset. | [optional] 
  **Statuses** | **String**| Filter certificates by a list of comma separated statuses that they&#39;re tagged with. | [optional] 
- **BusinessUnitIds** | **String**| Filter certificates by a list of comma separated business unit IDs they&#39;re related to. | [optional] 
+ **BusinessUnitIds** | **String**| Filter certificates by a list of comma separated business unit IDs they&#39;re related to. Each ID must be a positive integer. | [optional] 
 
 ### Return type
 

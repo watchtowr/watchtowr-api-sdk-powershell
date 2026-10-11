@@ -555,6 +555,7 @@ Class | Method | HTTP request | Description
  - [WatchtowrAPI\Model.RemoveClientCustomPropertyResponseDto](docs/RemoveClientCustomPropertyResponseDto.md)
  - [WatchtowrAPI\Model.RequiredActionsDto](docs/RequiredActionsDto.md)
  - [WatchtowrAPI\Model.Retest](docs/Retest.md)
+ - [WatchtowrAPI\Model.RetestRequesterType](docs/RetestRequesterType.md)
  - [WatchtowrAPI\Model.SecurityPostureDashboardDto](docs/SecurityPostureDashboardDto.md)
  - [WatchtowrAPI\Model.SecurityPostureDashboardResponse](docs/SecurityPostureDashboardResponse.md)
  - [WatchtowrAPI\Model.ServiceInformationAsset](docs/ServiceInformationAsset.md)

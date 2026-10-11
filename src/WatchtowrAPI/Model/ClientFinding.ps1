@@ -19,6 +19,8 @@ No description available.
 No description available.
 .PARAMETER Title
 No description available.
+.PARAMETER PlatformUrl
+Link to this finding in the watchTowr platform.
 .PARAMETER Description
 No description available.
 .PARAMETER Impact
@@ -85,80 +87,83 @@ function Initialize-ClientFinding {
         ${Title},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Description},
+        ${PlatformUrl},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Impact},
+        ${Description},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${FindingImpact},
+        ${Impact},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${FindingImpact},
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
         ${Tags},
-        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${Evidence},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Recommendation},
+        ${Evidence},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Recommendation},
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("critical", "high", "medium", "low", "info")]
         [String]
         ${Severity},
-        [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
         [Decimal]
         ${Cvssv3Score},
-        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${Cvssv3Metrics},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${References},
+        ${Cvssv3Metrics},
         [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${References},
+        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("confirmed", "unconfirmed", "remediated", "risk-accepted", "closed", "asset-no-longer-tracked")]
         [String]
         ${Status},
-        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("Uninvestigated", "In Progress", "Completed")]
         [String]
         ${State},
-        [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
         [System.DateTime]
         ${CreatedAt},
-        [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${Affected},
-        [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${CveId},
-        [Parameter(Position = 17, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 18, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Decimal]]
         ${EpssScore},
-        [Parameter(Position = 18, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 19, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${Retest},
-        [Parameter(Position = 19, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 20, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
         ${RetestHistory},
-        [Parameter(Position = 20, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 21, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${AssignedUser},
-        [Parameter(Position = 21, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 22, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[System.DateTime]]
         ${LastSeen},
-        [Parameter(Position = 22, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 23, ValueFromPipelineByPropertyName = $true)]
         [System.DateTime]
         ${LastStatusUpdatedAt},
-        [Parameter(Position = 23, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 24, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Decimal]]
         ${Age},
-        [Parameter(Position = 24, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 25, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Criticality},
-        [Parameter(Position = 25, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 26, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
         ${CustomProperties},
-        [Parameter(Position = 26, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 27, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
         ${DetectionRules}
     )
@@ -173,6 +178,10 @@ function Initialize-ClientFinding {
 
         if ($null -eq $Title) {
             throw "invalid value for 'Title', 'Title' cannot be null."
+        }
+
+        if ($null -eq $PlatformUrl) {
+            throw "invalid value for 'PlatformUrl', 'PlatformUrl' cannot be null."
         }
 
         if ($null -eq $Description) {
@@ -243,6 +252,7 @@ function Initialize-ClientFinding {
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
             "title" = ${Title}
+            "platform_url" = ${PlatformUrl}
             "description" = ${Description}
             "impact" = ${Impact}
             "finding_impact" = ${FindingImpact}
@@ -305,7 +315,7 @@ function ConvertFrom-JsonToClientFinding {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientFinding
-        $AllProperties = ("id", "title", "description", "impact", "finding_impact", "tags", "evidence", "recommendation", "severity", "cvssv3_score", "cvssv3_metrics", "references", "status", "state", "created_at", "affected", "cve_id", "epss_score", "retest", "retest_history", "assigned_user", "last_seen", "last_status_updated_at", "age", "criticality", "customProperties", "detection_rules")
+        $AllProperties = ("id", "title", "platform_url", "description", "impact", "finding_impact", "tags", "evidence", "recommendation", "severity", "cvssv3_score", "cvssv3_metrics", "references", "status", "state", "created_at", "affected", "cve_id", "epss_score", "retest", "retest_history", "assigned_user", "last_seen", "last_status_updated_at", "age", "criticality", "customProperties", "detection_rules")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -326,6 +336,12 @@ function ConvertFrom-JsonToClientFinding {
             throw "Error! JSON cannot be serialized due to the required property 'title' missing."
         } else {
             $Title = $JsonParameters.PSobject.Properties["title"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "platform_url"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'platform_url' missing."
+        } else {
+            $PlatformUrl = $JsonParameters.PSobject.Properties["platform_url"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "description"))) {
@@ -481,6 +497,7 @@ function ConvertFrom-JsonToClientFinding {
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
             "title" = ${Title}
+            "platform_url" = ${PlatformUrl}
             "description" = ${Description}
             "impact" = ${Impact}
             "finding_impact" = ${FindingImpact}

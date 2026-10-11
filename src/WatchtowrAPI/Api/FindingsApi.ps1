@@ -623,7 +623,7 @@ The ID of the finding to list custom properties of.
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
 
 .PARAMETER PageSize
-The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30.
+The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30.
 
 .PARAMETER WithHttpInfo
 
@@ -799,7 +799,7 @@ The ID of the finding to list notes for.
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
 
 .PARAMETER PageSize
-The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30.
+The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30.
 
 .PARAMETER WithHttpInfo
 
@@ -894,7 +894,7 @@ No description available.
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
 
 .PARAMETER PageSize
-The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30.
+The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30.
 
 .PARAMETER CreatedFrom
 Filter findings created after a given date and time.
@@ -909,10 +909,10 @@ Filter findings updated after a given date and time.
 Filter findings updated before a given date and time.
 
 .PARAMETER Statuses
-Filter findings by a list of comma separated statuses they're tagged with.
+Filter findings by a list of comma separated statuses they're tagged with. Defaults to `confirmed`, or to every status except `unconfirmed` when `cve` is set.
 
 .PARAMETER BusinessUnitIds
-Filter findings by a list of comma separated business unit IDs that they're related to.
+Filter findings by a list of comma separated business unit IDs that they're related to. Each ID must be a positive integer.
 
 .PARAMETER FindingImpactThreshold
 Impact Setting: * High - Prioritized Findings (vulnerabilities, misconfigurations and weaknesses) that could have an immediate, direct impact on your organization's security posture. * All - All Findings, a broader range of findings that may not directly impact your organization's security posture, but may represent deviations from best practices.
@@ -946,6 +946,15 @@ Deprecated. This parameter has no effect and is ignored.
 
 .PARAMETER ExploitationRiskLevel
 Filter findings by a comma separated list of exploitation risk levels.
+
+.PARAMETER Cve
+Filter findings by a CVE ID in the form `CVE-YYYY-NNNN`. Returns the findings whose watchTowr knowledge-base entry maps to that CVE, the same mapping vulnerability intelligence's `isAffected` uses for CVE rows. A watchTowr vulnerability ID (`wT-…`) is rejected. Returns findings of every status except `unconfirmed` unless `statuses` is set.
+
+.PARAMETER SortBy
+Sort findings by ID, creation date, last update or last seen date. Defaults to `id`. Findings with no `last_seen` sort first in ascending order and last in descending order.
+
+.PARAMETER SortOrder
+The direction to sort findings in. Defaults to `DESC`.
 
 .PARAMETER WithHttpInfo
 
@@ -1019,6 +1028,17 @@ function Get-ListFindings {
         [ValidateSet("Unknown", "Moderate", "High")]
         [String]
         ${ExploitationRiskLevel},
+        [Parameter(Position = 19, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${Cve},
+        [Parameter(Position = 20, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [ValidateSet("id", "created_at", "updated_at", "last_seen")]
+        [String]
+        ${SortBy},
+        [Parameter(Position = 21, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [ValidateSet("ASC", "DESC")]
+        [String]
+        ${SortOrder},
         [Switch]
         $WithHttpInfo
     )
@@ -1116,6 +1136,18 @@ function Get-ListFindings {
 
         if ($ExploitationRiskLevel) {
             $LocalVarQueryParameters['exploitationRiskLevel'] = $ExploitationRiskLevel
+        }
+
+        if ($Cve) {
+            $LocalVarQueryParameters['cve'] = $Cve
+        }
+
+        if ($SortBy) {
+            $LocalVarQueryParameters['sortBy'] = $SortBy
+        }
+
+        if ($SortOrder) {
+            $LocalVarQueryParameters['sortOrder'] = $SortOrder
         }
 
         if ($Configuration["AccessToken"]) {

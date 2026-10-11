@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RequestedBy** | **String** |  | 
+**RequestedBy** | **String** | Name of the user or service account that requested the retest. Empty when it is not known. | 
 **RequestedAt** | **System.DateTime** |  | 
 **RetestStatus** | **String** |  | 
 **StatusOccurredAt** | **System.DateTime** |  | [optional] 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$FindingRetestResponseDto = Initialize-WatchtowrAPIFindingRetestResponseDto  -RequestedBy Requested by user `
+$FindingRetestResponseDto = Initialize-WatchtowrAPIFindingRetestResponseDto  -RequestedBy Jane Doe `
  -RequestedAt 2024-01-29T08:05:09Z `
  -RetestStatus success `
  -StatusOccurredAt 2024-01-29T08:05:09Z `

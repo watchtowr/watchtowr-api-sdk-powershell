@@ -477,7 +477,7 @@ The asset ID of the IP Address to retrieve changelog for.
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
 
 .PARAMETER PageSize
-The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30.
+The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30.
 
 .PARAMETER WithHttpInfo
 
@@ -653,7 +653,7 @@ The asset ID of the IP address to list DNS records of.
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
 
 .PARAMETER PageSize
-The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30.
+The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30.
 
 .PARAMETER WithHttpInfo
 
@@ -829,7 +829,7 @@ The asset ID of the IP address to list notes of.
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
 
 .PARAMETER PageSize
-The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30.
+The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30.
 
 .PARAMETER WithHttpInfo
 
@@ -1015,7 +1015,7 @@ The asset ID of the IP address to list associated ports of.
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
 
 .PARAMETER PageSize
-The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100.
+The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 100.
 
 .PARAMETER IncludeClosedPort
 Include listings with closed ports.
@@ -1153,7 +1153,7 @@ The asset ID of the IP address to list custom properties of.
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
 
 .PARAMETER PageSize
-The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30.
+The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30.
 
 .PARAMETER WithHttpInfo
 
@@ -1248,7 +1248,7 @@ No description available.
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
 
 .PARAMETER PageSize
-The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 100.
+The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 100.
 
 .PARAMETER AssetName
 Search IP address by name (full or partial).
@@ -1263,7 +1263,7 @@ Filter assets by the source that discovered the asset.
 Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).  Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, fastly, markmonitor, csc, armiscentrix, qualysvmdr, tenablevm, orcasecurity, crowdstrikefalconspotlight, taniumvm, rapid7insightvm, fastlywaf, cloudflarewaf, awswaf, impervawaf, azurewaf, gcpwaf, akamaiwaf, alibabacloudwaf, tencentcloudwaf, huaweicloudwaf, fastlyngwaf, ociwaf  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud)
 
 .PARAMETER BusinessUnitIds
-Filter assets by a list of comma separated business unit IDs that the asset is related to.
+Filter assets by a list of comma separated business unit IDs that the asset is related to. Each ID must be a positive integer.
 
 .PARAMETER CreatedFrom
 Filter assets created after a given date and time.

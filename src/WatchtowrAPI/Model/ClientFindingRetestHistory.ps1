@@ -22,7 +22,7 @@ Finding information
 .PARAMETER Asset
 Affected asset information
 .PARAMETER TriggeredBy
-User who triggered the retest
+User or service account that triggered the retest
 .PARAMETER CurrentRetestStatus
 Current retest status
 .PARAMETER Result

@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ClientFindingRetestHistoryTriggeredBy' {
     Context 'ClientFindingRetestHistoryTriggeredBy' {
         It 'Initialize-ClientFindingRetestHistoryTriggeredBy' {
             # a simple test to create an object
-            #$NewObject = Initialize-ClientFindingRetestHistoryTriggeredBy -Id "TEST_VALUE" -Name "TEST_VALUE"
+            #$NewObject = Initialize-ClientFindingRetestHistoryTriggeredBy -Id "TEST_VALUE" -Name "TEST_VALUE" -Type "TEST_VALUE"
             #$NewObject | Should -BeOfType ClientFindingRetestHistoryTriggeredBy
             #$NewObject.property | Should -Be 0
         }

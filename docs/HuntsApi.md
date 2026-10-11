@@ -36,7 +36,7 @@ List all available hunt assets, ordered by creation date.
 $Configuration = Get-Configuration
 
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
-$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 $Statuses = "received" # String[] | Filter hunts by a comma separated list of hunt statuses. Values are case-sensitive — pass the canonical lowercase form (e.g. `received,in-progress`). (optional)
 $HuntSearch = "remote%20code%20execution" # String | Search for hunts by text in hunt name. (optional)
 $Types = "bespoke" # String[] | Filter hunts by a comma separated list of hunt types. Values are case-sensitive — pass the canonical lowercase form (e.g. `bespoke,proactive`). (optional)
@@ -62,7 +62,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
- **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
  **Statuses** | [**String[]**](String.md)| Filter hunts by a comma separated list of hunt statuses. Values are case-sensitive — pass the canonical lowercase form (e.g. &#x60;received,in-progress&#x60;). | [optional] 
  **HuntSearch** | **String**| Search for hunts by text in hunt name. | [optional] 
  **Types** | [**String[]**](String.md)| Filter hunts by a comma separated list of hunt types. Values are case-sensitive — pass the canonical lowercase form (e.g. &#x60;bespoke,proactive&#x60;). | [optional] 
@@ -107,7 +107,7 @@ $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | Hunt ID of the hunt to retrieve assets from.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
-$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
 # List Hunt Assets
 try {
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Id** | **Decimal**| Hunt ID of the hunt to retrieve assets from. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
- **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
 ### Return type
 
@@ -159,7 +159,7 @@ $Configuration = Get-Configuration
 
 $Id = 8.14 # Decimal | The ID of the hunt to retrieve findings from.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
-$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. (optional)
+$PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
 # List Hunt Findings
 try {
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Id** | **Decimal**| The ID of the hunt to retrieve findings from. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
- **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30. | [optional] 
+ **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
 ### Return type
 

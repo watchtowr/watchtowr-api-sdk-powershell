@@ -16,9 +16,11 @@ No summary available.
 No description available.
 
 .PARAMETER Id
-User ID
+User ID or service account ID, depending on `type`
 .PARAMETER Name
-User name
+User name or service account name
+.PARAMETER Type
+No description available.
 .OUTPUTS
 
 ClientFindingRetestHistoryTriggeredBy<PSCustomObject>
@@ -32,7 +34,11 @@ function Initialize-ClientFindingRetestHistoryTriggeredBy {
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Name}
+        ${Name},
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
+        [ValidateSet("user", "serviceAccount")]
+        [PSCustomObject]
+        ${Type}
     )
 
     Process {
@@ -47,10 +53,15 @@ function Initialize-ClientFindingRetestHistoryTriggeredBy {
             throw "invalid value for 'Name', 'Name' cannot be null."
         }
 
+        if ($null -eq $Type) {
+            throw "invalid value for 'Type', 'Type' cannot be null."
+        }
+
 
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
             "name" = ${Name}
+            "type" = ${Type}
         }
 
 
@@ -88,7 +99,7 @@ function ConvertFrom-JsonToClientFindingRetestHistoryTriggeredBy {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientFindingRetestHistoryTriggeredBy
-        $AllProperties = ("id", "name")
+        $AllProperties = ("id", "name", "type")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -111,9 +122,16 @@ function ConvertFrom-JsonToClientFindingRetestHistoryTriggeredBy {
             $Name = $JsonParameters.PSobject.Properties["name"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "type"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'type' missing."
+        } else {
+            $Type = $JsonParameters.PSobject.Properties["type"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
             "name" = ${Name}
+            "type" = ${Type}
         }
 
         return $PSO

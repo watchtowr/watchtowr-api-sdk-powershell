@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **Id** | **Decimal** | Retest ID | 
 **Finding** | [**ClientFindingRetestHistoryFinding**](ClientFindingRetestHistoryFinding.md) | Finding information | [optional] 
 **Asset** | [**ClientFindingRetestHistoryAsset**](ClientFindingRetestHistoryAsset.md) | Affected asset information | [optional] 
-**TriggeredBy** | [**ClientFindingRetestHistoryTriggeredBy**](ClientFindingRetestHistoryTriggeredBy.md) | User who triggered the retest | [optional] 
+**TriggeredBy** | [**ClientFindingRetestHistoryTriggeredBy**](ClientFindingRetestHistoryTriggeredBy.md) | User or service account that triggered the retest | [optional] 
 **CurrentRetestStatus** | **String** | Current retest status | 
 **Result** | **String** | Retest result status at the time this retest completed. | 
 **StartedAt** | **System.DateTime** | Date and time when the retest was started | 

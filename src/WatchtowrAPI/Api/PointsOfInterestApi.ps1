@@ -97,7 +97,7 @@ No description available.
 The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results.
 
 .PARAMETER PageSize
-The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The maximum for pageSize is 30.
+The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30.
 
 .PARAMETER CreatedFrom
 Filter points of interest created after a given date and time.
@@ -133,7 +133,7 @@ Filter points of interest by end date.
 Filter points of interest by a comma separated list of asset statuses.
 
 .PARAMETER BusinessUnitIds
-Filter points of interest by a comma separated list of business unit IDs.
+Filter points of interest by a comma separated list of business unit IDs. Each ID must be a positive integer.
 
 .PARAMETER SuppressionFilter
 Filter points of interest by suppression status.
