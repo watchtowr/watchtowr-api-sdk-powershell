@@ -28,7 +28,7 @@ function Initialize-Retest {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int32]]
         ${RetestRemaining},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]

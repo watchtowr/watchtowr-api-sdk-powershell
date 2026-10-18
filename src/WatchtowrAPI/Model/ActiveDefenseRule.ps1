@@ -44,7 +44,7 @@ function Initialize-ActiveDefenseRule {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -53,7 +53,7 @@ function Initialize-ActiveDefenseRule {
         [String]
         ${CveId},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int64]]
         ${WtId},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("cve", "wt")]

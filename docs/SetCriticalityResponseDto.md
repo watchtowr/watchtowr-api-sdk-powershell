@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | The ID of the custom property record. | 
+**Id** | **Int64** | The ID of the custom property record. | 
 **Key** | **String** | The property key. | 
 **Value** | **String** | The criticality value. | 
 **IsPreset** | **Boolean** | Whether this is a preset property. | 

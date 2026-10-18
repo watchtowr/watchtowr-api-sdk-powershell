@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **LastSeenAt** | **System.DateTime** |  | 
 **Id** | **String** |  | 
 **Ip** | **String** |  | [optional] 
-**IpId** | **Decimal** |  | [optional] 
-**Port** | **Decimal** |  | 
+**IpId** | **Int64** |  | [optional] 
+**Port** | **Int32** |  | 
 **Banner** | **String** |  | [optional] 
 **Service** | **String** |  | 
 **State** | **String** | Port state (e.g. &#x60;open&#x60;, &#x60;closed&#x60;, &#x60;filtered&#x60;). | [optional] 

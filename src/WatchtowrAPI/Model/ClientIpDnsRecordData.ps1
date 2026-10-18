@@ -30,7 +30,7 @@ function Initialize-ClientIpDnsRecordData {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${DnsRecordsTotalCount},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]

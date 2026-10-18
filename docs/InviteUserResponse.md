@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Success** | **Boolean** | Success status | 
-**InvitedCount** | **Decimal** | Number of users invited | 
+**InvitedCount** | **Int32** | Number of users invited | 
 **InvitedEmails** | **String[]** | List of emails that were invited | 
 
 ## Examples

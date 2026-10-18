@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | ID | 
+**Id** | **Int64** | ID | 
 **Description** | **String** | Description | 
 **Type** | **String** | Subject | 
 **Properties** | [**SystemCollectionsHashtable**](.md) | Log properties | [optional] 

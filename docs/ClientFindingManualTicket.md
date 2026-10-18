@@ -3,10 +3,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** |  | 
-**UserId** | **Decimal** |  | 
-**FindingId** | **Decimal** |  | 
-**OrganisationId** | **Decimal** |  | 
+**Id** | **Int64** |  | 
+**UserId** | **Int64** |  | 
+**FindingId** | **Int64** |  | 
+**OrganisationId** | **Int64** |  | 
 **BoardName** | **String** |  | 
 **IssueLink** | **String** |  | 
 **CreatedAt** | **System.DateTime** |  | 

@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **IntegrationType** | **String** | Integration type. Valid values: aws, azure, googlecloud, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, armiscentrix, qualysvmdr, tenable | 
-**IntegrationId** | **Decimal** | Integration ID | 
+**IntegrationId** | **Int64** | Integration ID | 
 
 ## Examples
 

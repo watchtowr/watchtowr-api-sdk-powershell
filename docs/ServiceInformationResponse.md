@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | ID | 
+**Id** | **Int64** | ID | 
 **Response** | **String** | Response | 
 **Certificate** | [**ServiceInformationCertificate**](ServiceInformationCertificate.md) |  | 
 **Asset** | [**ServiceInformationAsset**](ServiceInformationAsset.md) |  | 

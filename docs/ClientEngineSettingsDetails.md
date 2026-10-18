@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **DnsBruteforcingEnabled** | **Boolean** | Indicates whether the DNS Bruteforcing engine coverage is enabled for the asset. | 
 **RapidReactionEnabled** | **Boolean** | Indicates whether the Rapid Reaction engine coverage is enabled for the asset | 
 **IntrusiveHttpChecksEnabled** | **Boolean** | Indicates whether the Intrusive HTTP Check engine coverage is enabled for the asset. | 
-**Id** | **Decimal** | The asset ID | 
+**Id** | **Int64** | The asset ID | 
 **Type** | **String** | The asset type | 
 
 ## Examples

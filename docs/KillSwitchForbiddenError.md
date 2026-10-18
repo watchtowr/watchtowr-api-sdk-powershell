@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Message** | **String** | Error message | 
 **VarError** | **String** | Error code | 
-**StatusCode** | **Decimal** | HTTP status code | 
+**StatusCode** | **Int32** | HTTP status code | 
 
 ## Examples
 

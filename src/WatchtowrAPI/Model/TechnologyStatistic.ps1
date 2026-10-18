@@ -31,7 +31,7 @@ function Initialize-TechnologyStatistic {
         [String]
         ${Name},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${Count}
     )
 

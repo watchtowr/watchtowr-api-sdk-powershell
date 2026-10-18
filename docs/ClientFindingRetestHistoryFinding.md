@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | Finding ID | 
+**Id** | **Int64** | Finding ID | 
 **Title** | **String** | Finding title | 
 **Severity** | **String** | Finding severity | 
 **Status** | **String** | Finding status | 

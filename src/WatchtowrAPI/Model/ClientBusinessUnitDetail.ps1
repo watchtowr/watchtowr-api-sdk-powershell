@@ -40,7 +40,7 @@ function Initialize-ClientBusinessUnitDetail {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -52,10 +52,10 @@ function Initialize-ClientBusinessUnitDetail {
         [String]
         ${Type},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int64]]
         ${ParentId},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
-        [Decimal[]]
+        [Int64[]]
         ${UserIds},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [System.DateTime]

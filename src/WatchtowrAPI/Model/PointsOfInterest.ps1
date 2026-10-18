@@ -54,7 +54,7 @@ function Initialize-PointsOfInterest {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -69,7 +69,7 @@ function Initialize-PointsOfInterest {
         [System.Nullable[System.DateTime]]
         ${DiscoveryDate},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int64]]
         ${AssetId},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -96,7 +96,7 @@ function Initialize-PointsOfInterest {
         [System.Nullable[Boolean]]
         ${IsPermanentSuppression},
         [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int64]]
         ${FindingId}
     )
 

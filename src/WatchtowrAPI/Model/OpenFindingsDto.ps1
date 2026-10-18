@@ -36,22 +36,22 @@ function Initialize-OpenFindingsDto {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${Critical},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${High},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${Medium},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${Low},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${Info},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${Total}
     )
 

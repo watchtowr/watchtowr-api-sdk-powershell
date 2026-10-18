@@ -68,10 +68,10 @@ function Initialize-ClientPort {
         [String]
         ${Ip},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int64]]
         ${IpId},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${Port},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
         [String]

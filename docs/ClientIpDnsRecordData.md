@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DnsRecordsTotalCount** | **Decimal** |  | 
+**DnsRecordsTotalCount** | **Int32** |  | 
 **DnsRecordsOwned** | [**ClientIpDnsRecordOwnedData**](ClientIpDnsRecordOwnedData.md) |  | 
 **DnsRecordsPointingAt** | [**ClientIpDnsRecordPointingAtData**](ClientIpDnsRecordPointingAtData.md) |  | 
 

@@ -31,7 +31,7 @@ function Initialize-NotFound {
         [String]
         ${Message},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${StatusCode}
     )
 

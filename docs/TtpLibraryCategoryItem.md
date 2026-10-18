@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | Category ID | 
+**Id** | **Int64** | Category ID | 
 **Name** | **String** | Category name | 
 
 ## Examples

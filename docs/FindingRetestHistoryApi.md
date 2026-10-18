@@ -43,7 +43,7 @@ $SortOrder = "ASC" # String | Sort order (optional) (default to "DESC")
 $Severities = "critical" # String | Filter retests by a list of comma separated severities they're tagged with. (optional)
 $Attempts = "oneAttempt" # String | Filter retests by a list of comma separated attempt types. (optional)
 $RetestRunStatuses = "success" # String | Filter retests by a list of comma separated retest run statuses. (optional)
-$RetestResultStatuses = "resolved" # String | Filter retests by a list of comma separated result statuses. (optional)
+$RetestResultStatuses = "resolved" # String | Filter retests by a list of comma separated result statuses. `unresolved` also includes aborted retests. (optional)
 $FindingTitle = "SQL Injection" # String | Filter retests by finding title. (optional)
 $AssetName = "example.com" # String | Filter retests by asset name. (optional)
 $FindingId = "CORE-1234" # String | Filter retests by finding ID (e.g. CORE-1234 or 1234). (optional)
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
  **Severities** | **String**| Filter retests by a list of comma separated severities they&#39;re tagged with. | [optional] 
  **Attempts** | **String**| Filter retests by a list of comma separated attempt types. | [optional] 
  **RetestRunStatuses** | **String**| Filter retests by a list of comma separated retest run statuses. | [optional] 
- **RetestResultStatuses** | **String**| Filter retests by a list of comma separated result statuses. | [optional] 
+ **RetestResultStatuses** | **String**| Filter retests by a list of comma separated result statuses. &#x60;unresolved&#x60; also includes aborted retests. | [optional] 
  **FindingTitle** | **String**| Filter retests by finding title. | [optional] 
  **AssetName** | **String**| Filter retests by asset name. | [optional] 
  **FindingId** | **String**| Filter retests by finding ID (e.g. CORE-1234 or 1234). | [optional] 

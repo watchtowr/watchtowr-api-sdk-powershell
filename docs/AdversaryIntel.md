@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AttackerId** | **Decimal** |  | 
+**AttackerId** | **Int64** |  | 
 **Name** | **String** |  | 
 **Aliases** | **String[]** |  | [optional] 
 **Type** | **String** |  | 
@@ -11,10 +11,10 @@ Name | Type | Description | Notes
 **LastReportedDate** | **System.DateTime** |  | [optional] 
 **VictimCountries** | [**VictimCountrySummary**](VictimCountrySummary.md) |  | [optional] 
 **TargetIndustries** | [**TargetIndustrySummary**](TargetIndustrySummary.md) |  | [optional] 
-**AffectedTrackedHuntsCount** | **Decimal** |  | [optional] 
-**AffectedOpenFindingsCount** | **Decimal** |  | [optional] 
+**AffectedTrackedHuntsCount** | **Int32** |  | [optional] 
+**AffectedOpenFindingsCount** | **Int32** |  | [optional] 
 **IsAffected** | **Boolean** | Whether the user has confirmed open findings against vulnerabilities exploited by this adversary. Scoped to the requesting user&#39;s business units and the organization&#39;s finding impact threshold. | 
-**AffectedKbEntryIds** | **Decimal[]** | KB entry IDs that drive the &#x60;isAffected&#x60; flag, scoped to the requesting user&#39;s business units. | [optional] 
+**AffectedKbEntryIds** | **Int64[]** | KB entry IDs that drive the &#x60;isAffected&#x60; flag, scoped to the requesting user&#39;s business units. | [optional] 
 
 ## Examples
 

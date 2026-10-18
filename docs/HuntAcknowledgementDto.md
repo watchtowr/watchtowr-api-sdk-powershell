@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **IsAcknowledged** | **Boolean** | Deprecated. Always returns false. Retained for backward compatibility. | 
-**NumberOfSeen** | **Decimal** | Number of users who have seen the hunt | 
+**NumberOfSeen** | **Int32** | Number of users who have seen the hunt | 
 
 ## Examples
 

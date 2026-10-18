@@ -36,7 +36,7 @@ function Initialize-KillSwitchDisabledError {
         [String]
         ${VarError},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${StatusCode}
     )
 

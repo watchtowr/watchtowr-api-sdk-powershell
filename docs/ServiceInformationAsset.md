@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | ID | 
+**Id** | **Int64** | ID | 
 **Name** | **String** | Asset name | 
 **Type** | **String** | Asset type | 
 **BusinessUnits** | [**ClientBusinessUnit[]**](ClientBusinessUnit.md) | Business Unit | 

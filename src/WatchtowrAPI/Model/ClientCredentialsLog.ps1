@@ -46,7 +46,7 @@ function Initialize-ClientCredentialsLog {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -72,7 +72,7 @@ function Initialize-ClientCredentialsLog {
         [PSCustomObject]
         ${AffectedAsset},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int64]]
         ${FindingId},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [String]

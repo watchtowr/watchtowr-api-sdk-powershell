@@ -3,8 +3,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TotalHuntsExecuted** | **Decimal** | Total number of rapid reaction hunts executed | 
-**TotalUnresolvedHunts** | **Decimal** | Total number of unresolved hunts | 
+**TotalHuntsExecuted** | **Int32** | Total number of rapid reaction hunts executed | 
+**TotalUnresolvedHunts** | **Int32** | Total number of unresolved hunts | 
 **LatestExecutedHunts** | [**LatestExecutedHuntDto[]**](LatestExecutedHuntDto.md) | Array of latest executed hunts | 
 
 ## Examples

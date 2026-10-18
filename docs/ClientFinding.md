@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** |  | 
+**Id** | **Int64** |  | 
 **Title** | **String** |  | 
 **PlatformUrl** | **String** | Link to this finding in the watchTowr platform. | 
 **Description** | **String** |  | 
@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **AssignedUser** | [**ClientFindingAssignee**](ClientFindingAssignee.md) |  | [optional] 
 **LastSeen** | **System.DateTime** |  | [optional] 
 **LastStatusUpdatedAt** | **System.DateTime** |  | 
-**Age** | **Decimal** |  | [optional] 
+**Age** | **Int32** |  | [optional] 
 **Criticality** | **String** |  | [optional] 
 **CustomProperties** | [**ClientCustomProperty[]**](ClientCustomProperty.md) |  | 
 **DetectionRules** | [**SystemCollectionsHashtable[]**](SystemCollectionsHashtable.md) |  | 

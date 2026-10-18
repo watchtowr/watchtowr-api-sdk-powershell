@@ -138,12 +138,14 @@ function ConvertFrom-JsonToIpWhoisDataObject {
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $JsonParameters = ConvertFrom-Json -InputObject $Json
+        $IpWhoisDataObjectAdditionalProperties = @{}
 
         # check if Json contains properties not defined in IpWhoisDataObject
         $AllProperties = ("asn", "asn_cidr", "asn_country_code", "asn_date", "asn_description", "asn_registry", "query", "nets", "nir", "referral", "raw_referral", "message")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
+            # store undefined properties in additionalProperties
             if (!($AllProperties.Contains($name))) {
-                throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
+                $IpWhoisDataObjectAdditionalProperties[$name] = $JsonParameters.PSobject.Properties[$name].value
             }
         }
 
@@ -232,6 +234,7 @@ function ConvertFrom-JsonToIpWhoisDataObject {
             "referral" = ${Referral}
             "raw_referral" = ${RawReferral}
             "message" = ${Message}
+            "AdditionalProperties" = $IpWhoisDataObjectAdditionalProperties
         }
 
         return $PSO

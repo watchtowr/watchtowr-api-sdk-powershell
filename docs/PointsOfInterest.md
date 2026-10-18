@@ -3,12 +3,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | ID | 
+**Id** | **Int64** | ID | 
 **Name** | **String** | Name | 
 **Type** | **String** | Type | 
 **Url** | **String** | Url | 
 **DiscoveryDate** | **System.DateTime** | Discovery date | [optional] 
-**AssetId** | **Decimal** | Asset ID | 
+**AssetId** | **Int64** | Asset ID | 
 **AssetName** | **String** | Asset name | 
 **AssetType** | **String** | Asset type | 
 **BusinessUnits** | [**ClientBusinessUnit[]**](ClientBusinessUnit.md) | Business unit | 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **Suppressed** | **Boolean** | Whether the Point of Interest is suppressed | 
 **SuppressedAt** | **System.DateTime** | Suppressed at timestamp | [optional] 
 **IsPermanentSuppression** | **Boolean** | Whether the Point of Interest is permanently suppressed | [optional] 
-**FindingId** | **Decimal** | Finding ID if the POI has been converted to a finding | [optional] 
+**FindingId** | **Int64** | Finding ID if the POI has been converted to a finding | [optional] 
 
 ## Examples
 

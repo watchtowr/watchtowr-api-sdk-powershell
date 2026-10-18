@@ -40,7 +40,7 @@ Filter retests by a list of comma separated attempt types.
 Filter retests by a list of comma separated retest run statuses.
 
 .PARAMETER RetestResultStatuses
-Filter retests by a list of comma separated result statuses.
+Filter retests by a list of comma separated result statuses. `unresolved` also includes aborted retests.
 
 .PARAMETER FindingTitle
 Filter retests by finding title.

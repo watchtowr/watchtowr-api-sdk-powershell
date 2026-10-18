@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | IP address ID | 
+**Id** | **Int64** | IP address ID | 
 **Ip** | **String** | IP address or CIDR range | 
 **Description** | **String** | Description of the IP address | [optional] 
 **EnabledFor** | **String** | Whitelisting scope this IP applies to | 

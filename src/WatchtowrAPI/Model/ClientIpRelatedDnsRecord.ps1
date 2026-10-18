@@ -38,7 +38,7 @@ function Initialize-ClientIpRelatedDnsRecord {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -47,7 +47,7 @@ function Initialize-ClientIpRelatedDnsRecord {
         [String]
         ${Type},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int32]]
         ${Ttl},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [String]

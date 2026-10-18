@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** |  | 
+**Id** | **Int64** |  | 
 **Name** | **String** |  | 
 **Description** | **String** |  | 
 **ZeroDay** | **Boolean** |  | 
@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **UpdatedAt** | **System.DateTime** |  | 
 **Rules** | [**ActiveDefenseRuleTemplate[]**](ActiveDefenseRuleTemplate.md) |  | 
 **Vulnerability** | [**ActiveDefenseRuleVulnerability**](ActiveDefenseRuleVulnerability.md) |  | [optional] 
-**FindingsCount** | **Decimal** | Count of confirmed open findings against the rule&#39;s vulnerability. Scoped to the requesting user&#39;s business units and the organization&#39;s finding impact threshold. | 
-**AffectedKbEntryIds** | **Decimal[]** | KB entry IDs covered by this rule that have confirmed open findings, scoped to the requesting user&#39;s business units. | 
+**FindingsCount** | **Int32** | Count of confirmed open findings against the rule&#39;s vulnerability. Scoped to the requesting user&#39;s business units and the organization&#39;s finding impact threshold. | 
+**AffectedKbEntryIds** | **Int64[]** | KB entry IDs covered by this rule that have confirmed open findings, scoped to the requesting user&#39;s business units. | 
 **Findings** | [**ActiveDefenseRuleFinding[]**](ActiveDefenseRuleFinding.md) | Confirmed open findings against the rule&#39;s vulnerability, scoped the same way as findingsCount. Empty when there are none. | 
 
 ## Examples

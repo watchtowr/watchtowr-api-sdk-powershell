@@ -33,10 +33,10 @@ function Initialize-DeleteNoteSucces {
         [String]
         ${Message},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${Status},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${StatusCode}
     )
 

@@ -174,12 +174,14 @@ function ConvertFrom-JsonToWhoisDataObject {
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $JsonParameters = ConvertFrom-Json -InputObject $Json
+        $WhoisDataObjectAdditionalProperties = @{}
 
         # check if Json contains properties not defined in WhoisDataObject
         $AllProperties = ("org", "city", "name", "state", "dnssec", "emails", "status", "address", "country", "zipcode", "registrar", "domain_name", "name_servers", "referral_url", "whois_server", "creation_date", "expiration_date", "message")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
+            # store undefined properties in additionalProperties
             if (!($AllProperties.Contains($name))) {
-                throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
+                $WhoisDataObjectAdditionalProperties[$name] = $JsonParameters.PSobject.Properties[$name].value
             }
         }
 
@@ -310,6 +312,7 @@ function ConvertFrom-JsonToWhoisDataObject {
             "creation_date" = ${CreationDate}
             "expiration_date" = ${ExpirationDate}
             "message" = ${Message}
+            "AdditionalProperties" = $WhoisDataObjectAdditionalProperties
         }
 
         return $PSO

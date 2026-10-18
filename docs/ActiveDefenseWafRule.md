@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **GroupOperator** | **String** | Operator joining conditions. | [optional] 
 **Message** | **String** | Rule message. | [optional] 
 **Msg** | **String** | Short rule message (mod_security &#x60;msg&#x60;). | [optional] 
-**ResponseCode** | **Decimal** | HTTP status returned (oci_waf). | [optional] 
+**ResponseCode** | **Int32** | HTTP status returned (oci_waf). | [optional] 
 **Risk** | **Decimal** | Risk score (f5_bigip_advanced_waf). | [optional] 
 **Rule** | **String** | Raw rule body (snort, yara, sigma). | [optional] 
 **Secrule** | **String** | ModSecurity SecRule body. | [optional] 

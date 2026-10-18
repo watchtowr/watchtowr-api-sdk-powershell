@@ -3,11 +3,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | ID | 
-**PortId** | **Decimal** | Port ID | 
+**Id** | **Int64** | ID | 
+**PortId** | **Int64** | Port ID | 
 **Ip** | **String** | IP Address | [optional] 
 **Hostname** | **String** | Hostname | [optional] 
-**Port** | **Decimal** | Port number | [optional] 
+**Port** | **Int32** | Port number | [optional] 
 **Type** | **String** | Port Protocol | [optional] 
 **Country** | **String** | Country code | [optional] 
 **Banner** | **String** | Banner | [optional] 
@@ -21,10 +21,10 @@ Name | Type | Description | Notes
 **Suppressed** | **Boolean** | Whether the service is suppressed | 
 **SuppressedAt** | **System.DateTime** | Suppressed at timestamp | [optional] 
 **IsPermanentSuppression** | **Boolean** | Whether the service is permanently suppressed | [optional] 
-**IpId** | **Decimal** | IP ID | [optional] 
+**IpId** | **Int64** | IP ID | [optional] 
 **State** | **String** | Port State | [optional] 
-**FindingId** | **Decimal** | Finding ID associated with the service | [optional] 
-**SuppressedById** | **Decimal** | ID of the user who suppressed the service | [optional] 
+**FindingId** | **Int64** | Finding ID associated with the service | [optional] 
+**SuppressedById** | **Int64** | ID of the user who suppressed the service | [optional] 
 
 ## Examples
 

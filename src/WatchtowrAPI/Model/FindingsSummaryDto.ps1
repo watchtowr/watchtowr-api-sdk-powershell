@@ -30,13 +30,13 @@ function Initialize-FindingsSummaryDto {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${TotalResolvedFindings},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${OldCriticalHighFindings},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${UnacknowledgedCriticalHighFindings}
     )
 

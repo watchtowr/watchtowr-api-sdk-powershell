@@ -38,7 +38,7 @@ function Initialize-ClientDnsRecord {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
@@ -50,7 +50,7 @@ function Initialize-ClientDnsRecord {
         [String]
         ${Type},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int32]]
         ${Ttl},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [String]

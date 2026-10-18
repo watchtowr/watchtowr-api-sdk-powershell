@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** |  | 
+**Id** | **Int64** |  | 
 **Name** | **String** |  | 
 
 ## Examples

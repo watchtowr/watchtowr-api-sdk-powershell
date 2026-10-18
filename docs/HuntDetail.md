@@ -3,12 +3,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | ID | 
+**Id** | **Int64** | ID | 
 **Type** | **String** | Type | 
 **CreatedAt** | **System.DateTime** | Created at | 
 **UpdatedAt** | **System.DateTime** | Updated at | 
-**TotalFindings** | **Decimal** | Total findings | 
-**TotalAssets** | **Decimal** | Total assets | 
+**TotalFindings** | **Int32** | Total findings | 
+**TotalAssets** | **Int32** | Total assets | 
 **HuntRequestType** | **String** | Hunt request type | 
 **RapidExposureMechanism** | **String** | Rapid exposure mechanism | [optional] 
 **Title** | **String** | Title | 

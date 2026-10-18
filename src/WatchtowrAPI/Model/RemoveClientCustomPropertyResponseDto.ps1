@@ -31,7 +31,7 @@ function Initialize-RemoveClientCustomPropertyResponseDto {
         [String]
         ${Message},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${Status}
     )
 

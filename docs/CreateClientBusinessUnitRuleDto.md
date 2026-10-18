@@ -6,10 +6,10 @@ Name | Type | Description | Notes
 **Name** | **String** | Rule name | 
 **Type** | **String** | Rule type | 
 **KeywordMatcher** | **String** | Keyword for matching assets (required when type is keyword). Supports wildcard patterns: %.sg, %abc%, %abc.com, abc.com. Wildcards can be defined using %. | [optional] 
-**KeywordRuleType** | **String** | Keyword rule type (optional, defaults to HOSTNAME when keyword_matcher is provided). HOSTNAME: matches domain/subdomain names. CNAME: matches CNAME DNS record values. TLS_SSL: matches TLS/SSL certificate subject names. | [optional] 
+**KeywordRuleType** | **String** | Keyword rule type (optional, defaults to HOSTNAME when keyword_matcher is provided). HOSTNAME: matches domain/subdomain names. CNAME: matches CNAME DNS record values. TLS_SSL: matches TLS/SSL certificate subject names. CNAME and TLS_SSL rules do not cascade to subdomains (cascade_subdomain is ignored). | [optional] 
 **CountryCode** | **String** | Geographical location 2-letter country code (ISO 3166-1 alpha-2) for matching IPs (required when type is country). Examples: SG, US, GB, AU | [optional] 
 **Integrations** | [**ClientIntegrationItemDto[]**](ClientIntegrationItemDto.md) | List of integrations for matching cloud assets (required when type is integration) | [optional] 
-**CascadeSubdomain** | **Boolean** | Whether to cascade rule to subdomains | [optional] [default to $true]
+**CascadeSubdomain** | **Boolean** | Whether to cascade rule to subdomains. Not supported for CNAME and TLS_SSL keyword rules: for these rule types the value is ignored and the rule is always created with cascade_subdomain set to false. To cover subdomains, create a HOSTNAME rule on the same pattern. | [optional] [default to $true]
 **CascadeIp** | **Boolean** | Whether to cascade rule to IPs | [optional] [default to $true]
 **IncludeAllIntegrations** | **Boolean** | Whether to include all integrations | [optional] [default to $false]
 

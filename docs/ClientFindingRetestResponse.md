@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **VarData** | [**ClientFinding**](ClientFinding.md) |  | 
-**DnsConnectedRetestsTriggered** | **Decimal** | Number of additional DNS-connected findings retested alongside the requested finding (present when &#x60;includeDnsConnected&#x3D;true&#x60;). | [optional] 
+**DnsConnectedRetestsTriggered** | **Int32** | Number of additional DNS-connected findings retested alongside the requested finding (present when &#x60;includeDnsConnected&#x3D;true&#x60;). | [optional] 
 
 ## Examples
 

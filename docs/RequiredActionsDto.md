@@ -3,8 +3,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ActivelyExploitedFindings** | **Decimal** | Count of open findings currently being actively exploited | 
-**UnresolvedRapidReactionHunts** | **Decimal** | Count of unresolved rapid reaction hunts | 
+**ActivelyExploitedFindings** | **Int32** | Count of open findings currently being actively exploited | 
+**UnresolvedRapidReactionHunts** | **Int32** | Count of unresolved rapid reaction hunts | 
 
 ## Examples
 

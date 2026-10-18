@@ -116,7 +116,7 @@ function Initialize-ActiveDefenseWafRule {
         [String]
         ${Msg},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int32]]
         ${ResponseCode},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Decimal]]

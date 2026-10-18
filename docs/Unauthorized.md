@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**StatusCode** | **Decimal** |  | [optional] 
+**StatusCode** | **Int32** |  | [optional] 
 **Message** | **String** |  | [optional] 
 **VarError** | **String** |  | 
 

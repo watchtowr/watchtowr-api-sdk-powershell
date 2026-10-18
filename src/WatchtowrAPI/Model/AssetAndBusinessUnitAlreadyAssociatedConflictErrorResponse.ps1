@@ -33,7 +33,7 @@ function Initialize-AssetAndBusinessUnitAlreadyAssociatedConflictErrorResponse {
         [String]
         ${Message},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${StatusCode},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [String]

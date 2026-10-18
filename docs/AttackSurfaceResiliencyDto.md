@@ -3,10 +3,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ConcerningServices** | **Decimal** | Count of concerning network services | 
-**ConcerningPointsOfInterest** | **Decimal** | Count of concerning points of interest | 
-**ValidCredentials** | **Decimal** | Count of findings with valid credentials | 
-**OpenFindings** | **Decimal** | Total count of open findings | 
+**ConcerningServices** | **Int32** | Count of concerning network services | 
+**ConcerningPointsOfInterest** | **Int32** | Count of concerning points of interest | 
+**ValidCredentials** | **Int32** | Count of findings with valid credentials | 
+**OpenFindings** | **Int32** | Total count of open findings | 
 
 ## Examples
 

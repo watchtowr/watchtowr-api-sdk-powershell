@@ -26,7 +26,7 @@ Keyword rule type. HOSTNAME: matches domain/subdomain names (default). CNAME: ma
 .PARAMETER Country
 Geographical location 2-letter country code (ISO 3166-1 alpha-2). Examples: SG, US, GB, AU
 .PARAMETER CascadeSubdomain
-Whether to cascade to subdomains
+Whether to cascade to subdomains. New CNAME and TLS_SSL keyword rules always have false. Older rules of these types can show true.
 .PARAMETER CascadeIp
 Whether to cascade to IPs
 .PARAMETER IntegrationType
@@ -48,7 +48,7 @@ function Initialize-ClientBusinessUnitRuleDetail {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -73,7 +73,7 @@ function Initialize-ClientBusinessUnitRuleDetail {
         [String]
         ${IntegrationType},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int64]]
         ${IntegrationId},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]

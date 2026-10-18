@@ -46,7 +46,7 @@ function Initialize-ActiveDefenseRuleDetails {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -70,10 +70,10 @@ function Initialize-ActiveDefenseRuleDetails {
         [PSCustomObject]
         ${Vulnerability},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${FindingsCount},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
-        [Decimal[]]
+        [Int64[]]
         ${AffectedKbEntryIds},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]

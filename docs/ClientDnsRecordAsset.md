@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | Asset ID | 
+**Id** | **Int64** | Asset ID | 
 **Name** | **String** | Asset name | 
 **Type** | **String** | Asset type | 
 

@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | Tactic ID | 
+**Id** | **Int64** | Tactic ID | 
 **Name** | **String** | Tactic name | 
 **Identifier** | **String** | Tactic identifier | 
 **Type** | **String** | Tactic type | 

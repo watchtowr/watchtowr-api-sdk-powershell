@@ -68,10 +68,10 @@ function Initialize-ServiceListing {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${PortId},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -80,7 +80,7 @@ function Initialize-ServiceListing {
         [String]
         ${Hostname},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int32]]
         ${Port},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -122,16 +122,16 @@ function Initialize-ServiceListing {
         [System.Nullable[Boolean]]
         ${IsPermanentSuppression},
         [Parameter(Position = 18, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int64]]
         ${IpId},
         [Parameter(Position = 19, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${State},
         [Parameter(Position = 20, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int64]]
         ${FindingId},
         [Parameter(Position = 21, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int64]]
         ${SuppressedById}
     )
 

@@ -33,7 +33,7 @@ function Initialize-InviteUserResponse {
         [Boolean]
         ${Success},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${InvitedCount},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [String[]]

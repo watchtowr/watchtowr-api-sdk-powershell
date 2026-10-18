@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | Compromised endpoint ID | 
+**Id** | **Int64** | Compromised endpoint ID | 
 **Hostname** | **String** | Hostname of the compromised endpoint | 
 **Ip** | **String** | IP address of the compromised endpoint | 
 **StealerId** | **String** | Unique stealer identifier | 

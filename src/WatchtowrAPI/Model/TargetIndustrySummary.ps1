@@ -31,7 +31,7 @@ function Initialize-TargetIndustrySummary {
         [String[]]
         ${VarData},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int32]]
         ${TotalCount}
     )
 

@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | Deleted IP address ID | 
+**Id** | **Int64** | Deleted IP address ID | 
 
 ## Examples
 

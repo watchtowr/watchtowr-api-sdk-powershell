@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | Credential attempt log ID | 
+**Id** | **Int64** | Credential attempt log ID | 
 **Technology** | **String** | Technology used | 
 **RawAsset** | **String** | Raw asset string | 
 **Status** | **String** | Attempt status | 
@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Source** | **String** | Source of the credential attempt | 
 **Credentials** | [**ClientCredentialsLogCredentials**](ClientCredentialsLogCredentials.md) | Credentials used in the attempt | 
 **AffectedAsset** | [**ClientCredentialsLogAffectedAsset**](ClientCredentialsLogAffectedAsset.md) | Affected asset information | 
-**FindingId** | **Decimal** | Finding ID if associated | 
+**FindingId** | **Int64** | Finding ID if associated | 
 **CreatedAt** | **String** | Creation date | 
 **SourceMetadata** | [**SystemCollectionsHashtable**](.md) | Source metadata containing additional contextual information about the credential attempt | 
 

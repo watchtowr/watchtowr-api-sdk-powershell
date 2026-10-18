@@ -26,7 +26,7 @@ User or service account that triggered the retest
 .PARAMETER CurrentRetestStatus
 Current retest status
 .PARAMETER Result
-Retest result status at the time this retest completed.
+Retest result status at the time this retest completed. An aborted retest (`currentRetestStatus` is `error`) is `unresolved`.
 .PARAMETER StartedAt
 Date and time when the retest was started
 .PARAMETER CompletedAt
@@ -48,7 +48,7 @@ function Initialize-ClientFindingRetestHistory {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
@@ -79,10 +79,10 @@ function Initialize-ClientFindingRetestHistory {
         [System.DateTime]
         ${CreatedAt},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int32]]
         ${AttemptNumber},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int32]]
         ${DaysOpenBeforeRetest}
     )
 

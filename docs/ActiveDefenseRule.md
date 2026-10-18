@@ -3,10 +3,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** |  | 
+**Id** | **Int64** |  | 
 **RuleName** | **String** |  | 
 **CveId** | **String** |  | [optional] 
-**WtId** | **Decimal** |  | [optional] 
+**WtId** | **Int64** |  | [optional] 
 **Type** | **String** |  | [optional] 
 **KevStatus** | [**ActiveDefenseRuleKevStatus**](ActiveDefenseRuleKevStatus.md) |  | 
 **ZeroDay** | **Boolean** |  | 

@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | Finding ID. | 
+**Id** | **Int64** | Finding ID. | 
 **ActiveDefenseProvider** | **String** | Active Defense provider associated with the finding. | [optional] 
 
 ## Examples

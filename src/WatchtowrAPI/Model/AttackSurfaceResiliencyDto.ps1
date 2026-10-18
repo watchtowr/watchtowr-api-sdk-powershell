@@ -32,16 +32,16 @@ function Initialize-AttackSurfaceResiliencyDto {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${ConcerningServices},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${ConcerningPointsOfInterest},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${ValidCredentials},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${OpenFindings}
     )
 

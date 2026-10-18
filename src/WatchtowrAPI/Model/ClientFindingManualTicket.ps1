@@ -40,16 +40,16 @@ function Initialize-ClientFindingManualTicket {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${UserId},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${FindingId},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${OrganisationId},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [String]

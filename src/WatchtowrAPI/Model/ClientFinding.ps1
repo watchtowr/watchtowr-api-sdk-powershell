@@ -80,7 +80,7 @@ function Initialize-ClientFinding {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -155,7 +155,7 @@ function Initialize-ClientFinding {
         [System.DateTime]
         ${LastStatusUpdatedAt},
         [Parameter(Position = 24, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int32]]
         ${Age},
         [Parameter(Position = 25, ValueFromPipelineByPropertyName = $true)]
         [String]

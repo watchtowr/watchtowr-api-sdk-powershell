@@ -48,7 +48,7 @@ function Initialize-AdversaryIntel {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${AttackerId},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -72,16 +72,16 @@ function Initialize-AdversaryIntel {
         [PSCustomObject]
         ${TargetIndustries},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int32]]
         ${AffectedTrackedHuntsCount},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int32]]
         ${AffectedOpenFindingsCount},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
         [Boolean]
         ${IsAffected},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
-        [Decimal[]]
+        [Int64[]]
         ${AffectedKbEntryIds}
     )
 

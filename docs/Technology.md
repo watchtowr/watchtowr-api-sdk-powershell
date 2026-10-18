@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | ID | 
+**Id** | **Int64** | ID | 
 **Name** | **String** | Name | 
 **Version** | **String** | Version | [optional] 
 **DisplayName** | **String** | Display name | 

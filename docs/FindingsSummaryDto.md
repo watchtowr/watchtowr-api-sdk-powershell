@@ -3,9 +3,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TotalResolvedFindings** | **Decimal** | Total count of resolved findings | 
-**OldCriticalHighFindings** | **Decimal** | Count of critical/high findings older than 30 days | 
-**UnacknowledgedCriticalHighFindings** | **Decimal** | Deprecated. Always returns 0. Retained for backward compatibility. | 
+**TotalResolvedFindings** | **Int32** | Total count of resolved findings | 
+**OldCriticalHighFindings** | **Int32** | Count of critical/high findings older than 30 days | 
+**UnacknowledgedCriticalHighFindings** | **Int32** | Deprecated. Always returns 0. Retained for backward compatibility. | 
 
 ## Examples
 

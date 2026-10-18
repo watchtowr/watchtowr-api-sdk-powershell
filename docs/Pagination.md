@@ -3,11 +3,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Total** | **Decimal** |  | 
-**Count** | **Decimal** |  | 
-**PerPage** | **Decimal** |  | 
-**CurrentPage** | **Decimal** |  | 
-**TotalPages** | **Decimal** |  | 
+**Total** | **Int32** |  | 
+**Count** | **Int32** |  | 
+**PerPage** | **Int32** |  | 
+**CurrentPage** | **Int32** |  | 
+**TotalPages** | **Int32** |  | 
 **Links** | [**Link**](Link.md) |  | 
 
 ## Examples

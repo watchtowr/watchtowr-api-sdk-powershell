@@ -28,10 +28,10 @@ function Initialize-RequiredActionsDto {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${ActivelyExploitedFindings},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${UnresolvedRapidReactionHunts}
     )
 

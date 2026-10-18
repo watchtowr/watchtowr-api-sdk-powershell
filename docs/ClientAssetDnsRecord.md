@@ -3,10 +3,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** |  | 
+**Id** | **Int64** |  | 
 **Name** | **String** |  | 
 **Type** | **String** |  | 
-**Ttl** | **Decimal** | Time To Live | [optional] 
+**Ttl** | **Int32** | Time To Live | [optional] 
 **Value** | **String** |  | 
 **DiscoveredOn** | **System.DateTime** |  | 
 

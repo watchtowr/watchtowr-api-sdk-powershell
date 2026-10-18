@@ -3,12 +3,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Critical** | **Decimal** | Count of critical findings | 
-**High** | **Decimal** | Count of high severity findings | 
-**Medium** | **Decimal** | Count of medium severity findings | 
-**Low** | **Decimal** | Count of low severity findings | 
-**Info** | **Decimal** | Count of informational findings | 
-**Total** | **Decimal** | Total count of all open findings | 
+**Critical** | **Int32** | Count of critical findings | 
+**High** | **Int32** | Count of high severity findings | 
+**Medium** | **Int32** | Count of medium severity findings | 
+**Low** | **Int32** | Count of low severity findings | 
+**Info** | **Int32** | Count of informational findings | 
+**Total** | **Int32** | Total count of all open findings | 
 
 ## Examples
 

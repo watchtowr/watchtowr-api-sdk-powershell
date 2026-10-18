@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **String** | Technology name | 
-**Count** | **Decimal** | Number of services using this technology | 
+**Count** | **Int32** | Number of services using this technology | 
 
 ## Examples
 

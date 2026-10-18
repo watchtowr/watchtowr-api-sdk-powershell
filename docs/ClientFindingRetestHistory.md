@@ -3,18 +3,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | Retest ID | 
+**Id** | **Int64** | Retest ID | 
 **Finding** | [**ClientFindingRetestHistoryFinding**](ClientFindingRetestHistoryFinding.md) | Finding information | [optional] 
 **Asset** | [**ClientFindingRetestHistoryAsset**](ClientFindingRetestHistoryAsset.md) | Affected asset information | [optional] 
 **TriggeredBy** | [**ClientFindingRetestHistoryTriggeredBy**](ClientFindingRetestHistoryTriggeredBy.md) | User or service account that triggered the retest | [optional] 
 **CurrentRetestStatus** | **String** | Current retest status | 
-**Result** | **String** | Retest result status at the time this retest completed. | 
+**Result** | **String** | Retest result status at the time this retest completed. An aborted retest (&#x60;currentRetestStatus&#x60; is &#x60;error&#x60;) is &#x60;unresolved&#x60;. | 
 **StartedAt** | **System.DateTime** | Date and time when the retest was started | 
 **CompletedAt** | **System.DateTime** | Date and time when the retest was completed | [optional] 
 **UpdatedAt** | **System.DateTime** | Date and time when the retest was last updated | 
 **CreatedAt** | **System.DateTime** | Creation date | 
-**AttemptNumber** | **Decimal** | Retest attempt number for this finding | [optional] 
-**DaysOpenBeforeRetest** | **Decimal** | Number of days the finding was open before this retest was triggered | [optional] 
+**AttemptNumber** | **Int32** | Retest attempt number for this finding | [optional] 
+**DaysOpenBeforeRetest** | **Int32** | Number of days the finding was open before this retest was triggered | [optional] 
 
 ## Examples
 

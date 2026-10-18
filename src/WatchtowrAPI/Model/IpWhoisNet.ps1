@@ -144,12 +144,14 @@ function ConvertFrom-JsonToIpWhoisNet {
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $JsonParameters = ConvertFrom-Json -InputObject $Json
+        $IpWhoisNetAdditionalProperties = @{}
 
         # check if Json contains properties not defined in IpWhoisNet
         $AllProperties = ("cidr", "name", "handle", "range", "description", "country", "state", "city", "address", "postal_code", "emails", "created", "updated")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
+            # store undefined properties in additionalProperties
             if (!($AllProperties.Contains($name))) {
-                throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
+                $IpWhoisNetAdditionalProperties[$name] = $JsonParameters.PSobject.Properties[$name].value
             }
         }
 
@@ -245,6 +247,7 @@ function ConvertFrom-JsonToIpWhoisNet {
             "emails" = ${Emails}
             "created" = ${Created}
             "updated" = ${Updated}
+            "AdditionalProperties" = $IpWhoisNetAdditionalProperties
         }
 
         return $PSO

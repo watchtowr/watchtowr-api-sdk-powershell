@@ -54,10 +54,10 @@ function Initialize-LatestExecutedHuntDto {
         [String]
         ${Status},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${TotalFindings},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${TotalAssets},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [Boolean]
@@ -103,10 +103,6 @@ function Initialize-LatestExecutedHuntDto {
 
         if ($null -eq $NeedInvestigation) {
             throw "invalid value for 'NeedInvestigation', 'NeedInvestigation' cannot be null."
-        }
-
-        if ($null -eq $RequestType) {
-            throw "invalid value for 'RequestType', 'RequestType' cannot be null."
         }
 
         if ($null -eq $ResolvedStatus) {

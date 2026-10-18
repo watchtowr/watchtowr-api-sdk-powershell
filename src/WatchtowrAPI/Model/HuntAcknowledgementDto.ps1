@@ -31,7 +31,7 @@ function Initialize-HuntAcknowledgementDto {
         [Boolean]
         ${IsAcknowledged},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${NumberOfSeen}
     )
 

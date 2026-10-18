@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | User ID | 
+**Id** | **Int64** | User ID | 
 **Name** | **String** | User name | 
 **Email** | **String** | User email | 
 

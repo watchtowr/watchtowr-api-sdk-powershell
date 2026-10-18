@@ -3,10 +3,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TotalVerifiedAssets** | **Decimal** | Total count of verified assets | 
-**TotalPointsOfInterest** | **Decimal** | Total count of points of interest | 
-**TotalNetworkServices** | **Decimal** | Total count of network services | 
-**TotalCertificates** | **Decimal** | Total count of TLS/SSL certificates | 
+**TotalVerifiedAssets** | **Int32** | Total count of verified assets | 
+**TotalPointsOfInterest** | **Int32** | Total count of points of interest | 
+**TotalNetworkServices** | **Int32** | Total count of network services | 
+**TotalCertificates** | **Int32** | Total count of TLS/SSL certificates | 
 
 ## Examples
 

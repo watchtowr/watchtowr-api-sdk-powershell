@@ -38,7 +38,7 @@ function Initialize-ClientCompromisedEndpointHarvestedCredential {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -50,7 +50,7 @@ function Initialize-ClientCompromisedEndpointHarvestedCredential {
         [String]
         ${Username},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${CompromisedEndpointId},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [String]

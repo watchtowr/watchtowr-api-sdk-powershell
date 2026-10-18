@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | User ID or service account ID, depending on &#x60;type&#x60; | 
+**Id** | **Int64** | User ID or service account ID, depending on &#x60;type&#x60; | 
 **Name** | **String** | User name or service account name | 
 **Type** | [**RetestRequesterType**](RetestRequesterType.md) |  | 
 

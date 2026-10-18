@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | ID | 
+**Id** | **Int64** | ID | 
 **Name** | **String** | Rule name | 
 **KeywordMatcher** | **String** | Keyword for matching assets. Supports wildcard patterns: %.sg, %abc%, %abc.com, abc.com. Wildcards can be defined using %. | [optional] 
 **KeywordRuleType** | **String** | Keyword rule type. HOSTNAME: matches domain/subdomain names (default). CNAME: matches CNAME DNS record values. TLS_SSL: matches TLS/SSL certificate subject names. | [optional] 
 **Country** | **String** | Geographical location 2-letter country code (ISO 3166-1 alpha-2). Examples: SG, US, GB, AU | [optional] 
-**CascadeSubdomain** | **Boolean** | Whether to cascade to subdomains | 
+**CascadeSubdomain** | **Boolean** | Whether to cascade to subdomains. New CNAME and TLS_SSL keyword rules always have false. Older rules of these types can show true. | 
 **CascadeIp** | **Boolean** | Whether to cascade to IPs | 
 **IntegrationType** | **String** | Integration type (deprecated — use integrations[0].integration_type instead) | [optional] 
-**IntegrationId** | **Decimal** | Integration ID (deprecated — use integrations[0].integration_id instead) | [optional] 
+**IntegrationId** | **Int64** | Integration ID (deprecated — use integrations[0].integration_id instead) | [optional] 
 **Integrations** | [**ClientIntegrationItemDto[]**](ClientIntegrationItemDto.md) | List of integrations matched by this rule | [optional] 
 **IncludeAllIntegrations** | **Boolean** | Whether to include all integrations | 
 **CreatedAt** | **System.DateTime** | Created At | 

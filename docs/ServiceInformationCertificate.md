@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | ID | 
+**Id** | **Int64** | ID | 
 **SubjectCommonName** | **String** | Subject Common Name | 
 **SubjectOrganisation** | **String** | Subject Organization | 
 **SubjectAltNames** | **String[]** | Subject Alt Names | 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Fingerprint** | **String** | Fingerprint | 
 **SerialNumber** | **String** | Certificate serial number | 
 **PublicKeyInfoAlg** | **String** | PublicKeyInfoAlg | 
-**PublicKeyInfoSize** | **Decimal** | PublicKeyInfoSize | 
+**PublicKeyInfoSize** | **Int32** | PublicKeyInfoSize | 
 **Status** | **String** |  | 
 **IssuedByStatus** | **String** | Trust provenance of the certificate issuer as classified upstream | 
 **CreatedAt** | **System.DateTime** | Discovery date | [optional] 

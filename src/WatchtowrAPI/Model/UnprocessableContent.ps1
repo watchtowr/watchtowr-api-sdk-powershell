@@ -33,7 +33,7 @@ function Initialize-UnprocessableContent {
         [String]
         ${Message},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${StatusCode},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]

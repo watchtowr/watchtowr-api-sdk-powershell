@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **VarData** | **String[]** |  | [optional] 
-**TotalCount** | **Decimal** |  | [optional] 
+**TotalCount** | **Int32** |  | [optional] 
 
 ## Examples
 

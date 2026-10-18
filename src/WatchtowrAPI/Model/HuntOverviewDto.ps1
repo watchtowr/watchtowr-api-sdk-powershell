@@ -30,10 +30,10 @@ function Initialize-HuntOverviewDto {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${TotalHuntsExecuted},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${TotalUnresolvedHunts},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]

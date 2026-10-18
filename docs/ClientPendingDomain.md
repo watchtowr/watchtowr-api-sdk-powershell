@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | Domain ID | 
+**Id** | **Int64** | Domain ID | 
 **Status** | **String** | Domain status | 
 **Name** | **String** | Domain name | 
 **Source** | **String** | Source that discovered the domain | 

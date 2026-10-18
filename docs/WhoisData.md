@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | ID | 
+**Id** | **Int64** | ID | 
 **VarData** | [**WhoisDataObject**](WhoisDataObject.md) |  | 
 **Raw** | **String** | Raw | 
 

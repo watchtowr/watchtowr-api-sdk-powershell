@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | ID of the resolved asset | 
+**Id** | **Int64** | ID of the resolved asset | 
 **Type** | **String** | Type of the resolved asset. Matches the asset type values used elsewhere in the API (e.g. domain, subdomain, ip, ipRange, saasPlatform, ...). | 
 
 ## Examples

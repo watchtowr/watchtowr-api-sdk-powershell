@@ -26,7 +26,7 @@ function Initialize-DeleteWhitelistIpData {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${Id}
     )
 

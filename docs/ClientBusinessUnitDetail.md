@@ -3,12 +3,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | ID | 
+**Id** | **Int64** | ID | 
 **Name** | **String** | Name | 
 **Description** | **String** | Description | 
 **Type** | **String** | Business unit type | 
-**ParentId** | **Decimal** | Parent business unit ID | [optional] 
-**UserIds** | **Decimal[]** | Array of user IDs assigned to this business unit | [optional] 
+**ParentId** | **Int64** | Parent business unit ID | [optional] 
+**UserIds** | **Int64[]** | Array of user IDs assigned to this business unit | [optional] 
 **CreatedAt** | **System.DateTime** | Created At | 
 **UpdatedAt** | **System.DateTime** | Updated At | 
 

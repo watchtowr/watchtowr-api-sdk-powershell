@@ -22,13 +22,13 @@ Rule type
 .PARAMETER KeywordMatcher
 Keyword for matching assets (required when type is keyword). Supports wildcard patterns: %.sg, %abc%, %abc.com, abc.com. Wildcards can be defined using %.
 .PARAMETER KeywordRuleType
-Keyword rule type (optional, defaults to HOSTNAME when keyword_matcher is provided). HOSTNAME: matches domain/subdomain names. CNAME: matches CNAME DNS record values. TLS_SSL: matches TLS/SSL certificate subject names.
+Keyword rule type (optional, defaults to HOSTNAME when keyword_matcher is provided). HOSTNAME: matches domain/subdomain names. CNAME: matches CNAME DNS record values. TLS_SSL: matches TLS/SSL certificate subject names. CNAME and TLS_SSL rules do not cascade to subdomains (cascade_subdomain is ignored).
 .PARAMETER CountryCode
 Geographical location 2-letter country code (ISO 3166-1 alpha-2) for matching IPs (required when type is country). Examples: SG, US, GB, AU
 .PARAMETER Integrations
 List of integrations for matching cloud assets (required when type is integration)
 .PARAMETER CascadeSubdomain
-Whether to cascade rule to subdomains
+Whether to cascade rule to subdomains. Not supported for CNAME and TLS_SSL keyword rules: for these rule types the value is ignored and the rule is always created with cascade_subdomain set to false. To cover subdomains, create a HOSTNAME rule on the same pattern.
 .PARAMETER CascadeIp
 Whether to cascade rule to IPs
 .PARAMETER IncludeAllIntegrations

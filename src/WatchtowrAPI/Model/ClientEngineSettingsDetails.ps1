@@ -58,7 +58,7 @@ function Initialize-ClientEngineSettingsDetails {
         [Boolean]
         ${IntrusiveHttpChecksEnabled},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${Id},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [String]

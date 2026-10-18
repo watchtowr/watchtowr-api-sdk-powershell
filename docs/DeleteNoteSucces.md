@@ -4,8 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Message** | **String** |  | 
-**Status** | **Decimal** |  | 
-**StatusCode** | **Decimal** |  | 
+**Status** | **Int32** |  | 
+**StatusCode** | **Int32** |  | 
 
 ## Examples
 

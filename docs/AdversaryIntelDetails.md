@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AttackerId** | **Decimal** |  | 
+**AttackerId** | **Int64** |  | 
 **Name** | **String** |  | 
 **Type** | **String** |  | [optional] 
 **Description** | **String** |  | [optional] 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **TargetIndustries** | [**TargetIndustrySummary**](TargetIndustrySummary.md) |  | [optional] 
 **LatestMedia** | [**Media[]**](Media.md) | Recent media references for this adversary. Not currently populated — returns an empty array. | [optional] 
 **IsAffected** | **Boolean** | Whether the user has confirmed open findings against vulnerabilities exploited by this adversary. Scoped to the requesting user&#39;s business units and the organization&#39;s finding impact threshold. &#x60;null&#x60; when the check could not be completed. | 
-**AffectedKbEntryIds** | **Decimal[]** | KB entry IDs that drive the &#x60;isAffected&#x60; flag, scoped to the requesting user&#39;s business units. | 
+**AffectedKbEntryIds** | **Int64[]** | KB entry IDs that drive the &#x60;isAffected&#x60; flag, scoped to the requesting user&#39;s business units. | 
 
 ## Examples
 

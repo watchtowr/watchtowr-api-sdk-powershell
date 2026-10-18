@@ -31,7 +31,7 @@ function Initialize-ClientFindingRetestResponse {
         [PSCustomObject]
         ${VarData},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int32]]
         ${DnsConnectedRetestsTriggered}
     )
 

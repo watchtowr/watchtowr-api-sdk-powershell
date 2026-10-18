@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | The unique identifier for the WHOIS record. | 
+**Id** | **Int64** | The unique identifier for the WHOIS record. | 
 **VarData** | [**IpWhoisDataObject**](IpWhoisDataObject.md) |  | 
 **Raw** | **String** | The full WHOIS text of the record. | 
 

@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | ID | 
+**Id** | **Int64** | ID | 
 **Name** | **String** | Name | 
 **DiscoveryReason** | **String** | Discovery Reason | 
 **Status** | **String** |  | 

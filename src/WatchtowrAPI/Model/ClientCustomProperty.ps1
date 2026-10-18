@@ -40,7 +40,7 @@ function Initialize-ClientCustomProperty {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -53,7 +53,7 @@ function Initialize-ClientCustomProperty {
         [String]
         ${ModelType},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${ModelId},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [Boolean]

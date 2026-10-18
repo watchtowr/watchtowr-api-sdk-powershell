@@ -32,7 +32,7 @@ function Initialize-ClientIntegrationItemDto {
         [String]
         ${IntegrationType},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${IntegrationId}
     )
 

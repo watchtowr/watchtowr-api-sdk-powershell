@@ -46,7 +46,7 @@ function Initialize-CapabilitySearchHuntItem {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("bespoke", "proactive")]
@@ -59,10 +59,10 @@ function Initialize-CapabilitySearchHuntItem {
         [System.DateTime]
         ${UpdatedAt},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${TotalFindings},
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${TotalAssets},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("Misconfig", "Others", "SoftwareVulnerability", "ThreatIntelligence")]

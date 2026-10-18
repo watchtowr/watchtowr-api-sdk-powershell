@@ -3,10 +3,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** |  | 
+**Id** | **Int64** |  | 
 **Note** | **String** |  | 
 **NoteType** | **String** |  | 
-**NoteId** | **Decimal** |  | 
+**NoteId** | **Int64** |  | 
 **Title** | **String** |  | 
 **Author** | [**ClientNoteAuthor**](ClientNoteAuthor.md) |  | 
 **LastModified** | [**ClientNoteLastModified**](ClientNoteLastModified.md) |  | 

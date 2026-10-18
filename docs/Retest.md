@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RetestRemaining** | **Decimal** | The number of remaining test cases  | [optional] 
+**RetestRemaining** | **Int32** | The number of remaining test cases  | [optional] 
 **CurrentRetest** | [**FindingRetestResponseDto**](FindingRetestResponseDto.md) |  | [optional] 
 
 ## Examples

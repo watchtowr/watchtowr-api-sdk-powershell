@@ -62,7 +62,7 @@ function Initialize-ServiceInformationCertificate {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -95,7 +95,7 @@ function Initialize-ServiceInformationCertificate {
         [String]
         ${PublicKeyInfoAlg},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int32]
         ${PublicKeyInfoSize},
         [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("Expired", "Expiring Within 30 Days", "Valid")]

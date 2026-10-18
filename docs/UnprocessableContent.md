@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Message** | **String** |  | 
-**StatusCode** | **Decimal** |  | 
+**StatusCode** | **Int32** |  | 
 **Errors** | [**SystemCollectionsHashtable**](.md) |  | 
 
 ## Examples

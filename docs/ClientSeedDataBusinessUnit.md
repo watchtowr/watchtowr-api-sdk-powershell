@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | Business Unit ID | 
+**Id** | **Int64** | Business Unit ID | 
 **Name** | **String** | Business Unit name | 
 **Description** | **String** | Business Unit description | [optional] 
 **Type** | **String** | Business Unit type | 

@@ -38,7 +38,7 @@ function Initialize-ClientNote {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -47,7 +47,7 @@ function Initialize-ClientNote {
         [String]
         ${NoteType},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${NoteId},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [String]

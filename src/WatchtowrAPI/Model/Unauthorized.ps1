@@ -30,7 +30,7 @@ function Initialize-Unauthorized {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Decimal]]
+        [System.Nullable[Int32]]
         ${StatusCode},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]

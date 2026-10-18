@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Message** | **String** |  | 
-**Status** | **Decimal** |  | 
+**Status** | **Int32** |  | 
 
 ## Examples
 

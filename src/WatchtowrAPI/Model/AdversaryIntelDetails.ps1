@@ -52,7 +52,7 @@ function Initialize-AdversaryIntelDetails {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [Decimal]
+        [Int64]
         ${AttackerId},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -91,7 +91,7 @@ function Initialize-AdversaryIntelDetails {
         [System.Nullable[Boolean]]
         ${IsAffected},
         [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
-        [Decimal[]]
+        [Int64[]]
         ${AffectedKbEntryIds}
     )
 

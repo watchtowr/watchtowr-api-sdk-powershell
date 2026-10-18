@@ -3,11 +3,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **Decimal** | Harvested credential ID | 
+**Id** | **Int64** | Harvested credential ID | 
 **Type** | **String** | Credential type | 
 **Url** | **String** | URL associated with the credential | 
 **Username** | **String** | Username | 
-**CompromisedEndpointId** | **Decimal** | Compromised endpoint ID | 
+**CompromisedEndpointId** | **Int64** | Compromised endpoint ID | 
 **CreatedAt** | **String** | Creation timestamp | 
 **UpdatedAt** | **String** | Last update timestamp | 
 
