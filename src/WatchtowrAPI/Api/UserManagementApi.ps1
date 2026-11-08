@@ -30,7 +30,7 @@ function Invoke-DeleteUser {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [Decimal]
+        [Int64]
         ${Id},
         [Switch]
         $WithHttpInfo
@@ -108,7 +108,7 @@ function Get-UserDetails {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [Decimal]
+        [Int64]
         ${Id},
         [Switch]
         $WithHttpInfo
@@ -435,7 +435,7 @@ function Update-User {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [Decimal]
+        [Int64]
         ${Id},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]

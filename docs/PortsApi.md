@@ -11,7 +11,7 @@ Method | HTTP request | Description
 <a id="Get-AssetPortDetails"></a>
 # **Get-AssetPortDetails**
 > ClientPortData Get-AssetPortDetails<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 
 Get Port
 
@@ -22,7 +22,7 @@ Get the details of a specific Port asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of a Port to get.
+$Id = 789 # Int64 | The asset ID of a Port to get.
 
 # Get Port
 try {
@@ -37,7 +37,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of a Port to get. | 
+ **Id** | **Int64**| The asset ID of a Port to get. | 
 
 ### Return type
 

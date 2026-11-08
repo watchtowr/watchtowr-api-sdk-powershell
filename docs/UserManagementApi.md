@@ -14,7 +14,7 @@ Method | HTTP request | Description
 <a id="Invoke-DeleteUser"></a>
 # **Invoke-DeleteUser**
 > DeleteUserResponseData Invoke-DeleteUser<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 
 Delete User
 
@@ -25,7 +25,7 @@ Delete a user from the platform. This action is irreversible. Administrator role
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | 
+$Id = 789 # Int64 | 
 
 # Delete User
 try {
@@ -40,7 +40,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**|  | 
+ **Id** | **Int64**|  | 
 
 ### Return type
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 <a id="Get-UserDetails"></a>
 # **Get-UserDetails**
 > UserDetailData Get-UserDetails<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 
 Get User Details
 
@@ -71,7 +71,7 @@ Get detailed information about a specific user. Administrator role required.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | 
+$Id = 789 # Int64 | 
 
 # Get User Details
 try {
@@ -86,7 +86,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**|  | 
+ **Id** | **Int64**|  | 
 
 ### Return type
 
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 <a id="Update-User"></a>
 # **Update-User**
 > UpdateUserResponse Update-User<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UserAgent] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateClientUserBodyDto] <PSCustomObject><br>
 
@@ -236,7 +236,7 @@ Update user details including locked status, role, and business unit assignments
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | 
+$Id = 789 # Int64 | 
 $UserAgent = "MyUserAgent" # String | 
 $UpdateClientUserBodyDto = Initialize-UpdateClientUserBodyDto -RoleType "ADMIN" -BusinessUnitIds 0 -Locked $false # UpdateClientUserBodyDto | 
 
@@ -253,7 +253,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**|  | 
+ **Id** | **Int64**|  | 
  **UserAgent** | **String**|  | 
  **UpdateClientUserBodyDto** | [**UpdateClientUserBodyDto**](UpdateClientUserBodyDto.md)|  | 
 

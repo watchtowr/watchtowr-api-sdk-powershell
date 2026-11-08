@@ -25,7 +25,7 @@ Method | HTTP request | Description
 <a id="New-CustomPropertyFinding"></a>
 # **New-CustomPropertyFinding**
 > ClientCustomProperty New-CustomPropertyFinding<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreateClientCustomPropertyDto] <PSCustomObject><br>
 
 Create Custom Property
@@ -37,7 +37,7 @@ Create a Custom Property for a specific Finding.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The ID of the finding to create a new custom property for.
+$Id = 789 # Int64 | The ID of the finding to create a new custom property for.
 $CreateClientCustomPropertyDto = Initialize-CreateClientCustomPropertyDto -Key "Severity" -Value "Low" -IsPreset $false # CreateClientCustomPropertyDto | 
 
 # Create Custom Property
@@ -53,7 +53,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The ID of the finding to create a new custom property for. | 
+ **Id** | **Int64**| The ID of the finding to create a new custom property for. | 
  **CreateClientCustomPropertyDto** | [**CreateClientCustomPropertyDto**](CreateClientCustomPropertyDto.md)|  | 
 
 ### Return type
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 <a id="New-FindingManualTicket"></a>
 # **New-FindingManualTicket**
 > ClientFindingManualTicketData New-FindingManualTicket<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreateClientFindingManualTicketRequestBody] <PSCustomObject><br>
 
 Create Finding Manual Ticket
@@ -86,7 +86,7 @@ Create a manual ticket reference for a specific finding.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The ID of the finding to create a manual ticket for.
+$Id = 789 # Int64 | The ID of the finding to create a manual ticket for.
 $CreateClientFindingManualTicketRequestBody = Initialize-CreateClientFindingManualTicketRequestBody -BoardName "Acme Jira Board" -IssueLink "https://example.atlassian.net/browse/ABC-123" # CreateClientFindingManualTicketRequestBody | 
 
 # Create Finding Manual Ticket
@@ -102,7 +102,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The ID of the finding to create a manual ticket for. | 
+ **Id** | **Int64**| The ID of the finding to create a manual ticket for. | 
  **CreateClientFindingManualTicketRequestBody** | [**CreateClientFindingManualTicketRequestBody**](CreateClientFindingManualTicketRequestBody.md)|  | 
 
 ### Return type
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 <a id="New-FindingNote"></a>
 # **New-FindingNote**
 > ClientNoteData New-FindingNote<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreateClientNoteDto] <PSCustomObject><br>
 
 Create Finding Note
@@ -135,7 +135,7 @@ Create a new note for a specific finding.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The ID of the finding to create a note for.
+$Id = 789 # Int64 | The ID of the finding to create a note for.
 $CreateClientNoteDto = Initialize-CreateClientNoteDto -Note "Passed to the engineering team. Review on 01/07/2024" -Title "Initial Review - 01/01/2024" # CreateClientNoteDto | 
 
 # Create Finding Note
@@ -151,7 +151,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The ID of the finding to create a note for. | 
+ **Id** | **Int64**| The ID of the finding to create a note for. | 
  **CreateClientNoteDto** | [**CreateClientNoteDto**](CreateClientNoteDto.md)|  | 
 
 ### Return type
@@ -172,8 +172,8 @@ Name | Type | Description  | Notes
 <a id="Invoke-DeleteCustomPropertyFinding"></a>
 # **Invoke-DeleteCustomPropertyFinding**
 > RemoveClientCustomPropertyResponseDto Invoke-DeleteCustomPropertyFinding<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyId] <Int64><br>
 
 Delete Custom Property
 
@@ -184,8 +184,8 @@ Delete a Custom Property for a specific Finding.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The ID of the finding to delete a custom property of.
-$CustomPropertyId = 8.14 # Decimal | The ID of the custom property to delete.
+$Id = 789 # Int64 | The ID of the finding to delete a custom property of.
+$CustomPropertyId = 789 # Int64 | The ID of the custom property to delete.
 
 # Delete Custom Property
 try {
@@ -200,8 +200,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The ID of the finding to delete a custom property of. | 
- **CustomPropertyId** | **Decimal**| The ID of the custom property to delete. | 
+ **Id** | **Int64**| The ID of the finding to delete a custom property of. | 
+ **CustomPropertyId** | **Int64**| The ID of the custom property to delete. | 
 
 ### Return type
 
@@ -221,8 +221,8 @@ Name | Type | Description  | Notes
 <a id="Invoke-DeleteFindingNote"></a>
 # **Invoke-DeleteFindingNote**
 > DeleteNoteSucces Invoke-DeleteFindingNote<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NoteId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NoteId] <Int64><br>
 
 Delete Finding Note
 
@@ -233,8 +233,8 @@ Delete a specific note from a finding.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The ID of the finding that contains the note.
-$NoteId = 8.14 # Decimal | The ID of the note to delete.
+$Id = 789 # Int64 | The ID of the finding that contains the note.
+$NoteId = 789 # Int64 | The ID of the note to delete.
 
 # Delete Finding Note
 try {
@@ -249,8 +249,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The ID of the finding that contains the note. | 
- **NoteId** | **Decimal**| The ID of the note to delete. | 
+ **Id** | **Int64**| The ID of the finding that contains the note. | 
+ **NoteId** | **Int64**| The ID of the note to delete. | 
 
 ### Return type
 
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 <a id="Export-PDFForFinding"></a>
 # **Export-PDFForFinding**
 > void Export-PDFForFinding<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 
 Export Finding PDF
 
@@ -281,7 +281,7 @@ Export a PDF report for a specific finding.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The ID of the finding to export.
+$Id = 789 # Int64 | The ID of the finding to export.
 
 # Export Finding PDF
 try {
@@ -296,7 +296,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The ID of the finding to export. | 
+ **Id** | **Int64**| The ID of the finding to export. | 
 
 ### Return type
 
@@ -357,7 +357,7 @@ This endpoint does not need any parameter.
 <a id="Get-CustomPropertiesFinding"></a>
 # **Get-CustomPropertiesFinding**
 > PaginatedClientCustomProperty Get-CustomPropertiesFinding<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 
@@ -370,7 +370,7 @@ List the Custom Properties of a specific Finding.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The ID of the finding to list custom properties of.
+$Id = 789 # Int64 | The ID of the finding to list custom properties of.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
@@ -387,7 +387,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The ID of the finding to list custom properties of. | 
+ **Id** | **Int64**| The ID of the finding to list custom properties of. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
@@ -409,7 +409,7 @@ Name | Type | Description  | Notes
 <a id="Get-FindingDetails"></a>
 # **Get-FindingDetails**
 > ClientFindingData Get-FindingDetails<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 
 Get Finding Details
 
@@ -420,7 +420,7 @@ Get the details of a specific finding.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The ID of the finding to retrieve.
+$Id = 789 # Int64 | The ID of the finding to retrieve.
 
 # Get Finding Details
 try {
@@ -435,7 +435,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The ID of the finding to retrieve. | 
+ **Id** | **Int64**| The ID of the finding to retrieve. | 
 
 ### Return type
 
@@ -455,7 +455,7 @@ Name | Type | Description  | Notes
 <a id="Get-FindingNotes"></a>
 # **Get-FindingNotes**
 > ClientNoteListData Get-FindingNotes<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 
@@ -468,7 +468,7 @@ List all notes for a specific finding.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The ID of the finding to list notes for.
+$Id = 789 # Int64 | The ID of the finding to list notes for.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
@@ -485,7 +485,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The ID of the finding to list notes for. | 
+ **Id** | **Int64**| The ID of the finding to list notes for. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
@@ -616,7 +616,7 @@ Name | Type | Description  | Notes
 <a id="Start-SpecificFindingRetest"></a>
 # **Start-SpecificFindingRetest**
 > ClientFindingRetestResponse Start-SpecificFindingRetest<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-FindingId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-FindingId] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IncludeDnsConnected] <System.Nullable[Boolean]><br>
 
 Retest Finding
@@ -628,7 +628,7 @@ Initiate a retest for a specific finding.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$FindingId = 8.14 # Decimal | The ID of the finding to retest.
+$FindingId = 789 # Int64 | The ID of the finding to retest.
 $IncludeDnsConnected = $true # Boolean | Include DNS-connected findings with the same vulnerability type in the retest. When enabled, the system will identify all findings with the same KB entry on assets connected via DNS A records (up to 10 findings total) and retest them together. (optional)
 
 # Retest Finding
@@ -644,7 +644,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **FindingId** | **Decimal**| The ID of the finding to retest. | 
+ **FindingId** | **Int64**| The ID of the finding to retest. | 
  **IncludeDnsConnected** | **Boolean**| Include DNS-connected findings with the same vulnerability type in the retest. When enabled, the system will identify all findings with the same KB entry on assets connected via DNS A records (up to 10 findings total) and retest them together. | [optional] 
 
 ### Return type
@@ -665,8 +665,8 @@ Name | Type | Description  | Notes
 <a id="Update-CustomPropertyFinding"></a>
 # **Update-CustomPropertyFinding**
 > ClientCustomProperty Update-CustomPropertyFinding<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyId] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateClientCustomPropertyDto] <PSCustomObject><br>
 
 Update Custom Property
@@ -678,8 +678,8 @@ Update a Custom Property for a specific Finding
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The ID of the finding to update a custom property of.
-$CustomPropertyId = 8.14 # Decimal | The ID of the custom property to update.
+$Id = 789 # Int64 | The ID of the finding to update a custom property of.
+$CustomPropertyId = 789 # Int64 | The ID of the custom property to update.
 $UpdateClientCustomPropertyDto = Initialize-UpdateClientCustomPropertyDto -Key "Severity" -Value "Low" # UpdateClientCustomPropertyDto | 
 
 # Update Custom Property
@@ -695,8 +695,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The ID of the finding to update a custom property of. | 
- **CustomPropertyId** | **Decimal**| The ID of the custom property to update. | 
+ **Id** | **Int64**| The ID of the finding to update a custom property of. | 
+ **CustomPropertyId** | **Int64**| The ID of the custom property to update. | 
  **UpdateClientCustomPropertyDto** | [**UpdateClientCustomPropertyDto**](UpdateClientCustomPropertyDto.md)|  | 
 
 ### Return type
@@ -717,8 +717,8 @@ Name | Type | Description  | Notes
 <a id="Update-FindingNote"></a>
 # **Update-FindingNote**
 > ClientNoteData Update-FindingNote<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NoteId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NoteId] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreateClientNoteDto] <PSCustomObject><br>
 
 Update Finding Note
@@ -730,8 +730,8 @@ Update an existing note for a specific finding.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The ID of the finding that contains the note.
-$NoteId = 8.14 # Decimal | The ID of the note to update.
+$Id = 789 # Int64 | The ID of the finding that contains the note.
+$NoteId = 789 # Int64 | The ID of the note to update.
 $CreateClientNoteDto = Initialize-CreateClientNoteDto -Note "Passed to the engineering team. Review on 01/07/2024" -Title "Initial Review - 01/01/2024" # CreateClientNoteDto | 
 
 # Update Finding Note
@@ -747,8 +747,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The ID of the finding that contains the note. | 
- **NoteId** | **Decimal**| The ID of the note to update. | 
+ **Id** | **Int64**| The ID of the finding that contains the note. | 
+ **NoteId** | **Int64**| The ID of the note to update. | 
  **CreateClientNoteDto** | [**CreateClientNoteDto**](CreateClientNoteDto.md)|  | 
 
 ### Return type
@@ -769,7 +769,7 @@ Name | Type | Description  | Notes
 <a id="Update-FindingState"></a>
 # **Update-FindingState**
 > ClientFindingData Update-FindingState<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateClientFindingStateRequestBody] <PSCustomObject><br>
 
 Update Finding State
@@ -781,7 +781,7 @@ Update the state of a specific finding.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The ID of the finding to update.
+$Id = 789 # Int64 | The ID of the finding to update.
 $UpdateClientFindingStateRequestBody = Initialize-UpdateClientFindingStateRequestBody -State "Uninvestigated" # UpdateClientFindingStateRequestBody | 
 
 # Update Finding State
@@ -797,7 +797,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The ID of the finding to update. | 
+ **Id** | **Int64**| The ID of the finding to update. | 
  **UpdateClientFindingStateRequestBody** | [**UpdateClientFindingStateRequestBody**](UpdateClientFindingStateRequestBody.md)|  | 
 
 ### Return type
@@ -818,7 +818,7 @@ Name | Type | Description  | Notes
 <a id="Update-FindingStatus"></a>
 # **Update-FindingStatus**
 > ClientFindingData Update-FindingStatus<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateClientFindingStatusRequestBody] <PSCustomObject><br>
 
 Update Finding Status
@@ -830,7 +830,7 @@ Update the status of a specific finding.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The ID of the finding to update.
+$Id = 789 # Int64 | The ID of the finding to update.
 $UpdateClientFindingStatusRequestBody = Initialize-UpdateClientFindingStatusRequestBody -Status "confirmed" -StatusReason "Reason for change" # UpdateClientFindingStatusRequestBody | 
 
 # Update Finding Status
@@ -846,7 +846,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The ID of the finding to update. | 
+ **Id** | **Int64**| The ID of the finding to update. | 
  **UpdateClientFindingStatusRequestBody** | [**UpdateClientFindingStatusRequestBody**](UpdateClientFindingStatusRequestBody.md)|  | 
 
 ### Return type

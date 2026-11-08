@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 <a id="New-BusinessUnitRule"></a>
 # **New-BusinessUnitRule**
 > ClientBusinessUnitRuleData New-BusinessUnitRule<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreateClientBusinessUnitRuleDto] <PSCustomObject><br>
 
 Create Business Unit Rule
@@ -74,7 +74,7 @@ Create a new rule for a specific business unit. CNAME and TLS_SSL keyword rules 
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The ID of the business unit to create a rule for.
+$Id = 789 # Int64 | The ID of the business unit to create a rule for.
 $ClientIntegrationItemDto = Initialize-ClientIntegrationItemDto -IntegrationType "aws" -IntegrationId 1
 $CreateClientBusinessUnitRuleDto = Initialize-CreateClientBusinessUnitRuleDto -Name "Singapore Assets Rule" -Type "keyword" -KeywordMatcher "example.com" -KeywordRuleType "HOSTNAME" -CountryCode "SG" -Integrations $ClientIntegrationItemDto -CascadeSubdomain $true -CascadeIp $true -IncludeAllIntegrations $false # CreateClientBusinessUnitRuleDto | 
 
@@ -91,7 +91,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The ID of the business unit to create a rule for. | 
+ **Id** | **Int64**| The ID of the business unit to create a rule for. | 
  **CreateClientBusinessUnitRuleDto** | [**CreateClientBusinessUnitRuleDto**](CreateClientBusinessUnitRuleDto.md)|  | 
 
 ### Return type
@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 <a id="Invoke-DeleteBusinessUnit"></a>
 # **Invoke-DeleteBusinessUnit**
 > DeleteClientBusinessUnitResponseDto Invoke-DeleteBusinessUnit<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 
 Delete Business Unit
 
@@ -123,7 +123,7 @@ Delete an existing business unit.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The ID of the business unit to delete.
+$Id = 789 # Int64 | The ID of the business unit to delete.
 
 # Delete Business Unit
 try {
@@ -138,7 +138,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The ID of the business unit to delete. | 
+ **Id** | **Int64**| The ID of the business unit to delete. | 
 
 ### Return type
 
@@ -158,8 +158,8 @@ Name | Type | Description  | Notes
 <a id="Invoke-DeleteBusinessUnitRule"></a>
 # **Invoke-DeleteBusinessUnitRule**
 > DeleteClientBusinessUnitRuleResponseDto Invoke-DeleteBusinessUnitRule<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-RuleId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-RuleId] <Int64><br>
 
 Delete Business Unit Rule
 
@@ -170,8 +170,8 @@ Delete an existing rule for a specific business unit.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The ID of the business unit.
-$RuleId = 8.14 # Decimal | The ID of the rule to delete.
+$Id = 789 # Int64 | The ID of the business unit.
+$RuleId = 789 # Int64 | The ID of the rule to delete.
 
 # Delete Business Unit Rule
 try {
@@ -186,8 +186,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The ID of the business unit. | 
- **RuleId** | **Decimal**| The ID of the rule to delete. | 
+ **Id** | **Int64**| The ID of the business unit. | 
+ **RuleId** | **Int64**| The ID of the rule to delete. | 
 
 ### Return type
 
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 <a id="Get-BusinessUnitDetails"></a>
 # **Get-BusinessUnitDetails**
 > ClientBusinessUnitDetailWithRulesData Get-BusinessUnitDetails<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-RulePage] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-RulePageSize] <System.Nullable[Decimal]><br>
 
@@ -220,7 +220,7 @@ Get the details of a specific business unit including paginated rules.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | 
+$Id = 789 # Int64 | 
 $RulePage = 1 # Decimal | Page number for rules pagination (optional)
 $RulePageSize = 10 # Decimal | Page size for rules pagination (optional)
 
@@ -237,7 +237,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**|  | 
+ **Id** | **Int64**|  | 
  **RulePage** | **Decimal**| Page number for rules pagination | [optional] 
  **RulePageSize** | **Decimal**| Page size for rules pagination | [optional] 
 
@@ -323,7 +323,7 @@ Name | Type | Description  | Notes
 <a id="Update-BusinessUnit"></a>
 # **Update-BusinessUnit**
 > ClientBusinessUnitData Update-BusinessUnit<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateClientBusinessUnitDto] <PSCustomObject><br>
 
 Update Business Unit
@@ -335,7 +335,7 @@ Update an existing business unit with name, description, type, parent, and user 
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The ID of the business unit to update.
+$Id = 789 # Int64 | The ID of the business unit to update.
 $UpdateClientBusinessUnitDto = Initialize-UpdateClientBusinessUnitDto -Name "Updated Business Unit Name" -Description "Updated description" -Type "BRAND" -ParentId 1 -UserIds 0 # UpdateClientBusinessUnitDto | 
 
 # Update Business Unit
@@ -351,7 +351,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The ID of the business unit to update. | 
+ **Id** | **Int64**| The ID of the business unit to update. | 
  **UpdateClientBusinessUnitDto** | [**UpdateClientBusinessUnitDto**](UpdateClientBusinessUnitDto.md)|  | 
 
 ### Return type

@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 <a id="Get-SuspiciousDomainDetails"></a>
 # **Get-SuspiciousDomainDetails**
 > ClientSuspiciousDomainData Get-SuspiciousDomainDetails<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 
 Get Suspicious Domain Details
 
@@ -95,7 +95,7 @@ Get the details of a specific suspicious domain.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The ID of the suspicious domain to retrieve.
+$Id = 789 # Int64 | The ID of the suspicious domain to retrieve.
 
 # Get Suspicious Domain Details
 try {
@@ -110,7 +110,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The ID of the suspicious domain to retrieve. | 
+ **Id** | **Int64**| The ID of the suspicious domain to retrieve. | 
 
 ### Return type
 

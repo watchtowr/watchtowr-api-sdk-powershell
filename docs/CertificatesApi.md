@@ -11,7 +11,7 @@ Method | HTTP request | Description
 <a id="Get-CertificateDetails"></a>
 # **Get-CertificateDetails**
 > ClientServiceInformationResponseData Get-CertificateDetails<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 
 Get Certificate Details
 
@@ -22,7 +22,7 @@ Get the details of a specific TLS/SSL certificate.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the certificate to retrieve.
+$Id = 789 # Int64 | The asset ID of the certificate to retrieve.
 
 # Get Certificate Details
 try {
@@ -37,7 +37,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the certificate to retrieve. | 
+ **Id** | **Int64**| The asset ID of the certificate to retrieve. | 
 
 ### Return type
 

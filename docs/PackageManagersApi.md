@@ -24,7 +24,7 @@ Method | HTTP request | Description
 <a id="Add-AssetPackageManagerNote"></a>
 # **Add-AssetPackageManagerNote**
 > ClientNoteData Add-AssetPackageManagerNote<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreateClientNoteDto] <PSCustomObject><br>
 
 Create Note
@@ -36,7 +36,7 @@ Create a Note for a specific Package Manager asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the Package Manager asset to create a new note for.
+$Id = 789 # Int64 | The asset ID of the Package Manager asset to create a new note for.
 $CreateClientNoteDto = Initialize-CreateClientNoteDto -Note "Passed to the engineering team. Review on 01/07/2024" -Title "Initial Review - 01/01/2024" # CreateClientNoteDto | 
 
 # Create Note
@@ -52,7 +52,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the Package Manager asset to create a new note for. | 
+ **Id** | **Int64**| The asset ID of the Package Manager asset to create a new note for. | 
  **CreateClientNoteDto** | [**CreateClientNoteDto**](CreateClientNoteDto.md)|  | 
 
 ### Return type
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 <a id="Set-PackageManagerToBusinessUnits"></a>
 # **Set-PackageManagerToBusinessUnits**
 > ClientPackageManagerData Set-PackageManagerToBusinessUnits<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AssetBusinessUnitIdsDTO] <PSCustomObject><br>
 
 Assign Package Manager to Business Units
@@ -85,7 +85,7 @@ Assign a specific Package Manager asset to a list of Business Units
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The Package Manager asset's ID.
+$Id = 789 # Int64 | The Package Manager asset's ID.
 $AssetBusinessUnitIdsDTO = Initialize-AssetBusinessUnitIdsDTO -BusinessUnitIds 0 # AssetBusinessUnitIdsDTO | 
 
 # Assign Package Manager to Business Units
@@ -101,7 +101,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The Package Manager asset&#39;s ID. | 
+ **Id** | **Int64**| The Package Manager asset&#39;s ID. | 
  **AssetBusinessUnitIdsDTO** | [**AssetBusinessUnitIdsDTO**](AssetBusinessUnitIdsDTO.md)|  | 
 
 ### Return type
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 <a id="New-CustomPropertyPackageManager"></a>
 # **New-CustomPropertyPackageManager**
 > ClientCustomProperty New-CustomPropertyPackageManager<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreateClientCustomPropertyDto] <PSCustomObject><br>
 
 Create Custom Property
@@ -134,7 +134,7 @@ Create a Custom Property for a specific Package Manager asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the Package Manager asset to create a new custom property for.
+$Id = 789 # Int64 | The asset ID of the Package Manager asset to create a new custom property for.
 $CreateClientCustomPropertyDto = Initialize-CreateClientCustomPropertyDto -Key "Severity" -Value "Low" -IsPreset $false # CreateClientCustomPropertyDto | 
 
 # Create Custom Property
@@ -150,7 +150,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the Package Manager asset to create a new custom property for. | 
+ **Id** | **Int64**| The asset ID of the Package Manager asset to create a new custom property for. | 
  **CreateClientCustomPropertyDto** | [**CreateClientCustomPropertyDto**](CreateClientCustomPropertyDto.md)|  | 
 
 ### Return type
@@ -171,8 +171,8 @@ Name | Type | Description  | Notes
 <a id="Invoke-DeleteAssetPackageManagerNote"></a>
 # **Invoke-DeleteAssetPackageManagerNote**
 > DeleteNoteSucces Invoke-DeleteAssetPackageManagerNote<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NoteId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NoteId] <Int64><br>
 
 Delete Note
 
@@ -183,8 +183,8 @@ Delete a Note of a specific Package Manager asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of a Package Manager asset with a note to delete.
-$NoteId = 8.14 # Decimal | The ID of the note to delete.
+$Id = 789 # Int64 | The asset ID of a Package Manager asset with a note to delete.
+$NoteId = 789 # Int64 | The ID of the note to delete.
 
 # Delete Note
 try {
@@ -199,8 +199,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of a Package Manager asset with a note to delete. | 
- **NoteId** | **Decimal**| The ID of the note to delete. | 
+ **Id** | **Int64**| The asset ID of a Package Manager asset with a note to delete. | 
+ **NoteId** | **Int64**| The ID of the note to delete. | 
 
 ### Return type
 
@@ -220,8 +220,8 @@ Name | Type | Description  | Notes
 <a id="Invoke-DeleteCustomPropertyById"></a>
 # **Invoke-DeleteCustomPropertyById**
 > RemoveClientCustomPropertyResponseDto Invoke-DeleteCustomPropertyById<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyId] <Int64><br>
 
 Delete Custom Property
 
@@ -232,8 +232,8 @@ Delete a Custom Property for a specific Package Manager asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of a Package Manager asset with a custom property to delete.
-$CustomPropertyId = 8.14 # Decimal | The ID of the custom property to delete.
+$Id = 789 # Int64 | The asset ID of a Package Manager asset with a custom property to delete.
+$CustomPropertyId = 789 # Int64 | The ID of the custom property to delete.
 
 # Delete Custom Property
 try {
@@ -248,8 +248,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of a Package Manager asset with a custom property to delete. | 
- **CustomPropertyId** | **Decimal**| The ID of the custom property to delete. | 
+ **Id** | **Int64**| The asset ID of a Package Manager asset with a custom property to delete. | 
+ **CustomPropertyId** | **Int64**| The ID of the custom property to delete. | 
 
 ### Return type
 
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 <a id="Get-AssetPackageManagerChangelog"></a>
 # **Get-AssetPackageManagerChangelog**
 > GetAssetPackageManagerChangelog200Response Get-AssetPackageManagerChangelog<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 
@@ -282,7 +282,7 @@ Get paginated changelog for a specific Package Manager asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the Package Manager to retrieve changelog for.
+$Id = 789 # Int64 | The asset ID of the Package Manager to retrieve changelog for.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
@@ -299,7 +299,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the Package Manager to retrieve changelog for. | 
+ **Id** | **Int64**| The asset ID of the Package Manager to retrieve changelog for. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
@@ -321,7 +321,7 @@ Name | Type | Description  | Notes
 <a id="Get-AssetPackageManagerDetails"></a>
 # **Get-AssetPackageManagerDetails**
 > ClientPackageManagerData Get-AssetPackageManagerDetails<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 
 Get Package Manager
 
@@ -332,7 +332,7 @@ Get the details of a specific Package Manager.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the Package Manager asset to get.
+$Id = 789 # Int64 | The asset ID of the Package Manager asset to get.
 
 # Get Package Manager
 try {
@@ -347,7 +347,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the Package Manager asset to get. | 
+ **Id** | **Int64**| The asset ID of the Package Manager asset to get. | 
 
 ### Return type
 
@@ -367,7 +367,7 @@ Name | Type | Description  | Notes
 <a id="Get-AssetPackageManagerNotes"></a>
 # **Get-AssetPackageManagerNotes**
 > ClientNoteListData Get-AssetPackageManagerNotes<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 
@@ -380,7 +380,7 @@ List the Notes of a specific Package Manager asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the Package Manager asset to list notes for.
+$Id = 789 # Int64 | The asset ID of the Package Manager asset to list notes for.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
@@ -397,7 +397,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the Package Manager asset to list notes for. | 
+ **Id** | **Int64**| The asset ID of the Package Manager asset to list notes for. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
@@ -419,7 +419,7 @@ Name | Type | Description  | Notes
 <a id="Get-CustomPropertiesPackageManager"></a>
 # **Get-CustomPropertiesPackageManager**
 > PaginatedClientCustomProperty Get-CustomPropertiesPackageManager<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 
@@ -432,7 +432,7 @@ List the Custom Properties of a specific Package Manager asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the Package Manager asset to list custom properties of.
+$Id = 789 # Int64 | The asset ID of the Package Manager asset to list custom properties of.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
@@ -449,7 +449,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the Package Manager asset to list custom properties of. | 
+ **Id** | **Int64**| The asset ID of the Package Manager asset to list custom properties of. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
@@ -547,7 +547,7 @@ Name | Type | Description  | Notes
 <a id="Set-CriticalityPackageManager"></a>
 # **Set-CriticalityPackageManager**
 > SetCriticalityDataResponseDto Set-CriticalityPackageManager<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SetCriticalityDto] <PSCustomObject><br>
 
 Set Criticality
@@ -559,7 +559,7 @@ Set or update the criticality level of a specific Package Manager asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the Package Manager to set criticality for.
+$Id = 789 # Int64 | The asset ID of the Package Manager to set criticality for.
 $SetCriticalityDto = Initialize-SetCriticalityDto -Criticality "High" # SetCriticalityDto | 
 
 # Set Criticality
@@ -575,7 +575,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the Package Manager to set criticality for. | 
+ **Id** | **Int64**| The asset ID of the Package Manager to set criticality for. | 
  **SetCriticalityDto** | [**SetCriticalityDto**](SetCriticalityDto.md)|  | 
 
 ### Return type
@@ -596,7 +596,7 @@ Name | Type | Description  | Notes
 <a id="Invoke-UnassignPackageManagerFromBusinessUnits"></a>
 # **Invoke-UnassignPackageManagerFromBusinessUnits**
 > ClientPackageManagerData Invoke-UnassignPackageManagerFromBusinessUnits<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessUnitIds] <String[]><br>
 
 Unassign Package Manager from Business Units
@@ -608,7 +608,7 @@ Unassign a specific Package Manager asset from a list of Business Units
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The Package Manager asset's ID.
+$Id = 789 # Int64 | The Package Manager asset's ID.
 $BusinessUnitIds = "MyBusinessUnitIds" # String[] | List of comma-seperated business unit IDs to unassign from the asset.
 
 # Unassign Package Manager from Business Units
@@ -624,7 +624,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The Package Manager asset&#39;s ID. | 
+ **Id** | **Int64**| The Package Manager asset&#39;s ID. | 
  **BusinessUnitIds** | [**String[]**](String.md)| List of comma-seperated business unit IDs to unassign from the asset. | 
 
 ### Return type
@@ -645,8 +645,8 @@ Name | Type | Description  | Notes
 <a id="Update-AssetPackageManagerNote"></a>
 # **Update-AssetPackageManagerNote**
 > ClientNoteData Update-AssetPackageManagerNote<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NoteId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NoteId] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreateClientNoteDto] <PSCustomObject><br>
 
 Update Note
@@ -658,8 +658,8 @@ Update a Note of a specific Package Manager asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of a Package Manager asset with a note to update.
-$NoteId = 8.14 # Decimal | The ID of the note to update.
+$Id = 789 # Int64 | The asset ID of a Package Manager asset with a note to update.
+$NoteId = 789 # Int64 | The ID of the note to update.
 $CreateClientNoteDto = Initialize-CreateClientNoteDto -Note "Passed to the engineering team. Review on 01/07/2024" -Title "Initial Review - 01/01/2024" # CreateClientNoteDto | 
 
 # Update Note
@@ -675,8 +675,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of a Package Manager asset with a note to update. | 
- **NoteId** | **Decimal**| The ID of the note to update. | 
+ **Id** | **Int64**| The asset ID of a Package Manager asset with a note to update. | 
+ **NoteId** | **Int64**| The ID of the note to update. | 
  **CreateClientNoteDto** | [**CreateClientNoteDto**](CreateClientNoteDto.md)|  | 
 
 ### Return type
@@ -697,7 +697,7 @@ Name | Type | Description  | Notes
 <a id="Update-AssetPackageManagerStatus"></a>
 # **Update-AssetPackageManagerStatus**
 > ClientPackageManagerData Update-AssetPackageManagerStatus<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateClientNextGenAssetStatusDto] <PSCustomObject><br>
 
 Update Status
@@ -709,7 +709,7 @@ Update Status of a specific Package Manager asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the Package Manager asset to update the status of.
+$Id = 789 # Int64 | The asset ID of the Package Manager asset to update the status of.
 $UpdateClientNextGenAssetStatusDto = Initialize-UpdateClientNextGenAssetStatusDto -Status "verified" -StatusReason "Manually verified via Client API" # UpdateClientNextGenAssetStatusDto | 
 
 # Update Status
@@ -725,7 +725,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the Package Manager asset to update the status of. | 
+ **Id** | **Int64**| The asset ID of the Package Manager asset to update the status of. | 
  **UpdateClientNextGenAssetStatusDto** | [**UpdateClientNextGenAssetStatusDto**](UpdateClientNextGenAssetStatusDto.md)|  | 
 
 ### Return type
@@ -746,8 +746,8 @@ Name | Type | Description  | Notes
 <a id="Update-CustomPropertyPackageManager"></a>
 # **Update-CustomPropertyPackageManager**
 > ClientCustomProperty Update-CustomPropertyPackageManager<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyId] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateClientCustomPropertyDto] <PSCustomObject><br>
 
 Update Custom Property
@@ -759,8 +759,8 @@ Update a Custom Property for a specific Package Manager asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of a Package Manager asset with a custom property to update.
-$CustomPropertyId = 8.14 # Decimal | The ID of the custom property to update.
+$Id = 789 # Int64 | The asset ID of a Package Manager asset with a custom property to update.
+$CustomPropertyId = 789 # Int64 | The ID of the custom property to update.
 $UpdateClientCustomPropertyDto = Initialize-UpdateClientCustomPropertyDto -Key "Severity" -Value "Low" # UpdateClientCustomPropertyDto | 
 
 # Update Custom Property
@@ -776,8 +776,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of a Package Manager asset with a custom property to update. | 
- **CustomPropertyId** | **Decimal**| The ID of the custom property to update. | 
+ **Id** | **Int64**| The asset ID of a Package Manager asset with a custom property to update. | 
+ **CustomPropertyId** | **Int64**| The ID of the custom property to update. | 
  **UpdateClientCustomPropertyDto** | [**UpdateClientCustomPropertyDto**](UpdateClientCustomPropertyDto.md)|  | 
 
 ### Return type

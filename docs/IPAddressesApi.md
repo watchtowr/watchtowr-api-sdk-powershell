@@ -29,7 +29,7 @@ Method | HTTP request | Description
 <a id="Set-IpToBusinessUnits"></a>
 # **Set-IpToBusinessUnits**
 > ClientIpData Set-IpToBusinessUnits<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AssetBusinessUnitIdsDTO] <PSCustomObject><br>
 
 Assign IP to Business Units
@@ -41,7 +41,7 @@ Assign a specific IP asset to a list of Business Units
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The IP asset's ID.
+$Id = 789 # Int64 | The IP asset's ID.
 $AssetBusinessUnitIdsDTO = Initialize-AssetBusinessUnitIdsDTO -BusinessUnitIds 0 # AssetBusinessUnitIdsDTO | 
 
 # Assign IP to Business Units
@@ -57,7 +57,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The IP asset&#39;s ID. | 
+ **Id** | **Int64**| The IP asset&#39;s ID. | 
  **AssetBusinessUnitIdsDTO** | [**AssetBusinessUnitIdsDTO**](AssetBusinessUnitIdsDTO.md)|  | 
 
 ### Return type
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 <a id="New-AssetIpNote"></a>
 # **New-AssetIpNote**
 > ClientNoteData New-AssetIpNote<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreateClientNoteDto] <PSCustomObject><br>
 
 Create Note
@@ -90,7 +90,7 @@ Create a Note for a specific IP Address asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of an IP address to create a new note for.
+$Id = 789 # Int64 | The asset ID of an IP address to create a new note for.
 $CreateClientNoteDto = Initialize-CreateClientNoteDto -Note "Passed to the engineering team. Review on 01/07/2024" -Title "Initial Review - 01/01/2024" # CreateClientNoteDto | 
 
 # Create Note
@@ -106,7 +106,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of an IP address to create a new note for. | 
+ **Id** | **Int64**| The asset ID of an IP address to create a new note for. | 
  **CreateClientNoteDto** | [**CreateClientNoteDto**](CreateClientNoteDto.md)|  | 
 
 ### Return type
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 <a id="New-CustomPropertyIp"></a>
 # **New-CustomPropertyIp**
 > ClientCustomProperty New-CustomPropertyIp<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreateClientCustomPropertyDto] <PSCustomObject><br>
 
 Create Custom Property
@@ -139,7 +139,7 @@ Create a Custom Property for a specific IP Address asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the IP address to create a new custom property for.
+$Id = 789 # Int64 | The asset ID of the IP address to create a new custom property for.
 $CreateClientCustomPropertyDto = Initialize-CreateClientCustomPropertyDto -Key "Severity" -Value "Low" -IsPreset $false # CreateClientCustomPropertyDto | 
 
 # Create Custom Property
@@ -155,7 +155,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the IP address to create a new custom property for. | 
+ **Id** | **Int64**| The asset ID of the IP address to create a new custom property for. | 
  **CreateClientCustomPropertyDto** | [**CreateClientCustomPropertyDto**](CreateClientCustomPropertyDto.md)|  | 
 
 ### Return type
@@ -176,8 +176,8 @@ Name | Type | Description  | Notes
 <a id="Invoke-DeleteAssetIpNote"></a>
 # **Invoke-DeleteAssetIpNote**
 > DeleteNoteSucces Invoke-DeleteAssetIpNote<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NoteId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NoteId] <Int64><br>
 
 Delete Note
 
@@ -188,8 +188,8 @@ Delete a Note for a specific IP Address asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of an IP address with a note to delete.
-$NoteId = 8.14 # Decimal | The ID of the note to delete.
+$Id = 789 # Int64 | The asset ID of an IP address with a note to delete.
+$NoteId = 789 # Int64 | The ID of the note to delete.
 
 # Delete Note
 try {
@@ -204,8 +204,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of an IP address with a note to delete. | 
- **NoteId** | **Decimal**| The ID of the note to delete. | 
+ **Id** | **Int64**| The asset ID of an IP address with a note to delete. | 
+ **NoteId** | **Int64**| The ID of the note to delete. | 
 
 ### Return type
 
@@ -225,8 +225,8 @@ Name | Type | Description  | Notes
 <a id="Invoke-DeleteCustomPropertyIp"></a>
 # **Invoke-DeleteCustomPropertyIp**
 > RemoveClientCustomPropertyResponseDto Invoke-DeleteCustomPropertyIp<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyId] <Int64><br>
 
 Delete Custom Property
 
@@ -237,8 +237,8 @@ Delete a Custom Property for a specific IP Address asset
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of an IP address with a custom property to delete.
-$CustomPropertyId = 8.14 # Decimal | The ID of the custom property to delete.
+$Id = 789 # Int64 | The asset ID of an IP address with a custom property to delete.
+$CustomPropertyId = 789 # Int64 | The ID of the custom property to delete.
 
 # Delete Custom Property
 try {
@@ -253,8 +253,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of an IP address with a custom property to delete. | 
- **CustomPropertyId** | **Decimal**| The ID of the custom property to delete. | 
+ **Id** | **Int64**| The asset ID of an IP address with a custom property to delete. | 
+ **CustomPropertyId** | **Int64**| The ID of the custom property to delete. | 
 
 ### Return type
 
@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
 <a id="Get-AssetIpChangelog"></a>
 # **Get-AssetIpChangelog**
 > GetAssetIpChangelog200Response Get-AssetIpChangelog<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 
@@ -287,7 +287,7 @@ Get paginated changelog for a specific IP Address asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the IP Address to retrieve changelog for.
+$Id = 789 # Int64 | The asset ID of the IP Address to retrieve changelog for.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
@@ -304,7 +304,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the IP Address to retrieve changelog for. | 
+ **Id** | **Int64**| The asset ID of the IP Address to retrieve changelog for. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
@@ -326,7 +326,7 @@ Name | Type | Description  | Notes
 <a id="Get-AssetIpDetails"></a>
 # **Get-AssetIpDetails**
 > ClientIpData Get-AssetIpDetails<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 
 Get IP Address Details
 
@@ -337,7 +337,7 @@ Get the details of a specific IP Address asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the IP address to retrieve.
+$Id = 789 # Int64 | The asset ID of the IP address to retrieve.
 
 # Get IP Address Details
 try {
@@ -352,7 +352,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the IP address to retrieve. | 
+ **Id** | **Int64**| The asset ID of the IP address to retrieve. | 
 
 ### Return type
 
@@ -372,7 +372,7 @@ Name | Type | Description  | Notes
 <a id="Get-AssetIpDnsRecords"></a>
 # **Get-AssetIpDnsRecords**
 > ClientIpDnsRecordResponse Get-AssetIpDnsRecords<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 
@@ -385,7 +385,7 @@ List DNS Records of a specific IP Address asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the IP address to list DNS records of.
+$Id = 789 # Int64 | The asset ID of the IP address to list DNS records of.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
@@ -402,7 +402,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the IP address to list DNS records of. | 
+ **Id** | **Int64**| The asset ID of the IP address to list DNS records of. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
@@ -424,7 +424,7 @@ Name | Type | Description  | Notes
 <a id="Get-AssetIpEngineSettings"></a>
 # **Get-AssetIpEngineSettings**
 > ClientEngineSettingsData Get-AssetIpEngineSettings<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 
 Get IP Engine Settings
 
@@ -435,7 +435,7 @@ Get the engine settings for a specific IP asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the IP to retrieve engine settings for.
+$Id = 789 # Int64 | The asset ID of the IP to retrieve engine settings for.
 
 # Get IP Engine Settings
 try {
@@ -450,7 +450,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the IP to retrieve engine settings for. | 
+ **Id** | **Int64**| The asset ID of the IP to retrieve engine settings for. | 
 
 ### Return type
 
@@ -470,7 +470,7 @@ Name | Type | Description  | Notes
 <a id="Get-AssetIpNotes"></a>
 # **Get-AssetIpNotes**
 > ClientNoteListData Get-AssetIpNotes<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 
@@ -483,7 +483,7 @@ List Notes of a specific IP Address asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the IP address to list notes of.
+$Id = 789 # Int64 | The asset ID of the IP address to list notes of.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
@@ -500,7 +500,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the IP address to list notes of. | 
+ **Id** | **Int64**| The asset ID of the IP address to list notes of. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
@@ -522,8 +522,8 @@ Name | Type | Description  | Notes
 <a id="Get-AssetIpPortDetails"></a>
 # **Get-AssetIpPortDetails**
 > ClientPortData Get-AssetIpPortDetails<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IpId] <Decimal><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PortId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IpId] <Int64><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PortId] <Int64><br>
 
 Get Port
 
@@ -534,8 +534,8 @@ Get the details of a specific Port asset belonging to an IP Address.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$IpId = 8.14 # Decimal | The asset ID of an IP address with an associated port to get the details of.
-$PortId = 8.14 # Decimal | The ID of the Port to retrieve details of.
+$IpId = 789 # Int64 | The asset ID of an IP address with an associated port to get the details of.
+$PortId = 789 # Int64 | The ID of the Port to retrieve details of.
 
 # Get Port
 try {
@@ -550,8 +550,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **IpId** | **Decimal**| The asset ID of an IP address with an associated port to get the details of. | 
- **PortId** | **Decimal**| The ID of the Port to retrieve details of. | 
+ **IpId** | **Int64**| The asset ID of an IP address with an associated port to get the details of. | 
+ **PortId** | **Int64**| The ID of the Port to retrieve details of. | 
 
 ### Return type
 
@@ -571,7 +571,7 @@ Name | Type | Description  | Notes
 <a id="Get-AssetIpPorts"></a>
 # **Get-AssetIpPorts**
 > PaginatedClientPort Get-AssetIpPorts<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IncludeClosedPort] <System.Nullable[Boolean]><br>
@@ -588,7 +588,7 @@ List all discovered Ports belonging to an IP Address, ordered by date identified
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the IP address to list associated ports of.
+$Id = 789 # Int64 | The asset ID of the IP address to list associated ports of.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 100. (optional)
 $IncludeClosedPort = $true # Boolean | Include listings with closed ports. (optional)
@@ -609,7 +609,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the IP address to list associated ports of. | 
+ **Id** | **Int64**| The asset ID of the IP address to list associated ports of. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 100. | [optional] 
  **IncludeClosedPort** | **Boolean**| Include listings with closed ports. | [optional] 
@@ -635,7 +635,7 @@ Name | Type | Description  | Notes
 <a id="Get-CustomPropertiesIp"></a>
 # **Get-CustomPropertiesIp**
 > PaginatedClientCustomProperty Get-CustomPropertiesIp<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 
@@ -648,7 +648,7 @@ List the Custom Properties of a specific IP Address asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the IP address to list custom properties of.
+$Id = 789 # Int64 | The asset ID of the IP address to list custom properties of.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
@@ -665,7 +665,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the IP address to list custom properties of. | 
+ **Id** | **Int64**| The asset ID of the IP address to list custom properties of. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
@@ -772,7 +772,7 @@ Name | Type | Description  | Notes
 <a id="Set-CriticalityIp"></a>
 # **Set-CriticalityIp**
 > SetCriticalityDataResponseDto Set-CriticalityIp<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SetCriticalityDto] <PSCustomObject><br>
 
 Set Criticality
@@ -784,7 +784,7 @@ Set or update the criticality level of a specific IP asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the IP to set criticality for.
+$Id = 789 # Int64 | The asset ID of the IP to set criticality for.
 $SetCriticalityDto = Initialize-SetCriticalityDto -Criticality "High" # SetCriticalityDto | 
 
 # Set Criticality
@@ -800,7 +800,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the IP to set criticality for. | 
+ **Id** | **Int64**| The asset ID of the IP to set criticality for. | 
  **SetCriticalityDto** | [**SetCriticalityDto**](SetCriticalityDto.md)|  | 
 
 ### Return type
@@ -821,7 +821,7 @@ Name | Type | Description  | Notes
 <a id="Invoke-UnassignIpFromBusinessUnits"></a>
 # **Invoke-UnassignIpFromBusinessUnits**
 > ClientIpData Invoke-UnassignIpFromBusinessUnits<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessUnitIds] <String[]><br>
 
 Unassign IP from Business Units
@@ -833,7 +833,7 @@ Unassign a specific IP asset from a list of Business Units
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The IP asset's ID.
+$Id = 789 # Int64 | The IP asset's ID.
 $BusinessUnitIds = "MyBusinessUnitIds" # String[] | List of comma-seperated business unit IDs to unassign from the asset.
 
 # Unassign IP from Business Units
@@ -849,7 +849,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The IP asset&#39;s ID. | 
+ **Id** | **Int64**| The IP asset&#39;s ID. | 
  **BusinessUnitIds** | [**String[]**](String.md)| List of comma-seperated business unit IDs to unassign from the asset. | 
 
 ### Return type
@@ -870,7 +870,7 @@ Name | Type | Description  | Notes
 <a id="Update-AssetIpEngineSettings"></a>
 # **Update-AssetIpEngineSettings**
 > ClientEngineSettingsData Update-AssetIpEngineSettings<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateClientEngineSettingsDto] <PSCustomObject><br>
 
 Update IP Engine Settings
@@ -882,7 +882,7 @@ Update the engine settings for a specific IP asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the IP to update engine settings for.
+$Id = 789 # Int64 | The asset ID of the IP to update engine settings for.
 $UpdateClientEngineSettingsDto = Initialize-UpdateClientEngineSettingsDto -AdversarySightEnabled $true -DnsBruteforcingEnabled $false -AutomatedRedTeamingEnabled $true -IntrusiveHttpChecksEnabled $true -CredentialStuffingEnabled $true -RapidReactionEnabled $true # UpdateClientEngineSettingsDto | 
 
 # Update IP Engine Settings
@@ -898,7 +898,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the IP to update engine settings for. | 
+ **Id** | **Int64**| The asset ID of the IP to update engine settings for. | 
  **UpdateClientEngineSettingsDto** | [**UpdateClientEngineSettingsDto**](UpdateClientEngineSettingsDto.md)|  | 
 
 ### Return type
@@ -919,8 +919,8 @@ Name | Type | Description  | Notes
 <a id="Update-AssetIpNote"></a>
 # **Update-AssetIpNote**
 > ClientNoteData Update-AssetIpNote<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NoteId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NoteId] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreateClientNoteDto] <PSCustomObject><br>
 
 Update Note
@@ -932,8 +932,8 @@ Update a Note for a specific IP Address asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of an IP address with a note to update.
-$NoteId = 8.14 # Decimal | The ID of the note to update.
+$Id = 789 # Int64 | The asset ID of an IP address with a note to update.
+$NoteId = 789 # Int64 | The ID of the note to update.
 $CreateClientNoteDto = Initialize-CreateClientNoteDto -Note "Passed to the engineering team. Review on 01/07/2024" -Title "Initial Review - 01/01/2024" # CreateClientNoteDto | 
 
 # Update Note
@@ -949,8 +949,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of an IP address with a note to update. | 
- **NoteId** | **Decimal**| The ID of the note to update. | 
+ **Id** | **Int64**| The asset ID of an IP address with a note to update. | 
+ **NoteId** | **Int64**| The ID of the note to update. | 
  **CreateClientNoteDto** | [**CreateClientNoteDto**](CreateClientNoteDto.md)|  | 
 
 ### Return type
@@ -971,7 +971,7 @@ Name | Type | Description  | Notes
 <a id="Update-AssetIpStatus"></a>
 # **Update-AssetIpStatus**
 > ClientIpData Update-AssetIpStatus<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateClientLegacyAssetStatusDto] <PSCustomObject><br>
 
 Update Status
@@ -983,7 +983,7 @@ Update Status of a specific IP Address asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the IP address to update the status of.
+$Id = 789 # Int64 | The asset ID of the IP address to update the status of.
 $UpdateClientLegacyAssetStatusDto = Initialize-UpdateClientLegacyAssetStatusDto -Status "verified" -StatusReason "Manually verified via Client API" # UpdateClientLegacyAssetStatusDto | 
 
 # Update Status
@@ -999,7 +999,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the IP address to update the status of. | 
+ **Id** | **Int64**| The asset ID of the IP address to update the status of. | 
  **UpdateClientLegacyAssetStatusDto** | [**UpdateClientLegacyAssetStatusDto**](UpdateClientLegacyAssetStatusDto.md)|  | 
 
 ### Return type
@@ -1020,8 +1020,8 @@ Name | Type | Description  | Notes
 <a id="Update-CustomPropertyIp"></a>
 # **Update-CustomPropertyIp**
 > ClientCustomProperty Update-CustomPropertyIp<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyId] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateClientCustomPropertyDto] <PSCustomObject><br>
 
 Update Custom Property
@@ -1033,8 +1033,8 @@ Update a Custom Property for a specific IP Address asset
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of an IP address with a custom property to update.
-$CustomPropertyId = 8.14 # Decimal | The ID of the custom property to update.
+$Id = 789 # Int64 | The asset ID of an IP address with a custom property to update.
+$CustomPropertyId = 789 # Int64 | The ID of the custom property to update.
 $UpdateClientCustomPropertyDto = Initialize-UpdateClientCustomPropertyDto -Key "Severity" -Value "Low" # UpdateClientCustomPropertyDto | 
 
 # Update Custom Property
@@ -1050,8 +1050,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of an IP address with a custom property to update. | 
- **CustomPropertyId** | **Decimal**| The ID of the custom property to update. | 
+ **Id** | **Int64**| The asset ID of an IP address with a custom property to update. | 
+ **CustomPropertyId** | **Int64**| The ID of the custom property to update. | 
  **UpdateClientCustomPropertyDto** | [**UpdateClientCustomPropertyDto**](UpdateClientCustomPropertyDto.md)|  | 
 
 ### Return type

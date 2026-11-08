@@ -24,7 +24,7 @@ Method | HTTP request | Description
 <a id="Add-AssetApiDocumentationNote"></a>
 # **Add-AssetApiDocumentationNote**
 > ClientNoteData Add-AssetApiDocumentationNote<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreateClientNoteDto] <PSCustomObject><br>
 
 Create Note
@@ -36,7 +36,7 @@ Create a Note for a specific API Documentation asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the API Documentation asset to create a new note for.
+$Id = 789 # Int64 | The asset ID of the API Documentation asset to create a new note for.
 $CreateClientNoteDto = Initialize-CreateClientNoteDto -Note "Passed to the engineering team. Review on 01/07/2024" -Title "Initial Review - 01/01/2024" # CreateClientNoteDto | 
 
 # Create Note
@@ -52,7 +52,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the API Documentation asset to create a new note for. | 
+ **Id** | **Int64**| The asset ID of the API Documentation asset to create a new note for. | 
  **CreateClientNoteDto** | [**CreateClientNoteDto**](CreateClientNoteDto.md)|  | 
 
 ### Return type
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 <a id="Set-ApiDocumentationToBusinessUnits"></a>
 # **Set-ApiDocumentationToBusinessUnits**
 > ClientApiDocumentation Set-ApiDocumentationToBusinessUnits<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AssetBusinessUnitIdsDTO] <PSCustomObject><br>
 
 Assign API Documentation to Business Units
@@ -85,7 +85,7 @@ Assign a specific API Documentation asset to a list of Business Units
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The API Documentation asset's ID.
+$Id = 789 # Int64 | The API Documentation asset's ID.
 $AssetBusinessUnitIdsDTO = Initialize-AssetBusinessUnitIdsDTO -BusinessUnitIds 0 # AssetBusinessUnitIdsDTO | 
 
 # Assign API Documentation to Business Units
@@ -101,7 +101,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The API Documentation asset&#39;s ID. | 
+ **Id** | **Int64**| The API Documentation asset&#39;s ID. | 
  **AssetBusinessUnitIdsDTO** | [**AssetBusinessUnitIdsDTO**](AssetBusinessUnitIdsDTO.md)|  | 
 
 ### Return type
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 <a id="New-CustomPropertyApiDocumentation"></a>
 # **New-CustomPropertyApiDocumentation**
 > ClientCustomProperty New-CustomPropertyApiDocumentation<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreateClientCustomPropertyDto] <PSCustomObject><br>
 
 Create Custom Property
@@ -134,7 +134,7 @@ Create Custom Property for a specific API Documentation asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the API Documentation asset to create a new custom property for.
+$Id = 789 # Int64 | The asset ID of the API Documentation asset to create a new custom property for.
 $CreateClientCustomPropertyDto = Initialize-CreateClientCustomPropertyDto -Key "Severity" -Value "Low" -IsPreset $false # CreateClientCustomPropertyDto | 
 
 # Create Custom Property
@@ -150,7 +150,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the API Documentation asset to create a new custom property for. | 
+ **Id** | **Int64**| The asset ID of the API Documentation asset to create a new custom property for. | 
  **CreateClientCustomPropertyDto** | [**CreateClientCustomPropertyDto**](CreateClientCustomPropertyDto.md)|  | 
 
 ### Return type
@@ -171,8 +171,8 @@ Name | Type | Description  | Notes
 <a id="Invoke-DeleteAssetApiDocumentationNote"></a>
 # **Invoke-DeleteAssetApiDocumentationNote**
 > DeleteNoteSucces Invoke-DeleteAssetApiDocumentationNote<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NoteId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NoteId] <Int64><br>
 
 Delete Note
 
@@ -183,8 +183,8 @@ Delete a Note of a specific API Documentation asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of an API Documentation asset with a note to delete.
-$NoteId = 8.14 # Decimal | The ID of the note to delete.
+$Id = 789 # Int64 | The asset ID of an API Documentation asset with a note to delete.
+$NoteId = 789 # Int64 | The ID of the note to delete.
 
 # Delete Note
 try {
@@ -199,8 +199,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of an API Documentation asset with a note to delete. | 
- **NoteId** | **Decimal**| The ID of the note to delete. | 
+ **Id** | **Int64**| The asset ID of an API Documentation asset with a note to delete. | 
+ **NoteId** | **Int64**| The ID of the note to delete. | 
 
 ### Return type
 
@@ -220,8 +220,8 @@ Name | Type | Description  | Notes
 <a id="Invoke-DeleteCustomPropertyApiDocumentation"></a>
 # **Invoke-DeleteCustomPropertyApiDocumentation**
 > RemoveClientCustomPropertyResponseDto Invoke-DeleteCustomPropertyApiDocumentation<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyId] <Int64><br>
 
 Delete Custom Property
 
@@ -232,8 +232,8 @@ Delete Custom Property specific API Documentation asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of an API Documentation asset with a custom property to delete. 
-$CustomPropertyId = 8.14 # Decimal | The ID of the custom property to delete.
+$Id = 789 # Int64 | The asset ID of an API Documentation asset with a custom property to delete. 
+$CustomPropertyId = 789 # Int64 | The ID of the custom property to delete.
 
 # Delete Custom Property
 try {
@@ -248,8 +248,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of an API Documentation asset with a custom property to delete.  | 
- **CustomPropertyId** | **Decimal**| The ID of the custom property to delete. | 
+ **Id** | **Int64**| The asset ID of an API Documentation asset with a custom property to delete.  | 
+ **CustomPropertyId** | **Int64**| The ID of the custom property to delete. | 
 
 ### Return type
 
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 <a id="Get-AssetApiDocumentationChangelog"></a>
 # **Get-AssetApiDocumentationChangelog**
 > GetAssetApiDocumentationChangelog200Response Get-AssetApiDocumentationChangelog<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 
@@ -282,7 +282,7 @@ Get paginated changelog for a specific API Documentation asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the API documentation to retrieve changelog for.
+$Id = 789 # Int64 | The asset ID of the API documentation to retrieve changelog for.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
@@ -299,7 +299,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the API documentation to retrieve changelog for. | 
+ **Id** | **Int64**| The asset ID of the API documentation to retrieve changelog for. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
@@ -321,7 +321,7 @@ Name | Type | Description  | Notes
 <a id="Get-AssetApiDocumentationDetails"></a>
 # **Get-AssetApiDocumentationDetails**
 > ClientApiDocumentation Get-AssetApiDocumentationDetails<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 
 Get API Documentation Details
 
@@ -332,7 +332,7 @@ Get the details of a specific API Documentation asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the API Documentation asset to retrieve.
+$Id = 789 # Int64 | The asset ID of the API Documentation asset to retrieve.
 
 # Get API Documentation Details
 try {
@@ -347,7 +347,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the API Documentation asset to retrieve. | 
+ **Id** | **Int64**| The asset ID of the API Documentation asset to retrieve. | 
 
 ### Return type
 
@@ -367,7 +367,7 @@ Name | Type | Description  | Notes
 <a id="Get-AssetApiDocumentationNotes"></a>
 # **Get-AssetApiDocumentationNotes**
 > ClientNoteListData Get-AssetApiDocumentationNotes<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 
@@ -380,7 +380,7 @@ List all notes for a specific API Documentation asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the API Documentation asset to list notes for.
+$Id = 789 # Int64 | The asset ID of the API Documentation asset to list notes for.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
@@ -397,7 +397,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the API Documentation asset to list notes for. | 
+ **Id** | **Int64**| The asset ID of the API Documentation asset to list notes for. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
@@ -419,7 +419,7 @@ Name | Type | Description  | Notes
 <a id="Get-CustomPropertiesApiDocumentation"></a>
 # **Get-CustomPropertiesApiDocumentation**
 > PaginatedClientCustomProperty Get-CustomPropertiesApiDocumentation<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 
@@ -432,7 +432,7 @@ List the Custom Properties of a specific API Documentation asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the API Documentation asset to list custom properties of.
+$Id = 789 # Int64 | The asset ID of the API Documentation asset to list custom properties of.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
@@ -449,7 +449,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the API Documentation asset to list custom properties of. | 
+ **Id** | **Int64**| The asset ID of the API Documentation asset to list custom properties of. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
@@ -547,7 +547,7 @@ Name | Type | Description  | Notes
 <a id="Set-CriticalityApiDocumentation"></a>
 # **Set-CriticalityApiDocumentation**
 > SetCriticalityDataResponseDto Set-CriticalityApiDocumentation<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SetCriticalityDto] <PSCustomObject><br>
 
 Set Criticality
@@ -559,7 +559,7 @@ Set or update the criticality level of a specific API Documentation asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the API Documentation to set criticality for.
+$Id = 789 # Int64 | The asset ID of the API Documentation to set criticality for.
 $SetCriticalityDto = Initialize-SetCriticalityDto -Criticality "High" # SetCriticalityDto | 
 
 # Set Criticality
@@ -575,7 +575,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the API Documentation to set criticality for. | 
+ **Id** | **Int64**| The asset ID of the API Documentation to set criticality for. | 
  **SetCriticalityDto** | [**SetCriticalityDto**](SetCriticalityDto.md)|  | 
 
 ### Return type
@@ -596,7 +596,7 @@ Name | Type | Description  | Notes
 <a id="Invoke-UnassignApiDocumentationFromBusinessUnits"></a>
 # **Invoke-UnassignApiDocumentationFromBusinessUnits**
 > ClientApiDocumentation Invoke-UnassignApiDocumentationFromBusinessUnits<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessUnitIds] <String[]><br>
 
 Unassign API Documentation from Business Units
@@ -608,7 +608,7 @@ Unassign a specific API Documentation asset from a list of Business Units
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The API Documentation asset's ID.
+$Id = 789 # Int64 | The API Documentation asset's ID.
 $BusinessUnitIds = "MyBusinessUnitIds" # String[] | List of comma-seperated business unit IDs to unassign from the asset.
 
 # Unassign API Documentation from Business Units
@@ -624,7 +624,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The API Documentation asset&#39;s ID. | 
+ **Id** | **Int64**| The API Documentation asset&#39;s ID. | 
  **BusinessUnitIds** | [**String[]**](String.md)| List of comma-seperated business unit IDs to unassign from the asset. | 
 
 ### Return type
@@ -645,8 +645,8 @@ Name | Type | Description  | Notes
 <a id="Update-AssetApiDocumentationNote"></a>
 # **Update-AssetApiDocumentationNote**
 > ClientNoteData Update-AssetApiDocumentationNote<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NoteId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NoteId] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreateClientNoteDto] <PSCustomObject><br>
 
 Update Note
@@ -658,8 +658,8 @@ Update a Note of a specific API Documentation asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of an API Documentation asset with a note to update.
-$NoteId = 8.14 # Decimal | The ID of the note to update.
+$Id = 789 # Int64 | The asset ID of an API Documentation asset with a note to update.
+$NoteId = 789 # Int64 | The ID of the note to update.
 $CreateClientNoteDto = Initialize-CreateClientNoteDto -Note "Passed to the engineering team. Review on 01/07/2024" -Title "Initial Review - 01/01/2024" # CreateClientNoteDto | 
 
 # Update Note
@@ -675,8 +675,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of an API Documentation asset with a note to update. | 
- **NoteId** | **Decimal**| The ID of the note to update. | 
+ **Id** | **Int64**| The asset ID of an API Documentation asset with a note to update. | 
+ **NoteId** | **Int64**| The ID of the note to update. | 
  **CreateClientNoteDto** | [**CreateClientNoteDto**](CreateClientNoteDto.md)|  | 
 
 ### Return type
@@ -697,7 +697,7 @@ Name | Type | Description  | Notes
 <a id="Update-AssetApiDocumentationStatus"></a>
 # **Update-AssetApiDocumentationStatus**
 > ClientApiDocumentation Update-AssetApiDocumentationStatus<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateApiDocumentationStatusDto] <PSCustomObject><br>
 
 Update API Documentation Status
@@ -709,7 +709,7 @@ Update the status of a specific API Documentation asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the API Documentation asset to update.
+$Id = 789 # Int64 | The asset ID of the API Documentation asset to update.
 $UpdateApiDocumentationStatusDto = Initialize-UpdateApiDocumentationStatusDto -Status "verified" -StatusReason "Manually verified via Client API." # UpdateApiDocumentationStatusDto | 
 
 # Update API Documentation Status
@@ -725,7 +725,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the API Documentation asset to update. | 
+ **Id** | **Int64**| The asset ID of the API Documentation asset to update. | 
  **UpdateApiDocumentationStatusDto** | [**UpdateApiDocumentationStatusDto**](UpdateApiDocumentationStatusDto.md)|  | 
 
 ### Return type
@@ -746,8 +746,8 @@ Name | Type | Description  | Notes
 <a id="Update-CustomPropertyApiDocumentation"></a>
 # **Update-CustomPropertyApiDocumentation**
 > ClientCustomProperty Update-CustomPropertyApiDocumentation<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyId] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateClientCustomPropertyDto] <PSCustomObject><br>
 
 Update Custom Property
@@ -759,8 +759,8 @@ Update a Custom Property for a specific API Documentation asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of an API Documentation asset with a custom property to update.
-$CustomPropertyId = 8.14 # Decimal | The ID of the custom property to update.
+$Id = 789 # Int64 | The asset ID of an API Documentation asset with a custom property to update.
+$CustomPropertyId = 789 # Int64 | The ID of the custom property to update.
 $UpdateClientCustomPropertyDto = Initialize-UpdateClientCustomPropertyDto -Key "Severity" -Value "Low" # UpdateClientCustomPropertyDto | 
 
 # Update Custom Property
@@ -776,8 +776,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of an API Documentation asset with a custom property to update. | 
- **CustomPropertyId** | **Decimal**| The ID of the custom property to update. | 
+ **Id** | **Int64**| The asset ID of an API Documentation asset with a custom property to update. | 
+ **CustomPropertyId** | **Int64**| The ID of the custom property to update. | 
  **UpdateClientCustomPropertyDto** | [**UpdateClientCustomPropertyDto**](UpdateClientCustomPropertyDto.md)|  | 
 
 ### Return type

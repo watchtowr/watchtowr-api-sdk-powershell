@@ -11,7 +11,7 @@ Method | HTTP request | Description
 <a id="Get-AdversaryIntelligenceDetails"></a>
 # **Get-AdversaryIntelligenceDetails**
 > ClientAdversaryIntelData Get-AdversaryIntelligenceDetails<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AttackerId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AttackerId] <Int64><br>
 
 Get Adversary Details
 
@@ -22,7 +22,7 @@ Get the details of a specific adversary by attacker ID. The `isAffected` flag an
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$AttackerId = 8.14 # Decimal | The numeric attacker ID of the adversary to retrieve.
+$AttackerId = 789 # Int64 | The numeric attacker ID of the adversary to retrieve.
 
 # Get Adversary Details
 try {
@@ -37,7 +37,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **AttackerId** | **Decimal**| The numeric attacker ID of the adversary to retrieve. | 
+ **AttackerId** | **Int64**| The numeric attacker ID of the adversary to retrieve. | 
 
 ### Return type
 

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 <a id="Get-ListCompromisedEndpointHarvestedCredentials"></a>
 # **Get-ListCompromisedEndpointHarvestedCredentials**
 > PaginatedClientCompromisedEndpointHarvestedCredentials Get-ListCompromisedEndpointHarvestedCredentials<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Query] <String><br>
@@ -28,7 +28,7 @@ List paginated harvested credentials for a specified compromised endpoint.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | Compromised endpoint ID
+$Id = 789 # Int64 | Compromised endpoint ID
 $Page = 8.14 # Decimal | Page number (optional) (default to 1)
 $PageSize = 8.14 # Decimal | Number of items per page (optional) (default to 10)
 $Query = "MyQuery" # String | Filter by username or URL (partial matching) (optional)
@@ -49,7 +49,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| Compromised endpoint ID | 
+ **Id** | **Int64**| Compromised endpoint ID | 
  **Page** | **Decimal**| Page number | [optional] [default to 1]
  **PageSize** | **Decimal**| Number of items per page | [optional] [default to 10]
  **Query** | **String**| Filter by username or URL (partial matching) | [optional] 

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 <a id="Convert-PoiToFinding"></a>
 # **Convert-PoiToFinding**
 > PointsOfInterestData Convert-PoiToFinding<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 
 Convert Point of Interest to Finding
 
@@ -22,7 +22,7 @@ Convert a Point of Interest to a finding. The POI must exist and not already hav
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The ID of the Point of Interest to convert to a finding.
+$Id = 789 # Int64 | The ID of the Point of Interest to convert to a finding.
 
 # Convert Point of Interest to Finding
 try {
@@ -37,7 +37,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The ID of the Point of Interest to convert to a finding. | 
+ **Id** | **Int64**| The ID of the Point of Interest to convert to a finding. | 
 
 ### Return type
 

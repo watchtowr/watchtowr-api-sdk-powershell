@@ -27,7 +27,7 @@ Method | HTTP request | Description
 <a id="Set-SubomainToBusinessUnits"></a>
 # **Set-SubomainToBusinessUnits**
 > ClientSubdomainData Set-SubomainToBusinessUnits<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-HostnameBusinessUnitIDsDTO] <PSCustomObject><br>
 
 Assign Subdomain to Business Units
@@ -39,7 +39,7 @@ Assign a specific subdomain asset to a list of business units.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the subdomain to assign.
+$Id = 789 # Int64 | The asset ID of the subdomain to assign.
 $HostnameBusinessUnitIDsDTO = Initialize-HostnameBusinessUnitIDsDTO -BusinessUnitIds 0 -CascadeSubdomain $false -CascadeIp $false # HostnameBusinessUnitIDsDTO | 
 
 # Assign Subdomain to Business Units
@@ -55,7 +55,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the subdomain to assign. | 
+ **Id** | **Int64**| The asset ID of the subdomain to assign. | 
  **HostnameBusinessUnitIDsDTO** | [**HostnameBusinessUnitIDsDTO**](HostnameBusinessUnitIDsDTO.md)|  | 
 
 ### Return type
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 <a id="New-CustomPropertySubdomain"></a>
 # **New-CustomPropertySubdomain**
 > ClientCustomProperty New-CustomPropertySubdomain<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreateClientCustomPropertyDto] <PSCustomObject><br>
 
 Create Subdomain Custom Property
@@ -88,7 +88,7 @@ Create a custom property for a specific subdomain asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the subdomain to create a new custom property for.
+$Id = 789 # Int64 | The asset ID of the subdomain to create a new custom property for.
 $CreateClientCustomPropertyDto = Initialize-CreateClientCustomPropertyDto -Key "Severity" -Value "Low" -IsPreset $false # CreateClientCustomPropertyDto | 
 
 # Create Subdomain Custom Property
@@ -104,7 +104,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the subdomain to create a new custom property for. | 
+ **Id** | **Int64**| The asset ID of the subdomain to create a new custom property for. | 
  **CreateClientCustomPropertyDto** | [**CreateClientCustomPropertyDto**](CreateClientCustomPropertyDto.md)|  | 
 
 ### Return type
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 <a id="New-NoteSubdomain"></a>
 # **New-NoteSubdomain**
 > ClientNoteData New-NoteSubdomain<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreateClientNoteDto] <PSCustomObject><br>
 
 Create Subdomain Note
@@ -137,7 +137,7 @@ Create a note for a specific subdomain asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the subdomain to create a note for.
+$Id = 789 # Int64 | The asset ID of the subdomain to create a note for.
 $CreateClientNoteDto = Initialize-CreateClientNoteDto -Note "Passed to the engineering team. Review on 01/07/2024" -Title "Initial Review - 01/01/2024" # CreateClientNoteDto | 
 
 # Create Subdomain Note
@@ -153,7 +153,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the subdomain to create a note for. | 
+ **Id** | **Int64**| The asset ID of the subdomain to create a note for. | 
  **CreateClientNoteDto** | [**CreateClientNoteDto**](CreateClientNoteDto.md)|  | 
 
 ### Return type
@@ -174,8 +174,8 @@ Name | Type | Description  | Notes
 <a id="Invoke-DeleteCustomPropertySubdomain"></a>
 # **Invoke-DeleteCustomPropertySubdomain**
 > RemoveClientCustomPropertyResponseDto Invoke-DeleteCustomPropertySubdomain<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyId] <Int64><br>
 
 Delete Subdomain Custom Property
 
@@ -186,8 +186,8 @@ Delete a custom property for a specific subdomain asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of a subdomain with a custom property to delete.
-$CustomPropertyId = 8.14 # Decimal | The ID of the custom property to delete.
+$Id = 789 # Int64 | The asset ID of a subdomain with a custom property to delete.
+$CustomPropertyId = 789 # Int64 | The ID of the custom property to delete.
 
 # Delete Subdomain Custom Property
 try {
@@ -202,8 +202,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of a subdomain with a custom property to delete. | 
- **CustomPropertyId** | **Decimal**| The ID of the custom property to delete. | 
+ **Id** | **Int64**| The asset ID of a subdomain with a custom property to delete. | 
+ **CustomPropertyId** | **Int64**| The ID of the custom property to delete. | 
 
 ### Return type
 
@@ -223,8 +223,8 @@ Name | Type | Description  | Notes
 <a id="Invoke-DeleteNoteSubdomain"></a>
 # **Invoke-DeleteNoteSubdomain**
 > DeleteNoteSucces Invoke-DeleteNoteSubdomain<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NoteId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NoteId] <Int64><br>
 
 Delete Subdomain Note
 
@@ -235,8 +235,8 @@ Delete a note for a specific subdomain asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of a subdomain with a note to delete.
-$NoteId = 8.14 # Decimal | The ID of the note to delete.
+$Id = 789 # Int64 | The asset ID of a subdomain with a note to delete.
+$NoteId = 789 # Int64 | The ID of the note to delete.
 
 # Delete Subdomain Note
 try {
@@ -251,8 +251,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of a subdomain with a note to delete. | 
- **NoteId** | **Decimal**| The ID of the note to delete. | 
+ **Id** | **Int64**| The asset ID of a subdomain with a note to delete. | 
+ **NoteId** | **Int64**| The ID of the note to delete. | 
 
 ### Return type
 
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 <a id="Get-AssetSubdomainChangelog"></a>
 # **Get-AssetSubdomainChangelog**
 > GetAssetSubdomainChangelog200Response Get-AssetSubdomainChangelog<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 
@@ -285,7 +285,7 @@ Get paginated changelog for a specific Subdomain asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the Subdomain to retrieve changelog for.
+$Id = 789 # Int64 | The asset ID of the Subdomain to retrieve changelog for.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
@@ -302,7 +302,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the Subdomain to retrieve changelog for. | 
+ **Id** | **Int64**| The asset ID of the Subdomain to retrieve changelog for. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
@@ -324,7 +324,7 @@ Name | Type | Description  | Notes
 <a id="Get-AssetSubdomainDetails"></a>
 # **Get-AssetSubdomainDetails**
 > ClientSubdomainData Get-AssetSubdomainDetails<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 
 Get Subdomain Details
 
@@ -335,7 +335,7 @@ Get the details of a specific Subdomain asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the Subdomain to retrieve.
+$Id = 789 # Int64 | The asset ID of the Subdomain to retrieve.
 
 # Get Subdomain Details
 try {
@@ -350,7 +350,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the Subdomain to retrieve. | 
+ **Id** | **Int64**| The asset ID of the Subdomain to retrieve. | 
 
 ### Return type
 
@@ -370,7 +370,7 @@ Name | Type | Description  | Notes
 <a id="Get-AssetSubdomainDnsRecords"></a>
 # **Get-AssetSubdomainDnsRecords**
 > ClientDnsRecordListData Get-AssetSubdomainDnsRecords<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 
@@ -383,7 +383,7 @@ List DNS records of a specific subdomain asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the subdomain to list DNS records of.
+$Id = 789 # Int64 | The asset ID of the subdomain to list DNS records of.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
@@ -400,7 +400,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the subdomain to list DNS records of. | 
+ **Id** | **Int64**| The asset ID of the subdomain to list DNS records of. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
@@ -422,7 +422,7 @@ Name | Type | Description  | Notes
 <a id="Get-AssetSubdomainEngineSettings"></a>
 # **Get-AssetSubdomainEngineSettings**
 > ClientEngineSettingsData Get-AssetSubdomainEngineSettings<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 
 Get Subdomain Engine Settings
 
@@ -433,7 +433,7 @@ Get the engine settings for a specific subdomain asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the subdomain to retrieve engine settings for.
+$Id = 789 # Int64 | The asset ID of the subdomain to retrieve engine settings for.
 
 # Get Subdomain Engine Settings
 try {
@@ -448,7 +448,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the subdomain to retrieve engine settings for. | 
+ **Id** | **Int64**| The asset ID of the subdomain to retrieve engine settings for. | 
 
 ### Return type
 
@@ -468,7 +468,7 @@ Name | Type | Description  | Notes
 <a id="Get-CustomPropertiesSubdomain"></a>
 # **Get-CustomPropertiesSubdomain**
 > PaginatedClientCustomProperty Get-CustomPropertiesSubdomain<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 
@@ -481,7 +481,7 @@ List the custom properties of a specific subdomain asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the subdomain to list custom properties of.
+$Id = 789 # Int64 | The asset ID of the subdomain to list custom properties of.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
@@ -498,7 +498,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the subdomain to list custom properties of. | 
+ **Id** | **Int64**| The asset ID of the subdomain to list custom properties of. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
@@ -599,7 +599,7 @@ Name | Type | Description  | Notes
 <a id="Get-NotesSubdomain"></a>
 # **Get-NotesSubdomain**
 > ClientNoteListData Get-NotesSubdomain<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Page] <System.Nullable[Decimal]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Decimal]><br>
 
@@ -612,7 +612,7 @@ List the notes of a specific subdomain asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the subdomain to list notes of.
+$Id = 789 # Int64 | The asset ID of the subdomain to list notes of.
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
 
@@ -629,7 +629,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the subdomain to list notes of. | 
+ **Id** | **Int64**| The asset ID of the subdomain to list notes of. | 
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
 
@@ -651,7 +651,7 @@ Name | Type | Description  | Notes
 <a id="Set-CriticalitySubdomain"></a>
 # **Set-CriticalitySubdomain**
 > SetCriticalityDataResponseDto Set-CriticalitySubdomain<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SetCriticalityDto] <PSCustomObject><br>
 
 Set Criticality
@@ -663,7 +663,7 @@ Set or update the criticality level of a specific Subdomain asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the Subdomain to set criticality for.
+$Id = 789 # Int64 | The asset ID of the Subdomain to set criticality for.
 $SetCriticalityDto = Initialize-SetCriticalityDto -Criticality "High" # SetCriticalityDto | 
 
 # Set Criticality
@@ -679,7 +679,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the Subdomain to set criticality for. | 
+ **Id** | **Int64**| The asset ID of the Subdomain to set criticality for. | 
  **SetCriticalityDto** | [**SetCriticalityDto**](SetCriticalityDto.md)|  | 
 
 ### Return type
@@ -700,7 +700,7 @@ Name | Type | Description  | Notes
 <a id="Invoke-UnassignSubomainFromBusinessUnits"></a>
 # **Invoke-UnassignSubomainFromBusinessUnits**
 > ClientSubdomainData Invoke-UnassignSubomainFromBusinessUnits<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessUnitIds] <String[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CascadeSubdomain] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CascadeIp] <String><br>
@@ -714,7 +714,7 @@ Unassign a specific subdomain asset from a list of business units.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the subdomain to unassign.
+$Id = 789 # Int64 | The asset ID of the subdomain to unassign.
 $BusinessUnitIds = "MyBusinessUnitIds" # String[] | List of comma-seperated business unit IDs to unassign from the asset.
 $CascadeSubdomain = "MyCascadeSubdomain" # String | Cascade business units to domain's subdomains
 $CascadeIp = "MyCascadeIp" # String | Cascade business units to domain's ipaddresses
@@ -732,7 +732,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the subdomain to unassign. | 
+ **Id** | **Int64**| The asset ID of the subdomain to unassign. | 
  **BusinessUnitIds** | [**String[]**](String.md)| List of comma-seperated business unit IDs to unassign from the asset. | 
  **CascadeSubdomain** | **String**| Cascade business units to domain&#39;s subdomains | 
  **CascadeIp** | **String**| Cascade business units to domain&#39;s ipaddresses | 
@@ -755,7 +755,7 @@ Name | Type | Description  | Notes
 <a id="Update-AssetSubdomainEngineSettings"></a>
 # **Update-AssetSubdomainEngineSettings**
 > ClientEngineSettingsData Update-AssetSubdomainEngineSettings<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateClientEngineSettingsDto] <PSCustomObject><br>
 
 Update Subdomain Engine Settings
@@ -767,7 +767,7 @@ Update the engine settings for a specific subdomain asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the subdomain to update engine settings for.
+$Id = 789 # Int64 | The asset ID of the subdomain to update engine settings for.
 $UpdateClientEngineSettingsDto = Initialize-UpdateClientEngineSettingsDto -AdversarySightEnabled $true -DnsBruteforcingEnabled $false -AutomatedRedTeamingEnabled $true -IntrusiveHttpChecksEnabled $true -CredentialStuffingEnabled $true -RapidReactionEnabled $true # UpdateClientEngineSettingsDto | 
 
 # Update Subdomain Engine Settings
@@ -783,7 +783,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the subdomain to update engine settings for. | 
+ **Id** | **Int64**| The asset ID of the subdomain to update engine settings for. | 
  **UpdateClientEngineSettingsDto** | [**UpdateClientEngineSettingsDto**](UpdateClientEngineSettingsDto.md)|  | 
 
 ### Return type
@@ -804,7 +804,7 @@ Name | Type | Description  | Notes
 <a id="Update-AssetSubdomainStatus"></a>
 # **Update-AssetSubdomainStatus**
 > ClientSubdomainData Update-AssetSubdomainStatus<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateClientLegacyAssetStatusDto] <PSCustomObject><br>
 
 Update Subdomain Status
@@ -816,7 +816,7 @@ Update the status of a specific subdomain asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of the subdomain to update the status of.
+$Id = 789 # Int64 | The asset ID of the subdomain to update the status of.
 $UpdateClientLegacyAssetStatusDto = Initialize-UpdateClientLegacyAssetStatusDto -Status "verified" -StatusReason "Manually verified via Client API" # UpdateClientLegacyAssetStatusDto | 
 
 # Update Subdomain Status
@@ -832,7 +832,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of the subdomain to update the status of. | 
+ **Id** | **Int64**| The asset ID of the subdomain to update the status of. | 
  **UpdateClientLegacyAssetStatusDto** | [**UpdateClientLegacyAssetStatusDto**](UpdateClientLegacyAssetStatusDto.md)|  | 
 
 ### Return type
@@ -853,8 +853,8 @@ Name | Type | Description  | Notes
 <a id="Update-CustomPropertySubdomain"></a>
 # **Update-CustomPropertySubdomain**
 > ClientCustomProperty Update-CustomPropertySubdomain<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyId] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateClientCustomPropertyDto] <PSCustomObject><br>
 
 Update Subdomain Custom Property
@@ -866,8 +866,8 @@ Update a custom property for a specific subdomain asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of a subdomain with a custom property to update.
-$CustomPropertyId = 8.14 # Decimal | The ID of the custom property to update.
+$Id = 789 # Int64 | The asset ID of a subdomain with a custom property to update.
+$CustomPropertyId = 789 # Int64 | The ID of the custom property to update.
 $UpdateClientCustomPropertyDto = Initialize-UpdateClientCustomPropertyDto -Key "Severity" -Value "Low" # UpdateClientCustomPropertyDto | 
 
 # Update Subdomain Custom Property
@@ -883,8 +883,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of a subdomain with a custom property to update. | 
- **CustomPropertyId** | **Decimal**| The ID of the custom property to update. | 
+ **Id** | **Int64**| The asset ID of a subdomain with a custom property to update. | 
+ **CustomPropertyId** | **Int64**| The ID of the custom property to update. | 
  **UpdateClientCustomPropertyDto** | [**UpdateClientCustomPropertyDto**](UpdateClientCustomPropertyDto.md)|  | 
 
 ### Return type
@@ -905,8 +905,8 @@ Name | Type | Description  | Notes
 <a id="Update-NoteSubdomain"></a>
 # **Update-NoteSubdomain**
 > ClientNoteData Update-NoteSubdomain<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NoteId] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NoteId] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreateClientNoteDto] <PSCustomObject><br>
 
 Update Subdomain Note
@@ -918,8 +918,8 @@ Update a note for a specific subdomain asset.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | The asset ID of a subdomain with a note to update.
-$NoteId = 8.14 # Decimal | The ID of the note to update.
+$Id = 789 # Int64 | The asset ID of a subdomain with a note to update.
+$NoteId = 789 # Int64 | The ID of the note to update.
 $CreateClientNoteDto = Initialize-CreateClientNoteDto -Note "Passed to the engineering team. Review on 01/07/2024" -Title "Initial Review - 01/01/2024" # CreateClientNoteDto | 
 
 # Update Subdomain Note
@@ -935,8 +935,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**| The asset ID of a subdomain with a note to update. | 
- **NoteId** | **Decimal**| The ID of the note to update. | 
+ **Id** | **Int64**| The asset ID of a subdomain with a note to update. | 
+ **NoteId** | **Int64**| The ID of the note to update. | 
  **CreateClientNoteDto** | [**CreateClientNoteDto**](CreateClientNoteDto.md)|  | 
 
 ### Return type

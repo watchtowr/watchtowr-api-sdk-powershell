@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 <a id="Invoke-DeletePlatformApiWhitelistIp"></a>
 # **Invoke-DeletePlatformApiWhitelistIp**
 > DeleteWhitelistIpData Invoke-DeletePlatformApiWhitelistIp<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 
 Remove API Whitelisted IP
 
@@ -124,7 +124,7 @@ Remove an IP address from the API whitelist. Admin role required.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | 
+$Id = 789 # Int64 | 
 
 # Remove API Whitelisted IP
 try {
@@ -139,7 +139,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**|  | 
+ **Id** | **Int64**|  | 
 
 ### Return type
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 <a id="Invoke-DeletePlatformDashboardWhitelistIp"></a>
 # **Invoke-DeletePlatformDashboardWhitelistIp**
 > DeleteWhitelistIpData Invoke-DeletePlatformDashboardWhitelistIp<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 
 Remove Dashboard Whitelisted IP
 
@@ -170,7 +170,7 @@ Remove an IP address from the dashboard whitelist. Admin role required.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | 
+$Id = 789 # Int64 | 
 
 # Remove Dashboard Whitelisted IP
 try {
@@ -185,7 +185,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**|  | 
+ **Id** | **Int64**|  | 
 
 ### Return type
 
@@ -369,7 +369,7 @@ This endpoint does not need any parameter.
 <a id="Update-PlatformApiWhitelistIp"></a>
 # **Update-PlatformApiWhitelistIp**
 > WhitelistIpDataSingle Update-PlatformApiWhitelistIp<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateOrganisationWhitelistIpDto] <PSCustomObject><br>
 
 Update API Whitelisted IP
@@ -381,7 +381,7 @@ Update an existing API whitelisted IP address. Admin role required.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | 
+$Id = 789 # Int64 | 
 $UpdateOrganisationWhitelistIpDto = Initialize-UpdateOrganisationWhitelistIpDto -Ip "192.168.1.1" -Description "Office network" # UpdateOrganisationWhitelistIpDto | 
 
 # Update API Whitelisted IP
@@ -397,7 +397,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**|  | 
+ **Id** | **Int64**|  | 
  **UpdateOrganisationWhitelistIpDto** | [**UpdateOrganisationWhitelistIpDto**](UpdateOrganisationWhitelistIpDto.md)|  | 
 
 ### Return type
@@ -464,7 +464,7 @@ Name | Type | Description  | Notes
 <a id="Update-PlatformDashboardWhitelistIp"></a>
 # **Update-PlatformDashboardWhitelistIp**
 > WhitelistIpDataSingle Update-PlatformDashboardWhitelistIp<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Decimal><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int64><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UpdateOrganisationWhitelistIpDto] <PSCustomObject><br>
 
 Update Dashboard Whitelisted IP
@@ -476,7 +476,7 @@ Update an existing dashboard whitelisted IP address. Admin role required.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 
-$Id = 8.14 # Decimal | 
+$Id = 789 # Int64 | 
 $UpdateOrganisationWhitelistIpDto = Initialize-UpdateOrganisationWhitelistIpDto -Ip "192.168.1.1" -Description "Office network" # UpdateOrganisationWhitelistIpDto | 
 
 # Update Dashboard Whitelisted IP
@@ -492,7 +492,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Id** | **Decimal**|  | 
+ **Id** | **Int64**|  | 
  **UpdateOrganisationWhitelistIpDto** | [**UpdateOrganisationWhitelistIpDto**](UpdateOrganisationWhitelistIpDto.md)|  | 
 
 ### Return type
