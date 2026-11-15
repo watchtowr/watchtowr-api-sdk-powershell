@@ -16,7 +16,7 @@ No summary available.
 No description available.
 
 .PARAMETER State
-Finding state. Different to status, this is about tracking how the finding is being handled.
+Finding state. Different from status, this is about tracking how the finding is being handled.
 .OUTPUTS
 
 UpdateClientFindingStateRequestBody<PSCustomObject>

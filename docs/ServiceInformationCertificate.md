@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **SubjectOrganisation** | **String** | Subject Organization | 
 **SubjectAltNames** | **String[]** | Subject Alt Names | 
 **SubjectCountry** | **String** | Subject Country | 
-**IssuerCommonName** | **String** | Issuer CommonName | 
+**IssuerCommonName** | **String** | Issuer Common Name | 
 **IssuerOrganisation** | **String** | Issuer Organization | 
 **IssuerCountry** | **String** | Issuer Country | 
 **Fingerprint** | **String** | Fingerprint | 

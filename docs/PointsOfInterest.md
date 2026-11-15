@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **Id** | **Int64** | ID | 
 **Name** | **String** | Name | 
 **Type** | **String** | Type | 
-**Url** | **String** | Url | 
+**Url** | **String** | URL | 
 **DiscoveryDate** | **System.DateTime** | Discovery date | [optional] 
 **AssetId** | **Int64** | Asset ID | 
 **AssetName** | **String** | Asset name | 

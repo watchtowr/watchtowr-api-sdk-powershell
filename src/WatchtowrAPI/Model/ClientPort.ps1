@@ -16,7 +16,7 @@ No summary available.
 No description available.
 
 .PARAMETER Type
-Port protocol, always uppercased (e.g. `TCP`, `UDP`).
+Port protocol, always uppercased (e.g., `TCP`, `UDP`).
 .PARAMETER Status
 No description available.
 .PARAMETER CreatedAt
@@ -36,7 +36,7 @@ No description available.
 .PARAMETER Service
 No description available.
 .PARAMETER State
-Port state (e.g. `open`, `closed`, `filtered`).
+Port state (e.g., `open`, `closed`, `filtered`).
 .PARAMETER BusinessUnits
 No description available.
 .PARAMETER Metadata

@@ -35,6 +35,8 @@ Rapid exposure mechanism
 Title
 .PARAMETER Status
 Status
+.PARAMETER Cves
+CVE identifiers linked to this hunt. Empty when no CVEs are linked.
 .OUTPUTS
 
 Hunt<PSCustomObject>
@@ -76,7 +78,10 @@ function Initialize-Hunt {
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("received", "in-progress", "completed", "not-covered", "outdated")]
         [String]
-        ${Status}
+        ${Status},
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
+        [String[]]
+        ${Cves}
     )
 
     Process {
@@ -115,6 +120,10 @@ function Initialize-Hunt {
             throw "invalid value for 'Status', 'Status' cannot be null."
         }
 
+        if ($null -eq $Cves) {
+            throw "invalid value for 'Cves', 'Cves' cannot be null."
+        }
+
 
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
@@ -127,6 +136,7 @@ function Initialize-Hunt {
             "rapid_exposure_mechanism" = ${RapidExposureMechanism}
             "title" = ${Title}
             "status" = ${Status}
+            "cves" = ${Cves}
         }
 
 
@@ -164,7 +174,7 @@ function ConvertFrom-JsonToHunt {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in Hunt
-        $AllProperties = ("id", "type", "created_at", "updated_at", "total_findings", "total_assets", "hunt_request_type", "rapid_exposure_mechanism", "title", "status")
+        $AllProperties = ("id", "type", "created_at", "updated_at", "total_findings", "total_assets", "hunt_request_type", "rapid_exposure_mechanism", "title", "status", "cves")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -229,6 +239,12 @@ function ConvertFrom-JsonToHunt {
             $Status = $JsonParameters.PSobject.Properties["status"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "cves"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'cves' missing."
+        } else {
+            $Cves = $JsonParameters.PSobject.Properties["cves"].value
+        }
+
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "rapid_exposure_mechanism"))) { #optional property not found
             $RapidExposureMechanism = $null
         } else {
@@ -246,6 +262,7 @@ function ConvertFrom-JsonToHunt {
             "rapid_exposure_mechanism" = ${RapidExposureMechanism}
             "title" = ${Title}
             "status" = ${Status}
+            "cves" = ${Cves}
         }
 
         return $PSO

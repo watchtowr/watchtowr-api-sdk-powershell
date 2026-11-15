@@ -32,7 +32,7 @@ Type of hunt request
 .PARAMETER ResolvedStatus
 Whether the hunt has been resolved
 .PARAMETER Acknowledgement
-Hunt acknowledgement data
+Hunt acknowledgment data
 .PARAMETER ThreatActors
 Associated threat actors
 .OUTPUTS

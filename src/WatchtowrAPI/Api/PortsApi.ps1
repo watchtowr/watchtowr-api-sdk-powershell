@@ -115,7 +115,7 @@ Filter ports created before a given date and time.
 Search ports by port number.
 
 .PARAMETER BusinessUnitIds
-Filter assets by a list of comma separated business unit IDs that the asset is related to. Each ID must be a positive integer.
+Filter assets by a list of comma-separated business unit IDs that the asset is related to. Each ID must be a positive integer.
 
 .PARAMETER CustomPropertyKey
 Filter assets by custom property key.

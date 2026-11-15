@@ -16,7 +16,7 @@ No summary available.
 No description available.
 
 .PARAMETER IntegrationType
-Integration type. Valid values: aws, azure, googlecloud, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, armiscentrix, qualysvmdr, tenable
+Integration type. Valid values: aws, azure, googlecloud, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, oraclecloud, wiz, servicenowcmdb, akamaiedge, armiscentrix, qualysvmdr, tenable
 .PARAMETER IntegrationId
 Integration ID
 .OUTPUTS
@@ -28,7 +28,7 @@ function Initialize-ClientIntegrationItemDto {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [ValidateSet("aws", "azure", "googlecloud", "cloudflare", "alibabacloud", "prismacloud", "prismacloudapigee", "huaweicloud", "tencentcloud", "wiz", "servicenowcmdb", "akamaiedge", "armiscentrix", "qualysvmdr", "tenable")]
+        [ValidateSet("aws", "azure", "googlecloud", "cloudflare", "alibabacloud", "prismacloud", "prismacloudapigee", "huaweicloud", "tencentcloud", "oraclecloud", "wiz", "servicenowcmdb", "akamaiedge", "armiscentrix", "qualysvmdr", "tenable")]
         [String]
         ${IntegrationType},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]

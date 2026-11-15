@@ -36,7 +36,7 @@ Service
 .PARAMETER Source
 Asset source
 .PARAMETER LastSeen
-Last seen date Range
+Last seen date range
 .PARAMETER Technologies
 Technology list
 .PARAMETER ServiceTypes

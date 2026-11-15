@@ -22,7 +22,7 @@ The page number for paginated results. If the page field is not provided in the 
 The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30.
 
 .PARAMETER BusinessUnitIds
-Filter assets by a list of comma separated business unit IDs that the asset is related to. Each ID must be a positive integer.
+Filter assets by a list of comma-separated business unit IDs that the asset is related to. Each ID must be a positive integer.
 
 .PARAMETER SortBy
 Sort by field
@@ -31,16 +31,16 @@ Sort by field
 Sort order
 
 .PARAMETER Severities
-Filter retests by a list of comma separated severities they're tagged with.
+Filter retests by a list of comma-separated severities they're tagged with.
 
 .PARAMETER Attempts
-Filter retests by a list of comma separated attempt types.
+Filter retests by a list of comma-separated attempt types.
 
 .PARAMETER RetestRunStatuses
-Filter retests by a list of comma separated retest run statuses.
+Filter retests by a list of comma-separated retest run statuses.
 
 .PARAMETER RetestResultStatuses
-Filter retests by a list of comma separated result statuses. `unresolved` also includes aborted retests.
+Filter retests by a list of comma-separated result statuses. `unresolved` also includes aborted retests.
 
 .PARAMETER FindingTitle
 Filter retests by finding title.
@@ -49,7 +49,7 @@ Filter retests by finding title.
 Filter retests by asset name.
 
 .PARAMETER FindingId
-Filter retests by finding ID (e.g. CORE-1234 or 1234).
+Filter retests by finding ID (e.g., CORE-1234 or 1234).
 
 .PARAMETER TriggeredBy
 Filter retests by a comma-separated list of names of the users or service accounts that triggered them.

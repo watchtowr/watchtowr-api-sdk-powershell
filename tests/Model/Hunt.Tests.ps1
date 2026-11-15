@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'Hunt' {
     Context 'Hunt' {
         It 'Initialize-Hunt' {
             # a simple test to create an object
-            #$NewObject = Initialize-Hunt -Id "TEST_VALUE" -Type "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE" -TotalFindings "TEST_VALUE" -TotalAssets "TEST_VALUE" -HuntRequestType "TEST_VALUE" -RapidExposureMechanism "TEST_VALUE" -Title "TEST_VALUE" -Status "TEST_VALUE"
+            #$NewObject = Initialize-Hunt -Id "TEST_VALUE" -Type "TEST_VALUE" -CreatedAt "TEST_VALUE" -UpdatedAt "TEST_VALUE" -TotalFindings "TEST_VALUE" -TotalAssets "TEST_VALUE" -HuntRequestType "TEST_VALUE" -RapidExposureMechanism "TEST_VALUE" -Title "TEST_VALUE" -Status "TEST_VALUE" -Cves "TEST_VALUE"
             #$NewObject | Should -BeOfType Hunt
             #$NewObject.property | Should -Be 0
         }

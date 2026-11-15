@@ -37,9 +37,9 @@ $Configuration = Get-Configuration
 
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 10 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. (optional)
-$Statuses = "received" # String[] | Filter hunts by a comma separated list of hunt statuses. Values are case-sensitive — pass the canonical lowercase form (e.g. `received,in-progress`). (optional)
+$Statuses = "received" # String[] | Filter hunts by a comma-separated list of hunt statuses. Values are case-sensitive — pass the canonical lowercase form (e.g., `received,in-progress`). (optional)
 $HuntSearch = "remote%20code%20execution" # String | Search for hunts by text in hunt name. (optional)
-$Types = "bespoke" # String[] | Filter hunts by a comma separated list of hunt types. Values are case-sensitive — pass the canonical lowercase form (e.g. `bespoke,proactive`). (optional)
+$Types = "bespoke" # String[] | Filter hunts by a comma-separated list of hunt types. Values are case-sensitive — pass the canonical lowercase form (e.g., `bespoke,proactive`). (optional)
 $CreatedFrom = (Get-Date) # System.DateTime | Filter hunts created after a given date and time. (optional)
 $CreatedTo = (Get-Date) # System.DateTime | Filter hunts created before a given date and time. (optional)
 $UpdatedFrom = (Get-Date) # System.DateTime | Filter hunts updated after a given date and time. (optional)
@@ -63,9 +63,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30. | [optional] 
- **Statuses** | [**String[]**](String.md)| Filter hunts by a comma separated list of hunt statuses. Values are case-sensitive — pass the canonical lowercase form (e.g. &#x60;received,in-progress&#x60;). | [optional] 
+ **Statuses** | [**String[]**](String.md)| Filter hunts by a comma-separated list of hunt statuses. Values are case-sensitive — pass the canonical lowercase form (e.g., &#x60;received,in-progress&#x60;). | [optional] 
  **HuntSearch** | **String**| Search for hunts by text in hunt name. | [optional] 
- **Types** | [**String[]**](String.md)| Filter hunts by a comma separated list of hunt types. Values are case-sensitive — pass the canonical lowercase form (e.g. &#x60;bespoke,proactive&#x60;). | [optional] 
+ **Types** | [**String[]**](String.md)| Filter hunts by a comma-separated list of hunt types. Values are case-sensitive — pass the canonical lowercase form (e.g., &#x60;bespoke,proactive&#x60;). | [optional] 
  **CreatedFrom** | **System.DateTime**| Filter hunts created after a given date and time. | [optional] 
  **CreatedTo** | **System.DateTime**| Filter hunts created before a given date and time. | [optional] 
  **UpdatedFrom** | **System.DateTime**| Filter hunts updated after a given date and time. | [optional] 

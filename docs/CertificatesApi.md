@@ -93,10 +93,10 @@ $NotAfterTo = (Get-Date) # System.DateTime | Filter certificates that do not exp
 $SubjectCommonNameSearch = "example.com" # String | Search certificates by Subject Common Name. (optional)
 $SubjectAltNameSearch = "example.com" # String | Search certificates by Subject Alt Name. (optional)
 $SubjectOrganisationSearch = "example" # String | Search by subject organization. (optional)
-$SubjectCountries = "MySubjectCountries" # String[] | Filter certificates by a list of comma separated subject countries that they're related to. (optional)
+$SubjectCountries = "MySubjectCountries" # String[] | Filter certificates by a list of comma-separated subject countries that they're related to. (optional)
 $AssetNameSearch = "example.watchTowr.com" # String | Search Certificates by the name of the associated asset. (optional)
-$Statuses = "Expired,Expiring Within 30 Days,Valid" # String | Filter certificates by a list of comma separated statuses that they're tagged with. (optional)
-$BusinessUnitIds = "1,2,3" # String | Filter certificates by a list of comma separated business unit IDs they're related to. Each ID must be a positive integer. (optional)
+$Statuses = "Expired,Expiring Within 30 Days,Valid" # String | Filter certificates by a list of comma-separated statuses that they're tagged with. (optional)
+$BusinessUnitIds = "1,2,3" # String | Filter certificates by a list of comma-separated business unit IDs they're related to. Each ID must be a positive integer. (optional)
 
 # List Certificates
 try {
@@ -122,10 +122,10 @@ Name | Type | Description  | Notes
  **SubjectCommonNameSearch** | **String**| Search certificates by Subject Common Name. | [optional] 
  **SubjectAltNameSearch** | **String**| Search certificates by Subject Alt Name. | [optional] 
  **SubjectOrganisationSearch** | **String**| Search by subject organization. | [optional] 
- **SubjectCountries** | [**String[]**](String.md)| Filter certificates by a list of comma separated subject countries that they&#39;re related to. | [optional] 
+ **SubjectCountries** | [**String[]**](String.md)| Filter certificates by a list of comma-separated subject countries that they&#39;re related to. | [optional] 
  **AssetNameSearch** | **String**| Search Certificates by the name of the associated asset. | [optional] 
- **Statuses** | **String**| Filter certificates by a list of comma separated statuses that they&#39;re tagged with. | [optional] 
- **BusinessUnitIds** | **String**| Filter certificates by a list of comma separated business unit IDs they&#39;re related to. Each ID must be a positive integer. | [optional] 
+ **Statuses** | **String**| Filter certificates by a list of comma-separated statuses that they&#39;re tagged with. | [optional] 
+ **BusinessUnitIds** | **String**| Filter certificates by a list of comma-separated business unit IDs they&#39;re related to. Each ID must be a positive integer. | [optional] 
 
 ### Return type
 

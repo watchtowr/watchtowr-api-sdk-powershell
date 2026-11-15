@@ -127,16 +127,16 @@ Search certificates by Subject Alt Name.
 Search by subject organization.
 
 .PARAMETER SubjectCountries
-Filter certificates by a list of comma separated subject countries that they're related to.
+Filter certificates by a list of comma-separated subject countries that they're related to.
 
 .PARAMETER AssetNameSearch
 Search Certificates by the name of the associated asset.
 
 .PARAMETER Statuses
-Filter certificates by a list of comma separated statuses that they're tagged with.
+Filter certificates by a list of comma-separated statuses that they're tagged with.
 
 .PARAMETER BusinessUnitIds
-Filter certificates by a list of comma separated business unit IDs they're related to. Each ID must be a positive integer.
+Filter certificates by a list of comma-separated business unit IDs they're related to. Each ID must be a positive integer.
 
 .PARAMETER WithHttpInfo
 

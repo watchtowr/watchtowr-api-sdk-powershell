@@ -43,7 +43,7 @@ Search suspicious domains by discovery reason.
 Search suspicious domains by contents of Whois data.
 
 .PARAMETER Statuses
-Filter suspicious domains by a list of comma separated statuses that asset is tagged with. Values are case-sensitive — pass the canonical lowercase form (e.g. `pending,malicious`).
+Filter suspicious domains by a list of comma-separated statuses that the domain is tagged with. Values are case-sensitive — pass the canonical lowercase form (e.g., `pending,malicious`).
 
 .PARAMETER WithHttpInfo
 

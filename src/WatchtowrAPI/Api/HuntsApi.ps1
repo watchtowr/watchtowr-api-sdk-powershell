@@ -22,13 +22,13 @@ The page number for paginated results. If the page field is not provided in the 
 The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 10. The minimum for pageSize is 1 and the maximum is 30.
 
 .PARAMETER Statuses
-Filter hunts by a comma separated list of hunt statuses. Values are case-sensitive — pass the canonical lowercase form (e.g. `received,in-progress`).
+Filter hunts by a comma-separated list of hunt statuses. Values are case-sensitive — pass the canonical lowercase form (e.g., `received,in-progress`).
 
 .PARAMETER HuntSearch
 Search for hunts by text in hunt name.
 
 .PARAMETER Types
-Filter hunts by a comma separated list of hunt types. Values are case-sensitive — pass the canonical lowercase form (e.g. `bespoke,proactive`).
+Filter hunts by a comma-separated list of hunt types. Values are case-sensitive — pass the canonical lowercase form (e.g., `bespoke,proactive`).
 
 .PARAMETER CreatedFrom
 Filter hunts created after a given date and time.

@@ -118,7 +118,7 @@ Order points of interest by their discovery date.
 Search Points of Interest by name or URL.
 
 .PARAMETER Types
-Filter by a comma separated list of types. Values are case-sensitive — pass the canonical lowercase form (e.g. `admin-panel,open-directory`).
+Filter by a comma-separated list of types. Values are case-sensitive — pass the canonical lowercase form (e.g., `admin-panel,open-directory`).
 
 .PARAMETER HasFinding
 Filter points of interest by finding association. `true` returns only POIs that have findings, `false` returns only POIs without findings, and omitting the parameter returns all POIs.
@@ -130,10 +130,10 @@ Filter points of interest by start date.
 Filter points of interest by end date.
 
 .PARAMETER AssetStatuses
-Filter points of interest by a comma separated list of asset statuses.
+Filter points of interest by a comma-separated list of asset statuses.
 
 .PARAMETER BusinessUnitIds
-Filter points of interest by a comma separated list of business unit IDs. Each ID must be a positive integer.
+Filter points of interest by a comma-separated list of business unit IDs. Each ID must be a positive integer.
 
 .PARAMETER SuppressionFilter
 Filter points of interest by suppression status.

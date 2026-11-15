@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**State** | **String** | Finding state. Different to status, this is about tracking how the finding is being handled. | 
+**State** | **String** | Finding state. Different from status, this is about tracking how the finding is being handled. | 
 
 ## Examples
 

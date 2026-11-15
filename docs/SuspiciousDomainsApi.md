@@ -40,7 +40,7 @@ $UpdatedTo = (Get-Date) # System.DateTime | Filter suspicious domains updated be
 $Search = "watchtowr.com" # String | Search suspicious domains by text within the domain. (optional)
 $DiscoveryReason = "suspicious-words" # String | Search suspicious domains by discovery reason. (optional)
 $WhoisSearch = "Name%20Server:%20malicious.ns.com" # String | Search suspicious domains by contents of Whois data. (optional)
-$Statuses = "pending" # String[] | Filter suspicious domains by a list of comma separated statuses that asset is tagged with. Values are case-sensitive — pass the canonical lowercase form (e.g. `pending,malicious`). (optional)
+$Statuses = "pending" # String[] | Filter suspicious domains by a list of comma-separated statuses that the domain is tagged with. Values are case-sensitive — pass the canonical lowercase form (e.g., `pending,malicious`). (optional)
 
 # List Suspicious Domains
 try {
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
  **Search** | **String**| Search suspicious domains by text within the domain. | [optional] 
  **DiscoveryReason** | **String**| Search suspicious domains by discovery reason. | [optional] 
  **WhoisSearch** | **String**| Search suspicious domains by contents of Whois data. | [optional] 
- **Statuses** | [**String[]**](String.md)| Filter suspicious domains by a list of comma separated statuses that asset is tagged with. Values are case-sensitive — pass the canonical lowercase form (e.g. &#x60;pending,malicious&#x60;). | [optional] 
+ **Statuses** | [**String[]**](String.md)| Filter suspicious domains by a list of comma-separated statuses that the domain is tagged with. Values are case-sensitive — pass the canonical lowercase form (e.g., &#x60;pending,malicious&#x60;). | [optional] 
 
 ### Return type
 

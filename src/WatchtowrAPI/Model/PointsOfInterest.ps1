@@ -22,7 +22,7 @@ Name
 .PARAMETER Type
 Type
 .PARAMETER Url
-Url
+URL
 .PARAMETER DiscoveryDate
 Discovery date
 .PARAMETER AssetId

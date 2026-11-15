@@ -18,7 +18,7 @@ No description available.
 .PARAMETER Type
 Condition type, where the provider uses one.
 .PARAMETER Category
-Category (e.g. huawei, imperva).
+Category (e.g., huawei, imperva).
 .PARAMETER Contents
 Match contents.
 .PARAMETER LogicOperation

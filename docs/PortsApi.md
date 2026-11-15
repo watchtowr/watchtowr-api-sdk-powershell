@@ -84,7 +84,7 @@ $IncludeNoService = $true # Boolean | Include listings without a service (option
 $CreatedFrom = (Get-Date) # System.DateTime | Filter ports created after a given date and time. (optional)
 $CreatedTo = (Get-Date) # System.DateTime | Filter ports created before a given date and time. (optional)
 $AssetName = "80" # String | Search ports by port number. (optional)
-$BusinessUnitIds = "1,2,3" # String | Filter assets by a list of comma separated business unit IDs that the asset is related to. Each ID must be a positive integer. (optional)
+$BusinessUnitIds = "1,2,3" # String | Filter assets by a list of comma-separated business unit IDs that the asset is related to. Each ID must be a positive integer. (optional)
 $CustomPropertyKey = "environment" # String | Filter assets by custom property key. (optional)
 $CustomPropertyValue = "production" # String | Filter assets by custom property value. Must be used together with customPropertyKey. (optional)
 
@@ -108,7 +108,7 @@ Name | Type | Description  | Notes
  **CreatedFrom** | **System.DateTime**| Filter ports created after a given date and time. | [optional] 
  **CreatedTo** | **System.DateTime**| Filter ports created before a given date and time. | [optional] 
  **AssetName** | **String**| Search ports by port number. | [optional] 
- **BusinessUnitIds** | **String**| Filter assets by a list of comma separated business unit IDs that the asset is related to. Each ID must be a positive integer. | [optional] 
+ **BusinessUnitIds** | **String**| Filter assets by a list of comma-separated business unit IDs that the asset is related to. Each ID must be a positive integer. | [optional] 
  **CustomPropertyKey** | **String**| Filter assets by custom property key. | [optional] 
  **CustomPropertyValue** | **String**| Filter assets by custom property value. Must be used together with customPropertyKey. | [optional] 
 

@@ -527,6 +527,9 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OnlyUnacknowledged] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ExploitationRiskLevel] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Cve] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyKey] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CustomPropertyValue] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ExcludeCustomPropertyKey] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SortBy] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SortOrder] <String><br>
 
@@ -545,26 +548,29 @@ $CreatedFrom = (Get-Date) # System.DateTime | Filter findings created after a gi
 $CreatedTo = (Get-Date) # System.DateTime | Filter findings created before a given date and time. (optional)
 $UpdatedFrom = (Get-Date) # System.DateTime | Filter findings updated after a given date and time. (optional)
 $UpdatedTo = (Get-Date) # System.DateTime | Filter findings updated before a given date and time. (optional)
-$Statuses = "confirmed,remediated,risk-accepted,closed,asset-no-longer-tracked" # String | Filter findings by a list of comma separated statuses they're tagged with. Defaults to `confirmed`, or to every status except `unconfirmed` when `cve` is set. (optional)
-$BusinessUnitIds = "1,2,3" # String | Filter findings by a list of comma separated business unit IDs that they're related to. Each ID must be a positive integer. (optional)
+$Statuses = "confirmed,remediated,risk-accepted,closed,asset-no-longer-tracked" # String | Filter findings by a list of comma-separated statuses they're tagged with. Defaults to `confirmed`, or to every status except `unconfirmed` when `cve` is set. (optional)
+$BusinessUnitIds = "1,2,3" # String | Filter findings by a list of comma-separated business unit IDs that they're related to. Each ID must be a positive integer. (optional)
 $FindingImpactThreshold = "All" # String | Impact Setting: * High - Prioritized Findings (vulnerabilities, misconfigurations and weaknesses) that could have an immediate, direct impact on your organization's security posture. * All - All Findings, a broader range of findings that may not directly impact your organization's security posture, but may represent deviations from best practices. (optional)
 $FindingTitle = "Valid%20Credentials%20Discovered" # String | Search findings by title contents. (optional)
-$Severities = "critical" # String | Filter findings by a list of comma separated severities they're tagged with. (optional)
-$AssetTitle = "www.watchTowr.com" # String | Search by findings by affected asset. (optional)
-$AssetTypes = "domain" # String | Filter findings by a comma separated list of affected asset types. (optional)
+$Severities = "critical" # String | Filter findings by a list of comma-separated severities they're tagged with. (optional)
+$AssetTitle = "www.watchTowr.com" # String | Search findings by affected asset. (optional)
+$AssetTypes = "domain" # String | Filter findings by a comma-separated list of affected asset types. (optional)
 $Assignee = "John Smith" # String | Filter findings by assignee. To filter findings that don't have an assignee, please use assignee=No Assignee. (optional)
-$Tags = "CISA-KEV,Defacement,Credentials" # String | Filter findings by a comma separated list of tags. (optional)
+$Tags = "CISA-KEV,Defacement,Credentials" # String | Filter findings by a comma-separated list of tags. (optional)
 $OnlyValidatedExploitable = $true # Boolean | Filter to only show findings validated as exploitable. (optional)
 $OnlyAiDiscovered = $true # Boolean | Filter to only show findings discovered by AI. (optional)
 $OnlyUnacknowledged = $true # Boolean | Deprecated. This parameter has no effect and is ignored. (optional)
-$ExploitationRiskLevel = "Unknown" # String | Filter findings by a comma separated list of exploitation risk levels. (optional)
+$ExploitationRiskLevel = "Unknown" # String | Filter findings by a comma-separated list of exploitation risk levels. (optional)
 $Cve = "CVE-2023-34362" # String | Filter findings by a CVE ID in the form `CVE-YYYY-NNNN`. Returns the findings whose watchTowr knowledge-base entry maps to that CVE, the same mapping vulnerability intelligence's `isAffected` uses for CVE rows. A watchTowr vulnerability ID (`wT-…`) is rejected. Returns findings of every status except `unconfirmed` unless `statuses` is set. (optional)
+$CustomPropertyKey = "category" # String | Filter findings by custom property key. Returns the findings that have a custom property with this key. Use with `customPropertyValue` to match its value. Keys and values match ignoring case. (optional)
+$CustomPropertyValue = "Exposure" # String | Filter findings by custom property value. Returns the findings whose `customPropertyKey` property has this value. Must be used together with customPropertyKey. (optional)
+$ExcludeCustomPropertyKey = "owner" # String | Exclude findings by custom property key. Returns the findings that do not have a custom property with this key. Cannot be the same key as `customPropertyKey`. (optional)
 $SortBy = "id" # String | Sort findings by ID, creation date, last update or last seen date. Defaults to `id`. Findings with no `last_seen` sort first in ascending order and last in descending order. (optional) (default to "id")
 $SortOrder = "ASC" # String | The direction to sort findings in. Defaults to `DESC`. (optional) (default to "DESC")
 
 # List Findings
 try {
-    $Result = Get-ListFindings -Page $Page -PageSize $PageSize -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -Statuses $Statuses -BusinessUnitIds $BusinessUnitIds -FindingImpactThreshold $FindingImpactThreshold -FindingTitle $FindingTitle -Severities $Severities -AssetTitle $AssetTitle -AssetTypes $AssetTypes -Assignee $Assignee -Tags $Tags -OnlyValidatedExploitable $OnlyValidatedExploitable -OnlyAiDiscovered $OnlyAiDiscovered -OnlyUnacknowledged $OnlyUnacknowledged -ExploitationRiskLevel $ExploitationRiskLevel -Cve $Cve -SortBy $SortBy -SortOrder $SortOrder
+    $Result = Get-ListFindings -Page $Page -PageSize $PageSize -CreatedFrom $CreatedFrom -CreatedTo $CreatedTo -UpdatedFrom $UpdatedFrom -UpdatedTo $UpdatedTo -Statuses $Statuses -BusinessUnitIds $BusinessUnitIds -FindingImpactThreshold $FindingImpactThreshold -FindingTitle $FindingTitle -Severities $Severities -AssetTitle $AssetTitle -AssetTypes $AssetTypes -Assignee $Assignee -Tags $Tags -OnlyValidatedExploitable $OnlyValidatedExploitable -OnlyAiDiscovered $OnlyAiDiscovered -OnlyUnacknowledged $OnlyUnacknowledged -ExploitationRiskLevel $ExploitationRiskLevel -Cve $Cve -CustomPropertyKey $CustomPropertyKey -CustomPropertyValue $CustomPropertyValue -ExcludeCustomPropertyKey $ExcludeCustomPropertyKey -SortBy $SortBy -SortOrder $SortOrder
 } catch {
     Write-Host ("Exception occurred when calling Get-ListFindings: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -581,20 +587,23 @@ Name | Type | Description  | Notes
  **CreatedTo** | **System.DateTime**| Filter findings created before a given date and time. | [optional] 
  **UpdatedFrom** | **System.DateTime**| Filter findings updated after a given date and time. | [optional] 
  **UpdatedTo** | **System.DateTime**| Filter findings updated before a given date and time. | [optional] 
- **Statuses** | **String**| Filter findings by a list of comma separated statuses they&#39;re tagged with. Defaults to &#x60;confirmed&#x60;, or to every status except &#x60;unconfirmed&#x60; when &#x60;cve&#x60; is set. | [optional] 
- **BusinessUnitIds** | **String**| Filter findings by a list of comma separated business unit IDs that they&#39;re related to. Each ID must be a positive integer. | [optional] 
+ **Statuses** | **String**| Filter findings by a list of comma-separated statuses they&#39;re tagged with. Defaults to &#x60;confirmed&#x60;, or to every status except &#x60;unconfirmed&#x60; when &#x60;cve&#x60; is set. | [optional] 
+ **BusinessUnitIds** | **String**| Filter findings by a list of comma-separated business unit IDs that they&#39;re related to. Each ID must be a positive integer. | [optional] 
  **FindingImpactThreshold** | **String**| Impact Setting: * High - Prioritized Findings (vulnerabilities, misconfigurations and weaknesses) that could have an immediate, direct impact on your organization&#39;s security posture. * All - All Findings, a broader range of findings that may not directly impact your organization&#39;s security posture, but may represent deviations from best practices. | [optional] 
  **FindingTitle** | **String**| Search findings by title contents. | [optional] 
- **Severities** | **String**| Filter findings by a list of comma separated severities they&#39;re tagged with. | [optional] 
- **AssetTitle** | **String**| Search by findings by affected asset. | [optional] 
- **AssetTypes** | **String**| Filter findings by a comma separated list of affected asset types. | [optional] 
+ **Severities** | **String**| Filter findings by a list of comma-separated severities they&#39;re tagged with. | [optional] 
+ **AssetTitle** | **String**| Search findings by affected asset. | [optional] 
+ **AssetTypes** | **String**| Filter findings by a comma-separated list of affected asset types. | [optional] 
  **Assignee** | **String**| Filter findings by assignee. To filter findings that don&#39;t have an assignee, please use assignee&#x3D;No Assignee. | [optional] 
- **Tags** | **String**| Filter findings by a comma separated list of tags. | [optional] 
+ **Tags** | **String**| Filter findings by a comma-separated list of tags. | [optional] 
  **OnlyValidatedExploitable** | **Boolean**| Filter to only show findings validated as exploitable. | [optional] 
  **OnlyAiDiscovered** | **Boolean**| Filter to only show findings discovered by AI. | [optional] 
  **OnlyUnacknowledged** | **Boolean**| Deprecated. This parameter has no effect and is ignored. | [optional] 
- **ExploitationRiskLevel** | **String**| Filter findings by a comma separated list of exploitation risk levels. | [optional] 
+ **ExploitationRiskLevel** | **String**| Filter findings by a comma-separated list of exploitation risk levels. | [optional] 
  **Cve** | **String**| Filter findings by a CVE ID in the form &#x60;CVE-YYYY-NNNN&#x60;. Returns the findings whose watchTowr knowledge-base entry maps to that CVE, the same mapping vulnerability intelligence&#39;s &#x60;isAffected&#x60; uses for CVE rows. A watchTowr vulnerability ID (&#x60;wT-…&#x60;) is rejected. Returns findings of every status except &#x60;unconfirmed&#x60; unless &#x60;statuses&#x60; is set. | [optional] 
+ **CustomPropertyKey** | **String**| Filter findings by custom property key. Returns the findings that have a custom property with this key. Use with &#x60;customPropertyValue&#x60; to match its value. Keys and values match ignoring case. | [optional] 
+ **CustomPropertyValue** | **String**| Filter findings by custom property value. Returns the findings whose &#x60;customPropertyKey&#x60; property has this value. Must be used together with customPropertyKey. | [optional] 
+ **ExcludeCustomPropertyKey** | **String**| Exclude findings by custom property key. Returns the findings that do not have a custom property with this key. Cannot be the same key as &#x60;customPropertyKey&#x60;. | [optional] 
  **SortBy** | **String**| Sort findings by ID, creation date, last update or last seen date. Defaults to &#x60;id&#x60;. Findings with no &#x60;last_seen&#x60; sort first in ascending order and last in descending order. | [optional] [default to &quot;id&quot;]
  **SortOrder** | **String**| The direction to sort findings in. Defaults to &#x60;DESC&#x60;. | [optional] [default to &quot;DESC&quot;]
 

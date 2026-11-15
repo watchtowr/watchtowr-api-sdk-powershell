@@ -26,7 +26,7 @@ Subject Alt Names
 .PARAMETER SubjectCountry
 Subject Country
 .PARAMETER IssuerCommonName
-Issuer CommonName
+Issuer Common Name
 .PARAMETER IssuerOrganisation
 Issuer Organization
 .PARAMETER IssuerCountry

@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 Get Active Defense Rule Provider Template
 
-Get the provider-specific rule template (e.g. Cloudflare expression, AWS WAF CFN, Fastly VCL) for a single Active Defense Library rule.
+Get the provider-specific rule template (e.g., Cloudflare expression, AWS WAF CFN, Fastly VCL) for a single Active Defense Library rule.
 
 ### Example
 ```powershell
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 
 List Active Defense Rules
 
-List Active Defense Library rules. Rule visibility, ordering and any affected-vulnerability prioritisation are scoped to the requesting user’s business units and the organization’s finding impact threshold.
+List Active Defense Library rules. Rule visibility, ordering and any affected-vulnerability prioritization are scoped to the requesting user’s business units and the organization’s finding impact threshold.
 
 ### Example
 ```powershell

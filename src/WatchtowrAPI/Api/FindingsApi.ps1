@@ -909,10 +909,10 @@ Filter findings updated after a given date and time.
 Filter findings updated before a given date and time.
 
 .PARAMETER Statuses
-Filter findings by a list of comma separated statuses they're tagged with. Defaults to `confirmed`, or to every status except `unconfirmed` when `cve` is set.
+Filter findings by a list of comma-separated statuses they're tagged with. Defaults to `confirmed`, or to every status except `unconfirmed` when `cve` is set.
 
 .PARAMETER BusinessUnitIds
-Filter findings by a list of comma separated business unit IDs that they're related to. Each ID must be a positive integer.
+Filter findings by a list of comma-separated business unit IDs that they're related to. Each ID must be a positive integer.
 
 .PARAMETER FindingImpactThreshold
 Impact Setting: * High - Prioritized Findings (vulnerabilities, misconfigurations and weaknesses) that could have an immediate, direct impact on your organization's security posture. * All - All Findings, a broader range of findings that may not directly impact your organization's security posture, but may represent deviations from best practices.
@@ -921,19 +921,19 @@ Impact Setting: * High - Prioritized Findings (vulnerabilities, misconfiguration
 Search findings by title contents.
 
 .PARAMETER Severities
-Filter findings by a list of comma separated severities they're tagged with.
+Filter findings by a list of comma-separated severities they're tagged with.
 
 .PARAMETER AssetTitle
-Search by findings by affected asset.
+Search findings by affected asset.
 
 .PARAMETER AssetTypes
-Filter findings by a comma separated list of affected asset types.
+Filter findings by a comma-separated list of affected asset types.
 
 .PARAMETER Assignee
 Filter findings by assignee. To filter findings that don't have an assignee, please use assignee=No Assignee.
 
 .PARAMETER Tags
-Filter findings by a comma separated list of tags.
+Filter findings by a comma-separated list of tags.
 
 .PARAMETER OnlyValidatedExploitable
 Filter to only show findings validated as exploitable.
@@ -945,10 +945,19 @@ Filter to only show findings discovered by AI.
 Deprecated. This parameter has no effect and is ignored.
 
 .PARAMETER ExploitationRiskLevel
-Filter findings by a comma separated list of exploitation risk levels.
+Filter findings by a comma-separated list of exploitation risk levels.
 
 .PARAMETER Cve
 Filter findings by a CVE ID in the form `CVE-YYYY-NNNN`. Returns the findings whose watchTowr knowledge-base entry maps to that CVE, the same mapping vulnerability intelligence's `isAffected` uses for CVE rows. A watchTowr vulnerability ID (`wT-…`) is rejected. Returns findings of every status except `unconfirmed` unless `statuses` is set.
+
+.PARAMETER CustomPropertyKey
+Filter findings by custom property key. Returns the findings that have a custom property with this key. Use with `customPropertyValue` to match its value. Keys and values match ignoring case.
+
+.PARAMETER CustomPropertyValue
+Filter findings by custom property value. Returns the findings whose `customPropertyKey` property has this value. Must be used together with customPropertyKey.
+
+.PARAMETER ExcludeCustomPropertyKey
+Exclude findings by custom property key. Returns the findings that do not have a custom property with this key. Cannot be the same key as `customPropertyKey`.
 
 .PARAMETER SortBy
 Sort findings by ID, creation date, last update or last seen date. Defaults to `id`. Findings with no `last_seen` sort first in ascending order and last in descending order.
@@ -1032,10 +1041,19 @@ function Get-ListFindings {
         [String]
         ${Cve},
         [Parameter(Position = 20, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${CustomPropertyKey},
+        [Parameter(Position = 21, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${CustomPropertyValue},
+        [Parameter(Position = 22, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${ExcludeCustomPropertyKey},
+        [Parameter(Position = 23, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [ValidateSet("id", "created_at", "updated_at", "last_seen")]
         [String]
         ${SortBy},
-        [Parameter(Position = 21, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [Parameter(Position = 24, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [ValidateSet("ASC", "DESC")]
         [String]
         ${SortOrder},
@@ -1140,6 +1158,18 @@ function Get-ListFindings {
 
         if ($Cve) {
             $LocalVarQueryParameters['cve'] = $Cve
+        }
+
+        if ($CustomPropertyKey) {
+            $LocalVarQueryParameters['customPropertyKey'] = $CustomPropertyKey
+        }
+
+        if ($CustomPropertyValue) {
+            $LocalVarQueryParameters['customPropertyValue'] = $CustomPropertyValue
+        }
+
+        if ($ExcludeCustomPropertyKey) {
+            $LocalVarQueryParameters['excludeCustomPropertyKey'] = $ExcludeCustomPropertyKey
         }
 
         if ($SortBy) {

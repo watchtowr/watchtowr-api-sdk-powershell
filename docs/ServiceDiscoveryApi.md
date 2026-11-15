@@ -50,14 +50,14 @@ $CreatedTo = (Get-Date) # System.DateTime | Filter services created before a giv
 $UpdatedFrom = (Get-Date) # System.DateTime | Filter services updated after a given date and time. (optional)
 $UpdatedTo = (Get-Date) # System.DateTime | Filter services updated before a given date and time. (optional)
 $Search = "1.2.3.4" # String | Search services by IP address. (optional)
-$Countries = "US,UK" # String | Filter services by a list of comma separated subject countries that they're related to. (optional)
+$Countries = "US,UK" # String | Filter services by a list of comma-separated subject countries that they're related to. (optional)
 $Technology = "aws,nginx,cloudfront" # String | Filter services by technology name. Supports comma-separated values for multiple technologies (max 10). (optional)
-$Ports = "22/TCP,443/TCP,3389/UDP" # String | Filter services by a list of comma separated port/protocols. (optional)
-$PortNumbers = "80,443" # String | Filter services by a list of comma separated ports. (optional)
-$PortTypes = "TCP,UDP" # String | Filter services by a list of comma separated transport layer protocols (e.g. UDP/TCP). (optional)
-$PortServices = "SSH,HTTP" # String | Filter services by a list of comma separated services. (optional)
-$ServiceTypeIds = 0 # Decimal[] | Filter services by a list of comma separated service type IDs. (optional)
-$BusinessUnitIds = 0 # Decimal[] | Filter services by a list of comma separated business unit IDs they're related to. Each ID must be a positive integer. (optional)
+$Ports = "22/TCP,443/TCP,3389/UDP" # String | Filter services by a list of comma-separated port/protocols. (optional)
+$PortNumbers = "80,443" # String | Filter services by a list of comma-separated ports. (optional)
+$PortTypes = "TCP,UDP" # String | Filter services by a list of comma-separated transport layer protocols (e.g., UDP/TCP). (optional)
+$PortServices = "SSH,HTTP" # String | Filter services by a list of comma-separated services. (optional)
+$ServiceTypeIds = 0 # Decimal[] | Filter services by a list of comma-separated service type IDs. (optional)
+$BusinessUnitIds = 0 # Decimal[] | Filter services by a list of comma-separated business unit IDs they're related to. Each ID must be a positive integer. (optional)
 $SortBy = "last_seen" # String | Sort services. (optional)
 $OrderBy = "ASC" # String | Order services. (optional)
 $SuppressionFilter = "non-suppressed" # String | Filter services by suppression status. (optional)
@@ -84,14 +84,14 @@ Name | Type | Description  | Notes
  **UpdatedFrom** | **System.DateTime**| Filter services updated after a given date and time. | [optional] 
  **UpdatedTo** | **System.DateTime**| Filter services updated before a given date and time. | [optional] 
  **Search** | **String**| Search services by IP address. | [optional] 
- **Countries** | **String**| Filter services by a list of comma separated subject countries that they&#39;re related to. | [optional] 
+ **Countries** | **String**| Filter services by a list of comma-separated subject countries that they&#39;re related to. | [optional] 
  **Technology** | **String**| Filter services by technology name. Supports comma-separated values for multiple technologies (max 10). | [optional] 
- **Ports** | **String**| Filter services by a list of comma separated port/protocols. | [optional] 
- **PortNumbers** | **String**| Filter services by a list of comma separated ports. | [optional] 
- **PortTypes** | **String**| Filter services by a list of comma separated transport layer protocols (e.g. UDP/TCP). | [optional] 
- **PortServices** | **String**| Filter services by a list of comma separated services. | [optional] 
- **ServiceTypeIds** | [**Decimal[]**](Decimal.md)| Filter services by a list of comma separated service type IDs. | [optional] 
- **BusinessUnitIds** | [**Decimal[]**](Decimal.md)| Filter services by a list of comma separated business unit IDs they&#39;re related to. Each ID must be a positive integer. | [optional] 
+ **Ports** | **String**| Filter services by a list of comma-separated port/protocols. | [optional] 
+ **PortNumbers** | **String**| Filter services by a list of comma-separated ports. | [optional] 
+ **PortTypes** | **String**| Filter services by a list of comma-separated transport layer protocols (e.g., UDP/TCP). | [optional] 
+ **PortServices** | **String**| Filter services by a list of comma-separated services. | [optional] 
+ **ServiceTypeIds** | [**Decimal[]**](Decimal.md)| Filter services by a list of comma-separated service type IDs. | [optional] 
+ **BusinessUnitIds** | [**Decimal[]**](Decimal.md)| Filter services by a list of comma-separated business unit IDs they&#39;re related to. Each ID must be a positive integer. | [optional] 
  **SortBy** | **String**| Sort services. | [optional] 
  **OrderBy** | **String**| Order services. | [optional] 
  **SuppressionFilter** | **String**| Filter services by suppression status. | [optional] 

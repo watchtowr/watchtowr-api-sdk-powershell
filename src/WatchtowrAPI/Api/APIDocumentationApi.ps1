@@ -852,16 +852,16 @@ The number of items to be included on each page of paginated results. If the pag
 Search API documentation by asset name.
 
 .PARAMETER Statuses
-Filter assets by one or more comma separated asset statuses. Valid statuses are:       * verified       * tracked       * incorrect identification       * pending       * verifiedOutOfScope 
+Filter assets by one or more comma-separated asset statuses. Valid statuses are:       * verified       * tracked       * incorrect identification       * pending       * verifiedOutOfScope 
 
 .PARAMETER Source
 Filter assets by the source that discovered the asset.
 
 .PARAMETER IntegrationConnections
-Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).  Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, fastly, markmonitor, csc, armiscentrix, qualysvmdr, tenablevm, orcasecurity, crowdstrikefalconspotlight, taniumvm, rapid7insightvm, fastlywaf, cloudflarewaf, awswaf, impervawaf, azurewaf, gcpwaf, akamaiwaf, alibabacloudwaf, tencentcloudwaf, huaweicloudwaf, fastlyngwaf, ociwaf  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud)
+Filter assets by integration connections (comma-separated list of integrationId:integrationType pairs).  Valid integration types: aws, googlecloud, azure, cloudflare, alibabacloud, prismacloud, prismacloudapigee, huaweicloud, tencentcloud, wiz, servicenowcmdb, akamaiedge, fastly, markmonitor, csc, oraclecloud, armiscentrix, qualysvmdr, tenablevm, orcasecurity, crowdstrikefalconspotlight, taniumvm, rapid7insightvm, fastlywaf, cloudflarewaf, awswaf, impervawaf, azurewaf, gcpwaf, akamaiwaf, alibabacloudwaf, tencentcloudwaf, huaweicloudwaf, fastlyngwaf, ociwaf  Format: integrationId:integrationType (e.g., 123:aws) Multiple connections: separate with commas (e.g., 123:aws,456:azure,789:googlecloud)
 
 .PARAMETER BusinessUnitIds
-Filter assets by a list of comma separated business unit IDs that the asset is related to. Each ID must be a positive integer.
+Filter assets by a list of comma-separated business unit IDs that the asset is related to. Each ID must be a positive integer.
 
 .PARAMETER CreatedFrom
 Filter assets created after a given date and time.
@@ -1117,7 +1117,7 @@ No description available.
 The API Documentation asset's ID.
 
 .PARAMETER BusinessUnitIds
-List of comma-seperated business unit IDs to unassign from the asset.
+List of comma-separated business unit IDs to unassign from the asset.
 
 .PARAMETER WithHttpInfo
 

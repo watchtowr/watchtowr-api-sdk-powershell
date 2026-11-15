@@ -18,7 +18,7 @@ No description available.
 .PARAMETER Key
 The key of the custom property. Key provided must not be empty and must be unique for the model type. If is_preset is true, key must belong to one of watchTowr's preset custom properties. Accepted preset keys include: 'Criticality'.
 .PARAMETER Value
-The value of the custom property. If existing custom property's preset is true, the value supplied must belong to one of the valid watchTowr preset values. Accepted preset values are 'Low', 'Medium', 'High', 'Unknown' for key: 'Criticality'.
+The value of the custom property. If the existing custom property's preset is true, the value supplied must belong to one of the valid watchTowr preset values. Accepted preset values are 'Low', 'Medium', 'High', 'Unknown' for key: 'Criticality'.
 .PARAMETER IsPreset
 Defaults to false. If true, custom property is a watchTowr preset custom property.
 .OUTPUTS

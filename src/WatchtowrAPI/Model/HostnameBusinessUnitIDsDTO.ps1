@@ -20,7 +20,7 @@ List of business unit IDs to assign the asset to.
 .PARAMETER CascadeSubdomain
 Cascade business units to domain's subdomains
 .PARAMETER CascadeIp
-Cascade business units to domain's ipaddresses
+Cascade business units to the domain's IP addresses
 .OUTPUTS
 
 HostnameBusinessUnitIDsDTO<PSCustomObject>

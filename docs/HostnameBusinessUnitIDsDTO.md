@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BusinessUnitIds** | **Decimal[]** | List of business unit IDs to assign the asset to. | 
 **CascadeSubdomain** | **Boolean** | Cascade business units to domain&#39;s subdomains | 
-**CascadeIp** | **Boolean** | Cascade business units to domain&#39;s ipaddresses | 
+**CascadeIp** | **Boolean** | Cascade business units to the domain&#39;s IP addresses | 
 
 ## Examples
 

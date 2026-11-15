@@ -18,7 +18,7 @@ No description available.
 .PARAMETER Id
 ID of the resolved asset
 .PARAMETER Type
-Type of the resolved asset. Matches the asset type values used elsewhere in the API (e.g. domain, subdomain, ip, ipRange, saasPlatform, ...).
+Type of the resolved asset. Matches the asset type values used elsewhere in the API (e.g., domain, subdomain, ip, ipRange, saasPlatform, ...).
 .OUTPUTS
 
 ClientSeedDataAssetLink<PSCustomObject>

@@ -33,13 +33,13 @@ $Configuration = Get-Configuration
 
 $Page = 1 # Decimal | The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. (optional)
 $PageSize = 20 # Decimal | The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 20. The maximum for pageSize is 100. (optional)
-$BusinessUnitIds = "1,2,3" # String | Filter assets by a list of comma separated business unit IDs that the asset is related to. Each ID must be a positive integer. (optional)
+$BusinessUnitIds = "1,2,3" # String | Filter assets by a list of comma-separated business unit IDs that the asset is related to. Each ID must be a positive integer. (optional)
 $SortBy = "createdAt" # String | Sort by field (optional) (default to "createdAt")
 $SortOrder = "ASC" # String | Sort order (optional) (default to "DESC")
 $AssetName = "example.com" # String | Filter by asset name (optional)
 $RecordName = "example.com" # String | Filter by record name (optional)
 $RecordValue = "192.168.1.1" # String | Filter by record value (optional)
-$RecordTypes = "A" # String | Filter by record types (comma separated) (optional)
+$RecordTypes = "A" # String | Filter by record types (comma-separated) (optional)
 $StartDate = (Get-Date) # System.DateTime | Filter by start date (optional)
 $EndDate = (Get-Date) # System.DateTime | Filter by end date (optional)
 
@@ -58,13 +58,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Page** | **Decimal**| The page number for paginated results. If the page field is not provided in the request, it defaults to 1, which corresponds to the first page of results. | [optional] 
  **PageSize** | **Decimal**| The number of items to be included on each page of paginated results. If the pageSize field is not specified, it defaults to 20. The maximum for pageSize is 100. | [optional] 
- **BusinessUnitIds** | **String**| Filter assets by a list of comma separated business unit IDs that the asset is related to. Each ID must be a positive integer. | [optional] 
+ **BusinessUnitIds** | **String**| Filter assets by a list of comma-separated business unit IDs that the asset is related to. Each ID must be a positive integer. | [optional] 
  **SortBy** | **String**| Sort by field | [optional] [default to &quot;createdAt&quot;]
  **SortOrder** | **String**| Sort order | [optional] [default to &quot;DESC&quot;]
  **AssetName** | **String**| Filter by asset name | [optional] 
  **RecordName** | **String**| Filter by record name | [optional] 
  **RecordValue** | **String**| Filter by record value | [optional] 
- **RecordTypes** | **String**| Filter by record types (comma separated) | [optional] 
+ **RecordTypes** | **String**| Filter by record types (comma-separated) | [optional] 
  **StartDate** | **System.DateTime**| Filter by start date | [optional] 
  **EndDate** | **System.DateTime**| Filter by end date | [optional] 
 

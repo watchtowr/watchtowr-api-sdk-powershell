@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Banner** | **String** | Banner | [optional] 
 **Service** | **String** | Service | [optional] 
 **Source** | **String** | Asset source | [optional] 
-**LastSeen** | **System.DateTime** | Last seen date Range | [optional] 
+**LastSeen** | **System.DateTime** | Last seen date range | [optional] 
 **Technologies** | [**Technology[]**](Technology.md) | Technology list | 
 **ServiceTypes** | [**ServiceType[]**](ServiceType.md) | Service types | 
 **BusinessUnits** | [**ClientBusinessUnit[]**](ClientBusinessUnit.md) | Business Units | 

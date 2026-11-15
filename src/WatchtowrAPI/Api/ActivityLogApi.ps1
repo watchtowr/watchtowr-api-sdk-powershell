@@ -28,13 +28,13 @@ Filter logs created after a given date and time.
 Filter logs created before a given date and time.
 
 .PARAMETER Types
-Filter logs by a comma separated list of types.
+Filter logs by a comma-separated list of types.
 
 .PARAMETER Search
-Search logs across various fields such as user, or description.
+Search logs across various fields such as user or description.
 
 .PARAMETER UserIds
-Filter logs by a comma separated list of user IDs.
+Filter logs by a comma-separated list of user IDs.
 
 .PARAMETER WithHttpInfo
 

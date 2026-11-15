@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **RapidExposureMechanism** | **String** | Rapid exposure mechanism | [optional] 
 **Title** | **String** | Title | 
 **Status** | **String** | Status | 
+**Cves** | **String[]** | CVE identifiers linked to this hunt. Empty when no CVEs are linked. | 
 
 ## Examples
 
@@ -27,7 +28,8 @@ $Hunt = Initialize-WatchtowrAPIHunt  -Id 1 `
  -HuntRequestType Others `
  -RapidExposureMechanism impactLessPoc `
  -Title ... `
- -Status completed
+ -Status completed `
+ -Cves [&quot;CVE-2024-3400&quot;]
 ```
 
 - Convert the resource to JSON

@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **String** | Port protocol, always uppercased (e.g. &#x60;TCP&#x60;, &#x60;UDP&#x60;). | 
+**Type** | **String** | Port protocol, always uppercased (e.g., &#x60;TCP&#x60;, &#x60;UDP&#x60;). | 
 **Status** | **String** |  | [optional] 
 **CreatedAt** | **System.DateTime** |  | 
 **LastSeenAt** | **System.DateTime** |  | 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Port** | **Int32** |  | 
 **Banner** | **String** |  | [optional] 
 **Service** | **String** |  | 
-**State** | **String** | Port state (e.g. &#x60;open&#x60;, &#x60;closed&#x60;, &#x60;filtered&#x60;). | [optional] 
+**State** | **String** | Port state (e.g., &#x60;open&#x60;, &#x60;closed&#x60;, &#x60;filtered&#x60;). | [optional] 
 **BusinessUnits** | [**ClientBusinessUnit[]**](ClientBusinessUnit.md) |  | 
 **Metadata** | [**System.Collections.Hashtable**](AnyType.md) | Asset-type-specific metadata. Always empty for ports. | 
 

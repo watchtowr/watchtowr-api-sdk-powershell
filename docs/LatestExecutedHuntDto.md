@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **NeedInvestigation** | **Boolean** | Whether manual investigation is required | 
 **RequestType** | **String** | Type of hunt request | 
 **ResolvedStatus** | **Boolean** | Whether the hunt has been resolved | 
-**Acknowledgement** | [**HuntAcknowledgementDto**](HuntAcknowledgementDto.md) | Hunt acknowledgement data | 
+**Acknowledgement** | [**HuntAcknowledgementDto**](HuntAcknowledgementDto.md) | Hunt acknowledgment data | 
 **ThreatActors** | [**ThreatActorDto[]**](ThreatActorDto.md) | Associated threat actors | 
 
 ## Examples

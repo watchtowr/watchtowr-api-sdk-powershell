@@ -43,28 +43,28 @@ Filter services updated before a given date and time.
 Search services by IP address.
 
 .PARAMETER Countries
-Filter services by a list of comma separated subject countries that they're related to.
+Filter services by a list of comma-separated subject countries that they're related to.
 
 .PARAMETER Technology
 Filter services by technology name. Supports comma-separated values for multiple technologies (max 10).
 
 .PARAMETER Ports
-Filter services by a list of comma separated port/protocols.
+Filter services by a list of comma-separated port/protocols.
 
 .PARAMETER PortNumbers
-Filter services by a list of comma separated ports.
+Filter services by a list of comma-separated ports.
 
 .PARAMETER PortTypes
-Filter services by a list of comma separated transport layer protocols (e.g. UDP/TCP).
+Filter services by a list of comma-separated transport layer protocols (e.g., UDP/TCP).
 
 .PARAMETER PortServices
-Filter services by a list of comma separated services.
+Filter services by a list of comma-separated services.
 
 .PARAMETER ServiceTypeIds
-Filter services by a list of comma separated service type IDs.
+Filter services by a list of comma-separated service type IDs.
 
 .PARAMETER BusinessUnitIds
-Filter services by a list of comma separated business unit IDs they're related to. Each ID must be a positive integer.
+Filter services by a list of comma-separated business unit IDs they're related to. Each ID must be a positive integer.
 
 .PARAMETER SortBy
 Sort services.

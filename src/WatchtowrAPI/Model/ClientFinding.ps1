@@ -44,7 +44,7 @@ Finding references from the knowledge base entry, or `""No references.""` when n
 .PARAMETER Status
 No description available.
 .PARAMETER State
-Different to status, this is about tracking how the finding is being handled
+Different from status, this is about tracking how the finding is being handled
 .PARAMETER CreatedAt
 No description available.
 .PARAMETER Affected

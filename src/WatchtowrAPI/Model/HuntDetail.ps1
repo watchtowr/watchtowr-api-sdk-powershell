@@ -31,6 +31,8 @@ Total assets
 Hunt request type
 .PARAMETER RapidExposureMechanism
 Rapid exposure mechanism
+.PARAMETER Cves
+CVE identifiers linked to this hunt. Empty when no CVEs are linked.
 .PARAMETER Title
 Title
 .PARAMETER Description
@@ -44,7 +46,7 @@ Completed at
 .PARAMETER CompletedBy
 Completed by
 .PARAMETER RequestedBy
-Request by
+Requested by
 .PARAMETER Status
 Status
 .OUTPUTS
@@ -83,27 +85,30 @@ function Initialize-HuntDetail {
         [String]
         ${RapidExposureMechanism},
         [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${Title},
+        [String[]]
+        ${Cves},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Description},
+        ${Title},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Hypothesis},
+        ${Description},
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Hypothesis},
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
         [String[]]
         ${References},
-        [Parameter(Position = 12, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[System.DateTime]]
         ${CompletedAt},
-        [Parameter(Position = 13, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${CompletedBy},
         [Parameter(Position = 14, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${RequestedBy},
+        ${CompletedBy},
         [Parameter(Position = 15, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${RequestedBy},
+        [Parameter(Position = 16, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("received", "in-progress", "completed", "not-covered", "outdated")]
         [String]
         ${Status}
@@ -137,6 +142,10 @@ function Initialize-HuntDetail {
             throw "invalid value for 'TotalAssets', 'TotalAssets' cannot be null."
         }
 
+        if ($null -eq $Cves) {
+            throw "invalid value for 'Cves', 'Cves' cannot be null."
+        }
+
         if ($null -eq $Title) {
             throw "invalid value for 'Title', 'Title' cannot be null."
         }
@@ -155,6 +164,7 @@ function Initialize-HuntDetail {
             "total_assets" = ${TotalAssets}
             "hunt_request_type" = ${HuntRequestType}
             "rapid_exposure_mechanism" = ${RapidExposureMechanism}
+            "cves" = ${Cves}
             "title" = ${Title}
             "description" = ${Description}
             "hypothesis" = ${Hypothesis}
@@ -200,7 +210,7 @@ function ConvertFrom-JsonToHuntDetail {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in HuntDetail
-        $AllProperties = ("id", "type", "created_at", "updated_at", "total_findings", "total_assets", "hunt_request_type", "rapid_exposure_mechanism", "title", "description", "hypothesis", "references", "completed_at", "completed_by", "requested_by", "status")
+        $AllProperties = ("id", "type", "created_at", "updated_at", "total_findings", "total_assets", "hunt_request_type", "rapid_exposure_mechanism", "cves", "title", "description", "hypothesis", "references", "completed_at", "completed_by", "requested_by", "status")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -251,6 +261,12 @@ function ConvertFrom-JsonToHuntDetail {
             throw "Error! JSON cannot be serialized due to the required property 'hunt_request_type' missing."
         } else {
             $HuntRequestType = $JsonParameters.PSobject.Properties["hunt_request_type"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "cves"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'cves' missing."
+        } else {
+            $Cves = $JsonParameters.PSobject.Properties["cves"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "title"))) {
@@ -316,6 +332,7 @@ function ConvertFrom-JsonToHuntDetail {
             "total_assets" = ${TotalAssets}
             "hunt_request_type" = ${HuntRequestType}
             "rapid_exposure_mechanism" = ${RapidExposureMechanism}
+            "cves" = ${Cves}
             "title" = ${Title}
             "description" = ${Description}
             "hypothesis" = ${Hypothesis}

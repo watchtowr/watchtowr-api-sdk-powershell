@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **String** | Condition type, where the provider uses one. | [optional] 
-**Category** | **String** | Category (e.g. huawei, imperva). | [optional] 
+**Category** | **String** | Category (e.g., huawei, imperva). | [optional] 
 **Contents** | **String[]** | Match contents. | [optional] 
 **LogicOperation** | **String** | Logic operation joining contents. | [optional] 
 **Key** | **String** | Match key. | [optional] 

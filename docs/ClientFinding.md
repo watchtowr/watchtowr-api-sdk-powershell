@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **Cvssv3Metrics** | **String** |  | 
 **References** | **String** | Finding references from the knowledge base entry, or &#x60;&quot;&quot;No references.&quot;&quot;&#x60; when none exist. | 
 **Status** | **String** |  | 
-**State** | **String** | Different to status, this is about tracking how the finding is being handled | [optional] 
+**State** | **String** | Different from status, this is about tracking how the finding is being handled | [optional] 
 **CreatedAt** | **System.DateTime** |  | 
 **Affected** | [**ClientFindingAffected**](ClientFindingAffected.md) | Affected asset envelope. The asset object is nested under &#x60;data&#x60;; shape varies by asset type. | 
 **CveId** | **String** |  | [optional] 
@@ -39,7 +39,7 @@ Name | Type | Description | Notes
 $ClientFinding = Initialize-WatchtowrAPIClientFinding  -Id 1 `
  -Title Valid Credentials Discovered In Business System `
  -PlatformUrl https://tenant.client.watchtowr.io/findings/1 `
- -Description Through watchTowr&#39;s Credential Stuffing capabilities, a valid set of credentials have been identified to work to authenticate to a legitimately exposed business system. 
+ -Description Through watchTowr&#39;s Credential Stuffing capabilities, a valid set of credentials has been identified that authenticates to a legitimately exposed business system. 
 
 These credentials have been confirmed as valid against the identified system, and are publicly available. `
  -Impact Depending on the system, if leveraged by an attacker it may be possible to:
@@ -58,8 +58,8 @@ Password: user123!
 MFA status: Single-factor authentication `
  -Recommendation As a priority, it is recommended that the identified credentials be revoked and rotated. As a follow-up an analysis should also be performed to ensure that the identified credentials have not previously been utilized by an attacker.
 
-As a long-term measure to ensure that the security impact of breach credentials are minimized, it is recommended that:
-* Two-factor authentication (2FA) to be enabled for all business systems that support it, which provides an additional layer of security
+As a long-term measure to ensure that the security impact of breached credentials is minimized, it is recommended that:
+* Two-factor authentication (2FA) be enabled for all business systems that support it, which provides an additional layer of security
 * Use a Single Sign-On (SSO) service for business systems, where possible
  `
  -Severity high `
