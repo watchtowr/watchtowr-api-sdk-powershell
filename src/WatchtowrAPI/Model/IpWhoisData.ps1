@@ -21,6 +21,8 @@ The unique identifier for the WHOIS record.
 No description available.
 .PARAMETER Raw
 The full WHOIS text of the record.
+.PARAMETER Normalized
+Structured, best-effort reading of the WHOIS record (schema version 1). Returned only when it is enabled for your tenant. Null when the record is not structured yet. WHOIS has no standard format: `raw` stays the reference.
 .OUTPUTS
 
 IpWhoisData<PSCustomObject>
@@ -37,7 +39,10 @@ function Initialize-IpWhoisData {
         ${VarData},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Raw}
+        ${Raw},
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject]
+        ${Normalized}
     )
 
     Process {
@@ -61,6 +66,7 @@ function Initialize-IpWhoisData {
             "id" = ${Id}
             "data" = ${VarData}
             "raw" = ${Raw}
+            "normalized" = ${Normalized}
         }
 
 
@@ -98,7 +104,7 @@ function ConvertFrom-JsonToIpWhoisData {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in IpWhoisData
-        $AllProperties = ("id", "data", "raw")
+        $AllProperties = ("id", "data", "raw", "normalized")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -127,10 +133,17 @@ function ConvertFrom-JsonToIpWhoisData {
             $Raw = $JsonParameters.PSobject.Properties["raw"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "normalized"))) { #optional property not found
+            $Normalized = $null
+        } else {
+            $Normalized = $JsonParameters.PSobject.Properties["normalized"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "id" = ${Id}
             "data" = ${VarData}
             "raw" = ${Raw}
+            "normalized" = ${Normalized}
         }
 
         return $PSO

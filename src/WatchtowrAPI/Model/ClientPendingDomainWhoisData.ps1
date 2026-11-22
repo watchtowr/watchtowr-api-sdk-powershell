@@ -19,6 +19,8 @@ No description available.
 Raw WHOIS data
 .PARAMETER VarData
 Formatted WHOIS data
+.PARAMETER Normalized
+Structured, best-effort reading of the WHOIS record (schema version 1). Returned only when it is enabled for your tenant. Null when the record is not structured yet. WHOIS has no standard format: `raw` stays the reference.
 .OUTPUTS
 
 ClientPendingDomainWhoisData<PSCustomObject>
@@ -32,7 +34,10 @@ function Initialize-ClientPendingDomainWhoisData {
         ${Raw},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
-        ${VarData}
+        ${VarData},
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject]
+        ${Normalized}
     )
 
     Process {
@@ -51,6 +56,7 @@ function Initialize-ClientPendingDomainWhoisData {
         $PSO = [PSCustomObject]@{
             "raw" = ${Raw}
             "data" = ${VarData}
+            "normalized" = ${Normalized}
         }
 
 
@@ -88,7 +94,7 @@ function ConvertFrom-JsonToClientPendingDomainWhoisData {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ClientPendingDomainWhoisData
-        $AllProperties = ("raw", "data")
+        $AllProperties = ("raw", "data", "normalized")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -111,9 +117,16 @@ function ConvertFrom-JsonToClientPendingDomainWhoisData {
             $VarData = $JsonParameters.PSobject.Properties["data"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "normalized"))) { #optional property not found
+            $Normalized = $null
+        } else {
+            $Normalized = $JsonParameters.PSobject.Properties["normalized"].value
+        }
+
         $PSO = [PSCustomObject]@{
             "raw" = ${Raw}
             "data" = ${VarData}
+            "normalized" = ${Normalized}
         }
 
         return $PSO

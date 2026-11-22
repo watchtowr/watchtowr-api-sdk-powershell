@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'WhoisData' {
     Context 'WhoisData' {
         It 'Initialize-WhoisData' {
             # a simple test to create an object
-            #$NewObject = Initialize-WhoisData -Id "TEST_VALUE" -VarData "TEST_VALUE" -Raw "TEST_VALUE"
+            #$NewObject = Initialize-WhoisData -Id "TEST_VALUE" -VarData "TEST_VALUE" -Raw "TEST_VALUE" -Normalized "TEST_VALUE"
             #$NewObject | Should -BeOfType WhoisData
             #$NewObject.property | Should -Be 0
         }

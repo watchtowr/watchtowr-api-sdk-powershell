@@ -10,7 +10,7 @@ Describe -tag 'WatchtowrAPI' -name 'ClientPendingDomainWhoisData' {
     Context 'ClientPendingDomainWhoisData' {
         It 'Initialize-ClientPendingDomainWhoisData' {
             # a simple test to create an object
-            #$NewObject = Initialize-ClientPendingDomainWhoisData -Raw "TEST_VALUE" -VarData "TEST_VALUE"
+            #$NewObject = Initialize-ClientPendingDomainWhoisData -Raw "TEST_VALUE" -VarData "TEST_VALUE" -Normalized "TEST_VALUE"
             #$NewObject | Should -BeOfType ClientPendingDomainWhoisData
             #$NewObject.property | Should -Be 0
         }
